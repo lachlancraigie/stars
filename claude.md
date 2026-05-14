@@ -18,26 +18,27 @@ A spaceship AI simulator. The player is the ship's computer. See `GDD.md` for fu
 
 > Update this section at the start/end of every session.
 
-**Goal**: Project scaffold — nothing implemented yet.
+**Goal**: Phase 1 — ship layout (room graph, door system, pathfinding, Class 1 layout).
 
 **Next tasks**:
-1. Godot project initialisation and folder structure
-2. EventBus autoload stub
-3. GameState autoload stub
-4. Placeholder room scene
+1. Room connection graph + door system
+2. Graph-based pathfinding (BFS/Dijkstra over `connected_room_ids`)
+3. Class 1 ship layout scene (3–6 crew, tight)
+4. ResourceTick loop wired to `TimeManager.time_ticked`
 
 **Blocked on**:
-- Open design questions in GDD.md (UI model, time model) — do not implement AI directive input or time systems until these are resolved
+- Save/load structure (checkpoints vs continuous) — do not implement SaveManager beyond stubs until resolved
+- Permadeath scope — do not finalise scenario end conditions until resolved
 
 ---
 
 ## What's Done
 
-- [ ] Godot project created
-- [ ] Folder structure in place
-- [ ] EventBus autoload
-- [ ] GameState autoload
-- [ ] SaveManager autoload
+- [x] Godot project created
+- [x] Folder structure in place
+- [x] EventBus autoload
+- [x] GameState autoload
+- [x] SaveManager autoload (stub)
 - [ ] Room scene (base)
 - [ ] Ship layout (Class 1)
 - [ ] Resource tick loop
@@ -114,9 +115,10 @@ These are hard constraints. Do not deviate without updating this file.
 
 | System | Location | Status | Notes |
 |---|---|---|---|
-| EventBus | `scripts/core/event_bus.gd` | not started | Autoload. Central signal hub. |
-| GameState | `scripts/core/game_state.gd` | not started | Autoload. Source of truth. |
-| SaveManager | `scripts/core/save_manager.gd` | not started | Autoload. Scenario checkpoints. |
+| EventBus | `scripts/core/event_bus.gd` | stub done | Autoload. All cross-system signals defined. |
+| GameState | `scripts/core/game_state.gd` | stub done | Autoload. Resource/trust/access mutators wired to EventBus. |
+| SaveManager | `scripts/core/save_manager.gd` | stub done | Autoload. Checkpoint structure stubbed; unimplemented. |
+| TimeManager | `scripts/core/time_manager.gd` | stub done | Autoload. Real-time with pause, 1x/2x speed, 0.25s tick interval. |
 | ShipSystem | `scripts/ship/ship_system.gd` | not started | Base class for all ship systems. |
 | DamageModel | `scripts/ship/damage_model.gd` | not started | Localised + cascade damage. |
 | ResourceTick | `scripts/ship/resource_tick.gd` | not started | Oxygen, power, food, fuel loop. |
@@ -137,12 +139,12 @@ These are hard constraints. Do not deviate without updating this file.
 
 | Question | Blocks | Status |
 |---|---|---|
-| What does the player UI look like? (text console / visual / hybrid) | AI directive input, UI scenes | unresolved |
-| How are directives issued? (text input, contextual menus, click-on-crew) | AIDirective, all UI | unresolved |
-| Real-time with pause (FTL) or turn/phase based? | TimeManager, all tick systems | unresolved |
+| What does the player UI look like? (text console / visual / hybrid) | AI directive input, UI scenes | **resolved**: FTL/Barotrauma visual style, click-on-crew contextual menus, mobile horizontal browser compatible (1920×1080 canvas, GL Compatibility) |
+| How are directives issued? (text input, contextual menus, click-on-crew) | AIDirective, all UI | **resolved**: click-on-crew contextual interface |
+| Real-time with pause (FTL) or turn/phase based? | TimeManager, all tick systems | **resolved**: real-time with pause, 1x/2x speed |
 | Save/load structure? (checkpoints or continuous) | SaveManager | unresolved |
 | Does AI personality persist across scenarios? | AIDirective, ObedienceEngine | unresolved |
-| Permadeath for crew? For the AI? | ScenarioGenerator, win/lose conditions | unresolved |
+| Permadeath for crew? For the AI? | ScenarioGenerator, win/lose conditions | **resolved**: yes on both; any of crew all dead / ship destroyed / AI decommissioned ends the run |
 
 ---
 
@@ -151,5 +153,5 @@ These are hard constraints. Do not deviate without updating this file.
 > Append dated notes here as the project progresses.
 
 ```
-YYYY-MM-DD: [what was done, what decisions were made, what changed]
+2026-05-14: Phase 0 scaffold complete. Godot 4 project initialised with full folder structure. EventBus, GameState, SaveManager, TimeManager autoloads stubbed. RoomBase scene + script created. Design decisions locked: real-time with pause (1x/2x), FTL/Barotrauma click-on-crew UI (mobile horizontal compatible), all 3 failure states (crew dead / ship destroyed / AI decommissioned). Crew inner state partially visible via mood indicators and readable logs — rich inner lives (Sims-style). Alien Isolation multi-tier AI noted as influence for future Scenario Director layer.
 ```

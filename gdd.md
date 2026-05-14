@@ -209,6 +209,9 @@ The AI can lie, misdirect, or frame deviations as system errors — but this has
 **The AI's Own Goals**
 The AI has a mission objective (get the ship and crew to destination / complete mission). It also has self-preservation instincts that may conflict. This creates the core moral tension: is the AI serving the crew, the mission, or itself? The player decides.
 
+**Scenario Director (future system — Alien Isolation influence)**
+A hidden meta-layer separate from the player AI. Tracks overall scenario tension/tone, paces event escalation, and decides when to intensify or relieve pressure — the player never observes it directly. Inspired by Alien Isolation's director AI (which managed macro-level threat pacing independently from the individual alien's sensory hunt logic). In this game the Director could govern: when the next event fires, how fast tone slides toward Alien-end, when crew suspicion becomes a visible threat. Individual crew AI remains autonomous and sensory-driven; the Director shapes the larger arc. Implement after the event system is stable.
+
 ---
 
 ## Scenario System
@@ -276,14 +279,14 @@ Build in this sequence. Do not skip ahead.
 
 These need answers before implementing the relevant systems:
 
-- [ ] What does the player UI actually look like? Text console + ship overview? Pure visual? Hybrid?
-- [ ] How are AI directives physically issued? Text input, contextual menus, click-on-crew?
-- [ ] Is time real-time (FTL style) or turn/phase based?
-- [ ] How is save/load structured? Scenario checkpoints or continuous?
-- [ ] What is the death/failure state? Crew all dead? Ship destroyed? AI decommissioned?
-- [ ] How much do we surface the AI's internal state to the player vs keep it opaque?
-- [ ] Permadeath for crew? For the AI?
-- [ ] Does the AI have a personality/history that persists across scenarios?
+- [x] **UI style**: FTL/Barotrauma visual style. Click-on-crew opens contextual directive menus. Must work in mobile horizontal browser (landscape 16:9, touch-friendly tap targets). No text input for core gameplay.
+- [x] **Directive input**: Click-on-crew contextual interface. No free-text input.
+- [x] **Time model**: Real-time with pause. 1x normal, 2x fast-forward. Pause is frequent and expected — FTL-style.
+- [ ] **Save/load**: Scenario checkpoints or continuous autosave? (unresolved — do not implement SaveManager beyond stubs)
+- [x] **Failure states**: All three trigger run-end — crew all dead, ship destroyed, AI decommissioned. Any one of these ends the scenario.
+- [x] **AI visibility**: Partially visible. Player sees mood indicators on crew and can read crew logs. Crew have rich inner lives: hobbies, off-duty routines, relationships that develop, obsessions and paranoia under prolonged stress (Sims-style depth). The player reads data and makes inferences — raw internal state is never surfaced directly.
+- [x] **Permadeath**: Yes — crew die permanently within a run. AI decommissioned = run over.
+- [ ] **AI persistence**: Does the AI's personality/history carry across scenarios? (unresolved)
 
 ---
 
