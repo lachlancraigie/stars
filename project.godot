@@ -22,6 +22,7 @@ GameState="*res://scripts/core/game_state.gd"
 SaveManager="*res://scripts/core/save_manager.gd"
 TimeManager="*res://scripts/core/time_manager.gd"
 ResourceTick="*res://scripts/core/resource_tick.gd"
+CrewSystem="*res://scripts/crew/crew_system.gd"
 
 [display]
 
