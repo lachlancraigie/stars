@@ -18,13 +18,13 @@ A spaceship AI simulator. The player is the ship's computer. See `GDD.md` for fu
 
 > Update this section at the start/end of every session.
 
-**Goal**: Phase 2 — resource tick loop, then crew entity.
+**Goal**: Phase 3 — crew entity (CrewMember resource, NeedsModel, state machine).
 
 **Next tasks**:
-1. `ResourceTick` autoload — connect to `EventBus.time_ticked`, consume resources per tick
-2. Variable consumption rates (crew count, active systems, damage state)
-3. UI readout stub (resource bar per resource)
-4. `CrewMember` resource class + basic stats
+1. `CrewMember` Resource class — base stats, needs, personality fields
+2. `NeedsModel` — hunger/fatigue/fear/morale tick logic, connect to ResourceTick outputs
+3. Crew state machine — idle / work / sleep / panic states
+4. `CrewMember.tscn` base scene
 
 **Blocked on**:
 - Save/load structure (checkpoints vs continuous) — do not implement SaveManager beyond stubs until resolved
@@ -41,8 +41,8 @@ A spaceship AI simulator. The player is the ship's computer. See `GDD.md` for fu
 - [x] SaveManager autoload (stub)
 - [x] Room scene (base)
 - [x] Ship layout (Class 1) — config resource + graph + builder
-- [ ] Ship layout (Class 1)
-- [ ] Resource tick loop
+- [x] Resource tick loop
+- [x] HUD stub (resource bars)
 - [ ] CrewMember base scene + stats
 - [ ] Needs model
 - [ ] Crew state machine
@@ -128,7 +128,7 @@ These are hard constraints. Do not deviate without updating this file.
 | ShipLayoutBuilder | `scripts/ship/ship_layout_builder.gd` | done | Static utility. Builds live ship from ShipConfig into scene tree. |
 | ShipSystem | `scripts/ship/ship_system.gd` | not started | Base class for all ship systems. |
 | DamageModel | `scripts/ship/damage_model.gd` | not started | Localised + cascade damage. |
-| ResourceTick | `scripts/ship/resource_tick.gd` | not started | Oxygen, power, food, fuel loop. |
+| ResourceTick | `scripts/core/resource_tick.gd` | done | Autoload. Tick-based drain; crew-count scaling; system efficiency + power draw hooks stubbed. |
 | CrewMember | `scripts/crew/crew_member.gd` | not started | Stats, needs, state machine. |
 | NeedsModel | `scripts/crew/needs_model.gd` | not started | Hunger, fatigue, fear, morale. |
 | PersonalityCore | `scripts/crew/personality_core.gd` | not started | Traits, fears, values, goals. |
@@ -160,5 +160,5 @@ These are hard constraints. Do not deviate without updating this file.
 > Append dated notes here as the project progresses.
 
 ```
-2026-05-14: Phase 0 + Phase 1 complete in same session. Design decisions fully resolved. Ship graph system (Dijkstra, door locks, maintenance tubes), Door scene, ShipConfig resource hierarchy, Class 1 Scout config (.tres), ShipLayoutBuilder utility. Campaign structure confirmed: ship state persists between scenarios; scenarios give resource deltas; checkpoints at scenario completion. GameState extended with ship_graph, doors, get_locked_doors(). Godot 4 project initialised with full folder structure. EventBus, GameState, SaveManager, TimeManager autoloads stubbed. RoomBase scene + script created. Design decisions locked: real-time with pause (1x/2x), FTL/Barotrauma click-on-crew UI (mobile horizontal compatible), all 3 failure states (crew dead / ship destroyed / AI decommissioned). Crew inner state partially visible via mood indicators and readable logs — rich inner lives (Sims-style). Alien Isolation multi-tier AI noted as influence for future Scenario Director layer.
+2026-05-14: Phase 0 + Phase 1 + Phase 2 complete in same session. Design decisions fully resolved. Ship graph system (Dijkstra, door locks, maintenance tubes), Door scene, ShipConfig resource hierarchy, Class 1 Scout config (.tres), ShipLayoutBuilder utility. Campaign structure confirmed: ship state persists between scenarios; scenarios give resource deltas; checkpoints at scenario completion. GameState extended with ship_graph, doors, get_locked_doors(). Godot 4 project initialised with full folder structure. EventBus, GameState, SaveManager, TimeManager autoloads stubbed. RoomBase scene + script created. Design decisions locked: real-time with pause (1x/2x), FTL/Barotrauma click-on-crew UI (mobile horizontal compatible), all 3 failure states (crew dead / ship destroyed / AI decommissioned). Crew inner state partially visible via mood indicators and readable logs — rich inner lives (Sims-style). Alien Isolation multi-tier AI noted as influence for future Scenario Director layer.
 ```
