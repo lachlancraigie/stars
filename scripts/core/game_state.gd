@@ -51,6 +51,9 @@ func set_ai_trust(crew_id: String, value: float) -> void:
 	var prev: float = ai_trust_scores.get(crew_id, 0.5)
 	var next: float = clampf(value, 0.0, 1.0)
 	ai_trust_scores[crew_id] = next
+	# Keep the CrewMember resource in sync so DirectiveEvaluator reads live values
+	if crew_id in crew and crew[crew_id] != null:
+		(crew[crew_id] as CrewMember).ai_trust = next
 	EventBus.ai_trust_changed.emit(crew_id, prev, next)
 
 

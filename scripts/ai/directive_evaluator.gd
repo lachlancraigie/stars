@@ -38,7 +38,7 @@ static func evaluate(crew: CrewMember, directive: AIDirective) -> Dictionary:
 		if directive.type != AIDirective.Type.ALERT:
 			return {will_comply = false, probability = 0.0, rejection_reason = "panicking"}
 
-	var probability: float = crew.ai_trust
+	var probability: float = GameState.get_ai_trust(crew.crew_id)
 	probability *= TYPE_MODIFIERS[int(directive.type)]
 
 	# Morale and willpower adjust compliance up or down
