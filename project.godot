@@ -1,0 +1,40 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Ship AI"
+config/run/main_scene="res://scenes/Main.tscn"
+config/features=PackedStringArray("4.3", "GL Compatibility")
+config/icon="res://icon.svg"
+
+[autoload]
+
+EventBus="*res://scripts/core/event_bus.gd"
+GameState="*res://scripts/core/game_state.gd"
+SaveManager="*res://scripts/core/save_manager.gd"
+TimeManager="*res://scripts/core/time_manager.gd"
+ResourceTick="*res://scripts/core/resource_tick.gd"
+CrewSystem="*res://scripts/crew/crew_system.gd"
+AISystem="*res://scripts/ai/ai_system.gd"
+ScenarioDirector="*res://scripts/scenarios/scenario_director.gd"
+ScenarioRunner="*res://scripts/scenarios/scenario_runner.gd"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

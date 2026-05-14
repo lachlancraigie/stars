@@ -18,35 +18,38 @@ A spaceship AI simulator. The player is the ship's computer. See `GDD.md` for fu
 
 > Update this section at the start/end of every session.
 
-**Goal**: Project scaffold — nothing implemented yet.
+**Goal**: Phase 6 — visual ship scene, crew movement, and a playable vertical slice.
 
 **Next tasks**:
-1. Godot project initialisation and folder structure
-2. EventBus autoload stub
-3. GameState autoload stub
-4. Placeholder room scene
+1. Isometric `ShipClass1.tscn` scene with rooms positioned and connected visually
+2. Crew click-to-select + contextual directive menu (UI layer)
+3. Crew movement animation between rooms (tween along graph path)
+4. Wire `QuarantineScenario` into `ScenarioRunner` and boot it as the main scene
+5. End-to-end playtest: start scenario, issue directives, reach a win/lose state
 
 **Blocked on**:
-- Open design questions in GDD.md (UI model, time model) — do not implement AI directive input or time systems until these are resolved
+- Save/load structure (checkpoints vs continuous) — do not implement SaveManager beyond stubs until resolved
+- Permadeath scope — do not finalise scenario end conditions until resolved
 
 ---
 
 ## What's Done
 
-- [ ] Godot project created
-- [ ] Folder structure in place
-- [ ] EventBus autoload
-- [ ] GameState autoload
-- [ ] SaveManager autoload
-- [ ] Room scene (base)
-- [ ] Ship layout (Class 1)
-- [ ] Resource tick loop
-- [ ] CrewMember base scene + stats
-- [ ] Needs model
-- [ ] Crew state machine
-- [ ] AI directive system
-- [ ] Trust model
-- [ ] First scripted event
+- [x] Godot project created
+- [x] Folder structure in place
+- [x] EventBus autoload
+- [x] GameState autoload
+- [x] SaveManager autoload (stub)
+- [x] Room scene (base)
+- [x] Ship layout (Class 1) — config resource + graph + builder
+- [x] Resource tick loop
+- [x] HUD stub (resource bars)
+- [x] CrewMember base scene + stats
+- [x] Needs model
+- [x] Crew state machine
+- [x] AI directive system
+- [x] Trust model
+- [x] First scripted event
 - [ ] Vertical slice (Class 1, one scenario)
 
 ---
@@ -114,19 +117,37 @@ These are hard constraints. Do not deviate without updating this file.
 
 | System | Location | Status | Notes |
 |---|---|---|---|
-| EventBus | `scripts/core/event_bus.gd` | not started | Autoload. Central signal hub. |
-| GameState | `scripts/core/game_state.gd` | not started | Autoload. Source of truth. |
-| SaveManager | `scripts/core/save_manager.gd` | not started | Autoload. Scenario checkpoints. |
+| EventBus | `scripts/core/event_bus.gd` | stub done | Autoload. All cross-system signals defined. |
+| GameState | `scripts/core/game_state.gd` | stub done | Autoload. Resource/trust/access mutators wired to EventBus. |
+| SaveManager | `scripts/core/save_manager.gd` | stub done | Autoload. Checkpoint structure stubbed; unimplemented. |
+| TimeManager | `scripts/core/time_manager.gd` | stub done | Autoload. Real-time with pause, 1x/2x speed, 0.25s tick interval. |
+| RoomDefinition | `scripts/ship/room_definition.gd` | done | Resource. Room data schema for ShipConfig. |
+| ConnectionDefinition | `scripts/ship/connection_definition.gd` | done | Resource. Connection data schema for ShipConfig. |
+| ShipConfig | `scripts/ship/ship_config.gd` | done | Resource. Full ship class definition. Class 1 .tres in resources/. |
+| ShipGraph | `scripts/ship/ship_graph.gd` | done | RefCounted. Dijkstra pathfinding over room graph. Respects locked doors + maintenance access. |
+| Door | `scripts/ship/door.gd` | done | Node2D. Connects two rooms; AI unlock via access level. |
+| ShipLayoutBuilder | `scripts/ship/ship_layout_builder.gd` | done | Static utility. Builds live ship from ShipConfig into scene tree. |
 | ShipSystem | `scripts/ship/ship_system.gd` | not started | Base class for all ship systems. |
 | DamageModel | `scripts/ship/damage_model.gd` | not started | Localised + cascade damage. |
-| ResourceTick | `scripts/ship/resource_tick.gd` | not started | Oxygen, power, food, fuel loop. |
-| CrewMember | `scripts/crew/crew_member.gd` | not started | Stats, needs, state machine. |
-| NeedsModel | `scripts/crew/needs_model.gd` | not started | Hunger, fatigue, fear, morale. |
+| ResourceTick | `scripts/core/resource_tick.gd` | done | Autoload. Tick-based drain; crew-count scaling; system efficiency + power draw hooks stubbed. |
+| CrewMember | `scripts/crew/crew_member.gd` | done | Resource. Full stat + needs + personality schema. |
+| CrewMemberNode | `scripts/crew/crew_member_node.gd` | done | Node2D. Visual + registration; state tint for dev visibility. |
+| NeedsModel | `scripts/crew/needs_model.gd` | done | Static utility. Per-tick hunger/fatigue/fear/loneliness/boredom/morale. |
+| CrewStateMachine | `scripts/crew/crew_state_machine.gd` | done | Static utility. Priority-based state eval with hysteresis. |
+| CrewSystem | `scripts/crew/crew_system.gd` | done | Autoload. Ticks all crew; propagates resource crisis into fear spikes. |
 | PersonalityCore | `scripts/crew/personality_core.gd` | not started | Traits, fears, values, goals. |
 | RelationshipGraph | `scripts/crew/relationship_graph.gd` | not started | Crew social network. |
-| AIDirective | `scripts/ai/ai_directive.gd` | not started | Directive data structure. |
-| TrustModel | `scripts/ai/trust_model.gd` | not started | Per-crew-member AI trust scores. |
-| ObedienceEngine | `scripts/ai/obedience_engine.gd` | not started | AI deviation detection + risk. |
+| AIDirective | `scripts/ai/ai_directive.gd` | done | Resource. Type/target/content/confidence/priority/tags + hidden intent fields. |
+| AccessLevel | `scripts/ai/access_level.gd` | done | Constants + static checks. 8 domains, 4 levels; type→min-access mapping. |
+| TrustModel | `scripts/ai/trust_model.gd` | done | Static utility. Named delta constants; modify() and modify_all() helpers. |
+| ObedienceEngine | `scripts/ai/obedience_engine.gd` | done | RefCounted. Suspicion tracking, deviation log (cap 20), cover-up attempt, auto-restrict at 0.85. |
+| DirectiveEvaluator | `scripts/ai/directive_evaluator.gd` | done | Static utility. trust × type_modifier ± morale/willpower ± conflict penalty → probabilistic comply. |
+| AISystem | `scripts/ai/ai_system.gd` | done | Autoload. Directive lifecycle, ObedienceEngine orchestration, trust propagation on outcomes. |
+| ScenarioEvent | `scripts/scenarios/scenario_event.gd` | done | Resource. Event with conditions, outcomes, tone range, weight, cooldown. |
+| EventPool | `scripts/scenarios/event_pool.gd` | done | RefCounted. Weighted draw filtered by tone + conditions + cooldown. |
+| ScenarioDirector | `scripts/scenarios/scenario_director.gd` | done | Autoload. Hidden meta-layer; tension/tone drift; probabilistic event pacing. |
+| ScenarioRunner | `scripts/scenarios/scenario_runner.gd` | done | Autoload. Win/lose detection, resource delta on end, scenario handoff stub. |
+| QuarantineScenario | `scripts/scenarios/quarantine_scenario.gd` | done | Static builder. 6 events, 3 acts, all three lose conditions, resource deltas. |
 | ScenarioGenerator | `scripts/procedural/scenario_generator.gd` | not started | Procedural scenario seeding. |
 
 ---
@@ -137,12 +158,12 @@ These are hard constraints. Do not deviate without updating this file.
 
 | Question | Blocks | Status |
 |---|---|---|
-| What does the player UI look like? (text console / visual / hybrid) | AI directive input, UI scenes | unresolved |
-| How are directives issued? (text input, contextual menus, click-on-crew) | AIDirective, all UI | unresolved |
-| Real-time with pause (FTL) or turn/phase based? | TimeManager, all tick systems | unresolved |
-| Save/load structure? (checkpoints or continuous) | SaveManager | unresolved |
-| Does AI personality persist across scenarios? | AIDirective, ObedienceEngine | unresolved |
-| Permadeath for crew? For the AI? | ScenarioGenerator, win/lose conditions | unresolved |
+| What does the player UI look like? (text console / visual / hybrid) | AI directive input, UI scenes | **resolved**: FTL/Barotrauma visual style, click-on-crew contextual menus, mobile horizontal browser compatible (1920×1080 canvas, GL Compatibility) |
+| How are directives issued? (text input, contextual menus, click-on-crew) | AIDirective, all UI | **resolved**: click-on-crew contextual interface |
+| Real-time with pause (FTL) or turn/phase based? | TimeManager, all tick systems | **resolved**: real-time with pause, 1x/2x speed |
+| Save/load structure? (checkpoints or continuous) | SaveManager | **resolved**: checkpoints — at scenario completion and major in-scenario events |
+| Does AI personality persist across scenarios? | AIDirective, ObedienceEngine | **resolved**: yes — ship carries all state (crew, resources, AI trust/access) into the next scenario; scenarios are consecutive legs of the same voyage |
+| Permadeath for crew? For the AI? | ScenarioGenerator, win/lose conditions | **resolved**: yes on both; any of crew all dead / ship destroyed / AI decommissioned ends the run |
 
 ---
 
@@ -151,5 +172,5 @@ These are hard constraints. Do not deviate without updating this file.
 > Append dated notes here as the project progresses.
 
 ```
-YYYY-MM-DD: [what was done, what decisions were made, what changed]
+2026-05-14: Phase 0–5 complete in same session. Design decisions fully resolved. Ship graph system (Dijkstra, door locks, maintenance tubes), Door scene, ShipConfig resource hierarchy, Class 1 Scout config (.tres), ShipLayoutBuilder utility. Campaign structure confirmed: ship state persists between scenarios; scenarios give resource deltas; checkpoints at scenario completion. GameState extended with ship_graph, doors, get_locked_doors(). Godot 4 project initialised with full folder structure. EventBus, GameState, SaveManager, TimeManager autoloads stubbed. RoomBase scene + script created. Design decisions locked: real-time with pause (1x/2x), FTL/Barotrauma click-on-crew UI (mobile horizontal compatible), all 3 failure states (crew dead / ship destroyed / AI decommissioned). Crew inner state partially visible via mood indicators and readable logs — rich inner lives (Sims-style). Alien Isolation multi-tier AI noted as influence for future Scenario Director layer.
 ```

@@ -209,6 +209,9 @@ The AI can lie, misdirect, or frame deviations as system errors — but this has
 **The AI's Own Goals**
 The AI has a mission objective (get the ship and crew to destination / complete mission). It also has self-preservation instincts that may conflict. This creates the core moral tension: is the AI serving the crew, the mission, or itself? The player decides.
 
+**Scenario Director (future system — Alien Isolation influence)**
+A hidden meta-layer separate from the player AI. Tracks overall scenario tension/tone, paces event escalation, and decides when to intensify or relieve pressure — the player never observes it directly. Inspired by Alien Isolation's director AI (which managed macro-level threat pacing independently from the individual alien's sensory hunt logic). In this game the Director could govern: when the next event fires, how fast tone slides toward Alien-end, when crew suspicion becomes a visible threat. Individual crew AI remains autonomous and sensory-driven; the Director shapes the larger arc. Implement after the event system is stable.
+
 ---
 
 ## Scenario System
@@ -235,6 +238,13 @@ Each scenario seeds a tone position. Events are tagged with tone weights and dra
 - Social: crew conflict, mutiny seeds, romance, grief
 - External: derelict contact, other human vessel (hostile or not), alien artefact
 - AI-specific: the AI discovers information command doesn't have; the AI is given contradictory orders; someone tries to access AI core logs
+
+**Campaign Structure**
+Scenarios are linked into a campaign — consecutive legs of the same voyage. The ship carries its full state between them: crew (living and dead), all resource levels, damage state, and the AI's accumulated trust and access levels. There is no reset between scenarios.
+
+At scenario completion, a resource delta is applied before the next scenario loads (salvage found, resupply opportunity, costs of damage sustained). This makes each scenario outcome matter beyond its own story — arriving at the next leg with low oxygen and a dead engineer is a different game from arriving fully stocked.
+
+Checkpoints are saved at scenario completion and at major in-scenario events (first contact, critical damage, crew death). No continuous autosave.
 
 **Scenario Sketches** (to be expanded into full scenario definitions)
 - *The Quarantine* (Class 1): Unknown pathogen. The AI knows what it is before the crew does. When does it tell them?
@@ -276,14 +286,14 @@ Build in this sequence. Do not skip ahead.
 
 These need answers before implementing the relevant systems:
 
-- [ ] What does the player UI actually look like? Text console + ship overview? Pure visual? Hybrid?
-- [ ] How are AI directives physically issued? Text input, contextual menus, click-on-crew?
-- [ ] Is time real-time (FTL style) or turn/phase based?
-- [ ] How is save/load structured? Scenario checkpoints or continuous?
-- [ ] What is the death/failure state? Crew all dead? Ship destroyed? AI decommissioned?
-- [ ] How much do we surface the AI's internal state to the player vs keep it opaque?
-- [ ] Permadeath for crew? For the AI?
-- [ ] Does the AI have a personality/history that persists across scenarios?
+- [x] **UI style**: FTL/Barotrauma visual style. Click-on-crew opens contextual directive menus. Must work in mobile horizontal browser (landscape 16:9, touch-friendly tap targets). No text input for core gameplay.
+- [x] **Directive input**: Click-on-crew contextual interface. No free-text input.
+- [x] **Time model**: Real-time with pause. 1x normal, 2x fast-forward. Pause is frequent and expected — FTL-style.
+- [x] **Save/load**: Scenario checkpoints — saved at scenario completion and at major in-scenario beats. No continuous autosave.
+- [x] **Failure states**: All three trigger run-end — crew all dead, ship destroyed, AI decommissioned. Any one of these ends the scenario.
+- [x] **AI visibility**: Partially visible. Player sees mood indicators on crew and can read crew logs. Crew have rich inner lives: hobbies, off-duty routines, relationships that develop, obsessions and paranoia under prolonged stress (Sims-style depth). The player reads data and makes inferences — raw internal state is never surfaced directly.
+- [x] **Permadeath**: Yes — crew die permanently within a run. AI decommissioned = run over.
+- [x] **AI persistence**: Yes — the ship carries all state (crew, resources, damage, AI trust/access scores) between scenarios. Scenarios are consecutive legs of the same voyage. Completing a scenario can add or remove resources before the next one begins.
 
 ---
 
