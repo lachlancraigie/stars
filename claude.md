@@ -18,14 +18,14 @@ A spaceship AI simulator. The player is the ship's computer. See `GDD.md` for fu
 
 > Update this section at the start/end of every session.
 
-**Goal**: Phase 5 — event system + first vertical slice (*The Quarantine*).
+**Goal**: Phase 6 — visual ship scene, crew movement, and a playable vertical slice.
 
 **Next tasks**:
-1. `ScenarioEvent` Resource class (id, conditions, outcomes, tone_weight)
-2. `EventPool` — weighted draw from event pool based on scenario tone
-3. `ScenarioDirector` — hidden meta-layer; manages pacing, tone drift, event timing
-4. Hand-author *The Quarantine* scenario (Class 1; pathogen; AI knows before crew)
-5. Win/lose condition checking in GameState or a dedicated ScenarioRunner
+1. Isometric `ShipClass1.tscn` scene with rooms positioned and connected visually
+2. Crew click-to-select + contextual directive menu (UI layer)
+3. Crew movement animation between rooms (tween along graph path)
+4. Wire `QuarantineScenario` into `ScenarioRunner` and boot it as the main scene
+5. End-to-end playtest: start scenario, issue directives, reach a win/lose state
 
 **Blocked on**:
 - Save/load structure (checkpoints vs continuous) — do not implement SaveManager beyond stubs until resolved
@@ -49,7 +49,7 @@ A spaceship AI simulator. The player is the ship's computer. See `GDD.md` for fu
 - [x] Crew state machine
 - [x] AI directive system
 - [x] Trust model
-- [ ] First scripted event
+- [x] First scripted event
 - [ ] Vertical slice (Class 1, one scenario)
 
 ---
@@ -143,6 +143,11 @@ These are hard constraints. Do not deviate without updating this file.
 | ObedienceEngine | `scripts/ai/obedience_engine.gd` | done | RefCounted. Suspicion tracking, deviation log (cap 20), cover-up attempt, auto-restrict at 0.85. |
 | DirectiveEvaluator | `scripts/ai/directive_evaluator.gd` | done | Static utility. trust × type_modifier ± morale/willpower ± conflict penalty → probabilistic comply. |
 | AISystem | `scripts/ai/ai_system.gd` | done | Autoload. Directive lifecycle, ObedienceEngine orchestration, trust propagation on outcomes. |
+| ScenarioEvent | `scripts/scenarios/scenario_event.gd` | done | Resource. Event with conditions, outcomes, tone range, weight, cooldown. |
+| EventPool | `scripts/scenarios/event_pool.gd` | done | RefCounted. Weighted draw filtered by tone + conditions + cooldown. |
+| ScenarioDirector | `scripts/scenarios/scenario_director.gd` | done | Autoload. Hidden meta-layer; tension/tone drift; probabilistic event pacing. |
+| ScenarioRunner | `scripts/scenarios/scenario_runner.gd` | done | Autoload. Win/lose detection, resource delta on end, scenario handoff stub. |
+| QuarantineScenario | `scripts/scenarios/quarantine_scenario.gd` | done | Static builder. 6 events, 3 acts, all three lose conditions, resource deltas. |
 | ScenarioGenerator | `scripts/procedural/scenario_generator.gd` | not started | Procedural scenario seeding. |
 
 ---
@@ -167,5 +172,5 @@ These are hard constraints. Do not deviate without updating this file.
 > Append dated notes here as the project progresses.
 
 ```
-2026-05-14: Phase 0–4 complete in same session. Design decisions fully resolved. Ship graph system (Dijkstra, door locks, maintenance tubes), Door scene, ShipConfig resource hierarchy, Class 1 Scout config (.tres), ShipLayoutBuilder utility. Campaign structure confirmed: ship state persists between scenarios; scenarios give resource deltas; checkpoints at scenario completion. GameState extended with ship_graph, doors, get_locked_doors(). Godot 4 project initialised with full folder structure. EventBus, GameState, SaveManager, TimeManager autoloads stubbed. RoomBase scene + script created. Design decisions locked: real-time with pause (1x/2x), FTL/Barotrauma click-on-crew UI (mobile horizontal compatible), all 3 failure states (crew dead / ship destroyed / AI decommissioned). Crew inner state partially visible via mood indicators and readable logs — rich inner lives (Sims-style). Alien Isolation multi-tier AI noted as influence for future Scenario Director layer.
+2026-05-14: Phase 0–5 complete in same session. Design decisions fully resolved. Ship graph system (Dijkstra, door locks, maintenance tubes), Door scene, ShipConfig resource hierarchy, Class 1 Scout config (.tres), ShipLayoutBuilder utility. Campaign structure confirmed: ship state persists between scenarios; scenarios give resource deltas; checkpoints at scenario completion. GameState extended with ship_graph, doors, get_locked_doors(). Godot 4 project initialised with full folder structure. EventBus, GameState, SaveManager, TimeManager autoloads stubbed. RoomBase scene + script created. Design decisions locked: real-time with pause (1x/2x), FTL/Barotrauma click-on-crew UI (mobile horizontal compatible), all 3 failure states (crew dead / ship destroyed / AI decommissioned). Crew inner state partially visible via mood indicators and readable logs — rich inner lives (Sims-style). Alien Isolation multi-tier AI noted as influence for future Scenario Director layer.
 ```

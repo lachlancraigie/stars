@@ -24,6 +24,8 @@ TimeManager="*res://scripts/core/time_manager.gd"
 ResourceTick="*res://scripts/core/resource_tick.gd"
 CrewSystem="*res://scripts/crew/crew_system.gd"
 AISystem="*res://scripts/ai/ai_system.gd"
+ScenarioDirector="*res://scripts/scenarios/scenario_director.gd"
+ScenarioRunner="*res://scripts/scenarios/scenario_runner.gd"
 
 [display]
 
