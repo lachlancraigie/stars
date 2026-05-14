@@ -239,6 +239,13 @@ Each scenario seeds a tone position. Events are tagged with tone weights and dra
 - External: derelict contact, other human vessel (hostile or not), alien artefact
 - AI-specific: the AI discovers information command doesn't have; the AI is given contradictory orders; someone tries to access AI core logs
 
+**Campaign Structure**
+Scenarios are linked into a campaign — consecutive legs of the same voyage. The ship carries its full state between them: crew (living and dead), all resource levels, damage state, and the AI's accumulated trust and access levels. There is no reset between scenarios.
+
+At scenario completion, a resource delta is applied before the next scenario loads (salvage found, resupply opportunity, costs of damage sustained). This makes each scenario outcome matter beyond its own story — arriving at the next leg with low oxygen and a dead engineer is a different game from arriving fully stocked.
+
+Checkpoints are saved at scenario completion and at major in-scenario events (first contact, critical damage, crew death). No continuous autosave.
+
 **Scenario Sketches** (to be expanded into full scenario definitions)
 - *The Quarantine* (Class 1): Unknown pathogen. The AI knows what it is before the crew does. When does it tell them?
 - *The Derelict* (Class 2): Boarding party sent to salvage. Something is wrong on the other ship. The AI can see it in the data but can't get the boarding party to believe it.
@@ -282,11 +289,11 @@ These need answers before implementing the relevant systems:
 - [x] **UI style**: FTL/Barotrauma visual style. Click-on-crew opens contextual directive menus. Must work in mobile horizontal browser (landscape 16:9, touch-friendly tap targets). No text input for core gameplay.
 - [x] **Directive input**: Click-on-crew contextual interface. No free-text input.
 - [x] **Time model**: Real-time with pause. 1x normal, 2x fast-forward. Pause is frequent and expected — FTL-style.
-- [ ] **Save/load**: Scenario checkpoints or continuous autosave? (unresolved — do not implement SaveManager beyond stubs)
+- [x] **Save/load**: Scenario checkpoints — saved at scenario completion and at major in-scenario beats. No continuous autosave.
 - [x] **Failure states**: All three trigger run-end — crew all dead, ship destroyed, AI decommissioned. Any one of these ends the scenario.
 - [x] **AI visibility**: Partially visible. Player sees mood indicators on crew and can read crew logs. Crew have rich inner lives: hobbies, off-duty routines, relationships that develop, obsessions and paranoia under prolonged stress (Sims-style depth). The player reads data and makes inferences — raw internal state is never surfaced directly.
 - [x] **Permadeath**: Yes — crew die permanently within a run. AI decommissioned = run over.
-- [ ] **AI persistence**: Does the AI's personality/history carry across scenarios? (unresolved)
+- [x] **AI persistence**: Yes — the ship carries all state (crew, resources, damage, AI trust/access scores) between scenarios. Scenarios are consecutive legs of the same voyage. Completing a scenario can add or remove resources before the next one begins.
 
 ---
 

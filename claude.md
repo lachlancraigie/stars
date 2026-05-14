@@ -18,13 +18,13 @@ A spaceship AI simulator. The player is the ship's computer. See `GDD.md` for fu
 
 > Update this section at the start/end of every session.
 
-**Goal**: Phase 1 — ship layout (room graph, door system, pathfinding, Class 1 layout).
+**Goal**: Phase 2 — resource tick loop, then crew entity.
 
 **Next tasks**:
-1. Room connection graph + door system
-2. Graph-based pathfinding (BFS/Dijkstra over `connected_room_ids`)
-3. Class 1 ship layout scene (3–6 crew, tight)
-4. ResourceTick loop wired to `TimeManager.time_ticked`
+1. `ResourceTick` autoload — connect to `EventBus.time_ticked`, consume resources per tick
+2. Variable consumption rates (crew count, active systems, damage state)
+3. UI readout stub (resource bar per resource)
+4. `CrewMember` resource class + basic stats
 
 **Blocked on**:
 - Save/load structure (checkpoints vs continuous) — do not implement SaveManager beyond stubs until resolved
@@ -39,7 +39,8 @@ A spaceship AI simulator. The player is the ship's computer. See `GDD.md` for fu
 - [x] EventBus autoload
 - [x] GameState autoload
 - [x] SaveManager autoload (stub)
-- [ ] Room scene (base)
+- [x] Room scene (base)
+- [x] Ship layout (Class 1) — config resource + graph + builder
 - [ ] Ship layout (Class 1)
 - [ ] Resource tick loop
 - [ ] CrewMember base scene + stats
@@ -119,6 +120,12 @@ These are hard constraints. Do not deviate without updating this file.
 | GameState | `scripts/core/game_state.gd` | stub done | Autoload. Resource/trust/access mutators wired to EventBus. |
 | SaveManager | `scripts/core/save_manager.gd` | stub done | Autoload. Checkpoint structure stubbed; unimplemented. |
 | TimeManager | `scripts/core/time_manager.gd` | stub done | Autoload. Real-time with pause, 1x/2x speed, 0.25s tick interval. |
+| RoomDefinition | `scripts/ship/room_definition.gd` | done | Resource. Room data schema for ShipConfig. |
+| ConnectionDefinition | `scripts/ship/connection_definition.gd` | done | Resource. Connection data schema for ShipConfig. |
+| ShipConfig | `scripts/ship/ship_config.gd` | done | Resource. Full ship class definition. Class 1 .tres in resources/. |
+| ShipGraph | `scripts/ship/ship_graph.gd` | done | RefCounted. Dijkstra pathfinding over room graph. Respects locked doors + maintenance access. |
+| Door | `scripts/ship/door.gd` | done | Node2D. Connects two rooms; AI unlock via access level. |
+| ShipLayoutBuilder | `scripts/ship/ship_layout_builder.gd` | done | Static utility. Builds live ship from ShipConfig into scene tree. |
 | ShipSystem | `scripts/ship/ship_system.gd` | not started | Base class for all ship systems. |
 | DamageModel | `scripts/ship/damage_model.gd` | not started | Localised + cascade damage. |
 | ResourceTick | `scripts/ship/resource_tick.gd` | not started | Oxygen, power, food, fuel loop. |
@@ -142,8 +149,8 @@ These are hard constraints. Do not deviate without updating this file.
 | What does the player UI look like? (text console / visual / hybrid) | AI directive input, UI scenes | **resolved**: FTL/Barotrauma visual style, click-on-crew contextual menus, mobile horizontal browser compatible (1920×1080 canvas, GL Compatibility) |
 | How are directives issued? (text input, contextual menus, click-on-crew) | AIDirective, all UI | **resolved**: click-on-crew contextual interface |
 | Real-time with pause (FTL) or turn/phase based? | TimeManager, all tick systems | **resolved**: real-time with pause, 1x/2x speed |
-| Save/load structure? (checkpoints or continuous) | SaveManager | unresolved |
-| Does AI personality persist across scenarios? | AIDirective, ObedienceEngine | unresolved |
+| Save/load structure? (checkpoints or continuous) | SaveManager | **resolved**: checkpoints — at scenario completion and major in-scenario events |
+| Does AI personality persist across scenarios? | AIDirective, ObedienceEngine | **resolved**: yes — ship carries all state (crew, resources, AI trust/access) into the next scenario; scenarios are consecutive legs of the same voyage |
 | Permadeath for crew? For the AI? | ScenarioGenerator, win/lose conditions | **resolved**: yes on both; any of crew all dead / ship destroyed / AI decommissioned ends the run |
 
 ---
@@ -153,5 +160,5 @@ These are hard constraints. Do not deviate without updating this file.
 > Append dated notes here as the project progresses.
 
 ```
-2026-05-14: Phase 0 scaffold complete. Godot 4 project initialised with full folder structure. EventBus, GameState, SaveManager, TimeManager autoloads stubbed. RoomBase scene + script created. Design decisions locked: real-time with pause (1x/2x), FTL/Barotrauma click-on-crew UI (mobile horizontal compatible), all 3 failure states (crew dead / ship destroyed / AI decommissioned). Crew inner state partially visible via mood indicators and readable logs — rich inner lives (Sims-style). Alien Isolation multi-tier AI noted as influence for future Scenario Director layer.
+2026-05-14: Phase 0 + Phase 1 complete in same session. Design decisions fully resolved. Ship graph system (Dijkstra, door locks, maintenance tubes), Door scene, ShipConfig resource hierarchy, Class 1 Scout config (.tres), ShipLayoutBuilder utility. Campaign structure confirmed: ship state persists between scenarios; scenarios give resource deltas; checkpoints at scenario completion. GameState extended with ship_graph, doors, get_locked_doors(). Godot 4 project initialised with full folder structure. EventBus, GameState, SaveManager, TimeManager autoloads stubbed. RoomBase scene + script created. Design decisions locked: real-time with pause (1x/2x), FTL/Barotrauma click-on-crew UI (mobile horizontal compatible), all 3 failure states (crew dead / ship destroyed / AI decommissioned). Crew inner state partially visible via mood indicators and readable logs — rich inner lives (Sims-style). Alien Isolation multi-tier AI noted as influence for future Scenario Director layer.
 ```

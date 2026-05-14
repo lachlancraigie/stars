@@ -24,6 +24,10 @@ var resources: Dictionary = {
 # Crew
 var crew: Dictionary = {}  # crew_id -> CrewMember resource
 
+# Ship graph and doors (built at scenario start by ShipLayoutBuilder)
+var ship_graph: ShipGraph = null
+var doors: Dictionary = {}  # door_id -> Door node
+
 # AI state
 var ai_access_levels: Dictionary = {}  # system_name -> int (0=none 1=read 2=write 3=full)
 var ai_obedience_score: float = 1.0    # internal; crew cannot read this directly
@@ -62,3 +66,11 @@ func set_ai_access(system_name: String, level: int) -> void:
 
 func get_ai_access(system_name: String) -> int:
 	return ai_access_levels.get(system_name, 1)
+
+
+func get_locked_doors() -> Array[String]:
+	var locked: Array[String] = []
+	for door_id in doors:
+		if doors[door_id].is_locked:
+			locked.append(door_id)
+	return locked
