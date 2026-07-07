@@ -639,7 +639,7 @@
       "phase": 7,
       "category": "rooms",
       "output": "assets/sprites/rooms/tile_wall_interior.png",
-      "subject": "isometric top-down interior ship wall or barrier tile segment, structural paneling, conduit trim",
+      "subject": "one single straight wall segment for an isometric game, like a fence panel: a thin upright slate-grey metal panel wall running diagonally at the 45-degree isometric angle, uniform height, panel seams and one orange conduit stripe along it, nothing else",
       "aspect_ratio": "16:9",
       "size_class": "iso_tile_1152x640",
       "remove_background": true
@@ -649,7 +649,7 @@
       "phase": 7,
       "category": "rooms",
       "output": "assets/sprites/rooms/tube_overlay.png",
-      "subject": "isometric top-down maintenance tube overlay segment, crawlspace conduit pipes, access panel, overlay layer meant to sit on top of a corridor tile",
+      "subject": "one single straight cylindrical maintenance tube: a metal pipe segment with ring joints and one small access hatch, running diagonally at the 45-degree isometric angle, drawn as a clean flat vector object, nothing else",
       "aspect_ratio": "16:9",
       "size_class": "iso_tile_1152x640",
       "remove_background": true
@@ -699,7 +699,7 @@
       "phase": 7,
       "category": "fx",
       "output": "assets/sprites/fx/fx_sparks.png",
-      "subject": "electrical sparks effect sprite, shower of sparks, small burst",
+      "subject": "electrical sparks effect sprite: a radial burst of small bright orange and yellow spark streaks flying outward from a central point, isolated effect with no object and no ground beneath it",
       "aspect_ratio": "1:1",
       "size_class": "fx_256x256",
       "remove_background": true
@@ -709,7 +709,7 @@
       "phase": 7,
       "category": "portraits",
       "output": "assets/sprites/portraits/portrait_captain.png",
-      "subject": "headshot portrait of ship captain, blue trim collar visible, face and shoulders",
+      "subject": "headshot portrait of a human ship captain, simple stylised face with small dot eyes, short dark hair, navy uniform with bright blue trim collar, face and shoulders",
       "aspect_ratio": "1:1",
       "size_class": "portrait_256x256",
       "remove_background": true
@@ -729,7 +729,7 @@
       "phase": 7,
       "category": "portraits",
       "output": "assets/sprites/portraits/portrait_medic.png",
-      "subject": "headshot portrait of ship medic, white trim collar visible, face and shoulders",
+      "subject": "headshot portrait of a human ship medic, simple stylised face with small dot eyes and visible facial features, short hair, white uniform with a red medical cross at the collar, face and shoulders",
       "aspect_ratio": "1:1",
       "size_class": "portrait_256x256",
       "remove_background": true
