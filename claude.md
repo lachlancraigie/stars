@@ -54,6 +54,8 @@ Asset generation via Reve v1 API (`tools/asset_gen/`, v2 not enabled on key; tok
 - [x] AI directive system
 - [x] Trust model
 - [x] First scripted event
+- [x] Art direction locked (Flat Vector) + Reve asset pipeline (`tools/asset_gen/`)
+- [x] Phase 6 sprite set generated, QA'd, promoted (7 rooms, 2 doors, 4 roles × 10 poses)
 - [ ] Vertical slice (Class 1, one scenario)
 
 ---
