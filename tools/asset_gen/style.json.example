@@ -1,0 +1,45 @@
+{
+  "$comment": [
+    "Copy this file to style.json (sibling, gitignored-by-convention-not-enforced) once the",
+    "art style is locked in. generate.py reads style.json by default (--style overrides the path).",
+    "style_prefix / style_suffix wrap every subject prompt: final prompt =",
+    "  style_prefix + ' ' + [category_override or asset.subject] + ' ' + style_suffix",
+    "If anchor_images is non-empty, generate.py calls reve.v1.image.remix() with those images",
+    "as references (cited in-prompt as <ref>0</ref>, <ref>1</ref>, ...) instead of create(),",
+    "so every asset stays visually consistent with the approved style anchors.",
+    "category_anchors (optional) maps category -> list of image paths and takes precedence",
+    "over anchor_images for assets of that category (anchor_images stays the fallback for",
+    "categories without an entry) -- a room anchor shouldn't steer crew generation.",
+    "A manifest asset may additionally declare its own 'references': extra images appended",
+    "AFTER the style anchors in the remix() call; the prompt cites anchors as 'Match the",
+    "established art style of <ref>...</ref>' and asset references as 'Match the character",
+    "design of <ref>...</ref>', with indices numbered anchors-first.",
+    "All image paths here and in manifest 'references' resolve relative to the REPO ROOT",
+    "(two levels up from tools/asset_gen/), never the CWD; absolute paths pass through.",
+    "category_overrides let you inject category-specific art direction (e.g. crew sprites need",
+    "'full body, clean silhouette' while UI frames need 'flat vector icon style') without",
+    "duplicating the whole prefix/suffix. Overrides are appended after the subject, before suffix."
+  ],
+
+  "style_prefix": "isometric 2D game asset, worn functional sci-fi space station, cold blue-white lighting, clean edges, game-ready, flat 2D shading,",
+
+  "style_suffix": "no watermark, no text, no signature, no background scenery, single subject centered on a plain background",
+
+  "anchor_images": ["tools/asset_gen/anchors/example_global_style_anchor.png"],
+
+  "category_anchors": {
+    "rooms": ["tools/asset_gen/anchors/example_room_anchor.png"],
+    "crew": ["tools/asset_gen/anchors/example_crew_anchor.png"]
+  },
+
+  "category_overrides": {
+    "rooms": "top-down 45-degree isometric angle, floor and prop layer only",
+    "doors": "fits seamlessly into the corridor tile, top-down 45-degree isometric angle",
+    "crew": "full body, clean silhouette, simple flat shading, consistent proportions across poses",
+    "portraits": "front-facing headshot, simple flat shading, consistent proportions across roles",
+    "ui": "monochrome green-on-dark or amber readout style, flat vector shapes, no perspective",
+    "fx": "isolated particle/light effect, no ground plane, suitable for additive blending"
+  },
+
+  "negative_prompt_note": "reve.v1.image.create/remix may not expose a negative-prompt parameter; if it does not, keep unwanted qualities out via style_suffix instead (e.g. 'no blur, no bad anatomy, no extra limbs')."
+}

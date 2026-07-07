@@ -20,6 +20,10 @@ A spaceship AI simulator. The player is the ship's computer. See `GDD.md` for fu
 
 **Goal**: Phase 6 — visual ship scene, crew movement, and a playable vertical slice.
 
+**Art direction**: LOCKED — Flat Vector (Into the Breach-style). See `docs/art-direction.md`.
+Asset generation via Reve v1 API (`tools/asset_gen/`, v2 not enabled on key; token via
+`REVE_API_TOKEN` env, never committed).
+
 **Next tasks**:
 1. Isometric `ShipClass1.tscn` scene with rooms positioned and connected visually
 2. Crew click-to-select + contextual directive menu (UI layer)
@@ -50,6 +54,8 @@ A spaceship AI simulator. The player is the ship's computer. See `GDD.md` for fu
 - [x] AI directive system
 - [x] Trust model
 - [x] First scripted event
+- [x] Art direction locked (Flat Vector) + Reve asset pipeline (`tools/asset_gen/`)
+- [x] Phase 6 sprite set generated, QA'd, promoted (7 rooms, 2 doors, 4 roles × 10 poses)
 - [ ] Vertical slice (Class 1, one scenario)
 
 ---
