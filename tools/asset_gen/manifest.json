@@ -1,0 +1,637 @@
+{
+  "$schema_note": "Declarative asset list for tools/asset_gen/generate.py. subject fragments are style-neutral; the active style.json supplies style_prefix/style_suffix and optional per-category overrides.",
+  "size_classes": {
+    "iso_tile_128x64": {
+      "width": 128,
+      "height": 64
+    },
+    "crew_sprite_32x48": {
+      "width": 32,
+      "height": 48
+    },
+    "portrait_64x64": {
+      "width": 64,
+      "height": 64
+    },
+    "ui_frame_256x256": {
+      "width": 256,
+      "height": 256
+    },
+    "fx_128x128": {
+      "width": 128,
+      "height": 128
+    }
+  },
+  "assets": [
+    {
+      "id": "room_bridge",
+      "phase": 6,
+      "category": "rooms",
+      "output": "assets/sprites/rooms/room_bridge.png",
+      "subject": "isometric top-down ship bridge command room interior, captain's chair, control consoles, forward viewport",
+      "aspect_ratio": "16:9",
+      "size_class": "iso_tile_128x64",
+      "remove_background": true
+    },
+    {
+      "id": "room_engineering",
+      "phase": 6,
+      "category": "rooms",
+      "output": "assets/sprites/rooms/room_engineering.png",
+      "subject": "isometric top-down engineering and reactor room interior, reactor core, pipes, power conduits, control panels",
+      "aspect_ratio": "16:9",
+      "size_class": "iso_tile_128x64",
+      "remove_background": true
+    },
+    {
+      "id": "room_life_support",
+      "phase": 6,
+      "category": "rooms",
+      "output": "assets/sprites/rooms/room_life_support.png",
+      "subject": "isometric top-down life support systems room interior, oxygen scrubbers, filtration tanks, gauges",
+      "aspect_ratio": "16:9",
+      "size_class": "iso_tile_128x64",
+      "remove_background": true
+    },
+    {
+      "id": "room_medbay",
+      "phase": 6,
+      "category": "rooms",
+      "output": "assets/sprites/rooms/room_medbay.png",
+      "subject": "isometric top-down medical bay interior, medical bed, supply cabinets, diagnostic equipment",
+      "aspect_ratio": "16:9",
+      "size_class": "iso_tile_128x64",
+      "remove_background": true
+    },
+    {
+      "id": "room_quarters",
+      "phase": 6,
+      "category": "rooms",
+      "output": "assets/sprites/rooms/room_quarters.png",
+      "subject": "isometric top-down crew quarters interior, bunks, personal lockers, small living space",
+      "aspect_ratio": "16:9",
+      "size_class": "iso_tile_128x64",
+      "remove_background": true
+    },
+    {
+      "id": "room_cargo",
+      "phase": 6,
+      "category": "rooms",
+      "output": "assets/sprites/rooms/room_cargo.png",
+      "subject": "isometric top-down cargo hold interior, storage crates, supply containers, loading area",
+      "aspect_ratio": "16:9",
+      "size_class": "iso_tile_128x64",
+      "remove_background": true
+    },
+    {
+      "id": "room_corridor",
+      "phase": 6,
+      "category": "rooms",
+      "output": "assets/sprites/rooms/room_corridor.png",
+      "subject": "isometric top-down ship corridor interior, straight hallway segment, floor panels, wall conduits",
+      "aspect_ratio": "16:9",
+      "size_class": "iso_tile_128x64",
+      "remove_background": true
+    },
+    {
+      "id": "door_closed",
+      "phase": 6,
+      "category": "doors",
+      "output": "assets/sprites/rooms/door_closed.png",
+      "subject": "isometric top-down sealed ship door, closed bulkhead hatch, sci-fi airlock style door",
+      "aspect_ratio": "16:9",
+      "size_class": "iso_tile_128x64",
+      "remove_background": true
+    },
+    {
+      "id": "door_open",
+      "phase": 6,
+      "category": "doors",
+      "output": "assets/sprites/rooms/door_open.png",
+      "subject": "isometric top-down open ship door, open bulkhead hatch revealing corridor beyond",
+      "aspect_ratio": "16:9",
+      "size_class": "iso_tile_128x64",
+      "remove_background": true
+    },
+    {
+      "id": "crew_captain_idle_n",
+      "phase": 6,
+      "category": "crew",
+      "output": "assets/sprites/crew/crew_captain_idle_n.png",
+      "subject": "top-down isometric full-body ship captain crew member, blue trim uniform, authoritative bearing, standing idle pose, facing away from camera (north/back view)",
+      "aspect_ratio": "9:16",
+      "size_class": "crew_sprite_32x48",
+      "remove_background": true
+    },
+    {
+      "id": "crew_captain_idle_s",
+      "phase": 6,
+      "category": "crew",
+      "output": "assets/sprites/crew/crew_captain_idle_s.png",
+      "subject": "top-down isometric full-body ship captain crew member, blue trim uniform, authoritative bearing, standing idle pose, facing toward camera (south/front view)",
+      "aspect_ratio": "9:16",
+      "size_class": "crew_sprite_32x48",
+      "remove_background": true
+    },
+    {
+      "id": "crew_captain_idle_e",
+      "phase": 6,
+      "category": "crew",
+      "output": "assets/sprites/crew/crew_captain_idle_e.png",
+      "subject": "top-down isometric full-body ship captain crew member, blue trim uniform, authoritative bearing, standing idle pose, facing right (east view), side profile",
+      "aspect_ratio": "9:16",
+      "size_class": "crew_sprite_32x48",
+      "remove_background": true
+    },
+    {
+      "id": "crew_captain_idle_w",
+      "phase": 6,
+      "category": "crew",
+      "output": "assets/sprites/crew/crew_captain_idle_w.png",
+      "subject": "top-down isometric full-body ship captain crew member, blue trim uniform, authoritative bearing, standing idle pose, facing left (west view), side profile",
+      "aspect_ratio": "9:16",
+      "size_class": "crew_sprite_32x48",
+      "remove_background": true
+    },
+    {
+      "id": "crew_captain_walk_n",
+      "phase": 6,
+      "category": "crew",
+      "output": "assets/sprites/crew/crew_captain_walk_n.png",
+      "subject": "top-down isometric full-body ship captain crew member, blue trim uniform, authoritative bearing, walking pose mid-stride, facing away from camera (north/back view)",
+      "aspect_ratio": "9:16",
+      "size_class": "crew_sprite_32x48",
+      "remove_background": true
+    },
+    {
+      "id": "crew_captain_walk_s",
+      "phase": 6,
+      "category": "crew",
+      "output": "assets/sprites/crew/crew_captain_walk_s.png",
+      "subject": "top-down isometric full-body ship captain crew member, blue trim uniform, authoritative bearing, walking pose mid-stride, facing toward camera (south/front view)",
+      "aspect_ratio": "9:16",
+      "size_class": "crew_sprite_32x48",
+      "remove_background": true
+    },
+    {
+      "id": "crew_captain_walk_e",
+      "phase": 6,
+      "category": "crew",
+      "output": "assets/sprites/crew/crew_captain_walk_e.png",
+      "subject": "top-down isometric full-body ship captain crew member, blue trim uniform, authoritative bearing, walking pose mid-stride, facing right (east view), side profile",
+      "aspect_ratio": "9:16",
+      "size_class": "crew_sprite_32x48",
+      "remove_background": true
+    },
+    {
+      "id": "crew_captain_walk_w",
+      "phase": 6,
+      "category": "crew",
+      "output": "assets/sprites/crew/crew_captain_walk_w.png",
+      "subject": "top-down isometric full-body ship captain crew member, blue trim uniform, authoritative bearing, walking pose mid-stride, facing left (west view), side profile",
+      "aspect_ratio": "9:16",
+      "size_class": "crew_sprite_32x48",
+      "remove_background": true
+    },
+    {
+      "id": "crew_captain_panic",
+      "phase": 6,
+      "category": "crew",
+      "output": "assets/sprites/crew/crew_captain_panic.png",
+      "subject": "top-down isometric full-body ship captain crew member, blue trim uniform, authoritative bearing, panicked pose, arms raised, running in fear, wide stance",
+      "aspect_ratio": "9:16",
+      "size_class": "crew_sprite_32x48",
+      "remove_background": true
+    },
+    {
+      "id": "crew_captain_collapsed",
+      "phase": 6,
+      "category": "crew",
+      "output": "assets/sprites/crew/crew_captain_collapsed.png",
+      "subject": "top-down isometric full-body ship captain crew member, blue trim uniform, authoritative bearing, collapsed on the ground, incapacitated, lying down pose",
+      "aspect_ratio": "9:16",
+      "size_class": "crew_sprite_32x48",
+      "remove_background": true
+    },
+    {
+      "id": "crew_engineer_idle_n",
+      "phase": 6,
+      "category": "crew",
+      "output": "assets/sprites/crew/crew_engineer_idle_n.png",
+      "subject": "top-down isometric full-body ship engineer crew member, orange trim jumpsuit, tool belt, standing idle pose, facing away from camera (north/back view)",
+      "aspect_ratio": "9:16",
+      "size_class": "crew_sprite_32x48",
+      "remove_background": true
+    },
+    {
+      "id": "crew_engineer_idle_s",
+      "phase": 6,
+      "category": "crew",
+      "output": "assets/sprites/crew/crew_engineer_idle_s.png",
+      "subject": "top-down isometric full-body ship engineer crew member, orange trim jumpsuit, tool belt, standing idle pose, facing toward camera (south/front view)",
+      "aspect_ratio": "9:16",
+      "size_class": "crew_sprite_32x48",
+      "remove_background": true
+    },
+    {
+      "id": "crew_engineer_idle_e",
+      "phase": 6,
+      "category": "crew",
+      "output": "assets/sprites/crew/crew_engineer_idle_e.png",
+      "subject": "top-down isometric full-body ship engineer crew member, orange trim jumpsuit, tool belt, standing idle pose, facing right (east view), side profile",
+      "aspect_ratio": "9:16",
+      "size_class": "crew_sprite_32x48",
+      "remove_background": true
+    },
+    {
+      "id": "crew_engineer_idle_w",
+      "phase": 6,
+      "category": "crew",
+      "output": "assets/sprites/crew/crew_engineer_idle_w.png",
+      "subject": "top-down isometric full-body ship engineer crew member, orange trim jumpsuit, tool belt, standing idle pose, facing left (west view), side profile",
+      "aspect_ratio": "9:16",
+      "size_class": "crew_sprite_32x48",
+      "remove_background": true
+    },
+    {
+      "id": "crew_engineer_walk_n",
+      "phase": 6,
+      "category": "crew",
+      "output": "assets/sprites/crew/crew_engineer_walk_n.png",
+      "subject": "top-down isometric full-body ship engineer crew member, orange trim jumpsuit, tool belt, walking pose mid-stride, facing away from camera (north/back view)",
+      "aspect_ratio": "9:16",
+      "size_class": "crew_sprite_32x48",
+      "remove_background": true
+    },
+    {
+      "id": "crew_engineer_walk_s",
+      "phase": 6,
+      "category": "crew",
+      "output": "assets/sprites/crew/crew_engineer_walk_s.png",
+      "subject": "top-down isometric full-body ship engineer crew member, orange trim jumpsuit, tool belt, walking pose mid-stride, facing toward camera (south/front view)",
+      "aspect_ratio": "9:16",
+      "size_class": "crew_sprite_32x48",
+      "remove_background": true
+    },
+    {
+      "id": "crew_engineer_walk_e",
+      "phase": 6,
+      "category": "crew",
+      "output": "assets/sprites/crew/crew_engineer_walk_e.png",
+      "subject": "top-down isometric full-body ship engineer crew member, orange trim jumpsuit, tool belt, walking pose mid-stride, facing right (east view), side profile",
+      "aspect_ratio": "9:16",
+      "size_class": "crew_sprite_32x48",
+      "remove_background": true
+    },
+    {
+      "id": "crew_engineer_walk_w",
+      "phase": 6,
+      "category": "crew",
+      "output": "assets/sprites/crew/crew_engineer_walk_w.png",
+      "subject": "top-down isometric full-body ship engineer crew member, orange trim jumpsuit, tool belt, walking pose mid-stride, facing left (west view), side profile",
+      "aspect_ratio": "9:16",
+      "size_class": "crew_sprite_32x48",
+      "remove_background": true
+    },
+    {
+      "id": "crew_engineer_panic",
+      "phase": 6,
+      "category": "crew",
+      "output": "assets/sprites/crew/crew_engineer_panic.png",
+      "subject": "top-down isometric full-body ship engineer crew member, orange trim jumpsuit, tool belt, panicked pose, arms raised, running in fear, wide stance",
+      "aspect_ratio": "9:16",
+      "size_class": "crew_sprite_32x48",
+      "remove_background": true
+    },
+    {
+      "id": "crew_engineer_collapsed",
+      "phase": 6,
+      "category": "crew",
+      "output": "assets/sprites/crew/crew_engineer_collapsed.png",
+      "subject": "top-down isometric full-body ship engineer crew member, orange trim jumpsuit, tool belt, collapsed on the ground, incapacitated, lying down pose",
+      "aspect_ratio": "9:16",
+      "size_class": "crew_sprite_32x48",
+      "remove_background": true
+    },
+    {
+      "id": "crew_medic_idle_n",
+      "phase": 6,
+      "category": "crew",
+      "output": "assets/sprites/crew/crew_medic_idle_n.png",
+      "subject": "top-down isometric full-body ship medic crew member, white trim uniform, medical insignia, standing idle pose, facing away from camera (north/back view)",
+      "aspect_ratio": "9:16",
+      "size_class": "crew_sprite_32x48",
+      "remove_background": true
+    },
+    {
+      "id": "crew_medic_idle_s",
+      "phase": 6,
+      "category": "crew",
+      "output": "assets/sprites/crew/crew_medic_idle_s.png",
+      "subject": "top-down isometric full-body ship medic crew member, white trim uniform, medical insignia, standing idle pose, facing toward camera (south/front view)",
+      "aspect_ratio": "9:16",
+      "size_class": "crew_sprite_32x48",
+      "remove_background": true
+    },
+    {
+      "id": "crew_medic_idle_e",
+      "phase": 6,
+      "category": "crew",
+      "output": "assets/sprites/crew/crew_medic_idle_e.png",
+      "subject": "top-down isometric full-body ship medic crew member, white trim uniform, medical insignia, standing idle pose, facing right (east view), side profile",
+      "aspect_ratio": "9:16",
+      "size_class": "crew_sprite_32x48",
+      "remove_background": true
+    },
+    {
+      "id": "crew_medic_idle_w",
+      "phase": 6,
+      "category": "crew",
+      "output": "assets/sprites/crew/crew_medic_idle_w.png",
+      "subject": "top-down isometric full-body ship medic crew member, white trim uniform, medical insignia, standing idle pose, facing left (west view), side profile",
+      "aspect_ratio": "9:16",
+      "size_class": "crew_sprite_32x48",
+      "remove_background": true
+    },
+    {
+      "id": "crew_medic_walk_n",
+      "phase": 6,
+      "category": "crew",
+      "output": "assets/sprites/crew/crew_medic_walk_n.png",
+      "subject": "top-down isometric full-body ship medic crew member, white trim uniform, medical insignia, walking pose mid-stride, facing away from camera (north/back view)",
+      "aspect_ratio": "9:16",
+      "size_class": "crew_sprite_32x48",
+      "remove_background": true
+    },
+    {
+      "id": "crew_medic_walk_s",
+      "phase": 6,
+      "category": "crew",
+      "output": "assets/sprites/crew/crew_medic_walk_s.png",
+      "subject": "top-down isometric full-body ship medic crew member, white trim uniform, medical insignia, walking pose mid-stride, facing toward camera (south/front view)",
+      "aspect_ratio": "9:16",
+      "size_class": "crew_sprite_32x48",
+      "remove_background": true
+    },
+    {
+      "id": "crew_medic_walk_e",
+      "phase": 6,
+      "category": "crew",
+      "output": "assets/sprites/crew/crew_medic_walk_e.png",
+      "subject": "top-down isometric full-body ship medic crew member, white trim uniform, medical insignia, walking pose mid-stride, facing right (east view), side profile",
+      "aspect_ratio": "9:16",
+      "size_class": "crew_sprite_32x48",
+      "remove_background": true
+    },
+    {
+      "id": "crew_medic_walk_w",
+      "phase": 6,
+      "category": "crew",
+      "output": "assets/sprites/crew/crew_medic_walk_w.png",
+      "subject": "top-down isometric full-body ship medic crew member, white trim uniform, medical insignia, walking pose mid-stride, facing left (west view), side profile",
+      "aspect_ratio": "9:16",
+      "size_class": "crew_sprite_32x48",
+      "remove_background": true
+    },
+    {
+      "id": "crew_medic_panic",
+      "phase": 6,
+      "category": "crew",
+      "output": "assets/sprites/crew/crew_medic_panic.png",
+      "subject": "top-down isometric full-body ship medic crew member, white trim uniform, medical insignia, panicked pose, arms raised, running in fear, wide stance",
+      "aspect_ratio": "9:16",
+      "size_class": "crew_sprite_32x48",
+      "remove_background": true
+    },
+    {
+      "id": "crew_medic_collapsed",
+      "phase": 6,
+      "category": "crew",
+      "output": "assets/sprites/crew/crew_medic_collapsed.png",
+      "subject": "top-down isometric full-body ship medic crew member, white trim uniform, medical insignia, collapsed on the ground, incapacitated, lying down pose",
+      "aspect_ratio": "9:16",
+      "size_class": "crew_sprite_32x48",
+      "remove_background": true
+    },
+    {
+      "id": "crew_general_idle_n",
+      "phase": 6,
+      "category": "crew",
+      "output": "assets/sprites/crew/crew_general_idle_n.png",
+      "subject": "top-down isometric full-body general ship crew member, grey trim jumpsuit, utilitarian gear, standing idle pose, facing away from camera (north/back view)",
+      "aspect_ratio": "9:16",
+      "size_class": "crew_sprite_32x48",
+      "remove_background": true
+    },
+    {
+      "id": "crew_general_idle_s",
+      "phase": 6,
+      "category": "crew",
+      "output": "assets/sprites/crew/crew_general_idle_s.png",
+      "subject": "top-down isometric full-body general ship crew member, grey trim jumpsuit, utilitarian gear, standing idle pose, facing toward camera (south/front view)",
+      "aspect_ratio": "9:16",
+      "size_class": "crew_sprite_32x48",
+      "remove_background": true
+    },
+    {
+      "id": "crew_general_idle_e",
+      "phase": 6,
+      "category": "crew",
+      "output": "assets/sprites/crew/crew_general_idle_e.png",
+      "subject": "top-down isometric full-body general ship crew member, grey trim jumpsuit, utilitarian gear, standing idle pose, facing right (east view), side profile",
+      "aspect_ratio": "9:16",
+      "size_class": "crew_sprite_32x48",
+      "remove_background": true
+    },
+    {
+      "id": "crew_general_idle_w",
+      "phase": 6,
+      "category": "crew",
+      "output": "assets/sprites/crew/crew_general_idle_w.png",
+      "subject": "top-down isometric full-body general ship crew member, grey trim jumpsuit, utilitarian gear, standing idle pose, facing left (west view), side profile",
+      "aspect_ratio": "9:16",
+      "size_class": "crew_sprite_32x48",
+      "remove_background": true
+    },
+    {
+      "id": "crew_general_walk_n",
+      "phase": 6,
+      "category": "crew",
+      "output": "assets/sprites/crew/crew_general_walk_n.png",
+      "subject": "top-down isometric full-body general ship crew member, grey trim jumpsuit, utilitarian gear, walking pose mid-stride, facing away from camera (north/back view)",
+      "aspect_ratio": "9:16",
+      "size_class": "crew_sprite_32x48",
+      "remove_background": true
+    },
+    {
+      "id": "crew_general_walk_s",
+      "phase": 6,
+      "category": "crew",
+      "output": "assets/sprites/crew/crew_general_walk_s.png",
+      "subject": "top-down isometric full-body general ship crew member, grey trim jumpsuit, utilitarian gear, walking pose mid-stride, facing toward camera (south/front view)",
+      "aspect_ratio": "9:16",
+      "size_class": "crew_sprite_32x48",
+      "remove_background": true
+    },
+    {
+      "id": "crew_general_walk_e",
+      "phase": 6,
+      "category": "crew",
+      "output": "assets/sprites/crew/crew_general_walk_e.png",
+      "subject": "top-down isometric full-body general ship crew member, grey trim jumpsuit, utilitarian gear, walking pose mid-stride, facing right (east view), side profile",
+      "aspect_ratio": "9:16",
+      "size_class": "crew_sprite_32x48",
+      "remove_background": true
+    },
+    {
+      "id": "crew_general_walk_w",
+      "phase": 6,
+      "category": "crew",
+      "output": "assets/sprites/crew/crew_general_walk_w.png",
+      "subject": "top-down isometric full-body general ship crew member, grey trim jumpsuit, utilitarian gear, walking pose mid-stride, facing left (west view), side profile",
+      "aspect_ratio": "9:16",
+      "size_class": "crew_sprite_32x48",
+      "remove_background": true
+    },
+    {
+      "id": "crew_general_panic",
+      "phase": 6,
+      "category": "crew",
+      "output": "assets/sprites/crew/crew_general_panic.png",
+      "subject": "top-down isometric full-body general ship crew member, grey trim jumpsuit, utilitarian gear, panicked pose, arms raised, running in fear, wide stance",
+      "aspect_ratio": "9:16",
+      "size_class": "crew_sprite_32x48",
+      "remove_background": true
+    },
+    {
+      "id": "crew_general_collapsed",
+      "phase": 6,
+      "category": "crew",
+      "output": "assets/sprites/crew/crew_general_collapsed.png",
+      "subject": "top-down isometric full-body general ship crew member, grey trim jumpsuit, utilitarian gear, collapsed on the ground, incapacitated, lying down pose",
+      "aspect_ratio": "9:16",
+      "size_class": "crew_sprite_32x48",
+      "remove_background": true
+    },
+    {
+      "id": "hull_wall",
+      "phase": 7,
+      "category": "rooms",
+      "output": "assets/sprites/rooms/tile_hull_wall.png",
+      "subject": "isometric top-down ship exterior hull wall tile segment, structural paneling, rivets and seams",
+      "aspect_ratio": "16:9",
+      "size_class": "iso_tile_128x64",
+      "remove_background": true
+    },
+    {
+      "id": "wall_interior",
+      "phase": 7,
+      "category": "rooms",
+      "output": "assets/sprites/rooms/tile_wall_interior.png",
+      "subject": "isometric top-down interior ship wall or barrier tile segment, structural paneling, conduit trim",
+      "aspect_ratio": "16:9",
+      "size_class": "iso_tile_128x64",
+      "remove_background": true
+    },
+    {
+      "id": "tube_overlay",
+      "phase": 7,
+      "category": "rooms",
+      "output": "assets/sprites/rooms/tube_overlay.png",
+      "subject": "isometric top-down maintenance tube overlay segment, crawlspace conduit pipes, access panel, overlay layer meant to sit on top of a corridor tile",
+      "aspect_ratio": "16:9",
+      "size_class": "iso_tile_128x64",
+      "remove_background": true
+    },
+    {
+      "id": "panel_frame_standard",
+      "phase": 7,
+      "category": "ui",
+      "output": "assets/sprites/ui/panel_frame_standard.png",
+      "subject": "UI panel frame border, rectangular data readout housing, corner brackets",
+      "aspect_ratio": "1:1",
+      "size_class": "ui_frame_256x256",
+      "remove_background": true
+    },
+    {
+      "id": "panel_frame_alert",
+      "phase": 7,
+      "category": "ui",
+      "output": "assets/sprites/ui/panel_frame_alert.png",
+      "subject": "UI panel frame border in alert state, rectangular data readout housing, warning corner brackets",
+      "aspect_ratio": "1:1",
+      "size_class": "ui_frame_256x256",
+      "remove_background": true
+    },
+    {
+      "id": "fx_alert_flash",
+      "phase": 7,
+      "category": "fx",
+      "output": "assets/sprites/fx/fx_alert_flash.png",
+      "subject": "alert flash effect sprite, pulsing warning light burst, radial glow",
+      "aspect_ratio": "1:1",
+      "size_class": "fx_128x128",
+      "remove_background": true
+    },
+    {
+      "id": "fx_smoke",
+      "phase": 7,
+      "category": "fx",
+      "output": "assets/sprites/fx/fx_smoke.png",
+      "subject": "smoke effect sprite, billowing smoke plume, wisps",
+      "aspect_ratio": "1:1",
+      "size_class": "fx_128x128",
+      "remove_background": true
+    },
+    {
+      "id": "fx_sparks",
+      "phase": 7,
+      "category": "fx",
+      "output": "assets/sprites/fx/fx_sparks.png",
+      "subject": "electrical sparks effect sprite, shower of sparks, small burst",
+      "aspect_ratio": "1:1",
+      "size_class": "fx_128x128",
+      "remove_background": true
+    },
+    {
+      "id": "portrait_captain",
+      "phase": 7,
+      "category": "portraits",
+      "output": "assets/sprites/portraits/portrait_captain.png",
+      "subject": "headshot portrait of ship captain, blue trim collar visible, face and shoulders",
+      "aspect_ratio": "1:1",
+      "size_class": "portrait_64x64",
+      "remove_background": true
+    },
+    {
+      "id": "portrait_engineer",
+      "phase": 7,
+      "category": "portraits",
+      "output": "assets/sprites/portraits/portrait_engineer.png",
+      "subject": "headshot portrait of ship engineer, orange trim collar visible, face and shoulders",
+      "aspect_ratio": "1:1",
+      "size_class": "portrait_64x64",
+      "remove_background": true
+    },
+    {
+      "id": "portrait_medic",
+      "phase": 7,
+      "category": "portraits",
+      "output": "assets/sprites/portraits/portrait_medic.png",
+      "subject": "headshot portrait of ship medic, white trim collar visible, face and shoulders",
+      "aspect_ratio": "1:1",
+      "size_class": "portrait_64x64",
+      "remove_background": true
+    },
+    {
+      "id": "portrait_general",
+      "phase": 7,
+      "category": "portraits",
+      "output": "assets/sprites/portraits/portrait_general.png",
+      "subject": "headshot portrait of general ship crew member, grey trim collar visible, face and shoulders",
+      "aspect_ratio": "1:1",
+      "size_class": "portrait_64x64",
+      "remove_background": true
+    }
+  ]
+}

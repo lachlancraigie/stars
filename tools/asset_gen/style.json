@@ -1,0 +1,28 @@
+{
+  "$comment": [
+    "Locked art style: Candidate 3, Flat Vector (Into the Breach / Rymdkapsel).",
+    "See docs/art-direction.md for the full rationale and docs/art-style-candidates/03_flat_vector.jpg",
+    "for the reference test render. Unlike that render, rooms here are wall-less isometric",
+    "floor-plates (see the 'rooms' override below) so they compose edge-to-edge into a ship",
+    "deck plan, rather than each being its own walled diorama box.",
+    "anchor_images is intentionally empty until the first style-anchor batch is generated,",
+    "reviewed, and approved (see docs/art-direction.md 'Pipeline notes'): generate one room,",
+    "one crew figure, and one prop with create() first, hand-pick the best of each, then list",
+    "their file paths here so every subsequent asset uses remix() against them for consistency."
+  ],
+
+  "style_prefix": "flat vector isometric game asset, crisp clean geometry, bold thick outlines, minimal texture, slate blue-grey base palette with saturated accent colours, soft flat cel shading with a single top-down light source, Into the Breach / Rymdkapsel aesthetic,",
+
+  "style_suffix": "no watermark, no text, no signature, no vignette, no gradient background, no film grain, no painterly texture, crisp clean vector edges, single subject centered on a plain background",
+
+  "anchor_images": [],
+
+  "category_overrides": {
+    "rooms": "isometric floor-plate only: no walls, no ceiling, no enclosing room box, just the floor surface and its furnishings/props viewed from a 45-degree isometric angle, designed to tile edge-to-edge with other room floor-plates into a ship deck plan",
+    "doors": "flat vector door/hatch fitted to an isometric floor-plate seam, bold outline, no surrounding walls",
+    "crew": "simplified flat-shaded character, rounded head, bold flat-colour jumpsuit, thick clean outline, chunky readable silhouette at small scale, no fine facial detail, full body, top-down isometric view consistent with the room floor-plates",
+    "portraits": "simplified flat-shaded character headshot, rounded head, bold flat-colour collar, thick clean outline, minimal facial detail, front-facing",
+    "ui": "flat vector UI chrome, monochrome green-on-dark or amber readout style, crisp thin linework, no perspective, no drop shadow",
+    "fx": "flat vector particle/light effect, bold saturated colour, crisp edges, no photographic smoke/spark texture, isolated with no ground plane"
+  }
+}
