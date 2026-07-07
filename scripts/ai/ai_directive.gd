@@ -24,6 +24,10 @@ enum TargetType {
 @export var priority: int = 1                # 1–5
 @export var timestamp: float = 0.0
 
+# Destination room a crew directive asks the crew to move to. Empty = no movement.
+# Executed by DirectiveActionHandler only when the crew *accepts* the directive.
+@export var move_to_room: String = ""
+
 # Tags for conflict detection in DirectiveEvaluator.
 # e.g. "danger", "sacrifice", "abandon", "deceive" — matched against crew fears/values.
 @export var content_tags: Array[String] = []
