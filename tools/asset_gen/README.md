@@ -10,8 +10,10 @@ generation backend changed.
 
 | File | Purpose |
 |---|---|
-| `manifest.json` | Declarative list of every asset to generate: id, output path, style-neutral subject prompt, aspect ratio, size class, whether background removal is needed. |
-| `style.json.example` | Template for the art-style pack (prefix/suffix prompt text, optional style anchor reference images, per-category overrides). Copy to `style.json` once an art style is locked in. |
+| `manifest.json` | Declarative list of every asset to generate: id, output path, style-neutral subject prompt, aspect ratio, size class, whether background removal is needed, optional per-asset `references`. |
+| `style.json` | The active art-style pack: the locked Flat Vector style (see `docs/art-direction.md`), wired to the approved anchors in `anchors/`. |
+| `style.json.example` | Template documenting the style-pack format (prefix/suffix prompt text, `anchor_images`, `category_anchors`, `category_overrides`). |
+| `anchors/` | Approved style-anchor images referenced by `style.json`. |
 | `generate.py` | Generates staged sprites from the manifest + style pack via the Reve API. |
 | `promote.py` | Copies QA-passed staged sprites from `staging/` into their final `assets/sprites/...` locations. |
 | `staging/` | Generated output + `report.json` (gitignored -- never committed). |
@@ -21,9 +23,10 @@ generation backend changed.
 ```bash
 pip install reve Pillow
 export REVE_API_TOKEN="papi.your-token-here"   # never hardcode this anywhere
-cp tools/asset_gen/style.json.example tools/asset_gen/style.json
-# edit style.json once the art style is decided
 ```
+
+The committed `style.json` is already the locked Flat Vector style pack; only
+touch it (or pass `--style other.json`) if the art direction changes.
 
 `generate.py` and `promote.py` work without `reve`/`Pillow` installed as long
 as you only use `--dry-run` (generate.py) or operate on already-staged files
@@ -80,17 +83,49 @@ where extensions already match (promote.py).
 
 ## Style packs and consistency
 
-If `style.json` declares `anchor_images` (paths to a handful of approved,
-already-generated reference images), `generate.py` calls
-`reve.v1.image.remix()` with those images as references for every asset
+If `style.json` declares style anchors (paths to approved reference images),
+`generate.py` calls `reve.v1.image.remix()` with those images as references
 instead of `create()`, keeping new generations visually consistent with the
-locked style. Until anchors exist, everything uses plain `create()` driven by
-`style_prefix` / `style_suffix` / `category_overrides` text alone.
+locked style. Two levels of anchoring:
 
-Recommended bootstrap sequence: generate a handful of assets with `create()`
-only (no anchors), hand-pick the best 2-3 as anchors, add their paths to
-`style.json`'s `anchor_images`, then regenerate everything else with
-`remix()` for consistency.
+- `anchor_images` -- global anchors, used for any asset whose category has no
+  entry in `category_anchors` (currently: ui, fx fall back to the room anchor
+  for general style pull).
+- `category_anchors` -- object mapping category (rooms/doors/crew/portraits/
+  ui/fx) to its own anchor list; takes precedence over `anchor_images` for
+  assets of that category, so e.g. the room anchor never steers crew
+  generation.
+
+Approved anchors for the locked Flat Vector style live in
+`tools/asset_gen/anchors/`. Assets with no applicable anchors at all use
+plain `create()` driven by the prompt text alone.
+
+### Per-asset references (crew pose chaining)
+
+A manifest asset may declare its own `references` list: extra image paths
+appended **after** the style anchors in the `remix()` call. In the composed
+prompt, anchors are cited as "Match the established art style of
+`<ref>0</ref>`..." and per-asset references as "Match the character design of
+`<ref>N</ref>`..." with indices numbered anchors-first.
+
+The crew set uses this for cross-pose consistency: each role's `idle_s`
+sprite is ordered first in the manifest, and the role's other 9 sprites
+reference `tools/asset_gen/staging/crew_<role>_idle_s.png` -- so within a
+single top-to-bottom run, the freshly staged south-idle becomes the character
+design reference for that role's remaining poses. (Workflow implication:
+generate and approve each role's `idle_s` before, or in the same run as, the
+rest of that role's sprites; regenerating an `idle_s` means regenerating the
+poses chained to it.)
+
+If any referenced image is missing on disk at generation time, that asset is
+recorded as failed in `report.json` with a clear error and the run continues.
+
+### Path resolution
+
+All image paths in `style.json` (`anchor_images`, `category_anchors`) and in
+manifest `references` are resolved relative to the **repo root** (two levels
+up from `tools/asset_gen/`), never the current working directory, so the tool
+works when invoked from anywhere. Absolute paths pass through unchanged.
 
 ## QA heuristics
 

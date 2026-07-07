@@ -7,6 +7,15 @@
     "If anchor_images is non-empty, generate.py calls reve.v1.image.remix() with those images",
     "as references (cited in-prompt as <ref>0</ref>, <ref>1</ref>, ...) instead of create(),",
     "so every asset stays visually consistent with the approved style anchors.",
+    "category_anchors (optional) maps category -> list of image paths and takes precedence",
+    "over anchor_images for assets of that category (anchor_images stays the fallback for",
+    "categories without an entry) -- a room anchor shouldn't steer crew generation.",
+    "A manifest asset may additionally declare its own 'references': extra images appended",
+    "AFTER the style anchors in the remix() call; the prompt cites anchors as 'Match the",
+    "established art style of <ref>...</ref>' and asset references as 'Match the character",
+    "design of <ref>...</ref>', with indices numbered anchors-first.",
+    "All image paths here and in manifest 'references' resolve relative to the REPO ROOT",
+    "(two levels up from tools/asset_gen/), never the CWD; absolute paths pass through.",
     "category_overrides let you inject category-specific art direction (e.g. crew sprites need",
     "'full body, clean silhouette' while UI frames need 'flat vector icon style') without",
     "duplicating the whole prefix/suffix. Overrides are appended after the subject, before suffix."
@@ -16,7 +25,12 @@
 
   "style_suffix": "no watermark, no text, no signature, no background scenery, single subject centered on a plain background",
 
-  "anchor_images": [],
+  "anchor_images": ["tools/asset_gen/anchors/example_global_style_anchor.png"],
+
+  "category_anchors": {
+    "rooms": ["tools/asset_gen/anchors/example_room_anchor.png"],
+    "crew": ["tools/asset_gen/anchors/example_crew_anchor.png"]
+  },
 
   "category_overrides": {
     "rooms": "top-down 45-degree isometric angle, floor and prop layer only",

@@ -25,6 +25,7 @@ from pathlib import Path
 from typing import Any
 
 SCRIPT_DIR = Path(__file__).resolve().parent
+REPO_ROOT = SCRIPT_DIR.parent.parent
 
 DEFAULT_MANIFEST = SCRIPT_DIR / "manifest.json"
 DEFAULT_STYLE = SCRIPT_DIR / "style.json"
@@ -36,6 +37,10 @@ BUDGET_CREDITS = 7400
 
 MAX_RATE_LIMIT_RETRIES = 5
 DEFAULT_RETRY_SECONDS = 5
+
+
+class MissingReferenceError(RuntimeError):
+    """A style anchor or per-asset reference image does not exist on disk."""
 
 # ---------------------------------------------------------------------------
 # Optional dependencies -- guarded so --dry-run works without them installed.
@@ -117,8 +122,35 @@ def filter_assets(
 
 
 # ---------------------------------------------------------------------------
-# Prompt composition
+# Reference images and prompt composition
 # ---------------------------------------------------------------------------
+
+
+def resolve_repo_path(path_str: str) -> Path:
+    """Resolve an image path from style.json / the manifest.
+
+    All such paths are repo-root-relative (not CWD-relative) so the tool works
+    no matter where it is invoked from. Absolute paths pass through untouched.
+    """
+    path = Path(path_str)
+    return path if path.is_absolute() else REPO_ROOT / path
+
+
+def anchors_for(asset: dict[str, Any], style: dict[str, Any]) -> list[str]:
+    """Style anchors for this asset: category_anchors wins, anchor_images is the fallback."""
+    category_anchors = style.get("category_anchors") or {}
+    anchors = category_anchors.get(asset.get("category", ""))
+    if anchors:
+        return list(anchors)
+    return list(style.get("anchor_images") or [])
+
+
+def references_for(asset: dict[str, Any], style: dict[str, Any]) -> tuple[list[str], list[str]]:
+    """(style anchors, per-asset references) as declared -- ordering matters:
+    anchors first, then asset references, matching the <ref>N</ref> indices in
+    the composed prompt and the reference_images list passed to remix().
+    """
+    return anchors_for(asset, style), list(asset.get("references") or [])
 
 
 def compose_prompt(asset: dict[str, Any], style: dict[str, Any]) -> str:
@@ -131,10 +163,14 @@ def compose_prompt(asset: dict[str, Any], style: dict[str, Any]) -> str:
 
     parts.append(style.get("style_suffix", "").strip())
 
-    anchors = style.get("anchor_images") or []
+    anchors, asset_refs = references_for(asset, style)
     if anchors:
         refs = ", ".join(f"<ref>{i}</ref>" for i in range(len(anchors)))
-        parts.append(f"Match the established art style and character design shown in {refs}.")
+        parts.append(f"Match the established art style of {refs}.")
+    if asset_refs:
+        offset = len(anchors)
+        refs = ", ".join(f"<ref>{offset + i}</ref>" for i in range(len(asset_refs)))
+        parts.append(f"Match the character design of {refs}.")
 
     return " ".join(p for p in parts if p)
 
@@ -189,14 +225,21 @@ def generate_one(
 ) -> dict[str, Any]:
     prompt = compose_prompt(asset, style)
     postprocessing = build_postprocessing(asset, size_classes)
-    anchors = style.get("anchor_images") or []
 
-    if anchors:
+    anchors, asset_refs = references_for(asset, style)
+    reference_paths = [resolve_repo_path(p) for p in anchors + asset_refs]
+    missing = [str(p) for p in reference_paths if not p.exists()]
+    if missing:
+        raise MissingReferenceError(
+            f"{asset['id']}: reference image(s) not found: {', '.join(missing)}"
+        )
+
+    if reference_paths:
         mode = "remix"
         result = call_with_retry(
             remix,
             prompt,
-            anchors,
+            [str(p) for p in reference_paths],
             aspect_ratio=asset["aspect_ratio"],
             postprocessing=postprocessing,
         )
@@ -220,6 +263,7 @@ def generate_one(
         "category": asset.get("category"),
         "mode": mode,
         "prompt": prompt,
+        "reference_images": [str(p) for p in reference_paths],
         "staged_path": str(dest),
         "final_output": asset["output"],
         "credits_used": getattr(result, "credits_used", None),
@@ -348,12 +392,14 @@ def dry_run(
     size_classes: dict[str, Any],
     out_dir: Path,
 ) -> None:
-    anchors = style.get("anchor_images") or []
-    mode = "remix" if anchors else "create"
-
     for asset in assets:
         prompt = compose_prompt(asset, style)
         dest = staged_path(out_dir, asset)
+
+        anchors, asset_refs = references_for(asset, style)
+        reference_paths = [resolve_repo_path(p) for p in anchors + asset_refs]
+        mode = "remix" if reference_paths else "create"
+
         pp_steps = []
         if asset.get("remove_background"):
             pp_steps.append("remove_background()")
@@ -364,6 +410,12 @@ def dry_run(
         print(f"--- {asset['id']} (phase {asset.get('phase')}, {asset.get('category')}) ---")
         print(f"  mode:        {mode}")
         print(f"  prompt:      {prompt}")
+        for i, ref_path in enumerate(reference_paths):
+            kind = "anchor" if i < len(anchors) else "asset ref"
+            # staging refs won't exist yet on a fresh dry run -- that's expected,
+            # they are produced earlier in the same real run (crew idle_s chaining).
+            status = "" if ref_path.exists() else "  [not yet on disk]"
+            print(f"  <ref>{i}</ref>: ({kind}) {ref_path}{status}")
         print(f"  aspect:      {asset['aspect_ratio']}  size_class: {asset.get('size_class')}")
         print(f"  postproc:    {', '.join(pp_steps) if pp_steps else '(none)'}")
         print(f"  staged path: {dest}")
@@ -445,6 +497,17 @@ def main(argv: list[str] | None = None) -> int:
             print(f"[reve] budget exhausted, stopping: {exc}")
             stopped_early = True
             break
+        except MissingReferenceError as exc:
+            print(f"  [error] {exc}")
+            report["results"][asset["id"]] = {
+                "id": asset["id"],
+                "phase": asset.get("phase"),
+                "category": asset.get("category"),
+                "error": str(exc),
+                "qa": {"pass": False, "notes": [f"generation skipped: {exc}"]},
+            }
+            save_report(report_path, report)
+            continue
         except ReveAPIError as exc:
             print(f"  [error] {asset['id']}: {exc}")
             report["results"][asset["id"]] = {
