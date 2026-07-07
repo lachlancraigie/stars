@@ -1,10 +1,14 @@
 # Art Direction — Style Candidates
 
-> Status: **awaiting style lock-in**. Five candidate styles below, each rendered
-> from the identical subject (Class 1 scout medbay, one crew member) via the
+> Status: **LOCKED — Candidate 3, Flat Vector** (decision 2026-07-07).
+> All game assets are generated in the Flat Vector style below; the other four
+> candidates are kept for reference. Five candidates were each rendered from
+> the identical subject (Class 1 scout medbay, one crew member) via the
 > Reve API (`reve.v1` — note v2 is not enabled on our key). Test renders live in
-> `docs/art-style-candidates/`. Once a style is locked, fill in
-> `tools/asset_gen/style.json` from the winning spec and run the pipeline.
+> `docs/art-style-candidates/`. The executable form of the locked style is
+> `tools/asset_gen/style.json`; rooms are generated as wall-less isometric
+> floor-plates so they compose into a ship deck plan, unlike the walled
+> diorama in the candidate render.
 
 Generation cost reference: ~18 credits/image at 3:2. Budget at time of writing: ~7,390.
 
