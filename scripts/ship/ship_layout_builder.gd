@@ -18,6 +18,7 @@ static func build(config: ShipConfig, parent: Node) -> void:
 		room.room_function = room_def.room_function
 		room.integrity = room_def.integrity
 		room.access_level = room_def.access_level
+		room.position = room_def.layout_position
 		parent.add_child(room)
 
 	var door_scene: PackedScene = load(DOOR_SCENE)

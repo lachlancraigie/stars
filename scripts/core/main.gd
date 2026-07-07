@@ -149,17 +149,18 @@ func _build_class1_config() -> ShipConfig:
 		"water": 0.8, "fuel": 1.0, "spare_parts": 0.6, "medicine": 0.5,
 	}
 	for row in [
-		["bridge",       "bridge",       1],
-		["engineering",  "reactor",      0],
-		["life_support", "life_support", 0],
-		["medbay",       "medbay",       0],
-		["quarters",     "quarters",     0],
-		["cargo",        "cargo",        0],
-		["corridor_main","corridor",     0],
+		["bridge",       "bridge",       1, Vector2(960, 300)],
+		["engineering",  "reactor",      0, Vector2(560, 780)],
+		["life_support", "life_support", 0, Vector2(960, 780)],
+		["medbay",       "medbay",       0, Vector2(560, 540)],
+		["quarters",     "quarters",     0, Vector2(1360, 540)],
+		["cargo",        "cargo",        0, Vector2(1360, 780)],
+		["corridor_main","corridor",     0, Vector2(960, 540)],
 	]:
 		var rd := RoomDefinition.new()
 		rd.room_id = row[0];  rd.room_function = row[1]
 		rd.access_level = row[2];  rd.integrity = 1.0
+		rd.layout_position = row[3]
 		config.rooms.append(rd)
 	for row in [
 		["bridge",       "corridor_main", 1.0, "door_bridge",     false],
