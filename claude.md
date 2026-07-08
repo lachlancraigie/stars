@@ -20,6 +20,10 @@ A spaceship AI simulator. The player is the ship's computer. See `GDD.md` for fu
 
 **Goal**: Phase 6 — visual ship scene, crew movement, and a playable vertical slice.
 
+**Art direction**: LOCKED — Flat Vector (Into the Breach-style). See `docs/art-direction.md`.
+Asset generation via Reve v1 API (`tools/asset_gen/`, v2 not enabled on key; token via
+`REVE_API_TOKEN` env, never committed).
+
 **Next tasks**:
 1. Isometric `ShipClass1.tscn` scene with rooms positioned and connected visually
 2. Crew click-to-select + contextual directive menu (UI layer)
@@ -50,7 +54,11 @@ A spaceship AI simulator. The player is the ship's computer. See `GDD.md` for fu
 - [x] AI directive system
 - [x] Trust model
 - [x] First scripted event
-- [ ] Vertical slice (Class 1, one scenario)
+- [x] Art direction locked (Flat Vector) + Reve asset pipeline (`tools/asset_gen/`)
+- [x] Phase 6 sprite set generated, QA'd, promoted (7 rooms, 2 doors, 4 roles × 10 poses)
+- [x] Visual ship scene: rooms rendered on a deck plan, crew rendered + walking between rooms
+- [x] Click-on-crew contextual directive menu → issues real AIDirectives; crew comply/refuse
+- [ ] Vertical slice end-to-end (issue directives → reach a win/lose state in-scene)
 
 ---
 
@@ -131,7 +139,10 @@ These are hard constraints. Do not deviate without updating this file.
 | DamageModel | `scripts/ship/damage_model.gd` | not started | Localised + cascade damage. |
 | ResourceTick | `scripts/core/resource_tick.gd` | done | Autoload. Tick-based drain; crew-count scaling; system efficiency + power draw hooks stubbed. |
 | CrewMember | `scripts/crew/crew_member.gd` | done | Resource. Full stat + needs + personality schema. |
-| CrewMemberNode | `scripts/crew/crew_member_node.gd` | done | Node2D. Visual + registration; state tint for dev visibility. |
+| CrewMemberNode | `scripts/crew/crew_member_node.gd` | done | Node2D. Renders role/state/facing sprite; walks between rooms via `_process`; `static nodes` registry keyed by crew_id. |
+| RoomBase (visual) | `scripts/ship/room_base.gd` + `scenes/rooms/RoomBase.tscn` | done | Loads its flat-vector floor-plate (reactor→engineering) scaled to 360px; positioned by `layout_position`. |
+| DirectiveActionHandler | `scripts/ai/directive_action_handler.gd` | done | Node. Executes movement for directives the crew *accepted* (`move_to_room`). Respects Rule 1. |
+| DirectiveMenu | `scripts/ui/directive_menu.gd` + `scenes/ui/DirectiveMenu.tscn` | done | CanvasLayer. Click-on-crew select + contextual destination menu → `AISystem.issue_directive`. |
 | NeedsModel | `scripts/crew/needs_model.gd` | done | Static utility. Per-tick hunger/fatigue/fear/loneliness/boredom/morale. |
 | CrewStateMachine | `scripts/crew/crew_state_machine.gd` | done | Static utility. Priority-based state eval with hysteresis. |
 | CrewSystem | `scripts/crew/crew_system.gd` | done | Autoload. Ticks all crew; propagates resource crisis into fear spikes. |
@@ -172,5 +183,7 @@ These are hard constraints. Do not deviate without updating this file.
 > Append dated notes here as the project progresses.
 
 ```
+2026-07-07: Phase 6 visual layer. Art direction locked to Flat Vector; full 61-asset sprite set generated via the Reve pipeline (tools/asset_gen/). Built the missing visual/input layer on top of the (already logic-complete) systems: rooms render their floor-plate sprites on a hand-authored 1920×1080 deck plan (RoomDefinition.layout_position); crew render role/state/facing sprites and walk between rooms; click-on-crew opens a contextual directive menu that issues real AIDirectives (move_to_room), executed only when the crew accepts (DirectiveActionHandler). NOTE: no Godot binary in the web environment, so none of this is runtime-verified — validated statically (sprite paths, .tscn format, EventBus/GameState/AISystem contracts, class-name uniqueness). First-time editor open will import the PNGs and generate .import files. Next: open in Godot, fix any runtime issues, tune deck-plan spacing visually, then wire the scenario to a visible win/lose beat.
+
 2026-05-14: Phase 0–5 complete in same session. Design decisions fully resolved. Ship graph system (Dijkstra, door locks, maintenance tubes), Door scene, ShipConfig resource hierarchy, Class 1 Scout config (.tres), ShipLayoutBuilder utility. Campaign structure confirmed: ship state persists between scenarios; scenarios give resource deltas; checkpoints at scenario completion. GameState extended with ship_graph, doors, get_locked_doors(). Godot 4 project initialised with full folder structure. EventBus, GameState, SaveManager, TimeManager autoloads stubbed. RoomBase scene + script created. Design decisions locked: real-time with pause (1x/2x), FTL/Barotrauma click-on-crew UI (mobile horizontal compatible), all 3 failure states (crew dead / ship destroyed / AI decommissioned). Crew inner state partially visible via mood indicators and readable logs — rich inner lives (Sims-style). Alien Isolation multi-tier AI noted as influence for future Scenario Director layer.
 ```

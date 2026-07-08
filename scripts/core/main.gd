@@ -10,10 +10,16 @@ extends Node2D
 #   R      — print current resource levels to Output
 
 
+const CREW_SCENE: String = "res://scenes/crew/CrewMember.tscn"
+const DIRECTIVE_MENU_SCENE: String = "res://scenes/ui/DirectiveMenu.tscn"
+
+
 func _ready() -> void:
 	_setup_ship()
 	_setup_crew()
+	_spawn_crew_nodes()
 	_add_hud()
+	_add_directive_ui()
 	_connect_debug_output()
 	_start_scenario()
 
@@ -55,10 +61,27 @@ func _make_crew(id: String, name: String, role: String, ai_trust: float, willpow
 		room.occupants.append(id)
 
 
+func _spawn_crew_nodes() -> void:
+	# One visual node per crew resource. The node renders the sprite, registers
+	# itself in CrewMemberNode.nodes, and positions at its starting room.
+	var crew_scene: PackedScene = load(CREW_SCENE)
+	for crew_id: String in GameState.crew:
+		var node: CrewMemberNode = crew_scene.instantiate()
+		node.crew_data = GameState.crew[crew_id] as CrewMember
+		add_child(node)
+
+
 func _add_hud() -> void:
 	var hud_scene: PackedScene = load("res://scenes/ui/HUD.tscn")
 	if hud_scene:
 		add_child(hud_scene.instantiate())
+
+
+func _add_directive_ui() -> void:
+	add_child(DirectiveActionHandler.new())
+	var menu_scene: PackedScene = load(DIRECTIVE_MENU_SCENE)
+	if menu_scene:
+		add_child(menu_scene.instantiate())
 
 
 func _start_scenario() -> void:
@@ -149,17 +172,18 @@ func _build_class1_config() -> ShipConfig:
 		"water": 0.8, "fuel": 1.0, "spare_parts": 0.6, "medicine": 0.5,
 	}
 	for row in [
-		["bridge",       "bridge",       1],
-		["engineering",  "reactor",      0],
-		["life_support", "life_support", 0],
-		["medbay",       "medbay",       0],
-		["quarters",     "quarters",     0],
-		["cargo",        "cargo",        0],
-		["corridor_main","corridor",     0],
+		["bridge",       "bridge",       1, Vector2(960, 300)],
+		["engineering",  "reactor",      0, Vector2(560, 780)],
+		["life_support", "life_support", 0, Vector2(960, 780)],
+		["medbay",       "medbay",       0, Vector2(560, 540)],
+		["quarters",     "quarters",     0, Vector2(1360, 540)],
+		["cargo",        "cargo",        0, Vector2(1360, 780)],
+		["corridor_main","corridor",     0, Vector2(960, 540)],
 	]:
 		var rd := RoomDefinition.new()
 		rd.room_id = row[0];  rd.room_function = row[1]
 		rd.access_level = row[2];  rd.integrity = 1.0
+		rd.layout_position = row[3]
 		config.rooms.append(rd)
 	for row in [
 		["bridge",       "corridor_main", 1.0, "door_bridge",     false],
