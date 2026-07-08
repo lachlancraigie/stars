@@ -5,42 +5,49 @@ room_id = "bridge"
 room_function = "bridge"
 access_level = 1
 integrity = 1.0
+layout_position = Vector2(960, 300)
 
 [sub_resource type="RoomDefinition" id="rm_engineering"]
 room_id = "engineering"
 room_function = "reactor"
 access_level = 0
 integrity = 1.0
+layout_position = Vector2(560, 780)
 
 [sub_resource type="RoomDefinition" id="rm_life_support"]
 room_id = "life_support"
 room_function = "life_support"
 access_level = 0
 integrity = 1.0
+layout_position = Vector2(960, 780)
 
 [sub_resource type="RoomDefinition" id="rm_medbay"]
 room_id = "medbay"
 room_function = "medbay"
 access_level = 0
 integrity = 1.0
+layout_position = Vector2(560, 540)
 
 [sub_resource type="RoomDefinition" id="rm_quarters"]
 room_id = "quarters"
 room_function = "quarters"
 access_level = 0
 integrity = 1.0
+layout_position = Vector2(1360, 540)
 
 [sub_resource type="RoomDefinition" id="rm_cargo"]
 room_id = "cargo"
 room_function = "cargo"
 access_level = 0
 integrity = 1.0
+layout_position = Vector2(1360, 780)
 
 [sub_resource type="RoomDefinition" id="rm_corridor"]
 room_id = "corridor_main"
 room_function = "corridor"
 access_level = 0
 integrity = 1.0
+layout_position = Vector2(960, 540)
 
 [sub_resource type="ConnectionDefinition" id="cn_bridge"]
 room_a_id = "bridge"
