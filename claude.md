@@ -26,13 +26,17 @@ The Reve Flat Vector set was retired for style/perspective inconsistency; Reve p
 Deck composition lives in `scripts/ship/iso_kit.gd` + `scripts/ship/deck_plan.gd`.
 
 **Next tasks**:
-1. Camera2D pan/zoom (deck currently statically fitted to the 1920×1080 canvas — now generated ships can be considerably larger, so panning matters more)
-2. Crew walk-cycle feel (kit has single frames per facing; current bob is serviceable)
-3. DirectiveMenu: add a "lock/unlock door" directive type (Door.ai_unlock/lock exist; no UI surfaces them yet) — now that locked doors actually block crew pathing and drive the bypass minigame, this is worth exposing to the player
-4. Campaign handoff after scenario end (currently ends on the banner)
-5. Visual hookup for room power/air state (EventBus.room_power_changed/room_air_changed/ai_core_status_changed already emit; no dimming/particle response in RoomBase yet — see 2026-07-10 session 3 note)
-6. Combat resolver — CrewMember.apply_damage()/WoundTable are fully implemented but nothing in the live game calls apply_damage() yet (no weapons fire); dormant, ready to wire up
-7. Dialogue system (Agent 2, parallel branch work) consuming `EventBus.recent_event` + the Mothership stat/skill/archetype surface now in place
+1. Crew walk-cycle feel (kit has single frames per facing; current bob is serviceable)
+2. DirectiveMenu: add a "lock/unlock door" directive type (Door.ai_unlock/lock exist; no UI surfaces them yet) — now that locked doors actually block crew pathing and drive the bypass minigame, this is worth exposing to the player
+3. Campaign handoff after scenario end (currently ends on the banner)
+4. Visual hookup for room power/air state (EventBus.room_power_changed/room_air_changed/ai_core_status_changed already emit; no dimming/particle response in RoomBase yet — see 2026-07-10 session 3 note)
+5. Combat resolver — CrewMember.apply_damage()/WoundTable are fully implemented but nothing in the live game calls apply_damage() yet (no weapons fire); dormant, ready to wire up
+6. Dialogue system (Agent 2, parallel branch work) consuming `EventBus.recent_event` + the Mothership stat/skill/archetype surface now in place
+
+Done this session (Agent 4, camera + collision — see 2026-07-10 session note addendum below): Camera2D pan/zoom
+(deck no longer statically fitted — DeckCamera auto-fits DeckPlan.deck_bounds() as the default zoom, then
+supports wheel-zoom-to-cursor, drag/WASD/edge-scroll pan, clamped so the deck can't be lost off-screen) and
+crew soft-collision/standing-point claiming (CrewMemberNode).
 
 **Blocked on**: nothing hard. SaveManager still stubbed by design (checkpoints resolved, unimplemented).
 
@@ -65,6 +69,8 @@ Deck composition lives in `scripts/ship/iso_kit.gd` + `scripts/ship/deck_plan.gd
 - [x] Procedural ship generation: ShipLayoutGen ("freighter" ruleset) replaces the hand-authored Class-1 layout; DeckPlan refactored into a generator-filled data container; seed stored on GameState (SHIPAI_SEED env override for reproducible runs)
 - [x] Visual upgrades: procedural parallax starfield (3 layers), generated hull silhouette (nose taper + aft engine block), per-room-type floor tiles/tints, semi-transparent boundary walls, door gates that recolour with lock state
 - [x] Room-type contract: scenario/behaviour code (QuarantineMonitor, CrewBehavior duty stations, crew start rooms) now looks up rooms by TYPE via `GameState.get_room_of_type()` instead of hardcoded ids, so it works on any generated layout
+- [x] Camera2D pan/zoom: DeckCamera auto-fits the generated deck as the default zoom, wheel-zoom toward cursor (clamped), drag/WASD/edge-scroll pan (clamped via deck_bounds); Starfield moved into its own CanvasLayer so it stays screen-fixed under the new camera; DirectiveMenu hit-testing/placement made camera-aware
+- [x] Crew soft-collision + standing-point claiming: CrewMemberNode applies cheap O(N²) perpendicular-biased separation steering (never stalls route-following/panic-flee/hold_room_until) and claims DeckPlan standing points via a static registry so crew don't stack
 
 ---
 
@@ -150,7 +156,7 @@ These are hard constraints. Do not deviate without updating this file.
 | LifeSupportModel | `scripts/ship/life_support_model.gd` | done | Static utility. Per-room air quality (0-100) degrades/recovers over minutes depending on `life_support_online` + diverted-room caps; auto-fails if the life_support room loses power. Feeds Checks environmental disadvantage + SuffocationModel. |
 | RepairModel | `scripts/ship/repair_model.gd` | done | Static utility. Resolves already-started `GameState.repair_jobs` (reactor/life_support/ai_core) via periodic Intellect+skill Checks; completion re-onlines the target system. |
 | CrewMember | `scripts/crew/crew_member.gd` | done | Resource. Full Mothership 1e character: Four Stats, Three Saves, Class, Health/Wounds, Stress/Panic transient state, Skills, Equipment, plus dialogue-facing identity (`archetype_tag`, `rank`, pronouns) — and the pre-existing needs/personality/social simulation layer, unchanged and complementary. |
-| CrewMemberNode | `scripts/crew/crew_member_node.gd` | done | Node2D. Kit astronaut w/ 8 facings + role tint + status dot; multi-hop route walking (graph path + walkway waypoints); y-based z-sort; `static nodes` registry. |
+| CrewMemberNode | `scripts/crew/crew_member_node.gd` | done | Node2D. Kit astronaut w/ 8 facings + role tint + status dot; multi-hop route walking (graph path + walkway waypoints); y-based z-sort; `static nodes` registry. Soft O(N²) pairwise separation steering (`_apply_separation`, ~half-tile personal radius, perpendicular-biased so it doesn't fight forward progress, displacement clamped to the current room's floor rect / walkway-union bounds) keeps crew from stacking without ever stalling route-following, panic-flee, or hold_room_until. A static `_point_claims` registry (`_claim_standing_point`) keeps two crew from picking the same DeckPlan standing point/duty station. |
 | CrewBehavior | `scripts/crew/crew_behavior.gd` | done | Node (added by Main). Autonomous crew movement per state; honours accepted directives via `hold_room_until`; panic overrides; FROZEN (Catatonic) treated like INCAPACITATED. |
 | RepairBehavior | `scripts/crew/repair_behavior.gd` | done | Node (added by Main). Crew-side decision of WHETHER to start a repair job (reactor/life_support/ai_core) — requires an on-scene skilled crew member; ai_core repair is additionally trust-gated. Lives in crew-behaviour space, not `scripts/ai/`, per Rule 1. |
 | AICoreSystem | `scripts/ai/ai_core_system.gd` | done | Node (added by Main) + static helpers. AI's own degraded-mode self-limits: door-unlock lag, rotating sensor gaps, directive-issue latency. Blackout gating (`GameState.ai_core_can_act()`) is checked directly by AISystem/Door. |
@@ -164,12 +170,13 @@ These are hard constraints. Do not deviate without updating this file.
 | ShipLayoutGen | `scripts/procedural/ship_layout_gen.gd` | done | Static generator. Seeded procedural ship layout ("freighter" ruleset implemented). Builds a ShipConfig AND calls `DeckPlan.load_plan()` with the matching visual dataset (rects, props, walls, hull polygon, etc). See 2026-07-09 session note for the full ruleset. |
 | DeckPlan | `scripts/ship/deck_plan.gd` | done | Static data CONTAINER (refactored from hardcoded consts). Filled at scenario start by `ShipLayoutGen.generate()` via `load_plan()`: room rects, per-type floor tints/tiles, props, walkways, tubes, door cells, hop waypoints, wall segments, hull polygon. Same accessor API as before (`room_rect`, `room_center`, `random_point`, `hop_waypoints`, `deck_bounds`, `has_room`) so downstream consumers (RoomBase, ShipLayoutBuilder, CrewMemberNode) are unchanged. |
 | RoomBase (visual) | `scripts/ship/room_base.gd` + `scenes/rooms/RoomBase.tscn` | done | Composes floor tiles (per-type tile via `DeckPlan.floor_tile_for()`) + props from DeckPlan/IsoKit; positioned at DeckPlan.room_center. |
-| Starfield | `scripts/ship/starfield.gd` | done | Node2D (instanced in Main, not a child of ShipDeck). Procedural 3-layer parallax starfield; each layer draws its stars once via `_draw()` and only ever translates (sine drift) — no per-frame redraw. z_index -1000. |
+| DeckCamera | `scripts/ship/deck_camera.gd` | done | Camera2D (added by Main as a sibling of ShipDeck). Auto-fits `DeckPlan.deck_bounds()` to the viewport as the default zoom (same formula the old static ShipDeck-scale fit used). Mouse-wheel zoom toward the cursor (clamped 0.5x-2.5x of the fit zoom); left/middle/right-drag pan (left has a ~6px threshold so click-on-crew still works — it never marks the event handled, so DirectiveMenu's own press handling is unaffected either way); WASD/arrow keys + a small edge-scroll. Panning is clamped via Camera2D's own `limit_left/top/right/bottom` (built from `deck_bounds()` + margin) — cooperates with the zoom clamp for free, since Godot centers the view once it's bigger than the limit rect (zoomed fully out = deck centered). |
+| Starfield | `scripts/ship/starfield.gd` | done | Node2D, wrapped in its own CanvasLayer (layer -10, added by Main) rather than merely being a ShipDeck sibling — needed once DeckCamera exists, since a Camera2D's transform affects the whole viewport's canvas, not just its own subtree, so CanvasLayer is the only thing that stays screen-fixed. Procedural 3-layer parallax starfield; each layer draws its stars once via `_draw()` and only ever translates (sine drift + an optional tiny DeckCamera-pan-driven parallax nudge) — no per-frame redraw. z_index -1000 within its own layer. |
 | Ship hull silhouette | `scripts/ship/ship_layout_builder.gd` (`_build_hull`) | done | Polygon2D + Line2D built from `DeckPlan.HULL_POLYGON` (nose taper + per-row flanks + aft engine block, generated in ShipLayoutGen). z_index -10/-9, behind floors, in front of the starfield. |
 | Semi-transparent walls + door gates | `scripts/procedural/ship_layout_gen.gd` (wall segments) + `scripts/ship/door.gd` | done | Generator emits per-room boundary wall tiles (skipping connected edges); front-facing (SE/SW) walls render more transparent than back-facing (NE/NW) since painter's order draws them over the interior. Door gate sprite recolours red/green via `Door.refresh_gate_visual()` on lock/unlock. |
 | QuarantineMonitor | `scripts/scenarios/quarantine_monitor.gd` | done | Node (added by Main). Timed medbay-occupancy logic that sets `vasquez_isolated`/`pathogen_contained`; drives `objective_changed`. Resolves "the infected crew member"/"the medic" via `GameState.get_crew_of_role()`, not hardcoded ids — works with any procedurally generated roster. |
 | DirectiveActionHandler | `scripts/ai/directive_action_handler.gd` | done | Node. Executes movement for directives the crew *accepted* (`move_to_room`). Respects Rule 1. |
-| DirectiveMenu | `scripts/ui/directive_menu.gd` + `scenes/ui/DirectiveMenu.tscn` | done | CanvasLayer. Click-on-crew select + contextual destination menu → `AISystem.issue_directive`. |
+| DirectiveMenu | `scripts/ui/directive_menu.gd` + `scenes/ui/DirectiveMenu.tscn` | done | CanvasLayer. Click-on-crew select + contextual destination menu → `AISystem.issue_directive`. Hit-testing compares in world space (crew `global_position` vs. the CanvasLayer's mouse position converted via `get_canvas_transform().affine_inverse()`); the selection ring/menu popup convert a crew node's world position to screen space via `get_global_transform_with_canvas()` — both needed to stay correct now that DeckCamera can pan/zoom. |
 | NeedsModel | `scripts/crew/needs_model.gd` | done | Static utility. Per-tick hunger/fatigue/fear/loneliness/boredom/morale. Fear's O2-scarcity term now reads per-room air (LifeSupportModel) instead of the old ship-wide oxygen bar. |
 | SuffocationModel | `scripts/crew/suffocation_model.gd` | done | Static utility. Mothership oxygen survival rules: room air < critical threshold → Body Save every ~round or a Death Save (via WoundTable), through Checks. Androids exempt. |
 | CrewStateMachine | `scripts/crew/crew_state_machine.gd` | done | Static utility. Priority-based state eval with hysteresis; adds FROZEN (Catatonic) and INCAPACITATED triggers for retired/unconscious/dying/comatose Mothership states. |
@@ -332,6 +339,26 @@ a bypass attempt — arguably good drama, noted as intentional-ish. (4) crew_rel
 changed/system_damaged/system_power_changed remain declared-but-unemitted (pre-existing).
 (5) Door bypass timers use scene-tree timers, which don't pause with TimeManager pause —
 pre-existing pattern (directive latency ditto), acceptable for now.
+
+2026-07-10 (session 4, Agent 4 — camera + collision): Added DeckCamera (scripts/ship/
+deck_camera.gd), replacing the static ShipDeck scale/position fit with a real Camera2D:
+auto-fits deck_bounds() as the default zoom, wheel-zoom toward the cursor (clamped
+0.5x-2.5x of fit), drag/WASD/edge-scroll pan clamped via Camera2D's own limit_* (built
+from deck_bounds()+margin, which cooperates with the zoom clamp for free — zoomed fully
+out centers the deck). Starfield had to move into its own CanvasLayer (layer -10) since a
+Camera2D affects the whole viewport's canvas, not just its subtree — the old "just don't
+parent it under ShipDeck" trick only worked because there was no camera at all before.
+DirectiveMenu's click-on-crew hit test and ring/menu placement now convert explicitly
+between crew world-space and its own CanvasLayer's screen space instead of assuming
+they're the same coordinate system. Separately, CrewMemberNode gained soft O(N²)
+perpendicular-biased separation steering (personal radius ~half a tile, clamped to the
+current room/walkway-union bounds) and a static standing-point claim registry, so crew no
+longer walk through or stack on each other; both are pure position nudges layered on top
+of the existing route-walking state machine, so they can't stall a route, fight
+panic-flee, or fight hold_room_until. No Godot binary available this session either —
+validated statically only (bracket/indentation balance, class_name uniqueness, Godot 4
+Camera2D/Transform2D API cross-checked against known semantics); first editor open will
+need to regenerate the script class cache for the new DeckCamera class.
 
 2026-07-09 (session 2): Procedural ship generation + visual overhaul (Agent 1 of the
 overhaul/mothership-rewrite branch). New scripts/procedural/ship_layout_gen.gd generates a
