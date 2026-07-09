@@ -16,12 +16,16 @@ bubble appears. Line id ↔ audio filename is the contract:
    `GET /v1/voices`). Either way it writes `voice_id`s into `voices.json`
    and is idempotent — re-run any time (`--force` to redo filled slots,
    `--archetype TAG` to scope, `--dry-run` to preview, `--skip-design` to
-   go straight to the fallback map). As of the last run, this account's
-   custom-voice quota was already over its plan limit (4/3 used, likely
-   from voices created before this project), so all 24 archetypes are
-   currently on the stock fallback — see the compromise note next to each
-   entry in `STOCK_FALLBACK` in `design_voices.py`. Re-running after a plan
-   upgrade will pick up real designed voices for any slot you clear/force.
+   go straight to the fallback map, `--no-fallback` to fail instead of
+   silently mapping to stock when a custom voice is required). Every
+   successful design is recorded in `voice_designs.json` (description,
+   preview text, model) so a lost voice can be re-designed to a close
+   match. Current state: the 10 highest-priority archetypes (all 4
+   captains + one per career) have permanent `SHIPAI_*` custom voices —
+   **do not delete them from the ElevenLabs account**, future dialogue
+   must reuse the same voices — and the other 14 archetypes use the stock
+   fallback (see the per-entry compromise notes in `STOCK_FALLBACK`).
+   The full assignment table lives in `generation_log.md`.
 2. **Configure** —
    ```powershell
    $env:ELEVENLABS_API_KEY = "sk_..."

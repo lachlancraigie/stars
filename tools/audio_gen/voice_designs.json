@@ -1,0 +1,102 @@
+{
+  "CH_FE_SCI_CM": {
+    "created_at": "2026-07-09T23:53:39Z",
+    "generated_voice_id": "wT3pKykasfAryrys0D94",
+    "model_id": "eleven_multilingual_ttv_v2",
+    "preview_text": "[NERVOUS] reactor failure means I need to be ready for radiation burns. prepping decontamination [TERRIFIED] life support's failing and i can't fix what i can't reach",
+    "previews_returned": 3,
+    "voice_description": "Female, mid-20s. Bright, quick soprano-alto with real buoyancy in it. Light West Coast-American accent. Pacing is fast and enthusiastic, rising inflection on observations; only flattens out when a case actually scares her, and even then recovers fast. Clear, a little breathy, laughs through her nose when amused. Delivery defaults to chipper and curious; under pressure she gets faster, not quieter, talking herself and the patient through it.",
+    "voice_id": "wT3pKykasfAryrys0D94",
+    "voice_name": "SHIPAI_CH_FE_SCI_CM"
+  },
+  "CH_ML_AND_CM": {
+    "created_at": "2026-07-09T23:53:46Z",
+    "generated_voice_id": "JlscJfdJonX6M4plfkam",
+    "model_id": "eleven_multilingual_ttv_v2",
+    "preview_text": "Good morning! I have already completed my assigned tasks and three I was not assigned. The shift has been quiet, which I have decided to interpret as a form of success!",
+    "previews_returned": 3,
+    "voice_description": "Male-coded synthetic voice, sounds late 20s. Bright, light baritone with a slightly too-even smile in the tone. Neutral accent, crisp diction. Pacing is upbeat and quick, cheerful cadence that occasionally clips a syllable early, almost right, not quite human timing. Clean, faint digital smoothness on sustained vowels. Delivery defaults to eager-to-please warmth; under stress the cheerfulness doesn't break, it just gets a fraction faster and more clipped, which is somehow unsettling.",
+    "voice_id": "JlscJfdJonX6M4plfkam",
+    "voice_name": "SHIPAI_CH_ML_AND_CM"
+  },
+  "CH_ML_SCI_OF": {
+    "created_at": "2026-07-09T23:53:56Z",
+    "generated_voice_id": "XBls2Kq3i9CG9fFuDwkr",
+    "model_id": "eleven_multilingual_ttv_v2",
+    "preview_text": "morning, sickbay! nobody's dying today, so we're already ahead of schedule [LAUGHS] quiet shift means i finally get to reorganize the pharmacology shelf. living the dream",
+    "previews_returned": 3,
+    "voice_description": "Male, early 30s. Warm, bright tenor with an easy smile audible in the tone. Light, hard-to-place accent, well-travelled, rounded vowels. Pacing is brisk and upbeat, full of little verbal exclamation points; slows only to deliver bad news gently, still finding something hopeful to land on. Clean, resonant, laughs easily and often. Delivery defaults to reassuring-cheerful; under real crisis it stays warm but gets fast and focused, like he's coaching you through it.",
+    "voice_id": "XBls2Kq3i9CG9fFuDwkr",
+    "voice_name": "SHIPAI_CH_ML_SCI_OF"
+  },
+  "EV_FE_SCI_CA": {
+    "created_at": "2026-07-09T23:54:05Z",
+    "generated_voice_id": "oCLshW2dTMBsJ98dFYlI",
+    "model_id": "eleven_multilingual_ttv_v2",
+    "preview_text": "vitals nominal across the board. so is mine, for what it's worth [CALM] quiet shift. i'm using it to catch up on charts nobody reads but me",
+    "previews_returned": 3,
+    "voice_description": "Female, mid-40s. Low, controlled alto with crisp diction and almost no filler words. Neutral trans-Atlantic accent, unplaceable. Pacing is measured and even regardless of stress, the words come at the same rate whether discussing lunch or a hull breach. Smooth, low rasp only when exhausted, breath tightly controlled. Delivery defaults to calm clinical authority; the only tell of real fear is a half-second pause before she speaks.",
+    "voice_id": "oCLshW2dTMBsJ98dFYlI",
+    "voice_name": "SHIPAI_EV_FE_SCI_CA"
+  },
+  "EV_ML_MAR_CM": {
+    "created_at": "2026-07-09T23:54:13Z",
+    "generated_voice_id": "0CVW1xcoSLZf1IhzYf5f",
+    "model_id": "eleven_multilingual_ttv_v2",
+    "preview_text": "Perimeter's clear. All sections checked. [CALM] Quiet shift's fine by me. Gives me time to get equipment maintenance done.",
+    "previews_returned": 3,
+    "voice_description": "Male, early 30s. Quiet, even baritone, unshowy. Neutral accent, minimal inflection, economical phrasing. Pacing is steady and unhurried across every stress level, sentences short and complete. Smooth, low, breath controlled and quiet. Delivery is calm and matter-of-fact by default; his stillness under fire is the whole personality.",
+    "voice_id": "0CVW1xcoSLZf1IhzYf5f",
+    "voice_name": "SHIPAI_EV_ML_MAR_CM"
+  },
+  "GR_FE_ENG_OF": {
+    "created_at": "2026-07-09T23:54:22Z",
+    "generated_voice_id": "rIayTT22dOZEqEBsAN7Z",
+    "model_id": "eleven_multilingual_ttv_v2",
+    "preview_text": "come on now, you old cow, don't do this to me today [MUTTERS] okay, okay, i hear you, just \u2014 there. that's better",
+    "previews_returned": 3,
+    "voice_description": "Female, early 60s. Warm-worn alto with real gravel in it, decades of shouting over engine noise, not smoking, just volume. Rural/working-class accent, slightly Southern-inflected, unhurried but not soft. Pacing is conversational and quick mid-repair-monologue, slowing to a low mutter when coaxing a machine or comforting someone. Chesty resonance, audible breath, a chuckle that rattles rather than tinkles. Delivery leans affectionate-exasperated by default, sharpening into flat command when something is actually about to go wrong.",
+    "voice_id": "rIayTT22dOZEqEBsAN7Z",
+    "voice_name": "SHIPAI_GR_FE_ENG_OF"
+  },
+  "GR_ML_ENG_CA": {
+    "created_at": "2026-07-09T23:54:29Z",
+    "generated_voice_id": "zW4jqHUYZ6ji7V3W9ZuJ",
+    "model_id": "eleven_multilingual_ttv_v2",
+    "preview_text": "[GRUFF] every gauge on this bridge better be telling me the truth today [DRY] quiet shift. i've run this ship long enough not to trust it",
+    "previews_returned": 3,
+    "voice_description": "Male, mid-50s. Grounded, weathered baritone, unhurried command voice built from decades of being the one people ask 'is it gonna hold.' Faint dockworker accent smoothed by years of giving orders. Pacing is measured, plain, no wasted words; picks up urgency only when the numbers actually demand it. Solid, a little gravel, breath steady. Delivery defaults to calm authority earned rather than performed; warmth surfaces as dry understatement, not softness.",
+    "voice_id": "zW4jqHUYZ6ji7V3W9ZuJ",
+    "voice_name": "SHIPAI_GR_ML_ENG_CA"
+  },
+  "GR_ML_ENG_CM": {
+    "created_at": "2026-07-09T23:54:38Z",
+    "generated_voice_id": "MCpW9cRCNnb2RnJuHCHf",
+    "model_id": "eleven_multilingual_ttv_v2",
+    "preview_text": "man, i'm tired thirty-one years and my knees still don't believe in this job [MUTTERS] that relay's gonna go before we hit dock, i can feel it",
+    "previews_returned": 3,
+    "voice_description": "Male, late 60s. Low, gravelled baritone worn down by decades of engine noise and cheap cigarettes he quit twenty years ago but still sounds like he hasn't. American working-class accent, flat Rust Belt/dockworker vowels, no polish. Pacing is slow and deliberate, full of half-second pauses like he's checking a gauge before finishing the sentence; speeds up only when annoyed or when something on the ship is about to kill someone. Dry, slightly hoarse, low rasp on sibilants. Delivery is flat and unimpressed by default; sarcasm lands quiet, not sharp.",
+    "voice_id": "MCpW9cRCNnb2RnJuHCHf",
+    "voice_name": "SHIPAI_GR_ML_ENG_CM"
+  },
+  "PA_FE_MAR_CA": {
+    "created_at": "2026-07-09T23:54:46Z",
+    "generated_voice_id": "drGlMOLT70nbnYb78nyy",
+    "model_id": "eleven_multilingual_ttv_v2",
+    "preview_text": "okay, okay, here's what we're doing [LAUGHS] flew that approach on manual again. autopilot's for people who don't trust their hands",
+    "previews_returned": 3,
+    "voice_description": "Female, early-to-mid 30s. Bright, forward, slightly rasped alto with a lot of forward drive in the tone, sounds like she's always about two seconds from moving. American, urban, quick consonants, clipped military cadence under stress. Pacing is fast and punchy by default, with sudden hard stops for emphasis. A little rough at the edges (post-shouting huskiness), quick husky laugh. Delivery defaults to confident-and-amused, needling; under real danger it snaps into flat, clipped command tone.",
+    "voice_id": "drGlMOLT70nbnYb78nyy",
+    "voice_name": "SHIPAI_PA_FE_MAR_CA"
+  },
+  "PA_ML_SCI_CA": {
+    "created_at": "2026-07-09T23:54:55Z",
+    "generated_voice_id": "LufiRfu6P5p2GwKgGdX8",
+    "model_id": "eleven_multilingual_ttv_v2",
+    "preview_text": "current threat probability standing at 67 percent, which is statistically elevated but not catastrophic yet",
+    "previews_returned": 3,
+    "voice_description": "Male, late 30s. Reedy tenor with a nervy, quick-fire cadence, words tumble slightly ahead of the thought. Central-European-inflected English, precise consonants. Pacing speeds up further under stress rather than slowing, occasionally stumbling over syllables he catches and restarts. Thin, a little breathless, throat tightens audibly when reciting probabilities of death. Delivery defaults to anxious-analytical; brief moments of captain's-command flatness cut through when he's actually certain of something.",
+    "voice_id": "LufiRfu6P5p2GwKgGdX8",
+    "voice_name": "SHIPAI_PA_ML_SCI_CA"
+  }
+}

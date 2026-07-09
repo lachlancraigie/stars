@@ -40,6 +40,7 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 REPO_ROOT = os.path.dirname(os.path.dirname(SCRIPT_DIR))
 CSV_DIR = os.path.join(REPO_ROOT, "resources", "dialogue", "elevenlabs")
 VOICES_CONFIG = os.path.join(SCRIPT_DIR, "voices.json")
+VOICE_DESIGNS = os.path.join(SCRIPT_DIR, "voice_designs.json")
 ENV_FILE = os.path.join(SCRIPT_DIR, ".env")
 
 API_BASE = "https://api.elevenlabs.io/v1"
@@ -200,9 +201,31 @@ class VoiceLimitReached(Exception):
     pass
 
 
+def load_designs() -> dict:
+    if not os.path.exists(VOICE_DESIGNS):
+        return {}
+    with open(VOICE_DESIGNS, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def record_design(tag: str, recipe: dict) -> None:
+    """Append/overwrite this archetype's design recipe in voice_designs.json.
+
+    Once a custom voice is deleted its voice_id is gone forever — the recipe
+    (description + preview text + model/params) is what lets us re-design a
+    close match later, so every successful create is recorded here.
+    """
+    designs = load_designs()
+    designs[tag] = recipe
+    with open(VOICE_DESIGNS, "w", encoding="utf-8") as f:
+        json.dump(designs, f, indent=2, sort_keys=True)
+
+
 def design_and_create(api_key: str, tag: str, description: str) -> str:
     """Real path: design previews, then save the first one as a named voice.
     Raises VoiceLimitReached if the plan is out of custom voice slots."""
+    import datetime
+
     text = preview_text_for(tag) or None
     payload = {
         "voice_description": description[:1000],
@@ -236,7 +259,19 @@ def design_and_create(api_key: str, tag: str, description: str) -> str:
             raise VoiceLimitReached(body.decode(errors="replace"))
         raise RuntimeError(f"create failed: HTTP {e.code} {body!r}")
 
-    return create_resp["voice_id"]
+    voice_id = create_resp["voice_id"]
+    record_design(tag, {
+        "voice_name": f"SHIPAI_{tag}",
+        "voice_id": voice_id,
+        "generated_voice_id": generated_voice_id,
+        "model_id": payload["model_id"],
+        "voice_description": payload["voice_description"],
+        "preview_text": text or "(auto-generated)",
+        "previews_returned": len(previews),
+        "created_at": datetime.datetime.now(datetime.timezone.utc)
+                      .strftime("%Y-%m-%dT%H:%M:%SZ"),
+    })
+    return voice_id
 
 
 def main() -> int:
@@ -250,6 +285,9 @@ def main() -> int:
                     help="Print the plan (design-or-fallback per archetype), no API calls")
     ap.add_argument("--skip-design", action="store_true",
                     help="Skip the design/create attempt, go straight to STOCK_FALLBACK")
+    ap.add_argument("--no-fallback", action="store_true",
+                    help="Fail (exit 1) instead of falling back to a stock voice when "
+                         "design/create is unavailable — use when a custom voice is required")
     args = ap.parse_args()
 
     api_key = load_api_key()
@@ -307,6 +345,11 @@ def main() -> int:
                 can_design = False
             except RuntimeError as e:
                 print(f"[{tag}] design/create error ({e}) -> falling back to stock voice")
+
+        if voice_id is None and args.no_fallback:
+            print(f"[{tag}] custom voice required (--no-fallback) but design/create "
+                  f"unavailable — aborting.", file=sys.stderr)
+            return 1
 
         if voice_id is None:
             if tag not in STOCK_FALLBACK:
