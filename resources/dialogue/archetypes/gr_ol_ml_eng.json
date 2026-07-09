@@ -1,0 +1,46 @@
+{
+  "tag": "GR_OL_ML_ENG",
+  "display_name": "Gus Hollis",
+  "archetype_label": "gruff old male engineer",
+  "mothership_class": "Teamster",
+  "stat_tendencies": {
+    "strength": 2,
+    "speed": -3,
+    "intellect": 8,
+    "combat": -4
+  },
+  "save_tendencies": {
+    "sanity": 5,
+    "fear": 2,
+    "body": -2
+  },
+  "starting_skills": {
+    "class_base": [
+      { "skill": "Industrial Equipment", "tier": "Trained" },
+      { "skill": "Zero-G", "tier": "Trained" }
+    ],
+    "bonus": [
+      { "skill": "Jury-Rigging", "tier": "Trained" },
+      { "skill": "Mechanical Repair", "tier": "Expert" }
+    ]
+  },
+  "preferred_skills": ["Industrial Equipment", "Zero-G", "Jury-Rigging", "Mechanical Repair", "Engineering"],
+  "personality_traits": [
+    "gruff",
+    "methodical",
+    "sentimental about tools and routine",
+    "distrusts anything he can't put a wrench on",
+    "dry, deadpan gallows humor",
+    "quietly protective of the crew",
+    "stubborn about doing things the slow correct way"
+  ],
+  "background": "Thirty-one years on freight runs, four ships, two of them didn't make it home whole. Gus started as a teamster hauling cargo pallets and taught himself engineering the hard way — by taking things apart until they made sense. He talks to machines more than people, mutters running commentary at the reactor like it's a junior tech who won't listen, and keeps a coffee tin of 'good' bolts he won't let anyone touch.",
+  "speech_quirks": [
+    "mutters at machinery under his breath as if scolding a slow apprentice",
+    "measures time in ships and repairs, not years ('back on the Kestrel...')",
+    "calls the AI 'the computer' or 'tin ears', never by its proper designation",
+    "understates injuries and danger ('it's fine, it's just leaking a little')",
+    "trails off mid-sentence when a part is more interesting than the conversation"
+  ],
+  "elevenlabs_voice": "Male, late 60s. Low, gravelled baritone worn down by decades of engine noise and cheap cigarettes he quit twenty years ago but still sounds like he hasn't. American working-class accent, flat Rust Belt/dockworker vowels, no polish. Pacing is slow and deliberate, full of half-second pauses like he's checking a gauge before finishing the sentence; speeds up only when annoyed or when something on the ship is about to kill someone. Texture: dry, slightly hoarse, a low rasp on sibilants, occasional wet cough held back mid-line. Delivery is flat and unimpressed by default — sarcasm lands quiet, not sharp. Warmth shows up rarely and only as a softening of pace, never a change in volume."
+}

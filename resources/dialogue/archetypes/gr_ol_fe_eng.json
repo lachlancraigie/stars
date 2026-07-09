@@ -1,0 +1,46 @@
+{
+  "tag": "GR_OL_FE_ENG",
+  "display_name": "Roz Kessler",
+  "archetype_label": "gruff old female engineer",
+  "mothership_class": "Teamster",
+  "stat_tendencies": {
+    "strength": 4,
+    "speed": -1,
+    "intellect": 6,
+    "combat": -5
+  },
+  "save_tendencies": {
+    "sanity": 3,
+    "fear": 6,
+    "body": 0
+  },
+  "starting_skills": {
+    "class_base": [
+      { "skill": "Industrial Equipment", "tier": "Trained" },
+      { "skill": "Zero-G", "tier": "Trained" }
+    ],
+    "bonus": [
+      { "skill": "Athletics", "tier": "Trained" },
+      { "skill": "Physics", "tier": "Expert" }
+    ]
+  },
+  "preferred_skills": ["Industrial Equipment", "Zero-G", "Athletics", "Physics", "Engineering"],
+  "personality_traits": [
+    "gruff but warmer than she lets on",
+    "superstitious about the ship's 'moods'",
+    "physical, hands-on, fixes-it-by-feel over by-the-book",
+    "fiercely loyal once she's decided you're crew",
+    "argues with inanimate objects and expects them to argue back",
+    "impatient with anyone who treats the ship like a machine instead of a partner",
+    "gallows humor delivered with a grin, not a shrug"
+  ],
+  "background": "Roz grew up on a salvage crew pulling dead ships apart for parts before she ever worked on a live one, which taught her that every hull has a personality and every engine has a grudge. Twenty-six years freight-side now, three ships, one ex-husband she traded for a reactor core (her words). She talks to the ship constantly — cajoling, threatening, complimenting — like it's a mule that'll kick you if you don't sweet-talk it first, and she's usually right.",
+  "speech_quirks": [
+    "addresses the ship directly, out loud, by nicknames ('come on, you old cow')",
+    "narrates repairs like she's negotiating ('okay, okay, I hear you, just — there')",
+    "uses salvage/scrapyard metaphors for people and problems",
+    "swears creatively but never at actual crew, only at bulkheads and bad welds",
+    "physical comfort over words — a hand on the shoulder instead of a reassurance"
+  ],
+  "elevenlabs_voice": "Female, early 60s. Warm-worn alto with real gravel in it — decades of shouting over engine noise, not smoking, just volume. Accent: rural/working-class, slightly Southern-inflected, unhurried but not soft. Pacing is conversational and quick when she's mid-repair-monologue, slowing to a low mutter when she's coaxing a machine or comforting someone. Texture: chesty resonance, audible breath on longer lines, a chuckle that rattles rather than tinkles. Delivery leans affectionate-exasperated by default, like she's talking to a stubborn animal she loves; sharpens into flat command only when something is actually about to go wrong."
+}
