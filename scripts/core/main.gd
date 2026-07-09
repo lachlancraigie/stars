@@ -8,16 +8,26 @@ extends Node2D
 #   I      — isolate Vasquez and set pathogen_contained (trigger win)
 #   F      — spike all crew fear to 0.9 (test panic cascade)
 #   R      — print current resource levels to Output
+#
+# Camera: mouse wheel zooms toward the cursor, left/middle/right-drag pans
+# (left has a small threshold so click-on-crew still works), WASD/arrows pan
+# too. See scripts/ship/deck_camera.gd for the fit/clamp math.
 
 
 const CREW_SCENE: String = "res://scenes/crew/CrewMember.tscn"
 const DIRECTIVE_MENU_SCENE: String = "res://scenes/ui/DirectiveMenu.tscn"
 const CLEAR_COLOR: Color = Color(0.055, 0.07, 0.10)
 
-# View rect the deck is fitted into (leaves room for the HUD on the left).
+# Rect (screen px) the deck is auto-fitted into at the default zoom — kept
+# narrower than the full 1920x1080 canvas to leave headroom for the HUD's
+# power panel in the top-left. DeckCamera.configure() uses only .size (the
+# camera centers on the full viewport, not this rect's offset centre — see
+# deck_camera.gd for why: it'd otherwise fight the pan-clamp's own centering
+# behaviour when zoomed all the way out).
 const DECK_VIEW: Rect2 = Rect2(280, 40, 1600, 1000)
 
 var _deck: Node2D
+var _camera: DeckCamera
 
 
 func _ready() -> void:
@@ -26,7 +36,7 @@ func _ready() -> void:
 	_setup_starfield()
 	_setup_deck()
 	_setup_ship()
-	_fit_deck_to_view()
+	_setup_camera()
 	_setup_crew()
 	_spawn_crew_nodes()
 	add_child(CrewBehavior.new())
@@ -54,13 +64,23 @@ func _choose_ship_seed() -> void:
 
 
 func _setup_starfield() -> void:
-	# Fixed to the viewport (not a child of _deck) so it doesn't scale/pan with
-	# the ship; very low z_index keeps it behind the hull and floors regardless
-	# of node order.
+	# Wrapped in its own CanvasLayer so it stays fixed to the viewport instead
+	# of panning/zooming with DeckCamera — a Camera2D's transform applies to
+	# the WHOLE viewport's canvas, not just its own subtree, so merely being a
+	# non-ShipDeck sibling (the old no-camera trick) is no longer enough once
+	# DeckCamera exists. A negative layer keeps it behind the un-layered world
+	# content (rooms/hull, drawn at the implicit layer 0) and behind the HUD
+	# (default layer 1); very low z_index within its own layer keeps it behind
+	# nothing else matters there since it's the only thing on this layer.
+	var layer := CanvasLayer.new()
+	layer.name = "StarfieldLayer"
+	layer.layer = -10
+	add_child(layer)
+
 	var field := Starfield.new()
 	field.name = "Starfield"
 	field.set_seed_value(GameState.ship_seed)
-	add_child(field)
+	layer.add_child(field)
 
 
 func _setup_deck() -> void:
@@ -78,12 +98,16 @@ func _setup_ship() -> void:
 	ShipLayoutBuilder.build(config, _deck)
 
 
-func _fit_deck_to_view() -> void:
-	var bounds: Rect2 = DeckPlan.deck_bounds()
-	var s: float = minf(DECK_VIEW.size.x / bounds.size.x, DECK_VIEW.size.y / bounds.size.y)
-	s = minf(s, 1.0)
-	_deck.scale = Vector2(s, s)
-	_deck.position = DECK_VIEW.get_center() - bounds.get_center() * s
+func _setup_camera() -> void:
+	# _deck itself stays at identity transform now — DeckCamera owns all
+	# fit/zoom/pan framing (previously baked as a static scale/position onto
+	# ShipDeck). Sibling of _deck (both direct children of Main), not a child
+	# of it: Camera2D.current re-frames the whole viewport regardless of tree
+	# position, so nothing about ShipDeck's own contents needs to change.
+	_camera = DeckCamera.new()
+	_camera.name = "DeckCamera"
+	add_child(_camera)
+	_camera.configure(DeckPlan.deck_bounds(), DECK_VIEW)
 
 
 const ROLE_START_ROOM_TYPE: Dictionary = {
@@ -254,8 +278,12 @@ func _save_screenshot(path: String) -> void:
 # --- Keyboard test controls ---
 
 func _unhandled_key_input(event: InputEvent) -> void:
-	if not event.pressed:
+	if not event.pressed or event.is_echo():
 		return
+	# NOTE(camera): D is also a WASD pan key (DeckCamera polls Input.is_key_pressed
+	# directly, so it doesn't conflict with this event-based handler either way) —
+	# the is_echo() guard above is what stops holding D from spamming the debug
+	# directive via OS key-repeat now that D gets held down for panning.
 	match event.keycode:
 		KEY_SPACE:
 			if TimeManager.is_paused():

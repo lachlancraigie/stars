@@ -12,16 +12,25 @@ extends Node2D
 # regardless of node order.
 
 const LAYER_CONFIG: Array = [
-	# {count, radius range, brightness range, drift amplitude, drift speed}
-	{"count": 160, "radius": [0.6, 1.1], "brightness": [0.35, 0.55], "amp": Vector2(5, 3), "speed": 0.05},
-	{"count": 80,  "radius": [1.0, 1.6], "brightness": [0.55, 0.80], "amp": Vector2(11, 7), "speed": 0.09},
-	{"count": 28,  "radius": [1.4, 2.2], "brightness": [0.80, 1.00], "amp": Vector2(18, 12), "speed": 0.14},
+	# {count, radius range, brightness range, drift amplitude, drift speed, parallax_depth}
+	# parallax_depth: fraction of DeckCamera's pan that nudges this layer, farthest-first —
+	# a cheap depth cue (near layers drift a little opposite the pan, far layers barely move).
+	{"count": 160, "radius": [0.6, 1.1], "brightness": [0.35, 0.55], "amp": Vector2(5, 3), "speed": 0.05, "parallax_depth": 0.2},
+	{"count": 80,  "radius": [1.0, 1.6], "brightness": [0.55, 0.80], "amp": Vector2(11, 7), "speed": 0.09, "parallax_depth": 0.5},
+	{"count": 28,  "radius": [1.4, 2.2], "brightness": [0.80, 1.00], "amp": Vector2(18, 12), "speed": 0.14, "parallax_depth": 1.0},
 ]
 const FIELD_SIZE: Vector2 = Vector2(2400, 1500)  # bigger than the 1920x1080 canvas
+const PARALLAX_FACTOR: float = 0.03  # subtle: 3% of DeckCamera's pan distance, at full depth
 
 var _seed: int = 0
 var _layers: Array = []  # Node2D per depth layer
 var _t: float = 0.0
+
+# Deliberately loose coupling to DeckCamera: looked up lazily by group so this
+# still works standalone (no camera in the tree -> parallax_offset() is just
+# zero, drift-only, same as before Part A).
+var _camera: Node2D = null
+var _camera_origin: Vector2 = Vector2.ZERO
 
 
 func _ready() -> void:
@@ -39,14 +48,28 @@ func set_seed_value(value: int) -> void:
 
 func _process(delta: float) -> void:
 	_t += delta
+	var parallax: Vector2 = _parallax_offset()
 	for i in _layers.size():
 		var cfg: Dictionary = LAYER_CONFIG[i]
 		var amp: Vector2 = cfg["amp"]
 		var speed: float = cfg["speed"]
+		var depth: float = cfg.get("parallax_depth", 1.0)
 		_layers[i].position = Vector2(
 			sin(_t * speed) * amp.x,
 			cos(_t * speed * 0.8) * amp.y
-		)
+		) + parallax * depth
+
+
+# Tiny counter-drift opposite DeckCamera's pan from its starting position —
+# purely cosmetic, never affects gameplay/positioning, degrades to Vector2.ZERO
+# if there's no camera (e.g. this scene were reused without one).
+func _parallax_offset() -> Vector2:
+	if _camera == null:
+		_camera = get_tree().get_first_node_in_group("deck_camera") as Node2D
+		if _camera == null:
+			return Vector2.ZERO
+		_camera_origin = _camera.position
+	return (_camera_origin - _camera.position) * PARALLAX_FACTOR
 
 
 class _StarLayer extends Node2D:

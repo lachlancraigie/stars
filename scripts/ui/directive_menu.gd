@@ -5,8 +5,15 @@ extends CanvasLayer
 # choice issues a real AIDirective through AISystem — the crew then decides
 # whether to comply. Click empty space to dismiss.
 #
-# World and canvas share one coordinate space here (no Camera2D, canvas_items
-# stretch), so crew Node2D positions compare directly against input positions.
+# Crew live in world space under DeckCamera (scripts/ship/deck_camera.gd);
+# this node is a CanvasLayer, so its own children (ring, menu) render in
+# screen space and are untouched by the camera's pan/zoom. Hit-testing
+# therefore compares in WORLD space (_world_mouse_pos() against crew
+# global_position — CLICK_RADIUS is a world-px radius, so it scales naturally
+# with zoom), while anything positioned FOR DISPLAY on this layer (the ring,
+# the menu popup) converts a crew node's world position to screen space via
+# get_global_transform_with_canvas().origin, which accounts for whatever
+# camera transform is currently active.
 
 const CLICK_RADIUS: float = 60.0
 const RING_RADIUS: float = 40.0
@@ -34,11 +41,12 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	# Keep the selection ring on the crew if they move while selected.
+	# Keep the selection ring on the crew if they move (or the camera pans/
+	# zooms) while selected.
 	if _selected_id != "":
 		var node: CrewMemberNode = CrewMemberNode.nodes.get(_selected_id) as CrewMemberNode
 		if node:
-			_ring.position = node.global_position
+			_ring.position = _screen_pos(node)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -48,31 +56,48 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not (mb.button_index == MOUSE_BUTTON_LEFT and mb.pressed):
 		return
 
-	var hit: CrewMemberNode = _crew_at(mb.position)
+	# World-space hit test — deliberately NOT gated on whether DeckCamera
+	# turns this same press into a drag; the crew-select/menu-open decision
+	# is made here at press time regardless (see deck_camera.gd's comment on
+	# why it never marks button events as handled).
+	var hit: CrewMemberNode = _crew_at(_world_mouse_pos())
 	if hit:
 		_select(hit)
 	else:
 		_deselect()
 
 
-func _crew_at(point: Vector2) -> CrewMemberNode:
+func _crew_at(world_point: Vector2) -> CrewMemberNode:
 	var best: CrewMemberNode = null
 	var best_dist: float = CLICK_RADIUS
 	for crew_id: String in CrewMemberNode.nodes:
 		var node: CrewMemberNode = CrewMemberNode.nodes[crew_id] as CrewMemberNode
 		if node == null:
 			continue
-		# Crew live inside the scaled ShipDeck — compare in canvas space.
-		var d: float = node.global_position.distance_to(point)
+		var d: float = node.global_position.distance_to(world_point)
 		if d <= best_dist:
 			best = node
 			best_dist = d
 	return best
 
 
+# World position of a crew node, converted to this CanvasLayer's screen space
+# (accounts for DeckCamera's current pan/zoom).
+func _screen_pos(node: CrewMemberNode) -> Vector2:
+	return node.get_global_transform_with_canvas().origin
+
+
+# CanvasLayer isn't a CanvasItem (no get_global_mouse_position() of its own,
+# unlike the crew Node2Ds), so invert the viewport's canvas transform by hand
+# — identical to what Node2D.get_global_mouse_position() does internally.
+func _world_mouse_pos() -> Vector2:
+	var vp: Viewport = get_viewport()
+	return vp.get_canvas_transform().affine_inverse() * vp.get_mouse_position()
+
+
 func _select(node: CrewMemberNode) -> void:
 	_selected_id = node.crew_data.crew_id
-	_ring.position = node.global_position
+	_ring.position = _screen_pos(node)
 	_ring.visible = true
 	_open_menu(node)
 
@@ -118,8 +143,8 @@ func _open_menu(node: CrewMemberNode) -> void:
 		vbox.add_child(button)
 
 	add_child(_menu)
-	# Position beside the crew, kept on-screen.
-	var pos: Vector2 = node.global_position + MENU_OFFSET
+	# Position beside the crew (in screen space), kept on-screen.
+	var pos: Vector2 = _screen_pos(node) + MENU_OFFSET
 	var vp: Vector2 = get_viewport().get_visible_rect().size
 	_menu.reset_size()
 	pos.x = clampf(pos.x, 0.0, vp.x - _menu.size.x)
