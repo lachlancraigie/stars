@@ -6,12 +6,29 @@ extends Node2D
 # (8 facings, role tint), walks multi-hop routes along the ship graph, and
 # z-sorts against deck props by y. Lives inside the ShipDeck node so its
 # position shares the rooms' deck coordinate space.
+#
+# Collision (crew count is capped ~12, so O(N²)/frame is cheap): soft
+# pairwise separation nudges `position` apart when crew get within
+# PERSONAL_RADIUS of each other (see _apply_separation), and standing points
+# picked from DeckPlan.random_point() are claimed in a static registry so two
+# crew don't sit on top of each other (_claim_standing_point/_release_claim).
+# Both are pure position nudges layered on top of the existing route-walking
+# state machine (_route/_target_pos/_moving) — they never touch it, so they
+# can't stall a route, fight panic-flee (CrewBehavior just calls
+# move_to_room() same as always), or fight hold_room_until (that's a
+# CrewBehavior-level gate on issuing new movement, untouched here).
 
 const KIT_DIR: String = "res://assets/sprites/legacy/"
 const MOVE_SPEED: float = 190.0          # deck px/sec (one grid cell ~130px)
-const ARRIVE_EPSILON: float = 4.0        # px; movement is done when this close to target
+const ARRIVE_EPSILON: float = 10.0       # px; bumped from 4.0 so separation jostle can't stall arrival
 const BOB_HEIGHT: float = 5.0            # px of walk bounce
 const BOB_RATE: float = 9.0              # bounces per second while walking
+
+const PERSONAL_RADIUS: float = 60.0      # px, ~half a floor tile; soft-separation trigger distance
+const SEPARATION_STRENGTH: float = 130.0 # px/sec of push at full overlap
+const SEPARATION_PERP_BIAS_MOVING: float = 0.75  # walking: mostly sideways, so it doesn't fight forward progress
+const SEPARATION_PERP_BIAS_IDLE: float = 0.1     # standing: mostly straight-apart
+const STANDING_CLAIM_ATTEMPTS: int = 5   # resample tries when a candidate standing point is already claimed
 
 # Role -> kit astronaut variant + tint. Tints multiply, so light suits take
 # the colour while dark visors/boots stay dark. Labels match the tint.
@@ -39,6 +56,12 @@ const STATE_COLORS: Dictionary = {
 
 # Registry so directive execution can find a crew's visual node by id.
 static var nodes: Dictionary = {}  # crew_id -> CrewMemberNode
+
+# Standing-point claims so two crew don't pick the same room spot to stand
+# at/settle into. crew_id -> {"room": room_id, "point": deck-px Vector2}.
+# Node-level and GameState-free by design (view-layer bookkeeping, not
+# authoritative simulation state — see CLAUDE.md Rule 3).
+static var _point_claims: Dictionary = {}
 
 @export var crew_data: CrewMember
 
@@ -85,7 +108,7 @@ func _ready() -> void:
 	_status_dot.position = Vector2(-4.5, -86)
 	add_child(_status_dot)
 
-	position = DeckPlan.random_point(crew_data.location) if DeckPlan.has_room(crew_data.location) \
+	position = _claim_standing_point(crew_data.location) if DeckPlan.has_room(crew_data.location) \
 		else Vector2.ZERO
 	z_index = IsoKit.z_for(position.y)
 	_apply_sprite()
@@ -96,6 +119,7 @@ func _ready() -> void:
 
 
 func _exit_tree() -> void:
+	_release_claim()
 	if crew_data and nodes.get(crew_data.crew_id) == self:
 		nodes.erase(crew_data.crew_id)
 
@@ -120,6 +144,8 @@ func _process(delta: float) -> void:
 		sprite.position = Vector2.ZERO
 		if crew_data.current_state == CrewStateMachine.PANICKING:
 			sprite.position.x = sin(Time.get_ticks_msec() * 0.04) * 2.0
+		_apply_separation(delta, false)
+		z_index = IsoKit.z_for(position.y)
 		return
 
 	var to_target: Vector2 = _target_pos - position
@@ -130,6 +156,7 @@ func _process(delta: float) -> void:
 
 	_update_facing(to_target)
 	position += to_target.normalized() * MOVE_SPEED * speed_mult * delta
+	_apply_separation(delta, true)
 	z_index = IsoKit.z_for(position.y)
 	_bob_t += delta
 	sprite.position.y = -absf(sin(_bob_t * BOB_RATE)) * BOB_HEIGHT
@@ -207,7 +234,7 @@ func wander_within_room() -> void:
 	if _moving or not DeckPlan.has_room(crew_data.location):
 		return
 	_pending_room = ""
-	_target_pos = DeckPlan.random_point(crew_data.location)
+	_target_pos = _claim_standing_point(crew_data.location)
 	_moving = true
 
 
@@ -229,8 +256,10 @@ func _advance_route() -> void:
 		old_room.remove_occupant(crew_data.crew_id)
 	_pending_room = next_room
 	# Cross via the walkway/gate waypoints, then settle somewhere in the room.
+	# Claim the settle point now (not on arrival) so two crew converging on the
+	# same room from different hops don't both aim for the same spot.
 	_leg_points = DeckPlan.hop_waypoints(crew_data.location, next_room)
-	_leg_points.append(DeckPlan.random_point(next_room))
+	_leg_points.append(_claim_standing_point(next_room))
 	_target_pos = _leg_points.pop_front()
 	_moving = true
 
@@ -253,6 +282,120 @@ func _arrive() -> void:
 		_advance_route()
 	else:
 		_apply_sprite()
+
+
+# --- Standing-point claiming ---------------------------------------------
+# Whenever a route or idle-wander picks a spot to settle at, sample a few
+# candidates and keep the first one not already claimed by another crew
+# member in that room, then claim it. Falls back to the last sample if every
+# attempt collides — this must never fail to return a point (never stalls
+# route-following), it just means a rare visible overlap that _apply_separation
+# resolves a moment later instead of being avoided up front.
+
+func _claim_standing_point(room_id: String) -> Vector2:
+	var point: Vector2 = DeckPlan.random_point(room_id)
+	for _attempt in STANDING_CLAIM_ATTEMPTS - 1:
+		if not _point_is_claimed(room_id, point):
+			break
+		point = DeckPlan.random_point(room_id)
+	_point_claims[crew_data.crew_id] = {"room": room_id, "point": point}
+	return point
+
+
+func _point_is_claimed(room_id: String, point: Vector2) -> bool:
+	for cid: String in _point_claims:
+		if cid == crew_data.crew_id:
+			continue
+		var claim: Dictionary = _point_claims[cid]
+		if claim["room"] == room_id and (claim["point"] as Vector2).distance_to(point) < PERSONAL_RADIUS:
+			return true
+	return false
+
+
+func _release_claim() -> void:
+	if crew_data:
+		_point_claims.erase(crew_data.crew_id)
+
+
+# --- Soft collision avoidance ---------------------------------------------
+# Cheap O(N²) pairwise separation (crew count is capped ~12, so this costs
+# nothing per frame). Only ever nudges `position` — never touches _route,
+# _target_pos, or current_state — so it can't stall route-following, fight
+# panic-flee, or fight hold_room_until (all of those live one layer up, in
+# CrewBehavior/move_to_room). Displacement is clamped to the current room (or,
+# mid-transit, the union of the room being left and the one being entered) so
+# crew can never get shoved through a wall.
+
+func _apply_separation(delta: float, moving: bool) -> void:
+	var push: Vector2 = Vector2.ZERO
+	var bias: float = SEPARATION_PERP_BIAS_MOVING if moving else SEPARATION_PERP_BIAS_IDLE
+	for crew_id: String in nodes:
+		if crew_id == crew_data.crew_id:
+			continue
+		var other: CrewMemberNode = nodes[crew_id] as CrewMemberNode
+		if other == null or not is_instance_valid(other):
+			continue
+		var offset: Vector2 = position - other.position
+		var dist: float = offset.length()
+		if dist >= PERSONAL_RADIUS:
+			continue
+		var radial: Vector2
+		if dist > 0.5:
+			radial = offset / dist
+		else:
+			# Exact (or near-exact) overlap — break the tie deterministically
+			# per crew id instead of both agents computing a zero vector and
+			# staying stacked forever.
+			var ang: float = float(hash(crew_data.crew_id) % 360) * PI / 180.0
+			radial = Vector2(cos(ang), sin(ang))
+			dist = 0.0
+		# Perpendicular-biased: blending in a sideways component (rotate 90°)
+		# means two crew converging head-on slide past each other instead of
+		# just cancelling out each other's forward progress every frame.
+		var perp: Vector2 = Vector2(-radial.y, radial.x)
+		var overlap: float = (PERSONAL_RADIUS - dist) / PERSONAL_RADIUS
+		push += (radial * (1.0 - bias) + perp * bias) * overlap
+	if push == Vector2.ZERO:
+		return
+	position += push * SEPARATION_STRENGTH * delta
+	_clamp_to_room_bounds()
+
+
+func _clamp_to_room_bounds() -> void:
+	var rect: Rect2 = _room_px_bounds(crew_data.location)
+	if _pending_room != "":
+		var next_rect: Rect2 = _room_px_bounds(_pending_room)
+		if next_rect.size != Vector2.ZERO:
+			rect = rect.merge(next_rect) if rect.size != Vector2.ZERO else next_rect
+	if rect.size == Vector2.ZERO:
+		return  # unknown room geometry (shouldn't happen) — skip rather than clamp to garbage
+	position.x = clampf(position.x, rect.position.x, rect.end.x)
+	position.y = clampf(position.y, rect.position.y, rect.end.y)
+
+
+# AABB of a room's floor rect in deck pixels, padded a little so separation
+# can push crew right up near a wall/doorway without visibly clipping through
+# it. Cheap (4 IsoKit projections) — same technique DeckPlan.deck_bounds()
+# uses for the whole deck, just for one room.
+func _room_px_bounds(room_id: String) -> Rect2:
+	if not DeckPlan.has_room(room_id):
+		return Rect2()
+	var rect: Rect2 = DeckPlan.room_rect(room_id)
+	var min_p := Vector2(INF, INF)
+	var max_p := Vector2(-INF, -INF)
+	for corner: Vector2 in [
+		rect.position,
+		rect.position + Vector2(rect.size.x - 1, 0),
+		rect.position + Vector2(0, rect.size.y - 1),
+		rect.position + rect.size - Vector2.ONE,
+	]:
+		var p: Vector2 = IsoKit.cell_to_deck(corner)
+		min_p = min_p.min(p)
+		max_p = max_p.max(p)
+	var margin: float = PERSONAL_RADIUS * 0.5
+	min_p -= Vector2(margin, margin)
+	max_p += Vector2(margin, margin)
+	return Rect2(min_p, max_p - min_p)
 
 
 func _update_facing(to_target: Vector2) -> void:
