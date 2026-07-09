@@ -7,30 +7,40 @@
 
 ---
 
-## Archetype tags
+## Archetype dimensions & tags
 
-Format: `{PERSONALITY}_{AGE}_{GENDER}_{ROLE}`, each part 2–3 uppercase letters.
+Archetypes are combinations of four dimensions (not free-form concepts):
 
-| Part | Codes |
+| Dimension | Codes |
 |---|---|
-| Personality | GR gruff · EN energetic-brash · NV nervous · WA warm · CO cold-professional |
-| Age | YO young · MI mid · OL old |
+| Personality | GR gruff/experienced · CH cheerful/friendly · EV even/steady · PA paranoid/excitable |
 | Gender | ML male · FE female |
-| Role | ENG engineer · CA captain · MED medic/doctor · SCI scientist · MAR marine · TEA teamster/hand · PIL pilot |
+| Career (maps 1:1 to Mothership class) | SCI scientist/medic → Scientist · AND android → Android · ENG teamster/engineer → Teamster · MAR marine → Marine |
+| Rank | CA captain · OF officer · CM crew mate |
 
-Initial three archetypes (more later):
-- `GR_OL_ML_ENG` — gruff old male engineer (Mothership class: Teamster, high Intellect/Engineering skills)
-- `GR_OL_FE_ENG` — gruff old female engineer (Teamster)
-- `EN_BR_FE_CA` — energetic brash female captain (note: personality part here is `EN_BR` collapsed to `EN`; canonical tag is `EN_BR_FE_CA` for continuity with existing naming)
+Tag format: `{PERSONALITY}_{GENDER}_{CAREER}_{RANK}` — e.g. `GR_ML_ENG_CM` (gruff male engineer,
+crew mate), `CH_FE_SCI_OF` (cheerful female medic, officer).
 
-Each archetype file defines: Mothership class, stat/save/skill tendencies (used at char-gen),
-personality traits, background sketch, speech quirks, and an **ElevenLabs voice description**.
+Coverage rules — we do NOT generate all 96 combinations. Target ~24 (about a quarter):
+- Every career × rank cell has at least one archetype, EXCEPT android captains, which are
+  forbidden (androids can never be captains). That's 11 mandatory cells.
+- Both genders and all four personalities each appear several times across the set.
+- Remaining slots are chosen for variety and interest, not systematic coverage.
+
+Each archetype file defines: tag, the four dimension values, a 2–3 sentence **blurb** describing
+who this person tends to be, a list of 8–12 possible **names** (crew gen picks one at random),
+**stat/save tendencies** (modifiers applied on top of the standard 2d10+25 / 2d10+10 rolls),
+preferred skills drawn from rules.md, speech quirks, and an **ElevenLabs voice description**.
+
+Legacy note: the pilot set `GR_OL_ML_ENG` / `GR_OL_FE_ENG` / `EN_BR_FE_CA` predates this scheme
+and is deprecated. Its content is migrated into the nearest dimensional archetypes (the migration
+re-tags and renumbers lines; the old files are deleted).
 
 ## Line IDs
 
 - Numeric, unique **within an archetype**, zero-padded to 5 digits in filenames/keys.
-- Canonical key: `GR_OL_ML_ENG#00042`. Display form in docs: `GR_OL_ML_ENG #42`.
-- Audio file mapping (ElevenLabs output, saved later): `assets/audio/dialogue/GR_OL_ML_ENG_00042.mp3`.
+- Canonical key: `GR_ML_ENG_CM#00042`. Display form in docs: `GR_ML_ENG_CM #42`.
+- Audio file mapping (ElevenLabs output, saved later): `assets/audio/dialogue/GR_ML_ENG_CM_00042.mp3`.
 - IDs are stable forever once assigned. Never renumber. New lines append with the next free ID.
 
 ## Emotive tags
@@ -50,22 +60,44 @@ A tag applies to the words after it until the next tag or end of line.
 ```
 resources/dialogue/
 ├── archetypes/
-│   └── gr_ol_ml_eng.json          # archetype definition (see schema)
+│   └── gr_ml_eng_cm.json          # archetype definition (see schema)
 ├── lines/
-│   └── gr_ol_ml_eng.json          # all lines for that archetype, array of Line objects
+│   └── gr_ml_eng_cm.json          # all lines for that archetype, array of Line objects
 ├── conversations/
 │   └── convos_core.json           # multi-part conversation templates (may reference any archetype)
 ├── elevenlabs/
-│   └── gr_ol_ml_eng.csv           # export: id,text-with-tags (one line per row, quoted)
+│   └── gr_ml_eng_cm.csv           # export: id,text-with-tags (one line per row, quoted)
 └── voices.md                      # per-archetype ElevenLabs voice design descriptions
 ```
+
+## Archetype schema (`archetypes/*.json`)
+
+```json
+{
+  "tag": "GR_ML_ENG_CM",
+  "dimensions": { "personality": "gruff", "gender": "male", "career": "teamster_engineer", "rank": "crew_mate" },
+  "mothership_class": "Teamster",
+  "blurb": "Thirty years of freighter engine rooms have left him with bad knees, worse manners, and an uncanny ear for a failing reactor. He trusts machines more than people and the ship's AI least of all.",
+  "names": ["Harlan Voss", "Dmitri Okafor", "Ray Calloway", "Stig Andersen", "Mo Delacroix", "Walt Kaminski", "Jonah Pryce", "Earl Nakagawa"],
+  "stat_tendencies": { "intellect": 5, "strength": 5, "speed": -5 },
+  "save_tendencies": { "fear": 5, "sanity": 0, "body": 0 },
+  "preferred_skills": ["mechanical_repair", "engineering", "jury_rigging"],
+  "speech_quirks": "mutters at machinery, sentence fragments, calls everyone 'kid' or by their job",
+  "elevenlabs_voice": "Male, 60s, gravelly low timbre, slow deliberate pacing, faint industrial-belt accent, dry delivery with smoker's texture"
+}
+```
+
+Crew generation rolls standard Mothership characters, applies `stat_tendencies`/`save_tendencies`
+as flat modifiers, picks a random entry from `names`, and takes skills honoring class rules with
+`preferred_skills` prioritized. Every ship must have exactly one captain-rank crew member (never
+an android).
 
 ## Line schema (`lines/*.json` — array of these)
 
 ```json
 {
   "id": 42,
-  "key": "GR_OL_ML_ENG#00042",
+  "key": "GR_ML_ENG_CM#00042",
   "text": "i'm [EMPHASIS] freaking out about this disease",
   "type": "declaration",
   "intent": "fear_vent",
@@ -97,8 +129,8 @@ Field rules:
   - `wounded`: true = only while carrying a wound
   - `location`: room types (`engine_room` `bridge` `medbay` `mess` `quarters` `cargo` `corridor`
     `life_support` `ai_core` `airlock`) or `any`
-  - `target`: who they're addressing — archetype tags, role codes (`ENG`, `CA`, …), `any`, or
-    `open_air` for declarations
+  - `target`: who they're addressing — archetype tags, career codes (`SCI` `AND` `ENG` `MAR`),
+    rank codes (`CA` `OF` `CM`), `any`, or `open_air` for declarations
   - `recent_events` (closed set): `disease_outbreak` `crew_death` `reactor_failure` `power_low`
     `life_support_failure` `hull_breach` `door_locked_on_crew` `ai_damaged` `repair_success`
     `crisis_resolved` `combat` `injury` `quiet_shift` `meal_time` `shift_start` `shift_end`
@@ -111,15 +143,16 @@ Field rules:
 {
   "convo_id": "CV_DISEASE_PANIC_01",
   "shape": "4-6",
-  "participants": ["EN_BR_FE_CA", "GR_OL_ML_ENG"],
+  "participants": ["PA_FE_MAR_CA", "GR_ML_ENG_CM"],
   "conditions": { "recent_events": ["disease_outbreak"], "stress_min": 6 },
-  "lines": ["EN_BR_FE_CA#19287", "GR_OL_ML_ENG#00554", "EN_BR_FE_CA#19288", "GR_OL_ML_ENG#00556"]
+  "lines": ["PA_FE_MAR_CA#00187", "GR_ML_ENG_CM#00554", "PA_FE_MAR_CA#00188", "GR_ML_ENG_CM#00556"]
 }
 ```
 
 - `shape`: `3` (greeting/response/close) or `4-6` (topic exchanges).
-- `participants` may use role codes (`ENG`) meaning "any archetype with that role" — the runtime
-  substitutes lines of matching intent from whichever archetype is actually present.
+- `participants` may use career codes (`ENG`) or rank codes (`CA`) meaning "any archetype with
+  that career/rank" — the runtime substitutes lines of matching intent from whichever archetype
+  is actually present.
 - Speaker alternates in `lines` order; the runtime may bail out early if a participant walks away
   or panics.
 
@@ -131,7 +164,7 @@ Score every candidate line whose hard conditions pass, then softmax-ish weighted
 score = weight
       + 2.0 * recent_event_match      # event named in conditions occurred in last N minutes
       + 1.0 * location_match
-      + 1.0 * target_match            # specific archetype/role beats "any"
+      + 1.0 * target_match            # specific archetype/career/rank beats "any"
       + 1.0 * mood_match
       + 0.5 * stress_band_center      # closer to band midpoint = better fit
       - 5.0 if line said in last 10 min by anyone (repetition penalty)
@@ -149,6 +182,6 @@ start when two crew share a room and both are free.
 
 ## ElevenLabs export (`elevenlabs/*.csv`)
 
-CSV, header `id,text`. `id` = `GR_OL_ML_ENG_00042` (filename-safe key). `text` = the line WITH
+CSV, header `id,text`. `id` = `GR_ML_ENG_CM_00042` (filename-safe key). `text` = the line WITH
 emotive tags (the TTS pass maps them to ElevenLabs v3 audio tags / prompt guidance). One row per
 line, text double-quoted. `voices.md` holds the voice-design prompt per archetype.

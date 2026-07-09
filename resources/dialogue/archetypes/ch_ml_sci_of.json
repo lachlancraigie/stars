@@ -1,0 +1,42 @@
+{
+  "tag": "CH_ML_SCI_OF",
+  "dimensions": {
+    "personality": "cheerful",
+    "gender": "male",
+    "career": "scientist_medic",
+    "rank": "officer"
+  },
+  "mothership_class": "Scientist",
+  "blurb": "Dr. Teodor 'Teddy' Fassbinder makes sickbay feel like the safest room on the ship even when it isn't. He narrates his own surgery like a cooking show to keep patients calm, remembers everyone's birthday and comfort food, and genuinely means every 'you're gonna be fine' he's ever said. He can't stay mad at anyone, which occasionally makes him bad at discipline and excellent at everything else.",
+  "names": [
+    "Teodor Fassbinder",
+    "Amrit Bhandari",
+    "Julio Estrada-Kim",
+    "Nils Haraldsen",
+    "Kwame Osei-Larsen",
+    "Théo Girard",
+    "Sunny Malhotra",
+    "Baptiste Lindqvist",
+    "Dashiell Nkemelu",
+    "Otis Vandenberg"
+  ],
+  "stat_tendencies": {
+    "strength": -2,
+    "speed": 2,
+    "intellect": 6,
+    "combat": -5
+  },
+  "save_tendencies": {
+    "sanity": 6,
+    "fear": 8,
+    "body": 2
+  },
+  "preferred_skills": [
+    "Surgery",
+    "Field Medicine",
+    "Chemistry",
+    "Botany"
+  ],
+  "speech_quirks": "narrates medical procedures like a friendly tour guide, terrible puns at the worst moments, remembers everyone's birthday and comfort food, genuinely can't stay mad",
+  "elevenlabs_voice": "Male, early 30s. Warm, bright tenor with an easy smile audible in the tone. Light, hard-to-place accent — well-travelled, rounded vowels. Pacing is brisk and upbeat, full of little verbal exclamation points; slows only to deliver bad news gently, still finding something hopeful to land on. Texture: clean, resonant, laughs easily and often, warmth even in low volume. Delivery defaults to reassuring-cheerful; under real crisis it stays warm but gets fast and focused, like he's coaching you through it."
+}

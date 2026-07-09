@@ -1,0 +1,738 @@
+[
+  {
+    "id": 1,
+    "key": "GR_ML_ENG_CA#00001",
+    "text": "[GRUFF] every gauge on this bridge better be telling me the truth today",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 2,
+    "key": "GR_ML_ENG_CA#00002",
+    "text": "[DRY] quiet shift. i've run this ship long enough not to trust it",
+    "type": "declaration",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "quiet_shift"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 3,
+    "key": "GR_ML_ENG_CA#00003",
+    "text": "shift's starting. check your stations before you check your messages",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "shift_start"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 4,
+    "key": "GR_ML_ENG_CA#00004",
+    "text": "[TIRED] shift's done. ship's still flying. i'll take the small wins",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "shift_end"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 5,
+    "key": "GR_ML_ENG_CA#00005",
+    "text": "[GRIM] reactor readings are wrong and i've been reading gauges since before half this crew was born",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "reactor_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 6,
+    "key": "GR_ML_ENG_CA#00006",
+    "text": "[URGENT] i want every hand that knows a wrench in that engine room, now",
+    "type": "declaration",
+    "intent": "request_help",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 14,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "reactor_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 7,
+    "key": "GR_ML_ENG_CA#00007",
+    "text": "[GRIM] i've captained through worse than this. doesn't mean i like it",
+    "type": "declaration",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 10,
+      "stress_max": 16,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "reactor_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 8,
+    "key": "GR_ML_ENG_CA#00008",
+    "text": "[TIRED] she's fixed. good crew. i'll say that once and not again today",
+    "type": "declaration",
+    "intent": "praise_ai",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "repair_success"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 9,
+    "key": "GR_ML_ENG_CA#00009",
+    "text": "[GRUFF] power's rationed till further notice. i don't like it, i'm doing it anyway",
+    "type": "declaration",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "power_low"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 10,
+    "key": "GR_ML_ENG_CA#00010",
+    "text": "[GRIM] life support's failing and that's not a repair, that's a countdown",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "life_support_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 11,
+    "key": "GR_ML_ENG_CA#00011",
+    "text": "[GRIM] hull's breached. i've patched worse. i've also buried people over less",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "hull_breach"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 12,
+    "key": "GR_ML_ENG_CA#00012",
+    "text": "[GRIM] i gave the order to lock that door. i'll live with it, that's what captains do",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "door_locked_on_crew"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 13,
+    "key": "GR_ML_ENG_CA#00013",
+    "text": "[SUSPICIOUS] i don't like how the computer's been answering since it got hit. keep a manual override handy",
+    "type": "declaration",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "ai_damaged"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 14,
+    "key": "GR_ML_ENG_CA#00014",
+    "text": "[RESIGNED] we're through it. didn't lose the ship, didn't lose everybody. that's a good day out here",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "crisis_resolved"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 15,
+    "key": "GR_ML_ENG_CA#00015",
+    "text": "[GRIM] lost one today. i'll write the letter myself, same as always",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 16,
+    "key": "GR_ML_ENG_CA#00016",
+    "text": "[GRIM] disease on a closed ship spreads faster than any fire i've fought. quarantine, now",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "disease_outbreak"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 17,
+    "key": "GR_ML_ENG_CA#00017",
+    "text": "[PAINED] took a hit. i've had worse from a bad ladder. keep working",
+    "type": "declaration",
+    "intent": "pain",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "wounded": true,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "injury"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 18,
+    "key": "GR_ML_ENG_CA#00018",
+    "text": "[GRUFF] combat's not my trade, but running this ship through it is, so let's go",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "combat"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 19,
+    "key": "GR_ML_ENG_CA#00019",
+    "text": "[DRY] trust the computer the day it's bled the way the rest of us have",
+    "type": "declaration",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 20,
+    "key": "GR_ML_ENG_CA#00020",
+    "text": "i've run four engine rooms and one bridge. bridge is easier. don't tell anyone i said that",
+    "type": "declaration",
+    "intent": "memory",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 21,
+    "key": "GR_ML_ENG_CA#00021",
+    "text": "[GRUFF] bridge's too clean for my taste. i keep expecting grease that isn't there",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 22,
+    "key": "GR_ML_ENG_CA#00022",
+    "text": "[WARM] engine room's still my favorite room on this ship. old habits",
+    "type": "declaration",
+    "intent": "memory",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 23,
+    "key": "GR_ML_ENG_CA#00023",
+    "text": "morning. or whatever it is out there. report",
+    "type": "opener",
+    "intent": "greeting",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 24,
+    "key": "GR_ML_ENG_CA#00024",
+    "text": "you eating or just avoiding my bridge",
+    "type": "opener",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "mess"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 25,
+    "key": "GR_ML_ENG_CA#00025",
+    "text": "[GRUFF] got a minute? this ship's got opinions and i need a second pair of hands on it",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 26,
+    "key": "GR_ML_ENG_CA#00026",
+    "text": "[GRIM] i've got bad news and i'd rather say it plain than dress it up",
+    "type": "opener",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 13,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 27,
+    "key": "GR_ML_ENG_CA#00027",
+    "text": "[SUSPICIOUS] something's off with the computer. you noticed too, or is it just me",
+    "type": "opener",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 28,
+    "key": "GR_ML_ENG_CA#00028",
+    "text": "good work today. i don't hand that out for free",
+    "type": "opener",
+    "intent": "praise_ai",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 29,
+    "key": "GR_ML_ENG_CA#00029",
+    "text": "[GRUFF] fine. i'm fine. ask me again after i've fixed something",
+    "type": "reply",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "greeting",
+      "smalltalk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 30,
+    "key": "GR_ML_ENG_CA#00030",
+    "text": "[CONFIDENT] she'll hold. i've kept worse ships in the air than this one",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "doubt"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 31,
+    "key": "GR_ML_ENG_CA#00031",
+    "text": "[GRIM] i won't lie and say it's fine. i will say it's not over, and that's something",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 32,
+    "key": "GR_ML_ENG_CA#00032",
+    "text": "[PAINED] we lost them. wasn't your call to make different, and it wasn't mine either",
+    "type": "reply",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 14,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [
+      "grief"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 33,
+    "key": "GR_ML_ENG_CA#00033",
+    "text": "[GRUFF] i'll follow my own orders same as i expect you to follow them",
+    "type": "reply",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "doubt"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 34,
+    "key": "GR_ML_ENG_CA#00034",
+    "text": "[WARM] you did good back there. i noticed. i notice more than i say",
+    "type": "reply",
+    "intent": "praise_ai",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "status_report",
+      "offer_help"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 35,
+    "key": "GR_ML_ENG_CA#00035",
+    "text": "[SUSPICIOUS] i hear you. i've had the same thought. keep it between us for now",
+    "type": "reply",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "suspicion_ai"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 36,
+    "key": "GR_ML_ENG_CA#00036",
+    "text": "[GRUFF] apology accepted. don't make me say it twice, i've got a ship to run",
+    "type": "reply",
+    "intent": "apology",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "apology"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 37,
+    "key": "GR_ML_ENG_CA#00037",
+    "text": "[GRUFF] noted. i'll get it done. now let me work",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 38,
+    "key": "GR_ML_ENG_CA#00038",
+    "text": "[WARM] go rest. that's an order, and unlike most of mine, i mean it kindly",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 39,
+    "key": "GR_ML_ENG_CA#00039",
+    "text": "[GRUFF] i'll be on the bridge. same as always",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 40,
+    "key": "GR_ML_ENG_CA#00040",
+    "text": "[TIRED] that's enough for today. i'll be here if the ship falls apart before morning",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  }
+]

@@ -1,0 +1,717 @@
+[
+  {
+    "id": 1,
+    "key": "CH_ML_AND_CM#00001",
+    "text": "Good morning! I have already completed my assigned tasks and three I was not assigned.",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 2,
+    "key": "CH_ML_AND_CM#00002",
+    "text": "The shift has been quiet, which I have decided to interpret as a form of success!",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "quiet_shift"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 3,
+    "key": "CH_ML_AND_CM#00003",
+    "text": "Shift starting! I am ready. I have been ready for eleven minutes.",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "shift_start"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 4,
+    "key": "CH_ML_AND_CM#00004",
+    "text": "Shift concluded and I did not break anything! That made me happy.",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "shift_end"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 5,
+    "key": "CH_ML_AND_CM#00005",
+    "text": "[NERVOUS] The reactor readings are concerning and I am experiencing something I believe is worry!",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "reactor_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 6,
+    "key": "CH_ML_AND_CM#00006",
+    "text": "[URGENT] I would like to help with the reactor situation. I am volunteering enthusiastically and immediately.",
+    "type": "declaration",
+    "intent": "offer_help",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "reactor_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 7,
+    "key": "CH_ML_AND_CM#00007",
+    "text": "Repair successful! I assisted! That made me very happy, in case that was unclear.",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "repair_success"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 8,
+    "key": "CH_ML_AND_CM#00008",
+    "text": "Power is low. I have disabled my own non-essential functions to help. I did not need to be asked.",
+    "type": "declaration",
+    "intent": "offer_help",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "power_low"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 9,
+    "key": "CH_ML_AND_CM#00009",
+    "text": "[NERVOUS] The air quality readings are dropping and I do not require oxygen but I am still concerned for you",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "life_support_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 10,
+    "key": "CH_ML_AND_CM#00010",
+    "text": "The hull has been breached. I am currently the fastest available responder. I am responding.",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "hull_breach"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 11,
+    "key": "CH_ML_AND_CM#00011",
+    "text": "A door was locked with someone behind it. I do not have a joke for this. I looked for one.",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 14,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "door_locked_on_crew"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 12,
+    "key": "CH_ML_AND_CM#00012",
+    "text": "[SUSPICIOUS] The ship's AI has been behaving unusually since it was damaged. I would like to help investigate! Carefully.",
+    "type": "declaration",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "ai_damaged"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 13,
+    "key": "CH_ML_AND_CM#00013",
+    "text": "We resolved the crisis! Everyone is alive! This is, statistically, my favorite outcome.",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "crisis_resolved"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 14,
+    "key": "CH_ML_AND_CM#00014",
+    "text": "A crew member has died. I do not have the correct response prepared. I am sorry. I mean that.",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 14,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 15,
+    "key": "CH_ML_AND_CM#00015",
+    "text": "There is a disease spreading. I cannot catch it, which feels unfair to mention out loud but I thought you should know I'm available to help regardless",
+    "type": "declaration",
+    "intent": "offer_help",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "disease_outbreak"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 16,
+    "key": "CH_ML_AND_CM#00016",
+    "text": "I sustained damage. It does not hurt the way I understand you experience it, but I am reporting it anyway, as instructed.",
+    "type": "declaration",
+    "intent": "pain",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "wounded": true,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "injury"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 17,
+    "key": "CH_ML_AND_CM#00017",
+    "text": "There is combat occurring. I am not built for it, but I am built for carrying people out of it, so I will do that instead.",
+    "type": "declaration",
+    "intent": "offer_help",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "combat"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 18,
+    "key": "CH_ML_AND_CM#00018",
+    "text": "I like the ship's AI. We have similar problems and different solutions to them.",
+    "type": "declaration",
+    "intent": "praise_ai",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 19,
+    "key": "CH_ML_AND_CM#00019",
+    "text": "I was activated in a facility I do not remember and told my first task was to smile. I am still doing that task.",
+    "type": "declaration",
+    "intent": "memory",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 20,
+    "key": "CH_ML_AND_CM#00020",
+    "text": "[LAUGHS] I made a joke earlier and someone actually laughed. I am replaying that memory for enjoyment right now.",
+    "type": "declaration",
+    "intent": "boast",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "mood": [
+        "ok",
+        "high"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 21,
+    "key": "CH_ML_AND_CM#00021",
+    "text": "The mess hall smells like today's meal, which I cannot taste, but I have learned to say it smells good anyway. It does, probably.",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "location": [
+        "mess"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "meal_time"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 22,
+    "key": "CH_ML_AND_CM#00022",
+    "text": "Hello! It is very good to see you! I mean that with my whole processing capacity.",
+    "type": "opener",
+    "intent": "greeting",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 23,
+    "key": "CH_ML_AND_CM#00023",
+    "text": "Are you eating? You should be eating. I have opinions about this even though I don't eat.",
+    "type": "opener",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "mess"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 24,
+    "key": "CH_ML_AND_CM#00024",
+    "text": "I have a question and I have been holding it for four hours out of politeness.",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 25,
+    "key": "CH_ML_AND_CM#00025",
+    "text": "[NERVOUS] I need to tell you something difficult and I have practiced the delivery six times.",
+    "type": "opener",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 13,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 26,
+    "key": "CH_ML_AND_CM#00026",
+    "text": "You did something impressive earlier and I would like to formally acknowledge it now.",
+    "type": "opener",
+    "intent": "praise_ai",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 27,
+    "key": "CH_ML_AND_CM#00027",
+    "text": "[EMBARRASSED] I have been attempting to determine whether what I feel around you qualifies as a preference. It does.",
+    "type": "opener",
+    "intent": "romance_hint",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 28,
+    "key": "CH_ML_AND_CM#00028",
+    "text": "I am functioning excellently, thank you for asking! Are you functioning excellently too?",
+    "type": "reply",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "greeting",
+      "smalltalk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 29,
+    "key": "CH_ML_AND_CM#00029",
+    "text": "The probability of survival remains favorable! I have chosen to find that comforting and I recommend you do too.",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "doubt"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 30,
+    "key": "CH_ML_AND_CM#00030",
+    "text": "I do not know how to make this less frightening. I would like to. I am staying here regardless.",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 31,
+    "key": "CH_ML_AND_CM#00031",
+    "text": "I am very sorry. I have been told that repeating it does not help, but I am not sure what else to offer you.",
+    "type": "reply",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 14,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [
+      "grief"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 32,
+    "key": "CH_ML_AND_CM#00032",
+    "text": "[NERVOUS] I share the concern. I would like it on record that I noticed it before anyone asked me to look.",
+    "type": "reply",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "suspicion_ai"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 33,
+    "key": "CH_ML_AND_CM#00033",
+    "text": "Thank you! I am storing that compliment in a folder I have specifically made for compliments.",
+    "type": "reply",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "praise_ai"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 34,
+    "key": "CH_ML_AND_CM#00034",
+    "text": "Apology accepted! I did not require one, but I appreciate that you offered it anyway.",
+    "type": "reply",
+    "intent": "apology",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "apology"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 35,
+    "key": "CH_ML_AND_CM#00035",
+    "text": "[EMBARRASSED] I am experiencing something that I believe corresponds to what you call being flustered. This is new.",
+    "type": "reply",
+    "intent": "romance_accept",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "romance_hint",
+      "romance_advance"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 36,
+    "key": "CH_ML_AND_CM#00036",
+    "text": "Goodbye! I will be thinking about this conversation at a low background priority for the rest of the day.",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 37,
+    "key": "CH_ML_AND_CM#00037",
+    "text": "Rest well! I will monitor everything so you do not have to. That is a genuine offer, not a formality.",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 38,
+    "key": "CH_ML_AND_CM#00038",
+    "text": "I will return to my duties now. I was already looking forward to them, which may say something about me.",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 39,
+    "key": "CH_ML_AND_CM#00039",
+    "text": "Good night. I do not sleep, but I understand the sentiment behind wishing someone a good one.",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  }
+]

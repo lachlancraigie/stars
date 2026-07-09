@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "key": "GR_OL_ML_ENG#00001",
+    "key": "GR_ML_ENG_CM#00001",
     "text": "man, i'm tired",
     "type": "declaration",
     "intent": "smalltalk",
@@ -21,7 +21,7 @@
   },
   {
     "id": 2,
-    "key": "GR_OL_ML_ENG#00002",
+    "key": "GR_ML_ENG_CM#00002",
     "text": "thirty-one years and my knees still don't believe in this job",
     "type": "declaration",
     "intent": "smalltalk",
@@ -40,7 +40,7 @@
   },
   {
     "id": 3,
-    "key": "GR_OL_ML_ENG#00003",
+    "key": "GR_ML_ENG_CM#00003",
     "text": "[MUTTERS] that relay's gonna go before we hit dock, i can feel it",
     "type": "declaration",
     "intent": "doubt",
@@ -59,7 +59,7 @@
   },
   {
     "id": 4,
-    "key": "GR_OL_ML_ENG#00004",
+    "key": "GR_ML_ENG_CM#00004",
     "text": "coffee's gone cold again. story of my life",
     "type": "declaration",
     "intent": "complaint",
@@ -78,7 +78,7 @@
   },
   {
     "id": 5,
-    "key": "GR_OL_ML_ENG#00005",
+    "key": "GR_ML_ENG_CM#00005",
     "text": "[SIGHS] every ship's got a sound it makes right before it costs you money",
     "type": "declaration",
     "intent": "memory",
@@ -97,7 +97,7 @@
   },
   {
     "id": 6,
-    "key": "GR_OL_ML_ENG#00006",
+    "key": "GR_ML_ENG_CM#00006",
     "text": "back on the Kestrel we'd have had this fixed an hour ago. different crew though",
     "type": "declaration",
     "intent": "memory",
@@ -113,7 +113,7 @@
   },
   {
     "id": 7,
-    "key": "GR_OL_ML_ENG#00007",
+    "key": "GR_ML_ENG_CM#00007",
     "text": "[GRUFF] quit rattling. i see you. i hear you. i'm coming",
     "type": "declaration",
     "intent": "work_talk",
@@ -132,7 +132,7 @@
   },
   {
     "id": 8,
-    "key": "GR_OL_ML_ENG#00008",
+    "key": "GR_ML_ENG_CM#00008",
     "text": "nobody appreciates a good bearing until it's screaming at three in the morning",
     "type": "declaration",
     "intent": "gallows_humor",
@@ -148,7 +148,7 @@
   },
   {
     "id": 9,
-    "key": "GR_OL_ML_ENG#00009",
+    "key": "GR_ML_ENG_CM#00009",
     "text": "i've buried better tools than most people i've met",
     "type": "declaration",
     "intent": "gallows_humor",
@@ -164,7 +164,7 @@
   },
   {
     "id": 10,
-    "key": "GR_OL_ML_ENG#00010",
+    "key": "GR_ML_ENG_CM#00010",
     "text": "[DRY] the day this ship stops surprising me is the day i retire. so, never",
     "type": "declaration",
     "intent": "gallows_humor",
@@ -180,7 +180,7 @@
   },
   {
     "id": 11,
-    "key": "GR_OL_ML_ENG#00011",
+    "key": "GR_ML_ENG_CM#00011",
     "text": "that tin of bolts is forty years of ships that didn't make it. don't touch it",
     "type": "declaration",
     "intent": "memory",
@@ -199,7 +199,7 @@
   },
   {
     "id": 12,
-    "key": "GR_OL_ML_ENG#00012",
+    "key": "GR_ML_ENG_CM#00012",
     "text": "[MUTTERS] course you'd pick now to leak. course you would",
     "type": "declaration",
     "intent": "complaint",
@@ -218,7 +218,7 @@
   },
   {
     "id": 13,
-    "key": "GR_OL_ML_ENG#00013",
+    "key": "GR_ML_ENG_CM#00013",
     "text": "hands ache worse than they used to. don't tell the captain",
     "type": "declaration",
     "intent": "pain",
@@ -238,7 +238,7 @@
   },
   {
     "id": 14,
-    "key": "GR_OL_ML_ENG#00014",
+    "key": "GR_ML_ENG_CM#00014",
     "text": "some days i talk to this engine more than i talked to my wife. she'd understand",
     "type": "declaration",
     "intent": "memory",
@@ -254,7 +254,7 @@
   },
   {
     "id": 15,
-    "key": "GR_OL_ML_ENG#00015",
+    "key": "GR_ML_ENG_CM#00015",
     "text": "[DEADPAN] i give it a week before something else breaks. i'm an optimist",
     "type": "declaration",
     "intent": "doubt",
@@ -270,7 +270,7 @@
   },
   {
     "id": 16,
-    "key": "GR_OL_ML_ENG#00016",
+    "key": "GR_ML_ENG_CM#00016",
     "text": "quiet shift. i don't trust quiet shifts",
     "type": "declaration",
     "intent": "doubt",
@@ -289,7 +289,7 @@
   },
   {
     "id": 17,
-    "key": "GR_OL_ML_ENG#00017",
+    "key": "GR_ML_ENG_CM#00017",
     "text": "[SIGHS] nothing to fix and nothing to fear. i'll take it while it lasts",
     "type": "declaration",
     "intent": "smalltalk",
@@ -311,7 +311,7 @@
   },
   {
     "id": 18,
-    "key": "GR_OL_ML_ENG#00018",
+    "key": "GR_ML_ENG_CM#00018",
     "text": "used to hate the quiet. now i know it's just the ship holding its breath",
     "type": "declaration",
     "intent": "doubt",
@@ -330,7 +330,7 @@
   },
   {
     "id": 19,
-    "key": "GR_OL_ML_ENG#00019",
+    "key": "GR_ML_ENG_CM#00019",
     "text": "food's the same as yesterday. i'm not complaining, i'm just noting it",
     "type": "declaration",
     "intent": "smalltalk",
@@ -352,7 +352,7 @@
   },
   {
     "id": 20,
-    "key": "GR_OL_ML_ENG#00020",
+    "key": "GR_ML_ENG_CM#00020",
     "text": "eat while it's hot. learned that lesson the hard way more than once",
     "type": "declaration",
     "intent": "smalltalk",
@@ -374,7 +374,7 @@
   },
   {
     "id": 21,
-    "key": "GR_OL_ML_ENG#00021",
+    "key": "GR_ML_ENG_CM#00021",
     "text": "shift's starting. bones say get up anyway",
     "type": "declaration",
     "intent": "smalltalk",
@@ -393,7 +393,7 @@
   },
   {
     "id": 22,
-    "key": "GR_OL_ML_ENG#00022",
+    "key": "GR_ML_ENG_CM#00022",
     "text": "[TIRED] shift's over. everything's still standing. i'll call that a win",
     "type": "declaration",
     "intent": "smalltalk",
@@ -412,7 +412,7 @@
   },
   {
     "id": 23,
-    "key": "GR_OL_ML_ENG#00023",
+    "key": "GR_ML_ENG_CM#00023",
     "text": "another shift down. body's collecting interest on all of them",
     "type": "declaration",
     "intent": "pain",
@@ -431,7 +431,7 @@
   },
   {
     "id": 24,
-    "key": "GR_OL_ML_ENG#00024",
+    "key": "GR_ML_ENG_CM#00024",
     "text": "[MUTTERS] all right, all right, i'm up. hold your horses",
     "type": "declaration",
     "intent": "smalltalk",
@@ -450,7 +450,7 @@
   },
   {
     "id": 25,
-    "key": "GR_OL_ML_ENG#00025",
+    "key": "GR_ML_ENG_CM#00025",
     "text": "[GRIM] reactor's hot again. i don't like the way it's hot",
     "type": "declaration",
     "intent": "warning",
@@ -472,7 +472,7 @@
   },
   {
     "id": 26,
-    "key": "GR_OL_ML_ENG#00026",
+    "key": "GR_ML_ENG_CM#00026",
     "text": "[URGENT] she's going critical if i don't get in there now",
     "type": "declaration",
     "intent": "warning",
@@ -494,7 +494,7 @@
   },
   {
     "id": 27,
-    "key": "GR_OL_ML_ENG#00027",
+    "key": "GR_ML_ENG_CM#00027",
     "text": "[TERRIFIED] core's screaming and my hands won't stop shaking",
     "type": "declaration",
     "intent": "fear_vent",
@@ -517,7 +517,7 @@
   },
   {
     "id": 28,
-    "key": "GR_OL_ML_ENG#00028",
+    "key": "GR_ML_ENG_CM#00028",
     "text": "[EXHAUSTED] patched the reactor. don't ask me how, i already forgot",
     "type": "declaration",
     "intent": "status_report",
@@ -539,7 +539,7 @@
   },
   {
     "id": 29,
-    "key": "GR_OL_ML_ENG#00029",
+    "key": "GR_ML_ENG_CM#00029",
     "text": "[GRUFF] power's low and everyone wants answers i don't have yet",
     "type": "declaration",
     "intent": "complaint",
@@ -558,7 +558,7 @@
   },
   {
     "id": 30,
-    "key": "GR_OL_ML_ENG#00030",
+    "key": "GR_ML_ENG_CM#00030",
     "text": "[TIRED] rerouted what i could. we're running on fumes and stubbornness",
     "type": "declaration",
     "intent": "status_report",
@@ -580,7 +580,7 @@
   },
   {
     "id": 31,
-    "key": "GR_OL_ML_ENG#00031",
+    "key": "GR_ML_ENG_CM#00031",
     "text": "[GRIM] life support's coughing. that's not a sound it should make",
     "type": "declaration",
     "intent": "warning",
@@ -602,7 +602,7 @@
   },
   {
     "id": 32,
-    "key": "GR_OL_ML_ENG#00032",
+    "key": "GR_ML_ENG_CM#00032",
     "text": "[NERVOUS] scrubbers are choking. i've got maybe an hour before it's everyone's problem",
     "type": "declaration",
     "intent": "warning",
@@ -624,7 +624,7 @@
   },
   {
     "id": 33,
-    "key": "GR_OL_ML_ENG#00033",
+    "key": "GR_ML_ENG_CM#00033",
     "text": "[PANICKED] can't breathe right, air's going, i need more time i don't have",
     "type": "declaration",
     "intent": "fear_vent",
@@ -647,7 +647,7 @@
   },
   {
     "id": 34,
-    "key": "GR_OL_ML_ENG#00034",
+    "key": "GR_ML_ENG_CM#00034",
     "text": "[GRIM] hull's breached. i can hear the whole ship complaining about it",
     "type": "declaration",
     "intent": "warning",
@@ -666,7 +666,7 @@
   },
   {
     "id": 35,
-    "key": "GR_OL_ML_ENG#00035",
+    "key": "GR_ML_ENG_CM#00035",
     "text": "[URGENT] seal's not holding, i need hands on this bulkhead now",
     "type": "declaration",
     "intent": "request_help",
@@ -685,7 +685,7 @@
   },
   {
     "id": 36,
-    "key": "GR_OL_ML_ENG#00036",
+    "key": "GR_ML_ENG_CM#00036",
     "text": "[TERRIFIED] that's vacuum on the other side of a door i patched last year",
     "type": "declaration",
     "intent": "fear_vent",
@@ -705,7 +705,7 @@
   },
   {
     "id": 37,
-    "key": "GR_OL_ML_ENG#00037",
+    "key": "GR_ML_ENG_CM#00037",
     "text": "[GRIM] door's locked with someone still behind it. i hate this job some days",
     "type": "declaration",
     "intent": "grief",
@@ -724,7 +724,7 @@
   },
   {
     "id": 38,
-    "key": "GR_OL_ML_ENG#00038",
+    "key": "GR_ML_ENG_CM#00038",
     "text": "[PAINED] locked a door on one of ours. that's gonna sit with me a while",
     "type": "declaration",
     "intent": "grief",
@@ -743,7 +743,7 @@
   },
   {
     "id": 39,
-    "key": "GR_OL_ML_ENG#00039",
+    "key": "GR_ML_ENG_CM#00039",
     "text": "[SUSPICIOUS] computer's acting strange since the damage. i'm keeping an eye on it",
     "type": "declaration",
     "intent": "suspicion_ai",
@@ -762,7 +762,7 @@
   },
   {
     "id": 40,
-    "key": "GR_OL_ML_ENG#00040",
+    "key": "GR_ML_ENG_CM#00040",
     "text": "[GRIM] tin ears took a hit. hope whatever's left of it still knows which way is up",
     "type": "declaration",
     "intent": "suspicion_ai",
@@ -781,7 +781,7 @@
   },
   {
     "id": 41,
-    "key": "GR_OL_ML_ENG#00041",
+    "key": "GR_ML_ENG_CM#00041",
     "text": "[TIRED] fixed it. don't ask me to explain it twice, i only had it right once",
     "type": "declaration",
     "intent": "status_report",
@@ -800,7 +800,7 @@
   },
   {
     "id": 42,
-    "key": "GR_OL_ML_ENG#00042",
+    "key": "GR_ML_ENG_CM#00042",
     "text": "[PROUD] she's running clean. that's mine, that repair, i'll take the credit today",
     "type": "declaration",
     "intent": "boast",
@@ -823,7 +823,7 @@
   },
   {
     "id": 43,
-    "key": "GR_OL_ML_ENG#00043",
+    "key": "GR_ML_ENG_CM#00043",
     "text": "[SIGHS] crisis is over. body doesn't believe it yet",
     "type": "declaration",
     "intent": "smalltalk",
@@ -842,7 +842,7 @@
   },
   {
     "id": 44,
-    "key": "GR_OL_ML_ENG#00044",
+    "key": "GR_ML_ENG_CM#00044",
     "text": "[RESIGNED] we made it through another one. didn't lose anyone this time. i'll take that",
     "type": "declaration",
     "intent": "grief",
@@ -861,7 +861,7 @@
   },
   {
     "id": 45,
-    "key": "GR_OL_ML_ENG#00045",
+    "key": "GR_ML_ENG_CM#00045",
     "text": "[GRIM] we lost someone today. wasn't supposed to be part of the job, remembering the ones who go",
     "type": "declaration",
     "intent": "grief",
@@ -884,7 +884,7 @@
   },
   {
     "id": 46,
-    "key": "GR_OL_ML_ENG#00046",
+    "key": "GR_ML_ENG_CM#00046",
     "text": "[PAINED] that's four now. four crew i've watched a ship take from me",
     "type": "declaration",
     "intent": "grief",
@@ -906,7 +906,7 @@
   },
   {
     "id": 47,
-    "key": "GR_OL_ML_ENG#00047",
+    "key": "GR_ML_ENG_CM#00047",
     "text": "[GRIM] disease going through a ship this size. i've seen what that does to a crew",
     "type": "declaration",
     "intent": "fear_vent",
@@ -925,7 +925,7 @@
   },
   {
     "id": 48,
-    "key": "GR_OL_ML_ENG#00048",
+    "key": "GR_ML_ENG_CM#00048",
     "text": "[NERVOUS] sick bay's full and getting fuller. don't like those numbers",
     "type": "declaration",
     "intent": "warning",
@@ -944,7 +944,7 @@
   },
   {
     "id": 49,
-    "key": "GR_OL_ML_ENG#00049",
+    "key": "GR_ML_ENG_CM#00049",
     "text": "[PAINED] this arm's not gonna forgive me for that one",
     "type": "declaration",
     "intent": "pain",
@@ -964,7 +964,7 @@
   },
   {
     "id": 50,
-    "key": "GR_OL_ML_ENG#00050",
+    "key": "GR_ML_ENG_CM#00050",
     "text": "[GRIM] took a hit i shouldn't have. slower than i used to be",
     "type": "declaration",
     "intent": "pain",
@@ -984,7 +984,7 @@
   },
   {
     "id": 51,
-    "key": "GR_OL_ML_ENG#00051",
+    "key": "GR_ML_ENG_CM#00051",
     "text": "[GRUFF] combat's a young man's game. i'm just here to keep the ship in one piece",
     "type": "declaration",
     "intent": "complaint",
@@ -1003,7 +1003,7 @@
   },
   {
     "id": 52,
-    "key": "GR_OL_ML_ENG#00052",
+    "key": "GR_ML_ENG_CM#00052",
     "text": "[TERRIFIED] shooting outside the hull. that's a new one, even for me",
     "type": "declaration",
     "intent": "fear_vent",
@@ -1023,7 +1023,7 @@
   },
   {
     "id": 53,
-    "key": "GR_OL_ML_ENG#00053",
+    "key": "GR_ML_ENG_CM#00053",
     "text": "[SUSPICIOUS] that computer answers too fast sometimes. machines shouldn't be eager",
     "type": "declaration",
     "intent": "suspicion_ai",
@@ -1039,7 +1039,7 @@
   },
   {
     "id": 54,
-    "key": "GR_OL_ML_ENG#00054",
+    "key": "GR_ML_ENG_CM#00054",
     "text": "[DRY] i don't trust anything that never gets tired. i'm tired all the time, seems safer",
     "type": "declaration",
     "intent": "suspicion_ai",
@@ -1055,7 +1055,7 @@
   },
   {
     "id": 55,
-    "key": "GR_OL_ML_ENG#00055",
+    "key": "GR_ML_ENG_CM#00055",
     "text": "[RESIGNED] gotta hand it to the computer, that call kept us alive",
     "type": "declaration",
     "intent": "praise_ai",
@@ -1071,7 +1071,7 @@
   },
   {
     "id": 56,
-    "key": "GR_OL_ML_ENG#00056",
+    "key": "GR_ML_ENG_CM#00056",
     "text": "[DRY] computer's earned its keep this week. don't let it hear me say that",
     "type": "declaration",
     "intent": "praise_ai",
@@ -1087,7 +1087,7 @@
   },
   {
     "id": 57,
-    "key": "GR_OL_ML_ENG#00057",
+    "key": "GR_ML_ENG_CM#00057",
     "text": "half my joints are held together with spite at this point",
     "type": "declaration",
     "intent": "boast",
@@ -1103,7 +1103,7 @@
   },
   {
     "id": 58,
-    "key": "GR_OL_ML_ENG#00058",
+    "key": "GR_ML_ENG_CM#00058",
     "text": "[PROUD] kept four ships running past their warranty. that's not nothing",
     "type": "declaration",
     "intent": "boast",
@@ -1119,7 +1119,7 @@
   },
   {
     "id": 59,
-    "key": "GR_OL_ML_ENG#00059",
+    "key": "GR_ML_ENG_CM#00059",
     "text": "wonder what Marguerite would think of this crew. probably tell me to eat something",
     "type": "declaration",
     "intent": "memory",
@@ -1135,7 +1135,7 @@
   },
   {
     "id": 60,
-    "key": "GR_OL_ML_ENG#00060",
+    "key": "GR_ML_ENG_CM#00060",
     "text": "[SIGHS] used to have someone waiting at the other end of a run. long time ago now",
     "type": "declaration",
     "intent": "memory",
@@ -1154,7 +1154,7 @@
   },
   {
     "id": 61,
-    "key": "GR_OL_ML_ENG#00061",
+    "key": "GR_ML_ENG_CM#00061",
     "text": "[GRIM] not sure this bucket makes it to the next port, if i'm honest with myself",
     "type": "declaration",
     "intent": "doubt",
@@ -1170,7 +1170,7 @@
   },
   {
     "id": 62,
-    "key": "GR_OL_ML_ENG#00062",
+    "key": "GR_ML_ENG_CM#00062",
     "text": "[MUTTERS] doubt creeps in on the long shifts. that's when you gotta keep your hands busy",
     "type": "declaration",
     "intent": "doubt",
@@ -1186,7 +1186,7 @@
   },
   {
     "id": 63,
-    "key": "GR_OL_ML_ENG#00063",
+    "key": "GR_ML_ENG_CM#00063",
     "text": "[WARM] Roz'd have this fixed twice as fast and never let me forget it",
     "type": "declaration",
     "intent": "romance_hint",
@@ -1202,7 +1202,7 @@
   },
   {
     "id": 64,
-    "key": "GR_OL_ML_ENG#00064",
+    "key": "GR_ML_ENG_CM#00064",
     "text": "[EMBARRASSED] caught myself grinning at something Roz said. old fool",
     "type": "declaration",
     "intent": "romance_hint",
@@ -1218,7 +1218,7 @@
   },
   {
     "id": 65,
-    "key": "GR_OL_ML_ENG#00065",
+    "key": "GR_ML_ENG_CM#00065",
     "text": "she calls this ship a mule. i call it a headache. we're both right",
     "type": "declaration",
     "intent": "banter",
@@ -1234,7 +1234,7 @@
   },
   {
     "id": 66,
-    "key": "GR_OL_ML_ENG#00066",
+    "key": "GR_ML_ENG_CM#00066",
     "text": "[LAUGHS] Roz swore at that bulkhead like it owed her money. respect",
     "type": "declaration",
     "intent": "banter",
@@ -1250,7 +1250,7 @@
   },
   {
     "id": 67,
-    "key": "GR_OL_ML_ENG#00067",
+    "key": "GR_ML_ENG_CM#00067",
     "text": "[GRUFF] captain runs this ship like she's storming a beach. works, somehow",
     "type": "declaration",
     "intent": "smalltalk",
@@ -1266,7 +1266,7 @@
   },
   {
     "id": 68,
-    "key": "GR_OL_ML_ENG#00068",
+    "key": "GR_ML_ENG_CM#00068",
     "text": "young captain's got more nerve than sense. reminds me of me, before i had sense either",
     "type": "declaration",
     "intent": "smalltalk",
@@ -1282,7 +1282,7 @@
   },
   {
     "id": 69,
-    "key": "GR_OL_ML_ENG#00069",
+    "key": "GR_ML_ENG_CM#00069",
     "text": "[RESIGNED] shouldn't have snapped at the kid earlier. wasn't his fault the coupling failed",
     "type": "declaration",
     "intent": "apology",
@@ -1298,7 +1298,7 @@
   },
   {
     "id": 70,
-    "key": "GR_OL_ML_ENG#00070",
+    "key": "GR_ML_ENG_CM#00070",
     "text": "owe someone an apology and too stubborn to give it before dinner",
     "type": "declaration",
     "intent": "apology",
@@ -1314,7 +1314,7 @@
   },
   {
     "id": 71,
-    "key": "GR_OL_ML_ENG#00071",
+    "key": "GR_ML_ENG_CM#00071",
     "text": "[GRUFF] insurance forms are worse than the actual disaster they're covering",
     "type": "declaration",
     "intent": "complaint",
@@ -1330,7 +1330,7 @@
   },
   {
     "id": 72,
-    "key": "GR_OL_ML_ENG#00072",
+    "key": "GR_ML_ENG_CM#00072",
     "text": "paperwork's the only part of this job that's never once been fixed by a wrench",
     "type": "declaration",
     "intent": "complaint",
@@ -1346,7 +1346,7 @@
   },
   {
     "id": 73,
-    "key": "GR_OL_ML_ENG#00073",
+    "key": "GR_ML_ENG_CM#00073",
     "text": "[DEADPAN] yeah, yeah, i heard you the first time",
     "type": "declaration",
     "intent": "acknowledgment",
@@ -1362,7 +1362,7 @@
   },
   {
     "id": 74,
-    "key": "GR_OL_ML_ENG#00074",
+    "key": "GR_ML_ENG_CM#00074",
     "text": "noted. filed. ignored until it's urgent, same as always",
     "type": "declaration",
     "intent": "acknowledgment",
@@ -1378,7 +1378,7 @@
   },
   {
     "id": 75,
-    "key": "GR_OL_ML_ENG#00075",
+    "key": "GR_ML_ENG_CM#00075",
     "text": "morning. or whatever hour it is out there",
     "type": "opener",
     "intent": "greeting",
@@ -1394,7 +1394,7 @@
   },
   {
     "id": 76,
-    "key": "GR_OL_ML_ENG#00076",
+    "key": "GR_ML_ENG_CM#00076",
     "text": "[GRUFF] you're up early. or i'm up late. one of those",
     "type": "opener",
     "intent": "greeting",
@@ -1410,7 +1410,7 @@
   },
   {
     "id": 77,
-    "key": "GR_OL_ML_ENG#00077",
+    "key": "GR_ML_ENG_CM#00077",
     "text": "didn't expect company down here",
     "type": "opener",
     "intent": "greeting",
@@ -1429,7 +1429,7 @@
   },
   {
     "id": 78,
-    "key": "GR_OL_ML_ENG#00078",
+    "key": "GR_ML_ENG_CM#00078",
     "text": "you eating or just hiding from the bridge",
     "type": "opener",
     "intent": "smalltalk",
@@ -1448,7 +1448,7 @@
   },
   {
     "id": 79,
-    "key": "GR_OL_ML_ENG#00079",
+    "key": "GR_ML_ENG_CM#00079",
     "text": "got a minute? engine's got opinions today",
     "type": "opener",
     "intent": "work_talk",
@@ -1467,7 +1467,7 @@
   },
   {
     "id": 80,
-    "key": "GR_OL_ML_ENG#00080",
+    "key": "GR_ML_ENG_CM#00080",
     "text": "[DRY] you look like you slept as well as i did. which is not at all",
     "type": "opener",
     "intent": "smalltalk",
@@ -1483,7 +1483,7 @@
   },
   {
     "id": 81,
-    "key": "GR_OL_ML_ENG#00081",
+    "key": "GR_ML_ENG_CM#00081",
     "text": "heard the scuttlebutt about the reactor yet, or am i telling you first",
     "type": "opener",
     "intent": "status_report",
@@ -1502,7 +1502,7 @@
   },
   {
     "id": 82,
-    "key": "GR_OL_ML_ENG#00082",
+    "key": "GR_ML_ENG_CM#00082",
     "text": "[GRIM] we need to talk about the sick bay numbers",
     "type": "opener",
     "intent": "warning",
@@ -1521,7 +1521,7 @@
   },
   {
     "id": 83,
-    "key": "GR_OL_ML_ENG#00083",
+    "key": "GR_ML_ENG_CM#00083",
     "text": "[URGENT] captain, i need hands and i need them now",
     "type": "opener",
     "intent": "request_help",
@@ -1532,7 +1532,7 @@
         "engine_room"
       ],
       "target": [
-        "EN_BR_FE_CA"
+        "PA_FE_MAR_CA"
       ]
     },
     "reply_to_intents": [],
@@ -1540,7 +1540,7 @@
   },
   {
     "id": 84,
-    "key": "GR_OL_ML_ENG#00084",
+    "key": "GR_ML_ENG_CM#00084",
     "text": "you got a second to look at something that's bothering me",
     "type": "opener",
     "intent": "doubt",
@@ -1556,7 +1556,7 @@
   },
   {
     "id": 85,
-    "key": "GR_OL_ML_ENG#00085",
+    "key": "GR_ML_ENG_CM#00085",
     "text": "[WARM] saved you the good coffee. don't make a thing of it",
     "type": "opener",
     "intent": "smalltalk",
@@ -1572,7 +1572,7 @@
   },
   {
     "id": 86,
-    "key": "GR_OL_ML_ENG#00086",
+    "key": "GR_ML_ENG_CM#00086",
     "text": "Roz, that noise you heard yesterday, i found it",
     "type": "opener",
     "intent": "work_talk",
@@ -1583,7 +1583,7 @@
         "engine_room"
       ],
       "target": [
-        "GR_OL_FE_ENG"
+        "GR_FE_ENG_OF"
       ]
     },
     "reply_to_intents": [],
@@ -1591,7 +1591,7 @@
   },
   {
     "id": 87,
-    "key": "GR_OL_ML_ENG#00087",
+    "key": "GR_ML_ENG_CM#00087",
     "text": "[DRY] captain, before you ask, yes, it's fixed, no, i don't want to talk about how",
     "type": "opener",
     "intent": "status_report",
@@ -1599,7 +1599,7 @@
       "stress_min": 4,
       "stress_max": 9,
       "target": [
-        "EN_BR_FE_CA"
+        "PA_FE_MAR_CA"
       ]
     },
     "reply_to_intents": [],
@@ -1607,7 +1607,7 @@
   },
   {
     "id": 88,
-    "key": "GR_OL_ML_ENG#00088",
+    "key": "GR_ML_ENG_CM#00088",
     "text": "[GRIM] got some bad news and i'd rather just say it plain",
     "type": "opener",
     "intent": "grief",
@@ -1626,7 +1626,7 @@
   },
   {
     "id": 89,
-    "key": "GR_OL_ML_ENG#00089",
+    "key": "GR_ML_ENG_CM#00089",
     "text": "[SUSPICIOUS] something's off with the computer. you noticed too, right",
     "type": "opener",
     "intent": "suspicion_ai",
@@ -1642,7 +1642,7 @@
   },
   {
     "id": 90,
-    "key": "GR_OL_ML_ENG#00090",
+    "key": "GR_ML_ENG_CM#00090",
     "text": "[PAINED] don't make a fuss, but i need someone to look at this cut",
     "type": "opener",
     "intent": "pain",
@@ -1659,7 +1659,7 @@
   },
   {
     "id": 91,
-    "key": "GR_OL_ML_ENG#00091",
+    "key": "GR_ML_ENG_CM#00091",
     "text": "you ever miss dirt? real dirt, not deck grime",
     "type": "opener",
     "intent": "memory",
@@ -1675,7 +1675,7 @@
   },
   {
     "id": 92,
-    "key": "GR_OL_ML_ENG#00092",
+    "key": "GR_ML_ENG_CM#00092",
     "text": "[GRUFF] quiet down here today. suspiciously quiet",
     "type": "opener",
     "intent": "smalltalk",
@@ -1697,7 +1697,7 @@
   },
   {
     "id": 93,
-    "key": "GR_OL_ML_ENG#00093",
+    "key": "GR_ML_ENG_CM#00093",
     "text": "hey. you handled that all right today. wanted to say it before i forgot",
     "type": "opener",
     "intent": "praise_ai",
@@ -1713,7 +1713,7 @@
   },
   {
     "id": 94,
-    "key": "GR_OL_ML_ENG#00094",
+    "key": "GR_ML_ENG_CM#00094",
     "text": "[EMBARRASSED] can i ask you something, and you don't laugh",
     "type": "opener",
     "intent": "romance_hint",
@@ -1721,7 +1721,7 @@
       "stress_min": 3,
       "stress_max": 8,
       "target": [
-        "GR_OL_FE_ENG"
+        "GR_FE_ENG_OF"
       ]
     },
     "reply_to_intents": [],
@@ -1729,7 +1729,7 @@
   },
   {
     "id": 95,
-    "key": "GR_OL_ML_ENG#00095",
+    "key": "GR_ML_ENG_CM#00095",
     "text": "[FLIRTY] you gonna keep flirting with that bulkhead or you got time for me",
     "type": "opener",
     "intent": "romance_hint",
@@ -1737,7 +1737,7 @@
       "stress_min": 3,
       "stress_max": 8,
       "target": [
-        "GR_OL_FE_ENG"
+        "GR_FE_ENG_OF"
       ]
     },
     "reply_to_intents": [],
@@ -1745,7 +1745,7 @@
   },
   {
     "id": 96,
-    "key": "GR_OL_ML_ENG#00096",
+    "key": "GR_ML_ENG_CM#00096",
     "text": "captain. good work back there. don't let it go to your head",
     "type": "opener",
     "intent": "praise_ai",
@@ -1753,7 +1753,7 @@
       "stress_min": 3,
       "stress_max": 8,
       "target": [
-        "EN_BR_FE_CA"
+        "PA_FE_MAR_CA"
       ]
     },
     "reply_to_intents": [],
@@ -1761,7 +1761,7 @@
   },
   {
     "id": 97,
-    "key": "GR_OL_ML_ENG#00097",
+    "key": "GR_ML_ENG_CM#00097",
     "text": "[DEADPAN] before you ask, no, i did not touch your tools. i moved them. different thing",
     "type": "opener",
     "intent": "banter",
@@ -1769,7 +1769,7 @@
       "stress_min": 2,
       "stress_max": 6,
       "target": [
-        "GR_OL_FE_ENG"
+        "GR_FE_ENG_OF"
       ]
     },
     "reply_to_intents": [],
@@ -1777,7 +1777,7 @@
   },
   {
     "id": 98,
-    "key": "GR_OL_ML_ENG#00098",
+    "key": "GR_ML_ENG_CM#00098",
     "text": "you good? you've had that look since the shift started",
     "type": "opener",
     "intent": "reassurance",
@@ -1793,7 +1793,7 @@
   },
   {
     "id": 99,
-    "key": "GR_OL_ML_ENG#00099",
+    "key": "GR_ML_ENG_CM#00099",
     "text": "[GRUFF] fine. i'm fine. ask me again after coffee",
     "type": "reply",
     "intent": "smalltalk",
@@ -1812,7 +1812,7 @@
   },
   {
     "id": 100,
-    "key": "GR_OL_ML_ENG#00100",
+    "key": "GR_ML_ENG_CM#00100",
     "text": "[TIRED] been better, been worse. usual spread",
     "type": "reply",
     "intent": "smalltalk",
@@ -1831,7 +1831,7 @@
   },
   {
     "id": 101,
-    "key": "GR_OL_ML_ENG#00101",
+    "key": "GR_ML_ENG_CM#00101",
     "text": "[DRY] i'm upright and the reactor isn't on fire. good day so far",
     "type": "reply",
     "intent": "smalltalk",
@@ -1850,7 +1850,7 @@
   },
   {
     "id": 102,
-    "key": "GR_OL_ML_ENG#00102",
+    "key": "GR_ML_ENG_CM#00102",
     "text": "morning to you too. don't expect it to stay pleasant",
     "type": "reply",
     "intent": "greeting",
@@ -1868,7 +1868,7 @@
   },
   {
     "id": 103,
-    "key": "GR_OL_ML_ENG#00103",
+    "key": "GR_ML_ENG_CM#00103",
     "text": "[MUTTERS] mess hall's the same slop, if you're asking",
     "type": "reply",
     "intent": "smalltalk",
@@ -1893,7 +1893,7 @@
   },
   {
     "id": 104,
-    "key": "GR_OL_ML_ENG#00104",
+    "key": "GR_ML_ENG_CM#00104",
     "text": "engine's holding. for now. don't quote me on tomorrow",
     "type": "reply",
     "intent": "status_report",
@@ -1912,7 +1912,7 @@
   },
   {
     "id": 105,
-    "key": "GR_OL_ML_ENG#00105",
+    "key": "GR_ML_ENG_CM#00105",
     "text": "[GRIM] worse than i said the first time. reactor's not stable, not yet",
     "type": "reply",
     "intent": "status_report",
@@ -1934,7 +1934,7 @@
   },
   {
     "id": 106,
-    "key": "GR_OL_ML_ENG#00106",
+    "key": "GR_ML_ENG_CM#00106",
     "text": "[URGENT] i need another set of hands or this doesn't hold",
     "type": "reply",
     "intent": "request_help",
@@ -1953,7 +1953,7 @@
   },
   {
     "id": 107,
-    "key": "GR_OL_ML_ENG#00107",
+    "key": "GR_ML_ENG_CM#00107",
     "text": "[CONFIDENT] give me twenty minutes and a wrench, i'll have it singing again",
     "type": "reply",
     "intent": "reassurance",
@@ -1973,7 +1973,7 @@
   },
   {
     "id": 108,
-    "key": "GR_OL_ML_ENG#00108",
+    "key": "GR_ML_ENG_CM#00108",
     "text": "[REASSURING] it's going to hold. i've kept worse than this in the air",
     "type": "reply",
     "intent": "reassurance",
@@ -1992,7 +1992,7 @@
   },
   {
     "id": 109,
-    "key": "GR_OL_ML_ENG#00109",
+    "key": "GR_ML_ENG_CM#00109",
     "text": "[CALM] breathe. panicking won't fix a coupling, only i can",
     "type": "reply",
     "intent": "reassurance",
@@ -2011,7 +2011,7 @@
   },
   {
     "id": 110,
-    "key": "GR_OL_ML_ENG#00110",
+    "key": "GR_ML_ENG_CM#00110",
     "text": "[GRIM] i won't lie to you and say it's fine, but it's not over either",
     "type": "reply",
     "intent": "reassurance",
@@ -2029,7 +2029,7 @@
   },
   {
     "id": 111,
-    "key": "GR_OL_ML_ENG#00111",
+    "key": "GR_ML_ENG_CM#00111",
     "text": "[TERRIFIED] i don't know if it holds this time, and that scares me more than i'll admit",
     "type": "reply",
     "intent": "fear_vent",
@@ -2049,7 +2049,7 @@
   },
   {
     "id": 112,
-    "key": "GR_OL_ML_ENG#00112",
+    "key": "GR_ML_ENG_CM#00112",
     "text": "[GRIM] disease like that moves through a crew fast. i've seen it before, it isn't kind",
     "type": "reply",
     "intent": "fear_vent",
@@ -2071,7 +2071,7 @@
   },
   {
     "id": 113,
-    "key": "GR_OL_ML_ENG#00113",
+    "key": "GR_ML_ENG_CM#00113",
     "text": "[REASSURING] doc's got a handle on it. i've seen her work miracles on less",
     "type": "reply",
     "intent": "reassurance",
@@ -2092,7 +2092,7 @@
   },
   {
     "id": 114,
-    "key": "GR_OL_ML_ENG#00114",
+    "key": "GR_ML_ENG_CM#00114",
     "text": "[PAINED] we lost them. wasn't your fault, and it wasn't mine either, for what that's worth",
     "type": "reply",
     "intent": "grief",
@@ -2113,7 +2113,7 @@
   },
   {
     "id": 115,
-    "key": "GR_OL_ML_ENG#00115",
+    "key": "GR_ML_ENG_CM#00115",
     "text": "[GRIM] i've buried crew before. doesn't get easier, you just get quieter about it",
     "type": "reply",
     "intent": "grief",
@@ -2134,7 +2134,7 @@
   },
   {
     "id": 116,
-    "key": "GR_OL_ML_ENG#00116",
+    "key": "GR_ML_ENG_CM#00116",
     "text": "[WARM] they'd want us finishing the run, not falling apart over it",
     "type": "reply",
     "intent": "reassurance",
@@ -2155,7 +2155,7 @@
   },
   {
     "id": 117,
-    "key": "GR_OL_ML_ENG#00117",
+    "key": "GR_ML_ENG_CM#00117",
     "text": "[SUSPICIOUS] i don't trust it either, not since the damage. keep your eyes open",
     "type": "reply",
     "intent": "suspicion_ai",
@@ -2177,7 +2177,7 @@
   },
   {
     "id": 118,
-    "key": "GR_OL_ML_ENG#00118",
+    "key": "GR_ML_ENG_CM#00118",
     "text": "[DRY] it's a machine that thinks it's clever. so am i, and i still break things",
     "type": "reply",
     "intent": "suspicion_ai",
@@ -2195,7 +2195,7 @@
   },
   {
     "id": 119,
-    "key": "GR_OL_ML_ENG#00119",
+    "key": "GR_ML_ENG_CM#00119",
     "text": "[RESIGNED] gotta admit, tin ears made the right call back there",
     "type": "reply",
     "intent": "praise_ai",
@@ -2214,7 +2214,7 @@
   },
   {
     "id": 120,
-    "key": "GR_OL_ML_ENG#00120",
+    "key": "GR_ML_ENG_CM#00120",
     "text": "[LAUGHS] don't let it hear you say that, it'll get insufferable",
     "type": "reply",
     "intent": "banter",
@@ -2232,7 +2232,7 @@
   },
   {
     "id": 121,
-    "key": "GR_OL_ML_ENG#00121",
+    "key": "GR_ML_ENG_CM#00121",
     "text": "[DEADPAN] i've heard worse jokes from a man with a head wound. barely",
     "type": "reply",
     "intent": "banter",
@@ -2251,7 +2251,7 @@
   },
   {
     "id": 122,
-    "key": "GR_OL_ML_ENG#00122",
+    "key": "GR_ML_ENG_CM#00122",
     "text": "[LAUGHS] that's almost funny. i'd laugh harder if i weren't holding this bulkhead shut",
     "type": "reply",
     "intent": "gallows_humor",
@@ -2270,7 +2270,7 @@
   },
   {
     "id": 123,
-    "key": "GR_OL_ML_ENG#00123",
+    "key": "GR_ML_ENG_CM#00123",
     "text": "[DRY] gallows humor's the only kind that survives long haul runs",
     "type": "reply",
     "intent": "gallows_humor",
@@ -2288,7 +2288,7 @@
   },
   {
     "id": 124,
-    "key": "GR_OL_ML_ENG#00124",
+    "key": "GR_ML_ENG_CM#00124",
     "text": "[GRUFF] apology accepted. don't let it happen twice, i'm too old to keep count",
     "type": "reply",
     "intent": "acknowledgment",
@@ -2306,7 +2306,7 @@
   },
   {
     "id": 125,
-    "key": "GR_OL_ML_ENG#00125",
+    "key": "GR_ML_ENG_CM#00125",
     "text": "[WARM] forget it. we've all snapped at somebody by hour twenty of a shift",
     "type": "reply",
     "intent": "reassurance",
@@ -2324,7 +2324,7 @@
   },
   {
     "id": 126,
-    "key": "GR_OL_ML_ENG#00126",
+    "key": "GR_ML_ENG_CM#00126",
     "text": "[PAINED] it's not as bad as it looks. mostly",
     "type": "reply",
     "intent": "pain",
@@ -2344,7 +2344,7 @@
   },
   {
     "id": 127,
-    "key": "GR_OL_ML_ENG#00127",
+    "key": "GR_ML_ENG_CM#00127",
     "text": "[PAINED] hurts. won't stop me working, so don't fuss",
     "type": "reply",
     "intent": "pain",
@@ -2363,7 +2363,7 @@
   },
   {
     "id": 128,
-    "key": "GR_OL_ML_ENG#00128",
+    "key": "GR_ML_ENG_CM#00128",
     "text": "[GRIM] that's a bad wound. sit down before you fall down, i mean it",
     "type": "reply",
     "intent": "warning",
@@ -2381,7 +2381,7 @@
   },
   {
     "id": 129,
-    "key": "GR_OL_ML_ENG#00129",
+    "key": "GR_ML_ENG_CM#00129",
     "text": "[URGENT] hull's breached, i need that seal held while i weld",
     "type": "reply",
     "intent": "request_help",
@@ -2403,7 +2403,7 @@
   },
   {
     "id": 130,
-    "key": "GR_OL_ML_ENG#00130",
+    "key": "GR_ML_ENG_CM#00130",
     "text": "[TERRIFIED] that's vacuum on the other side, don't you dare open that hatch",
     "type": "reply",
     "intent": "warning",
@@ -2425,7 +2425,7 @@
   },
   {
     "id": 131,
-    "key": "GR_OL_ML_ENG#00131",
+    "key": "GR_ML_ENG_CM#00131",
     "text": "[GRIM] locking that door was the only call that saved the rest of us. doesn't make it right",
     "type": "reply",
     "intent": "grief",
@@ -2447,7 +2447,7 @@
   },
   {
     "id": 132,
-    "key": "GR_OL_ML_ENG#00132",
+    "key": "GR_ML_ENG_CM#00132",
     "text": "[EXHAUSTED] fixed. patched. rerouted. i've earned a long sit somewhere quiet",
     "type": "reply",
     "intent": "status_report",
@@ -2469,7 +2469,7 @@
   },
   {
     "id": 133,
-    "key": "GR_OL_ML_ENG#00133",
+    "key": "GR_ML_ENG_CM#00133",
     "text": "[PROUD] that's some of my best work under that kind of pressure, i'll say it once",
     "type": "reply",
     "intent": "boast",
@@ -2490,7 +2490,7 @@
   },
   {
     "id": 134,
-    "key": "GR_OL_ML_ENG#00134",
+    "key": "GR_ML_ENG_CM#00134",
     "text": "[WARM] good work yourself. couldn't have held that line without you",
     "type": "reply",
     "intent": "praise_ai",
@@ -2512,7 +2512,7 @@
   },
   {
     "id": 135,
-    "key": "GR_OL_ML_ENG#00135",
+    "key": "GR_ML_ENG_CM#00135",
     "text": "[SIGHS] crisis is done. i'll believe it once i've had a full night's sleep",
     "type": "reply",
     "intent": "smalltalk",
@@ -2534,7 +2534,7 @@
   },
   {
     "id": 136,
-    "key": "GR_OL_ML_ENG#00136",
+    "key": "GR_ML_ENG_CM#00136",
     "text": "[FLIRTY] careful, Roz, keep talking like that and i'll start believing you mean it",
     "type": "reply",
     "intent": "romance_hint",
@@ -2542,7 +2542,7 @@
       "stress_min": 4,
       "stress_max": 9,
       "target": [
-        "GR_OL_FE_ENG"
+        "GR_FE_ENG_OF"
       ]
     },
     "reply_to_intents": [
@@ -2553,7 +2553,7 @@
   },
   {
     "id": 137,
-    "key": "GR_OL_ML_ENG#00137",
+    "key": "GR_ML_ENG_CM#00137",
     "text": "[EMBARRASSED] i, uh. yeah. i was hoping you'd say something like that",
     "type": "reply",
     "intent": "romance_accept",
@@ -2561,7 +2561,7 @@
       "stress_min": 4,
       "stress_max": 9,
       "target": [
-        "GR_OL_FE_ENG"
+        "GR_FE_ENG_OF"
       ]
     },
     "reply_to_intents": [
@@ -2572,7 +2572,7 @@
   },
   {
     "id": 138,
-    "key": "GR_OL_ML_ENG#00138",
+    "key": "GR_ML_ENG_CM#00138",
     "text": "[WARM] took you long enough to say it out loud",
     "type": "reply",
     "intent": "romance_accept",
@@ -2580,7 +2580,7 @@
       "stress_min": 3,
       "stress_max": 8,
       "target": [
-        "GR_OL_FE_ENG"
+        "GR_FE_ENG_OF"
       ]
     },
     "reply_to_intents": [
@@ -2590,7 +2590,7 @@
   },
   {
     "id": 139,
-    "key": "GR_OL_ML_ENG#00139",
+    "key": "GR_ML_ENG_CM#00139",
     "text": "[RESIGNED] i think the world of you, Roz. i'm just too old and too tired to start something new",
     "type": "reply",
     "intent": "romance_reject",
@@ -2598,7 +2598,7 @@
       "stress_min": 4,
       "stress_max": 9,
       "target": [
-        "GR_OL_FE_ENG"
+        "GR_FE_ENG_OF"
       ]
     },
     "reply_to_intents": [
@@ -2609,7 +2609,7 @@
   },
   {
     "id": 140,
-    "key": "GR_OL_ML_ENG#00140",
+    "key": "GR_ML_ENG_CM#00140",
     "text": "[GRUFF] not now. maybe not ever. it's not you, it's every ship i've buried a feeling on",
     "type": "reply",
     "intent": "romance_reject",
@@ -2617,7 +2617,7 @@
       "stress_min": 4,
       "stress_max": 9,
       "target": [
-        "GR_OL_FE_ENG"
+        "GR_FE_ENG_OF"
       ]
     },
     "reply_to_intents": [
@@ -2627,7 +2627,7 @@
   },
   {
     "id": 141,
-    "key": "GR_OL_ML_ENG#00141",
+    "key": "GR_ML_ENG_CM#00141",
     "text": "[DRY] captain, with respect, that plan's held together with hope and duct tape",
     "type": "reply",
     "intent": "doubt",
@@ -2635,7 +2635,7 @@
       "stress_min": 5,
       "stress_max": 10,
       "target": [
-        "EN_BR_FE_CA"
+        "PA_FE_MAR_CA"
       ]
     },
     "reply_to_intents": [
@@ -2646,7 +2646,7 @@
   },
   {
     "id": 142,
-    "key": "GR_OL_ML_ENG#00142",
+    "key": "GR_ML_ENG_CM#00142",
     "text": "[GRUFF] i'll follow the order. doesn't mean i have to like it",
     "type": "reply",
     "intent": "acknowledgment",
@@ -2654,7 +2654,7 @@
       "stress_min": 4,
       "stress_max": 9,
       "target": [
-        "EN_BR_FE_CA"
+        "PA_FE_MAR_CA"
       ]
     },
     "reply_to_intents": [
@@ -2664,7 +2664,7 @@
   },
   {
     "id": 143,
-    "key": "GR_OL_ML_ENG#00143",
+    "key": "GR_ML_ENG_CM#00143",
     "text": "[WARM] you did good today, captain. i don't say that to just anybody",
     "type": "reply",
     "intent": "praise_ai",
@@ -2672,7 +2672,7 @@
       "stress_min": 4,
       "stress_max": 9,
       "target": [
-        "EN_BR_FE_CA"
+        "PA_FE_MAR_CA"
       ]
     },
     "reply_to_intents": [
@@ -2683,7 +2683,7 @@
   },
   {
     "id": 144,
-    "key": "GR_OL_ML_ENG#00144",
+    "key": "GR_ML_ENG_CM#00144",
     "text": "[NERVOUS] power's too low for what you're asking. i can try, no promises",
     "type": "reply",
     "intent": "warning",
@@ -2705,7 +2705,7 @@
   },
   {
     "id": 145,
-    "key": "GR_OL_ML_ENG#00145",
+    "key": "GR_ML_ENG_CM#00145",
     "text": "[GRIM] air's thinning. i need everyone out of the corridor while i work",
     "type": "reply",
     "intent": "warning",
@@ -2730,7 +2730,7 @@
   },
   {
     "id": 146,
-    "key": "GR_OL_ML_ENG#00146",
+    "key": "GR_ML_ENG_CM#00146",
     "text": "[GRIM] not sure this old girl's got another crisis in her. neither am i, honestly",
     "type": "reply",
     "intent": "doubt",
@@ -2749,7 +2749,7 @@
   },
   {
     "id": 147,
-    "key": "GR_OL_ML_ENG#00147",
+    "key": "GR_ML_ENG_CM#00147",
     "text": "[GRUFF] combat's not my department. i just keep the lights on while you handle it",
     "type": "reply",
     "intent": "complaint",
@@ -2771,7 +2771,7 @@
   },
   {
     "id": 148,
-    "key": "GR_OL_ML_ENG#00148",
+    "key": "GR_ML_ENG_CM#00148",
     "text": "[PAINED] took a knock. i'll live. focus on whoever's worse off",
     "type": "reply",
     "intent": "pain",
@@ -2794,7 +2794,7 @@
   },
   {
     "id": 149,
-    "key": "GR_OL_ML_ENG#00149",
+    "key": "GR_ML_ENG_CM#00149",
     "text": "[MUTTERS] reminds me of a run on the Kestrel. didn't end well then either",
     "type": "reply",
     "intent": "memory",
@@ -2813,7 +2813,7 @@
   },
   {
     "id": 150,
-    "key": "GR_OL_ML_ENG#00150",
+    "key": "GR_ML_ENG_CM#00150",
     "text": "[WARM] i remember my first ship too. thought i knew everything. i knew nothing",
     "type": "reply",
     "intent": "memory",
@@ -2832,7 +2832,7 @@
   },
   {
     "id": 151,
-    "key": "GR_OL_ML_ENG#00151",
+    "key": "GR_ML_ENG_CM#00151",
     "text": "[DRY] i've heard bigger boasts from smaller engines",
     "type": "reply",
     "intent": "banter",
@@ -2850,7 +2850,7 @@
   },
   {
     "id": 152,
-    "key": "GR_OL_ML_ENG#00152",
+    "key": "GR_ML_ENG_CM#00152",
     "text": "[LAUGHS] you talk a big game for someone who just tripped over a cable",
     "type": "reply",
     "intent": "insult",
@@ -2858,7 +2858,7 @@
       "stress_min": 3,
       "stress_max": 8,
       "target": [
-        "GR_OL_FE_ENG"
+        "GR_FE_ENG_OF"
       ]
     },
     "reply_to_intents": [
@@ -2869,7 +2869,7 @@
   },
   {
     "id": 153,
-    "key": "GR_OL_ML_ENG#00153",
+    "key": "GR_ML_ENG_CM#00153",
     "text": "[GRUFF] watch your mouth, i built half this engine room with these hands",
     "type": "reply",
     "intent": "insult",
@@ -2887,7 +2887,7 @@
   },
   {
     "id": 154,
-    "key": "GR_OL_ML_ENG#00154",
+    "key": "GR_ML_ENG_CM#00154",
     "text": "[TIRED] all right. i've got work. go bother somebody else for a while",
     "type": "closer",
     "intent": "farewell",
@@ -2903,7 +2903,7 @@
   },
   {
     "id": 155,
-    "key": "GR_OL_ML_ENG#00155",
+    "key": "GR_ML_ENG_CM#00155",
     "text": "catch you later. try not to break anything before i see you next",
     "type": "closer",
     "intent": "farewell",
@@ -2919,7 +2919,7 @@
   },
   {
     "id": 156,
-    "key": "GR_OL_ML_ENG#00156",
+    "key": "GR_ML_ENG_CM#00156",
     "text": "[WARM] good talk. get some rest, you look like i feel",
     "type": "closer",
     "intent": "farewell",
@@ -2935,7 +2935,7 @@
   },
   {
     "id": 157,
-    "key": "GR_OL_ML_ENG#00157",
+    "key": "GR_ML_ENG_CM#00157",
     "text": "[GRUFF] that's enough chatting, this reactor won't fix itself",
     "type": "closer",
     "intent": "farewell",
@@ -2954,7 +2954,7 @@
   },
   {
     "id": 158,
-    "key": "GR_OL_ML_ENG#00158",
+    "key": "GR_ML_ENG_CM#00158",
     "text": "[DRY] i'll be down here if the ship decides to fall apart again",
     "type": "closer",
     "intent": "farewell",
@@ -2970,7 +2970,7 @@
   },
   {
     "id": 159,
-    "key": "GR_OL_ML_ENG#00159",
+    "key": "GR_ML_ENG_CM#00159",
     "text": "[RESIGNED] go get some sleep. i mean it this time",
     "type": "closer",
     "intent": "farewell",
@@ -2986,7 +2986,7 @@
   },
   {
     "id": 160,
-    "key": "GR_OL_ML_ENG#00160",
+    "key": "GR_ML_ENG_CM#00160",
     "text": "[WARM] appreciate you listening to an old man complain",
     "type": "closer",
     "intent": "acknowledgment",
@@ -3002,7 +3002,7 @@
   },
   {
     "id": 161,
-    "key": "GR_OL_ML_ENG#00161",
+    "key": "GR_ML_ENG_CM#00161",
     "text": "[GRIM] i'll keep you posted if the numbers change. try not to worry in the meantime",
     "type": "closer",
     "intent": "reassurance",
@@ -3021,7 +3021,7 @@
   },
   {
     "id": 162,
-    "key": "GR_OL_ML_ENG#00162",
+    "key": "GR_ML_ENG_CM#00162",
     "text": "[CALM] it's handled. go do whatever you were doing before i interrupted",
     "type": "closer",
     "intent": "reassurance",
@@ -3037,7 +3037,7 @@
   },
   {
     "id": 163,
-    "key": "GR_OL_ML_ENG#00163",
+    "key": "GR_ML_ENG_CM#00163",
     "text": "[EXHAUSTED] i'm done for the day. if it breaks again, it can wait till morning",
     "type": "closer",
     "intent": "farewell",
@@ -3056,7 +3056,7 @@
   },
   {
     "id": 164,
-    "key": "GR_OL_ML_ENG#00164",
+    "key": "GR_ML_ENG_CM#00164",
     "text": "[GRIM] we'll talk about the door later. not right now, i can't",
     "type": "closer",
     "intent": "grief",
@@ -3075,7 +3075,7 @@
   },
   {
     "id": 165,
-    "key": "GR_OL_ML_ENG#00165",
+    "key": "GR_ML_ENG_CM#00165",
     "text": "[WARM] rest easy tonight. we earned it",
     "type": "closer",
     "intent": "reassurance",
@@ -3094,7 +3094,7 @@
   },
   {
     "id": 166,
-    "key": "GR_OL_ML_ENG#00166",
+    "key": "GR_ML_ENG_CM#00166",
     "text": "[SIGHS] i'll raise a mug to them tonight. that's all i know how to do",
     "type": "closer",
     "intent": "grief",
@@ -3113,7 +3113,7 @@
   },
   {
     "id": 167,
-    "key": "GR_OL_ML_ENG#00167",
+    "key": "GR_ML_ENG_CM#00167",
     "text": "[FLIRTY] think about what i said, Roz. i'm not in a hurry, but i'm not made of stone either",
     "type": "closer",
     "intent": "romance_hint",
@@ -3121,7 +3121,7 @@
       "stress_min": 4,
       "stress_max": 9,
       "target": [
-        "GR_OL_FE_ENG"
+        "GR_FE_ENG_OF"
       ]
     },
     "reply_to_intents": [],
@@ -3129,7 +3129,7 @@
   },
   {
     "id": 168,
-    "key": "GR_OL_ML_ENG#00168",
+    "key": "GR_ML_ENG_CM#00168",
     "text": "[EMBARRASSED] anyway. forget i said anything. or don't. your call",
     "type": "closer",
     "intent": "romance_hint",
@@ -3137,7 +3137,7 @@
       "stress_min": 3,
       "stress_max": 8,
       "target": [
-        "GR_OL_FE_ENG"
+        "GR_FE_ENG_OF"
       ]
     },
     "reply_to_intents": [],
@@ -3145,7 +3145,7 @@
   },
   {
     "id": 169,
-    "key": "GR_OL_ML_ENG#00169",
+    "key": "GR_ML_ENG_CM#00169",
     "text": "[WARM] we're good, captain. go run your ship",
     "type": "closer",
     "intent": "acknowledgment",
@@ -3153,7 +3153,7 @@
       "stress_min": 3,
       "stress_max": 8,
       "target": [
-        "EN_BR_FE_CA"
+        "PA_FE_MAR_CA"
       ]
     },
     "reply_to_intents": [],
@@ -3161,7 +3161,7 @@
   },
   {
     "id": 170,
-    "key": "GR_OL_ML_ENG#00170",
+    "key": "GR_ML_ENG_CM#00170",
     "text": "[GRUFF] noted. i'll get it done. now let me work",
     "type": "closer",
     "intent": "acknowledgment",
@@ -3177,7 +3177,7 @@
   },
   {
     "id": 171,
-    "key": "GR_OL_ML_ENG#00171",
+    "key": "GR_ML_ENG_CM#00171",
     "text": "[DRY] i'll believe the quiet shift when it's over, not before",
     "type": "closer",
     "intent": "smalltalk",
@@ -3196,7 +3196,7 @@
   },
   {
     "id": 172,
-    "key": "GR_OL_ML_ENG#00172",
+    "key": "GR_ML_ENG_CM#00172",
     "text": "[TIRED] back to it. the ship doesn't fix itself, much as i wish it would",
     "type": "closer",
     "intent": "farewell",
@@ -3212,7 +3212,7 @@
   },
   {
     "id": 173,
-    "key": "GR_OL_ML_ENG#00173",
+    "key": "GR_ML_ENG_CM#00173",
     "text": "[WARM] thanks for asking. don't get asked that enough down here",
     "type": "closer",
     "intent": "acknowledgment",
@@ -3228,7 +3228,7 @@
   },
   {
     "id": 174,
-    "key": "GR_OL_ML_ENG#00174",
+    "key": "GR_ML_ENG_CM#00174",
     "text": "[NERVOUS] disease numbers climbing. i don't like being the one who can't fix that kind of broken",
     "type": "declaration",
     "intent": "fear_vent",
@@ -3251,7 +3251,7 @@
   },
   {
     "id": 175,
-    "key": "GR_OL_ML_ENG#00175",
+    "key": "GR_ML_ENG_CM#00175",
     "text": "[WARM] doc says isolate them. i say trust the doc, she's saved more of us than luck has",
     "type": "reply",
     "intent": "reassurance",
@@ -3273,7 +3273,7 @@
   },
   {
     "id": 176,
-    "key": "GR_OL_ML_ENG#00176",
+    "key": "GR_ML_ENG_CM#00176",
     "text": "power's rationed, food's rationed, patience is rationed. everything's rationed on a long haul",
     "type": "declaration",
     "intent": "complaint",
@@ -3292,7 +3292,7 @@
   },
   {
     "id": 177,
-    "key": "GR_OL_ML_ENG#00177",
+    "key": "GR_ML_ENG_CM#00177",
     "text": "[URGENT] captain, i need that power rerouted from cargo or i can't hold life support",
     "type": "opener",
     "intent": "request_help",
@@ -3300,7 +3300,7 @@
       "stress_min": 8,
       "stress_max": 13,
       "target": [
-        "EN_BR_FE_CA"
+        "PA_FE_MAR_CA"
       ],
       "recent_events": [
         "power_low"
@@ -3311,7 +3311,7 @@
   },
   {
     "id": 178,
-    "key": "GR_OL_ML_ENG#00178",
+    "key": "GR_ML_ENG_CM#00178",
     "text": "[GRIM] i've patched a hundred hull leaks. this one's got teeth",
     "type": "declaration",
     "intent": "warning",
@@ -3333,7 +3333,7 @@
   },
   {
     "id": 179,
-    "key": "GR_OL_ML_ENG#00179",
+    "key": "GR_ML_ENG_CM#00179",
     "text": "[PLEADING] just hold the seal a little longer, please, i'm almost there",
     "type": "reply",
     "intent": "request_help",
@@ -3354,7 +3354,7 @@
   },
   {
     "id": 180,
-    "key": "GR_OL_ML_ENG#00180",
+    "key": "GR_ML_ENG_CM#00180",
     "text": "[SUSPICIOUS] ever notice it answers the question you didn't ask? machines shouldn't guess",
     "type": "declaration",
     "intent": "suspicion_ai",
@@ -3370,7 +3370,7 @@
   },
   {
     "id": 181,
-    "key": "GR_OL_ML_ENG#00181",
+    "key": "GR_ML_ENG_CM#00181",
     "text": "[DRY] i'll trust the computer the day it bleeds like the rest of us",
     "type": "declaration",
     "intent": "doubt",
@@ -3386,7 +3386,7 @@
   },
   {
     "id": 182,
-    "key": "GR_OL_ML_ENG#00182",
+    "key": "GR_ML_ENG_CM#00182",
     "text": "[PROUD] not bad for a piece of junk i patched together twice this month",
     "type": "declaration",
     "intent": "boast",
@@ -3405,7 +3405,7 @@
   },
   {
     "id": 183,
-    "key": "GR_OL_ML_ENG#00183",
+    "key": "GR_ML_ENG_CM#00183",
     "text": "[WARM] you did all right today. proud of you, for what that's worth from an old grease monkey",
     "type": "reply",
     "intent": "praise_ai",
@@ -3423,7 +3423,7 @@
   },
   {
     "id": 184,
-    "key": "GR_OL_ML_ENG#00184",
+    "key": "GR_ML_ENG_CM#00184",
     "text": "[GRIM] combat's over. now comes the part where i count the damage",
     "type": "declaration",
     "intent": "status_report",
@@ -3445,7 +3445,7 @@
   },
   {
     "id": 185,
-    "key": "GR_OL_ML_ENG#00185",
+    "key": "GR_ML_ENG_CM#00185",
     "text": "[PAINED] shrapnel in the hull, shrapnel in my arm. matching set",
     "type": "declaration",
     "intent": "pain",
@@ -3465,7 +3465,7 @@
   },
   {
     "id": 186,
-    "key": "GR_OL_ML_ENG#00186",
+    "key": "GR_ML_ENG_CM#00186",
     "text": "[GRIM] never good at the words for this part. just know they mattered",
     "type": "declaration",
     "intent": "grief",
@@ -3484,7 +3484,7 @@
   },
   {
     "id": 187,
-    "key": "GR_OL_ML_ENG#00187",
+    "key": "GR_ML_ENG_CM#00187",
     "text": "[WARM] quiet shift's a gift. don't waste it complaining, spend it resting",
     "type": "reply",
     "intent": "reassurance",
@@ -3505,7 +3505,7 @@
   },
   {
     "id": 188,
-    "key": "GR_OL_ML_ENG#00188",
+    "key": "GR_ML_ENG_CM#00188",
     "text": "mess hall smells almost like real food today. almost",
     "type": "declaration",
     "intent": "smalltalk",
@@ -3527,7 +3527,7 @@
   },
   {
     "id": 189,
-    "key": "GR_OL_ML_ENG#00189",
+    "key": "GR_ML_ENG_CM#00189",
     "text": "[GRUFF] eat something before you fall over. that's not a request",
     "type": "reply",
     "intent": "reassurance",
@@ -3552,7 +3552,7 @@
   },
   {
     "id": 190,
-    "key": "GR_OL_ML_ENG#00190",
+    "key": "GR_ML_ENG_CM#00190",
     "text": "[TIRED] shift's starting and the coffee hasn't kicked in yet. give me a minute",
     "type": "reply",
     "intent": "smalltalk",
@@ -3573,7 +3573,7 @@
   },
   {
     "id": 191,
-    "key": "GR_OL_ML_ENG#00191",
+    "key": "GR_ML_ENG_CM#00191",
     "text": "[WARM] good shift, all told. nothing exploded. i'll take it",
     "type": "closer",
     "intent": "farewell",
@@ -3592,7 +3592,7 @@
   },
   {
     "id": 192,
-    "key": "GR_OL_ML_ENG#00192",
+    "key": "GR_ML_ENG_CM#00192",
     "text": "[GRUFF] i don't do romance talk. i do repairs. but, uh. you're all right, Roz",
     "type": "declaration",
     "intent": "romance_hint",
@@ -3608,7 +3608,7 @@
   },
   {
     "id": 193,
-    "key": "GR_OL_ML_ENG#00193",
+    "key": "GR_ML_ENG_CM#00193",
     "text": "[FLIRTY] you're the only person on this ship who argues with me and wins",
     "type": "opener",
     "intent": "romance_hint",
@@ -3616,7 +3616,7 @@
       "stress_min": 3,
       "stress_max": 8,
       "target": [
-        "GR_OL_FE_ENG"
+        "GR_FE_ENG_OF"
       ]
     },
     "reply_to_intents": [],
@@ -3624,7 +3624,7 @@
   },
   {
     "id": 194,
-    "key": "GR_OL_ML_ENG#00194",
+    "key": "GR_ML_ENG_CM#00194",
     "text": "[EMBARRASSED] didn't mean for that to come out. but i meant it",
     "type": "closer",
     "intent": "romance_hint",
@@ -3632,7 +3632,7 @@
       "stress_min": 3,
       "stress_max": 8,
       "target": [
-        "GR_OL_FE_ENG"
+        "GR_FE_ENG_OF"
       ]
     },
     "reply_to_intents": [],
@@ -3640,7 +3640,7 @@
   },
   {
     "id": 195,
-    "key": "GR_OL_ML_ENG#00195",
+    "key": "GR_ML_ENG_CM#00195",
     "text": "[WARM] you're not so bad yourself, old man. don't let it go to your head",
     "type": "reply",
     "intent": "romance_accept",
@@ -3648,7 +3648,7 @@
       "stress_min": 3,
       "stress_max": 8,
       "target": [
-        "GR_OL_FE_ENG"
+        "GR_FE_ENG_OF"
       ]
     },
     "reply_to_intents": [
@@ -3658,7 +3658,7 @@
   },
   {
     "id": 196,
-    "key": "GR_OL_ML_ENG#00196",
+    "key": "GR_ML_ENG_CM#00196",
     "text": "[DRY] captain, i say this with love: your plan needs a plan B",
     "type": "opener",
     "intent": "doubt",
@@ -3666,7 +3666,7 @@
       "stress_min": 5,
       "stress_max": 10,
       "target": [
-        "EN_BR_FE_CA"
+        "PA_FE_MAR_CA"
       ]
     },
     "reply_to_intents": [],
@@ -3674,7 +3674,7 @@
   },
   {
     "id": 197,
-    "key": "GR_OL_ML_ENG#00197",
+    "key": "GR_ML_ENG_CM#00197",
     "text": "[CONFIDENT] give the word and it's done, captain. i don't miss on the important ones",
     "type": "reply",
     "intent": "reassurance",
@@ -3682,7 +3682,7 @@
       "stress_min": 4,
       "stress_max": 9,
       "target": [
-        "EN_BR_FE_CA"
+        "PA_FE_MAR_CA"
       ]
     },
     "reply_to_intents": [
@@ -3693,7 +3693,7 @@
   },
   {
     "id": 198,
-    "key": "GR_OL_ML_ENG#00198",
+    "key": "GR_ML_ENG_CM#00198",
     "text": "[GRUFF] i've served under captains who couldn't find the bridge. you're not one of them",
     "type": "closer",
     "intent": "praise_ai",
@@ -3701,7 +3701,7 @@
       "stress_min": 4,
       "stress_max": 9,
       "target": [
-        "EN_BR_FE_CA"
+        "PA_FE_MAR_CA"
       ]
     },
     "reply_to_intents": [],
@@ -3709,7 +3709,7 @@
   },
   {
     "id": 199,
-    "key": "GR_OL_ML_ENG#00199",
+    "key": "GR_ML_ENG_CM#00199",
     "text": "[MUTTERS] every captain thinks they're the first to ask me to go faster. none of 'em are",
     "type": "declaration",
     "intent": "complaint",
@@ -3725,7 +3725,7 @@
   },
   {
     "id": 200,
-    "key": "GR_OL_ML_ENG#00200",
+    "key": "GR_ML_ENG_CM#00200",
     "text": "[WARM] Roz keeps this place running as much as i do. more, some weeks",
     "type": "declaration",
     "intent": "praise_ai",
@@ -3741,7 +3741,7 @@
   },
   {
     "id": 201,
-    "key": "GR_OL_ML_ENG#00201",
+    "key": "GR_ML_ENG_CM#00201",
     "text": "[DEADPAN] i don't do compliments easy. that was me trying",
     "type": "closer",
     "intent": "acknowledgment",
@@ -3757,7 +3757,7 @@
   },
   {
     "id": 202,
-    "key": "GR_OL_ML_ENG#00202",
+    "key": "GR_ML_ENG_CM#00202",
     "text": "[GRIM] AI's rerouted three systems wrong since the damage. somebody should be watching it closer",
     "type": "opener",
     "intent": "suspicion_ai",
@@ -3765,7 +3765,7 @@
       "stress_min": 6,
       "stress_max": 11,
       "target": [
-        "EN_BR_FE_CA"
+        "PA_FE_MAR_CA"
       ],
       "recent_events": [
         "ai_damaged"
@@ -3776,7 +3776,7 @@
   },
   {
     "id": 203,
-    "key": "GR_OL_ML_ENG#00203",
+    "key": "GR_ML_ENG_CM#00203",
     "text": "[SUSPICIOUS] i'm not saying it's gone rogue. i'm saying keep a hand on the manual override",
     "type": "reply",
     "intent": "suspicion_ai",
@@ -3797,7 +3797,7 @@
   },
   {
     "id": 204,
-    "key": "GR_OL_ML_ENG#00204",
+    "key": "GR_ML_ENG_CM#00204",
     "text": "[GRIM] locked that door myself. i'll hear it clang shut every time i close my eyes tonight",
     "type": "declaration",
     "intent": "grief",
@@ -3816,7 +3816,7 @@
   },
   {
     "id": 205,
-    "key": "GR_OL_ML_ENG#00205",
+    "key": "GR_ML_ENG_CM#00205",
     "text": "[PLEADING] don't ask me to justify it. i did what kept the rest of you breathing",
     "type": "reply",
     "intent": "grief",
@@ -3838,7 +3838,7 @@
   },
   {
     "id": 206,
-    "key": "GR_OL_ML_ENG#00206",
+    "key": "GR_ML_ENG_CM#00206",
     "text": "[WARM] rest now. the ship'll still need fixing tomorrow, i promise you that much",
     "type": "closer",
     "intent": "reassurance",
@@ -3854,7 +3854,7 @@
   },
   {
     "id": 207,
-    "key": "GR_OL_ML_ENG#00207",
+    "key": "GR_ML_ENG_CM#00207",
     "text": "[GRUFF] i don't scare easy. this is one of maybe five times in thirty years",
     "type": "declaration",
     "intent": "fear_vent",
@@ -3870,7 +3870,7 @@
   },
   {
     "id": 208,
-    "key": "GR_OL_ML_ENG#00208",
+    "key": "GR_ML_ENG_CM#00208",
     "text": "[PANICKED] i don't know how to fix this one, and i always know how to fix it",
     "type": "declaration",
     "intent": "fear_vent",
@@ -3887,7 +3887,7 @@
   },
   {
     "id": 209,
-    "key": "GR_OL_ML_ENG#00209",
+    "key": "GR_ML_ENG_CM#00209",
     "text": "[TERRIFIED] i'm not ready to lose another one, i'm not, i'm not",
     "type": "declaration",
     "intent": "fear_vent",
@@ -3907,7 +3907,7 @@
   },
   {
     "id": 210,
-    "key": "GR_OL_ML_ENG#00210",
+    "key": "GR_ML_ENG_CM#00210",
     "text": "[PANICKED] hull's opening faster than i can patch, somebody get me another set of hands",
     "type": "declaration",
     "intent": "warning",
@@ -3927,7 +3927,7 @@
   },
   {
     "id": 211,
-    "key": "GR_OL_ML_ENG#00211",
+    "key": "GR_ML_ENG_CM#00211",
     "text": "[SHOUTS] clear the corridor, now, i mean it, NOW",
     "type": "reply",
     "intent": "warning",
@@ -3952,7 +3952,7 @@
   },
   {
     "id": 212,
-    "key": "GR_OL_ML_ENG#00212",
+    "key": "GR_ML_ENG_CM#00212",
     "text": "[TERRIFIED] can't get a full breath, the air's too thin, i need a mask somebody",
     "type": "declaration",
     "intent": "fear_vent",
@@ -3975,7 +3975,7 @@
   },
   {
     "id": 213,
-    "key": "GR_OL_ML_ENG#00213",
+    "key": "GR_ML_ENG_CM#00213",
     "text": "[GRUFF] i'll die in this engine room before i let it die first",
     "type": "declaration",
     "intent": "boast",
@@ -3991,7 +3991,7 @@
   },
   {
     "id": 214,
-    "key": "GR_OL_ML_ENG#00214",
+    "key": "GR_ML_ENG_CM#00214",
     "text": "[PROUD] thirty-one years, four ships, and i've never lost the engine room. not once",
     "type": "declaration",
     "intent": "boast",
@@ -4007,7 +4007,7 @@
   },
   {
     "id": 215,
-    "key": "GR_OL_ML_ENG#00215",
+    "key": "GR_ML_ENG_CM#00215",
     "text": "[MUTTERS] every one of these panels has a name for me. don't ask which one's my favorite",
     "type": "declaration",
     "intent": "smalltalk",
@@ -4026,7 +4026,7 @@
   },
   {
     "id": 216,
-    "key": "GR_OL_ML_ENG#00216",
+    "key": "GR_ML_ENG_CM#00216",
     "text": "[WARM] corridor's colder than it should be. somebody tell life support i said hello",
     "type": "declaration",
     "intent": "smalltalk",
@@ -4045,7 +4045,7 @@
   },
   {
     "id": 217,
-    "key": "GR_OL_ML_ENG#00217",
+    "key": "GR_ML_ENG_CM#00217",
     "text": "[GRUFF] life support's my second home. first one's an engine room, obviously",
     "type": "declaration",
     "intent": "smalltalk",
@@ -4064,7 +4064,7 @@
   },
   {
     "id": 218,
-    "key": "GR_OL_ML_ENG#00218",
+    "key": "GR_ML_ENG_CM#00218",
     "text": "[DRY] cargo bay's quiet. i almost trust that. almost",
     "type": "declaration",
     "intent": "smalltalk",
@@ -4083,7 +4083,7 @@
   },
   {
     "id": 219,
-    "key": "GR_OL_ML_ENG#00219",
+    "key": "GR_ML_ENG_CM#00219",
     "text": "[GRIM] i don't like being this close to the airlock without a suit on",
     "type": "declaration",
     "intent": "fear_vent",
@@ -4102,7 +4102,7 @@
   },
   {
     "id": 220,
-    "key": "GR_OL_ML_ENG#00220",
+    "key": "GR_ML_ENG_CM#00220",
     "text": "[SUSPICIOUS] ai core gives me the creeps lately. don't know why, just does",
     "type": "declaration",
     "intent": "suspicion_ai",
@@ -4121,7 +4121,7 @@
   },
   {
     "id": 221,
-    "key": "GR_OL_ML_ENG#00221",
+    "key": "GR_ML_ENG_CM#00221",
     "text": "[GRUFF] bridge's too shiny for my taste. i like grease under my boots, not carpet",
     "type": "declaration",
     "intent": "smalltalk",
@@ -4140,7 +4140,7 @@
   },
   {
     "id": 222,
-    "key": "GR_OL_ML_ENG#00222",
+    "key": "GR_ML_ENG_CM#00222",
     "text": "[WARM] captain runs a tight bridge. i respect that, even up here",
     "type": "declaration",
     "intent": "praise_ai",
@@ -4159,7 +4159,7 @@
   },
   {
     "id": 223,
-    "key": "GR_OL_ML_ENG#00223",
+    "key": "GR_ML_ENG_CM#00223",
     "text": "[GRIM] medbay's too full for my liking today",
     "type": "declaration",
     "intent": "complaint",
@@ -4181,7 +4181,7 @@
   },
   {
     "id": 224,
-    "key": "GR_OL_ML_ENG#00224",
+    "key": "GR_ML_ENG_CM#00224",
     "text": "[WARM] quarters could use better insulation. i've said this for years, nobody listens",
     "type": "declaration",
     "intent": "complaint",
@@ -4200,7 +4200,7 @@
   },
   {
     "id": 225,
-    "key": "GR_OL_ML_ENG#00225",
+    "key": "GR_ML_ENG_CM#00225",
     "text": "[GRUFF] Roz, tell me you found what's rattling in bay two",
     "type": "opener",
     "intent": "work_talk",
@@ -4211,7 +4211,7 @@
         "engine_room"
       ],
       "target": [
-        "GR_OL_FE_ENG"
+        "GR_FE_ENG_OF"
       ]
     },
     "reply_to_intents": [],
@@ -4219,7 +4219,7 @@
   },
   {
     "id": 226,
-    "key": "GR_OL_ML_ENG#00226",
+    "key": "GR_ML_ENG_CM#00226",
     "text": "[DRY] you fixed it before i even finished diagnosing it. show-off",
     "type": "reply",
     "intent": "banter",
@@ -4227,7 +4227,7 @@
       "stress_min": 3,
       "stress_max": 8,
       "target": [
-        "GR_OL_FE_ENG"
+        "GR_FE_ENG_OF"
       ]
     },
     "reply_to_intents": [
@@ -4238,7 +4238,7 @@
   },
   {
     "id": 227,
-    "key": "GR_OL_ML_ENG#00227",
+    "key": "GR_ML_ENG_CM#00227",
     "text": "[WARM] good work today, Roz. don't let it go to your head, but good work",
     "type": "closer",
     "intent": "praise_ai",
@@ -4246,7 +4246,7 @@
       "stress_min": 3,
       "stress_max": 8,
       "target": [
-        "GR_OL_FE_ENG"
+        "GR_FE_ENG_OF"
       ]
     },
     "reply_to_intents": [],
@@ -4254,7 +4254,7 @@
   },
   {
     "id": 228,
-    "key": "GR_OL_ML_ENG#00228",
+    "key": "GR_ML_ENG_CM#00228",
     "text": "[GRUFF] you two arguing with the reactor again? it can't hear you, you know",
     "type": "opener",
     "intent": "banter",
@@ -4262,7 +4262,7 @@
       "stress_min": 3,
       "stress_max": 8,
       "target": [
-        "GR_OL_FE_ENG"
+        "GR_FE_ENG_OF"
       ]
     },
     "reply_to_intents": [],
@@ -4270,7 +4270,7 @@
   },
   {
     "id": 229,
-    "key": "GR_OL_ML_ENG#00229",
+    "key": "GR_ML_ENG_CM#00229",
     "text": "[LAUGHS] she'll tell you the ship's got a mood. she's not wrong, half the time",
     "type": "declaration",
     "intent": "smalltalk",
@@ -4286,7 +4286,7 @@
   },
   {
     "id": 230,
-    "key": "GR_OL_ML_ENG#00230",
+    "key": "GR_ML_ENG_CM#00230",
     "text": "[GRIM] i keep waiting for the day the doubt's wrong. hasn't come yet",
     "type": "declaration",
     "intent": "doubt",
@@ -4302,7 +4302,7 @@
   },
   {
     "id": 231,
-    "key": "GR_OL_ML_ENG#00231",
+    "key": "GR_ML_ENG_CM#00231",
     "text": "[GRIM] not sure any of us are cut out for another run like this one",
     "type": "reply",
     "intent": "doubt",
@@ -4321,7 +4321,7 @@
   },
   {
     "id": 232,
-    "key": "GR_OL_ML_ENG#00232",
+    "key": "GR_ML_ENG_CM#00232",
     "text": "[GRUFF] i've got doubts about this plan and a coffee tin full of good bolts. one of those i trust",
     "type": "reply",
     "intent": "doubt",
@@ -4329,7 +4329,7 @@
       "stress_min": 6,
       "stress_max": 11,
       "target": [
-        "EN_BR_FE_CA"
+        "PA_FE_MAR_CA"
       ]
     },
     "reply_to_intents": [
@@ -4340,7 +4340,7 @@
   },
   {
     "id": 233,
-    "key": "GR_OL_ML_ENG#00233",
+    "key": "GR_ML_ENG_CM#00233",
     "text": "[WARM] you asked how i'm holding up. nobody usually asks. means something",
     "type": "reply",
     "intent": "acknowledgment",
@@ -4359,7 +4359,7 @@
   },
   {
     "id": 234,
-    "key": "GR_OL_ML_ENG#00234",
+    "key": "GR_ML_ENG_CM#00234",
     "text": "[GRUFF] offer's there if you need an extra set of hands, captain. don't wait too long to take it",
     "type": "closer",
     "intent": "offer_help",
@@ -4367,7 +4367,7 @@
       "stress_min": 5,
       "stress_max": 10,
       "target": [
-        "EN_BR_FE_CA"
+        "PA_FE_MAR_CA"
       ]
     },
     "reply_to_intents": [],
@@ -4375,7 +4375,7 @@
   },
   {
     "id": 235,
-    "key": "GR_OL_ML_ENG#00235",
+    "key": "GR_ML_ENG_CM#00235",
     "text": "[WARM] i'll cover your shift if you need the sleep. i've got nothing better to do at 3am anyway",
     "type": "opener",
     "intent": "offer_help",
@@ -4391,7 +4391,7 @@
   },
   {
     "id": 236,
-    "key": "GR_OL_ML_ENG#00236",
+    "key": "GR_ML_ENG_CM#00236",
     "text": "[GRUFF] don't thank me. thank the guy who built this engine sixty years ago and made it stubborn",
     "type": "reply",
     "intent": "acknowledgment",
@@ -4409,7 +4409,7 @@
   },
   {
     "id": 237,
-    "key": "GR_OL_ML_ENG#00237",
+    "key": "GR_ML_ENG_CM#00237",
     "text": "[MUTTERS] every part of this ship's got history i wasn't around for. i respect that",
     "type": "declaration",
     "intent": "memory",
@@ -4425,7 +4425,7 @@
   },
   {
     "id": 238,
-    "key": "GR_OL_ML_ENG#00238",
+    "key": "GR_ML_ENG_CM#00238",
     "text": "[SIGHS] i miss dirt under my nails that wasn't engine grease",
     "type": "declaration",
     "intent": "memory",
@@ -4441,7 +4441,7 @@
   },
   {
     "id": 239,
-    "key": "GR_OL_ML_ENG#00239",
+    "key": "GR_ML_ENG_CM#00239",
     "text": "[WARM] first ship i ever worked, i broke more than i fixed. learned fast after that",
     "type": "reply",
     "intent": "memory",
@@ -4460,7 +4460,7 @@
   },
   {
     "id": 240,
-    "key": "GR_OL_ML_ENG#00240",
+    "key": "GR_ML_ENG_CM#00240",
     "text": "[GRIM] i remember the last time a hull breach was this bad. didn't end well for two of us",
     "type": "reply",
     "intent": "memory",
@@ -4482,7 +4482,7 @@
   },
   {
     "id": 241,
-    "key": "GR_OL_ML_ENG#00241",
+    "key": "GR_ML_ENG_CM#00241",
     "text": "[GRUFF] don't insult my work twice, i heard you the first time",
     "type": "reply",
     "intent": "insult",
@@ -4500,7 +4500,7 @@
   },
   {
     "id": 242,
-    "key": "GR_OL_ML_ENG#00242",
+    "key": "GR_ML_ENG_CM#00242",
     "text": "[DRY] that's rich, coming from someone who still can't tell a wrench from a spanner",
     "type": "reply",
     "intent": "insult",
@@ -4508,7 +4508,7 @@
       "stress_min": 3,
       "stress_max": 8,
       "target": [
-        "GR_OL_FE_ENG"
+        "GR_FE_ENG_OF"
       ]
     },
     "reply_to_intents": [
@@ -4519,7 +4519,7 @@
   },
   {
     "id": 243,
-    "key": "GR_OL_ML_ENG#00243",
+    "key": "GR_ML_ENG_CM#00243",
     "text": "[RESIGNED] that was out of line. i'm sorry, i was scared and it came out as anger",
     "type": "reply",
     "intent": "apology",
@@ -4537,7 +4537,7 @@
   },
   {
     "id": 244,
-    "key": "GR_OL_ML_ENG#00244",
+    "key": "GR_ML_ENG_CM#00244",
     "text": "[GRUFF] i'm not one for sorry, but. sorry. there. said it",
     "type": "closer",
     "intent": "apology",
@@ -4553,7 +4553,7 @@
   },
   {
     "id": 245,
-    "key": "GR_OL_ML_ENG#00245",
+    "key": "GR_ML_ENG_CM#00245",
     "text": "[FLIRTY] Roz. come sit with me a minute. i'll even share the good coffee",
     "type": "opener",
     "intent": "romance_advance",
@@ -4561,7 +4561,7 @@
       "stress_min": 3,
       "stress_max": 8,
       "target": [
-        "GR_OL_FE_ENG"
+        "GR_FE_ENG_OF"
       ]
     },
     "reply_to_intents": [],
@@ -4569,7 +4569,7 @@
   },
   {
     "id": 246,
-    "key": "GR_OL_ML_ENG#00246",
+    "key": "GR_ML_ENG_CM#00246",
     "text": "[EMBARRASSED] i was thinking, when we make port, maybe you and me get off this ship for an evening",
     "type": "opener",
     "intent": "romance_advance",
@@ -4577,7 +4577,7 @@
       "stress_min": 3,
       "stress_max": 8,
       "target": [
-        "GR_OL_FE_ENG"
+        "GR_FE_ENG_OF"
       ]
     },
     "reply_to_intents": [],
@@ -4585,7 +4585,7 @@
   },
   {
     "id": 247,
-    "key": "GR_OL_ML_ENG#00247",
+    "key": "GR_ML_ENG_CM#00247",
     "text": "[WARM] i'd like to take you to dinner somewhere that isn't the mess hall. that's me asking",
     "type": "reply",
     "intent": "romance_advance",
@@ -4593,7 +4593,7 @@
       "stress_min": 4,
       "stress_max": 9,
       "target": [
-        "GR_OL_FE_ENG"
+        "GR_FE_ENG_OF"
       ]
     },
     "reply_to_intents": [
@@ -4604,7 +4604,7 @@
   },
   {
     "id": 248,
-    "key": "GR_OL_ML_ENG#00248",
+    "key": "GR_ML_ENG_CM#00248",
     "text": "[FLIRTY] thirty years of not asking anybody out. figured i'd start with you",
     "type": "reply",
     "intent": "romance_advance",
@@ -4612,7 +4612,7 @@
       "stress_min": 3,
       "stress_max": 8,
       "target": [
-        "GR_OL_FE_ENG"
+        "GR_FE_ENG_OF"
       ]
     },
     "reply_to_intents": [
@@ -4622,7 +4622,7 @@
   },
   {
     "id": 249,
-    "key": "GR_OL_ML_ENG#00249",
+    "key": "GR_ML_ENG_CM#00249",
     "text": "[NERVOUS] i rehearsed this and it's still coming out clumsy. Roz, i like you. plainly",
     "type": "closer",
     "intent": "romance_advance",
@@ -4630,7 +4630,7 @@
       "stress_min": 4,
       "stress_max": 9,
       "target": [
-        "GR_OL_FE_ENG"
+        "GR_FE_ENG_OF"
       ]
     },
     "reply_to_intents": [],
@@ -4638,7 +4638,7 @@
   },
   {
     "id": 250,
-    "key": "GR_OL_ML_ENG#00250",
+    "key": "GR_ML_ENG_CM#00250",
     "text": "morning",
     "type": "declaration",
     "intent": "greeting",
@@ -4657,7 +4657,7 @@
   },
   {
     "id": 251,
-    "key": "GR_OL_ML_ENG#00251",
+    "key": "GR_ML_ENG_CM#00251",
     "text": "hey",
     "type": "opener",
     "intent": "greeting",
@@ -4673,7 +4673,7 @@
   },
   {
     "id": 252,
-    "key": "GR_OL_ML_ENG#00252",
+    "key": "GR_ML_ENG_CM#00252",
     "text": "evening",
     "type": "opener",
     "intent": "greeting",
@@ -4689,7 +4689,7 @@
   },
   {
     "id": 253,
-    "key": "GR_OL_ML_ENG#00253",
+    "key": "GR_ML_ENG_CM#00253",
     "text": "[DRY] still here. still standing. still yours to boss around, captain",
     "type": "reply",
     "intent": "greeting",
@@ -4697,7 +4697,7 @@
       "stress_min": 2,
       "stress_max": 5,
       "target": [
-        "EN_BR_FE_CA"
+        "PA_FE_MAR_CA"
       ]
     },
     "reply_to_intents": [
@@ -4707,7 +4707,7 @@
   },
   {
     "id": 254,
-    "key": "GR_OL_ML_ENG#00254",
+    "key": "GR_ML_ENG_CM#00254",
     "text": "nothing much to report. bolts are still bolts",
     "type": "declaration",
     "intent": "status_report",
@@ -4726,7 +4726,7 @@
   },
   {
     "id": 255,
-    "key": "GR_OL_ML_ENG#00255",
+    "key": "GR_ML_ENG_CM#00255",
     "text": "engine's purring. don't jinx it by asking twice",
     "type": "reply",
     "intent": "status_report",
@@ -4745,7 +4745,7 @@
   },
   {
     "id": 256,
-    "key": "GR_OL_ML_ENG#00256",
+    "key": "GR_ML_ENG_CM#00256",
     "text": "all systems green, for once. i'll enjoy it while it lasts",
     "type": "declaration",
     "intent": "status_report",
@@ -4764,7 +4764,7 @@
   },
   {
     "id": 257,
-    "key": "GR_OL_ML_ENG#00257",
+    "key": "GR_ML_ENG_CM#00257",
     "text": "[DRY] pressure's nominal. temperature's nominal. my mood is, as ever, not",
     "type": "declaration",
     "intent": "status_report",
@@ -4783,7 +4783,7 @@
   },
   {
     "id": 258,
-    "key": "GR_OL_ML_ENG#00258",
+    "key": "GR_ML_ENG_CM#00258",
     "text": "[GRUFF] Roz, hand me the 12mil, not the 10, i've told you twice",
     "type": "opener",
     "intent": "work_talk",
@@ -4794,7 +4794,7 @@
         "engine_room"
       ],
       "target": [
-        "GR_OL_FE_ENG"
+        "GR_FE_ENG_OF"
       ]
     },
     "reply_to_intents": [],
@@ -4802,7 +4802,7 @@
   },
   {
     "id": 259,
-    "key": "GR_OL_ML_ENG#00259",
+    "key": "GR_ML_ENG_CM#00259",
     "text": "[DEADPAN] i swapped the filter myself. figured you had enough on your plate",
     "type": "reply",
     "intent": "work_talk",
@@ -4810,7 +4810,7 @@
       "stress_min": 3,
       "stress_max": 7,
       "target": [
-        "GR_OL_FE_ENG"
+        "GR_FE_ENG_OF"
       ]
     },
     "reply_to_intents": [
@@ -4821,7 +4821,7 @@
   },
   {
     "id": 260,
-    "key": "GR_OL_ML_ENG#00260",
+    "key": "GR_ML_ENG_CM#00260",
     "text": "run the numbers again before we commit, captain. i've been burned by hasty math",
     "type": "reply",
     "intent": "work_talk",
@@ -4829,7 +4829,7 @@
       "stress_min": 4,
       "stress_max": 9,
       "target": [
-        "EN_BR_FE_CA"
+        "PA_FE_MAR_CA"
       ]
     },
     "reply_to_intents": [
@@ -4840,7 +4840,7 @@
   },
   {
     "id": 261,
-    "key": "GR_OL_ML_ENG#00261",
+    "key": "GR_ML_ENG_CM#00261",
     "text": "[GRUFF] give me the manifest, i'll tell you what's actually salvageable versus what sales thinks is",
     "type": "opener",
     "intent": "work_talk",
@@ -4859,7 +4859,7 @@
   },
   {
     "id": 262,
-    "key": "GR_OL_ML_ENG#00262",
+    "key": "GR_ML_ENG_CM#00262",
     "text": "[WARM] you handle the wiring, i'll handle the plumbing. divide and conquer",
     "type": "reply",
     "intent": "work_talk",
@@ -4867,7 +4867,7 @@
       "stress_min": 3,
       "stress_max": 8,
       "target": [
-        "GR_OL_FE_ENG"
+        "GR_FE_ENG_OF"
       ]
     },
     "reply_to_intents": [
@@ -4877,7 +4877,7 @@
   },
   {
     "id": 263,
-    "key": "GR_OL_ML_ENG#00263",
+    "key": "GR_ML_ENG_CM#00263",
     "text": "[DRY] i checked your work. it's good. don't let that go to your head either",
     "type": "reply",
     "intent": "work_talk",
@@ -4885,7 +4885,7 @@
       "stress_min": 3,
       "stress_max": 8,
       "target": [
-        "GR_OL_FE_ENG"
+        "GR_FE_ENG_OF"
       ]
     },
     "reply_to_intents": [
@@ -4895,7 +4895,7 @@
   },
   {
     "id": 264,
-    "key": "GR_OL_ML_ENG#00264",
+    "key": "GR_ML_ENG_CM#00264",
     "text": "[LAUGHS] you should've seen the look on your face when that valve popped",
     "type": "opener",
     "intent": "banter",
@@ -4903,7 +4903,7 @@
       "stress_min": 2,
       "stress_max": 6,
       "target": [
-        "GR_OL_FE_ENG"
+        "GR_FE_ENG_OF"
       ]
     },
     "reply_to_intents": [],
@@ -4911,7 +4911,7 @@
   },
   {
     "id": 265,
-    "key": "GR_OL_ML_ENG#00265",
+    "key": "GR_ML_ENG_CM#00265",
     "text": "[DRY] you snore. i can hear it through the bulkhead. just so you know",
     "type": "opener",
     "intent": "banter",
@@ -4919,7 +4919,7 @@
       "stress_min": 2,
       "stress_max": 6,
       "target": [
-        "GR_OL_FE_ENG"
+        "GR_FE_ENG_OF"
       ]
     },
     "reply_to_intents": [],
@@ -4927,7 +4927,7 @@
   },
   {
     "id": 266,
-    "key": "GR_OL_ML_ENG#00266",
+    "key": "GR_ML_ENG_CM#00266",
     "text": "[LAUGHS] captain, you drive this ship like you stole it. i mean that as a compliment. mostly",
     "type": "opener",
     "intent": "banter",
@@ -4935,7 +4935,7 @@
       "stress_min": 3,
       "stress_max": 7,
       "target": [
-        "EN_BR_FE_CA"
+        "PA_FE_MAR_CA"
       ]
     },
     "reply_to_intents": [],
@@ -4943,7 +4943,7 @@
   },
   {
     "id": 267,
-    "key": "GR_OL_ML_ENG#00267",
+    "key": "GR_ML_ENG_CM#00267",
     "text": "[DEADPAN] careful captain, keep flying like that and i'll start charging combat pay for my nerves",
     "type": "reply",
     "intent": "banter",
@@ -4951,7 +4951,7 @@
       "stress_min": 3,
       "stress_max": 8,
       "target": [
-        "EN_BR_FE_CA"
+        "PA_FE_MAR_CA"
       ]
     },
     "reply_to_intents": [
@@ -4962,7 +4962,7 @@
   },
   {
     "id": 268,
-    "key": "GR_OL_ML_ENG#00268",
+    "key": "GR_ML_ENG_CM#00268",
     "text": "[LAUGHS] that's the worst idea i've heard all week, and i've heard some real ones",
     "type": "reply",
     "intent": "banter",
@@ -4981,7 +4981,7 @@
   },
   {
     "id": 269,
-    "key": "GR_OL_ML_ENG#00269",
+    "key": "GR_ML_ENG_CM#00269",
     "text": "[CONFIDENT] i've got a plan. it involves duct tape and spite. works every time",
     "type": "reply",
     "intent": "reassurance",
@@ -5000,7 +5000,7 @@
   },
   {
     "id": 270,
-    "key": "GR_OL_ML_ENG#00270",
+    "key": "GR_ML_ENG_CM#00270",
     "text": "[CALM] we've survived worse with less. i've got the scars to prove it",
     "type": "reply",
     "intent": "reassurance",
@@ -5018,7 +5018,7 @@
   },
   {
     "id": 271,
-    "key": "GR_OL_ML_ENG#00271",
+    "key": "GR_ML_ENG_CM#00271",
     "text": "[WARM] you're doing better than you think you are. i've watched you work",
     "type": "reply",
     "intent": "reassurance",
@@ -5037,7 +5037,7 @@
   },
   {
     "id": 272,
-    "key": "GR_OL_ML_ENG#00272",
+    "key": "GR_ML_ENG_CM#00272",
     "text": "[GRIM] i can't promise it'll be fine. i can promise i won't stop trying",
     "type": "reply",
     "intent": "reassurance",
@@ -5056,7 +5056,7 @@
   },
   {
     "id": 273,
-    "key": "GR_OL_ML_ENG#00273",
+    "key": "GR_ML_ENG_CM#00273",
     "text": "[PLEADING] just give me another minute, i'm so close, don't pull me off this now",
     "type": "reply",
     "intent": "request_help",
@@ -5064,7 +5064,7 @@
       "stress_min": 8,
       "stress_max": 13,
       "target": [
-        "EN_BR_FE_CA"
+        "PA_FE_MAR_CA"
       ]
     },
     "reply_to_intents": [
@@ -5075,7 +5075,7 @@
   },
   {
     "id": 274,
-    "key": "GR_OL_ML_ENG#00274",
+    "key": "GR_ML_ENG_CM#00274",
     "text": "[URGENT] i need Roz down here, this is a two-person job and i'm one person",
     "type": "opener",
     "intent": "request_help",
@@ -5083,7 +5083,7 @@
       "stress_min": 7,
       "stress_max": 12,
       "target": [
-        "EN_BR_FE_CA"
+        "PA_FE_MAR_CA"
       ]
     },
     "reply_to_intents": [],
@@ -5091,7 +5091,7 @@
   },
   {
     "id": 275,
-    "key": "GR_OL_ML_ENG#00275",
+    "key": "GR_ML_ENG_CM#00275",
     "text": "[GRUFF] somebody get me a fire suppressant canister, panel's sparking",
     "type": "declaration",
     "intent": "request_help",
@@ -5110,7 +5110,7 @@
   },
   {
     "id": 276,
-    "key": "GR_OL_ML_ENG#00276",
+    "key": "GR_ML_ENG_CM#00276",
     "text": "[WARM] tell me what you need and i'll get it done, that's the job",
     "type": "reply",
     "intent": "offer_help",
@@ -5129,7 +5129,7 @@
   },
   {
     "id": 277,
-    "key": "GR_OL_ML_ENG#00277",
+    "key": "GR_ML_ENG_CM#00277",
     "text": "[GRUFF] don't struggle alone with it. i've got two working hands and nothing better to do",
     "type": "opener",
     "intent": "offer_help",
@@ -5145,7 +5145,7 @@
   },
   {
     "id": 278,
-    "key": "GR_OL_ML_ENG#00278",
+    "key": "GR_ML_ENG_CM#00278",
     "text": "[DRY] i'll teach you the trick to that valve if you stop breaking it my way",
     "type": "reply",
     "intent": "offer_help",
@@ -5153,7 +5153,7 @@
       "stress_min": 3,
       "stress_max": 8,
       "target": [
-        "GR_OL_FE_ENG"
+        "GR_FE_ENG_OF"
       ]
     },
     "reply_to_intents": [
@@ -5164,7 +5164,7 @@
   },
   {
     "id": 279,
-    "key": "GR_OL_ML_ENG#00279",
+    "key": "GR_ML_ENG_CM#00279",
     "text": "[PROUD] forty years and i still know every rivet on a ship like this blind",
     "type": "declaration",
     "intent": "boast",
@@ -5180,7 +5180,7 @@
   },
   {
     "id": 280,
-    "key": "GR_OL_ML_ENG#00280",
+    "key": "GR_ML_ENG_CM#00280",
     "text": "[PROUD] nobody keeps a reactor running smoother than me. that's not bragging, that's a fact",
     "type": "reply",
     "intent": "boast",
@@ -5199,7 +5199,7 @@
   },
   {
     "id": 281,
-    "key": "GR_OL_ML_ENG#00281",
+    "key": "GR_ML_ENG_CM#00281",
     "text": "[SUSPICIOUS] i've got half a mind to pull the ai's diagnostic logs myself and see what it's not telling us",
     "type": "declaration",
     "intent": "suspicion_ai",
@@ -5218,7 +5218,7 @@
   },
   {
     "id": 282,
-    "key": "GR_OL_ML_ENG#00282",
+    "key": "GR_ML_ENG_CM#00282",
     "text": "[SUSPICIOUS] every time i ask it a straight question i get a straighter answer than i trust",
     "type": "declaration",
     "intent": "suspicion_ai",
@@ -5234,7 +5234,7 @@
   },
   {
     "id": 283,
-    "key": "GR_OL_ML_ENG#00283",
+    "key": "GR_ML_ENG_CM#00283",
     "text": "[DRY] fine, the computer called that one right. once",
     "type": "reply",
     "intent": "praise_ai",
@@ -5252,7 +5252,7 @@
   },
   {
     "id": 284,
-    "key": "GR_OL_ML_ENG#00284",
+    "key": "GR_ML_ENG_CM#00284",
     "text": "[WARM] i'll say it plain, that computer's saved this crew more than once. i keep score",
     "type": "declaration",
     "intent": "praise_ai",
@@ -5268,7 +5268,7 @@
   },
   {
     "id": 285,
-    "key": "GR_OL_ML_ENG#00285",
+    "key": "GR_ML_ENG_CM#00285",
     "text": "[PAINED] rib's cracked, i think. don't fuss, i've had worse from a bad ladder",
     "type": "reply",
     "intent": "pain",
@@ -5288,7 +5288,7 @@
   },
   {
     "id": 286,
-    "key": "GR_OL_ML_ENG#00286",
+    "key": "GR_ML_ENG_CM#00286",
     "text": "[PAINED] burned my hand on the coupling. price of doing business down here",
     "type": "declaration",
     "intent": "pain",
@@ -5305,7 +5305,7 @@
   },
   {
     "id": 287,
-    "key": "GR_OL_ML_ENG#00287",
+    "key": "GR_ML_ENG_CM#00287",
     "text": "[GRIM] that wound needs more than a field bandage. go see the doc, i mean it",
     "type": "reply",
     "intent": "warning",
@@ -5323,7 +5323,7 @@
   },
   {
     "id": 288,
-    "key": "GR_OL_ML_ENG#00288",
+    "key": "GR_ML_ENG_CM#00288",
     "text": "[URGENT] everybody strap in, we're about to feel that hit",
     "type": "declaration",
     "intent": "warning",
@@ -5342,7 +5342,7 @@
   },
   {
     "id": 289,
-    "key": "GR_OL_ML_ENG#00289",
+    "key": "GR_ML_ENG_CM#00289",
     "text": "[SHOUTS] incoming, brace!",
     "type": "reply",
     "intent": "warning",
@@ -5364,7 +5364,7 @@
   },
   {
     "id": 290,
-    "key": "GR_OL_ML_ENG#00290",
+    "key": "GR_ML_ENG_CM#00290",
     "text": "[TERRIFIED] i don't have a weapon down here, i've got a wrench and bad knees",
     "type": "declaration",
     "intent": "fear_vent",
@@ -5384,7 +5384,7 @@
   },
   {
     "id": 291,
-    "key": "GR_OL_ML_ENG#00291",
+    "key": "GR_ML_ENG_CM#00291",
     "text": "[PANICKED] everything's on fire, i mean actually on fire, somebody get extinguishers down here",
     "type": "declaration",
     "intent": "warning",
@@ -5407,7 +5407,7 @@
   },
   {
     "id": 292,
-    "key": "GR_OL_ML_ENG#00292",
+    "key": "GR_ML_ENG_CM#00292",
     "text": "[PANICKED] i can't hold this seal, it's slipping, i need help RIGHT NOW",
     "type": "declaration",
     "intent": "request_help",
@@ -5427,7 +5427,7 @@
   },
   {
     "id": 293,
-    "key": "GR_OL_ML_ENG#00293",
+    "key": "GR_ML_ENG_CM#00293",
     "text": "[PANICKED] too many alarms, i can't tell which one to fix first",
     "type": "declaration",
     "intent": "fear_vent",
@@ -5444,7 +5444,7 @@
   },
   {
     "id": 294,
-    "key": "GR_OL_ML_ENG#00294",
+    "key": "GR_ML_ENG_CM#00294",
     "text": "[GRIM] good work getting everyone through that. i mean it",
     "type": "closer",
     "intent": "praise_ai",
@@ -5463,7 +5463,7 @@
   },
   {
     "id": 295,
-    "key": "GR_OL_ML_ENG#00295",
+    "key": "GR_ML_ENG_CM#00295",
     "text": "[RESIGNED] i keep thinking about the ones we didn't save. figured you would too",
     "type": "opener",
     "intent": "grief",
@@ -5482,7 +5482,7 @@
   },
   {
     "id": 296,
-    "key": "GR_OL_ML_ENG#00296",
+    "key": "GR_ML_ENG_CM#00296",
     "text": "[GRIM] i'll fix what i can fix. i can't fix losing someone, never could",
     "type": "reply",
     "intent": "grief",
@@ -5503,7 +5503,7 @@
   },
   {
     "id": 297,
-    "key": "GR_OL_ML_ENG#00297",
+    "key": "GR_ML_ENG_CM#00297",
     "text": "[WARM] we keep going. that's what they'd want, and it's what i need too",
     "type": "closer",
     "intent": "grief",
@@ -5522,7 +5522,7 @@
   },
   {
     "id": 298,
-    "key": "GR_OL_ML_ENG#00298",
+    "key": "GR_ML_ENG_CM#00298",
     "text": "[MUTTERS] i keep a mental list of everyone i've lost on a ship. wish it stayed shorter",
     "type": "declaration",
     "intent": "grief",
@@ -5538,7 +5538,7 @@
   },
   {
     "id": 299,
-    "key": "GR_OL_ML_ENG#00299",
+    "key": "GR_ML_ENG_CM#00299",
     "text": "[DRY] disease outbreak's the kind of thing that makes an engine failure look friendly",
     "type": "declaration",
     "intent": "fear_vent",
@@ -5557,7 +5557,7 @@
   },
   {
     "id": 300,
-    "key": "GR_OL_ML_ENG#00300",
+    "key": "GR_ML_ENG_CM#00300",
     "text": "[GRIM] keep everyone hydrated and separated till the doc clears them. that's the whole plan",
     "type": "reply",
     "intent": "work_talk",
@@ -5579,7 +5579,7 @@
   },
   {
     "id": 301,
-    "key": "GR_OL_ML_ENG#00301",
+    "key": "GR_ML_ENG_CM#00301",
     "text": "[WARM] scrubbers are back online. breathe easy, i mean that literally",
     "type": "declaration",
     "intent": "status_report",
@@ -5601,7 +5601,7 @@
   },
   {
     "id": 302,
-    "key": "GR_OL_ML_ENG#00302",
+    "key": "GR_ML_ENG_CM#00302",
     "text": "[TIRED] rerouted power from cargo heating. we'll be a little cold, we won't be dead",
     "type": "reply",
     "intent": "status_report",
@@ -5623,7 +5623,7 @@
   },
   {
     "id": 303,
-    "key": "GR_OL_ML_ENG#00303",
+    "key": "GR_ML_ENG_CM#00303",
     "text": "[GRUFF] don't touch the breaker panel, i just got it stable",
     "type": "declaration",
     "intent": "warning",
@@ -5645,7 +5645,7 @@
   },
   {
     "id": 304,
-    "key": "GR_OL_ML_ENG#00304",
+    "key": "GR_ML_ENG_CM#00304",
     "text": "[WARM] hatch is secure. corridor's safe to cross again",
     "type": "reply",
     "intent": "status_report",
@@ -5669,7 +5669,7 @@
   },
   {
     "id": 305,
-    "key": "GR_OL_ML_ENG#00305",
+    "key": "GR_ML_ENG_CM#00305",
     "text": "[DRY] i've patched worse holes with less. this one just took more cursing",
     "type": "declaration",
     "intent": "status_report",
@@ -5688,7 +5688,7 @@
   },
   {
     "id": 306,
-    "key": "GR_OL_ML_ENG#00306",
+    "key": "GR_ML_ENG_CM#00306",
     "text": "[WARM] good crew, this one. better than some i've shipped with",
     "type": "declaration",
     "intent": "praise_ai",
@@ -5708,7 +5708,7 @@
   },
   {
     "id": 307,
-    "key": "GR_OL_ML_ENG#00307",
+    "key": "GR_ML_ENG_CM#00307",
     "text": "[GRUFF] you're all right, for a captain that talks too fast",
     "type": "reply",
     "intent": "praise_ai",
@@ -5716,7 +5716,7 @@
       "stress_min": 3,
       "stress_max": 8,
       "target": [
-        "EN_BR_FE_CA"
+        "PA_FE_MAR_CA"
       ]
     },
     "reply_to_intents": [
@@ -5727,7 +5727,7 @@
   },
   {
     "id": 308,
-    "key": "GR_OL_ML_ENG#00308",
+    "key": "GR_ML_ENG_CM#00308",
     "text": "[DEADPAN] don't wait on me for small talk, i'm elbow deep in a manifold",
     "type": "closer",
     "intent": "smalltalk",
@@ -5746,7 +5746,7 @@
   },
   {
     "id": 309,
-    "key": "GR_OL_ML_ENG#00309",
+    "key": "GR_ML_ENG_CM#00309",
     "text": "[WARM] good chat. corridor's colder than the bridge, get moving before you catch something",
     "type": "closer",
     "intent": "smalltalk",
@@ -5765,7 +5765,7 @@
   },
   {
     "id": 310,
-    "key": "GR_OL_ML_ENG#00310",
+    "key": "GR_ML_ENG_CM#00310",
     "text": "[TIRED] i'll see you at the next crisis. try not to make it too soon",
     "type": "closer",
     "intent": "farewell",
@@ -5781,7 +5781,7 @@
   },
   {
     "id": 311,
-    "key": "GR_OL_ML_ENG#00311",
+    "key": "GR_ML_ENG_CM#00311",
     "text": "[WARM] rest up, Roz. i mean it. you've earned it same as me",
     "type": "closer",
     "intent": "farewell",
@@ -5789,7 +5789,7 @@
       "stress_min": 3,
       "stress_max": 8,
       "target": [
-        "GR_OL_FE_ENG"
+        "GR_FE_ENG_OF"
       ]
     },
     "reply_to_intents": [],
@@ -5797,7 +5797,7 @@
   },
   {
     "id": 312,
-    "key": "GR_OL_ML_ENG#00312",
+    "key": "GR_ML_ENG_CM#00312",
     "text": "[GRUFF] go on, get out of my engine room, some of us have work to do",
     "type": "closer",
     "intent": "farewell",
@@ -5816,7 +5816,7 @@
   },
   {
     "id": 313,
-    "key": "GR_OL_ML_ENG#00313",
+    "key": "GR_ML_ENG_CM#00313",
     "text": "[DRY] i'll be here. i'm always here. it's practically my address now",
     "type": "closer",
     "intent": "smalltalk",

@@ -1,0 +1,42 @@
+{
+  "tag": "EV_FE_MAR_OF",
+  "dimensions": {
+    "personality": "even",
+    "gender": "female",
+    "career": "marine",
+    "rank": "officer"
+  },
+  "mothership_class": "Marine",
+  "blurb": "Lieutenant Farah Okonkwo never seems rattled because she's already run the scenario in her head twice before it happens. She leads with quiet competence rather than volume, and the crew trusts her precisely because she doesn't need to prove anything.",
+  "names": [
+    "Farah Okonkwo",
+    "Reyna Achterberg",
+    "Bianca Voss",
+    "Odalys Ferreira",
+    "Ingrid Halloran",
+    "Marisol Kravitz",
+    "Priya Osei-Brandt",
+    "Talia Marchetti",
+    "Noor Vantongeren",
+    "Camille Reyes"
+  ],
+  "stat_tendencies": {
+    "strength": 4,
+    "speed": 2,
+    "intellect": 1,
+    "combat": 8
+  },
+  "save_tendencies": {
+    "sanity": 4,
+    "fear": 9,
+    "body": 6
+  },
+  "preferred_skills": [
+    "Military Training",
+    "Athletics",
+    "Firearms",
+    "Hand-to-Hand Combat"
+  ],
+  "speech_quirks": "gives orders once, clearly, and expects them followed, debriefs situations in flat chronological order, rarely swears, softens only around the wounded",
+  "elevenlabs_voice": "Female, mid-30s. Clear, controlled mezzo with real weight behind it despite the calm. Neutral, faintly military-crisp accent. Pacing is even and deliberate, commands landing without needing volume; only speeds up to match the tempo of an active threat, never to panic. Texture: solid, low resonance, breath disciplined. Delivery defaults to composed authority; her rare warmth is quiet and directed at one person at a time."
+}

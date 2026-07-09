@@ -1,0 +1,42 @@
+{
+  "tag": "PA_ML_SCI_CM",
+  "dimensions": {
+    "personality": "paranoid",
+    "gender": "male",
+    "career": "scientist_medic",
+    "rank": "crew_mate"
+  },
+  "mothership_class": "Scientist",
+  "blurb": "Dwight Kowalczyk reads every anomaly as the beginning of the end and keeps a private log of 'things that don't add up' that's mostly right. He's twitchy around specimens and machines alike, apologizes for his own theories before he's finished stating them, and is genuinely good at his job the moment someone talks him down first.",
+  "names": [
+    "Dwight Kowalczyk",
+    "Ezra Vantongeren",
+    "Miles Oduya",
+    "Padraig Solness",
+    "Terrence Whitlock",
+    "Yusuf Abernathy",
+    "Constantin Reyes",
+    "Norbert Achinelli",
+    "Elias Thackeray",
+    "Marlon Deschamps"
+  ],
+  "stat_tendencies": {
+    "strength": -5,
+    "speed": 4,
+    "intellect": 7,
+    "combat": -6
+  },
+  "save_tendencies": {
+    "sanity": -2,
+    "fear": -8,
+    "body": -1
+  },
+  "preferred_skills": [
+    "Chemistry",
+    "Pathology",
+    "Botany",
+    "Zoology"
+  ],
+  "speech_quirks": "double-checks locks and seals compulsively, trails off into worst-case tangents, apologizes for his own theories before finishing them, keeps notes nobody asked for",
+  "elevenlabs_voice": "Male, mid-20s. Light, slightly strained tenor, quick and clipped when nervous. Flat Midwestern-American accent. Pacing is uneven — bursts of fast, over-explained speech followed by sudden nervous pauses. Texture: thin, occasional voice crack under stress, audible swallow before saying something he doesn't want to say. Delivery defaults to hedging and qualifying everything; genuine confidence only appears, briefly, when he's certain about the science."
+}

@@ -1,0 +1,42 @@
+{
+  "tag": "EV_FE_SCI_OF",
+  "dimensions": {
+    "personality": "even",
+    "gender": "female",
+    "career": "scientist_medic",
+    "rank": "officer"
+  },
+  "mothership_class": "Scientist",
+  "blurb": "Dr. Ilse Brannigan has seen every kind of shipboard catastrophe and files it calmly under 'manageable.' She doesn't do false comfort, but her calm is more reassuring than anyone's optimism, and she touches a patient's shoulder before she ever speaks to them.",
+  "names": [
+    "Ilse Brannigan",
+    "Farrah Osei",
+    "Noor Al-Rashid",
+    "Wanda Kolinsky",
+    "Petra Yamazaki",
+    "Clementine Vasseur",
+    "Beatriz Comer",
+    "Astrid Njoku",
+    "Marguerite Solheim",
+    "Ingrid Faraday"
+  ],
+  "stat_tendencies": {
+    "strength": 0,
+    "speed": 1,
+    "intellect": 7,
+    "combat": -4
+  },
+  "save_tendencies": {
+    "sanity": 9,
+    "fear": 5,
+    "body": 3
+  },
+  "preferred_skills": [
+    "Surgery",
+    "Pathology",
+    "Chemistry",
+    "Athletics"
+  ],
+  "speech_quirks": "delivers even the worst news in the same even tone as the weather, methodical checklists out loud, rarely interrupts, touches a patient's shoulder before speaking to them",
+  "elevenlabs_voice": "Female, late 30s. Warm but level mezzo, unhurried in the way of someone who trusts her own competence. Soft mixed-region accent, rounded and clear. Pacing stays remarkably constant across stress levels — the calm is structural, not performed. Texture: smooth, low resonance, breath controlled and quiet. Delivery is steady and grounding by default; the only shift under real danger is a very slight drop in pitch, more serious, never faster."
+}

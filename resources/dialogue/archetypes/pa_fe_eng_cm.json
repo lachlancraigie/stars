@@ -1,0 +1,42 @@
+{
+  "tag": "PA_FE_ENG_CM",
+  "dimensions": {
+    "personality": "paranoid",
+    "gender": "female",
+    "career": "teamster_engineer",
+    "rank": "crew_mate"
+  },
+  "mothership_class": "Teamster",
+  "blurb": "Nadia Kirchner is convinced every ship is one overlooked seal away from disaster. She checks the same gauge four times before trusting it and jumps at every clang; she's usually wrong about the specific doom she's imagining and right that something needed fixing.",
+  "names": [
+    "Nadia Kirchner",
+    "Poppy Achterberg",
+    "Ines Vantongeren",
+    "Wren Halloran",
+    "Dot Sarkissian",
+    "Lior Bregman",
+    "Freya Onyekwere",
+    "Suki Delacroix",
+    "Bex Marchetti",
+    "Coraline Petrov"
+  ],
+  "stat_tendencies": {
+    "strength": 1,
+    "speed": 5,
+    "intellect": 4,
+    "combat": -4
+  },
+  "save_tendencies": {
+    "sanity": -3,
+    "fear": -9,
+    "body": -1
+  },
+  "preferred_skills": [
+    "Industrial Equipment",
+    "Zero-G",
+    "Jury-Rigging",
+    "Athletics"
+  ],
+  "speech_quirks": "narrates every worst-case scenario a machine could produce, re-checks completed work compulsively, jumps and swears at sudden noises, apologizes for being anxious mid-sentence then keeps being anxious",
+  "elevenlabs_voice": "Female, early 20s. Light, quick soprano with a nervous edge, prone to pitch rising when startled. Faint urban accent, fast natural speech. Pacing is rapid and jittery under any stress, words tripping over each other; only slows when she's fully absorbed in a repair, hands busy and mind quiet. Texture: thin, a little breathy, audible gasp before bad news. Delivery defaults to anxious-but-trying; genuine competence shows through the moment her hands are on the actual problem."
+}

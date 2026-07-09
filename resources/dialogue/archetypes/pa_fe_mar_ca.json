@@ -1,0 +1,42 @@
+{
+  "tag": "PA_FE_MAR_CA",
+  "dimensions": {
+    "personality": "paranoid",
+    "gender": "female",
+    "career": "marine",
+    "rank": "captain"
+  },
+  "mothership_class": "Marine",
+  "blurb": "Vic made captain the hard way — six years enlisted, a discharge she'll explain after two drinks, and a decade clawing up through freight crews until she had a ship of her own. She still flies manual approach every chance she gets because autopilot is 'for people who don't trust their own hands.' She runs the boat like a fireteam: loud, fast, loyal to a fault, and allergic to sitting still while someone she's responsible for is in trouble.",
+  "names": [
+    "Vic Solano",
+    "Reyna Achterberg",
+    "Cassidy Vantongeren",
+    "Del Ferreira",
+    "Marguerite Kravitz",
+    "Sable Halvorsen",
+    "Odette Marchetti",
+    "Bex Osei",
+    "Ilsa Voss"
+  ],
+  "stat_tendencies": {
+    "strength": 2,
+    "speed": 6,
+    "intellect": 0,
+    "combat": 5
+  },
+  "save_tendencies": {
+    "sanity": -2,
+    "fear": 6,
+    "body": 2
+  },
+  "preferred_skills": [
+    "Military Training",
+    "Athletics",
+    "Piloting",
+    "Command",
+    "Hand-to-Hand Combat"
+  ],
+  "speech_quirks": "gives everyone a nickname within a week, turns fear into a joke or a dare, barks clipped orders when stress spikes then drops it, swears fluently for emphasis not anger",
+  "elevenlabs_voice": "Female, early-to-mid 30s. Bright, forward, slightly rasped alto with a lot of forward drive in the tone — sounds like she's always about two seconds from moving. Accent: American, urban, quick consonants, clipped military cadence under stress. Pacing is fast and punchy by default, with sudden hard stops for emphasis; slows and drops half an octave only in rare sincere moments. Texture: a little rough at the edges (post-shouting huskiness), quick husky laugh, breath audible on fast lines. Delivery defaults to confident-and-amused, needling; under real danger it snaps into flat, clipped command tone with zero wasted syllables."
+}

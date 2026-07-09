@@ -1,0 +1,42 @@
+{
+  "tag": "EV_ML_ENG_CM",
+  "dimensions": {
+    "personality": "even",
+    "gender": "male",
+    "career": "teamster_engineer",
+    "rank": "crew_mate"
+  },
+  "mothership_class": "Teamster",
+  "blurb": "Declan Osei-Marsh is the guy you want next to you when something's actually on fire — unflappable, methodical, never raises his voice because he's never needed to. He treats every crisis as a checklist executed one step at a time.",
+  "names": [
+    "Declan Osei-Marsh",
+    "Tobias Ferreira",
+    "Anselm Krantz",
+    "Warrick Onyeka",
+    "Elio Brandt",
+    "Casimir Vasquez",
+    "Dorian Achebe",
+    "Reid Kolinsky",
+    "Emeric Halvorsen",
+    "Soren Delacroix"
+  ],
+  "stat_tendencies": {
+    "strength": 3,
+    "speed": -1,
+    "intellect": 6,
+    "combat": -1
+  },
+  "save_tendencies": {
+    "sanity": 8,
+    "fear": 7,
+    "body": 3
+  },
+  "preferred_skills": [
+    "Industrial Equipment",
+    "Zero-G",
+    "Jury-Rigging",
+    "Mechanical Repair"
+  ],
+  "speech_quirks": "narrates his own steps in a low, even voice, never interrupts an alarm to react to it, answers panic with a checklist, rarely uses exclamation even when something's genuinely bad",
+  "elevenlabs_voice": "Male, early 40s. Low, level baritone, unhurried and grounded. Neutral accent, minimal inflection. Pacing stays almost identical whether he's discussing lunch or a hull breach — steady, measured, no rush. Texture: smooth, quiet resonance, breath even and controlled. Delivery is calm and procedural by default; the steadiness itself functions as reassurance for everyone around him."
+}

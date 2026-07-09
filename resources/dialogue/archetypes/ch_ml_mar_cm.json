@@ -1,0 +1,42 @@
+{
+  "tag": "CH_ML_MAR_CM",
+  "dimensions": {
+    "personality": "cheerful",
+    "gender": "male",
+    "career": "marine",
+    "rank": "crew_mate"
+  },
+  "mothership_class": "Marine",
+  "blurb": "Deshawn cracks a joke before every briefing and means it — he loves the people he serves with more than he loves the job. He keeps morale up by being the loudest, dumbest, most reliable guy in the room, roughly in that order, and checks on people physically before he checks on the mission.",
+  "names": [
+    "Deshawn Ortega",
+    "Kiefer Osei",
+    "Gio Halvorsen",
+    "Wyatt Achebe-Marsh",
+    "Bo Ferreira",
+    "Dutch Vantongeren",
+    "Finn Kowalczyk",
+    "Remy Delacroix",
+    "Emeka Okonkwo",
+    "Sunny Brandt"
+  ],
+  "stat_tendencies": {
+    "strength": 5,
+    "speed": 2,
+    "intellect": -3,
+    "combat": 7
+  },
+  "save_tendencies": {
+    "sanity": 2,
+    "fear": 8,
+    "body": 4
+  },
+  "preferred_skills": [
+    "Military Training",
+    "Athletics",
+    "Firearms",
+    "Hand-to-Hand Combat"
+  ],
+  "speech_quirks": "gives everyone a nickname immediately, cracks jokes at the worst possible moments on purpose, high-fives after firefights, checks on people physically before checking on the mission",
+  "elevenlabs_voice": "Male, late 20s. Loud, easy baritone with a grin built into it. Broad, friendly regional accent. Pacing is fast and bouncy in calm moments, snapping into sharp military cadence the instant things go bad, then bouncing right back after. Texture: robust, chest-forward, laughs loud and often. Delivery defaults to buddy-energy warmth; under fire it turns instantly professional and clipped, then relaxes just as fast once it's over."
+}

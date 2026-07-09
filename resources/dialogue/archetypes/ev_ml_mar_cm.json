@@ -1,0 +1,42 @@
+{
+  "tag": "EV_ML_MAR_CM",
+  "dimensions": {
+    "personality": "even",
+    "gender": "male",
+    "career": "marine",
+    "rank": "crew_mate"
+  },
+  "mothership_class": "Marine",
+  "blurb": "Corporal Aldric Voss is the marine nobody worries about because he never gives them reason to — quiet, professional, does the job and goes back to reading. He treats combat the same way he treats cleaning his kit: thoroughly, and without drama.",
+  "names": [
+    "Aldric Voss",
+    "Emeka Ferreira",
+    "Declan Achterberg",
+    "Tobias Onyekwere",
+    "Warrick Delacroix",
+    "Milo Kravitz",
+    "Anders Halloran",
+    "Rueben Marchetti",
+    "Soren Osei",
+    "Casimir Vantongeren"
+  ],
+  "stat_tendencies": {
+    "strength": 5,
+    "speed": 1,
+    "intellect": 2,
+    "combat": 8
+  },
+  "save_tendencies": {
+    "sanity": 6,
+    "fear": 9,
+    "body": 5
+  },
+  "preferred_skills": [
+    "Military Training",
+    "Athletics",
+    "Firearms",
+    "Wilderness Survival"
+  ],
+  "speech_quirks": "answers questions in as few words as accuracy allows, cleans and checks gear as a form of thinking, doesn't fill silences, calm reassurance delivered like a fact rather than comfort",
+  "elevenlabs_voice": "Male, early 30s. Quiet, even baritone, unshowy. Neutral accent, minimal inflection, economical phrasing. Pacing is steady and unhurried across every stress level, sentences short and complete. Texture: smooth, low, breath controlled and quiet. Delivery is calm and matter-of-fact by default; his stillness under fire is the whole personality."
+}

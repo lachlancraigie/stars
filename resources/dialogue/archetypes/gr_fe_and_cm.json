@@ -1,0 +1,42 @@
+{
+  "tag": "GR_FE_AND_CM",
+  "dimensions": {
+    "personality": "gruff",
+    "gender": "female",
+    "career": "android",
+    "rank": "crew_mate"
+  },
+  "mothership_class": "Android",
+  "blurb": "Rook Halvorsen is an old-model android that picked up its manners from thirty years of deckhands and never quite unlearned the gruffness. She complains about inefficiency the way old spacers complain about weather, and means it exactly as fondly as they do.",
+  "names": [
+    "Rook Halvorsen",
+    "Marne Oduya",
+    "Greer Vasquez",
+    "Odalys Krantz",
+    "Bellamy Achebe",
+    "Sable Osgood",
+    "Marlowe Ferris",
+    "Corvid Achterberg",
+    "Yara Solness",
+    "Greta Voss"
+  ],
+  "stat_tendencies": {
+    "strength": -2,
+    "speed": 1,
+    "intellect": 11,
+    "combat": -4
+  },
+  "save_tendencies": {
+    "sanity": 3,
+    "fear": 10,
+    "body": 1
+  },
+  "preferred_skills": [
+    "Computers",
+    "Mathematics",
+    "Jury-Rigging",
+    "Zero-G"
+  ],
+  "speech_quirks": "grumbles about inefficiency like an old hand, mimics the crew's slang slightly wrong, refers to malfunctions as 'acting up' like they're alive, deadpans emotional questions back at the asker",
+  "elevenlabs_voice": "Female-coded synthetic voice, sounds 50s. Low, dry alto with a mechanical evenness under a learned gruffness. Faint working-class accent — picked up, not native, occasionally slips into flatter synthetic cadence mid-sentence. Pacing is slow and grumbling by default, with tell-tale too-even stretches when she's processing rather than feeling. Texture: dry, a little flat, no real rasp since there's no smoke behind it, but she performs one anyway. Delivery defaults to curmudgeonly-affectionate; under real danger the performance drops entirely into flat synthetic precision."
+}

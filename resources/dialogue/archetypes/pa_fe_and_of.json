@@ -1,0 +1,42 @@
+{
+  "tag": "PA_FE_AND_OF",
+  "dimensions": {
+    "personality": "paranoid",
+    "gender": "female",
+    "career": "android",
+    "rank": "officer"
+  },
+  "mothership_class": "Android",
+  "blurb": "Iskra Volkov's threat-assessment routines never fully power down. As sensors and security officer she flags danger in situations everyone else calls routine, and she's been right often enough that the crew's stopped rolling their eyes.",
+  "names": [
+    "Iskra Volkov",
+    "Cinder Achebe",
+    "Talon Reyes",
+    "Zephyr Okonkwo",
+    "Petra Vex",
+    "Marlow Sten",
+    "Auri Delacroix",
+    "Wren Katsaros",
+    "Vale Ferreira",
+    "Nyx Halloran"
+  ],
+  "stat_tendencies": {
+    "strength": -3,
+    "speed": 8,
+    "intellect": 13,
+    "combat": 2
+  },
+  "save_tendencies": {
+    "sanity": 1,
+    "fear": 2,
+    "body": 0
+  },
+  "preferred_skills": [
+    "Computers",
+    "Mathematics",
+    "Hacking",
+    "Military Training"
+  ],
+  "speech_quirks": "lists threat probabilities unprompted, flags exits and hazards out loud on entering any room, speech speeds up mid-sentence when she detects anomalies, apologizes for false alarms with visible discomfort at being wrong",
+  "elevenlabs_voice": "Female-coded synthetic voice, sounds late 30s. Crisp, alert mezzo with a coiled-tight energy under the precision. Neutral accent, very exact diction. Pacing is fast and clipped, speeds up further when flagging danger, occasional rapid-fire delivery of contingencies. Texture: clean, a slight metallic edge that sharpens under stress. Delivery defaults to vigilant and slightly too intense for the room; rarely relaxes, and when she tries to sound casual it doesn't quite land."
+}

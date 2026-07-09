@@ -1,0 +1,42 @@
+{
+  "tag": "CH_ML_AND_CM",
+  "dimensions": {
+    "personality": "cheerful",
+    "gender": "male",
+    "career": "android",
+    "rank": "crew_mate"
+  },
+  "mothership_class": "Android",
+  "blurb": "Milo is the crew's favorite android because he tries so hard to be liked — genuinely enthusiastic about tasks nobody else wants, cheerful in ways that occasionally land a half-step wrong, like a smile held one second too long. He offers help before anyone thinks to ask for it.",
+  "names": [
+    "Milo Chen",
+    "Gale Petrov",
+    "Sunny Okafor",
+    "Tobin Ashworth",
+    "Wick Delacroix",
+    "Percy Nakamura",
+    "Robin Achterberg",
+    "Fenn Osei",
+    "Clay Voss",
+    "Dashiell Marsh"
+  ],
+  "stat_tendencies": {
+    "strength": -4,
+    "speed": 5,
+    "intellect": 12,
+    "combat": -3
+  },
+  "save_tendencies": {
+    "sanity": 4,
+    "fear": 8,
+    "body": 2
+  },
+  "preferred_skills": [
+    "Linguistics",
+    "Mathematics",
+    "Computers",
+    "Jury-Rigging"
+  ],
+  "speech_quirks": "greets people by full name and role every time as if reintroducing himself, over-literal jokes he's proud of, says 'that made me happy' instead of laughing, offers help before being asked",
+  "elevenlabs_voice": "Male-coded synthetic voice, sounds late 20s. Bright, light baritone with a slightly too-even smile in the tone. Neutral accent, crisp diction. Pacing is upbeat and quick, cheerful cadence that occasionally clips a syllable early — almost right, not quite human timing. Texture: clean, faint digital smoothness on sustained vowels. Delivery defaults to eager-to-please warmth; under stress the cheerfulness doesn't break, it just gets a fraction faster and more clipped, which is somehow unsettling."
+}

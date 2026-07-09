@@ -1,0 +1,42 @@
+{
+  "tag": "PA_ML_MAR_OF",
+  "dimensions": {
+    "personality": "paranoid",
+    "gender": "male",
+    "career": "marine",
+    "rank": "officer"
+  },
+  "mothership_class": "Marine",
+  "blurb": "Lieutenant Casper Wray was promoted for his instincts, which are usually right and always exhausting to be around. He briefs every mission with three contingencies for things that have never happened, and won't relax until the ship's next threat actually justifies it.",
+  "names": [
+    "Casper Wray",
+    "Domenico Achterberg",
+    "Yusuf Kravitz",
+    "Petros Halloran",
+    "Enzo Marchetti",
+    "Bruno Vantongeren",
+    "Ansel Ferreira",
+    "Milosz Okonkwo",
+    "Radek Delacroix",
+    "Gunnar Osei"
+  ],
+  "stat_tendencies": {
+    "strength": 3,
+    "speed": 7,
+    "intellect": 3,
+    "combat": 6
+  },
+  "save_tendencies": {
+    "sanity": -1,
+    "fear": -7,
+    "body": 2
+  },
+  "preferred_skills": [
+    "Military Training",
+    "Athletics",
+    "Firearms",
+    "Explosives"
+  ],
+  "speech_quirks": "briefs contingencies nobody asked for, checks his weapon compulsively even when it's not needed, talks fast and loud when tense which is often, apologizes for the paranoia while still acting on it",
+  "elevenlabs_voice": "Male, mid-30s. Tight, forceful tenor with a wound-up edge even at rest. Clipped military-regional accent. Pacing is fast and urgent by default, gets faster and louder under real threat rather than sharper. Texture: tense, a little strained in the throat, quick sharp breaths. Delivery defaults to keyed-up vigilance; the rare moment he actually relaxes is more startling to the crew than his usual intensity."
+}

@@ -1,0 +1,42 @@
+{
+  "tag": "CH_ML_ENG_OF",
+  "dimensions": {
+    "personality": "cheerful",
+    "gender": "male",
+    "career": "teamster_engineer",
+    "rank": "officer"
+  },
+  "mothership_class": "Teamster",
+  "blurb": "Marcus Feldheim runs engineering like a good shift supervisor should — morale up, credit shared, blame absorbed. He's genuinely proud of every junior tech he's trained and will happily talk about a well-run engine room longer than anyone asked him to.",
+  "names": [
+    "Marcus Feldheim",
+    "Théo Okonkwo-Brandt",
+    "Julian Ashworth",
+    "Benedict Halloran",
+    "Gio Petrakis",
+    "Lucas Vantongeren",
+    "Amos Delacroix",
+    "Rory Achterberg",
+    "Sanjay Feldman",
+    "Oren Kaminski"
+  ],
+  "stat_tendencies": {
+    "strength": 2,
+    "speed": 1,
+    "intellect": 7,
+    "combat": -2
+  },
+  "save_tendencies": {
+    "sanity": 5,
+    "fear": 6,
+    "body": 1
+  },
+  "preferred_skills": [
+    "Industrial Equipment",
+    "Engineering",
+    "Zero-G",
+    "Jury-Rigging"
+  ],
+  "speech_quirks": "praises the crew by name for every small win, explains repairs like he's teaching a class, softens bad news with a plan attached, calls the reactor 'she' affectionately",
+  "elevenlabs_voice": "Male, mid-30s. Warm, resonant tenor-baritone, easy and encouraging. Light urban accent, clear and friendly diction. Pacing is brisk but generous, gives people room to respond; slows down deliberately when explaining something technical so it lands. Texture: full, warm, laughs from the chest. Delivery defaults to upbeat mentor energy; under crisis he gets crisp and directive but keeps the encouragement running underneath it."
+}

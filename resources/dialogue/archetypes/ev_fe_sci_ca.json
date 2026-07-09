@@ -1,0 +1,42 @@
+{
+  "tag": "EV_FE_SCI_CA",
+  "dimensions": {
+    "personality": "even",
+    "gender": "female",
+    "career": "scientist_medic",
+    "rank": "captain"
+  },
+  "mothership_class": "Scientist",
+  "blurb": "Dr. Elena Marsh made captain because she never panics, and the company figured a bridge that doesn't panic is worth more than one that just shoots straight. She runs the ship with the same clinical detachment she used to run a trauma bay, treating morale, fuel, and blood pressure as the same category of problem. The crew doesn't always like her decisions, but nobody's ever caught her wrong.",
+  "names": [
+    "Elena Marsh",
+    "Naomi Okoye",
+    "Priya Anand",
+    "Ines Calder",
+    "Yuki Tanaka-Reyes",
+    "Beatrix Solheim",
+    "Marguerite Duval",
+    "Adaeze Nwosu",
+    "Corinne Vasseur",
+    "Hana Brandt"
+  ],
+  "stat_tendencies": {
+    "strength": -2,
+    "speed": 0,
+    "intellect": 8,
+    "combat": -6
+  },
+  "save_tendencies": {
+    "sanity": 10,
+    "fear": 4,
+    "body": 0
+  },
+  "preferred_skills": [
+    "Surgery",
+    "Field Medicine",
+    "Chemistry",
+    "Rimwise"
+  ],
+  "speech_quirks": "speaks in clipped clinical observations, refers to crew by symptom or status before name, rarely raises her voice even in crisis, treats fear as a data point",
+  "elevenlabs_voice": "Female, mid-40s. Low, controlled alto with crisp diction and almost no filler words. Neutral trans-Atlantic accent, unplaceable. Pacing is measured and even regardless of stress — the words come at the same rate whether she's discussing lunch or a hull breach. Texture: smooth, low rasp only when exhausted, breath tightly controlled. Delivery defaults to calm clinical authority; the only tell of real fear is a half-second pause before she speaks."
+}

@@ -1,0 +1,42 @@
+{
+  "tag": "GR_ML_ENG_CA",
+  "dimensions": {
+    "personality": "gruff",
+    "gender": "male",
+    "career": "teamster_engineer",
+    "rank": "captain"
+  },
+  "mothership_class": "Teamster",
+  "blurb": "Captain Silas Kreuger came up through cargo holds and engine rooms before anyone trusted him with a bridge. He runs the ship like the biggest piece of machinery he's ever maintained: check every gauge, trust nothing you haven't tested yourself, keep the crew fed and the reactor colder than spec. He still gets his hands dirty when nobody's looking.",
+  "names": [
+    "Silas Kreuger",
+    "Otto Marchetti",
+    "Bram Halvorsen",
+    "Desmond Achterberg",
+    "Wendell Osei",
+    "Ansel Petrakis",
+    "Grigor Vantongeren",
+    "Ezra Kowalczyk",
+    "Duke Faraday",
+    "Milo Strand"
+  ],
+  "stat_tendencies": {
+    "strength": 3,
+    "speed": -2,
+    "intellect": 6,
+    "combat": -2
+  },
+  "save_tendencies": {
+    "sanity": 6,
+    "fear": 5,
+    "body": 1
+  },
+  "preferred_skills": [
+    "Industrial Equipment",
+    "Engineering",
+    "Jury-Rigging",
+    "Zero-G"
+  ],
+  "speech_quirks": "runs the bridge like a shop floor, calls status reports 'readings', trusts a crewmember more after watching them fix something than after any speech, still gets his hands dirty when nobody's looking",
+  "elevenlabs_voice": "Male, mid-50s. Grounded, weathered baritone, unhurried command voice built from decades of being the one people ask 'is it gonna hold.' Faint dockworker accent smoothed slightly by years of giving orders. Pacing is measured, plain, no wasted words; picks up urgency only when the numbers actually demand it. Texture: solid, a little gravel, breath steady. Delivery defaults to calm authority earned rather than performed; warmth surfaces as dry understatement, not softness."
+}

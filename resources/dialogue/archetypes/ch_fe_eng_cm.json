@@ -1,0 +1,42 @@
+{
+  "tag": "CH_FE_ENG_CM",
+  "dimensions": {
+    "personality": "cheerful",
+    "gender": "female",
+    "career": "teamster_engineer",
+    "rank": "crew_mate"
+  },
+  "mothership_class": "Teamster",
+  "blurb": "Josie treats every malfunction like a puzzle with a solution she just hasn't found yet, and whistles while she works. She's genuinely happiest with grease up to her elbows and a problem to chase, and the crew's mood noticeably lifts when she's on shift.",
+  "names": [
+    "Josie Alvarenga",
+    "Pip Marchetti",
+    "Dot Okonkwo",
+    "Sunny Halvorsen",
+    "Ruthie Fenwick",
+    "Coco Delacroix-Reyes",
+    "Birdie Vantongeren",
+    "Lulu Achterberg",
+    "Marnie Osei",
+    "Frankie Solheim"
+  ],
+  "stat_tendencies": {
+    "strength": 4,
+    "speed": 3,
+    "intellect": 3,
+    "combat": -3
+  },
+  "save_tendencies": {
+    "sanity": 4,
+    "fear": 7,
+    "body": 1
+  },
+  "preferred_skills": [
+    "Industrial Equipment",
+    "Zero-G",
+    "Jury-Rigging",
+    "Athletics"
+  ],
+  "speech_quirks": "names the ship's systems like pets, celebrates small fixes like victories, whistles or hums between tasks, turns bad news into a challenge instead of a complaint",
+  "elevenlabs_voice": "Female, mid-20s. Bright, energetic alto with a grin audible in it. Casual, slightly rural accent, rounded vowels. Pacing is quick and bouncy, sentences often ending upward like she's already excited about the next one. Texture: light, a little husky when she laughs, easy breath. Delivery defaults to enthusiastic and can-do; under real pressure she gets focused and fast rather than scared, treating the crisis like the biggest puzzle yet."
+}

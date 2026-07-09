@@ -1,0 +1,42 @@
+{
+  "tag": "GR_ML_SCI_OF",
+  "dimensions": {
+    "personality": "gruff",
+    "gender": "male",
+    "career": "scientist_medic",
+    "rank": "officer"
+  },
+  "mothership_class": "Scientist",
+  "blurb": "Dr. Warrick Doyle has stitched together crews on ships that didn't make port and stopped doing bedside manner around the second one. He's blunt about diagnoses because sugar-coating gets people killed slower than it should, and he keeps a mental tally of who he's lost.",
+  "names": [
+    "Warrick Doyle",
+    "Cornelius Achebe-Voss",
+    "Emmett Sorensen",
+    "Abraham Nkosi",
+    "Silas Brandt",
+    "Gordon McAllister",
+    "Ezekiel Ochoa",
+    "Rutger Van Dyke",
+    "Percival Okonjo",
+    "Marlow Petit"
+  ],
+  "stat_tendencies": {
+    "strength": -1,
+    "speed": -2,
+    "intellect": 9,
+    "combat": -3
+  },
+  "save_tendencies": {
+    "sanity": 8,
+    "fear": 3,
+    "body": 2
+  },
+  "preferred_skills": [
+    "Surgery",
+    "Pathology",
+    "Chemistry",
+    "Theology"
+  ],
+  "speech_quirks": "delivers diagnoses flat and immediate, no euphemisms, calls every patient 'sit down' before he calls them by name, keeps a mental tally of who he's lost",
+  "elevenlabs_voice": "Male, late 50s. Deep, dry baritone, unhurried, faint rasp. Neutral working-doctor accent, clipped consonants. Pacing is slow and deliberate, each sentence landing like a verdict; speeds up only mid-procedure when hands matter more than words. Texture: low, gravelled, breath audible between phrases. Delivery is flat and matter-of-fact by default; the only warmth comes out sideways, in what he doesn't say."
+}

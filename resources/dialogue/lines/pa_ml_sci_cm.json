@@ -1,0 +1,741 @@
+[
+  {
+    "id": 1,
+    "key": "PA_ML_SCI_CM#00001",
+    "text": "[NERVOUS] i've checked the seal three times. i'm going to check it a fourth",
+    "type": "declaration",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "location": [
+        "medbay"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 2,
+    "key": "PA_ML_SCI_CM#00002",
+    "text": "[MUTTERS] quiet shift. quiet shifts are when the bad thing is just getting started",
+    "type": "declaration",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 7,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "quiet_shift"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 3,
+    "key": "PA_ML_SCI_CM#00003",
+    "text": "[NERVOUS] okay. okay, shift's starting. i've got my notes, i've got my — okay. ready",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 7,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "shift_start"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 4,
+    "key": "PA_ML_SCI_CM#00004",
+    "text": "[EXHAUSTED] shift's over and nothing tried to kill me. logging that as a statistical anomaly",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "shift_end"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 5,
+    "key": "PA_ML_SCI_CM#00005",
+    "text": "[TERRIFIED] the reactor readings don't match the manual, and i've read the manual four times",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "reactor_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 6,
+    "key": "PA_ML_SCI_CM#00006",
+    "text": "[PANICKED] i don't know if we're going to survive this and nobody's answering my questions",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 12,
+      "stress_max": 20,
+      "panic": true,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "reactor_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 7,
+    "key": "PA_ML_SCI_CM#00007",
+    "text": "[NERVOUS] they say it's fixed. i want to believe that. i want to believe a lot of things",
+    "type": "declaration",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "repair_success"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 8,
+    "key": "PA_ML_SCI_CM#00008",
+    "text": "[NERVOUS] power's low, which means backups are running, which means backups can fail too",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "power_low"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 9,
+    "key": "PA_ML_SCI_CM#00009",
+    "text": "[TERRIFIED] the air tastes different. is that just me? tell me that's just me",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 14,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "life_support_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 10,
+    "key": "PA_ML_SCI_CM#00010",
+    "text": "[PANICKED] hull's breached, hull's breached, i heard it, i counted the seconds, that's bad",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 12,
+      "stress_max": 19,
+      "panic": true,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "hull_breach"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 11,
+    "key": "PA_ML_SCI_CM#00011",
+    "text": "[NERVOUS] they locked a door with someone behind it. i keep thinking, what if it's me next time",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 14,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "door_locked_on_crew"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 12,
+    "key": "PA_ML_SCI_CM#00012",
+    "text": "[SUSPICIOUS] i've been logging every AI decision since the damage. somebody should",
+    "type": "declaration",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "ai_damaged"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 13,
+    "key": "PA_ML_SCI_CM#00013",
+    "text": "[SUSPICIOUS] it answered that question a little too smoothly. i wrote it down",
+    "type": "declaration",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "ai_damaged"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 14,
+    "key": "PA_ML_SCI_CM#00014",
+    "text": "[NERVOUS] crisis over, they say. i'll believe it in about six hours, once my hands stop shaking",
+    "type": "declaration",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "crisis_resolved"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 15,
+    "key": "PA_ML_SCI_CM#00015",
+    "text": "[PAINED] we lost someone. i keep running the timeline, looking for the version where they don't",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 16,
+    "key": "PA_ML_SCI_CM#00016",
+    "text": "[TERRIFIED] a pathogen on a closed ship is exactly the scenario i've had nightmares about",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 14,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "disease_outbreak"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 17,
+    "key": "PA_ML_SCI_CM#00017",
+    "text": "[NERVOUS] i triple-bagged every sample. i know it's excessive. i'm doing it again anyway",
+    "type": "declaration",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "location": [
+        "medbay"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "disease_outbreak"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 18,
+    "key": "PA_ML_SCI_CM#00018",
+    "text": "[PAINED] cut myself on the specimen tray. of course i did. of course",
+    "type": "declaration",
+    "intent": "pain",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "wounded": true,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "injury"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 19,
+    "key": "PA_ML_SCI_CM#00019",
+    "text": "[TERRIFIED] i don't have a weapon skill and there's shooting somewhere on this ship",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "panic": true,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "combat"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 20,
+    "key": "PA_ML_SCI_CM#00020",
+    "text": "[NERVOUS] i don't trust anything that doesn't sleep. i barely trust things that do",
+    "type": "declaration",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 21,
+    "key": "PA_ML_SCI_CM#00021",
+    "text": "[MUTTERS] fine, fine, it made the right call. i still checked its math",
+    "type": "declaration",
+    "intent": "praise_ai",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 22,
+    "key": "PA_ML_SCI_CM#00022",
+    "text": "[NERVOUS] i keep a private log. things that don't add up. it's longer than i'd like",
+    "type": "declaration",
+    "intent": "memory",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 23,
+    "key": "PA_ML_SCI_CM#00023",
+    "text": "[NERVOUS] medbay's too quiet. i keep waiting for the quiet to be a trick",
+    "type": "declaration",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "location": [
+        "medbay"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 24,
+    "key": "PA_ML_SCI_CM#00024",
+    "text": "[MUTTERS] cargo bay creaks different than yesterday. probably nothing. i wrote it down anyway",
+    "type": "declaration",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "location": [
+        "cargo"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 25,
+    "key": "PA_ML_SCI_CM#00025",
+    "text": "hi. hey. hi, sorry, is this a bad time, i can come back",
+    "type": "opener",
+    "intent": "greeting",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 26,
+    "key": "PA_ML_SCI_CM#00026",
+    "text": "[NERVOUS] can i run something by you? it's probably nothing. it's probably nothing",
+    "type": "opener",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 27,
+    "key": "PA_ML_SCI_CM#00027",
+    "text": "[NERVOUS] you noticed the computer's been weird too, right? please say yes",
+    "type": "opener",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 28,
+    "key": "PA_ML_SCI_CM#00028",
+    "text": "[NERVOUS] i need a second opinion and you're the calmest person i could find",
+    "type": "opener",
+    "intent": "request_help",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 29,
+    "key": "PA_ML_SCI_CM#00029",
+    "text": "[EMBARRASSED] okay this is going to sound strange, but i think i like you, and i've triple-checked that feeling",
+    "type": "opener",
+    "intent": "romance_hint",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 30,
+    "key": "PA_ML_SCI_CM#00030",
+    "text": "[NERVOUS] i'm fine. i'm always like this. this is just my baseline",
+    "type": "reply",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "greeting",
+      "smalltalk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 31,
+    "key": "PA_ML_SCI_CM#00031",
+    "text": "[NERVOUS] you're probably right that it's nothing. i'm going to keep worrying anyway",
+    "type": "reply",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "reassurance"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 32,
+    "key": "PA_ML_SCI_CM#00032",
+    "text": "[TERRIFIED] i hear you saying it's fine and my brain is not accepting the data",
+    "type": "reply",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 10,
+      "stress_max": 16,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "reassurance"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 33,
+    "key": "PA_ML_SCI_CM#00033",
+    "text": "[PAINED] we lost them and i keep thinking i should've caught it sooner. i should've",
+    "type": "reply",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [
+      "grief"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 34,
+    "key": "PA_ML_SCI_CM#00034",
+    "text": "[SUSPICIOUS] see, this is exactly what i've been logging. i'm not being paranoid, i'm being thorough",
+    "type": "reply",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "suspicion_ai",
+      "doubt"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 35,
+    "key": "PA_ML_SCI_CM#00035",
+    "text": "[NERVOUS] thank you. genuinely. nobody usually listens to the whole theory",
+    "type": "reply",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "praise_ai",
+      "offer_help"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 36,
+    "key": "PA_ML_SCI_CM#00036",
+    "text": "[EMBARRASSED] you're not laughing at me. that's — that's new. i appreciate that a lot",
+    "type": "reply",
+    "intent": "romance_accept",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "romance_hint"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 37,
+    "key": "PA_ML_SCI_CM#00037",
+    "text": "[NERVOUS] i accept the apology, i just also need a minute, my nerves are still catching up",
+    "type": "reply",
+    "intent": "apology",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "apology"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 38,
+    "key": "PA_ML_SCI_CM#00038",
+    "text": "[NERVOUS] okay. okay, i should go double-check something. bye",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 39,
+    "key": "PA_ML_SCI_CM#00039",
+    "text": "[MUTTERS] i'll be in medbay. running numbers. always running numbers",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "location": [
+        "medbay"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 40,
+    "key": "PA_ML_SCI_CM#00040",
+    "text": "[EXHAUSTED] i need to lie down before my own brain finishes this thought. good night",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  }
+]

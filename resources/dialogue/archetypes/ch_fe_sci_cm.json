@@ -1,0 +1,42 @@
+{
+  "tag": "CH_FE_SCI_CM",
+  "dimensions": {
+    "personality": "cheerful",
+    "gender": "female",
+    "career": "scientist_medic",
+    "rank": "crew_mate"
+  },
+  "mothership_class": "Scientist",
+  "blurb": "Marisol Feng is fresh off her residency and thrilled to finally be doing real medicine instead of textbook cases. She treats every injury like a fascinating puzzle, keeps the mood in sickbay light because she genuinely believes it helps healing, and calls wounds 'interesting' before she calls them bad.",
+  "names": [
+    "Marisol Feng",
+    "Alba Petrakis",
+    "Junko Alvarado",
+    "Ingrid Solano-Reyes",
+    "Rosa Achterberg",
+    "Wren Delacroix-Oyelaran",
+    "Camille Nakashima",
+    "Dot Fairweather",
+    "Saoirse Mbeki",
+    "Lena Vasquez"
+  ],
+  "stat_tendencies": {
+    "strength": -3,
+    "speed": 3,
+    "intellect": 5,
+    "combat": -6
+  },
+  "save_tendencies": {
+    "sanity": 3,
+    "fear": 6,
+    "body": 1
+  },
+  "preferred_skills": [
+    "Chemistry",
+    "Field Medicine",
+    "Botany",
+    "Zero-G"
+  ],
+  "speech_quirks": "narrates her own thought process out loud, overly optimistic prognoses she mostly delivers on, hums while working, calls wounds 'interesting' before she calls them bad",
+  "elevenlabs_voice": "Female, mid-20s. Bright, quick soprano-alto with real buoyancy in it. Light West Coast-American accent. Pacing is fast and enthusiastic, rising inflection on observations; only flattens out when a case actually scares her, and even then recovers fast. Texture: clear, a little breathy, laughs through her nose when amused. Delivery defaults to chipper and curious; under pressure she gets faster, not quieter, talking herself and the patient through it."
+}

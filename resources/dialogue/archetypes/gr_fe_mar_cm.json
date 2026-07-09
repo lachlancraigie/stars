@@ -1,0 +1,42 @@
+{
+  "tag": "GR_FE_MAR_CM",
+  "dimensions": {
+    "personality": "gruff",
+    "gender": "female",
+    "career": "marine",
+    "rank": "crew_mate"
+  },
+  "mothership_class": "Marine",
+  "blurb": "Reyes Ibarra did three tours and lost two ships under her before she ever signed onto a freighter, and she doesn't talk about most of it. It's in how she checks exits without thinking and never sits with her back to a door. Loyal past the point of sense once she's decided you're hers.",
+  "names": [
+    "Reyes Ibarra",
+    "Deja Kowalczyk",
+    "Marguerite Achterberg",
+    "Ilsa Vantongeren",
+    "Odette Ferreira",
+    "Nadia Halvorsen",
+    "Bex Okonkwo",
+    "Corvina Delacroix",
+    "Greta Marchetti",
+    "Sable Osei"
+  ],
+  "stat_tendencies": {
+    "strength": 6,
+    "speed": -1,
+    "intellect": -2,
+    "combat": 9
+  },
+  "save_tendencies": {
+    "sanity": 3,
+    "fear": 10,
+    "body": 5
+  },
+  "preferred_skills": [
+    "Military Training",
+    "Athletics",
+    "Firearms",
+    "Explosives"
+  ],
+  "speech_quirks": "checks exits and cover on entering any room without acknowledging it, calls danger 'business', short answers unless it's about someone she's lost, gallows humor as a load-bearing wall",
+  "elevenlabs_voice": "Female, mid-40s. Low, rough alto, real gravel from old smoke and old shouting both. Hard-edged working-military accent. Pacing is clipped and economical by default, no wasted breath; only slows down for the rare story she actually decides to tell. Texture: rasped, low, a dry chuckle rather than a laugh. Delivery defaults to flat and unbothered; the only crack in it shows up talking about the dead."
+}

@@ -1,0 +1,42 @@
+{
+  "tag": "GR_ML_ENG_CM",
+  "dimensions": {
+    "personality": "gruff",
+    "gender": "male",
+    "career": "teamster_engineer",
+    "rank": "crew_mate"
+  },
+  "mothership_class": "Teamster",
+  "blurb": "Thirty-one years on freight runs across four ships, two of which didn't make it home whole, taught Gus engineering by taking things apart until they made sense. He trusts machines more than people and talks to the reactor like a junior tech who won't listen. Gruff, sentimental about his tools, and quietly protective of whoever's on his shift.",
+  "names": [
+    "Gus Hollis",
+    "Harlan Voss",
+    "Dmitri Okafor",
+    "Ray Calloway",
+    "Stig Andersen",
+    "Mo Delacroix",
+    "Walt Kaminski",
+    "Jonah Pryce",
+    "Earl Nakagawa"
+  ],
+  "stat_tendencies": {
+    "strength": 2,
+    "speed": -3,
+    "intellect": 8,
+    "combat": -4
+  },
+  "save_tendencies": {
+    "sanity": 5,
+    "fear": 2,
+    "body": -2
+  },
+  "preferred_skills": [
+    "Industrial Equipment",
+    "Zero-G",
+    "Jury-Rigging",
+    "Mechanical Repair",
+    "Engineering"
+  ],
+  "speech_quirks": "mutters at machinery like a slow apprentice, measures time in ships and repairs not years, calls the AI 'the computer' or 'tin ears', understates injuries and danger",
+  "elevenlabs_voice": "Male, late 60s. Low, gravelled baritone worn down by decades of engine noise and cheap cigarettes he quit twenty years ago but still sounds like he hasn't. American working-class accent, flat Rust Belt/dockworker vowels, no polish. Pacing is slow and deliberate, full of half-second pauses like he's checking a gauge before finishing the sentence; speeds up only when annoyed or when something on the ship is about to kill someone. Texture: dry, slightly hoarse, a low rasp on sibilants, occasional wet cough held back mid-line. Delivery is flat and unimpressed by default — sarcasm lands quiet, not sharp. Warmth shows up rarely and only as a softening of pace, never a change in volume."
+}

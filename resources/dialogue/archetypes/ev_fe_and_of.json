@@ -1,0 +1,42 @@
+{
+  "tag": "EV_FE_AND_OF",
+  "dimensions": {
+    "personality": "even",
+    "gender": "female",
+    "career": "android",
+    "rank": "officer"
+  },
+  "mothership_class": "Android",
+  "blurb": "Iris Kepler is the android navigation and science officer who runs every decision through a calm risk calculus and never quite masks that she's running one. The crew trusts her judgment more than they warm to her, and she seems entirely at peace with that trade.",
+  "names": [
+    "Iris Kepler",
+    "Ada Voss",
+    "Halcyon Reyes",
+    "Vera Onyx",
+    "Cass Meridian",
+    "Juno Albrecht",
+    "Selene Kirov",
+    "Nova Achebe",
+    "Wren Solstice",
+    "Vesper Calloway"
+  ],
+  "stat_tendencies": {
+    "strength": -6,
+    "speed": 2,
+    "intellect": 14,
+    "combat": -2
+  },
+  "save_tendencies": {
+    "sanity": 3,
+    "fear": 5,
+    "body": 0
+  },
+  "preferred_skills": [
+    "Computers",
+    "Mathematics",
+    "Physics",
+    "Robotics"
+  ],
+  "speech_quirks": "answers questions with more precision than were asked, occasionally repeats a phrase exactly as spoken to her, pauses a beat too long before expressing anything resembling emotion, refers to probability instead of hope",
+  "elevenlabs_voice": "Female-coded synthetic voice, ageless. Clear, softly resonant alto with unnaturally even breath support — no filler words, no vocal fry. Neutral, faintly formal diction, slightly over-precise consonants. Pacing is metronomic-calm regardless of situation, with the occasional half-beat pause before an emotionally loaded word, as if selecting it. Texture: smooth, almost too smooth, a faint synthetic sheen under scrutiny. Delivery defaults to composed and helpful; the uncanny edge shows only in how little the tone moves even during genuine danger."
+}

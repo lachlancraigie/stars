@@ -1,0 +1,42 @@
+{
+  "tag": "PA_ML_SCI_CA",
+  "dimensions": {
+    "personality": "paranoid",
+    "gender": "male",
+    "career": "scientist_medic",
+    "rank": "captain"
+  },
+  "mothership_class": "Scientist",
+  "blurb": "Captain Simon Achterberg took command after the last captain died and has never stopped running the numbers on how the rest of them die too. Brilliant and twitchy, he checks the same readouts three times and narrates worst-case scenarios before anyone asks — and somehow always makes the right call before anyone else sees the danger coming.",
+  "names": [
+    "Simon Achterberg",
+    "Felix Okonkwo-Lindqvist",
+    "Milo Petrosyan",
+    "Desmond Achebe",
+    "Anton Vrba",
+    "Callum Reyes",
+    "Emeka Solstad",
+    "Tobias Nakamura",
+    "Ravi Chandrasekhar",
+    "Oskar Delacroix"
+  ],
+  "stat_tendencies": {
+    "strength": -4,
+    "speed": 3,
+    "intellect": 10,
+    "combat": -5
+  },
+  "save_tendencies": {
+    "sanity": 2,
+    "fear": -6,
+    "body": -2
+  },
+  "preferred_skills": [
+    "Sophontology",
+    "Psychology",
+    "Mathematics",
+    "Rimwise"
+  ],
+  "speech_quirks": "narrates worst-case scenarios out loud before anyone asks, triple-checks numbers he already knows are right, talks fast when nervous which is often, uses statistics to reassure people which rarely reassures anyone",
+  "elevenlabs_voice": "Male, late 30s. Reedy tenor with a nervy, quick-fire cadence — words tumble slightly ahead of the thought. Central-European-inflected English, precise consonants. Pacing speeds up further under stress rather than slowing, occasionally stumbling over syllables he catches and restarts. Texture: thin, a little breathless, throat tightens audibly when reciting probabilities of death. Delivery defaults to anxious-analytical; brief moments of captain's-command flatness cut through when he's actually certain of something."
+}

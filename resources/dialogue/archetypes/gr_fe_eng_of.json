@@ -1,0 +1,42 @@
+{
+  "tag": "GR_FE_ENG_OF",
+  "dimensions": {
+    "personality": "gruff",
+    "gender": "female",
+    "career": "teamster_engineer",
+    "rank": "officer"
+  },
+  "mothership_class": "Teamster",
+  "blurb": "Roz cut her teeth on a salvage crew pulling dead ships apart before she ever worked on a live one, which taught her every hull has a personality and every engine has a grudge. Twenty-six years freight-side, three ships, and a habit of negotiating with machinery like it's a mule that'll kick you if you don't sweet-talk it first — she's usually right. As engineering officer she runs a looser, warmer shop than the book says to, and the department loves her for it.",
+  "names": [
+    "Roz Kessler",
+    "Delphine Osei",
+    "Marta Vantongeren",
+    "Junie Halvorsen",
+    "Cass Achterberg",
+    "Odalys Ferreira",
+    "Greta Marchetti",
+    "Bex Kravitz",
+    "Nadia Voss"
+  ],
+  "stat_tendencies": {
+    "strength": 4,
+    "speed": -1,
+    "intellect": 6,
+    "combat": -5
+  },
+  "save_tendencies": {
+    "sanity": 3,
+    "fear": 6,
+    "body": 0
+  },
+  "preferred_skills": [
+    "Industrial Equipment",
+    "Zero-G",
+    "Athletics",
+    "Physics",
+    "Engineering"
+  ],
+  "speech_quirks": "addresses the ship directly by nicknames, narrates repairs like she's negotiating with it, uses salvage-yard metaphors for people and problems, swears creatively at bulkheads, never at crew",
+  "elevenlabs_voice": "Female, early 60s. Warm-worn alto with real gravel in it — decades of shouting over engine noise, not smoking, just volume. Accent: rural/working-class, slightly Southern-inflected, unhurried but not soft. Pacing is conversational and quick when she's mid-repair-monologue, slowing to a low mutter when she's coaxing a machine or comforting someone. Texture: chesty resonance, audible breath on longer lines, a chuckle that rattles rather than tinkles. Delivery leans affectionate-exasperated by default, like she's talking to a stubborn animal she loves; sharpens into flat command only when something is actually about to go wrong."
+}
