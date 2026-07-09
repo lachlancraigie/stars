@@ -145,10 +145,18 @@ Transparent background. Single subject only.
 | Category | `{CATEGORY_FRAMING}` clause |
 |---|---|
 | Floor tile | "Isometric floor tile filling the 2:1 diamond footprint exactly: the tile's diamond silhouette is centered horizontally in the frame and centered vertically at 61% down from the top (not the frame's vertical center), spanning the middle 25% of the frame width. Surface detail (panels, markings, equipment) stays within the diamond, flush with the floor, no vertical walls, no ceiling, designed to tile edge-to-edge with identical floor tiles." |
-| Wall segment | "A single upright wall segment rising from one edge of the isometric floor diamond, standing vertically like a thin fence panel, uniform height, positioned so its base line sits along the diamond edge at 61% down the frame — do not fill the whole diamond, the wall is a thin vertical slice at the tile boundary, not a floor." |
-| Door / gate | "An upright sliding door/hatch fitted into a floor-diamond seam, standing vertically like the wall segments, base aligned to 61% down the frame, centered horizontally, no surrounding wall or room box, isolated door only." |
+| Wall segment | "A single upright wall segment standing vertically like a thin fence panel, uniform height, running diagonally at the isometric angle, base line at 61% down the frame. The wall panel is the ONLY object in the image: absolutely no floor, no ground plate, no base slab, no platform beneath or around it — the panel stands alone on a fully transparent background, as if cut out." |
+| Door / gate | "An upright closed sliding door/hatch standing vertically, seen at the isometric angle, base aligned to 61% down the frame, centered horizontally. The door is the ONLY object in the image: absolutely no floor, no ground plate, no base slab, no platform beneath it, no surrounding wall or room box — the isolated door stands alone on a fully transparent background." |
 | Prop | "A single freestanding object standing on the floor diamond's center point: its base/contact shadow sits at 61% down the frame, centered horizontally, the object extending upward from that point within the frame — no floor tile needs to be drawn under it, only the object and its small flat contact shadow." |
-| Crew | "A full-body character standing upright with feet planted at the floor diamond's center point: feet at 61% down the frame, centered horizontally, body extending upward, facing {DIRECTION}, chunky simplified proportions (large head-to-body ratio is fine, no fine facial detail), standing idle pose, arms at sides." |
+| Crew | "A full-body character standing upright, feet at 61% down the frame, centered horizontally, body extending upward, facing {DIRECTION}, chunky simplified proportions (large head-to-body ratio is fine, no fine facial detail), standing idle pose, arms at sides. The character is the ONLY thing in the image: absolutely no floor, no ground plate, no tile, no platform beneath the feet — only a small flat contact shadow directly under the feet, on a fully transparent background." |
+
+**Pilot learning (2026-07-10):** the "ONLY object / absolutely no floor" language in the
+wall, door, and crew clauses is load-bearing. The first pilot pass used softer wording
+("do not fill the whole diamond", "isolated door only") and the model drew a floor slab
+under every wall, the door, and the crew figure anyway; the strengthened clauses above
+removed the slabs on the very next attempt. The medbay floor tile needed the same
+treatment in its subject line ("completely flat and empty — no bed, no furniture...")
+after the model furnished it with a bed.
 
 ---
 
@@ -173,11 +181,20 @@ role-tinted crew suits (tinting happens at runtime, not bake time).
    (LANCZOS, exact half factor, no cropping) straight onto the 512×512 canvas — this is why
    every fractional framing instruction above is phrased as a frame percentage rather than
    an absolute pixel count.
-3. **QA heuristic**: after downscale, compute the centroid of all pixels with alpha > 10.
-   Flag (don't hard-fail) any asset whose centroid falls outside roughly (256±90, 280±110).
-   This is a coarse sanity check for "wildly off-center," not a precise per-category
-   assertion — floor tiles legitimately centroid nearer y≈311, tall props/crew nearer
-   y≈200–260 depending on height. See `tools/image_gen/pilot_batch.py::run_qa()`.
+3. **QA + geometry enforcement**: the pilot proved the model gets *style* right but cannot
+   hit the pixel contract by prompt — floor tiles come back as 1:1 square diamonds filling
+   the frame regardless of the 25%-width/2:1 instruction. Prompt-side geometry correction
+   is a losing game (that drift is what killed the Reve set), so the pipeline splits
+   duties: **the prompt owns style, PIL owns geometry.**
+   `tools/image_gen/pilot_batch.py::run_qa()` applies a coarse centroid sanity check at
+   generation time (centroid of alpha>10 pixels within (256±90, 280±110); auto-retry once
+   with a corrective prompt on failure), then `tools/image_gen/normalize_gen2.py`
+   deterministically affine-maps every sprite's opaque bbox onto anchor targets measured
+   from the legacy Kenney kit: floors non-uniformly to the exact 130×65 diamond at
+   (256,311) (squashing a 45° plan-view diamond to 2:1 is how classic 2:1 iso floor art is
+   constructed, so this is geometrically correct for flat tiles), walls/door/props/crew
+   uniform-scaled and bottom-anchored (crew height 70 with feet at y=320, matching the
+   Kenney astronaut's 46×70@320). Post-normalization QA asserts the contract bbox to ±2 px.
 4. **Transparency**: confirmed native (`background=transparent` produces a real alpha
    channel — verified via `generate.py --selftest`, see its docstring). No chroma-key pass
    needed for this model. `generate.py::chroma_key_to_alpha()` remains available for any
