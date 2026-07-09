@@ -220,6 +220,18 @@ func _connect_debug_output() -> void:
 		func(cid, old, nw): print("[TRUST]     %s  %.2f → %.2f" % [cid, old, nw]))
 	EventBus.scenario_ended.connect(
 		func(outcome): print("[SCENARIO]  ══ ENDED: %s ══" % outcome.to_upper()))
+	EventBus.line_spoken.connect(
+		func(cid, _key, text, line_type): print("[%s]     %s: \"%s\"" % [
+			"THOUGHT" if line_type == "declaration" else "SAY", _crew_label(cid), text]))
+	EventBus.conversation_started.connect(
+		func(a, b, room_id): print("[CONVO]     %s <-> %s in %s" % [_crew_label(a), _crew_label(b), room_id]))
+	EventBus.crew_romance_started.connect(
+		func(a, b): print("[ROMANCE]   %s + %s" % [_crew_label(a), _crew_label(b)]))
+
+
+func _crew_label(crew_id: String) -> String:
+	var crew: CrewMember = GameState.crew.get(crew_id) as CrewMember
+	return crew.crew_name if crew != null else crew_id
 
 
 # --- Headless verification: SHIPAI_AUTOSHOT=<dir> saves timed screenshots ---
