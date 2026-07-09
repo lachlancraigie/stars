@@ -35,5 +35,11 @@ static func evaluate(crew: CrewMember) -> String:
 	if crew.current_state == SLEEPING and crew.fatigue > 0.2:
 		return SLEEPING
 
-	# TODO(crew): return WORKING when the directive/task system is implemented
+	# Work — boredom drives crew to their duty station; working burns boredom
+	# (NeedsModel) so this self-oscillates between shifts and downtime.
+	if crew.boredom >= 0.5:
+		return WORKING
+	if crew.current_state == WORKING and crew.boredom > 0.1:
+		return WORKING
+
 	return IDLE

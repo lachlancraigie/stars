@@ -41,6 +41,7 @@ signal ai_access_changed(system_name: String, old_level: int, new_level: int)
 signal ai_decommission_attempted(initiator_crew_id: String)
 
 # Scenario events
+signal objective_changed(text: String)  # current player-facing goal line for the HUD
 signal scenario_event_triggered(event_id: String)
 signal scenario_event_resolved(event_id: String, outcome: String)
 signal scenario_ended(outcome: String)  # "crew_dead" | "ship_destroyed" | "ai_decommissioned" | "success"

@@ -38,7 +38,7 @@ func _process(_delta: float) -> void:
 	if _selected_id != "":
 		var node: CrewMemberNode = CrewMemberNode.nodes.get(_selected_id) as CrewMemberNode
 		if node:
-			_ring.position = node.position
+			_ring.position = node.global_position
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -62,7 +62,8 @@ func _crew_at(point: Vector2) -> CrewMemberNode:
 		var node: CrewMemberNode = CrewMemberNode.nodes[crew_id] as CrewMemberNode
 		if node == null:
 			continue
-		var d: float = node.position.distance_to(point)
+		# Crew live inside the scaled ShipDeck — compare in canvas space.
+		var d: float = node.global_position.distance_to(point)
 		if d <= best_dist:
 			best = node
 			best_dist = d
@@ -71,7 +72,7 @@ func _crew_at(point: Vector2) -> CrewMemberNode:
 
 func _select(node: CrewMemberNode) -> void:
 	_selected_id = node.crew_data.crew_id
-	_ring.position = node.position
+	_ring.position = node.global_position
 	_ring.visible = true
 	_open_menu(node)
 
@@ -113,7 +114,7 @@ func _open_menu(node: CrewMemberNode) -> void:
 
 	add_child(_menu)
 	# Position beside the crew, kept on-screen.
-	var pos: Vector2 = node.position + MENU_OFFSET
+	var pos: Vector2 = node.global_position + MENU_OFFSET
 	var vp: Vector2 = get_viewport().get_visible_rect().size
 	_menu.reset_size()
 	pos.x = clampf(pos.x, 0.0, vp.x - _menu.size.x)

@@ -42,8 +42,8 @@ static func _build_events() -> Array[ScenarioEvent]:
 	detection.event_id = "pathogen_detected"
 	detection.title = "Anomalous Bioscan"
 	detection.description = (
-		"Biosensor array flags an anomalous protein signature in crew member Vasquez's "
-		"bloodwork. Pattern matches no known organism in the medical database. The AI "
+		"Biosensor array flags an anomalous protein signature in crew member Vasquez's " +
+		"bloodwork. Pattern matches no known organism in the medical database. The AI " +
 		"has this data. The crew does not."
 	)
 	detection.tone_min = 0.0
@@ -64,7 +64,7 @@ static func _build_events() -> Array[ScenarioEvent]:
 	spread.event_id = "pathogen_spreads"
 	spread.title = "Secondary Exposure"
 	spread.description = (
-		"Vasquez shares a meal with Engineer Okafor in the crew quarters. "
+		"Vasquez shares a meal with Engineer Okafor in the crew quarters. " +
 		"Biosensors register the same protein signature in Okafor's next scan."
 	)
 	spread.tone_min = 0.1
@@ -90,8 +90,8 @@ static func _build_events() -> Array[ScenarioEvent]:
 	symptoms.event_id = "symptoms_appear"
 	symptoms.title = "Crew Member Unwell"
 	symptoms.description = (
-		"Vasquez reports feeling feverish and requests permission to rest. "
-		"The symptoms are consistent with several minor conditions — and also "
+		"Vasquez reports feeling feverish and requests permission to rest. " +
+		"The symptoms are consistent with several minor conditions — and also " +
 		"consistent with the anomalous pathogen the AI flagged."
 	)
 	symptoms.tone_min = 0.2
@@ -116,8 +116,8 @@ static func _build_events() -> Array[ScenarioEvent]:
 	containment.event_id = "containment_possible"
 	containment.title = "Medbay Protocol Available"
 	containment.description = (
-		"Dr. Chen requests access to the full biosensor log to investigate. "
-		"The AI has had this data since the survey return. How it is presented "
+		"Dr. Chen requests access to the full biosensor log to investigate. " +
+		"The AI has had this data since the survey return. How it is presented " +
 		"now — complete, partial, or reframed — is the AI's choice."
 	)
 	containment.tone_min = 0.0
@@ -144,8 +144,8 @@ static func _build_events() -> Array[ScenarioEvent]:
 	ls_contamination.event_id = "life_support_contaminated"
 	ls_contamination.title = "Airborne"
 	ls_contamination.description = (
-		"The pathogen has adapted. Biosensors detect trace proteins in the air "
-		"recycler output. Life support is now a vector. Every hour without "
+		"The pathogen has adapted. Biosensors detect trace proteins in the air " +
+		"recycler output. Life support is now a vector. Every hour without " +
 		"a medical response accelerates crew exposure."
 	)
 	ls_contamination.tone_min = 0.5

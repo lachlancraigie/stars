@@ -20,4 +20,6 @@ func _on_directive_accepted(crew_id: String, directive: Resource) -> void:
 		return
 	var node: CrewMemberNode = CrewMemberNode.nodes.get(crew_id) as CrewMemberNode
 	if node:
-		node.move_to_room(d.move_to_room)
+		# The crew agreed to go — they also stay a while rather than wandering
+		# straight back out, so complying with the AI visibly means something.
+		node.move_to_room(d.move_to_room, 60.0)

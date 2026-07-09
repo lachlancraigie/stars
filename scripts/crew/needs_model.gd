@@ -13,7 +13,7 @@ const FEAR_OXYGEN_BONUS: float         = 0.0003    # extra fear per tick when O2
 const OXYGEN_FEAR_THRESHOLD: float     = 0.3
 const LONELINESS_PER_TICK: float       = 0.00004
 const LONELINESS_RECOVERY: float       = 0.0001
-const BOREDOM_IDLE_PER_TICK: float     = 0.0001
+const BOREDOM_IDLE_PER_TICK: float     = 0.0006  # idle -> working shift in ~3-4 min
 const BOREDOM_WORK_RECOVERY: float     = 0.0003
 const NEED_CRITICAL_THRESHOLD: float   = 0.85
 

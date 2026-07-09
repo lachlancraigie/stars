@@ -1,14 +1,20 @@
 # Art Direction — Style Candidates
 
-> Status: **LOCKED — Candidate 3, Flat Vector** (decision 2026-07-07).
-> All game assets are generated in the Flat Vector style below; the other four
-> candidates are kept for reference. Five candidates were each rendered from
-> the identical subject (Class 1 scout medbay, one crew member) via the
-> Reve API (`reve.v1` — note v2 is not enabled on our key). Test renders live in
-> `docs/art-style-candidates/`. The executable form of the locked style is
-> `tools/asset_gen/style.json`; rooms are generated as wall-less isometric
-> floor-plates so they compose into a ship deck plan, unlike the walled
-> diorama in the candidate render.
+> Status: **SUPERSEDED — Kenney Space Kit isometric** (decision 2026-07-09).
+> The Reve-generated Flat Vector set shipped with inconsistent styles and
+> perspectives across assets (rooms didn't share a projection, crew didn't
+> match rooms), so the game now composes its deck from the prerendered
+> isometric kit in `assets/sprites/legacy/` (Kenney Space Kit: 512×512
+> canvases, 130×65 floor diamond registered at canvas (256,311), 4 rotations
+> per object, astronauts with 8 facings). See `scripts/ship/iso_kit.gd` and
+> `scripts/ship/deck_plan.gd`. Role identity is done with modulate tints on
+> the two astronaut variants. The Reve pipeline (`tools/asset_gen/`) and the
+> notes below are kept for reference — useful for portraits/UI art where
+> per-image consistency doesn't matter as much.
+>
+> Previous status: LOCKED — Candidate 3, Flat Vector (2026-07-07), via the
+> Reve API (`reve.v1` — v2 not enabled on our key). Test renders live in
+> `docs/art-style-candidates/`.
 
 Generation cost reference: ~18 credits/image at 3:2. Budget at time of writing: ~7,390.
 

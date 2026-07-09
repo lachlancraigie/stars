@@ -57,6 +57,7 @@ func _check_win_conditions() -> void:
 
 func _on_crew_died(_crew_id: String, _cause: String) -> void:
 	# Win/lose re-check happens next tick — avoids checking mid-cascade
+	pass
 
 
 func _on_decommission_attempted(_initiator: String) -> void:

@@ -1,104 +1,123 @@
-[gd_resource type="ShipConfig" load_steps=16 format=3]
+[gd_resource type="Resource" script_class="ShipConfig" load_steps=19 format=3]
 
-[sub_resource type="RoomDefinition" id="rm_bridge"]
+[ext_resource type="Script" path="res://scripts/ship/ship_config.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/ship/room_definition.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/ship/connection_definition.gd" id="3"]
+
+[sub_resource type="Resource" id="rm_bridge"]
+script = ExtResource("2")
 room_id = "bridge"
 room_function = "bridge"
 access_level = 1
 integrity = 1.0
 layout_position = Vector2(960, 300)
 
-[sub_resource type="RoomDefinition" id="rm_engineering"]
+[sub_resource type="Resource" id="rm_engineering"]
+script = ExtResource("2")
 room_id = "engineering"
 room_function = "reactor"
 access_level = 0
 integrity = 1.0
 layout_position = Vector2(560, 780)
 
-[sub_resource type="RoomDefinition" id="rm_life_support"]
+[sub_resource type="Resource" id="rm_life_support"]
+script = ExtResource("2")
 room_id = "life_support"
 room_function = "life_support"
 access_level = 0
 integrity = 1.0
 layout_position = Vector2(960, 780)
 
-[sub_resource type="RoomDefinition" id="rm_medbay"]
+[sub_resource type="Resource" id="rm_medbay"]
+script = ExtResource("2")
 room_id = "medbay"
 room_function = "medbay"
 access_level = 0
 integrity = 1.0
 layout_position = Vector2(560, 540)
 
-[sub_resource type="RoomDefinition" id="rm_quarters"]
+[sub_resource type="Resource" id="rm_quarters"]
+script = ExtResource("2")
 room_id = "quarters"
 room_function = "quarters"
 access_level = 0
 integrity = 1.0
 layout_position = Vector2(1360, 540)
 
-[sub_resource type="RoomDefinition" id="rm_cargo"]
+[sub_resource type="Resource" id="rm_cargo"]
+script = ExtResource("2")
 room_id = "cargo"
 room_function = "cargo"
 access_level = 0
 integrity = 1.0
 layout_position = Vector2(1360, 780)
 
-[sub_resource type="RoomDefinition" id="rm_corridor"]
+[sub_resource type="Resource" id="rm_corridor"]
+script = ExtResource("2")
 room_id = "corridor_main"
 room_function = "corridor"
 access_level = 0
 integrity = 1.0
 layout_position = Vector2(960, 540)
 
-[sub_resource type="ConnectionDefinition" id="cn_bridge"]
+[sub_resource type="Resource" id="cn_bridge"]
+script = ExtResource("3")
 room_a_id = "bridge"
 room_b_id = "corridor_main"
 weight = 1.0
 door_id = "door_bridge"
 maintenance_only = false
 
-[sub_resource type="ConnectionDefinition" id="cn_engineering"]
+[sub_resource type="Resource" id="cn_engineering"]
+script = ExtResource("3")
 room_a_id = "engineering"
 room_b_id = "corridor_main"
 weight = 1.0
 door_id = "door_engineering"
 maintenance_only = false
 
-[sub_resource type="ConnectionDefinition" id="cn_life_support"]
+[sub_resource type="Resource" id="cn_life_support"]
+script = ExtResource("3")
 room_a_id = "life_support"
 room_b_id = "corridor_main"
 weight = 1.0
 door_id = ""
 maintenance_only = false
 
-[sub_resource type="ConnectionDefinition" id="cn_medbay"]
+[sub_resource type="Resource" id="cn_medbay"]
+script = ExtResource("3")
 room_a_id = "medbay"
 room_b_id = "corridor_main"
 weight = 1.0
 door_id = ""
 maintenance_only = false
 
-[sub_resource type="ConnectionDefinition" id="cn_quarters"]
+[sub_resource type="Resource" id="cn_quarters"]
+script = ExtResource("3")
 room_a_id = "quarters"
 room_b_id = "corridor_main"
 weight = 1.0
 door_id = ""
 maintenance_only = false
 
-[sub_resource type="ConnectionDefinition" id="cn_cargo"]
+[sub_resource type="Resource" id="cn_cargo"]
+script = ExtResource("3")
 room_a_id = "cargo"
 room_b_id = "corridor_main"
 weight = 1.0
 door_id = "door_cargo"
 maintenance_only = false
 
-[sub_resource type="ConnectionDefinition" id="cn_maint_eng_ls"]
+[sub_resource type="Resource" id="cn_maint_eng_ls"]
+script = ExtResource("3")
 room_a_id = "engineering"
 room_b_id = "life_support"
 weight = 0.5
 door_id = ""
 maintenance_only = true
 
-[sub_resource type="ConnectionDefinition" id="cn_maint_ls_cargo"]
+[sub_resource type="Resource" id="cn_maint_ls_cargo"]
+script = ExtResource("3")
 room_a_id = "life_support"
 room_b_id = "cargo"
 weight = 0.5
@@ -106,10 +125,11 @@ door_id = ""
 maintenance_only = true
 
 [resource]
+script = ExtResource("1")
 ship_class = 1
 ship_name = "Class 1 Scout"
 min_crew = 3
 max_crew = 6
 starting_resources = {"oxygen": 1.0, "power": 1.0, "food": 0.8, "water": 0.8, "fuel": 1.0, "spare_parts": 0.6, "medicine": 0.5}
-rooms = Array[RoomDefinition]([SubResource("rm_bridge"), SubResource("rm_engineering"), SubResource("rm_life_support"), SubResource("rm_medbay"), SubResource("rm_quarters"), SubResource("rm_cargo"), SubResource("rm_corridor")])
-connections = Array[ConnectionDefinition]([SubResource("cn_bridge"), SubResource("cn_engineering"), SubResource("cn_life_support"), SubResource("cn_medbay"), SubResource("cn_quarters"), SubResource("cn_cargo"), SubResource("cn_maint_eng_ls"), SubResource("cn_maint_ls_cargo")])
+rooms = Array[ExtResource("2")]([SubResource("rm_bridge"), SubResource("rm_engineering"), SubResource("rm_life_support"), SubResource("rm_medbay"), SubResource("rm_quarters"), SubResource("rm_cargo"), SubResource("rm_corridor")])
+connections = Array[ExtResource("3")]([SubResource("cn_bridge"), SubResource("cn_engineering"), SubResource("cn_life_support"), SubResource("cn_medbay"), SubResource("cn_quarters"), SubResource("cn_cargo"), SubResource("cn_maint_eng_ls"), SubResource("cn_maint_ls_cargo")])

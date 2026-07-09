@@ -1,0 +1,46 @@
+Godot Engine v4.7.stable.official.5b4e0cb0f - https://godotengine.org
+OpenGL API 3.3.0 NVIDIA 596.49 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4070
+
+ERROR: Error opening file 'res://icon.svg'.
+   at: load_image (core/io/image_loader.cpp:91)
+ERROR: Cannot get class 'RoomDefinition'.
+   at: _instantiate_internal (core/object/class_db.cpp:587)
+   GDScript backtrace (most recent call first):
+       [0] _setup_ship (res://scripts/core/main.gd:30)
+       [1] _ready (res://scripts/core/main.gd:18)
+ERROR: res://resources/ship_configs/class_1_scout.tres:3 - Parse Error: Can't create sub resource of type 'RoomDefinition'.
+   at: _printerr (scene/resources/resource_format_text.cpp:41)
+   GDScript backtrace (most recent call first):
+       [0] _setup_ship (res://scripts/core/main.gd:30)
+       [1] _ready (res://scripts/core/main.gd:18)
+ERROR: Failed loading resource: res://resources/ship_configs/class_1_scout.tres.
+   at: _load (core/io/resource_loader.cpp:317)
+   GDScript backtrace (most recent call first):
+       [0] _setup_ship (res://scripts/core/main.gd:30)
+       [1] _ready (res://scripts/core/main.gd:18)
+WARNING: Main: class_1_scout.tres failed to load — building config in code
+   at: push_warning (core/variant/variant_utility.cpp:1033)
+   GDScript backtrace (most recent call first):
+       [0] _setup_ship (res://scripts/core/main.gd:32)
+       [1] _ready (res://scripts/core/main.gd:18)
+[EVENT]     scenario_started
+[MAIN] ══════ THE QUARANTINE ══════
+[MAIN] Crew: martinez, vasquez, okafor, chen
+[MAIN] Resources: { "oxygen": 1.0, "power": 1.0, "food": 0.8, "water": 0.8, "fuel": 1.0, "spare_parts": 0.6, "medicine": 0.5 }
+[MAIN] SPACE=pause  D=directive  I=isolate  F=fear  R=resources
+[EVENT]     pathogen_detected
+[EVENT]     pathogen_spreads
+[EVENT]     symptoms_appear
+[TRUST]     martinez  0.55 → 0.50
+[TRUST]     vasquez  0.50 → 0.45
+[TRUST]     okafor  0.50 → 0.45
+[TRUST]     chen  0.60 → 0.55
+[CRITICAL]  oxygen at 20%
+[TRUST]     chen  0.55 → 0.55
+[DIRECTIVE] chen accepted — Proceed to Bridge.
+[DIRECTIVE] vasquez rejected (low_trust_or_morale) — Proceed to Engineering.
+[DIRECTIVE] okafor rejected (low_trust_or_morale) — Proceed to Medbay.
+[DIRECTIVE] vasquez rejected (low_trust_or_morale) — Proceed to Cargo.
+[DIRECTIVE] martinez rejected (low_trust_or_morale) — Proceed to Life Support.
+[CRITICAL]  water at 20%
+[DIRECTIVE] martinez rejected (low_trust_or_morale) — Proceed to Bridge.
