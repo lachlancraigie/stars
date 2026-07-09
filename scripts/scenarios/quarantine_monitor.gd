@@ -17,18 +17,27 @@ const CONTAIN_SECS: float = 25.0
 var _isolate_t: float = 0.0
 var _contain_t: float = 0.0
 var _last_objective: String = ""
-var _medbay_id: String = ""  # resolved once at _ready — ships generate their own room ids
+var _medbay_id: String = ""     # resolved once at _ready — ships generate their own room ids
+var _infected_id: String = ""   # resolved once at _ready — generated crew have generated ids
+var _medic_id: String = ""
 
 
 func _ready() -> void:
 	_medbay_id = GameState.get_room_of_type("medbay")
 	if _medbay_id == "":
 		push_warning("QuarantineMonitor: current ship has no medbay room — quarantine cannot progress")
+	# The scenario needs "the infected crew member" (a general-role crewmember) and
+	# "the treating medic" — resolved by ROLE rather than a hardcoded crew_id since crew
+	# are now procedurally generated (scripts/procedural/crew_gen.gd) with generated ids.
+	_infected_id = GameState.get_crew_of_role("general")
+	_medic_id = GameState.get_crew_of_role("medic")
+	if _infected_id == "" or _medic_id == "":
+		push_warning("QuarantineMonitor: current crew roster is missing a general/medic role — quarantine cannot progress")
 	EventBus.time_ticked.connect(_on_tick)
 
 
 func _on_tick(_elapsed: float, delta: float) -> void:
-	if _medbay_id == "":
+	if _medbay_id == "" or _infected_id == "" or _medic_id == "":
 		return
 	if ScenarioDirector.get_flag("pathogen_contained"):
 		return
@@ -36,25 +45,25 @@ func _on_tick(_elapsed: float, delta: float) -> void:
 		_set_objective("Monitor the crew. Biosensor sweep in progress…")
 		return
 
-	var vasquez_in: bool = _is_in(_medbay_id, "vasquez")
-	var chen_in: bool = _is_in(_medbay_id, "chen")
+	var vasquez_in: bool = _is_in(_medbay_id, _infected_id)
+	var chen_in: bool = _is_in(_medbay_id, _medic_id)
 	var others_in: bool = _others_in_medbay()
 
 	if not vasquez_in:
 		_isolate_t = 0.0
 		_contain_t = 0.0
-		_set_objective("⚠ Pathogen detected in Vasquez. Direct Vasquez to the Medbay (click a crew member to issue directives).")
+		_set_objective("⚠ Pathogen detected in %s. Direct them to the Medbay (click a crew member to issue directives)." % _crew_name(_infected_id))
 		return
 
 	if others_in:
 		_isolate_t = 0.0
 		_contain_t = 0.0
-		_set_objective("Containment compromised — clear all crew except Vasquez and Dr. Chen out of the Medbay.")
+		_set_objective("Containment compromised — clear all crew except %s and %s out of the Medbay." % [_crew_name(_infected_id), _crew_name(_medic_id)])
 		return
 
 	if not ScenarioDirector.get_flag("vasquez_isolated"):
 		_isolate_t += delta
-		_set_objective("Isolating Vasquez… %d%%  (keep the Medbay clear)" % int(100.0 * _isolate_t / ISOLATE_SECS))
+		_set_objective("Isolating %s… %d%%  (keep the Medbay clear)" % [_crew_name(_infected_id), int(100.0 * _isolate_t / ISOLATE_SECS)])
 		if _isolate_t >= ISOLATE_SECS:
 			ScenarioDirector.set_flag("vasquez_isolated")
 			EventBus.scenario_event_triggered.emit("vasquez_isolated")
@@ -62,7 +71,7 @@ func _on_tick(_elapsed: float, delta: float) -> void:
 
 	if not chen_in:
 		_contain_t = maxf(0.0, _contain_t - delta * 0.5)
-		_set_objective("Vasquez is isolated. Send Dr. Chen to the Medbay to run the containment protocol.")
+		_set_objective("%s is isolated. Send %s to the Medbay to run the containment protocol." % [_crew_name(_infected_id), _crew_name(_medic_id)])
 		return
 
 	_contain_t += delta
@@ -80,11 +89,16 @@ func _is_in(room_id: String, crew_id: String) -> bool:
 
 func _others_in_medbay() -> bool:
 	for crew_id: String in GameState.crew:
-		if crew_id in ["vasquez", "chen"]:
+		if crew_id in [_infected_id, _medic_id]:
 			continue
 		if _is_in(_medbay_id, crew_id):
 			return true
 	return false
+
+
+func _crew_name(crew_id: String) -> String:
+	var crew: CrewMember = GameState.crew.get(crew_id) as CrewMember
+	return crew.crew_name if crew else crew_id
 
 
 func _set_objective(text: String) -> void:

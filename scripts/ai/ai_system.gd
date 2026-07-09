@@ -24,13 +24,19 @@ func _initialize_access_levels() -> void:
 
 
 func issue_directive(directive: AIDirective) -> bool:
+	if not GameState.ai_core_can_act():
+		return false  # blackout — AI has lost nearly all controls
 	if not AccessLevel.can_issue(directive):
 		return false
 	directive.directive_id = "dir_%d" % Time.get_ticks_msec()
 	directive.timestamp = TimeManager.elapsed
 	_active_directives.append(directive)
 	EventBus.directive_issued.emit(directive)
-	_route_directive(directive)
+	var latency: float = AICoreSystem.directive_latency_seconds()
+	if latency <= 0.0:
+		_route_directive(directive)
+	else:
+		get_tree().create_timer(latency).timeout.connect(_route_directive.bind(directive))
 	return true
 
 

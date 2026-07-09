@@ -7,15 +7,25 @@ const WORKING       = "working"
 const SLEEPING      = "sleeping"
 const EATING        = "eating"
 const PANICKING     = "panicking"
+const FROZEN        = "frozen"          # Mothership Panic Table: Catatonic/temporary freeze
 const INCAPACITATED = "incapacitated"
 
 # Evaluate what state a crew member should be in given their current needs.
 # Hysteresis is applied to prevent rapid state flipping.
 # Caller is responsible for detecting the change and emitting crew_state_changed.
 static func evaluate(crew: CrewMember) -> String:
-	# Incapacitation overrides everything
+	# Incapacitation overrides everything (Mothership: dead/dying/comatose/unconscious/
+	# manual AI-repair "retired" all route through this state — see WoundTable/PanicTable).
 	if crew.physical_health <= 0.1 or crew.psychological_health <= 0.05:
 		return INCAPACITATED
+	if crew.retired or TimeManager.elapsed < crew.unconscious_until or crew.death_save_at >= 0.0:
+		return INCAPACITATED
+	if "comatose" in crew.conditions:
+		return INCAPACITATED
+
+	# Frozen — Mothership Panic Table "Catatonic": unresponsive for a short window.
+	if TimeManager.elapsed < crew.frozen_until:
+		return FROZEN
 
 	# Panic — enter at 0.85 fear, exit only below 0.4 (hysteresis)
 	if crew.fear >= 0.85:

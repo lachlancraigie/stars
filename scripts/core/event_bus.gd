@@ -17,9 +17,40 @@ signal door_state_changed(door_id: String, is_open: bool)
 signal room_entered(crew_id: String, room_id: String)
 signal room_exited(crew_id: String, room_id: String)
 
-# Resources
-signal resource_changed(resource_name: String, value: float, delta: float)
-signal resource_critical(resource_name: String, value: float)
+# Power (Mothership rewrite — replaces the old normalised resource-bar model)
+signal power_mode_changed(reactor_online: bool)   # true = reactor running (all rooms powered), false = battery mode
+signal reactor_failure(source: String)            # "damage" | "sabotage" | "scenario" | ...
+signal room_power_changed(room_id: String, powered: bool)
+signal battery_changed(charge: float, capacity: float)
+signal power_low(charge: float)                   # edge-triggered: battery just crossed the low threshold
+
+# Life support (Mothership rewrite)
+signal life_support_mode_changed(online: bool)
+signal life_support_failure(source: String)
+signal room_air_changed(room_id: String, air: float)  # air quality 0-100 for a given room
+
+# AI core (Mothership rewrite)
+signal ai_damaged(amount: float, integrity: float, source: String)
+signal ai_core_status_changed(old_status: String, new_status: String)  # "online" | "degraded" | "blackout"
+
+# Repair (reactor / life_support / ai_core — Mothership rewrite)
+signal repair_started(target_id: String, crew_id: String)
+signal repair_progress(target_id: String, crew_id: String, progress: float)  # 0-100
+signal repair_success(target_id: String, crew_id: String)
+signal repair_refused(target_id: String, reason: String)  # crew won't repair (e.g. trust too low)
+
+# Doors: crew-side manual bypass of an AI-locked door (Mothership rewrite)
+signal door_bypass_started(crew_id: String, door_id: String, eta: float)
+signal door_bypass_result(crew_id: String, door_id: String, success: bool, critical: bool)
+signal door_locked_on_crew(crew_id: String, door_id: String)  # crew found themselves locked in/out
+
+# Crew: Mothership stress/panic/wounds
+signal crew_stress_changed(crew_id: String, old_stress: int, new_stress: int)
+signal crew_panicked(crew_id: String, table_entry: int, effect: String)
+signal crew_injury(crew_id: String, wound_severity: String, wound_type: String)
+
+# Dialogue-facing convenience channel — see the forwarding wiring in _ready() below.
+signal recent_event(event_id: String, data: Dictionary)
 
 # Crew
 signal crew_moved(crew_id: String, from_room: String, to_room: String)
@@ -45,3 +76,20 @@ signal objective_changed(text: String)  # current player-facing goal line for th
 signal scenario_event_triggered(event_id: String)
 signal scenario_event_resolved(event_id: String, outcome: String)
 signal scenario_ended(outcome: String)  # "crew_dead" | "ship_destroyed" | "ai_decommissioned" | "success"
+
+
+# Mothership rewrite (2026-07-09): several signals above forward into `recent_event` — a
+# single generic channel the dialogue selector (scripts/crew/, owned by a parallel agent)
+# can subscribe to once instead of to every specific signal, to satisfy
+# docs/dialogue_spec.md's closed `recent_events` vocabulary. The specific signals still
+# exist and still carry full typed payloads for systems that need them — `recent_event`
+# is purely an additional, lossy, dialogue-facing convenience view.
+func _ready() -> void:
+	crew_died.connect(func(cid, cause): recent_event.emit("crew_death", {"crew_id": cid, "cause": cause}))
+	crew_injury.connect(func(cid, sev, wtype): recent_event.emit("injury", {"crew_id": cid, "severity": sev, "wound_type": wtype}))
+	reactor_failure.connect(func(source): recent_event.emit("reactor_failure", {"source": source}))
+	power_low.connect(func(charge): recent_event.emit("power_low", {"charge": charge}))
+	life_support_failure.connect(func(source): recent_event.emit("life_support_failure", {"source": source}))
+	door_locked_on_crew.connect(func(cid, did): recent_event.emit("door_locked_on_crew", {"crew_id": cid, "door_id": did}))
+	ai_damaged.connect(func(amount, integrity, source): recent_event.emit("ai_damaged", {"amount": amount, "integrity": integrity, "source": source}))
+	repair_success.connect(func(target_id, crew_id): recent_event.emit("repair_success", {"target": target_id, "crew_id": crew_id}))

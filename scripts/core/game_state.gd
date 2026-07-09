@@ -12,16 +12,42 @@ var ship_seed: int = 0            # RNG seed the current layout was generated fr
 var rooms: Dictionary = {}         # room_id -> RoomBase node
 var ship_systems: Dictionary = {}  # system_name -> Dictionary
 
-# Resources (normalised 0.0–1.0)
-var resources: Dictionary = {
-	"oxygen": 1.0,
-	"power": 1.0,
-	"food": 1.0,
-	"water": 1.0,
-	"fuel": 1.0,
-	"spare_parts": 1.0,
-	"medicine": 1.0,
-}
+# --- Power (Mothership rewrite — replaces the old normalised resource-bar model) ---
+# While the reactor is online every room is powered for free. On reactor failure the
+# ship falls to a battery budget the AI must divert room-by-room (see PowerModel for
+# the tuning constants/tick logic; GameState only owns the authoritative state).
+var reactor_online: bool = true
+var battery_capacity: float = 100.0
+var battery_charge: float = 100.0
+var powered_rooms: Array[String] = []      # rooms manually powered from battery (battery mode only)
+var _battery_was_low: bool = false          # edge-trigger guard for the power_low signal
+
+# --- Life support (Mothership rewrite) ---
+# While life_support_online, every room has full air. On failure, per-room air quality
+# (0-100) degrades/recovers over time (LifeSupportModel) and the AI diverts limited
+# capacity to a capped set of rooms, same shape as power.
+var life_support_online: bool = true
+var life_supported_rooms: Array[String] = []   # rooms manually kept supported in failure mode
+var room_air: Dictionary = {}                   # room_id -> float 0-100 (lazily defaults to 100)
+
+# --- AI core (Mothership rewrite) ---
+# The ai_core room hosts the player. Integrity 0-100; status derives from it (+ a manual
+# shutdown flag). The AI core is assumed to run off its own isolated power cell, independent
+# of the ship power grid above — deliberately, so a ship-wide blackout can never strand the
+# player without any means to act (see CLAUDE.md session note for the rationale).
+var ai_core_integrity: float = 100.0
+var ai_core_status: String = "online"       # "online" | "degraded" | "blackout"
+var ai_core_manual_shutdown: bool = false
+var ai_core_blackout_since: float = -1.0
+var ai_core_sensor_gap_rooms: Array[String] = []   # degraded-mode: rooms the AI can't currently see occupants in
+
+# --- Repair jobs (reactor / life_support / ai_core) ---
+# target_id -> {crew_id: String, elapsed_since_check: float, progress: float}
+var repair_jobs: Dictionary = {}
+
+# --- Ship-wide destruction hook (stub — no content triggers this yet; wired for the
+# "ship destroyed" lose condition per CLAUDE.md's permadeath design decision) ---
+var ship_destroyed: bool = false
 
 # Crew
 var crew: Dictionary = {}  # crew_id -> CrewMember resource
@@ -36,17 +62,192 @@ var ai_obedience_score: float = 1.0    # internal; crew cannot read this directl
 var ai_trust_scores: Dictionary = {}   # crew_id -> float
 
 
-func set_resource(resource_name: String, value: float) -> void:
-	var prev: float = resources.get(resource_name, 0.0)
-	var next: float = clampf(value, 0.0, 1.0)
-	resources[resource_name] = next
-	EventBus.resource_changed.emit(resource_name, next, next - prev)
-	if next <= 0.2 and prev > 0.2:
-		EventBus.resource_critical.emit(resource_name, next)
+# --- Power ---
+
+func set_reactor_online(online: bool, source: String = "") -> void:
+	if reactor_online == online:
+		return
+	reactor_online = online
+	if not online:
+		powered_rooms.clear()
+		EventBus.reactor_failure.emit(source)
+	else:
+		battery_charge = battery_capacity  # reactor coming back recharges the battery bank
+		_battery_was_low = false
+		EventBus.system_repaired.emit("reactor")
+	EventBus.power_mode_changed.emit(online)
 
 
-func get_resource(resource_name: String) -> float:
-	return resources.get(resource_name, 0.0)
+func damage_reactor(source: String = "damage") -> void:
+	set_reactor_online(false, source)
+
+
+func get_room_powered(room_id: String) -> bool:
+	if reactor_online:
+		return true
+	return room_id in powered_rooms
+
+
+# Returns false if the room couldn't be (de)powered — either the AI core can't
+# currently act (blackout) or the simultaneous-powered-rooms cap is full.
+func set_room_powered(room_id: String, powered: bool) -> bool:
+	if not ai_core_can_act():
+		return false
+	if reactor_online:
+		return true  # no-op — everything is powered for free
+	if powered:
+		if room_id in powered_rooms:
+			return true
+		if powered_rooms.size() >= PowerModel.MAX_BATTERY_ROOMS:
+			return false
+		powered_rooms.append(room_id)
+	else:
+		powered_rooms.erase(room_id)
+	EventBus.room_power_changed.emit(room_id, get_room_powered(room_id))
+	return true
+
+
+func set_battery_charge(value: float) -> void:
+	var prev: float = battery_charge
+	battery_charge = clampf(value, 0.0, battery_capacity)
+	EventBus.battery_changed.emit(battery_charge, battery_capacity)
+	var low: bool = battery_charge <= battery_capacity * PowerModel.LOW_BATTERY_FRACTION
+	if low and not _battery_was_low:
+		EventBus.power_low.emit(battery_charge)
+	_battery_was_low = low
+	if battery_charge <= 0.0:
+		powered_rooms.clear()
+
+
+# --- Life support ---
+
+func set_life_support_online(online: bool, source: String = "") -> void:
+	if life_support_online == online:
+		return
+	life_support_online = online
+	if not online:
+		life_supported_rooms.clear()
+		EventBus.life_support_failure.emit(source)
+	else:
+		EventBus.system_repaired.emit("life_support")
+	EventBus.life_support_mode_changed.emit(online)
+
+
+func damage_life_support(source: String = "damage") -> void:
+	set_life_support_online(false, source)
+
+
+func get_room_air(room_id: String) -> float:
+	return room_air.get(room_id, 100.0)
+
+
+func set_room_air(room_id: String, value: float) -> void:
+	var prev: float = get_room_air(room_id)
+	var next: float = clampf(value, 0.0, 100.0)
+	if is_equal_approx(prev, next):
+		return
+	room_air[room_id] = next
+	EventBus.room_air_changed.emit(room_id, next)
+
+
+func get_room_life_supported(room_id: String) -> bool:
+	if life_support_online:
+		return true
+	return room_id in life_supported_rooms
+
+
+func set_room_life_supported(room_id: String, supported: bool) -> bool:
+	if not ai_core_can_act():
+		return false
+	if life_support_online:
+		return true
+	if supported:
+		if room_id in life_supported_rooms:
+			return true
+		if life_supported_rooms.size() >= LifeSupportModel.MAX_LIFE_SUPPORT_ROOMS:
+			return false
+		life_supported_rooms.append(room_id)
+	else:
+		life_supported_rooms.erase(room_id)
+	return true
+
+
+# --- AI core ---
+
+func damage_ai_core(amount: float, source: String) -> void:
+	if amount <= 0.0:
+		return
+	ai_core_integrity = clampf(ai_core_integrity - amount, 0.0, 100.0)
+	EventBus.ai_damaged.emit(amount, ai_core_integrity, source)
+	_recompute_ai_core_status()
+
+
+func repair_ai_core(amount: float) -> void:
+	if amount <= 0.0:
+		return
+	ai_core_integrity = clampf(ai_core_integrity + amount, 0.0, 100.0)
+	_recompute_ai_core_status()
+
+
+func shutdown_ai_core_manual() -> void:
+	ai_core_manual_shutdown = true
+	_recompute_ai_core_status()
+
+
+func restart_ai_core_manual() -> void:
+	ai_core_manual_shutdown = false
+	_recompute_ai_core_status()
+
+
+func ai_core_can_act() -> bool:
+	return ai_core_status != "blackout"
+
+
+func is_room_sensor_gapped(room_id: String) -> bool:
+	return room_id in ai_core_sensor_gap_rooms
+
+
+func _recompute_ai_core_status() -> void:
+	var prev: String = ai_core_status
+	if ai_core_manual_shutdown or ai_core_integrity <= 0.0:
+		ai_core_status = "blackout"
+	elif ai_core_integrity < 50.0:
+		ai_core_status = "degraded"
+	else:
+		ai_core_status = "online"
+	if ai_core_status != prev:
+		if ai_core_status == "blackout":
+			ai_core_blackout_since = TimeManager.elapsed
+		if ai_core_status != "degraded":
+			ai_core_sensor_gap_rooms.clear()
+		EventBus.ai_core_status_changed.emit(prev, ai_core_status)
+
+
+# --- Repair jobs ---
+
+func start_repair_job(target_id: String, crew_id: String) -> bool:
+	if target_id in repair_jobs:
+		return false
+	repair_jobs[target_id] = {"crew_id": crew_id, "elapsed_since_check": 0.0, "progress": 0.0}
+	EventBus.repair_started.emit(target_id, crew_id)
+	return true
+
+
+func cancel_repair_job(target_id: String) -> void:
+	repair_jobs.erase(target_id)
+
+
+func is_being_repaired(target_id: String) -> bool:
+	return target_id in repair_jobs
+
+
+# --- Ship destruction (stub hook — no in-game content triggers this yet) ---
+
+func destroy_ship(reason: String) -> void:
+	if ship_destroyed:
+		return
+	ship_destroyed = true
+	push_warning("GameState: ship destroyed — %s" % reason)
 
 
 func set_ai_trust(crew_id: String, value: float) -> void:
@@ -81,6 +282,18 @@ func get_locked_doors() -> Array[String]:
 	return locked
 
 
+# The Door connecting two adjacent rooms, if any (order-independent). Used by crew
+# navigation to find which specific door is blocking a route so it can attempt a
+# manual bypass rather than silently failing to path (see CrewMemberNode.move_to_room).
+func door_between(room_a: String, room_b: String) -> Door:
+	for door_id in doors:
+		var door: Door = doors[door_id]
+		if (door.room_a_id == room_a and door.room_b_id == room_b) \
+				or (door.room_a_id == room_b and door.room_b_id == room_a):
+			return door
+	return null
+
+
 # Room lookup by TYPE (room_function) rather than hardcoded room_id — the
 # contract generated ships share with the dialogue corpus (docs/dialogue_spec.md)
 # and scenario logic (e.g. QuarantineMonitor finding "the medbay" on whichever
@@ -100,3 +313,47 @@ func get_rooms_of_type(room_type: String) -> Array[String]:
 func get_room_of_type(room_type: String) -> String:
 	var matches: Array[String] = get_rooms_of_type(room_type)
 	return matches[0] if not matches.is_empty() else ""
+
+
+# Crew lookup by job-function ROLE ("captain"/"engineer"/"medic"/"general") rather than a
+# hardcoded crew_id — same spirit as get_room_of_type, needed once crew are procedurally
+# generated (scripts/procedural/crew_gen.gd) instead of hand-authored with fixed ids like
+# "vasquez"/"chen". Prefers a living crew member; falls back to any match, then "".
+func get_crew_of_role(role: String) -> String:
+	var fallback: String = ""
+	for crew_id: String in crew:
+		var member: CrewMember = crew[crew_id] as CrewMember
+		if member == null or member.role != role:
+			continue
+		if member.is_alive:
+			return crew_id
+		if fallback == "":
+			fallback = crew_id
+	return fallback
+
+
+# --- Generic situational metrics ---
+# Small named-lookup surface for scenario-authored conditions/outcomes (EventPool,
+# ScenarioDirector) so scenario .tres/build() data can reference the new Mothership
+# situational state without every scenario author needing bespoke GameState methods.
+# Supports: "battery_charge", "battery_percent", "ai_core_integrity", and "air:<room_id>".
+func get_metric(name: String) -> float:
+	if name == "battery_charge":
+		return battery_charge
+	if name == "battery_percent":
+		return 0.0 if battery_capacity <= 0.0 else (battery_charge / battery_capacity) * 100.0
+	if name == "ai_core_integrity":
+		return ai_core_integrity
+	if name.begins_with("air:"):
+		return get_room_air(name.substr(4))
+	return 0.0
+
+
+func adjust_metric(name: String, amount: float) -> void:
+	if name == "battery_charge":
+		set_battery_charge(battery_charge + amount)
+	elif name == "ai_core_integrity":
+		if amount >= 0.0:
+			repair_ai_core(amount)
+		else:
+			damage_ai_core(-amount, "scenario")

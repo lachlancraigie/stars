@@ -1,57 +1,240 @@
 class_name CrewMember
 extends Resource
 
+# Mothership 1e character (docs/rules.md). Rewritten for the overhaul/mothership-rewrite
+# branch — replaces the old ad-hoc Physical/Mental stat block with the real Four Stats +
+# Three Saves + Class + Skills + Stress/Panic + Health/Wounds model. The pre-existing
+# "needs" simulation (hunger/fatigue/fear/loneliness/boredom/morale + CrewStateMachine) is
+# KEPT AS-IS below — it drives moment-to-moment autonomous behaviour (CrewBehavior) and is
+# a different (complementary, not contradictory) layer from Mothership Stress/Panic, which
+# governs discrete check-driven crises. `fear` (0-1, ambient) and `fear_save` (a Mothership
+# stat, checked directly) are deliberately distinct fields.
+
 # --- Identity ---
 @export var crew_id: String = ""
 @export var crew_name: String = ""
-@export var role: String = ""  # "captain" | "engineer" | "medic" | "scientist" | "general"
+@export var role: String = ""              # "captain" | "engineer" | "medic" | "scientist" | "general" — job function, drives duty stations/visuals
+@export var rank: String = "crew_mate"     # "captain" | "officer" | "crew_mate" — dialogue-spec rank dimension; exactly one captain per ship, never an Android (enforced by CrewGen)
+@export var pronoun_subject: String = "they"
+@export var pronoun_object: String = "them"
+@export var pronoun_possessive: String = "their"
+@export var archetype_tag: String = ""     # optional resources/dialogue/archetypes/*.json tag, e.g. "GR_ML_ENG_CM" (dialogue selects lines by this)
 
-# --- Base attributes (set at generation, very slow to change) ---
-@export_group("Physical")
-@export var strength: float = 0.5
-@export var endurance: float = 0.5
-@export var dexterity: float = 0.5
-@export var constitution: float = 0.5
+# --- Mothership class ---
+@export var mship_class: String = "Teamster"   # "Marine" | "Android" | "Scientist" | "Teamster"
 
-@export_group("Mental")
-@export var intelligence: float = 0.5
-@export var focus: float = 0.5
-@export var willpower: float = 0.5      # governs fear resistance and panic recovery
-@export var empathy: float = 0.5
+# --- Four Stats (2d10+25 at creation, +class adjustments) ---
+@export_group("Stats")
+@export var strength: int = 36
+@export var speed: int = 36
+@export var intellect: int = 36
+@export var combat: int = 36
 
-@export_group("Professional")
-@export var primary_skill: String = ""
-@export var secondary_skills: Array[String] = []
-@export var experience_level: int = 1   # 1–5
+# --- Three Saves (2d10+10 at creation, +class adjustments) ---
+@export_group("Saves")
+@export var sanity_save: int = 20
+@export var fear_save: int = 20
+@export var body_save: int = 20
 
-# --- Dynamic needs (change each tick) ---
-@export_group("Needs")
-@export var hunger: float = 0.0         # 0 = satiated,  1 = starving
-@export var fatigue: float = 0.0        # 0 = rested,    1 = exhausted
-@export var fear: float = 0.0           # 0 = calm,      1 = terrified
-@export var pain: float = 0.0           # 0 = healthy,   1 = severe pain
-@export var loneliness: float = 0.0     # 0 = connected, 1 = isolated
-@export var boredom: float = 0.0        # 0 = engaged,   1 = listless
-
-# --- Health and state ---
+# --- Health & Wounds ---
 @export_group("Health")
-@export var morale: float = 1.0                 # composite; recomputed each tick
+@export var max_health: int = 15
+@export var health: int = 15
+@export var max_wounds: int = 1
+@export var wounds: int = 0
+@export var bleeding_per_round: int = 0
+@export var conditions: Array[String] = []   # Panic Table / Wound Table conditions, persist until treated
+
+# --- Stress & Panic ---
+@export_group("Stress")
+@export var stress: int = 2
+@export var min_stress: int = 2
+var lost_skill: String = ""       # Loss of Confidence: this skill's bonus is suppressed
+var retired: bool = false          # Panic Table "RETIRE" — permanently stood down, not dead
+var adrenaline_until: float = 0.0  # [+] all rolls while TimeManager.elapsed < this
+var overwhelmed_until: float = 0.0 # [-] all rolls while TimeManager.elapsed < this
+var frozen_until: float = 0.0      # Catatonic — CrewStateMachine.FROZEN while TimeManager.elapsed < this
+var rage_until: float = 0.0        # [+] damage rolls (flavour only — no combat resolver yet)
+var unconscious_until: float = 0.0
+var death_save_at: float = -1.0    # >=0: death_save_mode resolves when TimeManager.elapsed passes this
+var death_save_mode: String = ""   # "" | "pending_save" (roll a Death Save) | "dying" (dies outright)
+var suffocation_round_timer: float = 0.0   # SuffocationModel's ~10s "round" accumulator
+
+# --- Skills (skill_name -> "Trained" | "Expert" | "Master") ---
+@export_group("Skills")
+@export var skills: Dictionary = {}
+
+# --- Equipment (docs/rules.md "Equipment"/"Weapons"/"Armor") ---
+@export_group("Equipment")
+@export var inventory: Array[String] = []   # item ids, see scripts/core/items.gd
+@export var equipped_weapon: String = "unarmed"
+@export var armor_item: String = ""
+
+# Internal: cumulative Stress-overflow-style stat penalties (rules.md "Damage over 20
+# reduces the most relevant Stat or Save by the overflow amount" + Wound Table stat hits).
+var stat_penalties: Dictionary = {}
+
+# --- Dynamic needs (existing autonomous-behaviour simulation — unchanged) ---
+@export_group("Needs")
+@export var hunger: float = 0.0
+@export var fatigue: float = 0.0
+@export var fear: float = 0.0
+@export var pain: float = 0.0
+@export var loneliness: float = 0.0
+@export var boredom: float = 0.0
+
+# --- Health and state (existing simulation layer — unchanged) ---
+@export_group("SimHealth")
+@export var morale: float = 1.0
 @export var physical_health: float = 1.0
 @export var psychological_health: float = 1.0
 @export var is_alive: bool = true
 
 @export_group("State")
-@export var current_state: String = "idle"      # see CrewStateMachine constants
-@export var location: String = ""               # room_id
+@export var current_state: String = "idle"
+@export var location: String = ""
 
-# --- Personality (set at generation, very slow to change) ---
+# --- Personality (existing — unchanged) ---
 @export_group("Personality")
-@export var traits: Array[String] = []   # e.g. "cautious", "reckless", "compassionate", "paranoid"
-@export var fears: Array[String] = []    # e.g. "confined_spaces", "alien_biology", "death"
-@export var values: Array[String] = []   # e.g. "loyalty", "survival", "mission_completion"
-@export var goals: Array[String] = []    # short/medium/long-term; updated procedurally
+@export var traits: Array[String] = []
+@export var fears: Array[String] = []
+@export var values: Array[String] = []
+@export var goals: Array[String] = []
 
-# --- Social ---
+# --- Social (existing — unchanged) ---
 @export_group("Social")
-@export var ai_trust: float = 0.5              # 0 = distrustful of ship AI, 1 = fully trusting
-@export var relationships: Dictionary = {}      # crew_id -> RelationshipState (stub for RelationshipGraph)
+@export var ai_trust: float = 0.5
+@export var willpower: float = 0.5           # legacy 0-1 simulation trait (fear-decay/compliance math); kept independent of fear_save
+@export var relationships: Dictionary = {}
+
+# Repeated door lockouts erode trust in the AI (see Door.gd) — tracked per-door so
+# a single sticky door doesn't spam trust hits, only *repeated* ones do.
+var door_lockout_counts: Dictionary = {}   # door_id -> int
+
+
+# --- Stat/Save/Skill accessors (used by Checks — the one roll-resolution utility) ---
+
+func get_stat_or_save(name: String) -> int:
+	var base: int = 0
+	match name:
+		"strength": base = strength
+		"speed": base = speed
+		"intellect": base = intellect
+		"combat": base = combat
+		"sanity": base = sanity_save
+		"fear": base = fear_save
+		"body": base = body_save
+		_: base = 36
+	return maxi(1, base - int(stat_penalties.get(name, 0)))
+
+
+func get_skill_bonus(skill_name: String) -> int:
+	if skill_name == "" or skill_name == lost_skill:
+		return 0
+	var tier: String = String(skills.get(skill_name, ""))
+	return int(Checks.TIER_BONUS.get(tier, 0))
+
+
+func best_skill_bonus(skill_names: Array) -> int:
+	var best: int = 0
+	for skill_name: String in skill_names:
+		best = maxi(best, get_skill_bonus(skill_name))
+	return best
+
+
+func worst_save_name() -> String:
+	var worst: String = "sanity"
+	var worst_value: int = get_stat_or_save("sanity")
+	for name: String in ["fear", "body"]:
+		var v: int = get_stat_or_save(name)
+		if v < worst_value:
+			worst_value = v
+			worst = name
+	return worst
+
+
+func apply_stat_penalty(stat_name: String, amount: int) -> void:
+	if amount <= 0:
+		return
+	stat_penalties[stat_name] = int(stat_penalties.get(stat_name, 0)) + amount
+
+
+# --- Stress ---
+
+func add_stress(amount: int) -> void:
+	if amount <= 0:
+		return
+	var old: int = stress
+	var raw: int = stress + amount
+	if raw > 20:
+		# "Damage over 20 reduces the most relevant Stat or Save by the overflow
+		# amount" — Warden-arbitrated which is "most relevant"; Sanity Save is the
+		# sensible universal default since Stress is itself a Sanity-adjacent track.
+		apply_stat_penalty("sanity", raw - 20)
+		raw = 20
+	stress = maxi(min_stress, raw)
+	if stress != old:
+		EventBus.crew_stress_changed.emit(crew_id, old, stress)
+
+
+func reduce_stress(amount: int) -> void:
+	if amount <= 0:
+		return
+	var old: int = stress
+	stress = maxi(min_stress, stress - amount)
+	if stress != old:
+		EventBus.crew_stress_changed.emit(crew_id, old, stress)
+
+
+# --- Environmental advantage/disadvantage (thin air, panic states — folded into
+# every check automatically by Checks.perform_check) ---
+
+func has_environmental_disadvantage() -> bool:
+	if TimeManager.elapsed < overwhelmed_until:
+		return true
+	if "disadvantage_all" in conditions:
+		return true
+	return GameState.get_room_air(location) < LifeSupportModel.AIR_DISADVANTAGE_THRESHOLD
+
+
+func has_environmental_advantage() -> bool:
+	return TimeManager.elapsed < adrenaline_until
+
+
+# --- Health/Wounds/Damage flow (rules.md "Damage flow") ---
+
+func apply_damage(amount: int, wound_type: String) -> void:
+	if not is_alive or amount <= 0:
+		return
+	health -= amount
+	if health <= 0:
+		var carryover: int = -health
+		health = max_health
+		WoundTable.roll_and_apply(self, wound_type)
+		if is_alive and carryover > 0:
+			apply_damage(carryover, wound_type)
+
+
+# --- Equipment ---
+
+func item_bonus(tag: String) -> float:
+	return Items.sum_tag_bonus(inventory, tag)
+
+
+func best_item_bonus(tag: String) -> float:
+	return Items.best_tag_bonus(inventory, tag)
+
+
+func has_item_tag(tag: String) -> bool:
+	return Items.has_tag(inventory, tag)
+
+
+# For multiplicative tags (e.g. door_bypass_time_mult) where a lower value is better and
+# 1.0 (no effect) is the default absence value — max()/sum() would pick the wrong item.
+func item_time_multiplier(tag: String) -> float:
+	var best: float = 1.0
+	for item_id: String in inventory:
+		var v: float = Items.tag_value(item_id, tag)
+		if v > 0.0:
+			best = minf(best, v)
+	return best

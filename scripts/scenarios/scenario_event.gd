@@ -15,13 +15,16 @@ extends Resource
 
 # Conditions: all must be true for the event to be eligible.
 # Each entry is {type: String, ...params}
-# e.g. {type: "resource_below", resource: "oxygen", value: 0.5}
+# e.g. {type: "resource_below", resource: "battery_percent", value: 25.0}  (see GameState.get_metric)
 #      {type: "crew_state", state: "panicking", min_count: 1}
 #      {type: "ai_trust_below", crew_id: "any", value: 0.4}
 @export var conditions: Array[Dictionary] = []
 
 # Outcomes: applied in order when the event fires.
-# e.g. {type: "resource_delta", resource: "oxygen", amount: -0.15}
+# e.g. {type: "resource_delta", resource: "battery_charge", amount: -15.0}  (see GameState.adjust_metric)
+#      {type: "reactor_failure", source: "combat_damage"}
+#      {type: "life_support_failure", source: "hull_breach"}
+#      {type: "ai_core_damage", amount: 20.0, source: "sabotage"}
 #      {type: "crew_fear_spike", amount: 0.2, all_crew: true}
 #      {type: "set_flag", flag: "pathogen_detected"}
 #      {type: "spawn_event", event_id: "quarantine_escalation"}

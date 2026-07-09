@@ -70,8 +70,12 @@ static func build(config: ShipConfig, parent: Node) -> void:
 		var room: RoomBase = GameState.rooms[room_id]
 		room.connected_room_ids = GameState.ship_graph.get_neighbours(room_id)
 
-	for resource_name in config.starting_resources:
-		GameState.set_resource(resource_name, config.starting_resources[resource_name])
+	# NOTE(mothership-rewrite): config.starting_resources (the old normalised oxygen/power/
+	# food/water/fuel/spare-parts/medicine bars) is no longer consumed — that whole model
+	# was scrapped in favour of the situational power/life-support systems (GameState +
+	# PowerModel/LifeSupportModel), which default their own state independently of ShipConfig.
+	# The field itself is left on ShipConfig/ShipLayoutGen untouched (harmless unused data)
+	# since ShipLayoutGen is Agent 1's generator and out of scope here.
 
 
 # Walkway decking between room islands, maintenance tube pipes, and the

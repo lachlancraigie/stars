@@ -50,7 +50,7 @@ func _decide(crew: CrewMember) -> void:
 		return
 
 	match crew.current_state:
-		CrewStateMachine.INCAPACITATED:
+		CrewStateMachine.INCAPACITATED, CrewStateMachine.FROZEN:
 			return
 
 		CrewStateMachine.PANICKING:

@@ -33,6 +33,7 @@ const STATE_COLORS: Dictionary = {
 	"sleeping":      Color(0.60, 0.60, 0.65),
 	"eating":        Color(0.95, 0.78, 0.20),
 	"panicking":     Color(0.95, 0.25, 0.18),
+	"frozen":        Color(0.55, 0.65, 0.85),
 	"incapacitated": Color(0.15, 0.12, 0.12),
 }
 
@@ -56,6 +57,12 @@ var _pending_room: String = ""           # room we are currently walking into
 var _bob_t: float = 0.0
 var _current_texture_key: String = ""
 var _status_dot: ColorRect
+
+# Locked-door bypass in progress (see Door.attempt_crew_bypass): while non-empty, this
+# crew member is standing put attempting to force a locked door rather than walking.
+var _bypassing_door_id: String = ""
+var _bypass_target_room: String = ""
+var _bypass_hold: float = 0.0
 
 
 func _ready() -> void:
@@ -85,6 +92,7 @@ func _ready() -> void:
 	_apply_status_dot()
 
 	EventBus.crew_state_changed.connect(_on_state_changed)
+	EventBus.door_bypass_result.connect(_on_door_bypass_result)
 
 
 func _exit_tree() -> void:
@@ -95,11 +103,17 @@ func _exit_tree() -> void:
 func _process(delta: float) -> void:
 	if TimeManager.is_paused():
 		return
-	if crew_data.current_state == CrewStateMachine.INCAPACITATED:
+	if crew_data.current_state in [CrewStateMachine.INCAPACITATED, CrewStateMachine.FROZEN]:
 		_moving = false
 		_route.clear()
 		_leg_points.clear()
 		_apply_sprite()
+		# Some incapacitation paths (CrewLifecycle.kill, Wound/Panic Table effects) set
+		# current_state directly without going through the normal CrewSystem-polled
+		# state-machine transition that emits crew_state_changed (see wound_table.gd
+		# comment) — refresh the status dot here too so it can't go stale on a same-tick
+		# jump straight from e.g. "panicking" to dead.
+		_apply_status_dot()
 		return
 	if not _moving:
 		_bob_t = 0.0
@@ -128,15 +142,64 @@ func _process(delta: float) -> void:
 func move_to_room(room_id: String, hold_seconds: float = 0.0) -> void:
 	if room_id == crew_data.location and not _moving:
 		return
-	var path: Array = GameState.ship_graph.find_path(crew_data.location, room_id)
+	var locked: Array[String] = GameState.get_locked_doors()
+	var path: Array = GameState.ship_graph.find_path(crew_data.location, room_id, false, locked)
 	if path.is_empty():
-		push_warning("CrewMemberNode: no path %s -> %s" % [crew_data.location, room_id])
+		var unrestricted: Array = GameState.ship_graph.find_path(crew_data.location, room_id)
+		var blocking_door: Door = _first_locked_door_on_path(unrestricted, locked)
+		if blocking_door != null:
+			_begin_bypass(blocking_door, room_id, hold_seconds)
+		else:
+			push_warning("CrewMemberNode: no path %s -> %s" % [crew_data.location, room_id])
 		return
+	# An unblocked route exists — take it, superseding any earlier bypass attempt this
+	# crew member may have had in flight for a different destination (e.g. panic-fleeing
+	# picked a neighbour that doesn't require the door being bypassed). The Door's own
+	# in-flight timer, if any, still resolves harmlessly — _on_door_bypass_result ignores
+	# results whose door_id no longer matches.
+	_bypassing_door_id = ""
 	path.pop_front()  # first entry is the current room
 	_route = path
 	if hold_seconds > 0.0:
 		hold_room_until = TimeManager.elapsed + hold_seconds
 	_advance_route()
+
+
+# Finds the first locked door along an (unrestricted) room-id path, so a blocked crew
+# member can attempt a manual bypass on it instead of just failing to move.
+func _first_locked_door_on_path(path: Array, locked: Array[String]) -> Door:
+	for i in range(path.size() - 1):
+		var door: Door = GameState.door_between(path[i], path[i + 1])
+		if door != null and door.door_id in locked:
+			return door
+	return null
+
+
+func _begin_bypass(door: Door, target_room: String, hold_seconds: float) -> void:
+	if _bypassing_door_id == door.door_id:
+		return  # already attempting this exact door
+	_bypassing_door_id = door.door_id
+	_bypass_target_room = target_room
+	_bypass_hold = hold_seconds
+	door.attempt_crew_bypass(crew_data)
+
+
+func _on_door_bypass_result(crew_id: String, door_id: String, success: bool, critical: bool) -> void:
+	if crew_id != crew_data.crew_id or door_id != _bypassing_door_id:
+		return
+	if critical and not success:
+		# Jammed — try again shortly (represents fiddling with it / fetching a tool)
+		# rather than getting permanently stuck.
+		get_tree().create_timer(8.0).timeout.connect(func():
+			if _bypassing_door_id == door_id:
+				var d: Door = GameState.doors.get(door_id) as Door
+				if d != null:
+					d.attempt_crew_bypass(crew_data))
+		return
+	_bypassing_door_id = ""
+	var target: String = _bypass_target_room
+	var hold: float = _bypass_hold
+	move_to_room(target, hold)
 
 
 # Small repositioning inside the current room (idle flavour movement).
@@ -153,7 +216,7 @@ func is_headed_to(room_id: String) -> bool:
 
 
 func is_busy() -> bool:
-	return _moving or not _route.is_empty()
+	return _moving or not _route.is_empty() or _bypassing_door_id != ""
 
 
 func _advance_route() -> void:

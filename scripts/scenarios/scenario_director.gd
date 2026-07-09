@@ -89,8 +89,7 @@ func _apply_outcomes(event: ScenarioEvent) -> void:
 	for outcome in event.outcomes:
 		match outcome.get("type", ""):
 			"resource_delta":
-				var current: float = GameState.get_resource(outcome.resource)
-				GameState.set_resource(outcome.resource, current + outcome.amount)
+				GameState.adjust_metric(outcome.resource, outcome.amount)
 			"crew_fear_spike":
 				_spike_crew_fear(outcome.amount, outcome.get("all_crew", true))
 			"set_flag":
@@ -103,6 +102,17 @@ func _apply_outcomes(event: ScenarioEvent) -> void:
 				TrustModel.modify_all(outcome.amount)
 			"scenario_end":
 				EventBus.scenario_ended.emit(outcome.get("outcome", "unknown"))
+			# --- Stub hooks for scenario-authored ship/AI damage (Mothership rewrite) ---
+			"reactor_failure":
+				GameState.damage_reactor(outcome.get("source", "scenario"))
+			"life_support_failure":
+				GameState.damage_life_support(outcome.get("source", "scenario"))
+			"ai_core_damage":
+				GameState.damage_ai_core(outcome.get("amount", 10.0), outcome.get("source", "scenario"))
+			"ai_core_repair":
+				GameState.repair_ai_core(outcome.get("amount", 10.0))
+			"ship_destroyed":
+				GameState.destroy_ship(outcome.get("reason", "scenario"))
 
 
 func _spike_crew_fear(amount: float, all_crew: bool) -> void:

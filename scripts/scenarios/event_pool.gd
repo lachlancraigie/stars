@@ -61,9 +61,9 @@ func _conditions_met(event: ScenarioEvent, flags: Dictionary) -> bool:
 func _check_condition(condition: Dictionary, flags: Dictionary) -> bool:
 	match condition.get("type", ""):
 		"resource_below":
-			return GameState.get_resource(condition.resource) < condition.value
+			return GameState.get_metric(condition.resource) < condition.value
 		"resource_above":
-			return GameState.get_resource(condition.resource) > condition.value
+			return GameState.get_metric(condition.resource) > condition.value
 		"flag_set":
 			return flags.get(condition.flag, false)
 		"flag_unset":

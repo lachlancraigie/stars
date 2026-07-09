@@ -1,10 +1,23 @@
 extends Node
 
 # Orchestrates a running scenario: loads config, checks win/lose conditions,
-# applies end-of-scenario resource deltas, and hands off to the next scenario.
+# applies end-of-scenario situational deltas, and hands off to the next scenario.
+#
+# Lose conditions (all three permadeath paths from CLAUDE.md's design decision):
+#   - all crew dead
+#   - ship destroyed (GameState.ship_destroyed — stub hook, no in-game content sets it yet)
+#   - AI decommissioned, via either of two paths:
+#       1. crew vote to shut it down outright (ai_decommission_attempted, low trust)
+#       2. the AI core sits in blackout with no crew willing/able to repair it for too
+#          long (AI_CORE_NEGLECT_TIMEOUT) — the overhaul spec's "if the AI is at 0 with no
+#          crew willing to repair, that's the AI decommissioned game-over"
 
-var _config: Dictionary = {}    # scenario definition (id, events, win/lose, resource_delta)
+const AI_CORE_NEGLECT_TIMEOUT: float = 90.0
+const AI_CORE_REPAIR_TRUST_THRESHOLD: float = 0.35
+
+var _config: Dictionary = {}    # scenario definition (id, events, win/lose, end-of-leg deltas)
 var _active: bool = false
+var _ai_core_neglect_timer: float = 0.0
 
 
 func _ready() -> void:
@@ -22,19 +35,28 @@ func start_scenario(config: Dictionary) -> void:
 	EventBus.scenario_event_triggered.emit("scenario_started")
 
 
-func _on_tick(_elapsed: float, _delta: float) -> void:
+func _on_tick(_elapsed: float, delta: float) -> void:
 	if not _active:
 		return
-	_check_lose_conditions()
+	_check_lose_conditions(delta)
 	_check_win_conditions()
 
 
-func _check_lose_conditions() -> void:
-	# Lose if AI is decommissioned (handled via signal)
-	# Lose if ship destroyed
-	if GameState.get_resource("oxygen") <= 0.0:
-		_end_scenario("crew_dead", "oxygen_depleted")
+func _check_lose_conditions(delta: float) -> void:
+	if GameState.ship_destroyed:
+		_end_scenario("ship_destroyed", "hull_breach")
 		return
+
+	# AI neglect path: blackout, nobody repairing, and trust too low for anyone to want to.
+	if GameState.ai_core_status == "blackout" and not GameState.is_being_repaired("ai_core") \
+			and _average_trust() < AI_CORE_REPAIR_TRUST_THRESHOLD:
+		_ai_core_neglect_timer += delta
+		if _ai_core_neglect_timer >= AI_CORE_NEGLECT_TIMEOUT:
+			_end_scenario("ai_decommissioned", "crew_refused_repair")
+			return
+	else:
+		_ai_core_neglect_timer = 0.0
+
 	# Lose if all crew are dead
 	var any_alive: bool = false
 	for crew_id in GameState.crew:
@@ -73,11 +95,11 @@ func _end_scenario(outcome: String, reason: String) -> void:
 	if not _active:
 		return
 	_active = false
-	# Apply end-of-scenario resource delta (rewards/penalties for the next leg)
-	var delta: Dictionary = _config.get("resource_delta_%s" % outcome, {})
-	for resource_name in delta:
-		GameState.set_resource(resource_name,
-			GameState.get_resource(resource_name) + delta[resource_name])
+	# Apply end-of-leg situational delta (rewards/penalties carried into the next leg) —
+	# keys are GameState.adjust_metric names ("battery_charge", "ai_core_integrity").
+	var delta: Dictionary = _config.get("leg_delta_%s" % outcome, {})
+	for metric_name in delta:
+		GameState.adjust_metric(metric_name, delta[metric_name])
 	EventBus.scenario_ended.emit(outcome)
 	push_warning("ScenarioRunner: scenario ended — outcome=%s reason=%s" % [outcome, reason])
 	# TODO(campaign): hand off to CampaignManager for next scenario load

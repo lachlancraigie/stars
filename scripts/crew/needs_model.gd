@@ -32,10 +32,7 @@ static func _tick_hunger(crew: CrewMember) -> void:
 	if crew.current_state == CrewStateMachine.EATING:
 		crew.hunger = maxf(0.0, crew.hunger - HUNGER_RECOVERY_PER_TICK)
 		return
-	# Scarce food supply accelerates hunger
-	var food: float = GameState.get_resource("food")
-	var scarcity_mult: float = 1.0 + maxf(0.0, 0.5 - food) * 2.0
-	crew.hunger = minf(1.0, crew.hunger + HUNGER_PER_TICK * scarcity_mult)
+	crew.hunger = minf(1.0, crew.hunger + HUNGER_PER_TICK)
 
 
 static func _tick_fatigue(crew: CrewMember) -> void:
@@ -52,10 +49,11 @@ static func _tick_fear(crew: CrewMember) -> void:
 	# Willpower increases the natural decay rate
 	var decay: float = FEAR_DECAY_PER_TICK * (0.5 + crew.willpower * 0.5)
 	crew.fear = maxf(0.0, crew.fear - decay)
-	# O2 below threshold adds fear proportional to how low it is
-	var oxygen: float = GameState.get_resource("oxygen")
-	if oxygen < OXYGEN_FEAR_THRESHOLD:
-		var scarcity_ratio: float = (OXYGEN_FEAR_THRESHOLD - oxygen) / OXYGEN_FEAR_THRESHOLD
+	# Thin air in the crew member's own room adds fear proportional to how bad it is
+	# (replaces the old ship-wide "oxygen" resource-bar check with the per-room air model).
+	var air: float = GameState.get_room_air(crew.location) / 100.0
+	if air < OXYGEN_FEAR_THRESHOLD:
+		var scarcity_ratio: float = (OXYGEN_FEAR_THRESHOLD - air) / OXYGEN_FEAR_THRESHOLD
 		crew.fear = minf(1.0, crew.fear + FEAR_OXYGEN_BONUS * scarcity_ratio)
 
 

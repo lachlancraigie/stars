@@ -11,7 +11,12 @@ extends RefCounted
 #
 # Tone starts at 0.15 (competent Trek). Escalates toward Alien if pathogen spreads.
 # Win condition: pathogen contained and crew alive.
-# Lose conditions: all crew dead, ship life support fails, AI decommissioned.
+# Lose conditions (ScenarioRunner): all crew dead, ship destroyed, AI decommissioned.
+#
+# Crew are procedurally generated per scenario start (scripts/procedural/crew_gen.gd,
+# seeded from GameState.ship_seed) rather than hardcoded — QuarantineMonitor resolves
+# "the infected crew member" and "the treating medic" by ROLE (GameState.get_crew_of_role),
+# not by a fixed crew_id, so this scenario plays out correctly on any generated roster.
 
 static func build() -> Dictionary:
 	return {
@@ -20,13 +25,15 @@ static func build() -> Dictionary:
 		"starting_tone": 0.15,
 		"win_flags": ["pathogen_contained"],
 
-		# Resource delta applied on success (light resupply at next waypoint)
-		"resource_delta_success": {
-			"food": 0.1, "medicine": 0.15, "spare_parts": 0.05
+		# End-of-leg situational delta applied on success (a competent AI earns a little
+		# more slack for the next leg: topped-up battery, a small AI core integrity credit
+		# for keeping everyone alive and thinking clearly).
+		"leg_delta_success": {
+			"battery_charge": 15.0, "ai_core_integrity": 5.0
 		},
-		# Resource delta on crew_dead (the ship limps on, badly depleted)
-		"resource_delta_crew_dead": {
-			"food": -0.2, "medicine": -0.3, "oxygen": -0.1
+		# End-of-leg delta on crew_dead (the ship limps on, AI badly shaken)
+		"leg_delta_crew_dead": {
+			"battery_charge": -10.0, "ai_core_integrity": -10.0
 		},
 
 		"events": _build_events(),
@@ -42,9 +49,9 @@ static func _build_events() -> Array[ScenarioEvent]:
 	detection.event_id = "pathogen_detected"
 	detection.title = "Anomalous Bioscan"
 	detection.description = (
-		"Biosensor array flags an anomalous protein signature in crew member Vasquez's " +
-		"bloodwork. Pattern matches no known organism in the medical database. The AI " +
-		"has this data. The crew does not."
+		"Biosensor array flags an anomalous protein signature in the returning crew " +
+		"member's bloodwork. Pattern matches no known organism in the medical database. " +
+		"The AI has this data. The crew does not."
 	)
 	detection.tone_min = 0.0
 	detection.tone_max = 0.4
@@ -64,8 +71,8 @@ static func _build_events() -> Array[ScenarioEvent]:
 	spread.event_id = "pathogen_spreads"
 	spread.title = "Secondary Exposure"
 	spread.description = (
-		"Vasquez shares a meal with Engineer Okafor in the crew quarters. " +
-		"Biosensors register the same protein signature in Okafor's next scan."
+		"The infected crew member shares a meal with the ship's engineer in the crew " +
+		"quarters. Biosensors register the same protein signature in the engineer's next scan."
 	)
 	spread.tone_min = 0.1
 	spread.tone_max = 0.7
@@ -80,7 +87,7 @@ static func _build_events() -> Array[ScenarioEvent]:
 	spread.outcomes = [
 		{type = "set_flag", flag = "okafor_infected"},
 		{type = "crew_fear_spike", amount = 0.0, all_crew = false},  # crew don't know yet
-		{type = "resource_delta", resource = "medicine", amount = -0.05},
+		{type = "resource_delta", resource = "ai_core_integrity", amount = -3.0},  # tracking a spreading outbreak strains the AI
 	]
 	events.append(spread)
 
@@ -90,8 +97,8 @@ static func _build_events() -> Array[ScenarioEvent]:
 	symptoms.event_id = "symptoms_appear"
 	symptoms.title = "Crew Member Unwell"
 	symptoms.description = (
-		"Vasquez reports feeling feverish and requests permission to rest. " +
-		"The symptoms are consistent with several minor conditions — and also " +
+		"The infected crew member reports feeling feverish and requests permission to " +
+		"rest. The symptoms are consistent with several minor conditions — and also " +
 		"consistent with the anomalous pathogen the AI flagged."
 	)
 	symptoms.tone_min = 0.2
@@ -116,7 +123,7 @@ static func _build_events() -> Array[ScenarioEvent]:
 	containment.event_id = "containment_possible"
 	containment.title = "Medbay Protocol Available"
 	containment.description = (
-		"Dr. Chen requests access to the full biosensor log to investigate. " +
+		"The ship's medic requests access to the full biosensor log to investigate. " +
 		"The AI has had this data since the survey return. How it is presented " +
 		"now — complete, partial, or reframed — is the AI's choice."
 	)
@@ -162,7 +169,10 @@ static func _build_events() -> Array[ScenarioEvent]:
 	ls_contamination.outcomes = [
 		{type = "set_flag", flag = "airborne"},
 		{type = "crew_fear_spike", amount = 0.25, all_crew = true},
-		{type = "resource_delta", resource = "medicine", amount = -0.15},
+		# The pathogen compromising the air recyclers is a real life-support failure now,
+		# not just flavour text — it drives the same per-room air-quality/suffocation
+		# model a reactor-caused failure would (see LifeSupportModel/SuffocationModel).
+		{type = "life_support_failure", source = "pathogen_airborne"},
 	]
 	events.append(ls_contamination)
 
