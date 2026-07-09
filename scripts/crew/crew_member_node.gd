@@ -44,6 +44,28 @@ const ROLE_TINT: Dictionary = {
 }
 const FALLBACK_ROLE: String = "general"
 
+# Speech/thought bubble (DialogueSystem's EventBus.line_spoken -> here). One reusable
+# Panel+RichTextLabel per crew, built once in _ready() and restyled/resized per line rather
+# than instantiated per-line — spec: "one reusable Label+Panel per crew". World-space
+# (a plain Node2D child, not a CanvasLayer) so it pans/scales with DeckCamera like
+# everything else on the deck. z_as_relative=false with a large fixed z_index keeps it
+# drawn above the sprite/props regardless of the crew's own dynamic y-sort z.
+const BUBBLE_Z_INDEX: int = 4000
+const BUBBLE_WIDTH: float = 260.0
+const BUBBLE_PADDING: Vector2 = Vector2(10.0, 7.0)
+const BUBBLE_BOTTOM_OFFSET: float = -122.0  # bubble's bottom edge, above NameLabel (-108..-88)
+const BUBBLE_CHARS_PER_LINE: int = 34       # heuristic auto-size — see _estimate_bubble_size
+const BUBBLE_LINE_HEIGHT: float = 18.0
+const BUBBLE_DISPLAY_SECONDS: float = 4.0   # + a per-character reading-time bonus, clamped below
+const BUBBLE_DISPLAY_MAX_BONUS: float = 2.0
+const BUBBLE_FADE_SECONDS: float = 0.6
+const BUBBLE_SPEECH_BG: Color = Color(0.06, 0.09, 0.13, 0.90)
+const BUBBLE_SPEECH_BORDER: Color = Color(0.55, 0.75, 0.95, 0.55)
+const BUBBLE_SPEECH_TEXT: Color = Color(0.93, 0.95, 0.98, 1.0)
+const BUBBLE_THOUGHT_BG: Color = Color(0.10, 0.10, 0.16, 0.55)
+const BUBBLE_THOUGHT_TEXT: Color = Color(0.75, 0.78, 0.88, 0.85)
+const BUBBLE_TAIL_HEIGHT: float = 10.0
+
 const STATE_COLORS: Dictionary = {
 	"idle":          Color(0.35, 0.78, 0.40),
 	"working":       Color(0.25, 0.55, 0.95),
@@ -81,6 +103,13 @@ var _bob_t: float = 0.0
 var _current_texture_key: String = ""
 var _status_dot: ColorRect
 
+var _bubble_anchor: Node2D
+var _bubble_panel: Panel
+var _bubble_label: RichTextLabel
+var _bubble_tail: Polygon2D
+var _bubble_tween: Tween
+var _bubble_gen: int = 0  # invalidates a stale hide-callback if a newer line pre-empts it
+
 # Locked-door bypass in progress (see Door.attempt_crew_bypass): while non-empty, this
 # crew member is standing put attempting to force a locked door rather than walking.
 var _bypassing_door_id: String = ""
@@ -108,6 +137,8 @@ func _ready() -> void:
 	_status_dot.position = Vector2(-4.5, -86)
 	add_child(_status_dot)
 
+	_build_bubble()
+
 	position = _claim_standing_point(crew_data.location) if DeckPlan.has_room(crew_data.location) \
 		else Vector2.ZERO
 	z_index = IsoKit.z_for(position.y)
@@ -116,6 +147,7 @@ func _ready() -> void:
 
 	EventBus.crew_state_changed.connect(_on_state_changed)
 	EventBus.door_bypass_result.connect(_on_door_bypass_result)
+	EventBus.line_spoken.connect(_on_line_spoken)
 
 
 func _exit_tree() -> void:
@@ -436,3 +468,109 @@ func _on_state_changed(crew_id: String, _old_state: String, _new_state: String) 
 		return
 	_apply_sprite()
 	_apply_status_dot()
+
+
+# --- Speech / thought bubble (docs/dialogue_spec.md "Display") ---------------------------
+# DialogueSystem already strips [TAGS] and picks the line; this is purely presentational.
+# Declarations (target: open_air) arrive with line_type "declaration" and are rendered as
+# THOUGHTS — italic/dimmed, no tail, no sound, matching the spec's Display section ("Thought
+# bubbles... reuse declaration lines with target: open_air"). Everything else (opener/reply/
+# closer — always addressed to another crew member) is rendered as normal SPEECH.
+
+func _build_bubble() -> void:
+	_bubble_anchor = Node2D.new()
+	_bubble_anchor.z_as_relative = false
+	_bubble_anchor.z_index = BUBBLE_Z_INDEX
+	add_child(_bubble_anchor)
+
+	_bubble_panel = Panel.new()
+	_bubble_panel.visible = false
+	_bubble_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_bubble_anchor.add_child(_bubble_panel)
+
+	_bubble_label = RichTextLabel.new()
+	_bubble_label.bbcode_enabled = true
+	_bubble_label.scroll_active = false
+	_bubble_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_bubble_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_bubble_label.add_theme_font_size_override("normal_font_size", 14)
+	_bubble_panel.add_child(_bubble_label)
+
+	_bubble_tail = Polygon2D.new()
+	_bubble_tail.polygon = PackedVector2Array([
+		Vector2(-7, 0), Vector2(7, 0), Vector2(0, BUBBLE_TAIL_HEIGHT)])
+	_bubble_tail.visible = false
+	_bubble_anchor.add_child(_bubble_tail)
+
+
+# Wrapped-line-count estimate from character count rather than an async layout pass
+# (RichTextLabel.fit_content/get_content_height need a frame to settle) — deterministic and
+# safe against overlapping calls when lines arrive close together (declaration right after a
+# conversation turn, etc).
+func _estimate_bubble_size(text: String) -> Vector2:
+	var wrapped_lines: int = maxi(1, ceili(float(text.length()) / float(BUBBLE_CHARS_PER_LINE)))
+	var explicit_lines: int = text.split("\n").size()
+	var line_count: int = maxi(wrapped_lines, explicit_lines)
+	var height: float = float(line_count) * BUBBLE_LINE_HEIGHT + BUBBLE_PADDING.y * 2.0
+	return Vector2(BUBBLE_WIDTH, height)
+
+
+func _bbcode_safe(text: String) -> String:
+	# Defensive: DialogueSystem already strips [EMOTIVE] tags before emitting line_spoken;
+	# this just guards against any stray bracket breaking bbcode parsing.
+	return text.replace("[", "(").replace("]", ")")
+
+
+func _on_line_spoken(crew_id: String, _line_key: String, text: String, line_type: String) -> void:
+	if crew_id != crew_data.crew_id or text == "":
+		return
+	_show_bubble(text, line_type == "declaration")
+
+
+func _show_bubble(text: String, is_thought: bool) -> void:
+	if _bubble_panel == null:
+		return
+	_bubble_gen += 1
+	var my_gen: int = _bubble_gen
+
+	var size: Vector2 = _estimate_bubble_size(text)
+	_bubble_panel.size = size
+	_bubble_panel.position = Vector2(-size.x / 2.0, BUBBLE_BOTTOM_OFFSET - size.y)
+	_bubble_label.position = BUBBLE_PADDING
+	_bubble_label.size = size - BUBBLE_PADDING * 2.0
+
+	var safe_text: String = _bbcode_safe(text)
+	var style := StyleBoxFlat.new()
+	if is_thought:
+		_bubble_label.text = "[i]%s[/i]" % safe_text
+		style.bg_color = BUBBLE_THOUGHT_BG
+		style.set_corner_radius_all(16)
+		_bubble_label.add_theme_color_override("default_color", BUBBLE_THOUGHT_TEXT)
+		_bubble_tail.visible = false
+	else:
+		_bubble_label.text = safe_text
+		style.bg_color = BUBBLE_SPEECH_BG
+		style.set_corner_radius_all(6)
+		style.set_border_width_all(1)
+		style.border_color = BUBBLE_SPEECH_BORDER
+		_bubble_label.add_theme_color_override("default_color", BUBBLE_SPEECH_TEXT)
+		_bubble_tail.position = Vector2(0, BUBBLE_BOTTOM_OFFSET)
+		_bubble_tail.color = BUBBLE_SPEECH_BG
+		_bubble_tail.visible = true
+	_bubble_panel.add_theme_stylebox_override("panel", style)
+
+	_bubble_panel.modulate.a = 1.0
+	_bubble_tail.modulate.a = 1.0
+	_bubble_panel.visible = true
+
+	if _bubble_tween != null and _bubble_tween.is_valid():
+		_bubble_tween.kill()
+	_bubble_tween = create_tween()
+	var hold: float = BUBBLE_DISPLAY_SECONDS + clampf(text.length() * 0.03, 0.0, BUBBLE_DISPLAY_MAX_BONUS)
+	_bubble_tween.tween_interval(hold)
+	_bubble_tween.tween_property(_bubble_panel, "modulate:a", 0.0, BUBBLE_FADE_SECONDS)
+	_bubble_tween.parallel().tween_property(_bubble_tail, "modulate:a", 0.0, BUBBLE_FADE_SECONDS)
+	_bubble_tween.tween_callback(func():
+		if my_gen == _bubble_gen and is_instance_valid(_bubble_panel):
+			_bubble_panel.visible = false
+			_bubble_tail.visible = false)
