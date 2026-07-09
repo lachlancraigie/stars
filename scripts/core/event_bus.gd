@@ -99,3 +99,9 @@ func _ready() -> void:
 	door_locked_on_crew.connect(func(cid, did): recent_event.emit("door_locked_on_crew", {"crew_id": cid, "door_id": did}))
 	ai_damaged.connect(func(amount, integrity, source): recent_event.emit("ai_damaged", {"amount": amount, "integrity": integrity, "source": source}))
 	repair_success.connect(func(target_id, crew_id): recent_event.emit("repair_success", {"target": target_id, "crew_id": crew_id}))
+	# "crisis_resolved" (dialogue corpus recent_events vocabulary — relief/gallows-humor
+	# lines, RelationshipGraph.on_crisis_resolved's shared-affinity bump): fires when a
+	# ship-wide crisis actually clears, not just any repair tick — reactor/life-support
+	# coming back online, or the AI core recovering out of degraded/blackout.
+	system_repaired.connect(func(system_name): if system_name in ["reactor", "life_support"]: recent_event.emit("crisis_resolved", {"system": system_name}))
+	ai_core_status_changed.connect(func(old_status, new_status): if new_status == "online" and old_status != "online": recent_event.emit("crisis_resolved", {"system": "ai_core"}))

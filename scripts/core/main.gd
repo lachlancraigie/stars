@@ -41,6 +41,7 @@ func _ready() -> void:
 	_spawn_crew_nodes()
 	add_child(CrewBehavior.new())
 	add_child(RepairBehavior.new())
+	add_child(RelationshipBehavior.new())
 	add_child(AICoreSystem.new())
 	add_child(QuarantineMonitor.new())
 	_add_hud()

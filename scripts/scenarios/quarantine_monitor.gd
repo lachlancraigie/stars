@@ -79,6 +79,11 @@ func _on_tick(_elapsed: float, delta: float) -> void:
 	if _contain_t >= CONTAIN_SECS:
 		ScenarioDirector.set_flag("pathogen_contained")
 		EventBus.scenario_event_triggered.emit("pathogen_contained")
+		# Dialogue-facing: the corpus's "crisis_resolved" recent_event (relief/gallows-humor
+		# lines, RelationshipGraph's shared-crisis affinity bump) has no generic emitter yet
+		# outside system-repair recovery (see event_bus.gd) — the quarantine's own resolution
+		# is exactly that kind of beat for this scenario.
+		EventBus.recent_event.emit("crisis_resolved", {"scenario": "quarantine"})
 		_set_objective("Pathogen contained.")
 
 
