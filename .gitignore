@@ -18,3 +18,14 @@ Thumbs.db
 # Asset generation pipeline (tools/asset_gen) -- staged/unreviewed generations
 # are not committed; they go through promote.py after human QA review.
 tools/asset_gen/staging/
+
+# Godot editor cache
+.godot/
+
+# Secrets - never commit
+.env
+**/.env
+*.env
+
+# Generated audio (large; regenerate via tools/audio_gen)
+assets/audio/dialogue/
