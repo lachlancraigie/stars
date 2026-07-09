@@ -1,0 +1,911 @@
+[
+  {
+    "id": 1,
+    "key": "PA_ML_MAR_OF#00001",
+    "text": "[URGENT] threat assessment: corridors clear but i've seen nine different ways this sector could be compromised",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "location": [
+        "corridor"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 2,
+    "key": "PA_ML_MAR_OF#00002",
+    "text": "shift starting, weapons check complete, perimeter secure, standby alert level three because level two is wishful thinking",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "shift_start"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 3,
+    "key": "PA_ML_MAR_OF#00003",
+    "text": "[TIRED] shift's over and nobody tried to kill us, which is my baseline for a good day",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "shift_end"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 4,
+    "key": "PA_ML_MAR_OF#00004",
+    "text": "[TERRIFIED] reactor's critical and i've got three different contingency plans for containment but [URGENT] they're all risky",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 10,
+      "stress_max": 15,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "reactor_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 5,
+    "key": "PA_ML_MAR_OF#00005",
+    "text": "[PANICKED] reactor's out of control and i can't shoot the problem and i [TERRIFIED] i don't have a contingency for this",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 13,
+      "stress_max": 20,
+      "panic": true,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "reactor_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 6,
+    "key": "PA_ML_MAR_OF#00006",
+    "text": "[CONFIDENT] reactor stabilized, my contingency plan alpha held up under actual stress, noted for future application",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "repair_success"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 7,
+    "key": "PA_ML_MAR_OF#00007",
+    "text": "power's low, we've got six hours before secondary systems start failing, i'm briefing contingencies now",
+    "type": "declaration",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "power_low"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 8,
+    "key": "PA_ML_MAR_OF#00008",
+    "text": "[NERVOUS] air's thinning, we've got maybe forty minutes before hypoxia becomes critical across the ship",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "life_support_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 9,
+    "key": "PA_ML_MAR_OF#00009",
+    "text": "[SHOUTS] hull breach, we're sealing sectors, get to high ground, move move move, this is not a drill",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 10,
+      "stress_max": 15,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "hull_breach"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 10,
+    "key": "PA_ML_MAR_OF#00010",
+    "text": "[GRIM] locked a crew member behind that bulkhead and i've calculated every possible way to undo it and none of them work",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 14,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "door_locked_on_crew"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 11,
+    "key": "PA_ML_MAR_OF#00011",
+    "text": "[SUSPICIOUS] the ship's AI is deviating from baseline protocols, i'm flagging it as a potential hostile asset and monitoring closely",
+    "type": "declaration",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "ai_damaged"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 12,
+    "key": "PA_ML_MAR_OF#00012",
+    "text": "[PAINED] lost crew, and i'm standing here knowing i couldn't protect them from this kind of threat",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 13,
+    "key": "PA_ML_MAR_OF#00013",
+    "text": "[NERVOUS] disease spreading and i can't shoot the contagion, can't protect the crew from an invisible enemy, hate this",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "disease_outbreak"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 14,
+    "key": "PA_ML_MAR_OF#00014",
+    "text": "[PAINED] took a round and i'm still mobile, wounds don't stop operations, just change contingencies",
+    "type": "declaration",
+    "intent": "pain",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "wounded": true,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "injury"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 15,
+    "key": "PA_ML_MAR_OF#00015",
+    "text": "[SHOUTS] contact, weapons hot, defensive positions, return fire, protocols echo seven through nine, go go go",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 11,
+      "stress_max": 16,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "combat"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 16,
+    "key": "PA_ML_MAR_OF#00016",
+    "text": "crisis contained and i'm running the debrief on what went right and what went catastrophically wrong the moment it started",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "crisis_resolved"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 17,
+    "key": "PA_ML_MAR_OF#00017",
+    "text": "[PROUD] flagged that threat profile three weeks ago before anyone else saw it, i've still got good instincts",
+    "type": "declaration",
+    "intent": "boast",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 18,
+    "key": "PA_ML_MAR_OF#00018",
+    "text": "[LAUGHS] briefed seven different contingencies and guess which one we needed, the one i predicted first, they never listen",
+    "type": "declaration",
+    "intent": "gallows_humor",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 19,
+    "key": "PA_ML_MAR_OF#00019",
+    "text": "[GRUFF] served on three ships and learned that the ones that failed always had someone who saw the threat first and got ignored",
+    "type": "declaration",
+    "intent": "memory",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 20,
+    "key": "PA_ML_MAR_OF#00020",
+    "text": "[DISMISSIVE] false alarm on the perimeter, i'm sorry for the alert, my sensors were picking up shadows, recalibrating",
+    "type": "declaration",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 21,
+    "key": "PA_ML_MAR_OF#00021",
+    "text": "quiet shift is the dangerous shift, nothing's happening means something's being hidden, keep your sidearm close",
+    "type": "declaration",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 7,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "quiet_shift"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 22,
+    "key": "PA_ML_MAR_OF#00022",
+    "text": "[GRUFF] needed down here on patrol, what's the situation",
+    "type": "opener",
+    "intent": "greeting",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "corridor"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 23,
+    "key": "PA_ML_MAR_OF#00023",
+    "text": "[URGENT] i need to walk through security protocols with you, i found three gaps in perimeter coverage",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 24,
+    "key": "PA_ML_MAR_OF#00024",
+    "text": "[NERVOUS] briefing contingencies, we're not ready for a hull breach in the cargo section, i'm walking you through my protocols",
+    "type": "opener",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 25,
+    "key": "PA_ML_MAR_OF#00025",
+    "text": "[GRIM] we lost one of ours and i'm running the tactical debrief right now while it's fresh",
+    "type": "opener",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 13,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 26,
+    "key": "PA_ML_MAR_OF#00026",
+    "text": "you handled that threat correctly and faster than i anticipated, that's solid work",
+    "type": "opener",
+    "intent": "praise_ai",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 27,
+    "key": "PA_ML_MAR_OF#00027",
+    "text": "[EMBARRASSED] i think about you more than my threat assessment protocols let me, which is dangerous and also confusing",
+    "type": "opener",
+    "intent": "romance_hint",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 28,
+    "key": "PA_ML_MAR_OF#00028",
+    "text": "[LAUGHS] your plan's reckless and i hate it and it'll probably work because reckless is sometimes tactical",
+    "type": "reply",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "banter",
+      "boast"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 29,
+    "key": "PA_ML_MAR_OF#00029",
+    "text": "[GRUFF] i'm operational, perimeter's secure, weapons loaded, ready to respond to any scenario",
+    "type": "reply",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "greeting",
+      "smalltalk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 30,
+    "key": "PA_ML_MAR_OF#00030",
+    "text": "[CONFIDENT] we're gonna hold this, i've got contingencies stacked three deep and i didn't brief half of them",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "doubt"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 31,
+    "key": "PA_ML_MAR_OF#00031",
+    "text": "[TERRIFIED] i don't know if we hold this and that's the only thing that scares me more than the actual threat",
+    "type": "reply",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 10,
+      "stress_max": 16,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "warning"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 32,
+    "key": "PA_ML_MAR_OF#00032",
+    "text": "[PAINED] we lost them and i'm already running the post-action debrief to make sure this doesn't happen again",
+    "type": "reply",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 14,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [
+      "grief"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 33,
+    "key": "PA_ML_MAR_OF#00033",
+    "text": "[SUSPICIOUS] i've been tracking that AI anomaly too and i'm treating it as a potential threat vector until proven otherwise",
+    "type": "reply",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "suspicion_ai"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 34,
+    "key": "PA_ML_MAR_OF#00034",
+    "text": "[WARM] appreciate that, and i'm filing it as a positive tactical assessment in my personal records",
+    "type": "reply",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "praise_ai"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 35,
+    "key": "PA_ML_MAR_OF#00035",
+    "text": "[GRUFF] apology accepted, move on, we don't have time for guilt, just learn it and don't repeat the error",
+    "type": "reply",
+    "intent": "apology",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "apology"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 36,
+    "key": "PA_ML_MAR_OF#00036",
+    "text": "[EMBARRASSED] i'm experiencing what i believe is reciprocal interest and it's making my threat-assessment less reliable, which is problematic",
+    "type": "reply",
+    "intent": "romance_accept",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "romance_hint",
+      "romance_advance"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 37,
+    "key": "PA_ML_MAR_OF#00037",
+    "text": "[CONFIDENT] give me the order and it's done, i don't miss critical objectives",
+    "type": "reply",
+    "intent": "offer_help",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "CA",
+        "OF"
+      ]
+    },
+    "reply_to_intents": [
+      "request_help",
+      "warning"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 38,
+    "key": "PA_ML_MAR_OF#00038",
+    "text": "[NERVOUS] you're wounded and that compromises your tactical effectiveness, let me handle this phase",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "wounded": true,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "pain",
+      "status_report"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 39,
+    "key": "PA_ML_MAR_OF#00039",
+    "text": "[GRUFF] gallows humor is good, means you're maintaining morale under stress, that's what keeps people alive",
+    "type": "reply",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "gallows_humor"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 40,
+    "key": "PA_ML_MAR_OF#00040",
+    "text": "[SUSPICIOUS] i missed something in threat assessment and that failure is unacceptable, i'm running the analysis again",
+    "type": "reply",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "doubt",
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 41,
+    "key": "PA_ML_MAR_OF#00041",
+    "text": "[GRUFF] back to perimeter duty, weapons stay loaded, threat level stays elevated",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 42,
+    "key": "PA_ML_MAR_OF#00042",
+    "text": "[WARM] get rest, i'm running the watch, nothing gets past my perimeter",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 43,
+    "key": "PA_ML_MAR_OF#00043",
+    "text": "[URGENT] move, we've got tactical issues developing and you're not ready for them",
+    "type": "closer",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 44,
+    "key": "PA_ML_MAR_OF#00044",
+    "text": "[GRIM] if this escalates i'll be ready, which is both a promise and a threat assessment",
+    "type": "closer",
+    "intent": "gallows_humor",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 45,
+    "key": "PA_ML_MAR_OF#00045",
+    "text": "[LAUGHS] later, watch your six, i'm watching mine",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 46,
+    "key": "PA_ML_MAR_OF#00046",
+    "text": "[PANICKED] i've got contingencies for everything except what's actually happening right now",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 11,
+      "stress_max": 20,
+      "panic": true,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 47,
+    "key": "PA_ML_MAR_OF#00047",
+    "text": "[TERRIFIED] the quiet shift is ending and something's hunting us and i don't see it yet",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "shift_end"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 48,
+    "key": "PA_ML_MAR_OF#00048",
+    "text": "[SHOUTS] all sectors monitored, weapons hot, contingencies briefed, we are locked and loaded",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 49,
+    "key": "PA_ML_MAR_OF#00049",
+    "text": "[URGENT] meal time is happening but i'm running another perimeter check because threats don't keep schedules",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "meal_time"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 50,
+    "key": "PA_ML_MAR_OF#00050",
+    "text": "[PROUD] predicted that strike point and had countermeasures ready, experience paying off",
+    "type": "declaration",
+    "intent": "boast",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  }
+]

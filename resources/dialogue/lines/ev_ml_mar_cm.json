@@ -1,0 +1,985 @@
+[
+  {
+    "id": 1,
+    "key": "EV_ML_MAR_CM#00001",
+    "text": "Perimeter's clear. All sections checked.",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "quarters"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 2,
+    "key": "EV_ML_MAR_CM#00002",
+    "text": "[CALM] Quiet shift's fine by me. Gives me time to get equipment maintenance done.",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "quiet_shift"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 3,
+    "key": "EV_ML_MAR_CM#00003",
+    "text": "Security sweep complete. Weapons checked and ready.",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "shift_start"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 4,
+    "key": "EV_ML_MAR_CM#00004",
+    "text": "[TIRED] Nothing got breached. Nobody got hurt. That's a good day.",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "shift_end"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 5,
+    "key": "EV_ML_MAR_CM#00005",
+    "text": "[CALM] Hull's breached. I'm securing the corridor. Get clear now.",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 14,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "hull_breach"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 6,
+    "key": "EV_ML_MAR_CM#00006",
+    "text": "[URGENT] Contact in the aft section. All personnel move to secure positions. Now.",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 10,
+      "stress_max": 15,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "combat"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 7,
+    "key": "EV_ML_MAR_CM#00007",
+    "text": "Door sealed. That section's lost but the rest holds.",
+    "type": "declaration",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "door_locked_on_crew"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 8,
+    "key": "EV_ML_MAR_CM#00008",
+    "text": "[CALM] Took a hit but still mobile. Still sharp.",
+    "type": "declaration",
+    "intent": "pain",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "wounded": true,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "injury"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 9,
+    "key": "EV_ML_MAR_CM#00009",
+    "text": "[DEADPAN] Everyone's accounted for. That's two pieces of good news in one day.",
+    "type": "declaration",
+    "intent": "gallows_humor",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "crisis_resolved"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 10,
+    "key": "EV_ML_MAR_CM#00010",
+    "text": "Been on three ships that didn't make it. This one's tougher than all of them.",
+    "type": "declaration",
+    "intent": "memory",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 11,
+    "key": "EV_ML_MAR_CM#00011",
+    "text": "[SUSPICIOUS] AI protocols shifted during the firefight. Timing seems off. I'm keeping watch.",
+    "type": "declaration",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "ai_damaged"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 12,
+    "key": "EV_ML_MAR_CM#00012",
+    "text": "[GRIM] Lost someone today. I'll make sure it means something.",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 13,
+    "key": "EV_ML_MAR_CM#00013",
+    "text": "[CALM] Life support's compromised forward. I'm moving to position there. Stay alert.",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "life_support_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 14,
+    "key": "EV_ML_MAR_CM#00014",
+    "text": "[EMPHASIS] Threat confirmed. Defensive positions. Weapons free on hostile engagement.",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 10,
+      "stress_max": 15,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "combat"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 15,
+    "key": "EV_ML_MAR_CM#00015",
+    "text": "All sections secure. No breaches, no incursions.",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "location": [
+        "cargo"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 16,
+    "key": "EV_ML_MAR_CM#00016",
+    "text": "[CALM] I've got weapons trained on that area. Clear the corridor.",
+    "type": "opener",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 17,
+    "key": "EV_ML_MAR_CM#00017",
+    "text": "Status?",
+    "type": "opener",
+    "intent": "greeting",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 18,
+    "key": "EV_ML_MAR_CM#00018",
+    "text": "[CALM] We're holding the position. I need your support on my left.",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "combat"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 19,
+    "key": "EV_ML_MAR_CM#00019",
+    "text": "[WARM] You kept your head when everything was chaos. Good work out there.",
+    "type": "opener",
+    "intent": "praise_ai",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 20,
+    "key": "EV_ML_MAR_CM#00020",
+    "text": "[CALM] There's something we need to talk about regarding security protocols. Later though.",
+    "type": "opener",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 21,
+    "key": "EV_ML_MAR_CM#00021",
+    "text": "[CURIOUS] Any sounds or movements in your section? Anything at all?",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 22,
+    "key": "EV_ML_MAR_CM#00022",
+    "text": "[CALM] I'm good. You should check yourself.",
+    "type": "reply",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "greeting",
+      "smalltalk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 23,
+    "key": "EV_ML_MAR_CM#00023",
+    "text": "[REASSURING] I've fought worse odds. We can do this.",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "doubt"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 24,
+    "key": "EV_ML_MAR_CM#00024",
+    "text": "[CALM] Fear keeps you sharp. Channel it. Don't let it control you.",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 25,
+    "key": "EV_ML_MAR_CM#00025",
+    "text": "[CALM] Let me look at that. I can help.",
+    "type": "reply",
+    "intent": "offer_help",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "pain",
+      "complaint"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 26,
+    "key": "EV_ML_MAR_CM#00026",
+    "text": "[EMPHASIS] Stay focused. We're not done yet.",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 14,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 27,
+    "key": "EV_ML_MAR_CM#00027",
+    "text": "[SUSPICIOUS] Your concerns about the AI match what I've seen in tactical responses. Worth monitoring.",
+    "type": "reply",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "suspicion_ai",
+      "doubt"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 28,
+    "key": "EV_ML_MAR_CM#00028",
+    "text": "[DRY] That was the protocol. Still the protocol. Nothing's changed.",
+    "type": "reply",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "complaint"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 29,
+    "key": "EV_ML_MAR_CM#00029",
+    "text": "Got it. I'll adjust accordingly.",
+    "type": "reply",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "status_report",
+      "offer_help"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 30,
+    "key": "EV_ML_MAR_CM#00030",
+    "text": "[CALM] Think clearly and move deliberately. Everything else is noise.",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "panic": false,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 31,
+    "key": "EV_ML_MAR_CM#00031",
+    "text": "[WARM] You made the right call under pressure. That's all that matters.",
+    "type": "reply",
+    "intent": "praise_ai",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "work_talk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 32,
+    "key": "EV_ML_MAR_CM#00032",
+    "text": "[CALM] That was correct. I would've done the same.",
+    "type": "reply",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "status_report"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 33,
+    "key": "EV_ML_MAR_CM#00033",
+    "text": "[WARM] I'm glad you're here. That's not something I say lightly.",
+    "type": "reply",
+    "intent": "romance_hint",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "romance_hint",
+      "romance_advance"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 34,
+    "key": "EV_ML_MAR_CM#00034",
+    "text": "[EMPHASIS] Get to the medical bay. I'll handle this.",
+    "type": "reply",
+    "intent": "offer_help",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "wounded": true,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "pain"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 35,
+    "key": "EV_ML_MAR_CM#00035",
+    "text": "[PANICKED] No, you need medical attention right now. This isn't negotiable.",
+    "type": "reply",
+    "intent": "pain",
+    "conditions": {
+      "stress_min": 11,
+      "stress_max": 15,
+      "panic": true,
+      "wounded": true,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "pain"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 36,
+    "key": "EV_ML_MAR_CM#00036",
+    "text": "[TERRIFIED] Hostile contact is closing. We don't have much time. I don't know if we can hold this position.",
+    "type": "reply",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 12,
+      "stress_max": 15,
+      "panic": true,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "combat"
+      ]
+    },
+    "reply_to_intents": [
+      "status_report",
+      "warning",
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 37,
+    "key": "EV_ML_MAR_CM#00037",
+    "text": "Here. We can make this work.",
+    "type": "reply",
+    "intent": "offer_help",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "request_help"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 38,
+    "key": "EV_ML_MAR_CM#00038",
+    "text": "[CALM] Quarters are secure. Nothing else to do today.",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "quarters"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 39,
+    "key": "EV_ML_MAR_CM#00039",
+    "text": "[TIRED] I'll keep watch if anything develops. Get some rest.",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 40,
+    "key": "EV_ML_MAR_CM#00040",
+    "text": "I need to check my gear. Come find me later.",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 41,
+    "key": "EV_ML_MAR_CM#00041",
+    "text": "[GRIM] Perimeter's locked down. I'll maintain position.",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 42,
+    "key": "EV_ML_MAR_CM#00042",
+    "text": "[CALM] Shift's done. Everything's secure. Rest well.",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 43,
+    "key": "EV_ML_MAR_CM#00043",
+    "text": "[CALM] All clear. Get some rest.",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 44,
+    "key": "EV_ML_MAR_CM#00044",
+    "text": "[URGENT] All hands to defensive positions. Potential incursion in forward section. Move now.",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 11,
+      "stress_max": 15,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "combat"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 45,
+    "key": "EV_ML_MAR_CM#00045",
+    "text": "[CALM] Here's what we need to do. Follow my lead and we'll get through this.",
+    "type": "opener",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 46,
+    "key": "EV_ML_MAR_CM#00046",
+    "text": "[DRY] Threat's eliminated. That's what counted today.",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "crisis_resolved"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 47,
+    "key": "EV_ML_MAR_CM#00047",
+    "text": "I second-guessed myself. Shouldn't have. Won't again.",
+    "type": "declaration",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "combat"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 48,
+    "key": "EV_ML_MAR_CM#00048",
+    "text": "[PAINED] Bleeding's stopped. Wound's sealed. I can move.",
+    "type": "declaration",
+    "intent": "pain",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "wounded": true,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 49,
+    "key": "EV_ML_MAR_CM#00049",
+    "text": "[CALM] Airlock's sealed. Forward section's isolated. No spread.",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "hull_breach"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 50,
+    "key": "EV_ML_MAR_CM#00050",
+    "text": "[WARM] You've got good instincts. Trust them.",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "grief"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 51,
+    "key": "EV_ML_MAR_CM#00051",
+    "text": "[CALM] I want to run defensive scenarios with you. Nothing imminent, just being ready.",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 52,
+    "key": "EV_ML_MAR_CM#00052",
+    "text": "You okay? Really okay?",
+    "type": "opener",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 53,
+    "key": "EV_ML_MAR_CM#00053",
+    "text": "[CURIOUS] You notice anything off in the corridors yesterday? Sounds, movements, anything?",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 54,
+    "key": "EV_ML_MAR_CM#00054",
+    "text": "[CALM] That checks out. I trust your assessment.",
+    "type": "reply",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "status_report",
+      "work_talk"
+    ],
+    "weight": 1.0
+  }
+]

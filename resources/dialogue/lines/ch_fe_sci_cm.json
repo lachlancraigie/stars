@@ -1,0 +1,833 @@
+[
+  {
+    "id": 1,
+    "key": "CH_FE_SCI_CM#00001",
+    "text": "[NERVOUS] reactor failure means I need to be ready for radiation burns. prepping decontamination",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "location": [
+        "medbay"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "reactor_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 2,
+    "key": "CH_FE_SCI_CM#00002",
+    "text": "[TERRIFIED] life support's failing and i can't fix what i can't reach",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 10,
+      "stress_max": 15,
+      "location": [
+        "medbay"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "life_support_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 3,
+    "key": "CH_FE_SCI_CM#00003",
+    "text": "[GRIM] hull breach means trauma incoming. clearing beds, calling everyone to stations",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 14,
+      "location": [
+        "medbay"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "hull_breach"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 4,
+    "key": "CH_FE_SCI_CM#00004",
+    "text": "[PAINED] took damage helping move patients. worth it, but ouch",
+    "type": "declaration",
+    "intent": "pain",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "wounded": true,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "injury"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 5,
+    "key": "CH_FE_SCI_CM#00005",
+    "text": "[NERVOUS] disease spreading through the ship and i'm one person treating everyone",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "location": [
+        "medbay"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "disease_outbreak"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 6,
+    "key": "CH_FE_SCI_CM#00006",
+    "text": "[PAINED] lost a patient today. the interesting case turned tragic",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 7,
+    "key": "CH_FE_SCI_CM#00007",
+    "text": "[LAUGHS] mess hall again. even medicine can't fix their cooking, but i'm working on it",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "location": [
+        "mess"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "meal_time"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 8,
+    "key": "CH_FE_SCI_CM#00008",
+    "text": "[GRIM] combat casualties — at least the wounds are interesting",
+    "type": "declaration",
+    "intent": "gallows_humor",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "location": [
+        "medbay"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "combat"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 9,
+    "key": "CH_FE_SCI_CM#00009",
+    "text": "[PAINED] door locked on someone and I couldn't stop it. knowing I was too slow",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "door_locked_on_crew"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 10,
+    "key": "CH_FE_SCI_CM#00010",
+    "text": "[NERVOUS] this is an interesting problem and i'm hoping my solution works",
+    "type": "declaration",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "location": [
+        "medbay"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 11,
+    "key": "CH_FE_SCI_CM#00011",
+    "text": "hey! come on in. sickbay's never closed and i'm always happy to see faces",
+    "type": "opener",
+    "intent": "greeting",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "medbay"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 12,
+    "key": "CH_FE_SCI_CM#00012",
+    "text": "[WARM] so, how are we feeling today? stress level, sleep, the usual checks?",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "location": [
+        "medbay"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 13,
+    "key": "CH_FE_SCI_CM#00013",
+    "text": "[GRIM] got something to tell you and i wish i didn't",
+    "type": "opener",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 14,
+    "key": "CH_FE_SCI_CM#00014",
+    "text": "[WARM] you handled that beautifully. just wanted you to hear it out loud",
+    "type": "opener",
+    "intent": "praise_ai",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 15,
+    "key": "CH_FE_SCI_CM#00015",
+    "text": "[FLIRTY] so, funny thing — watching you work is actually really attractive",
+    "type": "opener",
+    "intent": "romance_hint",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 7,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 16,
+    "key": "CH_FE_SCI_CM#00016",
+    "text": "[NERVOUS] need to talk through something. doubting whether this approach works",
+    "type": "opener",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "location": [
+        "medbay"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 17,
+    "key": "CH_FE_SCI_CM#00017",
+    "text": "[GRIM] disease is spreading. we need to isolate the infected right now",
+    "type": "opener",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "location": [
+        "medbay"
+      ],
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "disease_outbreak"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 18,
+    "key": "CH_FE_SCI_CM#00018",
+    "text": "[DRY] you eating real food or just stimpaks again?",
+    "type": "opener",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "mess"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 19,
+    "key": "CH_FE_SCI_CM#00019",
+    "text": "computer's been weird since it got damaged. i'd be strange too, honestly",
+    "type": "opener",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "ai_damaged"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 20,
+    "key": "CH_FE_SCI_CM#00020",
+    "text": "understood. getting prep ready now",
+    "type": "reply",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "warning",
+      "work_talk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 21,
+    "key": "CH_FE_SCI_CM#00021",
+    "text": "[WARM] i'm doing great! it's kind of my whole thing",
+    "type": "reply",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "greeting",
+      "smalltalk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 22,
+    "key": "CH_FE_SCI_CM#00022",
+    "text": "[REASSURING] you're going to be fine. i've fixed worse, and you're not broken",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "pain"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 23,
+    "key": "CH_FE_SCI_CM#00023",
+    "text": "[WARM] hey, breathe with me. in, out. now let's look at this interesting puzzle together",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 24,
+    "key": "CH_FE_SCI_CM#00024",
+    "text": "[PAINED] we lost them. i tried everything i could think of",
+    "type": "reply",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [
+      "grief"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 25,
+    "key": "CH_FE_SCI_CM#00025",
+    "text": "[LAUGHS] okay, that joke was terrible. mine was worse though",
+    "type": "reply",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "banter"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 26,
+    "key": "CH_FE_SCI_CM#00026",
+    "text": "[WARM] already forgotten, seriously. go grab a lollipop, you earned it",
+    "type": "reply",
+    "intent": "apology",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "apology"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 27,
+    "key": "CH_FE_SCI_CM#00027",
+    "text": "[EMBARRASSED] oh wow — i wasn't expecting that. that's really wonderful",
+    "type": "reply",
+    "intent": "romance_accept",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "romance_hint",
+      "romance_advance"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 28,
+    "key": "CH_FE_SCI_CM#00028",
+    "text": "[SUSPICIOUS] i trust you, but i'd like a second opinion just to be safe",
+    "type": "reply",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "suspicion_ai"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 29,
+    "key": "CH_FE_SCI_CM#00029",
+    "text": "[PAINED] shoulder's pretty sore but i can keep working. patients come first",
+    "type": "reply",
+    "intent": "pain",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 8,
+      "wounded": true,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "pain"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 30,
+    "key": "CH_FE_SCI_CM#00030",
+    "text": "[WARM] thanks for having my back. it helps knowing i'm not alone here",
+    "type": "reply",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "praise_ai",
+      "acknowledgment"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 31,
+    "key": "CH_FE_SCI_CM#00031",
+    "text": "[CURIOUS] so what's your take on this? your perspective always helps me see things",
+    "type": "reply",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "doubt",
+      "work_talk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 32,
+    "key": "CH_FE_SCI_CM#00032",
+    "text": "[GRIM] isolation protocols are up. boring for them, safe for everyone",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "disease_outbreak"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "warning"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 33,
+    "key": "CH_FE_SCI_CM#00033",
+    "text": "[WARM] all stabilized. medbay's got it from here",
+    "type": "reply",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "repair_success"
+      ]
+    },
+    "reply_to_intents": [
+      "status_report",
+      "warning"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 34,
+    "key": "CH_FE_SCI_CM#00034",
+    "text": "[WARM] i actually really like the computer. it's never judged my puns",
+    "type": "reply",
+    "intent": "praise_ai",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "praise_ai"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 35,
+    "key": "CH_FE_SCI_CM#00035",
+    "text": "[WARM] bye! go be healthy and interesting somewhere else for a while",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "medbay"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 36,
+    "key": "CH_FE_SCI_CM#00036",
+    "text": "[LAUGHS] alright, patients are waiting. hopefully not literally",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 37,
+    "key": "CH_FE_SCI_CM#00037",
+    "text": "[TIRED] gonna rest up. sickbay doesn't really close, but i need to",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "location": [
+        "medbay"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 38,
+    "key": "CH_FE_SCI_CM#00038",
+    "text": "[WARM] you did great. catch you around",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 39,
+    "key": "CH_FE_SCI_CM#00039",
+    "text": "[EXHAUSTED] i'm gonna sleep for about a week. wake me if the ship's on fire",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 14,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 40,
+    "key": "CH_FE_SCI_CM#00040",
+    "text": "[WARM] you look like you need a checkup. nothing invasive, just checking in",
+    "type": "opener",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "location": [
+        "mess"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 41,
+    "key": "CH_FE_SCI_CM#00041",
+    "text": "[WARM] systems are nominal. everyone can rest easy tonight",
+    "type": "reply",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "acknowledgment",
+      "status_report"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 42,
+    "key": "CH_FE_SCI_CM#00042",
+    "text": "[WARM] hey, no pressure. just breathe and let's figure this out together",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "complaint",
+      "doubt"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 43,
+    "key": "CH_FE_SCI_CM#00043",
+    "text": "[WARM] you're doing better than you think. trust the process",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "doubt",
+      "fear_vent"
+    ],
+    "weight": 1.0
+  }
+]

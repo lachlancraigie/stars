@@ -134,7 +134,9 @@ Field rules:
   - `recent_events` (closed set): `disease_outbreak` `crew_death` `reactor_failure` `power_low`
     `life_support_failure` `hull_breach` `door_locked_on_crew` `ai_damaged` `repair_success`
     `crisis_resolved` `combat` `injury` `quiet_shift` `meal_time` `shift_start` `shift_end`
-- `reply_to_intents`: for `reply`/`closer` lines — which prior-line intents this can answer.
+- `reply_to_intents`: for `reply` lines — which prior-line intents this can answer (must be
+  non-empty). `closer` lines MAY leave it empty, meaning they can close an exchange regardless of
+  the prior intent.
 - `weight`: base selection weight, default 1.0.
 
 ## Conversation schema (`conversations/*.json` — array of these)

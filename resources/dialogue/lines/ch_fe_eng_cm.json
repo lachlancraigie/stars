@@ -1,0 +1,844 @@
+[
+  {
+    "id": 1,
+    "key": "CH_FE_ENG_CM#00001",
+    "text": "[NERVOUS] power's dropping and that's not a puzzle i can solve fast enough",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "power_low"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 2,
+    "key": "CH_FE_ENG_CM#00002",
+    "text": "[GRIM] reactor's screaming. clearing the room",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 14,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "reactor_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 3,
+    "key": "CH_FE_ENG_CM#00003",
+    "text": "[TERRIFIED] life support's failing. this is the kind of puzzle that ends badly",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 11,
+      "stress_max": 15,
+      "location": [
+        "life_support"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "life_support_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 4,
+    "key": "CH_FE_ENG_CM#00004",
+    "text": "[PAINED] took a hit in the hull breach. didn't get everyone to the airlock in time",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 10,
+      "stress_max": 14,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "hull_breach"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 5,
+    "key": "CH_FE_ENG_CM#00005",
+    "text": "[PAINED] hurt my shoulder getting the panels back. manual work isn't kind",
+    "type": "declaration",
+    "intent": "pain",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 8,
+      "wounded": true,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "injury"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 6,
+    "key": "CH_FE_ENG_CM#00006",
+    "text": "[LAUGHS] we didn't blow up today. honestly, that's a win",
+    "type": "declaration",
+    "intent": "gallows_humor",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "crisis_resolved"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 7,
+    "key": "CH_FE_ENG_CM#00007",
+    "text": "i remember when this engine was just a bad series of choices. look at her now",
+    "type": "declaration",
+    "intent": "memory",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 8,
+    "key": "CH_FE_ENG_CM#00008",
+    "text": "[PAINED] lost someone in the reactor explosion. hard to keep focused",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 10,
+      "stress_max": 15,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 9,
+    "key": "CH_FE_ENG_CM#00009",
+    "text": "[SUSPICIOUS] the computer made that call too fast. something's off",
+    "type": "declaration",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "ai_damaged"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 10,
+    "key": "CH_FE_ENG_CM#00010",
+    "text": "[NERVOUS] i'm gonna try something that might not work. fingers crossed",
+    "type": "declaration",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 11,
+    "key": "CH_FE_ENG_CM#00011",
+    "text": "hey! got a second? could use a hand with this coupling",
+    "type": "opener",
+    "intent": "greeting",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 12,
+    "key": "CH_FE_ENG_CM#00012",
+    "text": "[WARM] morning! engine's in a good mood today, which means we get to be too",
+    "type": "opener",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "shift_start"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 13,
+    "key": "CH_FE_ENG_CM#00013",
+    "text": "you look like you could use a distraction. cargo manifest just arrived",
+    "type": "opener",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "location": [
+        "cargo"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 14,
+    "key": "CH_FE_ENG_CM#00014",
+    "text": "[GRIM] reactor's acting up again. i need you to stay sharp if this goes sideways",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "reactor_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 15,
+    "key": "CH_FE_ENG_CM#00015",
+    "text": "[WARM] the ship's running smooth because of how you handled that last crisis",
+    "type": "opener",
+    "intent": "praise_ai",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 16,
+    "key": "CH_FE_ENG_CM#00016",
+    "text": "[FLIRTY] you know, people who understand how engines work are surprisingly attractive",
+    "type": "opener",
+    "intent": "romance_hint",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 7,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 17,
+    "key": "CH_FE_ENG_CM#00017",
+    "text": "[NERVOUS] could use your thoughts on something. doubting my fix",
+    "type": "opener",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 18,
+    "key": "CH_FE_ENG_CM#00018",
+    "text": "[GRIM] need to tell you something about the disease spreading. it's affecting the air recyclers",
+    "type": "opener",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "location": [
+        "life_support"
+      ],
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "disease_outbreak"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 19,
+    "key": "CH_FE_ENG_CM#00019",
+    "text": "[PAINED] lost someone in the reactor explosion. hard to keep focused",
+    "type": "opener",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 10,
+      "stress_max": 15,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 20,
+    "key": "CH_FE_ENG_CM#00020",
+    "text": "[WARM] you're good! seriously, no stress. we're a team",
+    "type": "reply",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "greeting",
+      "smalltalk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 21,
+    "key": "CH_FE_ENG_CM#00021",
+    "text": "[REASSURING] i've fixed worse. way worse. we're gonna be fine",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "complaint"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 22,
+    "key": "CH_FE_ENG_CM#00022",
+    "text": "[WARM] listen to me. breathe. i've got this puzzle. you just stay calm",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 23,
+    "key": "CH_FE_ENG_CM#00023",
+    "text": "[LAUGHS] yeah, that's pretty good. maybe not as good as my fixes though",
+    "type": "reply",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "banter"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 24,
+    "key": "CH_FE_ENG_CM#00024",
+    "text": "[WARM] it's forgotten already, seriously. come on, we've got work",
+    "type": "reply",
+    "intent": "apology",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "apology"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 25,
+    "key": "CH_FE_ENG_CM#00025",
+    "text": "[EMPHASIS] acknowledged! running that diagnostic now",
+    "type": "reply",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "work_talk",
+      "warning"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 26,
+    "key": "CH_FE_ENG_CM#00026",
+    "text": "[PAINED] we did everything we could. sometimes the puzzle doesn't have an answer",
+    "type": "reply",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 14,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [
+      "grief"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 27,
+    "key": "CH_FE_ENG_CM#00027",
+    "text": "[EMBARRASSED] oh — didn't expect that. makes working on engines more interesting",
+    "type": "reply",
+    "intent": "romance_accept",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "romance_hint",
+      "romance_advance"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 28,
+    "key": "CH_FE_ENG_CM#00028",
+    "text": "[SUSPICIOUS] the computer made that call too fast. something's off",
+    "type": "reply",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "suspicion_ai"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 29,
+    "key": "CH_FE_ENG_CM#00029",
+    "text": "[PAINED] my shoulder's not great, but i can still work. gotta keep moving",
+    "type": "reply",
+    "intent": "pain",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 8,
+      "wounded": true,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "pain"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 30,
+    "key": "CH_FE_ENG_CM#00030",
+    "text": "[WARM] thanks. knowing someone's got my back makes every puzzle easier",
+    "type": "reply",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "praise_ai",
+      "acknowledgment"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 31,
+    "key": "CH_FE_ENG_CM#00031",
+    "text": "[CURIOUS] so how do you think we should approach this? your perspective helps",
+    "type": "reply",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "doubt",
+      "work_talk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 32,
+    "key": "CH_FE_ENG_CM#00032",
+    "text": "[GRIM] we're sealed up tight. just need to wait this outbreak out",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "disease_outbreak"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "warning"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 33,
+    "key": "CH_FE_ENG_CM#00033",
+    "text": "[EMPHASIS] hull's holding! sealing secondary compartments now",
+    "type": "reply",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 10,
+      "stress_max": 15,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "hull_breach"
+      ]
+    },
+    "reply_to_intents": [
+      "warning"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 34,
+    "key": "CH_FE_ENG_CM#00034",
+    "text": "[WARM] emergency bulkhead is secure. bleeding's stopped, but we need to get to medbay",
+    "type": "reply",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "combat"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "warning"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 35,
+    "key": "CH_FE_ENG_CM#00035",
+    "text": "everyone on deck, systems all nominal. great work",
+    "type": "reply",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "repair_success"
+      ]
+    },
+    "reply_to_intents": [
+      "status_report",
+      "acknowledgment"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 36,
+    "key": "CH_FE_ENG_CM#00036",
+    "text": "[WARM] door's locked on crew. did everything right and it still went wrong",
+    "type": "reply",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 14,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "door_locked_on_crew"
+      ]
+    },
+    "reply_to_intents": [
+      "grief",
+      "warning"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 37,
+    "key": "CH_FE_ENG_CM#00037",
+    "text": "[WARM] see you next shift. keep her running smooth",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 38,
+    "key": "CH_FE_ENG_CM#00038",
+    "text": "[LAUGHS] alright, engine room's calling. she gets needy when i'm away",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 39,
+    "key": "CH_FE_ENG_CM#00039",
+    "text": "[TIRED] gonna grab some rest. if something breaks, patch it and call me",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 40,
+    "key": "CH_FE_ENG_CM#00040",
+    "text": "[WARM] you did great. catch you around",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 41,
+    "key": "CH_FE_ENG_CM#00041",
+    "text": "[EXHAUSTED] i'm going to sleep standing up somewhere. come find me when we dock",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 42,
+    "key": "CH_FE_ENG_CM#00042",
+    "text": "[WARM] got a minute? ship's running smooth and i wanted to grab you",
+    "type": "opener",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 43,
+    "key": "CH_FE_ENG_CM#00043",
+    "text": "[WARM] everyone's secured and systems nominal. you handled that perfectly",
+    "type": "reply",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "acknowledgment",
+      "work_talk"
+    ],
+    "weight": 1.0
+  }
+]

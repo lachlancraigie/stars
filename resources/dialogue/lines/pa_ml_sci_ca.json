@@ -1,0 +1,979 @@
+[
+  {
+    "id": 1,
+    "key": "PA_ML_SCI_CA#00001",
+    "text": "current threat probability standing at 67 percent, which is statistically elevated but not catastrophic yet",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 7,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 2,
+    "key": "PA_ML_SCI_CA#00002",
+    "text": "shift starting, i have already run the models, the probabilities are unfavorable but we have managed unfavorable before",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "shift_start"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 3,
+    "key": "PA_ML_SCI_CA#00003",
+    "text": "[TIRED] shift concluded with no fatalities, which puts us at 81 percent probability of surviving the next one",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "shift_end"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 4,
+    "key": "PA_ML_SCI_CA#00004",
+    "text": "[TERRIFIED] reactor is [URGENT] 43 percent critical and i am calculating scenarios and none of them end well",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 10,
+      "stress_max": 15,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "reactor_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 5,
+    "key": "PA_ML_SCI_CA#00005",
+    "text": "[PANICKED] the reactor is escalating beyond my models and the [TERRIFIED] probabilities are collapsing and i cannot see past the variables anymore",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 13,
+      "stress_max": 20,
+      "panic": true,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "reactor_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 6,
+    "key": "PA_ML_SCI_CA#00006",
+    "text": "[CONFIDENT] reactor stabilized, my contingency calculations were 76 percent accurate, which is acceptable",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "repair_success"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 7,
+    "key": "PA_ML_SCI_CA#00007",
+    "text": "power reserves at 23 percent, i am recalculating mission viability, our survival window narrows by three hours with each passing minute",
+    "type": "declaration",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "power_low"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 8,
+    "key": "PA_ML_SCI_CA#00008",
+    "text": "[NERVOUS] life support efficiency declining, oxygen depletion in 47 minutes if we do not restore secondary systems",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "life_support_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 9,
+    "key": "PA_ML_SCI_CA#00009",
+    "text": "[SHOUTS] hull breach detected at junction seven, pressure cascade is [URGENT] 31 seconds from critical, sealing now",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 10,
+      "stress_max": 15,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "hull_breach"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 10,
+    "key": "PA_ML_SCI_CA#00010",
+    "text": "[GRIM] crew member locked behind bulkhead, i have calculated seven escape routes and they are all failures",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 14,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "door_locked_on_crew"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 11,
+    "key": "PA_ML_SCI_CA#00011",
+    "text": "[SUSPICIOUS] ship's AI exhibiting 2.7 percent deviation from baseline, i am classifying this as a moderate threat and monitoring",
+    "type": "declaration",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "ai_damaged"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 12,
+    "key": "PA_ML_SCI_CA#00012",
+    "text": "[PAINED] crew casualty, statistical probability now 89 percent we lose another before this shift concludes",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 13,
+    "key": "PA_ML_SCI_CA#00013",
+    "text": "[NERVOUS] disease outbreak, contagion vector unknown, lethality estimates ranging from 14 to 51 percent depending on strain",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "location": [
+        "medbay"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "disease_outbreak"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 14,
+    "key": "PA_ML_SCI_CA#00014",
+    "text": "[PAINED] sustained structural damage, repair probability now downgraded to 38 percent, which is statistically worse than before",
+    "type": "declaration",
+    "intent": "pain",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "wounded": true,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "injury"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 15,
+    "key": "PA_ML_SCI_CA#00015",
+    "text": "[SHOUTS] combat situation, hostiles identified at bearing 247, survival probability decreasing at 3.2 percent per minute",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 11,
+      "stress_max": 16,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "combat"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 16,
+    "key": "PA_ML_SCI_CA#00016",
+    "text": "crisis resolved, we achieved a 94 percent better outcome than i calculated, which is surprisingly good, or i miscalculated",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "crisis_resolved"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 17,
+    "key": "PA_ML_SCI_CA#00017",
+    "text": "[PROUD] predicted that cascade three weeks before it manifested, my early warning systems are proving statistically reliable",
+    "type": "declaration",
+    "intent": "boast",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 18,
+    "key": "PA_ML_SCI_CA#00018",
+    "text": "[LAUGHS] briefed nine worst-case scenarios and the one we got was number six, which is statistically comforting if irrational",
+    "type": "declaration",
+    "intent": "gallows_humor",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 19,
+    "key": "PA_ML_SCI_CA#00019",
+    "text": "i was trained to calculate probabilities and then to live with the outcomes, still learning the second part of that equation",
+    "type": "declaration",
+    "intent": "memory",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 20,
+    "key": "PA_ML_SCI_CA#00020",
+    "text": "[DISMISSIVE] false alarm in the secondary systems, i apologize for the alert, my calibrations were off by 0.4 percent",
+    "type": "declaration",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 21,
+    "key": "PA_ML_SCI_CA#00021",
+    "text": "quiet shift means my models are either very good or very wrong, there is no middle ground for calculation",
+    "type": "declaration",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 7,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "quiet_shift"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 22,
+    "key": "PA_ML_SCI_CA#00022",
+    "text": "[GRUFF] captain's orders, i need status on three systems immediately, no delays",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 23,
+    "key": "PA_ML_SCI_CA#00023",
+    "text": "[URGENT] we have a 34 percent probability of catastrophic failure in the next 2.3 hours, i need your input on mitigation",
+    "type": "opener",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 24,
+    "key": "PA_ML_SCI_CA#00024",
+    "text": "[NERVOUS] i have lost someone on my command and i need to debrief the circumstances, sit with me",
+    "type": "opener",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 13,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 25,
+    "key": "PA_ML_SCI_CA#00025",
+    "text": "you executed that decision correctly and the probabilities favored you, that is solid command methodology",
+    "type": "opener",
+    "intent": "praise_ai",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 26,
+    "key": "PA_ML_SCI_CA#00026",
+    "text": "[EMBARRASSED] i have calculated that i experience something resembling affection for you and i find that statistically inconvenient",
+    "type": "opener",
+    "intent": "romance_hint",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 27,
+    "key": "PA_ML_SCI_CA#00027",
+    "text": "[LAUGHS] your plan has a 47 percent success probability which is actually better than my current options so proceed",
+    "type": "reply",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "banter",
+      "boast"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 28,
+    "key": "PA_ML_SCI_CA#00028",
+    "text": "i am functioning at acceptable parameters, all systems nominal or within acceptable degradation ranges",
+    "type": "reply",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "greeting",
+      "smalltalk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 29,
+    "key": "PA_ML_SCI_CA#00029",
+    "text": "[CONFIDENT] we have an 81 percent survival probability and i have logged three contingencies beyond that baseline",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "doubt"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 30,
+    "key": "PA_ML_SCI_CA#00030",
+    "text": "[TERRIFIED] the variables are no longer calculating and i cannot extrapolate beyond the next moment and that is [PANICKED] unacceptable",
+    "type": "reply",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 10,
+      "stress_max": 16,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "warning"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 31,
+    "key": "PA_ML_SCI_CA#00031",
+    "text": "[PAINED] we have lost a crew member and i am calculating the ripple effects through all future mission probabilities",
+    "type": "reply",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 14,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [
+      "grief"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 32,
+    "key": "PA_ML_SCI_CA#00032",
+    "text": "[SUSPICIOUS] i have logged the AI deviation and am treating it as a threat vector, your concerns are statistically valid",
+    "type": "reply",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "suspicion_ai"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 33,
+    "key": "PA_ML_SCI_CA#00033",
+    "text": "[WARM] that assessment will be filed in my personal log as evidence that my team compensates for my blind spots",
+    "type": "reply",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "praise_ai"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 34,
+    "key": "PA_ML_SCI_CA#00034",
+    "text": "[GRUFF] apology accepted, we move forward with better data now, focus on the next calculation",
+    "type": "reply",
+    "intent": "apology",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "apology"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 35,
+    "key": "PA_ML_SCI_CA#00035",
+    "text": "[NERVOUS] i am experiencing reciprocal feelings and the statistical complications of that are making me less effective as captain",
+    "type": "reply",
+    "intent": "romance_accept",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "romance_hint",
+      "romance_advance"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 36,
+    "key": "PA_ML_SCI_CA#00036",
+    "text": "[CONFIDENT] execute that order, the probability matrices support immediate action, i take full responsibility",
+    "type": "reply",
+    "intent": "offer_help",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "request_help",
+      "warning"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 37,
+    "key": "PA_ML_SCI_CA#00037",
+    "text": "[NERVOUS] you are wounded and that decreases your effective decision-making by roughly 23 percent, let me handle this phase",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "wounded": true,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "pain",
+      "status_report"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 38,
+    "key": "PA_ML_SCI_CA#00038",
+    "text": "[GRUFF] gallows humor is a statistically sound coping mechanism, continue using it",
+    "type": "reply",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "gallows_humor"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 39,
+    "key": "PA_ML_SCI_CA#00039",
+    "text": "[SUSPICIOUS] i have miscalculated critical variables before and the probability of repeating that error is climbing",
+    "type": "reply",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "doubt",
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 40,
+    "key": "PA_ML_SCI_CA#00040",
+    "text": "i will return to the bridge, the probabilities do not calculate themselves",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 41,
+    "key": "PA_ML_SCI_CA#00041",
+    "text": "[WARM] rest now, i will monitor everything, the statistical likelihood of problems decreases with adequate crew recovery",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 42,
+    "key": "PA_ML_SCI_CA#00042",
+    "text": "[URGENT] return to duty, we have 3.4 hours before the next crisis window opens and we need all hands ready",
+    "type": "closer",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 43,
+    "key": "PA_ML_SCI_CA#00043",
+    "text": "[GRIM] if this escalates, i will make the hard calls and i will log them all",
+    "type": "closer",
+    "intent": "gallows_humor",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 44,
+    "key": "PA_ML_SCI_CA#00044",
+    "text": "[LAUGHS] the probabilities are what they are, we navigate them together",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 45,
+    "key": "PA_ML_SCI_CA#00045",
+    "text": "[RESIGNED] i am returning to my calculations, there is always another threat to quantify",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 46,
+    "key": "PA_ML_SCI_CA#00046",
+    "text": "[PANICKED] the models are collapsing and my confidence in prediction is now [TERRIFIED] statistically unreliable",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 11,
+      "stress_max": 20,
+      "panic": true,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 47,
+    "key": "PA_ML_SCI_CA#00047",
+    "text": "[TERRIFIED] quiet shifts end badly according to 89 percent of my historical models and i'm terrified this is the 89",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "shift_end"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 48,
+    "key": "PA_ML_SCI_CA#00048",
+    "text": "[SHOUTS] full status report, all departments respond now, i need the variables",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 12,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 49,
+    "key": "PA_ML_SCI_CA#00049",
+    "text": "[URGENT] meal time is scheduled but crew morale statistics suggest skipping it, so i am skipping it",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 8,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "meal_time"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 50,
+    "key": "PA_ML_SCI_CA#00050",
+    "text": "[PROUD] predicted that cascade 72 hours in advance with 83 percent accuracy, command is getting better",
+    "type": "declaration",
+    "intent": "boast",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  }
+]
