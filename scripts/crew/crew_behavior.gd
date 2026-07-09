@@ -6,15 +6,18 @@ extends Node
 # crew; this module is the crew moving themselves).
 #
 # Every few seconds each crew member re-evaluates where they should be:
-#   sleeping/eating -> quarters, working -> their duty station,
-#   panicking -> flee to a random neighbouring room,
-#   idle -> occasionally wander or shuffle around the room.
+#   sleeping -> quarters, eating -> mess, working -> their duty station,
+#   panicking -> flee to a random neighbouring room.
+# An IDLE crew member (none of the above needs are pressing) defers to
+# CrewSchedule's shift-cycle: report to a duty station on shift, gather for meals,
+# turn in at bedtime, or socialise/pursue a side project during recreation — see
+# _decide_idle_schedule(). Priority (highest first): incapacitated/frozen > panic >
+# needs (sleep/eat/work-via-boredom) > an in-progress repair assignment > an accepted
+# directive's hold_room_until > the schedule.
 
 const DECISION_MIN: float = 2.5   # seconds between decisions (randomised per crew)
 const DECISION_MAX: float = 5.0
 const PANIC_SPEED_MULT: float = 1.8
-const WANDER_CHANCE: float = 0.30       # idle: chance to visit a neighbouring room
-const SHUFFLE_CHANCE: float = 0.45      # idle: chance to reposition inside the room
 
 # Room TYPE (not room_id — generated ships have ids like "cargo_2") each role
 # reports to; resolved to an actual room_id via GameState.get_room_of_type().
@@ -33,6 +36,7 @@ func _ready() -> void:
 
 
 func _on_tick(_elapsed: float, delta: float) -> void:
+	CrewSchedule.check_phase_transition()
 	for crew_id: String in GameState.crew:
 		var crew: CrewMember = GameState.crew[crew_id] as CrewMember
 		if crew == null or not crew.is_alive:
@@ -59,11 +63,17 @@ func _decide(crew: CrewMember) -> void:
 			if not neighbours.is_empty():
 				node.move_to_room(neighbours.pick_random())
 
-		CrewStateMachine.SLEEPING, CrewStateMachine.EATING:
+		CrewStateMachine.SLEEPING:
 			node.speed_mult = 1.0
 			if _honouring_directive(node):
 				return
 			_ensure_room_of_type(node, crew, "quarters")
+
+		CrewStateMachine.EATING:
+			node.speed_mult = 1.0
+			if _honouring_directive(node):
+				return
+			_ensure_room_of_type(node, crew, "mess")
 
 		CrewStateMachine.WORKING:
 			node.speed_mult = 1.0
@@ -74,16 +84,49 @@ func _decide(crew: CrewMember) -> void:
 		CrewStateMachine.IDLE:
 			node.speed_mult = 1.0
 			# Don't undercut a directive the crew just agreed to, and don't
-			# interrupt a walk already in progress.
+			# interrupt a walk already in progress. Directives/an in-flight route
+			# outrank the schedule exactly like they outrank plain wandering.
 			if node.is_busy() or TimeManager.elapsed < node.hold_room_until:
 				return
+			# An in-progress repair assignment (RepairBehavior) outranks recreation —
+			# the crew member stays put/returns to the system room instead of drifting
+			# off to socialise mid-job.
+			var repair_room: String = CrewSchedule.repair_duty_room(crew)
+			if repair_room != "":
+				if crew.location != repair_room and not node.is_headed_to(repair_room):
+					node.move_to_room(repair_room)
+				return
+			_decide_idle_schedule(node, crew)
+
+
+# Shift-cycle schedule (CrewSchedule) for an otherwise-idle crew member: report to duty
+# stations on shift, gather for meals, head to quarters at bedtime, and socialise/pursue a
+# side project during recreation. This only ever fires from the IDLE branch above — every
+# needs-driven state (SLEEPING/EATING/WORKING/PANICKING) was already handled first and
+# takes priority, satisfying "needs and crises override schedule".
+func _decide_idle_schedule(node: CrewMemberNode, crew: CrewMember) -> void:
+	match CrewSchedule.phase_for(crew):
+		"work":
+			_ensure_room_of_type(node, crew, DUTY_STATION.get(crew.role, "cargo"))
+		"meal":
+			_ensure_room_of_type(node, crew, "mess")
+		"sleep":
+			_ensure_room_of_type(node, crew, "quarters")
+		"recreation":
 			var roll: float = randf()
-			if roll < WANDER_CHANCE:
-				var neighbours: Array[String] = GameState.ship_graph.get_neighbours(crew.location)
-				if not neighbours.is_empty():
-					node.move_to_room(neighbours.pick_random())
-			elif roll < WANDER_CHANCE + SHUFFLE_CHANCE:
-				node.wander_within_room()
+			if roll < CrewSchedule.RECREATION_WANDER_CHANCE:
+				# Keep a slice of the old unscheduled texture so downtime doesn't look
+				# perfectly regimented either.
+				if randf() < 0.5:
+					var neighbours: Array[String] = GameState.ship_graph.get_neighbours(crew.location)
+					if not neighbours.is_empty():
+						node.move_to_room(neighbours.pick_random())
+				else:
+					node.wander_within_room()
+			else:
+				var room_id: String = CrewSchedule.recreation_room_for(crew)
+				if room_id != "" and room_id != crew.location and not node.is_headed_to(room_id):
+					node.move_to_room(room_id)
 
 
 func _ensure_room_of_type(node: CrewMemberNode, crew: CrewMember, room_type: String) -> void:
