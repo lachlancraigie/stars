@@ -26,11 +26,11 @@ The Reve Flat Vector set was retired for style/perspective inconsistency; Reve p
 Deck composition lives in `scripts/ship/iso_kit.gd` + `scripts/ship/deck_plan.gd`.
 
 **Next tasks**:
-1. Camera2D pan/zoom (deck currently statically fitted to the 1920×1080 canvas)
-2. Door gates tied to Door lock state (visual + crew pathing around locked doors)
-3. Crew walk-cycle feel (kit has single frames per facing; current bob is serviceable)
-4. More in-scenario choices for the AI (info framing, door locks as containment tools)
-5. Campaign handoff after scenario end (currently ends on the banner)
+1. Camera2D pan/zoom (deck currently statically fitted to the 1920×1080 canvas — now generated ships can be considerably larger, so panning matters more)
+2. Crew walk-cycle feel (kit has single frames per facing; current bob is serviceable)
+3. More in-scenario choices for the AI (info framing, door locks as containment tools)
+4. Campaign handoff after scenario end (currently ends on the banner)
+5. Mothership mechanics on top of the new `ai_core` room (power grid, door-lock gameplay, AI-core damage/repair — see 2026-07-09 session note for the data contract)
 
 **Blocked on**: nothing hard. SaveManager still stubbed by design (checkpoints resolved, unimplemented).
 
@@ -60,6 +60,9 @@ Deck composition lives in `scripts/ship/iso_kit.gd` + `scripts/ship/deck_plan.gd
 - [x] Autonomous crew behaviour (CrewBehavior): sleep/eat→quarters, work→duty station, panic→flee, idle→wander
 - [x] Click-on-crew contextual directive menu → issues real AIDirectives; crew comply/refuse
 - [x] Vertical slice end-to-end: QuarantineMonitor makes the win achievable in-scene (isolate Vasquez → Chen contains); HUD objective/event feed/win-lose banner; verified via SHIPAI_AUTODEMO run
+- [x] Procedural ship generation: ShipLayoutGen ("freighter" ruleset) replaces the hand-authored Class-1 layout; DeckPlan refactored into a generator-filled data container; seed stored on GameState (SHIPAI_SEED env override for reproducible runs)
+- [x] Visual upgrades: procedural parallax starfield (3 layers), generated hull silhouette (nose taper + aft engine block), per-room-type floor tiles/tints, semi-transparent boundary walls, door gates that recolour with lock state
+- [x] Room-type contract: scenario/behaviour code (QuarantineMonitor, CrewBehavior duty stations, crew start rooms) now looks up rooms by TYPE via `GameState.get_room_of_type()` instead of hardcoded ids, so it works on any generated layout
 
 ---
 
@@ -143,8 +146,12 @@ These are hard constraints. Do not deviate without updating this file.
 | CrewMemberNode | `scripts/crew/crew_member_node.gd` | done | Node2D. Kit astronaut w/ 8 facings + role tint + status dot; multi-hop route walking (graph path + walkway waypoints); y-based z-sort; `static nodes` registry. |
 | CrewBehavior | `scripts/crew/crew_behavior.gd` | done | Node (added by Main). Autonomous crew movement per state; honours accepted directives via `hold_room_until`; panic overrides. |
 | IsoKit | `scripts/ship/iso_kit.gd` | done | Static utility. Legacy-kit metrics (130×65 diamond @ canvas (256,311)), cell→deck projection, anchored sprite factory, z-order. |
-| DeckPlan | `scripts/ship/deck_plan.gd` | done | Static data. Class-1 grid layout: room rects, floor tints, props, walkways, tubes, door cells, hop waypoints, random standing points. |
-| RoomBase (visual) | `scripts/ship/room_base.gd` + `scenes/rooms/RoomBase.tscn` | done | Composes floor tiles + props from DeckPlan/IsoKit; positioned at DeckPlan.room_center. |
+| ShipLayoutGen | `scripts/procedural/ship_layout_gen.gd` | done | Static generator. Seeded procedural ship layout ("freighter" ruleset implemented). Builds a ShipConfig AND calls `DeckPlan.load_plan()` with the matching visual dataset (rects, props, walls, hull polygon, etc). See 2026-07-09 session note for the full ruleset. |
+| DeckPlan | `scripts/ship/deck_plan.gd` | done | Static data CONTAINER (refactored from hardcoded consts). Filled at scenario start by `ShipLayoutGen.generate()` via `load_plan()`: room rects, per-type floor tints/tiles, props, walkways, tubes, door cells, hop waypoints, wall segments, hull polygon. Same accessor API as before (`room_rect`, `room_center`, `random_point`, `hop_waypoints`, `deck_bounds`, `has_room`) so downstream consumers (RoomBase, ShipLayoutBuilder, CrewMemberNode) are unchanged. |
+| RoomBase (visual) | `scripts/ship/room_base.gd` + `scenes/rooms/RoomBase.tscn` | done | Composes floor tiles (per-type tile via `DeckPlan.floor_tile_for()`) + props from DeckPlan/IsoKit; positioned at DeckPlan.room_center. |
+| Starfield | `scripts/ship/starfield.gd` | done | Node2D (instanced in Main, not a child of ShipDeck). Procedural 3-layer parallax starfield; each layer draws its stars once via `_draw()` and only ever translates (sine drift) — no per-frame redraw. z_index -1000. |
+| Ship hull silhouette | `scripts/ship/ship_layout_builder.gd` (`_build_hull`) | done | Polygon2D + Line2D built from `DeckPlan.HULL_POLYGON` (nose taper + per-row flanks + aft engine block, generated in ShipLayoutGen). z_index -10/-9, behind floors, in front of the starfield. |
+| Semi-transparent walls + door gates | `scripts/procedural/ship_layout_gen.gd` (wall segments) + `scripts/ship/door.gd` | done | Generator emits per-room boundary wall tiles (skipping connected edges); front-facing (SE/SW) walls render more transparent than back-facing (NE/NW) since painter's order draws them over the interior. Door gate sprite recolours red/green via `Door.refresh_gate_visual()` on lock/unlock. |
 | QuarantineMonitor | `scripts/scenarios/quarantine_monitor.gd` | done | Node (added by Main). Timed medbay-occupancy logic that sets `vasquez_isolated`/`pathogen_contained`; drives `objective_changed`. |
 | DirectiveActionHandler | `scripts/ai/directive_action_handler.gd` | done | Node. Executes movement for directives the crew *accepted* (`move_to_room`). Respects Rule 1. |
 | DirectiveMenu | `scripts/ui/directive_menu.gd` + `scenes/ui/DirectiveMenu.tscn` | done | CanvasLayer. Click-on-crew select + contextual destination menu → `AISystem.issue_directive`. |
@@ -188,6 +195,77 @@ These are hard constraints. Do not deviate without updating this file.
 > Append dated notes here as the project progresses.
 
 ```
+2026-07-09 (session 2): Procedural ship generation + visual overhaul (Agent 1 of the
+overhaul/mothership-rewrite branch). New scripts/procedural/ship_layout_gen.gd generates a
+freighter-class ship from a seed: fore-to-aft spine of corridor-type room segments, bridge
+capping fore, engine_room capping aft (both door-sealed, no gap), flank rows offering a
+west/east slot each for ai_core/mess/quarters/cargo/medbay/airlock in a fixed thematic order
+(ai_core first row off the bridge; mess+quarters clustered next; medbay at the structural
+middle of the flank sequence; cargo distributed around it; airlock(s) outermost), life_support
+inline directly ahead of engine_room. Room-type vocabulary is exactly the 10 strings shared
+with docs/dialogue_spec.md: bridge, engine_room, medbay, mess, quarters, cargo, corridor,
+life_support, ai_core, airlock — every generated ship has exactly one bridge/engine_room/
+medbay/mess/life_support/ai_core and at least one quarters/cargo/airlock. Doors (lockable,
+AI-overridable) sit on bridge/engine_room/every cargo hold/ai_core/every airlock; medbay/mess/
+quarters/life_support/corridor seams stay open (matches the existing Quarantine scenario's
+behavioural-not-physical containment). Maintenance tubes are secondary, maintenance-only graph
+edges (life_support<->engine_room, ai_core<->life_support, a cargo-to-cargo crawlway) — dormant
+under normal crew pathing (ShipGraph.find_path default allow_maintenance=false) but available
+for a future directive type to bypass a locked door. Room counts/sizes randomise per seed within
+tables in ShipLayoutGen (quarters 1-2, cargo 1-3, airlock 1-2). The seed lives on
+GameState.ship_seed/ship_class_id (SHIPAI_SEED env var pins a specific layout for tooling); the
+same seed regenerates the identical ship, so saves can reproduce it.
+
+DeckPlan (scripts/ship/deck_plan.gd) was refactored from hardcoded consts into a data
+CONTAINER — same static accessor API (room_rect, room_center, random_point, hop_waypoints,
+deck_bounds, has_room, floor_tile_for) but now filled by ShipLayoutGen.generate() calling
+DeckPlan.load_plan() once per scenario start, so RoomBase/ShipLayoutBuilder/CrewMemberNode
+needed zero call-site changes. Per-room-type prop pools (medbay/mess/quarters/cargo/
+engine_room/life_support/ai_core/airlock/bridge) place sensible dressing hugging room walls
+only (perimeter cells, excluding whichever edge connects to the corridor/another room) so
+door cells, walkways, and hop waypoints are never blocked; ai_core and bridge get a
+"centerpiece" prop (machine_wireless_SE / desk_computerScreen_SE) placed prominently on a
+back wall. The Kenney kit has no literal table/bunk sprite, so mess/quarters substitute
+chairs + barrels/desks (documented in ship_layout_gen.gd).
+
+Visual layer additions: Starfield (scripts/ship/starfield.gd) — 3-layer procedural parallax
+backdrop, each layer drawn once via _draw() and only ever translated (sine drift) for near-zero
+per-frame cost on GL Compatibility; sits behind everything (z_index -1000), fixed to the
+viewport (not the scaled/panned ShipDeck). Ship hull silhouette — a Polygon2D + Line2D built
+in ShipLayoutBuilder._build_hull() from a polygon ShipLayoutGen computes as the union of each
+row's extent, inflated, with a nose taper ahead of the bridge and a flared aft block behind the
+engine room (z_index -10/-9: behind floors, in front of the starfield). Floors now use a
+per-room-type tile + tint (FLOOR_TILE_BY_TYPE/FLOOR_TINTS_BY_TYPE in ShipLayoutGen). Walls: the
+generator emits semi-transparent wall sprites (corridor_wall_NE/NW/SE/SW) along every room
+boundary edge that ISN'T an open connection; front/camera-facing edges (SE/SW, drawn over the
+interior by painter's-order z-sort) are more transparent (alpha .32) than back edges (NE/NW,
+alpha .62). Door gates now recolour on lock state — Door.refresh_gate_visual() tints the gate
+sprite red/green — via a gate_sprite reference ShipLayoutBuilder wires up.
+
+Downstream code that assumed the old fixed ids ("medbay", "bridge", "engineering", "cargo",
+"corridor_main") now looks rooms up by TYPE via new GameState.get_room_of_type()/
+get_rooms_of_type() helpers: main.gd crew start rooms + KEY_D/autodemo directives,
+CrewBehavior's DUTY_STATION resolution, QuarantineMonitor's medbay reference (resolved once at
+_ready(), cached). DirectiveMenu now skips corridor-type rooms from the "go to" list (a
+generated ship can have several corridor segments; they're pass-through, not meaningful
+destinations). Removed main.gd's dead `_build_class1_config()` fallback and the
+resources/ship_configs/class_1_scout.tres load path — it relied on DeckPlan's old hardcoded
+consts and would have produced an invisible ship now that DeckPlan is generator-filled; the
+.tres file itself is left on disk, unreferenced, in case it's wanted as a reference later.
+
+Known limitations / handoff notes for later agents: (1) no Godot binary available this session
+— everything was validated statically (every sprite path cross-checked against
+assets/sprites/legacy/, brackets/indentation/class_name-uniqueness checked programmatically,
+GDScript reviewed line-by-line) but never actually run; first editor open will regenerate
+.godot/global_script_class_cache.cfg to pick up the two new classes (ShipLayoutGen, Starfield).
+(2) Maintenance-tube hop-waypoints aren't generated (they're unreachable under default crew
+pathing anyway); if a future directive enables allow_maintenance routing, crew will walk that
+edge without intermediate waypoints (cosmetic only). (3) CrewBehavior's "cargo" duty station and
+similar always resolve to the FIRST room of that type (e.g. cargo_1) when multiple exist —
+fine for now, but a future pass could distribute crew across multiple cargo bays/quarters.
+(4) DirectiveMenu still lists every non-corridor room as a flat button list; with freighter-size
+ships (~10-12 rooms) that's a long menu — worth grouping/paging later.
+
 2026-07-09: Art pivot + working vertical slice. The Reve Flat Vector set was retired (inconsistent
 styles/perspectives between assets); the whole visual layer now composes from the Kenney Space Kit
 in assets/sprites/legacy/ (512×512 canvases, 130×65 floor diamond registered at (256,311) — every

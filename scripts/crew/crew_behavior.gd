@@ -16,9 +16,11 @@ const PANIC_SPEED_MULT: float = 1.8
 const WANDER_CHANCE: float = 0.30       # idle: chance to visit a neighbouring room
 const SHUFFLE_CHANCE: float = 0.45      # idle: chance to reposition inside the room
 
+# Room TYPE (not room_id — generated ships have ids like "cargo_2") each role
+# reports to; resolved to an actual room_id via GameState.get_room_of_type().
 const DUTY_STATION: Dictionary = {
 	"captain": "bridge",
-	"engineer": "engineering",
+	"engineer": "engine_room",
 	"medic": "medbay",
 	"general": "cargo",
 }
@@ -61,13 +63,13 @@ func _decide(crew: CrewMember) -> void:
 			node.speed_mult = 1.0
 			if _honouring_directive(node):
 				return
-			_ensure_room(node, crew, "quarters")
+			_ensure_room_of_type(node, crew, "quarters")
 
 		CrewStateMachine.WORKING:
 			node.speed_mult = 1.0
 			if _honouring_directive(node):
 				return
-			_ensure_room(node, crew, DUTY_STATION.get(crew.role, "cargo"))
+			_ensure_room_of_type(node, crew, DUTY_STATION.get(crew.role, "cargo"))
 
 		CrewStateMachine.IDLE:
 			node.speed_mult = 1.0
@@ -84,8 +86,9 @@ func _decide(crew: CrewMember) -> void:
 				node.wander_within_room()
 
 
-func _ensure_room(node: CrewMemberNode, crew: CrewMember, room_id: String) -> void:
-	if crew.location == room_id or node.is_headed_to(room_id):
+func _ensure_room_of_type(node: CrewMemberNode, crew: CrewMember, room_type: String) -> void:
+	var room_id: String = GameState.get_room_of_type(room_type)
+	if room_id == "" or crew.location == room_id or node.is_headed_to(room_id):
 		return
 	node.move_to_room(room_id)
 

@@ -430,7 +430,8 @@ static func _build_deck_plan(rng: RandomNumberGenerator, build: Dictionary) -> D
 			var corridor_rect: Rect2 = a_rect if rooms[a_id]["type"] == "corridor" else b_rect
 			var room_rect: Rect2 = b_rect if rooms[a_id]["type"] == "corridor" else a_rect
 			var room_id_for_gap: String = b_id if rooms[a_id]["type"] == "corridor" else a_id
-			var mid_y: int = gap_info.get(room_id_for_gap, {}).get("mid_y", int(room_rect.position.y))
+			var gap_entry: Dictionary = gap_info.get(room_id_for_gap, {})
+			var mid_y: int = gap_entry.get("mid_y", int(room_rect.position.y))
 			var room_is_west: bool = room_rect.position.x < corridor_rect.position.x
 
 			# Gap cells run [near-room, near-corridor]; the door (when present)

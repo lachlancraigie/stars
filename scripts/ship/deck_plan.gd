@@ -1,125 +1,70 @@
 class_name DeckPlan
 extends RefCounted
 
-# Hand-authored visual deck plan for the Class 1 Scout, expressed on the
-# isometric grid of the legacy sprite kit (see IsoKit). Logic (ShipGraph,
-# rooms, doors) stays in ShipConfig; this file only decides how the deck
-# LOOKS: which cells each room's floor covers, walkway tiles between rooms,
-# maintenance tubes, door gates, and per-room prop dressing.
+# Visual deck plan for the current ship, expressed on the isometric grid of the
+# legacy sprite kit (see IsoKit). Logic (ShipGraph, rooms, doors) stays in
+# ShipConfig; this file only decides how the deck LOOKS: which cells each room's
+# floor covers, walkway tiles between rooms, maintenance tubes, door gates,
+# per-room prop dressing, wall segments, and the hull silhouette.
+#
+# Historically this was hand-authored const data for the Class-1 Scout. It is now
+# a data CONTAINER filled by scripts/procedural/ship_layout_gen.gd at scenario
+# start via load_plan() — every other system (RoomBase, ShipLayoutBuilder,
+# CrewMemberNode) keeps calling the same static accessors below unchanged, so the
+# generator is a drop-in data source rather than a rewrite of every consumer.
 
 # room_id -> floor rect in grid cells (x, y, w, h)
-const ROOM_RECTS: Dictionary = {
-	"bridge":        Rect2(7, 0, 5, 4),
-	"corridor_main": Rect2(8, 4, 3, 7),
-	"medbay":        Rect2(2, 5, 4, 4),
-	"quarters":      Rect2(13, 5, 4, 4),
-	"engineering":   Rect2(2, 10, 5, 4),
-	"life_support":  Rect2(8, 11, 3, 3),
-	"cargo":         Rect2(12, 10, 5, 4),
-}
+static var ROOM_RECTS: Dictionary = {}
 
-# Subtle per-function floor tinting so zones read at a glance without
-# breaking the kit's unified palette.
-const FLOOR_TINTS: Dictionary = {
-	"bridge":       Color(0.85, 0.90, 1.00),
-	"corridor":     Color(1.00, 1.00, 1.00),
-	"medbay":       Color(0.88, 1.00, 0.94),
-	"quarters":     Color(0.95, 0.90, 1.00),
-	"reactor":      Color(1.00, 0.90, 0.82),
-	"life_support": Color(0.86, 0.98, 0.92),
-	"cargo":        Color(1.00, 0.96, 0.84),
-}
+# room TYPE (room_function) -> floor tint / floor tile choice.
+static var FLOOR_TINTS: Dictionary = {}
+static var FLOOR_TILE_BY_TYPE: Dictionary = {}
 
-# Open floor tile used everywhere; walkways use the same tile so crew read
-# as walking on connected decking. Maintenance tubes render as pipes.
+# Fallback tile for anything load_plan() didn't populate (walkways, tubes, or a
+# room type with no per-type entry yet).
 const FLOOR_TILE: String = "platform_center_SE"
 const WALKWAY_TILE: String = "platform_center_SE"
 const TUBE_TILE: String = "pipe_straight_SE"
 
-# Walkway cells connecting room islands (absolute grid cells).
-const WALKWAYS: Array = [
-	Vector2(6, 6), Vector2(7, 6),      # medbay <-> corridor
-	Vector2(11, 6), Vector2(12, 6),    # quarters <-> corridor
-	Vector2(7, 10),                    # engineering <-> corridor
-	Vector2(11, 10),                   # cargo <-> corridor
-]
-
-# Maintenance tube cells (crew with access crawl these; drawn as pipes).
-const TUBES: Array = [
-	Vector2(7, 12),                    # engineering <-> life_support
-	Vector2(11, 12),                   # life_support <-> cargo
-]
+# Walkway cells connecting room islands / maintenance tube cells (absolute grid cells).
+static var WALKWAYS: Array = []
+static var TUBES: Array = []
 
 # door_id -> grid cell for its gate sprite (fractional = on a cell boundary).
-const DOOR_CELLS: Dictionary = {
-	"door_bridge":      Vector2(9, 3.5),
-	"door_engineering": Vector2(7, 10),
-	"door_cargo":       Vector2(11, 10),
-}
+static var DOOR_CELLS: Dictionary = {}
 const DOOR_SPRITE: String = "gate_simple_SE"
 
 # room_id -> array of [rect-relative cell, kit sprite name].
-const PROPS: Dictionary = {
-	"bridge": [
-		[Vector2(1, 0), "desk_computer_SE"],
-		[Vector2(2, 0), "desk_computerScreen_SE"],
-		[Vector2(3, 0), "desk_computer_SE"],
-		[Vector2(0, 1), "desk_computerCorner_SE"],
-		[Vector2(4, 1), "desk_computerCorner_SW"],
-		[Vector2(2, 1.6), "desk_chairArms_NW"],
-	],
-	"medbay": [
-		[Vector2(0, 0), "desk_computerScreen_SE"],
-		[Vector2(3, 0), "machine_wireless_SW"],
-		[Vector2(1, 1), "desk_chair_SE"],
-		[Vector2(0, 3), "barrels_NE"],
-		[Vector2(3, 3), "machine_barrel_NW"],
-	],
-	"quarters": [
-		[Vector2(0, 0), "desk_computerCorner_SE"],
-		[Vector2(3, 0), "barrel_SW"],
-		[Vector2(1, 1), "desk_chairArms_SE"],
-		[Vector2(2, 2), "desk_chairArms_SW"],
-		[Vector2(3, 3), "desk_chairStool_NW"],
-	],
-	"engineering": [
-		[Vector2(0, 0), "machine_generator_SE"],
-		[Vector2(4, 0), "machine_generator_SW"],
-		[Vector2(2, 1.5), "machine_generatorLarge_SE"],
-		[Vector2(0, 3), "pipe_straight_SE"],
-		[Vector2(4, 3), "machine_barrelLarge_NW"],
-	],
-	"life_support": [
-		[Vector2(1, 0), "machine_wirelessCable_SE"],
-		[Vector2(0, 2), "machine_barrel_NE"],
-		[Vector2(2, 2), "pipe_ring_NW"],
-	],
-	"cargo": [
-		[Vector2(0, 0), "barrels_SE"],
-		[Vector2(1, 0), "barrel_SE"],
-		[Vector2(4, 0), "machine_barrelLarge_SW"],
-		[Vector2(2, 1.5), "barrels_rail_SE"],
-		[Vector2(0, 3), "barrels_NE"],
-		[Vector2(4, 3), "barrels_NW"],
-		[Vector2(3, 2), "barrel_SE"],
-	],
-	"corridor_main": [],
-}
+static var PROPS: Dictionary = {}
+
+# "from_room|to_room" -> array of deck-space waypoint cells crossed while hopping
+# between two connected rooms (reversed automatically for the return trip).
+static var HOP_WAYPOINTS: Dictionary = {}
+
+# Wall segments for the whole deck: [{cell:Vector2, sprite:String, alpha:float}].
+static var WALL_SEGMENTS: Array = []
+
+# Hull silhouette polygon in deck-pixel space (already projected via IsoKit).
+static var HULL_POLYGON: PackedVector2Array = PackedVector2Array()
 
 
-# Waypoint cells crew pass through when hopping between two connected rooms,
-# so they visibly cross the walkway/gate instead of cutting over open space.
-# Listed in from|to order of the key; reversed automatically for the return trip.
-const HOP_WAYPOINTS: Dictionary = {
-	"bridge|corridor_main":       [Vector2(9, 3), Vector2(9, 4.5)],
-	"medbay|corridor_main":       [Vector2(5.5, 6), Vector2(8.5, 6)],
-	"quarters|corridor_main":     [Vector2(13, 6), Vector2(10.5, 6)],
-	"engineering|corridor_main":  [Vector2(6, 10), Vector2(8, 10)],
-	"cargo|corridor_main":        [Vector2(12, 10), Vector2(10, 10)],
-	"life_support|corridor_main": [Vector2(9, 11.5), Vector2(9, 10)],
-	"engineering|life_support":   [Vector2(6, 12), Vector2(8, 12)],
-	"life_support|cargo":         [Vector2(10, 12), Vector2(12, 12)],
-}
+# Replaces the whole deck plan with a freshly generated one. Called once by
+# ShipLayoutGen.generate() before ShipLayoutBuilder.build() runs.
+static func load_plan(plan: Dictionary) -> void:
+	ROOM_RECTS = plan.get("room_rects", {})
+	FLOOR_TINTS = plan.get("floor_tints", {})
+	FLOOR_TILE_BY_TYPE = plan.get("floor_tile_by_type", {})
+	WALKWAYS = plan.get("walkways", [])
+	TUBES = plan.get("tubes", [])
+	DOOR_CELLS = plan.get("door_cells", {})
+	PROPS = plan.get("props", {})
+	HOP_WAYPOINTS = plan.get("hop_waypoints", {})
+	WALL_SEGMENTS = plan.get("wall_segments", [])
+	HULL_POLYGON = plan.get("hull_polygon", PackedVector2Array())
+
+
+static func floor_tile_for(room_type: String) -> String:
+	return FLOOR_TILE_BY_TYPE.get(room_type, FLOOR_TILE)
 
 
 # Deck-pixel waypoints for walking from one room to an adjacent one.
@@ -157,9 +102,11 @@ static func random_point(room_id: String) -> Vector2:
 	if rect.size == Vector2.ZERO:
 		return Vector2.ZERO
 	var inset: float = 0.65
+	var w: float = maxf(rect.size.x - 1.0 - 2.0 * inset, 0.0)
+	var h: float = maxf(rect.size.y - 1.0 - 2.0 * inset, 0.0)
 	var cell := Vector2(
-		randf_range(rect.position.x + inset, rect.position.x + rect.size.x - 1.0 - inset),
-		randf_range(rect.position.y + inset, rect.position.y + rect.size.y - 1.0 - inset)
+		rect.position.x + inset + randf() * w,
+		rect.position.y + inset + randf() * h
 	)
 	return IsoKit.cell_to_deck(cell)
 
@@ -179,6 +126,8 @@ static func deck_bounds() -> Rect2:
 			var p: Vector2 = IsoKit.cell_to_deck(corner)
 			min_p = min_p.min(p)
 			max_p = max_p.max(p)
+	if min_p.x == INF:
+		return Rect2()
 	# Pad for tile half-extents plus prop/label headroom above.
 	min_p += Vector2(-IsoKit.TILE_HALF_W, -IsoKit.TILE_HALF_H - 110.0)
 	max_p += Vector2(IsoKit.TILE_HALF_W, IsoKit.TILE_HALF_H + 40.0)

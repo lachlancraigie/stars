@@ -7,6 +7,8 @@ var scenario_tone: float = 0.5  # 0.0 = Trek, 1.0 = Alien
 # Ship
 var ship_class: int = 1
 var ship_name: String = ""
+var ship_class_id: String = ""    # procedural ruleset id, e.g. "freighter" (see ShipLayoutGen)
+var ship_seed: int = 0            # RNG seed the current layout was generated from; carry into saves
 var rooms: Dictionary = {}         # room_id -> RoomBase node
 var ship_systems: Dictionary = {}  # system_name -> Dictionary
 
@@ -77,3 +79,24 @@ func get_locked_doors() -> Array[String]:
 		if doors[door_id].is_locked:
 			locked.append(door_id)
 	return locked
+
+
+# Room lookup by TYPE (room_function) rather than hardcoded room_id — the
+# contract generated ships share with the dialogue corpus (docs/dialogue_spec.md)
+# and scenario logic (e.g. QuarantineMonitor finding "the medbay" on whichever
+# ship layout is currently loaded).
+func get_rooms_of_type(room_type: String) -> Array[String]:
+	var result: Array[String] = []
+	for room_id in rooms:
+		var room: RoomBase = rooms[room_id]
+		if room and room.room_function == room_type:
+			result.append(room_id)
+	return result
+
+
+# First room of the given type, or "" if the current ship has none (shouldn't
+# happen for the required types — see ShipLayoutGen ruleset — but callers should
+# still handle "" defensively).
+func get_room_of_type(room_type: String) -> String:
+	var matches: Array[String] = get_rooms_of_type(room_type)
+	return matches[0] if not matches.is_empty() else ""

@@ -103,9 +103,14 @@ func _open_menu(node: CrewMemberNode) -> void:
 	header.add_theme_color_override("font_color", ACCENT)
 	vbox.add_child(header)
 
-	# One "go to" option per room except the crew's current location.
+	# One "go to" option per room except the crew's current location and bare
+	# transit corridors (generated ships can have several corridor segments;
+	# they're pass-through, not meaningful directive destinations).
 	for room_id: String in GameState.rooms:
 		if room_id == node.crew_data.location:
+			continue
+		var room: RoomBase = GameState.rooms[room_id]
+		if room and room.room_function == "corridor":
 			continue
 		var button := Button.new()
 		button.text = "Go to %s" % _room_display_name(room_id)

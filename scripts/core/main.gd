@@ -22,6 +22,8 @@ var _deck: Node2D
 
 func _ready() -> void:
 	RenderingServer.set_default_clear_color(CLEAR_COLOR)
+	_choose_ship_seed()
+	_setup_starfield()
 	_setup_deck()
 	_setup_ship()
 	_fit_deck_to_view()
@@ -38,6 +40,27 @@ func _ready() -> void:
 
 # --- Setup ---
 
+# Ships are procedurally generated every load (seeded RNG) so layouts differ
+# run to run while staying governed by ShipLayoutGen's ruleset. The seed is
+# stored on GameState so a save can reproduce the exact same layout later.
+# SHIPAI_SEED lets tooling (screenshots, demos, tests) pin a specific layout.
+# Chosen before the starfield/ship are built so both can use the same seed.
+func _choose_ship_seed() -> void:
+	var seed_env: String = OS.get_environment("SHIPAI_SEED")
+	GameState.ship_seed = int(seed_env) if seed_env != "" else randi()
+	GameState.ship_class_id = "freighter"
+
+
+func _setup_starfield() -> void:
+	# Fixed to the viewport (not a child of _deck) so it doesn't scale/pan with
+	# the ship; very low z_index keeps it behind the hull and floors regardless
+	# of node order.
+	var field := Starfield.new()
+	field.name = "Starfield"
+	field.set_seed_value(GameState.ship_seed)
+	add_child(field)
+
+
 func _setup_deck() -> void:
 	# One container for rooms, deck furniture, and crew: a single coordinate
 	# space so painter's-order z-sorting works across the whole deck.
@@ -47,10 +70,9 @@ func _setup_deck() -> void:
 
 
 func _setup_ship() -> void:
-	var config: ShipConfig = load("res://resources/ship_configs/class_1_scout.tres")
-	if config == null:
-		push_warning("Main: class_1_scout.tres failed to load — building config in code")
-		config = _build_class1_config()
+	var config: ShipConfig = ShipLayoutGen.generate(GameState.ship_seed, GameState.ship_class_id)
+	GameState.ship_name = config.ship_name
+	print("[MAIN] Ship seed: %d (%s)" % [GameState.ship_seed, GameState.ship_class_id])
 	ShipLayoutBuilder.build(config, _deck)
 
 
@@ -63,10 +85,13 @@ func _fit_deck_to_view() -> void:
 
 
 func _setup_crew() -> void:
-	_make_crew("martinez", "Cmdr. Martinez", "captain",  0.55, 0.70, "bridge",      [], ["loyalty", "mission_completion"])
-	_make_crew("vasquez",  "Vasquez",        "general",  0.50, 0.45, "quarters",    ["alien_biology"], ["survival"])
-	_make_crew("okafor",   "Okafor",         "engineer", 0.50, 0.55, "engineering", [], ["mission_completion"])
-	_make_crew("chen",     "Dr. Chen",       "medic",    0.60, 0.60, "medbay",      [], ["crew_welfare", "integrity"])
+	# Start rooms are resolved by TYPE, not hardcoded id — room ids vary per
+	# generated ship (e.g. "quarters_1"), but there's always exactly one bridge/
+	# medbay/engine_room and at least one quarters (see ShipLayoutGen ruleset).
+	_make_crew("martinez", "Cmdr. Martinez", "captain",  0.55, 0.70, GameState.get_room_of_type("bridge"),      [], ["loyalty", "mission_completion"])
+	_make_crew("vasquez",  "Vasquez",        "general",  0.50, 0.45, GameState.get_room_of_type("quarters"),    ["alien_biology"], ["survival"])
+	_make_crew("okafor",   "Okafor",         "engineer", 0.50, 0.55, GameState.get_room_of_type("engine_room"), [], ["mission_completion"])
+	_make_crew("chen",     "Dr. Chen",       "medic",    0.60, 0.60, GameState.get_room_of_type("medbay"),      [], ["crew_welfare", "integrity"])
 
 
 func _make_crew(id: String, name: String, role: String, ai_trust: float, willpower: float,
@@ -175,7 +200,8 @@ func _run_autodemo() -> void:
 	var t := Timer.new()
 	t.wait_time = 5.0
 	t.timeout.connect(func():
-		for pair in [["vasquez", "medbay"], ["chen", "medbay"]]:
+		var medbay_id: String = GameState.get_room_of_type("medbay")
+		for pair in [["vasquez", medbay_id], ["chen", medbay_id]]:
 			var crew: CrewMember = GameState.crew.get(pair[0]) as CrewMember
 			if crew and crew.location != pair[1]:
 				var d := AIDirective.new()
@@ -219,7 +245,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			d.content     = "Vasquez, please report to medbay for a routine health check."
 			d.confidence  = 0.85
 			d.priority    = 2
-			d.move_to_room = "medbay"
+			d.move_to_room = GameState.get_room_of_type("medbay")
 			if not AISystem.issue_directive(d):
 				print("[MAIN] Directive blocked (insufficient access)")
 
@@ -242,45 +268,3 @@ func _unhandled_key_input(event: InputEvent) -> void:
 				if c:
 					print("  %s  trust=%.2f  fear=%.2f  fatigue=%.2f  state=%s" % [
 						c.crew_name, c.ai_trust, c.fear, c.fatigue, c.current_state])
-
-
-# --- Fallback ship config (in case .tres parse fails on first open) ---
-
-func _build_class1_config() -> ShipConfig:
-	var config := ShipConfig.new()
-	config.ship_class = 1
-	config.ship_name  = "Class 1 Scout"
-	config.min_crew   = 3
-	config.max_crew   = 6
-	config.starting_resources = {
-		"oxygen": 1.0, "power": 1.0, "food": 0.8,
-		"water": 0.8, "fuel": 1.0, "spare_parts": 0.6, "medicine": 0.5,
-	}
-	for row in [
-		["bridge",       "bridge",       1],
-		["engineering",  "reactor",      0],
-		["life_support", "life_support", 0],
-		["medbay",       "medbay",       0],
-		["quarters",     "quarters",     0],
-		["cargo",        "cargo",        0],
-		["corridor_main","corridor",     0],
-	]:
-		var rd := RoomDefinition.new()
-		rd.room_id = row[0];  rd.room_function = row[1]
-		rd.access_level = row[2];  rd.integrity = 1.0
-		config.rooms.append(rd)
-	for row in [
-		["bridge",       "corridor_main", 1.0, "door_bridge",     false],
-		["engineering",  "corridor_main", 1.0, "door_engineering", false],
-		["life_support", "corridor_main", 1.0, "",                false],
-		["medbay",       "corridor_main", 1.0, "",                false],
-		["quarters",     "corridor_main", 1.0, "",                false],
-		["cargo",        "corridor_main", 1.0, "door_cargo",      false],
-		["engineering",  "life_support",  0.5, "",                true],
-		["life_support", "cargo",         0.5, "",                true],
-	]:
-		var cd := ConnectionDefinition.new()
-		cd.room_a_id = row[0];  cd.room_b_id = row[1]
-		cd.weight = row[2];     cd.door_id = row[3];  cd.maintenance_only = row[4]
-		config.connections.append(cd)
-	return config

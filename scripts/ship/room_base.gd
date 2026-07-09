@@ -48,12 +48,13 @@ func _compose_visual() -> void:
 	var rect: Rect2 = DeckPlan.room_rect(room_id)
 	var center: Vector2 = DeckPlan.room_center(room_id)
 	var tint: Color = DeckPlan.FLOOR_TINTS.get(room_function, Color.WHITE)
+	var floor_tile: String = DeckPlan.floor_tile_for(room_function)
 
-	# Floor: one kit diamond per grid cell.
+	# Floor: one kit diamond per grid cell, tile choice + tint per room type.
 	for gx in range(int(rect.position.x), int(rect.position.x + rect.size.x)):
 		for gy in range(int(rect.position.y), int(rect.position.y + rect.size.y)):
 			var local: Vector2 = IsoKit.cell_to_deck(Vector2(gx, gy)) - center
-			var tile: Sprite2D = IsoKit.make_sprite(DeckPlan.FLOOR_TILE, local, 0.0, true)
+			var tile: Sprite2D = IsoKit.make_sprite(floor_tile, local, 0.0, true)
 			tile.modulate = tint
 			add_child(tile)
 

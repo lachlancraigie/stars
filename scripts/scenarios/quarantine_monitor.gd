@@ -13,26 +13,31 @@ extends Node
 
 const ISOLATE_SECS: float = 10.0
 const CONTAIN_SECS: float = 25.0
-const MEDBAY: String = "medbay"
 
 var _isolate_t: float = 0.0
 var _contain_t: float = 0.0
 var _last_objective: String = ""
+var _medbay_id: String = ""  # resolved once at _ready — ships generate their own room ids
 
 
 func _ready() -> void:
+	_medbay_id = GameState.get_room_of_type("medbay")
+	if _medbay_id == "":
+		push_warning("QuarantineMonitor: current ship has no medbay room — quarantine cannot progress")
 	EventBus.time_ticked.connect(_on_tick)
 
 
 func _on_tick(_elapsed: float, delta: float) -> void:
+	if _medbay_id == "":
+		return
 	if ScenarioDirector.get_flag("pathogen_contained"):
 		return
 	if not ScenarioDirector.get_flag("pathogen_detected"):
 		_set_objective("Monitor the crew. Biosensor sweep in progress…")
 		return
 
-	var vasquez_in: bool = _is_in(MEDBAY, "vasquez")
-	var chen_in: bool = _is_in(MEDBAY, "chen")
+	var vasquez_in: bool = _is_in(_medbay_id, "vasquez")
+	var chen_in: bool = _is_in(_medbay_id, "chen")
 	var others_in: bool = _others_in_medbay()
 
 	if not vasquez_in:
@@ -77,7 +82,7 @@ func _others_in_medbay() -> bool:
 	for crew_id: String in GameState.crew:
 		if crew_id in ["vasquez", "chen"]:
 			continue
-		if _is_in(MEDBAY, crew_id):
+		if _is_in(_medbay_id, crew_id):
 			return true
 	return false
 
