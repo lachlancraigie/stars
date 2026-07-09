@@ -60,6 +60,12 @@ signal crew_need_critical(crew_id: String, need_name: String, value: float)
 signal crew_relationship_changed(crew_id_a: String, crew_id_b: String, delta: float)
 signal crew_died(crew_id: String, cause: String)
 
+# Dialogue & social simulation (Agent 2 — crew simulation overhaul, scripts/crew/)
+signal line_spoken(crew_id: String, line_key: String, text: String, line_type: String)  # text is tag-stripped, display-ready
+signal conversation_started(crew_id_a: String, crew_id_b: String, room_id: String)
+signal conversation_ended(crew_id_a: String, crew_id_b: String)
+signal crew_romance_started(crew_id_a: String, crew_id_b: String)
+
 # AI directives
 signal directive_issued(directive: Resource)
 signal directive_accepted(crew_id: String, directive: Resource)

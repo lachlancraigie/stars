@@ -1,0 +1,361 @@
+[
+  {
+    "convo_id": "CV_GREETING_ENG_ENG_01",
+    "shape": "3",
+    "participants": [
+      "GR_ML_ENG_CM",
+      "GR_FE_ENG_OF"
+    ],
+    "conditions": {},
+    "lines": [
+      "GR_ML_ENG_CM#00075",
+      "GR_FE_ENG_OF#00041",
+      "GR_ML_ENG_CM#00313"
+    ]
+  },
+  {
+    "convo_id": "CV_ROMANCE_ENG_ACCEPT_01",
+    "shape": "3",
+    "participants": [
+      "GR_ML_ENG_CM",
+      "GR_FE_ENG_OF"
+    ],
+    "conditions": {},
+    "lines": [
+      "GR_ML_ENG_CM#00094",
+      "GR_FE_ENG_OF#00047",
+      "GR_ML_ENG_CM#00313"
+    ]
+  },
+  {
+    "convo_id": "CV_ROMANCE_ENG_REJECT_01",
+    "shape": "3",
+    "participants": [
+      "GR_ML_ENG_CM",
+      "GR_FE_ENG_OF"
+    ],
+    "conditions": {},
+    "lines": [
+      "GR_ML_ENG_CM#00095",
+      "GR_FE_ENG_OF#00048",
+      "GR_ML_ENG_CM#00313"
+    ]
+  },
+  {
+    "convo_id": "CV_GREETING_ENG_MAR_01",
+    "shape": "3",
+    "participants": [
+      "ENG",
+      "MAR"
+    ],
+    "conditions": {},
+    "lines": [
+      "GR_FE_ENG_OF#00035",
+      "CH_ML_MAR_CM#00028",
+      "GR_FE_ENG_OF#00049"
+    ]
+  },
+  {
+    "convo_id": "CV_MESS_SMALLTALK_SCI_AND_01",
+    "shape": "3",
+    "participants": [
+      "SCI",
+      "AND"
+    ],
+    "conditions": {},
+    "lines": [
+      "CH_ML_SCI_OF#00023",
+      "CH_ML_AND_CM#00028",
+      "CH_ML_SCI_OF#00036"
+    ]
+  },
+  {
+    "convo_id": "CV_STATUS_REPORT_ENG_CA_01",
+    "shape": "3",
+    "participants": [
+      "ENG",
+      "CA"
+    ],
+    "conditions": {},
+    "lines": [
+      "GR_FE_ENG_OF#00036",
+      "GR_ML_ENG_CA#00034",
+      "GR_FE_ENG_OF#00049"
+    ]
+  },
+  {
+    "convo_id": "CV_SUSPICION_AI_ENG_SCI_01",
+    "shape": "4-6",
+    "participants": [
+      "ENG",
+      "SCI"
+    ],
+    "conditions": {
+      "recent_events": [
+        "ai_damaged"
+      ],
+      "stress_min": 5
+    },
+    "lines": [
+      "GR_FE_ENG_OF#00040",
+      "EV_FE_SCI_CA#00036",
+      "GR_FE_ENG_OF#00046",
+      "EV_FE_SCI_CA#00040"
+    ]
+  },
+  {
+    "convo_id": "CV_REACTOR_FEAR_SCI_ENG_01",
+    "shape": "4-6",
+    "participants": [
+      "SCI",
+      "ENG"
+    ],
+    "conditions": {
+      "recent_events": [
+        "reactor_failure"
+      ],
+      "stress_min": 8
+    },
+    "lines": [
+      "PA_ML_SCI_CM#00005",
+      "GR_ML_ENG_CA#00030",
+      "PA_ML_SCI_CM#00032",
+      "GR_ML_ENG_CA#00039"
+    ]
+  },
+  {
+    "convo_id": "CV_GRIEF_MAR_ENG_01",
+    "shape": "4-6",
+    "participants": [
+      "MAR",
+      "ENG"
+    ],
+    "conditions": {
+      "recent_events": [
+        "crew_death"
+      ],
+      "stress_min": 8
+    },
+    "lines": [
+      "CH_ML_MAR_CM#00025",
+      "GR_FE_ENG_OF#00044",
+      "CH_ML_MAR_CM#00031",
+      "GR_FE_ENG_OF#00049"
+    ]
+  },
+  {
+    "convo_id": "CV_GRIEF_CA_SCI_01",
+    "shape": "4-6",
+    "participants": [
+      "CA",
+      "SCI"
+    ],
+    "conditions": {
+      "recent_events": [
+        "crew_death"
+      ],
+      "stress_min": 8
+    },
+    "lines": [
+      "EV_FE_SCI_CA#00029",
+      "PA_ML_SCI_CM#00033",
+      "EV_FE_SCI_CA#00035",
+      "PA_ML_SCI_CM#00038"
+    ]
+  },
+  {
+    "convo_id": "CV_PRAISE_OF_CM_01",
+    "shape": "3",
+    "participants": [
+      "OF",
+      "CM"
+    ],
+    "conditions": {},
+    "lines": [
+      "CH_ML_SCI_OF#00026",
+      "CH_ML_AND_CM#00033",
+      "CH_ML_SCI_OF#00036"
+    ]
+  },
+  {
+    "convo_id": "CV_BANTER_MAR_SCI_01",
+    "shape": "3",
+    "participants": [
+      "MAR",
+      "SCI"
+    ],
+    "conditions": {},
+    "lines": [
+      "CH_ML_MAR_CM#00024",
+      "CH_ML_SCI_OF#00032",
+      "CH_ML_MAR_CM#00036"
+    ]
+  },
+  {
+    "convo_id": "CV_APOLOGY_CM_CA_01",
+    "shape": "3",
+    "participants": [
+      "CM",
+      "CA"
+    ],
+    "conditions": {},
+    "lines": [
+      "GR_ML_ENG_CM#00069",
+      "GR_ML_ENG_CA#00036",
+      "GR_ML_ENG_CM#00313"
+    ]
+  },
+  {
+    "convo_id": "CV_ROMANCE_AND_MAR_HINT_01",
+    "shape": "3",
+    "participants": [
+      "CH_ML_AND_CM",
+      "EV_FE_MAR_OF"
+    ],
+    "conditions": {},
+    "lines": [
+      "CH_ML_AND_CM#00027",
+      "EV_FE_MAR_OF#00035",
+      "CH_ML_AND_CM#00039"
+    ]
+  },
+  {
+    "convo_id": "CV_PAIN_MAR_SCI_01",
+    "shape": "3",
+    "participants": [
+      "MAR",
+      "SCI"
+    ],
+    "conditions": {
+      "recent_events": [
+        "injury"
+      ]
+    },
+    "lines": [
+      "CH_ML_MAR_CM#00015",
+      "CH_ML_SCI_OF#00029",
+      "CH_ML_MAR_CM#00039"
+    ]
+  },
+  {
+    "convo_id": "CV_FEAR_REASSURE_AND_MAR_01",
+    "shape": "3",
+    "participants": [
+      "AND",
+      "MAR"
+    ],
+    "conditions": {
+      "recent_events": [
+        "life_support_failure"
+      ],
+      "stress_min": 7
+    },
+    "lines": [
+      "CH_ML_AND_CM#00009",
+      "EV_FE_MAR_OF#00030",
+      "CH_ML_AND_CM#00039"
+    ]
+  },
+  {
+    "convo_id": "CV_DOUBT_SCI_CA_01",
+    "shape": "4-6",
+    "participants": [
+      "SCI",
+      "CA"
+    ],
+    "conditions": {
+      "stress_min": 4
+    },
+    "lines": [
+      "PA_ML_SCI_CM#00026",
+      "EV_FE_SCI_CA#00033",
+      "PA_ML_SCI_CM#00031",
+      "EV_FE_SCI_CA#00041"
+    ]
+  },
+  {
+    "convo_id": "CV_CRISIS_RESOLVED_MAR_ENG_01",
+    "shape": "3",
+    "participants": [
+      "MAR",
+      "ENG"
+    ],
+    "conditions": {
+      "recent_events": [
+        "crisis_resolved"
+      ]
+    },
+    "lines": [
+      "CH_ML_MAR_CM#00012",
+      "GR_FE_ENG_OF#00041",
+      "CH_ML_MAR_CM#00037"
+    ]
+  },
+  {
+    "convo_id": "CV_MORNING_CA_CM_01",
+    "shape": "3",
+    "participants": [
+      "CA",
+      "CM"
+    ],
+    "conditions": {},
+    "lines": [
+      "GR_ML_ENG_CA#00023",
+      "PA_ML_SCI_CM#00030",
+      "GR_ML_ENG_CA#00037"
+    ]
+  },
+  {
+    "convo_id": "CV_PRAISE_CA_CM_01",
+    "shape": "3",
+    "participants": [
+      "CA",
+      "CM"
+    ],
+    "conditions": {},
+    "lines": [
+      "EV_FE_SCI_CA#00031",
+      "CH_ML_AND_CM#00033",
+      "EV_FE_SCI_CA#00041"
+    ]
+  },
+  {
+    "convo_id": "CV_SUSPICION_MAR_SCI_01",
+    "shape": "4-6",
+    "participants": [
+      "MAR",
+      "SCI"
+    ],
+    "conditions": {
+      "recent_events": [
+        "ai_damaged"
+      ],
+      "stress_min": 5
+    },
+    "lines": [
+      "EV_FE_MAR_OF#00026",
+      "PA_ML_SCI_CM#00034",
+      "EV_FE_MAR_OF#00032",
+      "PA_ML_SCI_CM#00038"
+    ]
+  },
+  {
+    "convo_id": "CV_OFFER_HELP_TWO_CAPTAINS_01",
+    "shape": "3",
+    "participants": [
+      "GR_ML_ENG_CA",
+      "PA_FE_MAR_CA"
+    ],
+    "conditions": {
+      "recent_events": [
+        "reactor_failure"
+      ],
+      "stress_min": 8
+    },
+    "lines": [
+      "GR_ML_ENG_CA#00006",
+      "PA_FE_MAR_CA#00042",
+      "GR_ML_ENG_CA#00037"
+    ]
+  }
+]

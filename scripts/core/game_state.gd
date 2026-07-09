@@ -61,6 +61,17 @@ var ai_access_levels: Dictionary = {}  # system_name -> int (0=none 1=read 2=wri
 var ai_obedience_score: float = 1.0    # internal; crew cannot read this directly
 var ai_trust_scores: Dictionary = {}   # crew_id -> float
 
+# --- Crew social simulation (Agent 2 — crew simulation/dialogue overhaul) ---
+# Per-pair relationship data, keyed by RelationshipGraph.pair_key(a, b) (sorted "a|b" so
+# the entry is shared regardless of argument order). Owned here per Rule 3; RelationshipGraph
+# (scripts/crew/relationship_graph.gd) is the utility that reads/mutates it and emits
+# crew_relationship_changed. Shape: {"affinity": float -1..1, "flags": Array[String],
+# "romance_stage": "none"|"hinted"|"advancing"|"accepted", "rejected_until": float}.
+var crew_relationships: Dictionary = {}
+# crew_id -> side-project id (see scripts/crew/side_projects.gd) — a persistent hobby
+# assigned lazily the first time a crew member's recreation-phase schedule needs it.
+var crew_side_projects: Dictionary = {}
+
 
 # --- Power ---
 
