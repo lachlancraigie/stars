@@ -1,0 +1,227 @@
+{
+  "_meta": {
+    "purpose": "Fish Audio S2.1 Pro voice mapping for the 24 dialogue archetypes (Phase A of the Fish Audio v2 revoice, branch overhaul/mothership-rewrite). Consumed by tools/audio_gen/fish_batch.py: archetypes[TAG].primary.voice_id is the reference_id sent to the API; archetypes[TAG].delivery_baseline is prepended to any line whose text has no leading [tag].",
+    "model": "s2.1-pro-free",
+    "matching_criteria": "group personality (CH/EV/GR/PA per docs/dialogue_spec.md), sex, and rank-implied age (captains/officers skew older). Source data: resources/dialogue/archetypes/*.json blurbs, speech_quirks, and elevenlabs_voice descriptions.",
+    "double_duty": {
+      "voice_id": "10059382386842bba451cb57e368db4a",
+      "description": "male human, young high-energy/friendly",
+      "archetypes": ["CH_ML_ENG_OF", "CH_ML_SCI_OF"],
+      "rationale": "11 ML human archetypes vs 10 ML human voices forces exactly one voice to double up. These two are the least-conflicting pair available: same personality group (cheerful), same rank tier (officer), closest age band (early-to-mid 30s), and near-identical source voice descriptions ('warm ... tenor ... brisk/upbeat ... reassuring-cheerful'). Caveat: both are officers of different careers (engineering vs medical) and could plausibly crew the same ship at once. If that reads as a collision in playtesting, move CH_ML_SCI_OF to its own alternate (young tired, b605ba21a5994bc29c620e487b65884f) — CH_ML_MAR_CM already holds the pool's other young high-energy/friendly voice separately, so it is unaffected."
+    },
+    "other_flagged_compromises": [
+      "GR_ML_SCI_OF gets 'young gruff' instead of a middle-aged voice: both middle-aged-gruff slots went to the two GR_ML engineer archetypes (captain + crew mate). Age is a compromise; the dry/blunt gruff texture and 'flat matter-of-fact' delivery still land.",
+      "PA_ML_MAR_OF gets 'middle-aged tired': both young-paranoid slots went to the two PA_ML_SCI archetypes (captain + crew mate) since paranoia is their entire defining trait. No high-strung/forceful male voice remained in the pool, so this is the weakest primary match in the set — promote its 'young gruff' alternate if the smoke test reads too flat for a 'tight, forceful, wound-up' officer.",
+      "PA_ML_SCI_CA (captain) gets 'young paranoid' despite captains skewing older: no middle-aged-paranoid voice exists in the pool, and the paranoid personality match dominates the age mismatch.",
+      "PA_FE_MAR_CA gets 'young gruff' (female) rather than a paranoid voice: the pool's only young-paranoid female voice went to PA_FE_ENG_CM (exact age+personality match). The rasped/husky texture of the gruff voice reasonably covers her 'bright, forward, rasped alto ... husky laugh' description."
+    ]
+  },
+
+  "archetypes": {
+    "CH_FE_ENG_CM": {
+      "primary": { "voice_id": "316df082db664211bb5ec0ceb69d16b0", "description": "female human, young friendly", "rationale": "Mid-20s bright energetic cheerful engineer ('whistles while she works') — young friendly is a direct personality+age match." },
+      "alternates": [
+        { "voice_id": "633b5a0c13a14865b21e4b9db38ab5f6", "description": "female human, young friendly", "rationale": "Twin friendly voice; swap if CH_FE_SCI_CM needs to trade with this one instead." },
+        { "voice_id": "fb43143e46f44cc6ad7d06230215bab6", "description": "female human, young low-energy", "rationale": "Fallback for a calmer take on her focused-puzzle-solving beats." }
+      ],
+      "delivery_baseline": "[bright, upbeat, a little breathless with enthusiasm]"
+    },
+    "CH_FE_SCI_CM": {
+      "primary": { "voice_id": "633b5a0c13a14865b21e4b9db38ab5f6", "description": "female human, young friendly", "rationale": "Mid-20s bright buoyant medic fresh off residency; second young-friendly slot keeps her audibly distinct from the engineer." },
+      "alternates": [
+        { "voice_id": "316df082db664211bb5ec0ceb69d16b0", "description": "female human, young friendly", "rationale": "Sibling friendly voice, usable if the two cheerful crew mates need to swap." },
+        { "voice_id": "eae89e52261a4bb78874e6284a786d33", "description": "female human, young low-energy", "rationale": "Fallback for her rare 'actually scared' flattened moments." }
+      ],
+      "delivery_baseline": "[chipper, fast-talking, curious]"
+    },
+    "CH_ML_AND_CM": {
+      "primary": { "voice_id": "06342ad532d449c98464aee65f56f706", "description": "android, male funny", "rationale": "Earnest try-hard cheerfulness with a comedic 'almost-but-not-quite human' edge — 'funny' captures the over-literal jokes and eager-to-please warmth." },
+      "alternates": [
+        { "voice_id": "81dbd929ce78457b91f5c8464693d736", "description": "android, male (plain)", "rationale": "Cleaner fallback if 'funny' overplays the comedy for serious lines." },
+        { "voice_id": "db88217d10854cabbebace011ce0f559", "description": "android, male deadpan-realistic", "rationale": "For the under-stress beats where his cheerfulness just gets faster and more clipped, not more emotive." }
+      ],
+      "delivery_baseline": "[warm, eager-to-please, just slightly too even]"
+    },
+    "CH_ML_ENG_OF": {
+      "primary": { "voice_id": "10059382386842bba451cb57e368db4a", "description": "male human, young high-energy/friendly", "rationale": "Warm mentor-energy officer, brisk and encouraging — closest personality/texture match in the pool. DOUBLE DUTY with CH_ML_SCI_OF, see _meta.double_duty." },
+      "alternates": [
+        { "voice_id": "c4d42d515a7f4c4da46f002cc6c464b7", "description": "male human, young high-energy/friendly", "rationale": "The other high-energy slot, already primary for CH_ML_MAR_CM but usable in a pinch." },
+        { "voice_id": "6bbb4892c3694de292bd29af38833ed1", "description": "male human, middle-aged gruff", "rationale": "For extra officer gravitas if the double-duty pairing reads too similar to CH_ML_SCI_OF." }
+      ],
+      "delivery_baseline": "[warm, encouraging, brisk mentor energy]"
+    },
+    "CH_ML_MAR_CM": {
+      "primary": { "voice_id": "c4d42d515a7f4c4da46f002cc6c464b7", "description": "male human, young high-energy/friendly", "rationale": "Loud buddy-energy marine, late 20s — second high-energy slot, keeps him distinct from the engineering officer." },
+      "alternates": [
+        { "voice_id": "10059382386842bba451cb57e368db4a", "description": "male human, young high-energy/friendly", "rationale": "Sibling high-energy voice." },
+        { "voice_id": "aa665117f8834eb8b0ad1000d18b211f", "description": "male human, young gruff", "rationale": "For the sharp military-cadence snap when things go bad mid-firefight." }
+      ],
+      "delivery_baseline": "[loud, easygoing, grinning]"
+    },
+    "CH_ML_SCI_OF": {
+      "primary": { "voice_id": "10059382386842bba451cb57e368db4a", "description": "male human, young high-energy/friendly", "rationale": "Warm reassuring-cheerful medic officer, early 30s. DOUBLE DUTY with CH_ML_ENG_OF — nearest voice in age/personality of any pair in the pool, see _meta.double_duty." },
+      "alternates": [
+        { "voice_id": "c4d42d515a7f4c4da46f002cc6c464b7", "description": "male human, young high-energy/friendly", "rationale": "Use this instead of the double-duty voice if CH_ML_ENG_OF and CH_ML_SCI_OF need to be told apart." },
+        { "voice_id": "b605ba21a5994bc29c620e487b65884f", "description": "male human, young tired", "rationale": "Softer bedside-manner fallback; also the recommended swap target per the double-duty caveat." }
+      ],
+      "delivery_baseline": "[warm, reassuring-cheerful, upbeat]"
+    },
+    "EV_FE_AND_OF": {
+      "primary": { "voice_id": "50a8ddc58d024105943e37f2d8a9ecc5", "description": "android, female deadpan", "rationale": "'Composed and helpful... the uncanny edge shows only in how little the tone moves' — deadpan is a direct match." },
+      "alternates": [
+        { "voice_id": "66f2b49c958c456ba992eea44373a7a3", "description": "android, female (plain)", "rationale": "Cleaner fallback with less deadpan flatness." },
+        { "voice_id": "7e5351fd33cd41808e5d48f8a3c3bbef", "description": "android, female funny", "rationale": "Least likely fit; only for scenes deliberately playing her uncanny precision for dry humor." }
+      ],
+      "delivery_baseline": "[composed, measured, faint synthetic evenness]"
+    },
+    "EV_FE_MAR_OF": {
+      "primary": { "voice_id": "fb43143e46f44cc6ad7d06230215bab6", "description": "female human, young low-energy", "rationale": "Mid-30s composed, quietly authoritative marine officer; the pool has no dedicated 'even/steady' tag, so low-energy is the best proxy." },
+      "alternates": [
+        { "voice_id": "eae89e52261a4bb78874e6284a786d33", "description": "female human, young low-energy", "rationale": "Sibling low-energy voice." },
+        { "voice_id": "7ced963ea0d14f898b8383a76ad7a250", "description": "female human, middle-aged low-energy", "rationale": "Slightly older read if she should sound more senior than the SCI officer of the same rank." }
+      ],
+      "delivery_baseline": "[calm, controlled, quietly authoritative]"
+    },
+    "EV_FE_SCI_CA": {
+      "primary": { "voice_id": "7ced963ea0d14f898b8383a76ad7a250", "description": "female human, middle-aged low-energy", "rationale": "Mid-40s captain with clinical detachment and a 'low controlled alto' — best age + even-as-low-energy + captain-gravitas match in the set." },
+      "alternates": [
+        { "voice_id": "eae89e52261a4bb78874e6284a786d33", "description": "female human, young low-energy", "rationale": "Younger-sounding fallback." },
+        { "voice_id": "fb43143e46f44cc6ad7d06230215bab6", "description": "female human, young low-energy", "rationale": "Second young low-energy fallback." }
+      ],
+      "delivery_baseline": "[calm, clinical, unhurried]"
+    },
+    "EV_FE_SCI_OF": {
+      "primary": { "voice_id": "eae89e52261a4bb78874e6284a786d33", "description": "female human, young low-energy", "rationale": "Late-30s 'warm but level' medic officer; second low-energy slot, kept in a younger age tier than the captain of the same career." },
+      "alternates": [
+        { "voice_id": "fb43143e46f44cc6ad7d06230215bab6", "description": "female human, young low-energy", "rationale": "Sibling low-energy voice." },
+        { "voice_id": "7ced963ea0d14f898b8383a76ad7a250", "description": "female human, middle-aged low-energy", "rationale": "Older read if she should sound closer in age to EV_FE_SCI_CA." }
+      ],
+      "delivery_baseline": "[warm but level, steady, grounding]"
+    },
+    "EV_ML_ENG_CM": {
+      "primary": { "voice_id": "a15681440a18425eab3a01808517b069", "description": "male human, middle-aged tired", "rationale": "Early-40s steady engineer whose 'calm and procedural' delivery reads well against a low-energy/tired register." },
+      "alternates": [
+        { "voice_id": "61de29dd43104151b8a97e813b959c71", "description": "male human, middle-aged tired", "rationale": "Sibling tired voice." },
+        { "voice_id": "b605ba21a5994bc29c620e487b65884f", "description": "male human, young tired", "rationale": "Younger-sounding fallback." }
+      ],
+      "delivery_baseline": "[calm, low, procedural]"
+    },
+    "EV_ML_MAR_CM": {
+      "primary": { "voice_id": "b605ba21a5994bc29c620e487b65884f", "description": "male human, young tired", "rationale": "Early-30s marine whose entire personality is stillness; the younger tired voice keeps him distinct in age from the older engineer crew mate." },
+      "alternates": [
+        { "voice_id": "a15681440a18425eab3a01808517b069", "description": "male human, middle-aged tired", "rationale": "Older-sounding fallback." },
+        { "voice_id": "61de29dd43104151b8a97e813b959c71", "description": "male human, middle-aged tired", "rationale": "Second middle-aged-tired fallback." }
+      ],
+      "delivery_baseline": "[quiet, even, matter-of-fact]"
+    },
+    "GR_FE_AND_CM": {
+      "primary": { "voice_id": "7e5351fd33cd41808e5d48f8a3c3bbef", "description": "android, female funny", "rationale": "'Curmudgeonly-affectionate' grumbling has a dry comic undertone — funny captures the performed grumpiness of an android imitating old spacers." },
+      "alternates": [
+        { "voice_id": "66f2b49c958c456ba992eea44373a7a3", "description": "android, female (plain)", "rationale": "Cleaner fallback." },
+        { "voice_id": "50a8ddc58d024105943e37f2d8a9ecc5", "description": "android, female deadpan", "rationale": "For the moments the performance drops entirely into flat synthetic precision under real danger." }
+      ],
+      "delivery_baseline": "[dry, grumbling, curmudgeonly-affectionate]"
+    },
+    "GR_FE_ENG_OF": {
+      "primary": { "voice_id": "175f3ee136034e88ba4f9af8e595e6a6", "description": "female human, middle-aged gruff", "rationale": "Early-60s warm-worn gravelly officer — direct gruff+age+rank match." },
+      "alternates": [
+        { "voice_id": "511587b8341d471897655a634340a296", "description": "female human, middle-aged gruff", "rationale": "Sibling gruff voice." },
+        { "voice_id": "7ced963ea0d14f898b8383a76ad7a250", "description": "female human, middle-aged low-energy", "rationale": "Fallback for her low-mutter coaxing-a-machine moments." }
+      ],
+      "delivery_baseline": "[warm-worn, gravelly, affectionately exasperated]"
+    },
+    "GR_FE_MAR_CM": {
+      "primary": { "voice_id": "511587b8341d471897655a634340a296", "description": "female human, middle-aged gruff", "rationale": "Mid-40s low rough alto marine; second gruff slot, kept distinct from the engineering officer." },
+      "alternates": [
+        { "voice_id": "175f3ee136034e88ba4f9af8e595e6a6", "description": "female human, middle-aged gruff", "rationale": "Sibling gruff voice." },
+        { "voice_id": "09f5c8a8ca5a499d956165fc990e02d2", "description": "female human, young gruff", "rationale": "Younger-sounding fallback for a harder-edged read." }
+      ],
+      "delivery_baseline": "[flat, low, unbothered]"
+    },
+    "GR_ML_ENG_CA": {
+      "primary": { "voice_id": "6bbb4892c3694de292bd29af38833ed1", "description": "male human, middle-aged gruff", "rationale": "Mid-50s captain, 'grounded weathered baritone... calm authority earned rather than performed' — best gruff+age+rank match in the set." },
+      "alternates": [
+        { "voice_id": "2f48b674536540b8ba43f972dca90321", "description": "male human, middle-aged gruff", "rationale": "Sibling gruff voice, already primary for GR_ML_ENG_CM." },
+        { "voice_id": "aa665117f8834eb8b0ad1000d18b211f", "description": "male human, young gruff", "rationale": "Fallback if a younger-sounding captain is wanted." }
+      ],
+      "delivery_baseline": "[calm, weathered, quiet earned authority]"
+    },
+    "GR_ML_ENG_CM": {
+      "primary": { "voice_id": "2f48b674536540b8ba43f972dca90321", "description": "male human, middle-aged gruff", "rationale": "Late-60s flat gravelled crew mate; second gruff slot, the oldest-sounding texture available in the pool." },
+      "alternates": [
+        { "voice_id": "6bbb4892c3694de292bd29af38833ed1", "description": "male human, middle-aged gruff", "rationale": "Sibling gruff voice, already primary for GR_ML_ENG_CA." },
+        { "voice_id": "a15681440a18425eab3a01808517b069", "description": "male human, middle-aged tired", "rationale": "Fallback for his slow, half-second-pause delivery." }
+      ],
+      "delivery_baseline": "[flat, gravelly, unimpressed]"
+    },
+    "GR_ML_SCI_OF": {
+      "primary": { "voice_id": "aa665117f8834eb8b0ad1000d18b211f", "description": "male human, young gruff", "rationale": "Late-50s dry, blunt doctor. Both middle-aged-gruff slots went to the two GR_ML engineer archetypes, so this is an age compromise (flagged in _meta) — the dry/gruff texture and flat matter-of-fact delivery still land well." },
+      "alternates": [
+        { "voice_id": "2f48b674536540b8ba43f972dca90321", "description": "male human, middle-aged gruff", "rationale": "Better age match if reassigned; would require re-homing GR_ML_ENG_CM." },
+        { "voice_id": "6bbb4892c3694de292bd29af38833ed1", "description": "male human, middle-aged gruff", "rationale": "Same trade-off as above." }
+      ],
+      "delivery_baseline": "[dry, blunt, matter-of-fact]"
+    },
+    "PA_FE_AND_OF": {
+      "primary": { "voice_id": "66f2b49c958c456ba992eea44373a7a3", "description": "android, female (plain)", "rationale": "Vigilant, precise, 'coiled-tight' — a clean baseline voice for a character whose affect otherwise stays flat and controlled." },
+      "alternates": [
+        { "voice_id": "50a8ddc58d024105943e37f2d8a9ecc5", "description": "android, female deadpan", "rationale": "For her rare attempts at sounding casual, which 'don't quite land' — deadpan undercuts it nicely." },
+        { "voice_id": "7e5351fd33cd41808e5d48f8a3c3bbef", "description": "android, female funny", "rationale": "Least likely fit; only for a lighter take." }
+      ],
+      "delivery_baseline": "[vigilant, clipped, coiled-tight precision]"
+    },
+    "PA_FE_ENG_CM": {
+      "primary": { "voice_id": "b1efdf0832514b3b9409ed8b1cfeef91", "description": "female human, young paranoid", "rationale": "Early-20s nervous jittery engineer — exact personality+age match, the pool's one dedicated young-paranoid female voice." },
+      "alternates": [
+        { "voice_id": "fb43143e46f44cc6ad7d06230215bab6", "description": "female human, young low-energy", "rationale": "For her rare 'hands on the problem, mind quiet' focused beats." },
+        { "voice_id": "09f5c8a8ca5a499d956165fc990e02d2", "description": "female human, young gruff", "rationale": "Fallback with more edge if the low-energy take reads too calm." }
+      ],
+      "delivery_baseline": "[nervous, quick, jittery]"
+    },
+    "PA_FE_MAR_CA": {
+      "primary": { "voice_id": "09f5c8a8ca5a499d956165fc990e02d2", "description": "female human, young gruff", "rationale": "Early-to-mid-30s captain, 'bright, forward, rasped alto... quick husky laugh' — the rasp reads as gruff texture even though her personality group is paranoid, not gruff. The pool's only young-paranoid female voice went to the younger engineer crew mate, so this is a flagged compromise (see _meta)." },
+      "alternates": [
+        { "voice_id": "44973f222e7f432e8d10a5eb0419748d", "description": "female human, young gruff (possibly middle-aged)", "rationale": "Sibling gruff voice, slightly older-reading." },
+        { "voice_id": "511587b8341d471897655a634340a296", "description": "female human, middle-aged gruff", "rationale": "More command-voice weight if the smoke test wants her older-sounding." }
+      ],
+      "delivery_baseline": "[confident, amused, needling]"
+    },
+    "PA_ML_MAR_OF": {
+      "primary": { "voice_id": "61de29dd43104151b8a97e813b959c71", "description": "male human, middle-aged tired", "rationale": "Mid-30s 'tight, forceful, wound-up' officer. Both young-paranoid slots went to the two PA_ML_SCI archetypes, so no high-strung male voice remained — texture-of-last-resort, flagged in _meta as the weakest primary match in the set." },
+      "alternates": [
+        { "voice_id": "aa665117f8834eb8b0ad1000d18b211f", "description": "male human, young gruff", "rationale": "More forceful edge; promote to primary if the smoke test reads too flat for this archetype." },
+        { "voice_id": "a15681440a18425eab3a01808517b069", "description": "male human, middle-aged tired", "rationale": "Sibling tired voice." }
+      ],
+      "delivery_baseline": "[tense, urgent, wound-up]"
+    },
+    "PA_ML_SCI_CA": {
+      "primary": { "voice_id": "2cd718f393724a348230fec86b53c7d3", "description": "male human, young paranoid", "rationale": "Late-30s captain, reedy anxious-analytical tenor. Captains skew older, but no middle-aged-paranoid voice exists in the pool and the paranoid personality match dominates the age gap (flagged in _meta)." },
+      "alternates": [
+        { "voice_id": "369091256ff042dead6f2c86653fd235", "description": "male human, young paranoid", "rationale": "Sibling paranoid voice, already primary for PA_ML_SCI_CM." },
+        { "voice_id": "a15681440a18425eab3a01808517b069", "description": "male human, middle-aged tired", "rationale": "Older-sounding fallback for his rare moments of captain's-command flatness." }
+      ],
+      "delivery_baseline": "[anxious, fast, analytical]"
+    },
+    "PA_ML_SCI_CM": {
+      "primary": { "voice_id": "369091256ff042dead6f2c86653fd235", "description": "male human, young paranoid", "rationale": "Mid-20s hedging, nervous crew mate — exact age+personality match, the cleanest assignment in the whole set." },
+      "alternates": [
+        { "voice_id": "2cd718f393724a348230fec86b53c7d3", "description": "male human, young paranoid", "rationale": "Sibling paranoid voice, already primary for PA_ML_SCI_CA." },
+        { "voice_id": "b605ba21a5994bc29c620e487b65884f", "description": "male human, young tired", "rationale": "Fallback for his sudden nervous-pause beats." }
+      ],
+      "delivery_baseline": "[hedging, nervous, quick to qualify]"
+    }
+  },
+
+  "spares": {
+    "male_human": [],
+    "female_human": [
+      { "voice_id": "44973f222e7f432e8d10a5eb0419748d", "description": "young gruff (possibly middle-aged)", "note": "Held as PA_FE_MAR_CA's first alternate; unused as a primary." },
+      { "voice_id": "cea1936721be4c8383314a41214b6971", "description": "middle-aged friendly", "note": "No middle-aged-cheerful female archetype exists in the current 24 — both CH_FE archetypes are mid-20s crew mates." },
+      { "voice_id": "ae978e379e124f50a1e5184cc6ea5a9e", "description": "middle-aged friendly", "note": "Same as above." }
+    ],
+    "android": [
+      { "voice_id": "81dbd929ce78457b91f5c8464693d736", "description": "male (plain)", "note": "Held as CH_ML_AND_CM's first alternate; unused as a primary." },
+      { "voice_id": "db88217d10854cabbebace011ce0f559", "description": "male deadpan-realistic", "note": "Held as CH_ML_AND_CM's second alternate; unused as a primary. Only 1 of 4 android archetypes is male-coded, so 2 of the 3 male android voices are spare." }
+    ]
+  }
+}

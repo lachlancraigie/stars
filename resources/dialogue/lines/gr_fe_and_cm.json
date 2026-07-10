@@ -405,7 +405,7 @@
   {
     "id": 22,
     "key": "GR_FE_AND_CM#00022",
-    "text": "shift ending. everything broke approximately as predicted. baseline exceeded. [SIGHS]",
+    "text": "shift ending. everything broke approximately as predicted. [SIGHS] baseline exceeded.",
     "type": "opener",
     "intent": "farewell",
     "conditions": {
@@ -1738,7 +1738,7 @@
   {
     "id": 90,
     "key": "GR_FE_AND_CM#00090",
-    "text": "[RESIGNED] they will not listen to logic. they never do. [SIGHS]",
+    "text": "[RESIGNED] they will not listen to logic. [SIGHS] they never do.",
     "type": "reply",
     "intent": "doubt",
     "conditions": {

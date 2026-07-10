@@ -43,17 +43,87 @@ re-tags and renumbers lines; the old files are deleted).
 - Audio file mapping (ElevenLabs output, saved later): `assets/audio/dialogue/GR_ML_ENG_CM_00042.mp3`.
 - IDs are stable forever once assigned. Never renumber. New lines append with the next free ID.
 
-## Emotive tags
+## Delivery tags (Fish Audio S2.1 syntax)
 
-Inline in the text, square brackets, UPPERCASE. Stripped before on-screen display; kept for the
-ElevenLabs export. Vocabulary (closed set — do not invent new ones without adding them here):
+> Revision note (Fish Audio v2 revoice, Phase A): ElevenLabs is retired; Fish Audio S2.1 Pro's
+> inline `[]` syntax (see `skills/fishaudio.md`) is now canonical for delivery direction, replacing
+> the old closed-vocabulary UPPERCASE tags below. This section is the only vocabulary this revision
+> changes — intents, contexts/conditions, and `reply_to_intents` rules are all UNCHANGED, see the
+> rest of this document.
 
-`[EMPHASIS] [CONFIDENT] [REASSURING] [TERRIFIED] [NERVOUS] [ANGRY] [GRUFF] [WARM] [TIRED]
-[EXHAUSTED] [PANICKED] [CALM] [URGENT] [SARCASTIC] [DRY] [GRIM] [HOPEFUL] [WHISPERS] [SHOUTS]
-[MUTTERS] [LAUGHS] [SIGHS] [PAINED] [FLIRTY] [EMBARRASSED] [SUSPICIOUS] [CURIOUS] [PROUD]
-[DISMISSIVE] [PLEADING] [RESIGNED] [DEADPAN]`
+Inline in the text, square brackets. Stripped before on-screen display (see Display, below); kept
+verbatim for the Fish Audio TTS pass — no export-time tag mapping step, the corpus text is sent to
+the API as written.
 
-A tag applies to the words after it until the next tag or end of line.
+Rules for writers (Phase B and beyond):
+- **Square brackets only. Never `(parentheses)`.** Parenthetical tags are S1 syntax; the S2.1 API
+  does not read them and they will be spoken aloud literally as English text.
+- **A tag applies forward** — to the words after it — **until the next tag or the end of the
+  line/sentence.** Placement is meaning, not decoration: a tag mid-sentence only kicks in at that
+  point.
+- **Descriptive tags must always be followed by text on the same line.** Never leave a tag dangling
+  at line end — `He looked away. [sad]` is invalid; `[sad] He looked away.` is correct.
+- **Prefer the well-tested tags** below when one fits; **free-form descriptions are encouraged**
+  when it doesn't — write what you'd tell a voice actor (e.g.
+  `[voice rough from crying, trying to sound normal]`). This is an open set, not a whitelist.
+- **0–2 tags per line is typical.** Don't stack more than 3 — it muddies delivery instead of
+  sharpening it.
+- **Pair a physical tag with an emotion tag** for grounded delivery
+  (`[panting] [scared] Don't — don't come any closer.`) rather than stacking multiple emotion tags
+  alone.
+
+### Well-tested tags (subset — full reference in `skills/fishaudio.md`)
+
+`[emphasis] [sigh] [inhale] [exhale] [gasp] [panting] [clears throat] [laughing] [chuckling]
+[giggle] [sobbing] [crying] [groan] [pause] [short pause] [long pause] [whispering] [soft voice]
+[loud voice] [shouting] [low voice] [excited] [angry] [sad]`
+
+Each archetype also has a `delivery_baseline` (`tools/audio_gen/fish_voices.json`) — a default
+Fish-style direction tag for that character (e.g. `[nervous, speaking quickly, glancing around]`).
+Phase C prepends it to any line with no leading tag; Phase B can use it as tone guidance when a
+line needs its own more specific tag instead.
+
+### Migration table — old closed-vocab tag → recommended Fish equivalent(s)
+
+| Old tag | Fish equivalent(s) |
+|---|---|
+| `[EMPHASIS]` | `[emphasis]` |
+| `[CONFIDENT]` | `[confident, assured tone]` |
+| `[REASSURING]` | `[soft voice, reassuring]` |
+| `[TERRIFIED]` | `[terrified, voice shaking]` |
+| `[NERVOUS]` | `[nervous, speaking quickly]` |
+| `[ANGRY]` | `[angry]` |
+| `[GRUFF]` | `[low voice, gruff]` |
+| `[WARM]` | `[warm, gentle tone]` |
+| `[TIRED]` | `[tired, dead tired]` |
+| `[EXHAUSTED]` | `[exhausted, breathing laboured]` |
+| `[PANICKED]` | `[panicked, panting]` |
+| `[CALM]` | `[calm, measured]` |
+| `[URGENT]` | `[urgent, fast pace]` |
+| `[SARCASTIC]` | `[dry, sarcastic tone]` |
+| `[DRY]` | `[dry tone]` |
+| `[GRIM]` | `[grim, heavy]` |
+| `[HOPEFUL]` | `[hopeful tone]` |
+| `[WHISPERS]` | `[whispering]` |
+| `[SHOUTS]` | `[shouting]` |
+| `[MUTTERS]` | `[low voice, muttering]` |
+| `[LAUGHS]` | `[laughing]` or `[chuckling]` |
+| `[SIGHS]` | `[sigh]` |
+| `[PAINED]` | `[pained, voice tight]` |
+| `[FLIRTY]` | `[flirty, playful tone]` |
+| `[EMBARRASSED]` | `[embarrassed, voice quiet]` |
+| `[SUSPICIOUS]` | `[suspicious tone]` |
+| `[CURIOUS]` | `[curious tone]` |
+| `[PROUD]` | `[proud tone]` |
+| `[DISMISSIVE]` | `[dismissive tone]` |
+| `[PLEADING]` | `[pleading]` |
+| `[RESIGNED]` | `[resigned, flat tone]` |
+| `[DEADPAN]` | `[deadpan]` |
+
+Old `[UPPERCASE]` tags remain valid syntactically during the Phase B transition — the validator
+checks tag *structure* (well-formed, non-empty, bracketed, not dangling, ≤3 per line), not
+vocabulary, so a corpus with a mix of old and new tags passes cleanly. Phase B rewrites the corpus
+to the new vocabulary; an un-migrated old tag is not an error, just deprecated style.
 
 ## Files
 
@@ -178,7 +248,10 @@ start when two crew share a room and both are free.
 
 ## Display
 
-- Strip `[TAGS]` for the in-game speech/thought bubble. Regex: `\[[A-Z ]+\]\s?`.
+- Strip `[tags]` for the in-game speech/thought bubble. Regex updated for Fish Audio v2 (Phase A):
+  `\[[^\]]+\]\s?` — the old `\[[A-Z ]+\]\s?` only matched all-caps single-word tags and no longer
+  covers lowercase/punctuated/free-form Fish tags like `[voice rough from crying, trying to sound
+  normal]`. Works on both old and new tag styles during the Phase B transition.
 - Thought bubbles (internal monologue) reuse `declaration` lines with `target: open_air`,
   rendered in italic/dimmed style without a speaker sound.
 
