@@ -1,0 +1,1948 @@
+{
+  "crew_carry_walk_e_0": {
+    "state": "carry_walk",
+    "facing": "e",
+    "frame": 0,
+    "skipped": true,
+    "reason": "pre-existing corrupt source sprite (multi-figure bleed or missing-body slice defect, unrelated to head size) -- see KNOWN_CORRUPT_SPRITES docstring; left untouched"
+  },
+  "crew_carry_walk_e_1": {
+    "state": "carry_walk",
+    "facing": "e",
+    "frame": 1,
+    "skipped": true,
+    "reason": "pre-existing corrupt source sprite (multi-figure bleed or missing-body slice defect, unrelated to head size) -- see KNOWN_CORRUPT_SPRITES docstring; left untouched"
+  },
+  "crew_carry_walk_e_2": {
+    "state": "carry_walk",
+    "facing": "e",
+    "frame": 2,
+    "skipped": true,
+    "reason": "pre-existing corrupt source sprite (multi-figure bleed or missing-body slice defect, unrelated to head size) -- see KNOWN_CORRUPT_SPRITES docstring; left untouched"
+  },
+  "crew_carry_walk_s_0": {
+    "state": "carry_walk",
+    "facing": "s",
+    "frame": 0,
+    "skipped": true,
+    "reason": "pre-existing corrupt source sprite (multi-figure bleed or missing-body slice defect, unrelated to head size) -- see KNOWN_CORRUPT_SPRITES docstring; left untouched"
+  },
+  "crew_carry_walk_s_1": {
+    "state": "carry_walk",
+    "facing": "s",
+    "frame": 1,
+    "skipped": true,
+    "reason": "pre-existing corrupt source sprite (multi-figure bleed or missing-body slice defect, unrelated to head size) -- see KNOWN_CORRUPT_SPRITES docstring; left untouched"
+  },
+  "crew_carry_walk_s_2": {
+    "state": "carry_walk",
+    "facing": "s",
+    "frame": 2,
+    "skipped": true,
+    "reason": "pre-existing corrupt source sprite (multi-figure bleed or missing-body slice defect, unrelated to head size) -- see KNOWN_CORRUPT_SPRITES docstring; left untouched"
+  },
+  "crew_fight_melee_e_0": {
+    "state": "fight_melee",
+    "facing": "e",
+    "frame": 0,
+    "skipped": true,
+    "reason": "pre-existing corrupt source sprite (multi-figure bleed or missing-body slice defect, unrelated to head size) -- see KNOWN_CORRUPT_SPRITES docstring; left untouched"
+  },
+  "crew_fight_melee_s_0": {
+    "state": "fight_melee",
+    "facing": "s",
+    "frame": 0,
+    "skipped": true,
+    "reason": "pre-existing corrupt source sprite (multi-figure bleed or missing-body slice defect, unrelated to head size) -- see KNOWN_CORRUPT_SPRITES docstring; left untouched"
+  },
+  "crew_walk_n_2": {
+    "state": "walk",
+    "facing": "n",
+    "frame": 2,
+    "skipped": true,
+    "reason": "pre-existing corrupt source sprite (multi-figure bleed or missing-body slice defect, unrelated to head size) -- see KNOWN_CORRUPT_SPRITES docstring; left untouched"
+  },
+  "crew_walk_n_3": {
+    "state": "walk",
+    "facing": "n",
+    "frame": 3,
+    "skipped": true,
+    "reason": "pre-existing corrupt source sprite (multi-figure bleed or missing-body slice defect, unrelated to head size) -- see KNOWN_CORRUPT_SPRITES docstring; left untouched"
+  },
+  "crew_walk_nw_2": {
+    "state": "walk",
+    "facing": "nw",
+    "frame": 2,
+    "skipped": true,
+    "reason": "pre-existing corrupt source sprite (multi-figure bleed or missing-body slice defect, unrelated to head size) -- see KNOWN_CORRUPT_SPRITES docstring; left untouched"
+  },
+  "crew_walk_s_2": {
+    "state": "walk",
+    "facing": "s",
+    "frame": 2,
+    "skipped": true,
+    "reason": "pre-existing corrupt source sprite (multi-figure bleed or missing-body slice defect, unrelated to head size) -- see KNOWN_CORRUPT_SPRITES docstring; left untouched"
+  },
+  "crew_walk_se_1": {
+    "state": "walk",
+    "facing": "se",
+    "frame": 1,
+    "skipped": true,
+    "reason": "pre-existing corrupt source sprite (multi-figure bleed or missing-body slice defect, unrelated to head size) -- see KNOWN_CORRUPT_SPRITES docstring; left untouched"
+  },
+  "crew_walk_se_2": {
+    "state": "walk",
+    "facing": "se",
+    "frame": 2,
+    "skipped": true,
+    "reason": "pre-existing corrupt source sprite (multi-figure bleed or missing-body slice defect, unrelated to head size) -- see KNOWN_CORRUPT_SPRITES docstring; left untouched"
+  },
+  "crew_carry_idle_e_0": {
+    "state": "carry_idle",
+    "facing": "e",
+    "frame": 0,
+    "own_shoulder_row": 271,
+    "facing_median_shoulder_row": 273.5,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      248,
+      269,
+      271
+    ],
+    "cleanup_region": [
+      239,
+      250,
+      272,
+      287
+    ]
+  },
+  "crew_carry_idle_n_0": {
+    "state": "carry_idle",
+    "facing": "n",
+    "frame": 0,
+    "own_shoulder_row": 271,
+    "facing_median_shoulder_row": 274.0,
+    "used_median_fallback": false,
+    "paste_region": [
+      242,
+      247,
+      270,
+      271
+    ],
+    "cleanup_region": [
+      239,
+      250,
+      274,
+      287
+    ]
+  },
+  "crew_carry_idle_s_0": {
+    "state": "carry_idle",
+    "facing": "s",
+    "frame": 0,
+    "own_shoulder_row": 292,
+    "facing_median_shoulder_row": 274,
+    "used_median_fallback": true,
+    "paste_region": [
+      244,
+      253,
+      269,
+      274
+    ],
+    "cleanup_region": [
+      239,
+      250,
+      273,
+      287
+    ]
+  },
+  "crew_carry_idle_w_0": {
+    "state": "carry_idle",
+    "facing": "w",
+    "frame": 0,
+    "own_shoulder_row": 271,
+    "facing_median_shoulder_row": 274.0,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      248,
+      269,
+      271
+    ],
+    "cleanup_region": [
+      239,
+      250,
+      273,
+      287
+    ]
+  },
+  "crew_carry_walk_e_3": {
+    "state": "carry_walk",
+    "facing": "e",
+    "frame": 3,
+    "own_shoulder_row": 275,
+    "facing_median_shoulder_row": 273.5,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      252,
+      269,
+      275
+    ],
+    "cleanup_region": [
+      234,
+      250,
+      278,
+      287
+    ]
+  },
+  "crew_carry_walk_n_0": {
+    "state": "carry_walk",
+    "facing": "n",
+    "frame": 0,
+    "own_shoulder_row": 277,
+    "facing_median_shoulder_row": 274.0,
+    "used_median_fallback": false,
+    "paste_region": [
+      242,
+      253,
+      270,
+      277
+    ],
+    "cleanup_region": [
+      237,
+      250,
+      275,
+      287
+    ]
+  },
+  "crew_carry_walk_n_1": {
+    "state": "carry_walk",
+    "facing": "n",
+    "frame": 1,
+    "own_shoulder_row": 277,
+    "facing_median_shoulder_row": 274.0,
+    "used_median_fallback": false,
+    "paste_region": [
+      242,
+      253,
+      270,
+      277
+    ],
+    "cleanup_region": [
+      237,
+      250,
+      276,
+      287
+    ]
+  },
+  "crew_carry_walk_n_2": {
+    "state": "carry_walk",
+    "facing": "n",
+    "frame": 2,
+    "own_shoulder_row": 276,
+    "facing_median_shoulder_row": 274.0,
+    "used_median_fallback": false,
+    "paste_region": [
+      242,
+      252,
+      270,
+      276
+    ],
+    "cleanup_region": [
+      239,
+      250,
+      274,
+      287
+    ]
+  },
+  "crew_carry_walk_n_3": {
+    "state": "carry_walk",
+    "facing": "n",
+    "frame": 3,
+    "own_shoulder_row": 277,
+    "facing_median_shoulder_row": 274.0,
+    "used_median_fallback": false,
+    "paste_region": [
+      242,
+      253,
+      270,
+      277
+    ],
+    "cleanup_region": [
+      239,
+      250,
+      274,
+      287
+    ]
+  },
+  "crew_carry_walk_s_3": {
+    "state": "carry_walk",
+    "facing": "s",
+    "frame": 3,
+    "own_shoulder_row": 277,
+    "facing_median_shoulder_row": 274,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      256,
+      269,
+      277
+    ],
+    "cleanup_region": [
+      234,
+      250,
+      278,
+      287
+    ]
+  },
+  "crew_carry_walk_w_0": {
+    "state": "carry_walk",
+    "facing": "w",
+    "frame": 0,
+    "own_shoulder_row": 276,
+    "facing_median_shoulder_row": 274.0,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      253,
+      269,
+      276
+    ],
+    "cleanup_region": [
+      237,
+      250,
+      275,
+      287
+    ]
+  },
+  "crew_carry_walk_w_1": {
+    "state": "carry_walk",
+    "facing": "w",
+    "frame": 1,
+    "own_shoulder_row": 275,
+    "facing_median_shoulder_row": 274.0,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      252,
+      269,
+      275
+    ],
+    "cleanup_region": [
+      235,
+      250,
+      276,
+      287
+    ]
+  },
+  "crew_carry_walk_w_2": {
+    "state": "carry_walk",
+    "facing": "w",
+    "frame": 2,
+    "own_shoulder_row": 274,
+    "facing_median_shoulder_row": 274.0,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      251,
+      269,
+      274
+    ],
+    "cleanup_region": [
+      235,
+      250,
+      278,
+      287
+    ]
+  },
+  "crew_carry_walk_w_3": {
+    "state": "carry_walk",
+    "facing": "w",
+    "frame": 3,
+    "own_shoulder_row": 276,
+    "facing_median_shoulder_row": 274.0,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      253,
+      269,
+      276
+    ],
+    "cleanup_region": [
+      236,
+      250,
+      276,
+      287
+    ]
+  },
+  "crew_fight_melee_e_1": {
+    "state": "fight_melee",
+    "facing": "e",
+    "frame": 1,
+    "own_shoulder_row": 273,
+    "facing_median_shoulder_row": 273.5,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      250,
+      269,
+      273
+    ],
+    "cleanup_region": [
+      225,
+      250,
+      286,
+      287
+    ]
+  },
+  "crew_fight_melee_e_2": {
+    "state": "fight_melee",
+    "facing": "e",
+    "frame": 2,
+    "own_shoulder_row": 273,
+    "facing_median_shoulder_row": 273.5,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      250,
+      269,
+      273
+    ],
+    "cleanup_region": [
+      235,
+      250,
+      277,
+      287
+    ]
+  },
+  "crew_fight_melee_n_0": {
+    "state": "fight_melee",
+    "facing": "n",
+    "frame": 0,
+    "own_shoulder_row": 273,
+    "facing_median_shoulder_row": 274.0,
+    "used_median_fallback": false,
+    "paste_region": [
+      242,
+      249,
+      270,
+      273
+    ],
+    "cleanup_region": [
+      233,
+      250,
+      278,
+      287
+    ]
+  },
+  "crew_fight_melee_n_1": {
+    "state": "fight_melee",
+    "facing": "n",
+    "frame": 1,
+    "own_shoulder_row": 272,
+    "facing_median_shoulder_row": 274.0,
+    "used_median_fallback": false,
+    "paste_region": [
+      242,
+      248,
+      270,
+      272
+    ],
+    "cleanup_region": [
+      223,
+      250,
+      289,
+      287
+    ]
+  },
+  "crew_fight_melee_n_2": {
+    "state": "fight_melee",
+    "facing": "n",
+    "frame": 2,
+    "own_shoulder_row": 272,
+    "facing_median_shoulder_row": 274.0,
+    "used_median_fallback": false,
+    "paste_region": [
+      242,
+      248,
+      270,
+      272
+    ],
+    "cleanup_region": [
+      233,
+      250,
+      278,
+      287
+    ]
+  },
+  "crew_fight_melee_s_1": {
+    "state": "fight_melee",
+    "facing": "s",
+    "frame": 1,
+    "own_shoulder_row": 273,
+    "facing_median_shoulder_row": 274,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      252,
+      269,
+      273
+    ],
+    "cleanup_region": [
+      219,
+      250,
+      294,
+      287
+    ]
+  },
+  "crew_fight_melee_s_2": {
+    "state": "fight_melee",
+    "facing": "s",
+    "frame": 2,
+    "own_shoulder_row": 275,
+    "facing_median_shoulder_row": 274,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      254,
+      269,
+      275
+    ],
+    "cleanup_region": [
+      236,
+      250,
+      276,
+      287
+    ]
+  },
+  "crew_fight_melee_w_0": {
+    "state": "fight_melee",
+    "facing": "w",
+    "frame": 0,
+    "own_shoulder_row": 271,
+    "facing_median_shoulder_row": 274.0,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      248,
+      269,
+      271
+    ],
+    "cleanup_region": [
+      235,
+      250,
+      278,
+      287
+    ]
+  },
+  "crew_fight_melee_w_1": {
+    "state": "fight_melee",
+    "facing": "w",
+    "frame": 1,
+    "own_shoulder_row": 271,
+    "facing_median_shoulder_row": 274.0,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      248,
+      269,
+      271
+    ],
+    "cleanup_region": [
+      223,
+      250,
+      289,
+      287
+    ]
+  },
+  "crew_fight_melee_w_2": {
+    "state": "fight_melee",
+    "facing": "w",
+    "frame": 2,
+    "own_shoulder_row": 272,
+    "facing_median_shoulder_row": 274.0,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      249,
+      269,
+      272
+    ],
+    "cleanup_region": [
+      232,
+      250,
+      280,
+      287
+    ]
+  },
+  "crew_fight_ranged_e_0": {
+    "state": "fight_ranged",
+    "facing": "e",
+    "frame": 0,
+    "own_shoulder_row": 275,
+    "facing_median_shoulder_row": 273.5,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      252,
+      269,
+      275
+    ],
+    "cleanup_region": [
+      227,
+      250,
+      286,
+      288
+    ]
+  },
+  "crew_fight_ranged_e_1": {
+    "state": "fight_ranged",
+    "facing": "e",
+    "frame": 1,
+    "own_shoulder_row": 275,
+    "facing_median_shoulder_row": 273.5,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      252,
+      269,
+      275
+    ],
+    "cleanup_region": [
+      227,
+      250,
+      285,
+      288
+    ]
+  },
+  "crew_fight_ranged_n_0": {
+    "state": "fight_ranged",
+    "facing": "n",
+    "frame": 0,
+    "own_shoulder_row": 275,
+    "facing_median_shoulder_row": 274.0,
+    "used_median_fallback": false,
+    "paste_region": [
+      242,
+      251,
+      270,
+      275
+    ],
+    "cleanup_region": [
+      229,
+      250,
+      283,
+      287
+    ]
+  },
+  "crew_fight_ranged_n_1": {
+    "state": "fight_ranged",
+    "facing": "n",
+    "frame": 1,
+    "own_shoulder_row": 274,
+    "facing_median_shoulder_row": 274.0,
+    "used_median_fallback": false,
+    "paste_region": [
+      242,
+      250,
+      270,
+      274
+    ],
+    "cleanup_region": [
+      228,
+      250,
+      284,
+      287
+    ]
+  },
+  "crew_fight_ranged_s_0": {
+    "state": "fight_ranged",
+    "facing": "s",
+    "frame": 0,
+    "own_shoulder_row": 274,
+    "facing_median_shoulder_row": 274,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      253,
+      269,
+      274
+    ],
+    "cleanup_region": [
+      237,
+      250,
+      274,
+      287
+    ]
+  },
+  "crew_fight_ranged_s_1": {
+    "state": "fight_ranged",
+    "facing": "s",
+    "frame": 1,
+    "own_shoulder_row": 274,
+    "facing_median_shoulder_row": 274,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      253,
+      269,
+      274
+    ],
+    "cleanup_region": [
+      237,
+      250,
+      274,
+      287
+    ]
+  },
+  "crew_fight_ranged_w_0": {
+    "state": "fight_ranged",
+    "facing": "w",
+    "frame": 0,
+    "own_shoulder_row": 274,
+    "facing_median_shoulder_row": 274.0,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      251,
+      269,
+      274
+    ],
+    "cleanup_region": [
+      239,
+      250,
+      274,
+      287
+    ]
+  },
+  "crew_fight_ranged_w_1": {
+    "state": "fight_ranged",
+    "facing": "w",
+    "frame": 1,
+    "own_shoulder_row": 274,
+    "facing_median_shoulder_row": 274.0,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      251,
+      269,
+      274
+    ],
+    "cleanup_region": [
+      239,
+      250,
+      274,
+      287
+    ]
+  },
+  "crew_idle_e_0": {
+    "state": "idle",
+    "facing": "e",
+    "frame": 0,
+    "own_shoulder_row": 272,
+    "facing_median_shoulder_row": 273.5,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      249,
+      269,
+      272
+    ],
+    "cleanup_region": [
+      241,
+      250,
+      272,
+      287
+    ]
+  },
+  "crew_idle_n_0": {
+    "state": "idle",
+    "facing": "n",
+    "frame": 0,
+    "own_shoulder_row": 275,
+    "facing_median_shoulder_row": 274.0,
+    "used_median_fallback": false,
+    "paste_region": [
+      242,
+      251,
+      270,
+      275
+    ],
+    "cleanup_region": [
+      237,
+      250,
+      274,
+      287
+    ]
+  },
+  "crew_idle_ne_0": {
+    "state": "idle",
+    "facing": "ne",
+    "frame": 0,
+    "own_shoulder_row": 272,
+    "facing_median_shoulder_row": 276,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      250,
+      267,
+      272
+    ],
+    "cleanup_region": [
+      239,
+      250,
+      273,
+      287
+    ]
+  },
+  "crew_idle_nw_0": {
+    "state": "idle",
+    "facing": "nw",
+    "frame": 0,
+    "own_shoulder_row": 274,
+    "facing_median_shoulder_row": 272.5,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      252,
+      267,
+      274
+    ],
+    "cleanup_region": [
+      239,
+      250,
+      274,
+      287
+    ]
+  },
+  "crew_idle_s_0": {
+    "state": "idle",
+    "facing": "s",
+    "frame": 0,
+    "own_shoulder_row": 272,
+    "facing_median_shoulder_row": 274,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      251,
+      269,
+      272
+    ],
+    "cleanup_region": [
+      237,
+      250,
+      274,
+      287
+    ]
+  },
+  "crew_idle_se_0": {
+    "state": "idle",
+    "facing": "se",
+    "frame": 0,
+    "own_shoulder_row": 273,
+    "facing_median_shoulder_row": 283,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      251,
+      268,
+      273
+    ],
+    "cleanup_region": [
+      240,
+      250,
+      272,
+      287
+    ]
+  },
+  "crew_idle_sw_0": {
+    "state": "idle",
+    "facing": "sw",
+    "frame": 0,
+    "own_shoulder_row": 279,
+    "facing_median_shoulder_row": 274,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      257,
+      268,
+      279
+    ],
+    "cleanup_region": [
+      239,
+      250,
+      273,
+      287
+    ]
+  },
+  "crew_idle_w_0": {
+    "state": "idle",
+    "facing": "w",
+    "frame": 0,
+    "own_shoulder_row": 279,
+    "facing_median_shoulder_row": 274.0,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      256,
+      269,
+      279
+    ],
+    "cleanup_region": [
+      240,
+      250,
+      272,
+      287
+    ]
+  },
+  "crew_injured_idle_e_0": {
+    "state": "injured_idle",
+    "facing": "e",
+    "frame": 0,
+    "own_shoulder_row": 274,
+    "facing_median_shoulder_row": 273.5,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      251,
+      269,
+      274
+    ],
+    "cleanup_region": [
+      239,
+      250,
+      272,
+      287
+    ]
+  },
+  "crew_injured_idle_n_0": {
+    "state": "injured_idle",
+    "facing": "n",
+    "frame": 0,
+    "own_shoulder_row": 274,
+    "facing_median_shoulder_row": 274.0,
+    "used_median_fallback": false,
+    "paste_region": [
+      242,
+      250,
+      270,
+      274
+    ],
+    "cleanup_region": [
+      239,
+      250,
+      274,
+      287
+    ]
+  },
+  "crew_injured_idle_s_0": {
+    "state": "injured_idle",
+    "facing": "s",
+    "frame": 0,
+    "own_shoulder_row": 275,
+    "facing_median_shoulder_row": 274,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      254,
+      269,
+      275
+    ],
+    "cleanup_region": [
+      239,
+      250,
+      274,
+      287
+    ]
+  },
+  "crew_injured_idle_w_0": {
+    "state": "injured_idle",
+    "facing": "w",
+    "frame": 0,
+    "own_shoulder_row": 275,
+    "facing_median_shoulder_row": 274.0,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      252,
+      269,
+      275
+    ],
+    "cleanup_region": [
+      239,
+      250,
+      274,
+      287
+    ]
+  },
+  "crew_injured_walk_e_0": {
+    "state": "injured_walk",
+    "facing": "e",
+    "frame": 0,
+    "own_shoulder_row": 271,
+    "facing_median_shoulder_row": 273.5,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      248,
+      269,
+      271
+    ],
+    "cleanup_region": [
+      237,
+      250,
+      275,
+      287
+    ]
+  },
+  "crew_injured_walk_e_1": {
+    "state": "injured_walk",
+    "facing": "e",
+    "frame": 1,
+    "own_shoulder_row": 271,
+    "facing_median_shoulder_row": 273.5,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      248,
+      269,
+      271
+    ],
+    "cleanup_region": [
+      233,
+      250,
+      279,
+      287
+    ]
+  },
+  "crew_injured_walk_e_2": {
+    "state": "injured_walk",
+    "facing": "e",
+    "frame": 2,
+    "own_shoulder_row": 271,
+    "facing_median_shoulder_row": 273.5,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      248,
+      269,
+      271
+    ],
+    "cleanup_region": [
+      233,
+      250,
+      279,
+      287
+    ]
+  },
+  "crew_injured_walk_e_3": {
+    "state": "injured_walk",
+    "facing": "e",
+    "frame": 3,
+    "own_shoulder_row": 271,
+    "facing_median_shoulder_row": 273.5,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      248,
+      269,
+      271
+    ],
+    "cleanup_region": [
+      239,
+      250,
+      272,
+      287
+    ]
+  },
+  "crew_injured_walk_n_0": {
+    "state": "injured_walk",
+    "facing": "n",
+    "frame": 0,
+    "own_shoulder_row": 274,
+    "facing_median_shoulder_row": 274.0,
+    "used_median_fallback": false,
+    "paste_region": [
+      242,
+      250,
+      270,
+      274
+    ],
+    "cleanup_region": [
+      233,
+      250,
+      278,
+      287
+    ]
+  },
+  "crew_injured_walk_n_1": {
+    "state": "injured_walk",
+    "facing": "n",
+    "frame": 1,
+    "own_shoulder_row": 274,
+    "facing_median_shoulder_row": 274.0,
+    "used_median_fallback": false,
+    "paste_region": [
+      242,
+      250,
+      270,
+      274
+    ],
+    "cleanup_region": [
+      233,
+      250,
+      279,
+      287
+    ]
+  },
+  "crew_injured_walk_n_2": {
+    "state": "injured_walk",
+    "facing": "n",
+    "frame": 2,
+    "own_shoulder_row": 274,
+    "facing_median_shoulder_row": 274.0,
+    "used_median_fallback": false,
+    "paste_region": [
+      242,
+      250,
+      270,
+      274
+    ],
+    "cleanup_region": [
+      223,
+      250,
+      289,
+      287
+    ]
+  },
+  "crew_injured_walk_n_3": {
+    "state": "injured_walk",
+    "facing": "n",
+    "frame": 3,
+    "own_shoulder_row": 275,
+    "facing_median_shoulder_row": 274.0,
+    "used_median_fallback": false,
+    "paste_region": [
+      242,
+      251,
+      270,
+      275
+    ],
+    "cleanup_region": [
+      239,
+      250,
+      273,
+      287
+    ]
+  },
+  "crew_injured_walk_s_0": {
+    "state": "injured_walk",
+    "facing": "s",
+    "frame": 0,
+    "own_shoulder_row": 271,
+    "facing_median_shoulder_row": 274,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      250,
+      269,
+      271
+    ],
+    "cleanup_region": [
+      239,
+      250,
+      272,
+      287
+    ]
+  },
+  "crew_injured_walk_s_1": {
+    "state": "injured_walk",
+    "facing": "s",
+    "frame": 1,
+    "own_shoulder_row": 271,
+    "facing_median_shoulder_row": 274,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      250,
+      269,
+      271
+    ],
+    "cleanup_region": [
+      237,
+      250,
+      274,
+      287
+    ]
+  },
+  "crew_injured_walk_s_2": {
+    "state": "injured_walk",
+    "facing": "s",
+    "frame": 2,
+    "own_shoulder_row": 272,
+    "facing_median_shoulder_row": 274,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      251,
+      269,
+      272
+    ],
+    "cleanup_region": [
+      233,
+      250,
+      279,
+      287
+    ]
+  },
+  "crew_injured_walk_s_3": {
+    "state": "injured_walk",
+    "facing": "s",
+    "frame": 3,
+    "own_shoulder_row": 272,
+    "facing_median_shoulder_row": 274,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      251,
+      269,
+      272
+    ],
+    "cleanup_region": [
+      237,
+      250,
+      274,
+      287
+    ]
+  },
+  "crew_injured_walk_w_0": {
+    "state": "injured_walk",
+    "facing": "w",
+    "frame": 0,
+    "own_shoulder_row": 272,
+    "facing_median_shoulder_row": 274.0,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      249,
+      269,
+      272
+    ],
+    "cleanup_region": [
+      235,
+      250,
+      278,
+      287
+    ]
+  },
+  "crew_injured_walk_w_1": {
+    "state": "injured_walk",
+    "facing": "w",
+    "frame": 1,
+    "own_shoulder_row": 274,
+    "facing_median_shoulder_row": 274.0,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      251,
+      269,
+      274
+    ],
+    "cleanup_region": [
+      235,
+      250,
+      278,
+      287
+    ]
+  },
+  "crew_injured_walk_w_2": {
+    "state": "injured_walk",
+    "facing": "w",
+    "frame": 2,
+    "own_shoulder_row": 271,
+    "facing_median_shoulder_row": 274.0,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      248,
+      269,
+      271
+    ],
+    "cleanup_region": [
+      224,
+      250,
+      288,
+      287
+    ]
+  },
+  "crew_injured_walk_w_3": {
+    "state": "injured_walk",
+    "facing": "w",
+    "frame": 3,
+    "own_shoulder_row": 272,
+    "facing_median_shoulder_row": 274.0,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      249,
+      269,
+      272
+    ],
+    "cleanup_region": [
+      241,
+      250,
+      272,
+      287
+    ]
+  },
+  "crew_walk_e_0": {
+    "state": "walk",
+    "facing": "e",
+    "frame": 0,
+    "own_shoulder_row": 276,
+    "facing_median_shoulder_row": 273.5,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      253,
+      269,
+      276
+    ],
+    "cleanup_region": [
+      235,
+      250,
+      277,
+      287
+    ]
+  },
+  "crew_walk_e_1": {
+    "state": "walk",
+    "facing": "e",
+    "frame": 1,
+    "own_shoulder_row": 276,
+    "facing_median_shoulder_row": 273.5,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      253,
+      269,
+      276
+    ],
+    "cleanup_region": [
+      235,
+      250,
+      278,
+      287
+    ]
+  },
+  "crew_walk_e_2": {
+    "state": "walk",
+    "facing": "e",
+    "frame": 2,
+    "own_shoulder_row": 276,
+    "facing_median_shoulder_row": 273.5,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      253,
+      269,
+      276
+    ],
+    "cleanup_region": [
+      235,
+      250,
+      278,
+      287
+    ]
+  },
+  "crew_walk_e_3": {
+    "state": "walk",
+    "facing": "e",
+    "frame": 3,
+    "own_shoulder_row": 275,
+    "facing_median_shoulder_row": 273.5,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      252,
+      269,
+      275
+    ],
+    "cleanup_region": [
+      235,
+      250,
+      276,
+      287
+    ]
+  },
+  "crew_walk_n_0": {
+    "state": "walk",
+    "facing": "n",
+    "frame": 0,
+    "own_shoulder_row": 272,
+    "facing_median_shoulder_row": 274.0,
+    "used_median_fallback": false,
+    "paste_region": [
+      242,
+      248,
+      270,
+      272
+    ],
+    "cleanup_region": [
+      239,
+      250,
+      273,
+      287
+    ]
+  },
+  "crew_walk_n_1": {
+    "state": "walk",
+    "facing": "n",
+    "frame": 1,
+    "own_shoulder_row": 272,
+    "facing_median_shoulder_row": 274.0,
+    "used_median_fallback": false,
+    "paste_region": [
+      242,
+      248,
+      270,
+      272
+    ],
+    "cleanup_region": [
+      239,
+      250,
+      273,
+      287
+    ]
+  },
+  "crew_walk_ne_0": {
+    "state": "walk",
+    "facing": "ne",
+    "frame": 0,
+    "own_shoulder_row": 276,
+    "facing_median_shoulder_row": 276,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      254,
+      267,
+      276
+    ],
+    "cleanup_region": [
+      235,
+      250,
+      278,
+      287
+    ]
+  },
+  "crew_walk_ne_1": {
+    "state": "walk",
+    "facing": "ne",
+    "frame": 1,
+    "own_shoulder_row": 276,
+    "facing_median_shoulder_row": 276,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      254,
+      267,
+      276
+    ],
+    "cleanup_region": [
+      235,
+      250,
+      278,
+      287
+    ]
+  },
+  "crew_walk_ne_2": {
+    "state": "walk",
+    "facing": "ne",
+    "frame": 2,
+    "own_shoulder_row": 276,
+    "facing_median_shoulder_row": 276,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      254,
+      267,
+      276
+    ],
+    "cleanup_region": [
+      234,
+      250,
+      278,
+      287
+    ]
+  },
+  "crew_walk_ne_3": {
+    "state": "walk",
+    "facing": "ne",
+    "frame": 3,
+    "own_shoulder_row": 276,
+    "facing_median_shoulder_row": 276,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      254,
+      267,
+      276
+    ],
+    "cleanup_region": [
+      235,
+      250,
+      277,
+      287
+    ]
+  },
+  "crew_walk_nw_0": {
+    "state": "walk",
+    "facing": "nw",
+    "frame": 0,
+    "own_shoulder_row": 272,
+    "facing_median_shoulder_row": 272.5,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      250,
+      267,
+      272
+    ],
+    "cleanup_region": [
+      239,
+      250,
+      273,
+      287
+    ]
+  },
+  "crew_walk_nw_1": {
+    "state": "walk",
+    "facing": "nw",
+    "frame": 1,
+    "own_shoulder_row": 271,
+    "facing_median_shoulder_row": 272.5,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      249,
+      267,
+      271
+    ],
+    "cleanup_region": [
+      237,
+      250,
+      274,
+      287
+    ]
+  },
+  "crew_walk_nw_3": {
+    "state": "walk",
+    "facing": "nw",
+    "frame": 3,
+    "own_shoulder_row": 273,
+    "facing_median_shoulder_row": 272.5,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      251,
+      267,
+      273
+    ],
+    "cleanup_region": [
+      241,
+      250,
+      270,
+      287
+    ]
+  },
+  "crew_walk_s_0": {
+    "state": "walk",
+    "facing": "s",
+    "frame": 0,
+    "own_shoulder_row": 283,
+    "facing_median_shoulder_row": 274,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      262,
+      269,
+      283
+    ],
+    "cleanup_region": [
+      235,
+      250,
+      278,
+      287
+    ]
+  },
+  "crew_walk_s_1": {
+    "state": "walk",
+    "facing": "s",
+    "frame": 1,
+    "own_shoulder_row": 283,
+    "facing_median_shoulder_row": 274,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      262,
+      269,
+      283
+    ],
+    "cleanup_region": [
+      225,
+      250,
+      288,
+      287
+    ]
+  },
+  "crew_walk_s_3": {
+    "state": "walk",
+    "facing": "s",
+    "frame": 3,
+    "own_shoulder_row": 286,
+    "facing_median_shoulder_row": 274,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      265,
+      269,
+      286
+    ],
+    "cleanup_region": [
+      241,
+      250,
+      272,
+      289
+    ]
+  },
+  "crew_walk_se_0": {
+    "state": "walk",
+    "facing": "se",
+    "frame": 0,
+    "own_shoulder_row": 283,
+    "facing_median_shoulder_row": 283,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      261,
+      268,
+      283
+    ],
+    "cleanup_region": [
+      235,
+      250,
+      278,
+      287
+    ]
+  },
+  "crew_walk_se_3": {
+    "state": "walk",
+    "facing": "se",
+    "frame": 3,
+    "own_shoulder_row": 286,
+    "facing_median_shoulder_row": 283,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      264,
+      268,
+      286
+    ],
+    "cleanup_region": [
+      241,
+      250,
+      271,
+      289
+    ]
+  },
+  "crew_walk_sw_0": {
+    "state": "walk",
+    "facing": "sw",
+    "frame": 0,
+    "own_shoulder_row": 275,
+    "facing_median_shoulder_row": 274,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      253,
+      268,
+      275
+    ],
+    "cleanup_region": [
+      235,
+      250,
+      276,
+      287
+    ]
+  },
+  "crew_walk_sw_1": {
+    "state": "walk",
+    "facing": "sw",
+    "frame": 1,
+    "own_shoulder_row": 274,
+    "facing_median_shoulder_row": 274,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      252,
+      268,
+      274
+    ],
+    "cleanup_region": [
+      235,
+      250,
+      277,
+      287
+    ]
+  },
+  "crew_walk_sw_2": {
+    "state": "walk",
+    "facing": "sw",
+    "frame": 2,
+    "own_shoulder_row": 274,
+    "facing_median_shoulder_row": 274,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      252,
+      268,
+      274
+    ],
+    "cleanup_region": [
+      236,
+      250,
+      276,
+      287
+    ]
+  },
+  "crew_walk_sw_3": {
+    "state": "walk",
+    "facing": "sw",
+    "frame": 3,
+    "own_shoulder_row": 274,
+    "facing_median_shoulder_row": 274,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      252,
+      268,
+      274
+    ],
+    "cleanup_region": [
+      239,
+      250,
+      274,
+      287
+    ]
+  },
+  "crew_walk_w_0": {
+    "state": "walk",
+    "facing": "w",
+    "frame": 0,
+    "own_shoulder_row": 276,
+    "facing_median_shoulder_row": 274.0,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      253,
+      269,
+      276
+    ],
+    "cleanup_region": [
+      235,
+      250,
+      276,
+      287
+    ]
+  },
+  "crew_walk_w_1": {
+    "state": "walk",
+    "facing": "w",
+    "frame": 1,
+    "own_shoulder_row": 274,
+    "facing_median_shoulder_row": 274.0,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      251,
+      269,
+      274
+    ],
+    "cleanup_region": [
+      237,
+      250,
+      275,
+      287
+    ]
+  },
+  "crew_walk_w_2": {
+    "state": "walk",
+    "facing": "w",
+    "frame": 2,
+    "own_shoulder_row": 274,
+    "facing_median_shoulder_row": 274.0,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      251,
+      269,
+      274
+    ],
+    "cleanup_region": [
+      224,
+      250,
+      288,
+      287
+    ]
+  },
+  "crew_walk_w_3": {
+    "state": "walk",
+    "facing": "w",
+    "frame": 3,
+    "own_shoulder_row": 275,
+    "facing_median_shoulder_row": 274.0,
+    "used_median_fallback": false,
+    "paste_region": [
+      244,
+      252,
+      269,
+      275
+    ],
+    "cleanup_region": [
+      239,
+      250,
+      274,
+      287
+    ]
+  },
+  "crew_dead_s_0": {
+    "state": "dead",
+    "facing": "s",
+    "frame": 0,
+    "contract": "prone",
+    "skipped": true,
+    "reason": "non-upright pose (prone/seated) -- neck-pinch anchor geometry doesn't hold; canonical-head paste would require a per-pose rotation guess, risking a worse result than the original render. Left untouched."
+  },
+  "crew_dead_s_1": {
+    "state": "dead",
+    "facing": "s",
+    "frame": 1,
+    "contract": "prone",
+    "skipped": true,
+    "reason": "non-upright pose (prone/seated) -- neck-pinch anchor geometry doesn't hold; canonical-head paste would require a per-pose rotation guess, risking a worse result than the original render. Left untouched."
+  },
+  "crew_floating_e_0": {
+    "state": "floating",
+    "facing": "e",
+    "frame": 0,
+    "contract": "prone",
+    "skipped": true,
+    "reason": "non-upright pose (prone/seated) -- neck-pinch anchor geometry doesn't hold; canonical-head paste would require a per-pose rotation guess, risking a worse result than the original render. Left untouched."
+  },
+  "crew_floating_e_1": {
+    "state": "floating",
+    "facing": "e",
+    "frame": 1,
+    "contract": "prone",
+    "skipped": true,
+    "reason": "non-upright pose (prone/seated) -- neck-pinch anchor geometry doesn't hold; canonical-head paste would require a per-pose rotation guess, risking a worse result than the original render. Left untouched."
+  },
+  "crew_floating_e_2": {
+    "state": "floating",
+    "facing": "e",
+    "frame": 2,
+    "contract": "prone",
+    "skipped": true,
+    "reason": "non-upright pose (prone/seated) -- neck-pinch anchor geometry doesn't hold; canonical-head paste would require a per-pose rotation guess, risking a worse result than the original render. Left untouched."
+  },
+  "crew_floating_n_0": {
+    "state": "floating",
+    "facing": "n",
+    "frame": 0,
+    "contract": "prone",
+    "skipped": true,
+    "reason": "non-upright pose (prone/seated) -- neck-pinch anchor geometry doesn't hold; canonical-head paste would require a per-pose rotation guess, risking a worse result than the original render. Left untouched."
+  },
+  "crew_floating_n_1": {
+    "state": "floating",
+    "facing": "n",
+    "frame": 1,
+    "contract": "prone",
+    "skipped": true,
+    "reason": "non-upright pose (prone/seated) -- neck-pinch anchor geometry doesn't hold; canonical-head paste would require a per-pose rotation guess, risking a worse result than the original render. Left untouched."
+  },
+  "crew_floating_n_2": {
+    "state": "floating",
+    "facing": "n",
+    "frame": 2,
+    "contract": "prone",
+    "skipped": true,
+    "reason": "non-upright pose (prone/seated) -- neck-pinch anchor geometry doesn't hold; canonical-head paste would require a per-pose rotation guess, risking a worse result than the original render. Left untouched."
+  },
+  "crew_floating_s_0": {
+    "state": "floating",
+    "facing": "s",
+    "frame": 0,
+    "contract": "prone",
+    "skipped": true,
+    "reason": "non-upright pose (prone/seated) -- neck-pinch anchor geometry doesn't hold; canonical-head paste would require a per-pose rotation guess, risking a worse result than the original render. Left untouched."
+  },
+  "crew_floating_s_1": {
+    "state": "floating",
+    "facing": "s",
+    "frame": 1,
+    "contract": "prone",
+    "skipped": true,
+    "reason": "non-upright pose (prone/seated) -- neck-pinch anchor geometry doesn't hold; canonical-head paste would require a per-pose rotation guess, risking a worse result than the original render. Left untouched."
+  },
+  "crew_floating_s_2": {
+    "state": "floating",
+    "facing": "s",
+    "frame": 2,
+    "contract": "prone",
+    "skipped": true,
+    "reason": "non-upright pose (prone/seated) -- neck-pinch anchor geometry doesn't hold; canonical-head paste would require a per-pose rotation guess, risking a worse result than the original render. Left untouched."
+  },
+  "crew_floating_w_0": {
+    "state": "floating",
+    "facing": "w",
+    "frame": 0,
+    "contract": "prone",
+    "skipped": true,
+    "reason": "non-upright pose (prone/seated) -- neck-pinch anchor geometry doesn't hold; canonical-head paste would require a per-pose rotation guess, risking a worse result than the original render. Left untouched."
+  },
+  "crew_floating_w_1": {
+    "state": "floating",
+    "facing": "w",
+    "frame": 1,
+    "contract": "prone",
+    "skipped": true,
+    "reason": "non-upright pose (prone/seated) -- neck-pinch anchor geometry doesn't hold; canonical-head paste would require a per-pose rotation guess, risking a worse result than the original render. Left untouched."
+  },
+  "crew_floating_w_2": {
+    "state": "floating",
+    "facing": "w",
+    "frame": 2,
+    "contract": "prone",
+    "skipped": true,
+    "reason": "non-upright pose (prone/seated) -- neck-pinch anchor geometry doesn't hold; canonical-head paste would require a per-pose rotation guess, risking a worse result than the original render. Left untouched."
+  },
+  "crew_sleeping_e_0": {
+    "state": "sleeping",
+    "facing": "e",
+    "frame": 0,
+    "contract": "prone",
+    "skipped": true,
+    "reason": "non-upright pose (prone/seated) -- neck-pinch anchor geometry doesn't hold; canonical-head paste would require a per-pose rotation guess, risking a worse result than the original render. Left untouched."
+  },
+  "crew_sleeping_e_1": {
+    "state": "sleeping",
+    "facing": "e",
+    "frame": 1,
+    "contract": "prone",
+    "skipped": true,
+    "reason": "non-upright pose (prone/seated) -- neck-pinch anchor geometry doesn't hold; canonical-head paste would require a per-pose rotation guess, risking a worse result than the original render. Left untouched."
+  }
+}

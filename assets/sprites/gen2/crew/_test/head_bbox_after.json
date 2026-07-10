@@ -1,0 +1,2530 @@
+{
+  "crew_carry_idle_e_0": {
+    "bbox": [
+      242,
+      251,
+      268,
+      320
+    ],
+    "head_bbox": [
+      248,
+      251,
+      266,
+      271
+    ],
+    "head_w": 18,
+    "head_h": 20,
+    "neck_row": 21,
+    "state": "carry_idle",
+    "facing": "e",
+    "frame": 0,
+    "contract": "stand",
+    "file": "crew_carry_idle_e_0.png"
+  },
+  "crew_carry_idle_n_0": {
+    "bbox": [
+      243,
+      250,
+      270,
+      320
+    ],
+    "head_bbox": [
+      246,
+      250,
+      266,
+      271
+    ],
+    "head_w": 20,
+    "head_h": 21,
+    "neck_row": 34,
+    "state": "carry_idle",
+    "facing": "n",
+    "frame": 0,
+    "contract": "stand",
+    "file": "crew_carry_idle_n_0.png"
+  },
+  "crew_carry_idle_s_0": {
+    "bbox": [
+      244,
+      256,
+      268,
+      320
+    ],
+    "head_bbox": [
+      248,
+      256,
+      265,
+      274
+    ],
+    "head_w": 17,
+    "head_h": 18,
+    "neck_row": 28,
+    "state": "carry_idle",
+    "facing": "s",
+    "frame": 0,
+    "contract": "stand",
+    "file": "crew_carry_idle_s_0.png"
+  },
+  "crew_carry_idle_w_0": {
+    "bbox": [
+      243,
+      251,
+      270,
+      320
+    ],
+    "head_bbox": [
+      247,
+      251,
+      265,
+      271
+    ],
+    "head_w": 18,
+    "head_h": 20,
+    "neck_row": 21,
+    "state": "carry_idle",
+    "facing": "w",
+    "frame": 0,
+    "contract": "stand",
+    "file": "crew_carry_idle_w_0.png"
+  },
+  "crew_carry_walk_e_0": {
+    "bbox": [
+      228,
+      250,
+      285,
+      320
+    ],
+    "head_bbox": [
+      235,
+      250,
+      285,
+      274
+    ],
+    "head_w": 50,
+    "head_h": 24,
+    "neck_row": 23,
+    "state": "carry_walk",
+    "facing": "e",
+    "frame": 0,
+    "contract": "stand",
+    "file": "crew_carry_walk_e_0.png"
+  },
+  "crew_carry_walk_e_1": {
+    "bbox": [
+      226,
+      250,
+      285,
+      320
+    ],
+    "head_bbox": [
+      226,
+      250,
+      285,
+      278
+    ],
+    "head_w": 59,
+    "head_h": 28,
+    "neck_row": 27,
+    "state": "carry_walk",
+    "facing": "e",
+    "frame": 1,
+    "contract": "stand",
+    "file": "crew_carry_walk_e_1.png"
+  },
+  "crew_carry_walk_e_2": {
+    "bbox": [
+      228,
+      250,
+      285,
+      320
+    ],
+    "head_bbox": [
+      253,
+      250,
+      274,
+      278
+    ],
+    "head_w": 21,
+    "head_h": 28,
+    "neck_row": 27,
+    "state": "carry_walk",
+    "facing": "e",
+    "frame": 2,
+    "contract": "stand",
+    "file": "crew_carry_walk_e_2.png"
+  },
+  "crew_carry_walk_e_3": {
+    "bbox": [
+      237,
+      255,
+      275,
+      320
+    ],
+    "head_bbox": [
+      248,
+      255,
+      266,
+      275
+    ],
+    "head_w": 18,
+    "head_h": 20,
+    "neck_row": 19,
+    "state": "carry_walk",
+    "facing": "e",
+    "frame": 3,
+    "contract": "stand",
+    "file": "crew_carry_walk_e_3.png"
+  },
+  "crew_carry_walk_n_0": {
+    "bbox": [
+      240,
+      256,
+      272,
+      320
+    ],
+    "head_bbox": [
+      246,
+      256,
+      266,
+      277
+    ],
+    "head_w": 20,
+    "head_h": 21,
+    "neck_row": 20,
+    "state": "carry_walk",
+    "facing": "n",
+    "frame": 0,
+    "contract": "stand",
+    "file": "crew_carry_walk_n_0.png"
+  },
+  "crew_carry_walk_n_1": {
+    "bbox": [
+      240,
+      256,
+      273,
+      320
+    ],
+    "head_bbox": [
+      246,
+      256,
+      266,
+      277
+    ],
+    "head_w": 20,
+    "head_h": 21,
+    "neck_row": 20,
+    "state": "carry_walk",
+    "facing": "n",
+    "frame": 1,
+    "contract": "stand",
+    "file": "crew_carry_walk_n_1.png"
+  },
+  "crew_carry_walk_n_2": {
+    "bbox": [
+      242,
+      255,
+      271,
+      320
+    ],
+    "head_bbox": [
+      246,
+      255,
+      266,
+      276
+    ],
+    "head_w": 20,
+    "head_h": 21,
+    "neck_row": 20,
+    "state": "carry_walk",
+    "facing": "n",
+    "frame": 2,
+    "contract": "stand",
+    "file": "crew_carry_walk_n_2.png"
+  },
+  "crew_carry_walk_n_3": {
+    "bbox": [
+      242,
+      256,
+      271,
+      320
+    ],
+    "head_bbox": [
+      246,
+      256,
+      266,
+      277
+    ],
+    "head_w": 20,
+    "head_h": 21,
+    "neck_row": 20,
+    "state": "carry_walk",
+    "facing": "n",
+    "frame": 3,
+    "contract": "stand",
+    "file": "crew_carry_walk_n_3.png"
+  },
+  "crew_carry_walk_s_0": {
+    "bbox": [
+      230,
+      250,
+      283,
+      320
+    ],
+    "head_bbox": [
+      234,
+      250,
+      283,
+      272
+    ],
+    "head_w": 49,
+    "head_h": 22,
+    "neck_row": 21,
+    "state": "carry_walk",
+    "facing": "s",
+    "frame": 0,
+    "contract": "stand",
+    "file": "crew_carry_walk_s_0.png"
+  },
+  "crew_carry_walk_s_1": {
+    "bbox": [
+      226,
+      250,
+      285,
+      320
+    ],
+    "head_bbox": [
+      226,
+      250,
+      285,
+      279
+    ],
+    "head_w": 59,
+    "head_h": 29,
+    "neck_row": 28,
+    "state": "carry_walk",
+    "facing": "s",
+    "frame": 1,
+    "contract": "stand",
+    "file": "crew_carry_walk_s_1.png"
+  },
+  "crew_carry_walk_s_2": {
+    "bbox": [
+      232,
+      250,
+      280,
+      320
+    ],
+    "head_bbox": [
+      254,
+      250,
+      275,
+      273
+    ],
+    "head_w": 21,
+    "head_h": 23,
+    "neck_row": 22,
+    "state": "carry_walk",
+    "facing": "s",
+    "frame": 2,
+    "contract": "stand",
+    "file": "crew_carry_walk_s_2.png"
+  },
+  "crew_carry_walk_s_3": {
+    "bbox": [
+      237,
+      259,
+      275,
+      320
+    ],
+    "head_bbox": [
+      248,
+      259,
+      265,
+      277
+    ],
+    "head_w": 17,
+    "head_h": 18,
+    "neck_row": 27,
+    "state": "carry_walk",
+    "facing": "s",
+    "frame": 3,
+    "contract": "stand",
+    "file": "crew_carry_walk_s_3.png"
+  },
+  "crew_carry_walk_w_0": {
+    "bbox": [
+      240,
+      256,
+      272,
+      320
+    ],
+    "head_bbox": [
+      247,
+      256,
+      265,
+      276
+    ],
+    "head_w": 18,
+    "head_h": 20,
+    "neck_row": 19,
+    "state": "carry_walk",
+    "facing": "w",
+    "frame": 0,
+    "contract": "stand",
+    "file": "crew_carry_walk_w_0.png"
+  },
+  "crew_carry_walk_w_1": {
+    "bbox": [
+      238,
+      255,
+      273,
+      320
+    ],
+    "head_bbox": [
+      247,
+      255,
+      265,
+      275
+    ],
+    "head_w": 18,
+    "head_h": 20,
+    "neck_row": 20,
+    "state": "carry_walk",
+    "facing": "w",
+    "frame": 1,
+    "contract": "stand",
+    "file": "crew_carry_walk_w_1.png"
+  },
+  "crew_carry_walk_w_2": {
+    "bbox": [
+      238,
+      254,
+      275,
+      320
+    ],
+    "head_bbox": [
+      247,
+      254,
+      265,
+      274
+    ],
+    "head_w": 18,
+    "head_h": 20,
+    "neck_row": 21,
+    "state": "carry_walk",
+    "facing": "w",
+    "frame": 2,
+    "contract": "stand",
+    "file": "crew_carry_walk_w_2.png"
+  },
+  "crew_carry_walk_w_3": {
+    "bbox": [
+      239,
+      256,
+      273,
+      320
+    ],
+    "head_bbox": [
+      247,
+      256,
+      265,
+      276
+    ],
+    "head_w": 18,
+    "head_h": 20,
+    "neck_row": 19,
+    "state": "carry_walk",
+    "facing": "w",
+    "frame": 3,
+    "contract": "stand",
+    "file": "crew_carry_walk_w_3.png"
+  },
+  "crew_dead_s_0": {
+    "bbox": [
+      203,
+      225,
+      309,
+      320
+    ],
+    "head_bbox": [
+      264,
+      225,
+      284,
+      229
+    ],
+    "head_w": 20,
+    "head_h": 4,
+    "neck_row": 3,
+    "state": "dead",
+    "facing": "s",
+    "frame": 0,
+    "contract": "prone",
+    "file": "crew_dead_s_0.png"
+  },
+  "crew_dead_s_1": {
+    "bbox": [
+      178,
+      225,
+      333,
+      320
+    ],
+    "head_bbox": [
+      288,
+      225,
+      316,
+      229
+    ],
+    "head_w": 28,
+    "head_h": 4,
+    "neck_row": 3,
+    "state": "dead",
+    "facing": "s",
+    "frame": 1,
+    "contract": "prone",
+    "file": "crew_dead_s_1.png"
+  },
+  "crew_fight_melee_e_0": {
+    "bbox": [
+      214,
+      250,
+      297,
+      320
+    ],
+    "head_bbox": [
+      225,
+      250,
+      294,
+      269
+    ],
+    "head_w": 69,
+    "head_h": 19,
+    "neck_row": 18,
+    "state": "fight_melee",
+    "facing": "e",
+    "frame": 0,
+    "contract": "stand",
+    "file": "crew_fight_melee_e_0.png"
+  },
+  "crew_fight_melee_e_1": {
+    "bbox": [
+      228,
+      253,
+      274,
+      320
+    ],
+    "head_bbox": [
+      248,
+      253,
+      266,
+      273
+    ],
+    "head_w": 18,
+    "head_h": 20,
+    "neck_row": 28,
+    "state": "fight_melee",
+    "facing": "e",
+    "frame": 1,
+    "contract": "stand",
+    "file": "crew_fight_melee_e_1.png"
+  },
+  "crew_fight_melee_e_2": {
+    "bbox": [
+      238,
+      253,
+      274,
+      320
+    ],
+    "head_bbox": [
+      248,
+      253,
+      266,
+      273
+    ],
+    "head_w": 18,
+    "head_h": 20,
+    "neck_row": 19,
+    "state": "fight_melee",
+    "facing": "e",
+    "frame": 2,
+    "contract": "stand",
+    "file": "crew_fight_melee_e_2.png"
+  },
+  "crew_fight_melee_n_0": {
+    "bbox": [
+      236,
+      252,
+      273,
+      320
+    ],
+    "head_bbox": [
+      246,
+      252,
+      266,
+      273
+    ],
+    "head_w": 20,
+    "head_h": 21,
+    "neck_row": 20,
+    "state": "fight_melee",
+    "facing": "n",
+    "frame": 0,
+    "contract": "stand",
+    "file": "crew_fight_melee_n_0.png"
+  },
+  "crew_fight_melee_n_1": {
+    "bbox": [
+      226,
+      251,
+      276,
+      320
+    ],
+    "head_bbox": [
+      246,
+      251,
+      266,
+      270
+    ],
+    "head_w": 20,
+    "head_h": 19,
+    "neck_row": 18,
+    "state": "fight_melee",
+    "facing": "n",
+    "frame": 1,
+    "contract": "stand",
+    "file": "crew_fight_melee_n_1.png"
+  },
+  "crew_fight_melee_n_2": {
+    "bbox": [
+      236,
+      251,
+      275,
+      320
+    ],
+    "head_bbox": [
+      246,
+      251,
+      266,
+      272
+    ],
+    "head_w": 20,
+    "head_h": 21,
+    "neck_row": 20,
+    "state": "fight_melee",
+    "facing": "n",
+    "frame": 2,
+    "contract": "stand",
+    "file": "crew_fight_melee_n_2.png"
+  },
+  "crew_fight_melee_s_0": {
+    "bbox": [
+      214,
+      250,
+      298,
+      320
+    ],
+    "head_bbox": [
+      273,
+      250,
+      290,
+      254
+    ],
+    "head_w": 17,
+    "head_h": 4,
+    "neck_row": 3,
+    "state": "fight_melee",
+    "facing": "s",
+    "frame": 0,
+    "contract": "stand",
+    "file": "crew_fight_melee_s_0.png"
+  },
+  "crew_fight_melee_s_1": {
+    "bbox": [
+      237,
+      255,
+      280,
+      320
+    ],
+    "head_bbox": [
+      250,
+      255,
+      264,
+      259
+    ],
+    "head_w": 14,
+    "head_h": 4,
+    "neck_row": 3,
+    "state": "fight_melee",
+    "facing": "s",
+    "frame": 1,
+    "contract": "stand",
+    "file": "crew_fight_melee_s_1.png"
+  },
+  "crew_fight_melee_s_2": {
+    "bbox": [
+      239,
+      257,
+      273,
+      320
+    ],
+    "head_bbox": [
+      248,
+      257,
+      265,
+      275
+    ],
+    "head_w": 17,
+    "head_h": 18,
+    "neck_row": 17,
+    "state": "fight_melee",
+    "facing": "s",
+    "frame": 2,
+    "contract": "stand",
+    "file": "crew_fight_melee_s_2.png"
+  },
+  "crew_fight_melee_w_0": {
+    "bbox": [
+      238,
+      251,
+      275,
+      320
+    ],
+    "head_bbox": [
+      247,
+      251,
+      265,
+      271
+    ],
+    "head_w": 18,
+    "head_h": 20,
+    "neck_row": 19,
+    "state": "fight_melee",
+    "facing": "w",
+    "frame": 0,
+    "contract": "stand",
+    "file": "crew_fight_melee_w_0.png"
+  },
+  "crew_fight_melee_w_1": {
+    "bbox": [
+      226,
+      251,
+      276,
+      320
+    ],
+    "head_bbox": [
+      247,
+      251,
+      265,
+      271
+    ],
+    "head_w": 18,
+    "head_h": 20,
+    "neck_row": 33,
+    "state": "fight_melee",
+    "facing": "w",
+    "frame": 1,
+    "contract": "stand",
+    "file": "crew_fight_melee_w_1.png"
+  },
+  "crew_fight_melee_w_2": {
+    "bbox": [
+      235,
+      252,
+      273,
+      320
+    ],
+    "head_bbox": [
+      247,
+      252,
+      265,
+      271
+    ],
+    "head_w": 18,
+    "head_h": 19,
+    "neck_row": 18,
+    "state": "fight_melee",
+    "facing": "w",
+    "frame": 2,
+    "contract": "stand",
+    "file": "crew_fight_melee_w_2.png"
+  },
+  "crew_fight_ranged_e_0": {
+    "bbox": [
+      230,
+      255,
+      281,
+      320
+    ],
+    "head_bbox": [
+      248,
+      255,
+      266,
+      275
+    ],
+    "head_w": 18,
+    "head_h": 20,
+    "neck_row": 26,
+    "state": "fight_ranged",
+    "facing": "e",
+    "frame": 0,
+    "contract": "stand",
+    "file": "crew_fight_ranged_e_0.png"
+  },
+  "crew_fight_ranged_e_1": {
+    "bbox": [
+      230,
+      255,
+      280,
+      320
+    ],
+    "head_bbox": [
+      248,
+      255,
+      266,
+      275
+    ],
+    "head_w": 18,
+    "head_h": 20,
+    "neck_row": 26,
+    "state": "fight_ranged",
+    "facing": "e",
+    "frame": 1,
+    "contract": "stand",
+    "file": "crew_fight_ranged_e_1.png"
+  },
+  "crew_fight_ranged_n_0": {
+    "bbox": [
+      232,
+      254,
+      278,
+      320
+    ],
+    "head_bbox": [
+      248,
+      254,
+      264,
+      258
+    ],
+    "head_w": 16,
+    "head_h": 4,
+    "neck_row": 3,
+    "state": "fight_ranged",
+    "facing": "n",
+    "frame": 0,
+    "contract": "stand",
+    "file": "crew_fight_ranged_n_0.png"
+  },
+  "crew_fight_ranged_n_1": {
+    "bbox": [
+      231,
+      253,
+      278,
+      320
+    ],
+    "head_bbox": [
+      248,
+      253,
+      264,
+      257
+    ],
+    "head_w": 16,
+    "head_h": 4,
+    "neck_row": 3,
+    "state": "fight_ranged",
+    "facing": "n",
+    "frame": 1,
+    "contract": "stand",
+    "file": "crew_fight_ranged_n_1.png"
+  },
+  "crew_fight_ranged_s_0": {
+    "bbox": [
+      240,
+      256,
+      271,
+      320
+    ],
+    "head_bbox": [
+      248,
+      256,
+      265,
+      274
+    ],
+    "head_w": 17,
+    "head_h": 18,
+    "neck_row": 28,
+    "state": "fight_ranged",
+    "facing": "s",
+    "frame": 0,
+    "contract": "stand",
+    "file": "crew_fight_ranged_s_0.png"
+  },
+  "crew_fight_ranged_s_1": {
+    "bbox": [
+      240,
+      256,
+      271,
+      320
+    ],
+    "head_bbox": [
+      248,
+      256,
+      265,
+      274
+    ],
+    "head_w": 17,
+    "head_h": 18,
+    "neck_row": 27,
+    "state": "fight_ranged",
+    "facing": "s",
+    "frame": 1,
+    "contract": "stand",
+    "file": "crew_fight_ranged_s_1.png"
+  },
+  "crew_fight_ranged_w_0": {
+    "bbox": [
+      242,
+      254,
+      271,
+      320
+    ],
+    "head_bbox": [
+      247,
+      254,
+      265,
+      274
+    ],
+    "head_w": 18,
+    "head_h": 20,
+    "neck_row": 19,
+    "state": "fight_ranged",
+    "facing": "w",
+    "frame": 0,
+    "contract": "stand",
+    "file": "crew_fight_ranged_w_0.png"
+  },
+  "crew_fight_ranged_w_1": {
+    "bbox": [
+      242,
+      254,
+      271,
+      320
+    ],
+    "head_bbox": [
+      247,
+      254,
+      265,
+      274
+    ],
+    "head_w": 18,
+    "head_h": 20,
+    "neck_row": 19,
+    "state": "fight_ranged",
+    "facing": "w",
+    "frame": 1,
+    "contract": "stand",
+    "file": "crew_fight_ranged_w_1.png"
+  },
+  "crew_floating_e_0": {
+    "bbox": [
+      235,
+      225,
+      277,
+      320
+    ],
+    "head_bbox": [
+      239,
+      225,
+      268,
+      256
+    ],
+    "head_w": 29,
+    "head_h": 31,
+    "neck_row": 30,
+    "state": "floating",
+    "facing": "e",
+    "frame": 0,
+    "contract": "prone",
+    "file": "crew_floating_e_0.png"
+  },
+  "crew_floating_e_1": {
+    "bbox": [
+      227,
+      225,
+      285,
+      320
+    ],
+    "head_bbox": [
+      244,
+      225,
+      272,
+      252
+    ],
+    "head_w": 28,
+    "head_h": 27,
+    "neck_row": 26,
+    "state": "floating",
+    "facing": "e",
+    "frame": 1,
+    "contract": "prone",
+    "file": "crew_floating_e_1.png"
+  },
+  "crew_floating_e_2": {
+    "bbox": [
+      228,
+      225,
+      285,
+      320
+    ],
+    "head_bbox": [
+      240,
+      225,
+      266,
+      252
+    ],
+    "head_w": 26,
+    "head_h": 27,
+    "neck_row": 26,
+    "state": "floating",
+    "facing": "e",
+    "frame": 2,
+    "contract": "prone",
+    "file": "crew_floating_e_2.png"
+  },
+  "crew_floating_n_0": {
+    "bbox": [
+      228,
+      225,
+      284,
+      320
+    ],
+    "head_bbox": [
+      242,
+      225,
+      263,
+      229
+    ],
+    "head_w": 21,
+    "head_h": 4,
+    "neck_row": 3,
+    "state": "floating",
+    "facing": "n",
+    "frame": 0,
+    "contract": "prone",
+    "file": "crew_floating_n_0.png"
+  },
+  "crew_floating_n_1": {
+    "bbox": [
+      222,
+      225,
+      290,
+      320
+    ],
+    "head_bbox": [
+      248,
+      225,
+      269,
+      229
+    ],
+    "head_w": 21,
+    "head_h": 4,
+    "neck_row": 3,
+    "state": "floating",
+    "facing": "n",
+    "frame": 1,
+    "contract": "prone",
+    "file": "crew_floating_n_1.png"
+  },
+  "crew_floating_n_2": {
+    "bbox": [
+      224,
+      225,
+      287,
+      320
+    ],
+    "head_bbox": [
+      246,
+      225,
+      268,
+      229
+    ],
+    "head_w": 22,
+    "head_h": 4,
+    "neck_row": 3,
+    "state": "floating",
+    "facing": "n",
+    "frame": 2,
+    "contract": "prone",
+    "file": "crew_floating_n_2.png"
+  },
+  "crew_floating_s_0": {
+    "bbox": [
+      218,
+      225,
+      295,
+      320
+    ],
+    "head_bbox": [
+      248,
+      225,
+      266,
+      229
+    ],
+    "head_w": 18,
+    "head_h": 4,
+    "neck_row": 3,
+    "state": "floating",
+    "facing": "s",
+    "frame": 0,
+    "contract": "prone",
+    "file": "crew_floating_s_0.png"
+  },
+  "crew_floating_s_1": {
+    "bbox": [
+      216,
+      225,
+      295,
+      320
+    ],
+    "head_bbox": [
+      245,
+      225,
+      267,
+      229
+    ],
+    "head_w": 22,
+    "head_h": 4,
+    "neck_row": 3,
+    "state": "floating",
+    "facing": "s",
+    "frame": 1,
+    "contract": "prone",
+    "file": "crew_floating_s_1.png"
+  },
+  "crew_floating_s_2": {
+    "bbox": [
+      232,
+      225,
+      281,
+      320
+    ],
+    "head_bbox": [
+      242,
+      225,
+      273,
+      256
+    ],
+    "head_w": 31,
+    "head_h": 31,
+    "neck_row": 30,
+    "state": "floating",
+    "facing": "s",
+    "frame": 2,
+    "contract": "prone",
+    "file": "crew_floating_s_2.png"
+  },
+  "crew_floating_w_0": {
+    "bbox": [
+      232,
+      225,
+      280,
+      320
+    ],
+    "head_bbox": [
+      236,
+      225,
+      271,
+      263
+    ],
+    "head_w": 35,
+    "head_h": 38,
+    "neck_row": 37,
+    "state": "floating",
+    "facing": "w",
+    "frame": 0,
+    "contract": "prone",
+    "file": "crew_floating_w_0.png"
+  },
+  "crew_floating_w_1": {
+    "bbox": [
+      228,
+      225,
+      283,
+      320
+    ],
+    "head_bbox": [
+      235,
+      225,
+      269,
+      260
+    ],
+    "head_w": 34,
+    "head_h": 35,
+    "neck_row": 34,
+    "state": "floating",
+    "facing": "w",
+    "frame": 1,
+    "contract": "prone",
+    "file": "crew_floating_w_1.png"
+  },
+  "crew_floating_w_2": {
+    "bbox": [
+      233,
+      225,
+      279,
+      320
+    ],
+    "head_bbox": [
+      236,
+      225,
+      270,
+      260
+    ],
+    "head_w": 34,
+    "head_h": 35,
+    "neck_row": 34,
+    "state": "floating",
+    "facing": "w",
+    "frame": 2,
+    "contract": "prone",
+    "file": "crew_floating_w_2.png"
+  },
+  "crew_idle_e_0": {
+    "bbox": [
+      246,
+      252,
+      266,
+      320
+    ],
+    "head_bbox": [
+      248,
+      252,
+      266,
+      272
+    ],
+    "head_w": 18,
+    "head_h": 20,
+    "neck_row": 33,
+    "state": "idle",
+    "facing": "e",
+    "frame": 0,
+    "contract": "stand",
+    "file": "crew_idle_e_0.png"
+  },
+  "crew_idle_n_0": {
+    "bbox": [
+      240,
+      254,
+      271,
+      320
+    ],
+    "head_bbox": [
+      246,
+      254,
+      266,
+      275
+    ],
+    "head_w": 20,
+    "head_h": 21,
+    "neck_row": 20,
+    "state": "idle",
+    "facing": "n",
+    "frame": 0,
+    "contract": "stand",
+    "file": "crew_idle_n_0.png"
+  },
+  "crew_idle_ne_0": {
+    "bbox": [
+      242,
+      253,
+      270,
+      320
+    ],
+    "head_bbox": [
+      248,
+      253,
+      264,
+      272
+    ],
+    "head_w": 16,
+    "head_h": 19,
+    "neck_row": 18,
+    "state": "idle",
+    "facing": "ne",
+    "frame": 0,
+    "contract": "stand",
+    "file": "crew_idle_ne_0.png"
+  },
+  "crew_idle_nw_0": {
+    "bbox": [
+      242,
+      255,
+      271,
+      320
+    ],
+    "head_bbox": [
+      247,
+      255,
+      263,
+      274
+    ],
+    "head_w": 16,
+    "head_h": 19,
+    "neck_row": 18,
+    "state": "idle",
+    "facing": "nw",
+    "frame": 0,
+    "contract": "stand",
+    "file": "crew_idle_nw_0.png"
+  },
+  "crew_idle_s_0": {
+    "bbox": [
+      240,
+      254,
+      271,
+      320
+    ],
+    "head_bbox": [
+      248,
+      254,
+      265,
+      272
+    ],
+    "head_w": 17,
+    "head_h": 18,
+    "neck_row": 17,
+    "state": "idle",
+    "facing": "s",
+    "frame": 0,
+    "contract": "stand",
+    "file": "crew_idle_s_0.png"
+  },
+  "crew_idle_se_0": {
+    "bbox": [
+      243,
+      254,
+      269,
+      320
+    ],
+    "head_bbox": [
+      247,
+      254,
+      265,
+      273
+    ],
+    "head_w": 18,
+    "head_h": 19,
+    "neck_row": 32,
+    "state": "idle",
+    "facing": "se",
+    "frame": 0,
+    "contract": "stand",
+    "file": "crew_idle_se_0.png"
+  },
+  "crew_idle_sw_0": {
+    "bbox": [
+      242,
+      260,
+      270,
+      320
+    ],
+    "head_bbox": [
+      247,
+      260,
+      265,
+      279
+    ],
+    "head_w": 18,
+    "head_h": 19,
+    "neck_row": 18,
+    "state": "idle",
+    "facing": "sw",
+    "frame": 0,
+    "contract": "stand",
+    "file": "crew_idle_sw_0.png"
+  },
+  "crew_idle_w_0": {
+    "bbox": [
+      243,
+      259,
+      269,
+      320
+    ],
+    "head_bbox": [
+      247,
+      259,
+      265,
+      279
+    ],
+    "head_w": 18,
+    "head_h": 20,
+    "neck_row": 19,
+    "state": "idle",
+    "facing": "w",
+    "frame": 0,
+    "contract": "stand",
+    "file": "crew_idle_w_0.png"
+  },
+  "crew_injured_idle_e_0": {
+    "bbox": [
+      248,
+      254,
+      269,
+      320
+    ],
+    "head_bbox": [
+      248,
+      254,
+      266,
+      274
+    ],
+    "head_w": 18,
+    "head_h": 20,
+    "neck_row": 20,
+    "state": "injured_idle",
+    "facing": "e",
+    "frame": 0,
+    "contract": "stand",
+    "file": "crew_injured_idle_e_0.png"
+  },
+  "crew_injured_idle_n_0": {
+    "bbox": [
+      243,
+      253,
+      271,
+      320
+    ],
+    "head_bbox": [
+      246,
+      253,
+      266,
+      274
+    ],
+    "head_w": 20,
+    "head_h": 21,
+    "neck_row": 20,
+    "state": "injured_idle",
+    "facing": "n",
+    "frame": 0,
+    "contract": "stand",
+    "file": "crew_injured_idle_n_0.png"
+  },
+  "crew_injured_idle_s_0": {
+    "bbox": [
+      243,
+      257,
+      271,
+      320
+    ],
+    "head_bbox": [
+      248,
+      257,
+      265,
+      275
+    ],
+    "head_w": 17,
+    "head_h": 18,
+    "neck_row": 17,
+    "state": "injured_idle",
+    "facing": "s",
+    "frame": 0,
+    "contract": "stand",
+    "file": "crew_injured_idle_s_0.png"
+  },
+  "crew_injured_idle_w_0": {
+    "bbox": [
+      242,
+      255,
+      267,
+      320
+    ],
+    "head_bbox": [
+      247,
+      255,
+      265,
+      275
+    ],
+    "head_w": 18,
+    "head_h": 20,
+    "neck_row": 19,
+    "state": "injured_idle",
+    "facing": "w",
+    "frame": 0,
+    "contract": "stand",
+    "file": "crew_injured_idle_w_0.png"
+  },
+  "crew_injured_walk_e_0": {
+    "bbox": [
+      240,
+      251,
+      272,
+      318
+    ],
+    "head_bbox": [
+      248,
+      251,
+      266,
+      271
+    ],
+    "head_w": 18,
+    "head_h": 20,
+    "neck_row": 32,
+    "state": "injured_walk",
+    "facing": "e",
+    "frame": 0,
+    "contract": "stand",
+    "file": "crew_injured_walk_e_0.png"
+  },
+  "crew_injured_walk_e_1": {
+    "bbox": [
+      236,
+      251,
+      276,
+      318
+    ],
+    "head_bbox": [
+      248,
+      251,
+      266,
+      271
+    ],
+    "head_w": 18,
+    "head_h": 20,
+    "neck_row": 20,
+    "state": "injured_walk",
+    "facing": "e",
+    "frame": 1,
+    "contract": "stand",
+    "file": "crew_injured_walk_e_1.png"
+  },
+  "crew_injured_walk_e_2": {
+    "bbox": [
+      236,
+      251,
+      276,
+      319
+    ],
+    "head_bbox": [
+      248,
+      251,
+      266,
+      271
+    ],
+    "head_w": 18,
+    "head_h": 20,
+    "neck_row": 20,
+    "state": "injured_walk",
+    "facing": "e",
+    "frame": 2,
+    "contract": "stand",
+    "file": "crew_injured_walk_e_2.png"
+  },
+  "crew_injured_walk_e_3": {
+    "bbox": [
+      242,
+      251,
+      269,
+      319
+    ],
+    "head_bbox": [
+      248,
+      251,
+      266,
+      271
+    ],
+    "head_w": 18,
+    "head_h": 20,
+    "neck_row": 20,
+    "state": "injured_walk",
+    "facing": "e",
+    "frame": 3,
+    "contract": "stand",
+    "file": "crew_injured_walk_e_3.png"
+  },
+  "crew_injured_walk_n_0": {
+    "bbox": [
+      236,
+      253,
+      275,
+      320
+    ],
+    "head_bbox": [
+      246,
+      253,
+      266,
+      274
+    ],
+    "head_w": 20,
+    "head_h": 21,
+    "neck_row": 20,
+    "state": "injured_walk",
+    "facing": "n",
+    "frame": 0,
+    "contract": "stand",
+    "file": "crew_injured_walk_n_0.png"
+  },
+  "crew_injured_walk_n_1": {
+    "bbox": [
+      236,
+      253,
+      276,
+      320
+    ],
+    "head_bbox": [
+      246,
+      253,
+      266,
+      274
+    ],
+    "head_w": 20,
+    "head_h": 21,
+    "neck_row": 20,
+    "state": "injured_walk",
+    "facing": "n",
+    "frame": 1,
+    "contract": "stand",
+    "file": "crew_injured_walk_n_1.png"
+  },
+  "crew_injured_walk_n_2": {
+    "bbox": [
+      226,
+      253,
+      286,
+      320
+    ],
+    "head_bbox": [
+      246,
+      253,
+      266,
+      272
+    ],
+    "head_w": 20,
+    "head_h": 19,
+    "neck_row": 18,
+    "state": "injured_walk",
+    "facing": "n",
+    "frame": 2,
+    "contract": "stand",
+    "file": "crew_injured_walk_n_2.png"
+  },
+  "crew_injured_walk_n_3": {
+    "bbox": [
+      242,
+      254,
+      269,
+      320
+    ],
+    "head_bbox": [
+      246,
+      254,
+      266,
+      275
+    ],
+    "head_w": 20,
+    "head_h": 21,
+    "neck_row": 20,
+    "state": "injured_walk",
+    "facing": "n",
+    "frame": 3,
+    "contract": "stand",
+    "file": "crew_injured_walk_n_3.png"
+  },
+  "crew_injured_walk_s_0": {
+    "bbox": [
+      243,
+      253,
+      269,
+      320
+    ],
+    "head_bbox": [
+      248,
+      253,
+      265,
+      271
+    ],
+    "head_w": 17,
+    "head_h": 18,
+    "neck_row": 17,
+    "state": "injured_walk",
+    "facing": "s",
+    "frame": 0,
+    "contract": "stand",
+    "file": "crew_injured_walk_s_0.png"
+  },
+  "crew_injured_walk_s_1": {
+    "bbox": [
+      241,
+      253,
+      270,
+      320
+    ],
+    "head_bbox": [
+      248,
+      253,
+      265,
+      271
+    ],
+    "head_w": 17,
+    "head_h": 18,
+    "neck_row": 17,
+    "state": "injured_walk",
+    "facing": "s",
+    "frame": 1,
+    "contract": "stand",
+    "file": "crew_injured_walk_s_1.png"
+  },
+  "crew_injured_walk_s_2": {
+    "bbox": [
+      236,
+      254,
+      276,
+      320
+    ],
+    "head_bbox": [
+      250,
+      254,
+      264,
+      258
+    ],
+    "head_w": 14,
+    "head_h": 4,
+    "neck_row": 3,
+    "state": "injured_walk",
+    "facing": "s",
+    "frame": 2,
+    "contract": "stand",
+    "file": "crew_injured_walk_s_2.png"
+  },
+  "crew_injured_walk_s_3": {
+    "bbox": [
+      240,
+      254,
+      271,
+      320
+    ],
+    "head_bbox": [
+      250,
+      254,
+      264,
+      258
+    ],
+    "head_w": 14,
+    "head_h": 4,
+    "neck_row": 3,
+    "state": "injured_walk",
+    "facing": "s",
+    "frame": 3,
+    "contract": "stand",
+    "file": "crew_injured_walk_s_3.png"
+  },
+  "crew_injured_walk_w_0": {
+    "bbox": [
+      238,
+      252,
+      275,
+      320
+    ],
+    "head_bbox": [
+      247,
+      252,
+      265,
+      272
+    ],
+    "head_w": 18,
+    "head_h": 20,
+    "neck_row": 20,
+    "state": "injured_walk",
+    "facing": "w",
+    "frame": 0,
+    "contract": "stand",
+    "file": "crew_injured_walk_w_0.png"
+  },
+  "crew_injured_walk_w_1": {
+    "bbox": [
+      238,
+      254,
+      275,
+      320
+    ],
+    "head_bbox": [
+      247,
+      254,
+      265,
+      274
+    ],
+    "head_w": 18,
+    "head_h": 20,
+    "neck_row": 19,
+    "state": "injured_walk",
+    "facing": "w",
+    "frame": 1,
+    "contract": "stand",
+    "file": "crew_injured_walk_w_1.png"
+  },
+  "crew_injured_walk_w_2": {
+    "bbox": [
+      227,
+      251,
+      285,
+      320
+    ],
+    "head_bbox": [
+      247,
+      251,
+      265,
+      271
+    ],
+    "head_w": 18,
+    "head_h": 20,
+    "neck_row": 20,
+    "state": "injured_walk",
+    "facing": "w",
+    "frame": 2,
+    "contract": "stand",
+    "file": "crew_injured_walk_w_2.png"
+  },
+  "crew_injured_walk_w_3": {
+    "bbox": [
+      245,
+      252,
+      267,
+      320
+    ],
+    "head_bbox": [
+      247,
+      252,
+      265,
+      272
+    ],
+    "head_w": 18,
+    "head_h": 20,
+    "neck_row": 20,
+    "state": "injured_walk",
+    "facing": "w",
+    "frame": 3,
+    "contract": "stand",
+    "file": "crew_injured_walk_w_3.png"
+  },
+  "crew_sleeping_e_0": {
+    "bbox": [
+      194,
+      225,
+      317,
+      320
+    ],
+    "head_bbox": [
+      291,
+      225,
+      308,
+      229
+    ],
+    "head_w": 17,
+    "head_h": 4,
+    "neck_row": 3,
+    "state": "sleeping",
+    "facing": "e",
+    "frame": 0,
+    "contract": "prone",
+    "file": "crew_sleeping_e_0.png"
+  },
+  "crew_sleeping_e_1": {
+    "bbox": [
+      200,
+      225,
+      311,
+      320
+    ],
+    "head_bbox": [
+      285,
+      225,
+      302,
+      229
+    ],
+    "head_w": 17,
+    "head_h": 4,
+    "neck_row": 3,
+    "state": "sleeping",
+    "facing": "e",
+    "frame": 1,
+    "contract": "prone",
+    "file": "crew_sleeping_e_1.png"
+  },
+  "crew_walk_e_0": {
+    "bbox": [
+      238,
+      256,
+      274,
+      320
+    ],
+    "head_bbox": [
+      248,
+      256,
+      266,
+      276
+    ],
+    "head_w": 18,
+    "head_h": 20,
+    "neck_row": 19,
+    "state": "walk",
+    "facing": "e",
+    "frame": 0,
+    "contract": "stand",
+    "file": "crew_walk_e_0.png"
+  },
+  "crew_walk_e_1": {
+    "bbox": [
+      238,
+      256,
+      275,
+      320
+    ],
+    "head_bbox": [
+      248,
+      256,
+      266,
+      276
+    ],
+    "head_w": 18,
+    "head_h": 20,
+    "neck_row": 19,
+    "state": "walk",
+    "facing": "e",
+    "frame": 1,
+    "contract": "stand",
+    "file": "crew_walk_e_1.png"
+  },
+  "crew_walk_e_2": {
+    "bbox": [
+      238,
+      256,
+      275,
+      320
+    ],
+    "head_bbox": [
+      248,
+      256,
+      266,
+      276
+    ],
+    "head_w": 18,
+    "head_h": 20,
+    "neck_row": 19,
+    "state": "walk",
+    "facing": "e",
+    "frame": 2,
+    "contract": "stand",
+    "file": "crew_walk_e_2.png"
+  },
+  "crew_walk_e_3": {
+    "bbox": [
+      238,
+      255,
+      273,
+      320
+    ],
+    "head_bbox": [
+      248,
+      255,
+      266,
+      275
+    ],
+    "head_w": 18,
+    "head_h": 20,
+    "neck_row": 20,
+    "state": "walk",
+    "facing": "e",
+    "frame": 3,
+    "contract": "stand",
+    "file": "crew_walk_e_3.png"
+  },
+  "crew_walk_n_0": {
+    "bbox": [
+      243,
+      251,
+      269,
+      319
+    ],
+    "head_bbox": [
+      246,
+      251,
+      266,
+      272
+    ],
+    "head_w": 20,
+    "head_h": 21,
+    "neck_row": 20,
+    "state": "walk",
+    "facing": "n",
+    "frame": 0,
+    "contract": "stand",
+    "file": "crew_walk_n_0.png"
+  },
+  "crew_walk_n_1": {
+    "bbox": [
+      242,
+      251,
+      269,
+      319
+    ],
+    "head_bbox": [
+      246,
+      251,
+      266,
+      272
+    ],
+    "head_w": 20,
+    "head_h": 21,
+    "neck_row": 20,
+    "state": "walk",
+    "facing": "n",
+    "frame": 1,
+    "contract": "stand",
+    "file": "crew_walk_n_1.png"
+  },
+  "crew_walk_n_2": {
+    "bbox": [
+      224,
+      250,
+      287,
+      319
+    ],
+    "head_bbox": [
+      227,
+      250,
+      287,
+      268
+    ],
+    "head_w": 60,
+    "head_h": 18,
+    "neck_row": 17,
+    "state": "walk",
+    "facing": "n",
+    "frame": 2,
+    "contract": "stand",
+    "file": "crew_walk_n_2.png"
+  },
+  "crew_walk_n_3": {
+    "bbox": [
+      249,
+      250,
+      263,
+      320
+    ],
+    "head_bbox": [
+      249,
+      250,
+      257,
+      268
+    ],
+    "head_w": 8,
+    "head_h": 18,
+    "neck_row": 17,
+    "state": "walk",
+    "facing": "n",
+    "frame": 3,
+    "contract": "stand",
+    "file": "crew_walk_n_3.png"
+  },
+  "crew_walk_ne_0": {
+    "bbox": [
+      238,
+      257,
+      275,
+      320
+    ],
+    "head_bbox": [
+      248,
+      257,
+      264,
+      276
+    ],
+    "head_w": 16,
+    "head_h": 19,
+    "neck_row": 19,
+    "state": "walk",
+    "facing": "ne",
+    "frame": 0,
+    "contract": "stand",
+    "file": "crew_walk_ne_0.png"
+  },
+  "crew_walk_ne_1": {
+    "bbox": [
+      238,
+      257,
+      275,
+      320
+    ],
+    "head_bbox": [
+      248,
+      257,
+      264,
+      276
+    ],
+    "head_w": 16,
+    "head_h": 19,
+    "neck_row": 19,
+    "state": "walk",
+    "facing": "ne",
+    "frame": 1,
+    "contract": "stand",
+    "file": "crew_walk_ne_1.png"
+  },
+  "crew_walk_ne_2": {
+    "bbox": [
+      237,
+      257,
+      275,
+      320
+    ],
+    "head_bbox": [
+      248,
+      257,
+      264,
+      276
+    ],
+    "head_w": 16,
+    "head_h": 19,
+    "neck_row": 19,
+    "state": "walk",
+    "facing": "ne",
+    "frame": 2,
+    "contract": "stand",
+    "file": "crew_walk_ne_2.png"
+  },
+  "crew_walk_ne_3": {
+    "bbox": [
+      238,
+      257,
+      274,
+      320
+    ],
+    "head_bbox": [
+      248,
+      257,
+      264,
+      276
+    ],
+    "head_w": 16,
+    "head_h": 19,
+    "neck_row": 19,
+    "state": "walk",
+    "facing": "ne",
+    "frame": 3,
+    "contract": "stand",
+    "file": "crew_walk_ne_3.png"
+  },
+  "crew_walk_nw_0": {
+    "bbox": [
+      242,
+      253,
+      270,
+      319
+    ],
+    "head_bbox": [
+      247,
+      253,
+      263,
+      272
+    ],
+    "head_w": 16,
+    "head_h": 19,
+    "neck_row": 18,
+    "state": "walk",
+    "facing": "nw",
+    "frame": 0,
+    "contract": "stand",
+    "file": "crew_walk_nw_0.png"
+  },
+  "crew_walk_nw_1": {
+    "bbox": [
+      240,
+      252,
+      271,
+      318
+    ],
+    "head_bbox": [
+      247,
+      252,
+      263,
+      271
+    ],
+    "head_w": 16,
+    "head_h": 19,
+    "neck_row": 18,
+    "state": "walk",
+    "facing": "nw",
+    "frame": 1,
+    "contract": "stand",
+    "file": "crew_walk_nw_1.png"
+  },
+  "crew_walk_nw_2": {
+    "bbox": [
+      224,
+      250,
+      287,
+      319
+    ],
+    "head_bbox": [
+      227,
+      250,
+      287,
+      267
+    ],
+    "head_w": 60,
+    "head_h": 17,
+    "neck_row": 16,
+    "state": "walk",
+    "facing": "nw",
+    "frame": 2,
+    "contract": "stand",
+    "file": "crew_walk_nw_2.png"
+  },
+  "crew_walk_nw_3": {
+    "bbox": [
+      247,
+      254,
+      264,
+      316
+    ],
+    "head_bbox": [
+      247,
+      254,
+      263,
+      273
+    ],
+    "head_w": 16,
+    "head_h": 19,
+    "neck_row": 23,
+    "state": "walk",
+    "facing": "nw",
+    "frame": 3,
+    "contract": "stand",
+    "file": "crew_walk_nw_3.png"
+  },
+  "crew_walk_s_0": {
+    "bbox": [
+      238,
+      265,
+      275,
+      320
+    ],
+    "head_bbox": [
+      248,
+      265,
+      265,
+      283
+    ],
+    "head_w": 17,
+    "head_h": 18,
+    "neck_row": 17,
+    "state": "walk",
+    "facing": "s",
+    "frame": 0,
+    "contract": "stand",
+    "file": "crew_walk_s_0.png"
+  },
+  "crew_walk_s_1": {
+    "bbox": [
+      228,
+      265,
+      285,
+      320
+    ],
+    "head_bbox": [
+      250,
+      265,
+      264,
+      269
+    ],
+    "head_w": 14,
+    "head_h": 4,
+    "neck_row": 3,
+    "state": "walk",
+    "facing": "s",
+    "frame": 1,
+    "contract": "stand",
+    "file": "crew_walk_s_1.png"
+  },
+  "crew_walk_s_2": {
+    "bbox": [
+      228,
+      250,
+      285,
+      320
+    ],
+    "head_bbox": [
+      228,
+      250,
+      285,
+      278
+    ],
+    "head_w": 57,
+    "head_h": 28,
+    "neck_row": 27,
+    "state": "walk",
+    "facing": "s",
+    "frame": 2,
+    "contract": "stand",
+    "file": "crew_walk_s_2.png"
+  },
+  "crew_walk_s_3": {
+    "error": "no head-colored pixels found above neck row",
+    "bbox": [
+      248,
+      263,
+      265,
+      320
+    ],
+    "state": "walk",
+    "facing": "s",
+    "frame": 3,
+    "contract": "stand",
+    "file": "crew_walk_s_3.png"
+  },
+  "crew_walk_se_0": {
+    "error": "no head-colored pixels found above neck row",
+    "bbox": [
+      238,
+      260,
+      275,
+      320
+    ],
+    "state": "walk",
+    "facing": "se",
+    "frame": 0,
+    "contract": "stand",
+    "file": "crew_walk_se_0.png"
+  },
+  "crew_walk_se_1": {
+    "bbox": [
+      228,
+      250,
+      285,
+      320
+    ],
+    "head_bbox": [
+      233,
+      250,
+      260,
+      280
+    ],
+    "head_w": 27,
+    "head_h": 30,
+    "neck_row": 29,
+    "state": "walk",
+    "facing": "se",
+    "frame": 1,
+    "contract": "stand",
+    "file": "crew_walk_se_1.png"
+  },
+  "crew_walk_se_2": {
+    "bbox": [
+      228,
+      250,
+      285,
+      320
+    ],
+    "head_bbox": [
+      228,
+      250,
+      285,
+      276
+    ],
+    "head_w": 57,
+    "head_h": 26,
+    "neck_row": 25,
+    "state": "walk",
+    "facing": "se",
+    "frame": 2,
+    "contract": "stand",
+    "file": "crew_walk_se_2.png"
+  },
+  "crew_walk_se_3": {
+    "error": "no head-colored pixels found above neck row",
+    "bbox": [
+      247,
+      261,
+      265,
+      320
+    ],
+    "state": "walk",
+    "facing": "se",
+    "frame": 3,
+    "contract": "stand",
+    "file": "crew_walk_se_3.png"
+  },
+  "crew_walk_sw_0": {
+    "bbox": [
+      238,
+      256,
+      273,
+      320
+    ],
+    "head_bbox": [
+      247,
+      256,
+      265,
+      275
+    ],
+    "head_w": 18,
+    "head_h": 19,
+    "neck_row": 18,
+    "state": "walk",
+    "facing": "sw",
+    "frame": 0,
+    "contract": "stand",
+    "file": "crew_walk_sw_0.png"
+  },
+  "crew_walk_sw_1": {
+    "bbox": [
+      238,
+      255,
+      274,
+      320
+    ],
+    "head_bbox": [
+      247,
+      255,
+      265,
+      274
+    ],
+    "head_w": 18,
+    "head_h": 19,
+    "neck_row": 18,
+    "state": "walk",
+    "facing": "sw",
+    "frame": 1,
+    "contract": "stand",
+    "file": "crew_walk_sw_1.png"
+  },
+  "crew_walk_sw_2": {
+    "bbox": [
+      239,
+      255,
+      273,
+      320
+    ],
+    "head_bbox": [
+      247,
+      255,
+      265,
+      274
+    ],
+    "head_w": 18,
+    "head_h": 19,
+    "neck_row": 18,
+    "state": "walk",
+    "facing": "sw",
+    "frame": 2,
+    "contract": "stand",
+    "file": "crew_walk_sw_2.png"
+  },
+  "crew_walk_sw_3": {
+    "bbox": [
+      242,
+      255,
+      271,
+      320
+    ],
+    "head_bbox": [
+      247,
+      255,
+      265,
+      272
+    ],
+    "head_w": 18,
+    "head_h": 17,
+    "neck_row": 16,
+    "state": "walk",
+    "facing": "sw",
+    "frame": 3,
+    "contract": "stand",
+    "file": "crew_walk_sw_3.png"
+  },
+  "crew_walk_w_0": {
+    "bbox": [
+      238,
+      256,
+      273,
+      320
+    ],
+    "head_bbox": [
+      247,
+      256,
+      265,
+      276
+    ],
+    "head_w": 18,
+    "head_h": 20,
+    "neck_row": 19,
+    "state": "walk",
+    "facing": "w",
+    "frame": 0,
+    "contract": "stand",
+    "file": "crew_walk_w_0.png"
+  },
+  "crew_walk_w_1": {
+    "bbox": [
+      240,
+      254,
+      272,
+      320
+    ],
+    "head_bbox": [
+      247,
+      254,
+      265,
+      274
+    ],
+    "head_w": 18,
+    "head_h": 20,
+    "neck_row": 19,
+    "state": "walk",
+    "facing": "w",
+    "frame": 1,
+    "contract": "stand",
+    "file": "crew_walk_w_1.png"
+  },
+  "crew_walk_w_2": {
+    "bbox": [
+      227,
+      254,
+      285,
+      320
+    ],
+    "head_bbox": [
+      247,
+      254,
+      265,
+      271
+    ],
+    "head_w": 18,
+    "head_h": 17,
+    "neck_row": 16,
+    "state": "walk",
+    "facing": "w",
+    "frame": 2,
+    "contract": "stand",
+    "file": "crew_walk_w_2.png"
+  },
+  "crew_walk_w_3": {
+    "bbox": [
+      242,
+      255,
+      271,
+      320
+    ],
+    "head_bbox": [
+      247,
+      255,
+      265,
+      272
+    ],
+    "head_w": 18,
+    "head_h": 17,
+    "neck_row": 16,
+    "state": "walk",
+    "facing": "w",
+    "frame": 3,
+    "contract": "stand",
+    "file": "crew_walk_w_3.png"
+  }
+}

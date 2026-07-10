@@ -1,0 +1,194 @@
+{
+  "per_facing_head_sizes": {
+    "s": [
+      [
+        25,
+        21
+      ]
+    ],
+    "se": [
+      [
+        24,
+        22
+      ]
+    ],
+    "e": [
+      [
+        25,
+        23
+      ]
+    ],
+    "ne": [
+      [
+        23,
+        22
+      ]
+    ],
+    "n": [
+      [
+        28,
+        24
+      ]
+    ],
+    "nw": [
+      [
+        23,
+        22
+      ]
+    ],
+    "w": [
+      [
+        25,
+        23
+      ]
+    ],
+    "sw": [
+      [
+        24,
+        22
+      ]
+    ]
+  },
+  "per_facing_head_sizes_general_remeasurement": {
+    "s": [
+      [
+        14,
+        4
+      ],
+      [
+        17,
+        18
+      ]
+    ],
+    "se": [
+      [
+        18,
+        19
+      ]
+    ],
+    "e": [
+      [
+        18,
+        20
+      ]
+    ],
+    "ne": [
+      [
+        16,
+        19
+      ]
+    ],
+    "n": [
+      [
+        16,
+        4
+      ],
+      [
+        20,
+        19
+      ],
+      [
+        20,
+        21
+      ]
+    ],
+    "nw": [
+      [
+        16,
+        19
+      ]
+    ],
+    "w": [
+      [
+        18,
+        17
+      ],
+      [
+        18,
+        19
+      ],
+      [
+        18,
+        20
+      ]
+    ],
+    "sw": [
+      [
+        18,
+        17
+      ],
+      [
+        18,
+        19
+      ]
+    ]
+  },
+  "per_facing_checksum_groups": {
+    "s": {
+      "n_sprites": 14,
+      "n_distinct_checksums": 1
+    },
+    "se": {
+      "n_sprites": 1,
+      "n_distinct_checksums": 1
+    },
+    "e": {
+      "n_sprites": 16,
+      "n_distinct_checksums": 1
+    },
+    "ne": {
+      "n_sprites": 5,
+      "n_distinct_checksums": 1
+    },
+    "n": {
+      "n_sprites": 18,
+      "n_distinct_checksums": 1
+    },
+    "nw": {
+      "n_sprites": 4,
+      "n_distinct_checksums": 1
+    },
+    "w": {
+      "n_sprites": 20,
+      "n_distinct_checksums": 1
+    },
+    "sw": {
+      "n_sprites": 5,
+      "n_distinct_checksums": 1
+    }
+  },
+  "flagged_sprites": [
+    "crew_carry_walk_e_0",
+    "crew_carry_walk_e_1",
+    "crew_carry_walk_e_2",
+    "crew_carry_walk_s_0",
+    "crew_carry_walk_s_1",
+    "crew_carry_walk_s_2",
+    "crew_dead_s_0",
+    "crew_dead_s_1",
+    "crew_fight_melee_e_0",
+    "crew_fight_melee_s_0",
+    "crew_floating_e_0",
+    "crew_floating_e_1",
+    "crew_floating_e_2",
+    "crew_floating_n_0",
+    "crew_floating_n_1",
+    "crew_floating_n_2",
+    "crew_floating_s_0",
+    "crew_floating_s_1",
+    "crew_floating_s_2",
+    "crew_floating_w_0",
+    "crew_floating_w_1",
+    "crew_floating_w_2",
+    "crew_sleeping_e_0",
+    "crew_sleeping_e_1",
+    "crew_walk_n_2",
+    "crew_walk_n_3",
+    "crew_walk_nw_2",
+    "crew_walk_s_2",
+    "crew_walk_se_1",
+    "crew_walk_se_2"
+  ],
+  "pass": true,
+  "mismatches": []
+}

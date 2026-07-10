@@ -1,0 +1,118 @@
+{
+  "s": {
+    "source": "crew_idle_s_0.png",
+    "donor_head_bbox": [
+      246,
+      250,
+      265,
+      268
+    ],
+    "crop_box": [
+      243,
+      247,
+      268,
+      268
+    ],
+    "size": [
+      25,
+      21
+    ]
+  },
+  "se": {
+    "source": "crew_idle_se_0.png",
+    "donor_head_bbox": [
+      247,
+      250,
+      265,
+      269
+    ],
+    "crop_box": [
+      244,
+      247,
+      268,
+      269
+    ],
+    "size": [
+      24,
+      22
+    ]
+  },
+  "e": {
+    "source": "crew_idle_e_0.png",
+    "donor_head_bbox": [
+      246,
+      250,
+      265,
+      270
+    ],
+    "crop_box": [
+      243,
+      247,
+      268,
+      270
+    ],
+    "size": [
+      25,
+      23
+    ]
+  },
+  "ne": {
+    "source": "crew_idle_ne_0.png",
+    "donor_head_bbox": [
+      246,
+      250,
+      263,
+      269
+    ],
+    "crop_box": [
+      243,
+      247,
+      266,
+      269
+    ],
+    "size": [
+      23,
+      22
+    ]
+  },
+  "n": {
+    "source": "crew_idle_n_0.png",
+    "donor_head_bbox": [
+      244,
+      250,
+      266,
+      271
+    ],
+    "crop_box": [
+      241,
+      247,
+      269,
+      271
+    ],
+    "size": [
+      28,
+      24
+    ]
+  },
+  "w": {
+    "source": "mirror of head_e.png",
+    "size": [
+      25,
+      23
+    ]
+  },
+  "sw": {
+    "source": "mirror of head_se.png",
+    "size": [
+      24,
+      22
+    ]
+  },
+  "nw": {
+    "source": "mirror of head_ne.png",
+    "size": [
+      23,
+      22
+    ]
+  }
+}
