@@ -111,16 +111,71 @@ const CRISIS_WEIGHT_SENSITIVITY: float = 2.0
 const MERCY_CHECK_BONUS_MAX: int = 5           # spec §4 hard rule: "+5 on repair/bypass check targets"
 const MERCY_BATTERY_DRAIN_FLOOR: float = 0.90  # spec §4 hard rule: "slightly slower ... (<=10%)"
 
+# ---------------------------------------------------------------------------
+# Step 5 (spec §2/§3): the per-leg escalation floor — "a per-leg minimum heat that
+# only rises (leg 1 ≈ 0.2 -> leg 6+ ≈ 0.7)". effective_heat() is what every mercy/
+# overlap consumer should read instead of raw `heat`, so mercy can never actually
+# drop the run below the floor and overlap scheduling (ScenarioRunner) reads the
+# same floored number. ScenarioRunner owns detecting the leg BOUNDARY (it's the one
+# that knows when every active scenario has concluded) and calls advance_leg().
+# ---------------------------------------------------------------------------
+const LEG_FLOOR_TABLE: Array[float] = [0.2, 0.3, 0.4, 0.5, 0.6, 0.7]  # index 0 = leg 1; leg 6+ clamps at the last entry
+
+var current_leg: int = 1
+
+# Dev-only (spec §8 step 5): SHIPAI_FORCE_HEAT=<0..1> pins heat for testing both
+# pressure and mercy directions deterministically. -1 = not forced (normal
+# computation). Takes precedence even over AUTODEMO's neutral-hold, since forcing
+# is the more specific, more deliberate override.
+var _forced_heat: float = -1.0
+
 
 func _ready() -> void:
 	EventBus.time_ticked.connect(_on_tick)
 	EventBus.scenario_event_triggered.connect(_on_event_fired)
 	_debug = OS.get_environment("SHIPAI_DIRECTOR_DEBUG") == "1"
 	_autodemo = OS.get_environment("SHIPAI_AUTODEMO") != ""
+	var force_env: String = OS.get_environment("SHIPAI_FORCE_HEAT")
+	if force_env != "":
+		_forced_heat = clampf(force_env.to_float(), 0.0, 1.0)
+		heat = _forced_heat
 	_connect_overseer_inputs()
 
 
-func start_scenario(events: Array[ScenarioEvent]) -> void:
+# Leg boundary hook (ScenarioRunner calls this — see its _advance_leg()). Only ever
+# rises: legs never get easier mid-voyage, matching the spec's "tough first, fair
+# second" framing.
+func advance_leg() -> void:
+	current_leg += 1
+	if _debug:
+		print("[OVERSEER] leg boundary -> leg %d (floor=%.2f)" % [current_leg, leg_escalation_floor()])
+
+
+func leg_escalation_floor() -> float:
+	var idx: int = clampi(current_leg - 1, 0, LEG_FLOOR_TABLE.size() - 1)
+	return LEG_FLOOR_TABLE[idx]
+
+
+# The number every external consumer (ScenarioRunner's overlap threshold check,
+# and modifiers below) should read — mercy/mood can move `heat` around freely, but
+# nothing downstream ever sees less than the current leg's floor.
+func effective_heat() -> float:
+	return maxf(heat, leg_escalation_floor())
+
+
+# `additive` (step 5, spec §5's true concurrent overlap — as opposed to step 4's
+# sequential morph handoff): when a SECOND scenario starts while the first is still
+# running, it must JOIN the shared pool/flags/tension rather than wipe them — the
+# whole point of overlap is that the first scenario keeps running untouched.
+# ScenarioRunner passes additive=true exactly when active_scenarios was already
+# non-empty at the moment this is called; a morph's target never sees additive=true
+# since the source instance is always ended first (active_scenarios is empty by
+# then), so morphs keep their existing clean-slate reset.
+func start_scenario(events: Array[ScenarioEvent], additive: bool = false) -> void:
+	if additive:
+		for event in events:
+			_pool.add_event(event)
+		return
 	_pool.load_events(events)
 	_scenario_start_time = TimeManager.elapsed
 	_last_event_time = TimeManager.elapsed
@@ -284,10 +339,15 @@ func _update_overseer(elapsed: float, delta: float) -> void:
 	_accumulate_continuous_pushes(elapsed, delta)
 	_prune_samples(elapsed)
 	performance_score = clampf(_perf_sum / SCORE_NORMALIZER, -1.0, 1.0)
-	# AUTODEMO holds heat neutral (spec §7) so scripted verification stays
-	# deterministic — performance_score still computes (visible in debug output)
-	# but never moves heat, so `modifiers` stays at its identity values below.
-	if not _autodemo:
+	if _forced_heat >= 0.0:
+		# SHIPAI_FORCE_HEAT (dev-only, spec §8 step 5): pinned directly, bypassing
+		# hysteresis/slew/AUTODEMO-neutral entirely — the point is a deterministic,
+		# immediate value to test both pressure and mercy directions against.
+		heat = _forced_heat
+	elif not _autodemo:
+		# AUTODEMO holds heat neutral (spec §7) so scripted verification stays
+		# deterministic — performance_score still computes (visible in debug output)
+		# but never moves heat, so `modifiers` stays at its identity values below.
 		_update_heat(elapsed, delta)
 	_update_modifiers()
 	if _debug:
@@ -349,23 +409,16 @@ func _update_heat(elapsed: float, delta: float) -> void:
 		heat = move_toward(heat, _heat_target, HEAT_SLEW_PER_SEC * delta)
 
 
-# Step 5 (spec §3/§5) will apply the per-leg escalation floor here —
-# `effective_heat = max(heat, leg_escalation_floor)` — so mercy can never read a
-# heat lower than the floor allows. Until the leg counter exists this is just
-# `heat` itself; every modifier below is already written against this call so
-# step 5 only has to change this one function.
-func _effective_heat() -> float:
-	return heat
-
-
 # The single knob surface (spec §4/§6) — recomputed every tick from effective
-# heat so every consumer (EventPool, RepairModel/Door via Checks' extra_bonus,
-# PowerModel) reads one coherent, already-bounded picture instead of each doing
-# its own heat math. Pressure knobs (cooldown/crisis-weight) move symmetrically
-# around neutral heat (0.5); mercy knobs (check_bonus/battery_drain_mult) only
-# ever engage below neutral and are hard-capped exactly at the spec's bounds.
+# heat (leg-floored — see effective_heat() above) so every consumer (EventPool,
+# RepairModel/Door via Checks' extra_bonus, PowerModel) reads one coherent,
+# already-bounded picture instead of each doing its own heat math. Pressure knobs
+# (cooldown/crisis-weight) move symmetrically around neutral heat (0.5); mercy
+# knobs (check_bonus/battery_drain_mult) only ever engage below neutral and are
+# hard-capped exactly at the spec's bounds — and since they read effective_heat(),
+# the escalation floor already guarantees mercy never drops a run below it.
 func _update_modifiers() -> void:
-	var h: float = _effective_heat()
+	var h: float = effective_heat()
 	var dev: float = h - 0.5   # -0.5 (smashed) .. 0 (neutral) .. +0.5 (cruising)
 
 	modifiers.cooldown_mult = clampf(
@@ -412,7 +465,8 @@ func _print_debug(elapsed: float, delta: float) -> void:
 	if _debug_accum < DEBUG_PRINT_INTERVAL:
 		return
 	_debug_accum = 0.0
-	print("[OVERSEER] t=%.0fs heat=%.3f target=%.3f score=%.3f moving=%s autodemo=%s samples=%d" % [
-		elapsed, heat, _heat_target, performance_score, _heat_moving, _autodemo, _perf_samples.size()])
+	print("[OVERSEER] t=%.0fs heat=%.3f effective=%.3f target=%.3f score=%.3f moving=%s autodemo=%s forced=%s leg=%d floor=%.2f samples=%d" % [
+		elapsed, heat, effective_heat(), _heat_target, performance_score, _heat_moving, _autodemo,
+		(_forced_heat >= 0.0), current_leg, leg_escalation_floor(), _perf_samples.size()])
 	print("[OVERSEER]   modifiers: cooldown=%.2f crisis_weight=%.2f check_bonus=+%d battery_drain=%.2f" % [
 		modifiers.cooldown_mult, modifiers.crisis_weight_mult, modifiers.check_bonus, modifiers.battery_drain_mult])
