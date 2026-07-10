@@ -84,16 +84,16 @@ const FLOOR_TINTS_BY_TYPE: Dictionary = {
 }
 
 const FLOOR_TILE_BY_TYPE: Dictionary = {
-	"bridge":       "platform_high_SE",
-	"corridor":     "platform_center_SE",
-	"medbay":       "platform_center_SE",
-	"mess":         "platform_large_SE",
-	"quarters":     "platform_small_SE",
-	"cargo":        "platform_long_SE",
-	"life_support": "platform_side_SE",
-	"ai_core":      "platform_straight_SE",
-	"engine_room":  "platform_low_SE",
-	"airlock":      "platform_cornerOpen_SE",
+	"bridge":       "tile_bridge",
+	"corridor":     "tile_corridor",
+	"medbay":       "tile_medbay",
+	"mess":         "tile_mess",
+	"quarters":     "tile_quarters",
+	"cargo":        "tile_cargo",
+	"life_support": "tile_life_support",
+	"ai_core":      "tile_ai_core",
+	"engine_room":  "tile_engine_room",
+	"airlock":      "tile_airlock",
 }
 
 # Per-type prop pools (Kenney Space Kit isometric has no literal "table" or "bunk"

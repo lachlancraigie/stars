@@ -7,7 +7,10 @@ extends RefCounted
 # That means any sprite placed with ANCHOR_OFFSET sits correctly on the
 # grid cell at its node position — tiles, props, and characters alike.
 
-const KIT_DIR: String = "res://assets/sprites/legacy/"
+# Environment art comes from the gen2 cel-shaded set (docs/style-bible-v2.md); crew
+# rendering stays on the legacy Kenney astronauts (gen2 crew failed the cross-facing
+# consistency test) — CrewMemberNode carries its own legacy KIT_DIR for that reason.
+const KIT_DIR: String = "res://assets/sprites/gen2/"
 
 const TILE_HALF_W: float = 65.0   # half of the 130px diamond width
 const TILE_HALF_H: float = 32.5   # half of the 65px diamond height
