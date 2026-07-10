@@ -139,6 +139,9 @@ func set_flag(flag: String, value: bool = true) -> void:
 	scenario_flags[flag] = value
 	if value and not was_set:
 		_push(PUSH_OBJECTIVE_PROGRESS)
+	# ScenarioRunner listens for this to evaluate morph_edges (spec §5) — a flag
+	# transitioning to true is the only case a morph condition can newly match.
+	EventBus.scenario_flag_set.emit(flag, value)
 
 
 func get_flag(flag: String) -> bool:

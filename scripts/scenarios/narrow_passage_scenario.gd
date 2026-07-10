@@ -55,6 +55,24 @@ static func build() -> Dictionary:
 
 		"events": _build_events(),
 
+		# --- Overseer morph metadata (docs/director-spec.md §5) ---
+		"pressure_axis": "systems",
+		"expected_length": 200.0,   # seconds — approach + crossing + relight tail
+		"morph_edges": [
+			# Spec §5's own worked example: NarrowPassage ends thin on power -> a
+			# systems-failure follow-on. The Long Crack (scenario-bible 1.3, systems
+			# axis) isn't built yet — TODO(director): point "to" at "the_long_crack"
+			# once it exists. Until then ScenarioRunner's stub fallback
+			# (SCENARIO_STUB_FALLBACK) redirects this edge to the only other
+			# implemented Tier 1 scenario so a live morph has somewhere real to go.
+			{
+				"to": "the_long_crack",
+				"condition_flags": ["field_exited", "battery_critically_low"],
+				"overlap_ok": false,
+				"weight": 1.0,
+			},
+		],
+
 		# --- NarrowPassageMonitor tuning (all timings in seconds of TimeManager
 		# time relative to scenario start; turbulence offsets relative to field
 		# entry). Data here, logic in the monitor — see class comment. ---
@@ -98,6 +116,14 @@ static func build() -> Dictionary:
 				"battery_margin_all": 0.02,    # everyone, comfortable battery margin
 				"battery_scraped_all": -0.02,  # everyone, battery nearly ran dry
 			},
+
+			# Overseer morph condition (docs/director-spec.md §5's own worked example:
+			# "NarrowPassage ends with battery < 20% -> eligible morph into a systems-
+			# failure scenario"). Checked against the monitor's own tracked _min_battery
+			# at resolution, not the live GameState.battery_charge — reactor relight
+			# instantly refills the bank (GameState.set_reactor_online), so by the time
+			# passage_cleared fires the live value is always back near 100%.
+			"battery_critically_low_threshold": 20.0,
 		},
 	}
 

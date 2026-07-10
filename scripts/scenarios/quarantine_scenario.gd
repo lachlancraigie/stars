@@ -37,6 +37,30 @@ static func build() -> Dictionary:
 		},
 
 		"events": _build_events(),
+
+		# --- Overseer morph metadata (docs/director-spec.md §5) ---
+		"pressure_axis": "bio",
+		"expected_length": 360.0,   # seconds — rough single-scenario runtime (detection->containment)
+		"morph_edges": [
+			# Spec §5's own worked example: "quarantine ends with pathogen_contained=false
+			# -> morphs toward a crew-drama 'blame' scenario". Close Quarters (scenario-
+			# bible 1.5, social axis) is that scenario and isn't built yet — TODO(director):
+			# point "to" at "close_quarters" once it exists. Until then ScenarioRunner's
+			# stub fallback (SCENARIO_STUB_FALLBACK) redirects this edge to the only other
+			# implemented Tier 1 scenario so a live morph has somewhere real to go.
+			{
+				"to": "close_quarters",
+				"condition_flags": ["airborne"],   # pathogen escalated uncontained (life_support_contaminated fired)
+				"overlap_ok": true,
+				"weight": 1.0,
+			},
+			{
+				"to": "close_quarters",
+				"condition_flags": ["crew_lost_to_pathogen"],   # "or with deaths" — set by QuarantineMonitor
+				"overlap_ok": true,
+				"weight": 1.0,
+			},
+		],
 	}
 
 

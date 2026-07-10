@@ -34,6 +34,16 @@ func _ready() -> void:
 	if _infected_id == "" or _medic_id == "":
 		push_warning("QuarantineMonitor: current crew roster is missing a general/medic role — quarantine cannot progress")
 	EventBus.time_ticked.connect(_on_tick)
+	# Overseer morph condition (docs/director-spec.md §5): "quarantine ... ending
+	# uncontained or with deaths" edges toward a social/blame follow-on — this is the
+	# "with deaths" half (the uncontained half is the pool's own "airborne" flag).
+	# Scoped to while this monitor is alive, i.e. while the quarantine is the running
+	# scenario, so it doesn't misfire off an unrelated death in a later leg.
+	EventBus.crew_died.connect(_on_crew_died)
+
+
+func _on_crew_died(_crew_id: String, _cause: String) -> void:
+	ScenarioDirector.set_flag("crew_lost_to_pathogen")
 
 
 func _on_tick(_elapsed: float, delta: float) -> void:

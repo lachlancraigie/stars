@@ -322,6 +322,12 @@ func _resolve() -> void:
 		TrustModel.modify_all(_trustf("battery_scraped_all", -0.02))
 
 	_fire("passage_cleared")   # sets the win flag; ScenarioRunner ends the leg next tick
+	# Overseer morph condition (docs/director-spec.md §5): checked against the
+	# monitor's OWN tracked minimum, not the live GameState.battery_charge — the
+	# reactor relight that gets the ship out of the field also instantly refills the
+	# battery bank, so the live value is always back near 100% by the time this runs.
+	if _min_battery <= _cfgf("battery_critically_low_threshold", 20.0):
+		ScenarioDirector.set_flag("battery_critically_low")
 	_set_objective("Passage cleared." if not _patient_lost else "Passage cleared. Not everyone made it through.")
 
 

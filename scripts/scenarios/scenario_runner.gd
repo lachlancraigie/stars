@@ -31,8 +31,18 @@ extends Node
 const AI_CORE_NEGLECT_TIMEOUT: float = 90.0
 const AI_CORE_REPAIR_TRUST_THRESHOLD: float = 0.35
 
-# instance_id -> {id, scenario_id, config, started_at}. config is the same dictionary
-# builders (QuarantineScenario.build(), etc) return — events/win_flags/leg_delta_*.
+# Morph targets the bible names (docs/scenario-bible.md 1.3 "The Long Crack", 1.5
+# "Close Quarters") that aren't built yet — redirected to the only other implemented
+# Tier 1 scenario so a live morph has somewhere real to go. TODO(director): remove
+# each entry once its real scenario exists.
+const SCENARIO_STUB_FALLBACK: Dictionary = {
+	"close_quarters": "the_narrow_passage",
+	"the_long_crack": "the_quarantine",
+}
+
+# instance_id -> {id, scenario_id, config, started_at, morphed}. config is the same
+# dictionary builders (QuarantineScenario.build(), etc) return — events/win_flags/
+# leg_delta_*/morph_edges.
 var active_scenarios: Dictionary = {}
 var _next_instance_id: int = 0
 var _run_active: bool = false   # guards against re-processing RUN-lose after it has already fired
@@ -43,6 +53,7 @@ func _ready() -> void:
 	EventBus.time_ticked.connect(_on_tick)
 	EventBus.crew_died.connect(_on_crew_died)
 	EventBus.ai_decommission_attempted.connect(_on_decommission_attempted)
+	EventBus.scenario_flag_set.connect(_on_flag_set)
 
 
 # Starts a new scenario instance and returns its unique instance id (callers that
@@ -127,6 +138,101 @@ func _check_win_conditions() -> void:
 func _on_crew_died(_crew_id: String, _cause: String) -> void:
 	# Win/lose re-check happens next tick — avoids checking mid-cascade
 	pass
+
+
+# --- Morph edges (docs/director-spec.md §5) ---
+#
+# A scenario "stops being a one-shot island" by declaring morph_edges: {to,
+# condition_flags, overlap_ok, weight}. Checked synchronously on every flag set
+# (EventBus.scenario_flag_set, emitted from ScenarioDirector.set_flag) rather than
+# polled per-tick, since a morph should fire the instant its condition becomes true,
+# not up to one tick late. Step 4 scope note: every live morph today is a SEQUENTIAL
+# handoff (the source instance ends, then the target starts) regardless of what
+# overlap_ok says — overlap_ok is captured as real data for step 5, which will need
+# to harden ScenarioDirector's single event-pool/flags/tension ownership for true
+# concurrency first; acting on it here would corrupt the source scenario's in-flight
+# state the moment start_scenario() re-inits ScenarioDirector for the target.
+# TODO(director, step 5): honour overlap_ok for a true concurrent handoff.
+
+func _on_flag_set(_flag: String, value: bool) -> void:
+	if not value or not _run_active:
+		return
+	for instance_id: String in active_scenarios.keys():
+		var instance: Dictionary = active_scenarios.get(instance_id, {})
+		if instance.is_empty() or instance.get("morphed", false):
+			continue
+		var config: Dictionary = instance.get("config", {})
+		var edge: Dictionary = _matching_morph_edge(config.get("morph_edges", []))
+		if not edge.is_empty():
+			_trigger_morph(instance_id, edge)
+
+
+# First edge (in authoring order) whose condition_flags are ALL currently true.
+# An edge with no condition_flags never matches — a morph always needs a reason.
+func _matching_morph_edge(edges: Array) -> Dictionary:
+	for edge_v in edges:
+		var edge: Dictionary = edge_v
+		var flags: Array = edge.get("condition_flags", [])
+		if flags.is_empty():
+			continue
+		var all_met: bool = true
+		for flag in flags:
+			if not ScenarioDirector.get_flag(flag):
+				all_met = false
+				break
+		if all_met:
+			return edge
+	return {}
+
+
+func _trigger_morph(instance_id: String, edge: Dictionary) -> void:
+	var instance: Dictionary = active_scenarios.get(instance_id, {})
+	if instance.is_empty():
+		return
+	instance["morphed"] = true   # guard: this instance's edges never re-fire
+	var target_id: String = String(edge.get("to", ""))
+	var resolved_id: String = SCENARIO_STUB_FALLBACK.get(target_id, target_id)
+	if resolved_id != target_id:
+		push_warning("ScenarioRunner: morph target '%s' not implemented yet — TODO(director), redirecting to '%s'" % [target_id, resolved_id])
+
+	# Note: with today's sequential-only handoff, this scenario was the only active
+	# instance, so _end_scenario_instance below WILL fire the run-level scenario_ended
+	# (outcome "morphed") a moment before the new instance starts — an honest "this
+	# chapter/leg closed, here's the next one" beat (spec §2's leg framing), not a bug;
+	# it just means AUTODEMO-style auto-quit-on-scenario_ended harnesses shouldn't be
+	# run across a forced morph (none of today's scripted AUTODEMO win paths ever
+	# satisfy a morph condition, so this never fires during the acceptance-test runs).
+	_end_scenario_instance(instance_id, "morphed", "morph_edge:%s" % target_id)
+	var target_config: Dictionary = _build_scenario_config(resolved_id)
+	var new_id: String = start_scenario(target_config)
+	_spawn_monitor(resolved_id, target_config)
+	print("[OVERSEER] morph fired: %s -> %s (edge to=%s) new_instance=%s" % [instance_id, resolved_id, target_id, new_id])
+
+
+# Same builder pairing main.gd's boot path uses (scenario id -> Scenario.build()),
+# needed here too since a morph-started scenario has no other code path that would
+# ever call it. Unrecognized ids fall back to the_quarantine, matching main.gd's own
+# "unknown SHIPAI_SCENARIO falls back to quarantine" convention.
+func _build_scenario_config(scenario_id: String) -> Dictionary:
+	match scenario_id:
+		"the_narrow_passage":
+			return NarrowPassageScenario.build()
+		_:
+			return QuarantineScenario.build()
+
+
+# Every scenario needs its companion Monitor node to actually be playable (the
+# win-flag-setting logic lives there, not in the builder). Parented to this
+# autoload rather than the main scene's deck — monitors only ever talk to
+# GameState/EventBus/ScenarioDirector, never their own position in the tree.
+func _spawn_monitor(scenario_id: String, config: Dictionary) -> void:
+	match scenario_id:
+		"the_narrow_passage":
+			var monitor := NarrowPassageMonitor.new()
+			monitor.setup(config)
+			add_child(monitor)
+		_:
+			add_child(QuarantineMonitor.new())
 
 
 func _on_decommission_attempted(_initiator: String) -> void:

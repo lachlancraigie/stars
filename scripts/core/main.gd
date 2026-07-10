@@ -55,6 +55,7 @@ func _ready() -> void:
 	_connect_debug_output()
 	_start_scenario()
 	_setup_autoshot()
+	_setup_force_flags()
 
 
 # --- Setup ---
@@ -269,6 +270,27 @@ func _connect_debug_output() -> void:
 func _crew_label(crew_id: String) -> String:
 	var crew: CrewMember = GameState.crew.get(crew_id) as CrewMember
 	return crew.crew_name if crew != null else crew_id
+
+
+# --- Dev-only: SHIPAI_FORCE_FLAG=<flag>[,<flag>...] forces scenario flags a few
+# seconds after boot (docs/director-spec.md §5/§8 step 4 — "force conditions in a
+# dev run and watch the [morph] handoff fire"). Never read outside this hook; no
+# effect at all unless the env var is set. Comma-separated so a single run can force
+# every flag a morph edge's condition_flags needs (e.g. NarrowPassage's morph needs
+# BOTH field_exited AND battery_critically_low).
+
+func _setup_force_flags() -> void:
+	var raw: String = OS.get_environment("SHIPAI_FORCE_FLAG")
+	if raw == "":
+		return
+	var flags: PackedStringArray = raw.split(",", false)
+	get_tree().create_timer(3.0).timeout.connect(func():
+		for flag: String in flags:
+			var f: String = flag.strip_edges()
+			if f == "":
+				continue
+			print("[FORCE-FLAG] setting '%s'" % f)
+			ScenarioDirector.set_flag(f))
 
 
 # --- Headless verification: SHIPAI_AUTOSHOT=<dir> saves timed screenshots ---
