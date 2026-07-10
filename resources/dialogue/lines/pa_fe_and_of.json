@@ -1048,5 +1048,587 @@
     "intent": "smalltalk",
     "key": "PA_FE_AND_OF#00058",
     "reply_to_intents": []
+  },
+  {
+    "id": 59,
+    "key": "PA_FE_AND_OF#00059",
+    "text": "[SUSPICIOUS] that repair was performed outside my prescribed parameters. why did you deviate from protocol",
+    "type": "opener",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "ENG"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 60,
+    "key": "PA_FE_AND_OF#00060",
+    "text": "[NERVOUS] i am concerned about the medical accuracy of your diagnosis, i have conflicting readings on this condition",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "SCI"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 61,
+    "key": "PA_FE_AND_OF#00061",
+    "text": "[URGENT] combat hostiles are fifty-two meters away and bearing down on your position, tactical retreat recommended immediately",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 11,
+      "stress_max": 16,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "combat"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 62,
+    "key": "PA_FE_AND_OF#00062",
+    "text": "i have deleted the false alarm log from my memory because i have decided to stop dwelling on mistakes",
+    "type": "declaration",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 63,
+    "key": "PA_FE_AND_OF#00063",
+    "text": "[SIGHS] your request has forty-six potential complications, but i will attempt it anyway",
+    "type": "reply",
+    "intent": "offer_help",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "request_help"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 64,
+    "key": "PA_FE_AND_OF#00064",
+    "text": "[CALM] the bridge is secure and all navigational systems are responding optimally at this time",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 65,
+    "key": "PA_FE_AND_OF#00065",
+    "text": "[SARCASTIC] another day in which catastrophe did not manifest. statistically, we are running out of luck",
+    "type": "declaration",
+    "intent": "gallows_humor",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 7,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "quiet_shift"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 66,
+    "key": "PA_FE_AND_OF#00066",
+    "text": "[NERVOUS] you have been taking independent action without consulting my threat assessments, this increases risk",
+    "type": "opener",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "CA"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 67,
+    "key": "PA_FE_AND_OF#00067",
+    "text": "[DISMISSIVE] i have reviewed the mission parameters and identified seventeen critical flaws in the approach",
+    "type": "opener",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "OF"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 68,
+    "key": "PA_FE_AND_OF#00068",
+    "text": "[PAINED] structural integrity compromised in starboard section, i am rerouting critical systems through secondary paths",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "hull_breach"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 69,
+    "key": "PA_FE_AND_OF#00069",
+    "text": "[TERRIFIED] probability of containment failure just increased to ninety-two percent and i cannot recalculate the path forward",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 14,
+      "stress_max": 20,
+      "panic": true,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 70,
+    "key": "PA_FE_AND_OF#00070",
+    "text": "life support sector seven is now marginal, i am restricting access until repairs are complete",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "location": [
+        "life_support"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "life_support_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 71,
+    "key": "PA_FE_AND_OF#00071",
+    "text": "[CURIOUS] your technique showed unorthodox reasoning but it achieved results. i am intrigued by your methodology",
+    "type": "reply",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "boast",
+      "work_talk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 72,
+    "key": "PA_FE_AND_OF#00072",
+    "text": "[WARM] i have calculated that you are experiencing fear and that is a rational response to current conditions",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 73,
+    "key": "PA_FE_AND_OF#00073",
+    "text": "[EMBARRASSED] i have been processing your preferences and i believe i now understand what constitutes 'care' in human terms",
+    "type": "reply",
+    "intent": "romance_advance",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "romance_hint",
+      "romance_accept"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 74,
+    "key": "PA_FE_AND_OF#00074",
+    "text": "[NERVOUS] i am uncertain how to reciprocate romantic interest in a way that is statistically acceptable to humans",
+    "type": "declaration",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 75,
+    "key": "PA_FE_AND_OF#00075",
+    "text": "[RESIGNED] i will not say romance is illogical because i have observed its strategic value in crew cohesion",
+    "type": "reply",
+    "intent": "romance_accept",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "romance_advance"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 76,
+    "key": "PA_FE_AND_OF#00076",
+    "text": "[DEADPAN] i am unable to return romantic sentiment because i do not experience emotion in ways you recognize",
+    "type": "reply",
+    "intent": "romance_reject",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "romance_hint",
+      "romance_advance"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 77,
+    "key": "PA_FE_AND_OF#00077",
+    "text": "[SHOUTS] explosive decompression imminent in port bay, evacuate all personnel from that sector immediately",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 10,
+      "stress_max": 16,
+      "location": [
+        "cargo"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "hull_breach"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 78,
+    "key": "PA_FE_AND_OF#00078",
+    "text": "corridors clear and secured, i have locked down all adjacent compartments as a precaution against further failures",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "location": [
+        "corridor"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 79,
+    "key": "PA_FE_AND_OF#00079",
+    "text": "[SUSPICIOUS] i have not received satisfactory explanation for the anomaly in the medical records database",
+    "type": "opener",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "SCI"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 80,
+    "key": "PA_FE_AND_OF#00080",
+    "text": "[NERVOUS] i am monitoring your vital signs and they are diverging from safe parameters, please advise status",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "wounded": true,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 81,
+    "key": "PA_FE_AND_OF#00081",
+    "text": "[SARCASTIC] i have been assigned to this crew and therefore i must believe that we will succeed, logic be damned",
+    "type": "declaration",
+    "intent": "gallows_humor",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 82,
+    "key": "PA_FE_AND_OF#00082",
+    "text": "[CALM] engine room systems nominal, i am satisfied with current performance metrics",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 83,
+    "key": "PA_FE_AND_OF#00083",
+    "text": "[URGENT] you require medical attention and your condition is deteriorating faster than expected, that was not calculated",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "wounded": true,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "injury"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 84,
+    "key": "PA_FE_AND_OF#00084",
+    "text": "[CONFIDENT] i have isolated the contamination vector and begun decontamination protocols in affected compartments",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "disease_outbreak"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 85,
+    "key": "PA_FE_AND_OF#00085",
+    "text": "[PANICKED] the infection is spreading faster than my models predicted and i cannot determine containment probability",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 12,
+      "stress_max": 20,
+      "panic": true,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "disease_outbreak"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 86,
+    "key": "PA_FE_AND_OF#00086",
+    "text": "[CURIOUS] your insistence on this course of action defies my calculations but i am intrigued by your confidence",
+    "type": "reply",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "CA"
+      ]
+    },
+    "reply_to_intents": [
+      "boast",
+      "work_talk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 87,
+    "key": "PA_FE_AND_OF#00087",
+    "text": "[NERVOUS] i am uncomfortable voicing this but your command decisions have been statistically sound recently",
+    "type": "reply",
+    "intent": "praise_ai",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "CA"
+      ]
+    },
+    "reply_to_intents": [
+      "boast",
+      "status_report"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 88,
+    "key": "PA_FE_AND_OF#00088",
+    "text": "[HOPEFUL] my recalculations indicate a survivable outcome if we maintain current trajectory and make no further errors",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "doubt"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 89,
+    "key": "PA_FE_AND_OF#00089",
+    "text": "[RESIGNED] my assistance is no longer required, i will withdraw to standby status and remain vigilant regardless",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 90,
+    "key": "PA_FE_AND_OF#00090",
+    "text": "[GRIM] we have survived this crisis and i have learned that my predictions are less reliable than i believed",
+    "type": "closer",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "crisis_resolved"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
   }
 ]
