@@ -37,6 +37,12 @@ static func tick(crew: CrewMember, delta: float) -> void:
 		return
 	crew.suffocation_round_timer = 0.0
 
-	var result: Checks.CheckResult = Checks.perform_check(crew, "body")
+	# Iron Lungs' "+5 Body vs air/vacuum" is qualified to exactly this check — the tag
+	# system (not the always-on stat_bonus system) is what scopes it here and nowhere else.
+	var result: Checks.CheckResult = Checks.perform_check(crew, "body", "", false, false, int(crew.trait_bonus("body_vs_air_bonus")))
 	if not result.success:
 		WoundTable.death_save(crew)
+	# "Survived suffocation/near-vacuum" earn trigger (docs/crew-progression-spec.md §3) —
+	# fires once per critical-air round regardless of the roll's outcome; CrewProgression
+	# dedupes to once per leg so a prolonged air crisis doesn't spam pending trait rolls.
+	EventBus.crew_suffocation_check.emit(crew.crew_id, crew.is_alive)

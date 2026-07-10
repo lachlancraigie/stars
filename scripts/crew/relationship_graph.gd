@@ -254,7 +254,7 @@ static func on_crew_died(crew_id: String) -> void:
 	var partner: CrewMember = GameState.crew.get(partner_id) as CrewMember
 	if partner == null or not partner.is_alive:
 		return
-	partner.add_stress(6)
+	partner.add_stress(6, "death")  # source tag lets Hardened's stress_mult apply here too
 	partner.pain = clampf(partner.pain + 0.4, 0.0, 1.0)
 	partner.loneliness = clampf(partner.loneliness + 0.5, 0.0, 1.0)
 	partner.fear = clampf(partner.fear + 0.3, 0.0, 1.0)

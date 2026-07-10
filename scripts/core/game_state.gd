@@ -72,6 +72,17 @@ var crew_relationships: Dictionary = {}
 # assigned lazily the first time a crew member's recreation-phase schedule needs it.
 var crew_side_projects: Dictionary = {}
 
+# --- Memorial (docs/crew-progression-spec.md §5) ---
+# One snapshot per crew member who has died this run — CrewLifecycle.kill is the one
+# funnel that calls record_fallen(), right before emitting crew_died, so a memorial entry
+# always exists by the time any listener reacts to the death. Shape: {crew_id, name, role,
+# archetype_tag, traits: Array[String], legs_served, cause, partner, died_at}.
+var fallen: Array[Dictionary] = []
+
+
+func record_fallen(entry: Dictionary) -> void:
+	fallen.append(entry)
+
 
 # --- Power ---
 
@@ -264,10 +275,16 @@ func destroy_ship(reason: String) -> void:
 func set_ai_trust(crew_id: String, value: float) -> void:
 	var prev: float = ai_trust_scores.get(crew_id, 0.5)
 	var next: float = clampf(value, 0.0, 1.0)
+	# Believer / Machine-Wary (docs/crew-progression-spec.md §3): a personal trust
+	# floor/ceiling clamp read continuously, same spirit as the reactor/battery clamps
+	# above — applied here (the one mutator) so every caller gets it for free.
+	var member: CrewMember = crew.get(crew_id) as CrewMember
+	if member != null:
+		next = clampf(next, Traits.trust_floor(member.traits), Traits.trust_ceiling(member.traits))
 	ai_trust_scores[crew_id] = next
 	# Keep the CrewMember resource in sync so DirectiveEvaluator reads live values
-	if crew_id in crew and crew[crew_id] != null:
-		(crew[crew_id] as CrewMember).ai_trust = next
+	if member != null:
+		member.ai_trust = next
 	EventBus.ai_trust_changed.emit(crew_id, prev, next)
 
 

@@ -96,10 +96,18 @@ var stat_penalties: Dictionary = {}
 
 # --- Personality (existing — unchanged) ---
 @export_group("Personality")
-@export var traits: Array[String] = []
 @export var fears: Array[String] = []
 @export var values: Array[String] = []
 @export var goals: Array[String] = []
+
+# --- Progression (docs/crew-progression-spec.md) — X-COM-style veterancy: history, not
+# levels. `traits` holds earned trait ids (Traits.grant() is the one funnel that appends to
+# it — see scripts/core/traits.gd); `skill_progress` is XP-lite crit-tally progress toward a
+# tier upgrade (scripts/crew/crew_progression.gd), skill name -> 0..10.
+@export_group("Progression")
+@export var traits: Array[String] = []
+@export var legs_served: int = 0
+@export var skill_progress: Dictionary = {}
 
 # --- Social (existing — unchanged) ---
 @export_group("Social")
@@ -125,6 +133,10 @@ func get_stat_or_save(name: String) -> int:
 		"fear": base = fear_save
 		"body": base = body_save
 		_: base = 36
+	# Unqualified trait stat/save bonuses only (Old Hand/Lifer's all-saves bump, Scar
+	# Tissue's flat Body, Old Wound's flat Speed) — "vs X"-qualified ones like Iron Lungs
+	# use the tag system instead, applied only at their specific check call site.
+	base += Traits.sum_stat_bonus(traits, name)
 	return maxi(1, base - int(stat_penalties.get(name, 0)))
 
 
@@ -132,14 +144,27 @@ func get_skill_bonus(skill_name: String) -> int:
 	if skill_name == "" or skill_name == lost_skill:
 		return 0
 	var tier: String = String(skills.get(skill_name, ""))
-	return int(Checks.TIER_BONUS.get(tier, 0))
+	return int(Checks.TIER_BONUS.get(tier, 0)) + Traits.sum_skill_bonus(traits, skill_name)
+
+
+# Highest-bonus skill name among `skill_names` (ties keep the first match) — used both to
+# compute a bonus (best_skill_bonus below) and, at the call sites that matter for crew
+# progression (Door bypass, RepairModel), passed on as Checks.perform_check's own
+# `skill_name` so critical successes can be tallied by real skill family (see
+# EventBus.crew_skill_critical) and Loss of Confidence / Set in Their Ways apply correctly.
+func best_skill_name(skill_names: Array) -> String:
+	var best_name: String = ""
+	var best_bonus: int = -1
+	for skill_name: String in skill_names:
+		var bonus: int = get_skill_bonus(skill_name)
+		if bonus > best_bonus:
+			best_bonus = bonus
+			best_name = skill_name
+	return best_name
 
 
 func best_skill_bonus(skill_names: Array) -> int:
-	var best: int = 0
-	for skill_name: String in skill_names:
-		best = maxi(best, get_skill_bonus(skill_name))
-	return best
+	return get_skill_bonus(best_skill_name(skill_names))
 
 
 func worst_save_name() -> String:
@@ -161,11 +186,14 @@ func apply_stat_penalty(stat_name: String, amount: int) -> void:
 
 # --- Stress ---
 
-func add_stress(amount: int) -> void:
+func add_stress(amount: int, source: String = "") -> void:
 	if amount <= 0:
 		return
 	var old: int = stress
-	var raw: int = stress + amount
+	# `source` is optional context ("death" is the only one read today) purely for trait
+	# multipliers (Hardened) — most call sites never pass one, so the multiplier is a no-op.
+	var scaled: int = int(round(float(amount) * Traits.stress_gain_mult(traits, source)))
+	var raw: int = stress + scaled
 	if raw > 20:
 		# "Damage over 20 reduces the most relevant Stat or Save by the overflow
 		# amount" — Warden-arbitrated which is "most relevant"; Sanity Save is the
@@ -201,6 +229,19 @@ func has_environmental_advantage() -> bool:
 	return TimeManager.elapsed < adrenaline_until
 
 
+# Vacuum Nightmares (docs/crew-progression-spec.md §3): "fear checks at disadvantage in
+# airlock/low-air rooms" — the one trait whose effect is a conditional Disadvantage rather
+# than a flat bonus, so it gets its own read (Checks.perform_check calls this only when
+# stat_name == "fear") instead of going through the tag/stat_bonus systems.
+func has_vacuum_nightmares_disadvantage() -> bool:
+	if "vacuum_nightmares" not in traits:
+		return false
+	var room: RoomBase = GameState.rooms.get(location) as RoomBase
+	if room != null and room.room_function == "airlock":
+		return true
+	return GameState.get_room_air(location) < LifeSupportModel.AIR_DISADVANTAGE_THRESHOLD
+
+
 # --- Health/Wounds/Damage flow (rules.md "Damage flow") ---
 
 func apply_damage(amount: int, wound_type: String) -> void:
@@ -213,6 +254,12 @@ func apply_damage(amount: int, wound_type: String) -> void:
 		WoundTable.roll_and_apply(self, wound_type)
 		if is_alive and carryover > 0:
 			apply_damage(carryover, wound_type)
+
+
+# --- Progression traits (same shape as the item accessors below) ---
+
+func trait_bonus(tag: String) -> float:
+	return Traits.sum_tag_bonus(traits, tag)
 
 
 # --- Equipment ---

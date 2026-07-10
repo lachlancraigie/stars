@@ -63,6 +63,10 @@ static func _tick_loneliness(crew: CrewMember) -> void:
 		crew.loneliness = maxf(0.0, crew.loneliness - LONELINESS_RECOVERY)
 	else:
 		crew.loneliness = minf(1.0, crew.loneliness + LONELINESS_PER_TICK)
+	# Widowed (docs/crew-progression-spec.md §3): "loneliness floor raised" — a continuous
+	# clamp, not a one-time bump, so it holds even after recovery ticks would otherwise
+	# have drained loneliness back down.
+	crew.loneliness = maxf(crew.loneliness, Traits.loneliness_floor(crew.traits))
 
 
 static func _tick_boredom(crew: CrewMember) -> void:

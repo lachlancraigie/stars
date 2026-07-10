@@ -44,12 +44,14 @@ static func _tick_job(target_id: String, delta: float) -> void:
 		return
 	job["elapsed_since_check"] = 0.0
 
-	var skill_bonus: int = crew.best_skill_bonus(REPAIR_SKILLS.get(target_id, []))
-	var item_bonus: int = int(crew.item_bonus("repair_bonus"))
+	# Named skill (not folded into extra_bonus) — see door.gd's identical comment; needed
+	# for crew-progression's crit tally and correct Loss of Confidence / Set in Their Ways.
+	var skill_name: String = crew.best_skill_name(REPAIR_SKILLS.get(target_id, []))
+	var item_bonus: int = int(crew.item_bonus("repair_bonus")) + int(crew.trait_bonus("repair_bonus"))
 	# Overseer mercy knob (docs/director-spec.md §4): +5 max, hard-capped by
 	# ScenarioDirector itself — never visible to the player, never announced.
 	var mercy_bonus: int = int(ScenarioDirector.modifiers.get("check_bonus", 0))
-	var result: Checks.CheckResult = Checks.perform_check(crew, "intellect", "", false, false, skill_bonus + item_bonus + mercy_bonus)
+	var result: Checks.CheckResult = Checks.perform_check(crew, "intellect", skill_name, false, false, item_bonus + mercy_bonus)
 
 	var progress_delta: float = 0.0
 	if result.critical_success():

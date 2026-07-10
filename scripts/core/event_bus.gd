@@ -48,6 +48,16 @@ signal door_locked_on_crew(crew_id: String, door_id: String)  # crew found thems
 signal crew_stress_changed(crew_id: String, old_stress: int, new_stress: int)
 signal crew_panicked(crew_id: String, table_entry: int, effect: String)
 signal crew_injury(crew_id: String, wound_severity: String, wound_type: String)
+signal crew_suffocation_check(crew_id: String, survived: bool)  # SuffocationModel's per-round Body check resolved
+signal crew_repeated_lockout(crew_id: String, door_id: String, count: int)  # every Nth lockout (Door.LOCKOUT_TRUST_EVERY)
+
+# Crew progression (docs/crew-progression-spec.md) — traits, service record, memorial
+signal crew_trait_gained(crew_id: String, trait_id: String)
+signal crew_trait_lost(crew_id: String, trait_id: String)          # cap-replacement only
+signal crew_skill_critical(crew_id: String, skill_name: String)    # a Checks.perform_check critical success with a named skill
+signal crew_skill_tier_up(crew_id: String, skill_name: String, new_tier: String)
+signal crew_rest_save_resolved(crew_id: String, success: bool, worst_save: String)
+signal leg_boundary_reached(leg: int)  # ScenarioRunner._advance_leg() — Rest Saves/trait rolls/skill growth all hook in here
 
 # Dialogue-facing convenience channel — see the forwarding wiring in _ready() below.
 signal recent_event(event_id: String, data: Dictionary)

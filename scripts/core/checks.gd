@@ -130,15 +130,24 @@ static func perform_check(crew: CrewMember, stat_name: String, skill_name: Strin
 		advantage: bool = false, disadvantage: bool = false, extra_bonus: int = 0) -> CheckResult:
 	var value: int = crew.get_stat_or_save(stat_name)
 	var bonus: int = (crew.get_skill_bonus(skill_name) if skill_name != "" else 0) + extra_bonus
+	# Set in Their Ways (docs/crew-progression-spec.md §3, comes bundled with Lifer): "-5 to
+	# checks outside their skill set" — scoped to skill-gated checks the crew has no tier in
+	# at all (a plain stat/save check like a Rest Save or the suffocation Body check was
+	# never "their skill set" to begin with, so it's untouched).
+	if skill_name != "" and crew.get_skill_bonus(skill_name) <= 0 and "set_in_their_ways" in crew.traits:
+		bonus -= 5
 	var net: Dictionary = net_advantage(
 		int(advantage or crew.has_environmental_advantage()),
-		int(disadvantage or crew.has_environmental_disadvantage()))
+		int(disadvantage or crew.has_environmental_disadvantage()
+			or (stat_name == "fear" and crew.has_vacuum_nightmares_disadvantage())))
 	var result: CheckResult = stat_check(value, bonus, net.advantage, net.disadvantage)
 
 	if not result.success:
 		crew.add_stress(1)
 	if result.critical_failure():
 		panic_check(crew)
+	if skill_name != "" and result.critical_success():
+		EventBus.crew_skill_critical.emit(crew.crew_id, skill_name)
 	return result
 
 
@@ -146,12 +155,31 @@ static func perform_check(crew: CrewMember, stat_name: String, skill_name: Strin
 
 static func panic_check(crew: CrewMember) -> Dictionary:
 	var roll: int = roll_panic_die()
+	# Battle Calm (docs/crew-progression-spec.md §3): "+1 panic-table shift" — shifted
+	# toward the table's better (lower-numbered) rows before the panicked/not-panicked
+	# threshold check, so it can also nudge a would-be panic below the Stress threshold
+	# entirely, not just soften which row lands.
+	roll = clampi(roll + Traits.panic_table_shift(crew.traits), 1, 20)
 	var panicked: bool = roll <= crew.stress
 	var effect: String = ""
 	if panicked:
 		effect = PanicTable.apply(crew, roll)
+		_apply_adjacent_panic_stress(crew)
 	EventBus.crew_panicked.emit(crew.crew_id, roll, effect)
 	return {"roll": roll, "panicked": panicked, "effect": effect}
+
+
+# Jumpy (crew progression trait "jumpy_nerves" — see Traits.gd's naming note): "adjacent
+# panic gives +1 extra stress". Piggybacks on PanicTable's own "close crew" definition
+# (every other living crew member — this game has no spatial range-band model).
+static func _apply_adjacent_panic_stress(crew: CrewMember) -> void:
+	for crew_id: String in GameState.crew:
+		var other: CrewMember = GameState.crew[crew_id] as CrewMember
+		if other == null or other == crew or not other.is_alive:
+			continue
+		var bonus: int = Traits.adjacent_panic_stress_bonus(other.traits)
+		if bonus > 0:
+			other.add_stress(bonus)
 
 
 # --- Rest Save (Stress relief in a safe location) ---

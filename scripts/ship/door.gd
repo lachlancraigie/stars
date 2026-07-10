@@ -99,12 +99,16 @@ func attempt_crew_bypass(crew: CrewMember) -> void:
 	_record_lockout(crew)
 	EventBus.door_locked_on_crew.emit(crew.crew_id, door_id)
 
-	var skill_bonus: int = crew.best_skill_bonus(BYPASS_SKILLS)
-	var item_bonus: int = int(crew.item_bonus("door_bypass_bonus"))
+	# Named skill (not folded into extra_bonus) so Checks.perform_check has real visibility
+	# into which skill this was — needed for crew-progression's crit tally
+	# (EventBus.crew_skill_critical) and correctly applies Loss of Confidence / Set in
+	# Their Ways, which a bare extra_bonus would have silently bypassed.
+	var skill_name: String = crew.best_skill_name(BYPASS_SKILLS)
+	var item_bonus: int = int(crew.item_bonus("door_bypass_bonus")) + int(crew.trait_bonus("door_bypass_bonus"))
 	# Overseer mercy knob (docs/director-spec.md §4): +5 max, hard-capped by
 	# ScenarioDirector itself — never visible to the player, never announced.
 	var mercy_bonus: int = int(ScenarioDirector.modifiers.get("check_bonus", 0))
-	var result: Checks.CheckResult = Checks.perform_check(crew, "intellect", "", false, false, skill_bonus + item_bonus + mercy_bonus)
+	var result: Checks.CheckResult = Checks.perform_check(crew, "intellect", skill_name, false, false, item_bonus + mercy_bonus)
 	var time_mult: float = crew.item_time_multiplier("door_bypass_time_mult")
 
 	var eta: float
@@ -143,3 +147,4 @@ func _record_lockout(crew: CrewMember) -> void:
 	crew.door_lockout_counts[door_id] = count
 	if count % LOCKOUT_TRUST_EVERY == 0:
 		TrustModel.modify(crew.crew_id, TrustModel.DISOBEDIENCE_MINOR)
+		EventBus.crew_repeated_lockout.emit(crew.crew_id, door_id, count)

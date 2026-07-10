@@ -398,6 +398,10 @@ func _remember_scenario(scenario_id: String) -> void:
 func _advance_leg() -> void:
 	ScenarioDirector.advance_leg()
 	SaveManager.save_checkpoint("leg_%d" % ScenarioDirector.current_leg)
+	# Crew progression's leg-boundary resolution (Rest Saves, pending trait rolls, crit-tally
+	# skill growth, service record — docs/crew-progression-spec.md §4) hooks in via EventBus
+	# rather than a direct call, same arm's-length pattern as the SaveManager stub above.
+	EventBus.leg_boundary_reached.emit(ScenarioDirector.current_leg)
 
 
 # Ends the whole run (a RUN-lose condition fired) — every active scenario ends at
