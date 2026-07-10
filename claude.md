@@ -29,9 +29,9 @@ A spaceship AI simulator. The player is the ship's computer. See `GDD.md` for fu
 
 ## RESUME QUEUE (work in order, one agent at a time)
 
-1. **Finish dialogue to ~2,500 lines** — state: 2,188 lines, validator clean (2026-07-10 recovery check: lost agent's GR work was valid, committed); CH + EV groups COMPLETE; GR group: done EXCEPT `gr_ml_sci_of` (50 lines, needs ~+50); PA group: all six PA files need expansion (296 lines total, target ~90 each). **Rules**: ONE Haiku agent per group sequentially; append-only; IDs continue from file's current max; hand-written in character (no nested agents, no generation scripts); closed vocabularies from `docs/dialogue_spec.md` only; `reply_to_intents` holds INTENTS only (never event names). Validate: `python tools/dialogue/validate_dialogue.py resources/dialogue/lines/*.json`
+1. **Finish dialogue to ~2,500 lines** — ✅ COMPLETE (2026-07-10): 2,482 lines across 24 files, all groups (CH/EV/GR/PA) done, validator 0 issues. (Note: commit ab32eac's message says 2,502 — true count is 2,482.)
 
-2. **Corpus finalization** (orchestrator): run validator → fix stragglers → `python tools/dialogue/normalize_and_export.py` (normalizes tags AND regenerates all ElevenLabs CSVs; JSON is canonical) → commit.
+2. **Corpus finalization** — ✅ COMPLETE (2026-07-10): 0 tag fixes, all 24 ElevenLabs CSVs regenerated and committed (`ab32eac`).
 
 3. **Voice the expansion** — PARTIAL, BLOCKED ON CREDITS (2026-07-10): 1,550/2,482 voiced; quota exhausted mid-run (932 lines remain, ~80k chars needed). Once Lachlan tops up ElevenLabs: source the key then rerun — `set -a && . tools/audio_gen/.env && set +a && python tools/audio_gen/elevenlabs_batch.py` (script does NOT read .env itself; resume-safe, skips existing MP3s; eleven_v3 is the default).
 
