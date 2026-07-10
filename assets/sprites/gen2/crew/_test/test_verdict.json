@@ -1,0 +1,51 @@
+{
+  "phase": "1 - crew consistency gate",
+  "date": "2026-07-10",
+  "verdict": "PASS",
+  "strategy_used": "(a) sheet-based generation + (b) palette-snap, per docs/style-bible-v2.md",
+  "summary": [
+    "A single 8-facing-in-one-sheet attempt (idle_base, grid 4x2 then 2x4) was tried three times and never hit an exact 8-pose count (drew 10, then 9, then 6 poses instead of 8), which breaks fixed-fraction slicing and produces bleed between cells. The model DID keep character identity/palette self-consistent within each of those over-generated sheets, confirming the core sheet-based hypothesis (within-image consistency holds; it's exact cell-count compliance on a wide single-row-of-4+ grid that doesn't).",
+    "idle_base attempt 1 (grid declared 4x2) actually rendered 5 poses per row (10 total) -- see _raw_idle_base_attempt1_row{1,2}_crop_5poses_FAILED.png. Attempt 3 (grid declared 2x4) rendered 6 poses in a 2x3 layout and also visibly drifted the character's overall design style (rounder head, no cap, no belt stripe vs attempt 1/2's capped, belt-striped look) -- see _raw_idle_base_attempt3_2x4_6poses_FAILED.png. Attempt 2's raw sheet was overwritten before archival and is not preserved; it hit a partial 4+5=9 count (row 1 exactly 4, row 2 five) and was the one that motivated the exact-count prompt strengthening.",
+    "Switching to the SAME small-grid shape the walk_* production jobs already use (2 facings x N frames per sheet, max 8 cells) fixed the count problem immediately: walk_s_se (2 facings x 4 frames, 8 cells) and all four idle_{facing pair} sheets (2 cells each) hit their exact declared grid on the first or second try.",
+    "A real (separate) bug was found and fixed: CHARACTER_SUBJECT originally said 'short dark hair OR a fitted dark cap', and the model used that as license to flip headwear WITHIN a single sheet (idle_e_ne and idle_w_sw each had a bare-headed cell next to a capped cell in the very same generation call). Fixed by committing the prompt to bare dark hair only, with an explicit 'never wearing any cap/hat/hood/helmet' negative, and regenerating just those two sheets ($0.10). Re-inspected: fixed.",
+    "Final 8-facing idle contact sheet (idle_all_facings_contact_sheet.png) shows consistent jumpsuit color/trim, hair, proportions, and outline weight across all 8 compass facings after palette-snap.",
+    "Mechanical QA (normalize_gen2.qa_normalized): all 8 idle cells + all 8 walk_s_se cells PASS (canvas_ok, has_alpha, anchored_ok, interior_hole_pct well under the 10% threshold)."
+  ],
+  "tooling_changes_made": [
+    "tools/image_gen/crew_sheet_gen.py: strengthened GRID_CLAUSE_TMPL with explicit cell-count enforcement language (kept as defense in depth even though the real fix was switching to smaller grids).",
+    "tools/image_gen/crew_sheet_gen.py: added detect_grid_bounds()/slice_cells_auto() -- alpha-gap column/row detection that slices at the sheet's ACTUAL pose boundaries instead of assuming an even division, with automatic fallback to the old even-division slice_cells() (and a printed warning) when the detected count doesn't match the declared grid. Generic improvement, used by every job going forward.",
+    "tools/image_gen/crew_sheet_gen.py: replaced the single 8-cell idle_base job with four 2-cell idle_{pair} jobs (idle_s_se, idle_e_ne, idle_n_nw, idle_w_sw), mirroring the walk_* jobs' proven-reliable 2-facing pairing.",
+    "tools/image_gen/crew_sheet_gen.py: CHARACTER_SUBJECT locked to bare dark hair only (was 'hair or cap'), with an explicit no-headwear-variance negative clause."
+  ],
+  "evidence_paths": [
+    "assets/sprites/gen2/crew/_test/_raw_idle_base_attempt1_row{1,2}_crop_5poses_FAILED.png",
+    "assets/sprites/gen2/crew/_test/_raw_idle_base_attempt3_2x4_6poses_FAILED.png",
+    "assets/sprites/gen2/crew/_test/_raw_idle_s_se.png",
+    "assets/sprites/gen2/crew/_test/_raw_idle_e_ne.png",
+    "assets/sprites/gen2/crew/_test/_raw_idle_n_nw.png",
+    "assets/sprites/gen2/crew/_test/_raw_idle_w_sw.png",
+    "assets/sprites/gen2/crew/_test/_raw_walk_s_se.png",
+    "assets/sprites/gen2/crew/_test/final_crew_idle_{s,se,e,ne,n,nw,w,sw}_0.png (final approved, post palette-snap)",
+    "assets/sprites/gen2/crew/_test/idle_all_facings_contact_sheet.png (all 8 facings side by side for visual judgment)",
+    "assets/sprites/gen2/crew/_test/walk_s_se__crew_walk_{s,se}_{0,1,2,3}.png (production-shape walk cycle evidence)"
+  ],
+  "spend": {
+    "this_session_crew_test_total_usd": 0.5167,
+    "breakdown": {
+      "idle_base_attempt_1_4x2": 0.0516,
+      "idle_base_attempt_2_4x2_stronger_prompt": 0.0518,
+      "idle_base_attempt_3_2x4": 0.0521,
+      "walk_s_se": 0.0520,
+      "idle_s_se": 0.0515,
+      "idle_e_ne_attempt_1_cap_bug": 0.0515,
+      "idle_n_nw": 0.0515,
+      "idle_w_sw_attempt_1_cap_bug": 0.0515,
+      "idle_e_ne_attempt_2_fixed": 0.0516,
+      "idle_w_sw_attempt_2_fixed": 0.0516
+    },
+    "phase1_hard_stop_usd": 2.50,
+    "phase1_headroom_remaining_usd": 1.98,
+    "note": "assets/sprites/gen2/report.json's separately-tracked $2.3497 is the PRE-EXISTING approved 65-asset gen2 ENVIRONMENT kit spend from an earlier session, not part of this crew budget."
+  },
+  "conclusion": "PASS. Production strategy for Phase 2: small paired-facing sheets (2 facings x up to 4 frames, matching the already-defined walk_*/dead/sleeping/etc. jobs), palette-snap every cell, auto-detect slice boundaries with even-division fallback. Do not attempt a single 8-facing sheet again."
+}

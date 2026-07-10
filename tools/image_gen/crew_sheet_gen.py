@@ -102,19 +102,26 @@ FACING_DESC: dict[str, str] = {
 
 CHARACTER_SUBJECT = (
     "A ship crew member in a simple utilitarian jumpsuit, off-white body with "
-    "steel-gray trim, no helmet, simplified featureless face, short dark hair "
-    "or a fitted dark cap."
+    "steel-gray trim, simplified featureless face, short dark cropped hair -- "
+    "bare-headed in every single cell of the sheet, exactly the same haircut "
+    "each time. Never wearing any cap, hat, hood, helmet, or other headwear in "
+    "any cell, even from behind or from a three-quarter-back angle -- headwear "
+    "choice must not vary from pose to pose."
 )
 
 GRID_CLAUSE_TMPL = (
     "Arrange the sheet as EXACTLY {cols} equal columns by {rows} equal rows in a strict "
-    "uniform grid ({n} cells total, reading order left-to-right then top-to-bottom). "
+    "uniform grid -- EXACTLY {n} cells total, no more and no fewer, EXACTLY {cols} characters "
+    "per row (count them: {col_count_words}), EXACTLY {rows} rows (reading order left-to-right "
+    "then top-to-bottom). Do NOT add an extra in-between pose anywhere -- there are only "
+    "{n} poses listed below and the sheet must contain precisely those {n}, nothing added. "
     "Each cell contains exactly ONE full-body pose of the SAME character -- identical "
     "jumpsuit color and trim, identical hair/cap, identical body proportions, identical "
     "cel-shading and outline weight in every cell, only the pose/facing changes as listed "
-    "below. Leave a clear empty transparent margin between cells so no cell's subject "
-    "overlaps into a neighboring cell. Do not draw grid lines, cell borders, or dividers -- "
-    "only empty transparent space separates the cells. Cells, in reading order:\n"
+    "below. Leave a wide clear empty transparent gap of at least one head-width between "
+    "adjacent cells in every row so no cell's subject overlaps or touches a neighboring "
+    "cell's subject. Do not draw grid lines, cell borders, or dividers -- only empty "
+    "transparent space separates the cells. Cells, in reading order:\n"
 )
 
 REF_CLAUSE = (
@@ -122,6 +129,9 @@ REF_CLAUSE = (
     "color and trim, identical body proportions, identical head/hair, identical outline "
     "weight, identical cel shading style -- only the pose/facing changes."
 )
+
+
+_NUM_WORDS = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six", 7: "seven", 8: "eight"}
 
 
 def compose_sheet_prompt(job: dict[str, Any]) -> str:
@@ -132,7 +142,8 @@ def compose_sheet_prompt(job: dict[str, Any]) -> str:
         r, c = divmod(i, cols)
         facing_desc = FACING_DESC[cell["facing"]]
         lines.append(f"  Cell (row {r+1}, col {c+1}): {cell['pose']}, {facing_desc}.")
-    grid_clause = GRID_CLAUSE_TMPL.format(cols=cols, rows=rows, n=n) + "\n".join(lines)
+    col_count_words = ", ".join(_NUM_WORDS.get(i, str(i)) for i in range(1, cols + 1))
+    grid_clause = GRID_CLAUSE_TMPL.format(cols=cols, rows=rows, n=n, col_count_words=col_count_words) + "\n".join(lines)
     parts = [pb.STYLE_LOCK, CHARACTER_SUBJECT, job["pose_common"], grid_clause, pb.NEGATIVE]
     prompt = " ".join(parts)
     if job.get("reference"):
@@ -158,7 +169,11 @@ def pad_to_square(im: Image.Image) -> Image.Image:
 def slice_cells(im: Image.Image, cols: int, rows: int, margin_frac: float = 0.05) -> list[Image.Image]:
     """Even grid division (PIL owns geometry, not the model -- style-bible
     pipeline note #3) with a small inset margin per cell to avoid bleed from
-    a neighbor's outline, returned in row-major reading order."""
+    a neighbor's outline, returned in row-major reading order.
+
+    Kept as the fallback strategy for slice_cells_auto() below -- correct only
+    when the model actually rendered exactly cols*rows evenly-spaced poses.
+    """
     im = pad_to_square(im)
     w, h = im.size
     cw, ch = w / cols, h / rows
@@ -172,6 +187,87 @@ def slice_cells(im: Image.Image, cols: int, rows: int, margin_frac: float = 0.05
             y1 = (r + 1) * ch - my
             cells.append(im.crop((int(x0), int(y0), int(x1), int(y1))))
     return cells
+
+
+def _content_runs(flags: list[int], min_gap: int, min_run: int) -> list[tuple[int, int]]:
+    """Given a 0/1 presence sequence (a PIL getprojection() axis), return
+    (start, end) pixel runs of content, merging runs separated by a gap
+    shorter than min_gap (stray disconnected pixels -- e.g. an outstretched
+    hand in a side-profile pose -- must not read as a whole extra column) and
+    dropping runs shorter than min_run (rendering noise, not a real pose)."""
+    raw: list[tuple[int, int]] = []
+    start = None
+    for x, f in enumerate(flags):
+        if f and start is None:
+            start = x
+        elif not f and start is not None:
+            raw.append((start, x))
+            start = None
+    if start is not None:
+        raw.append((start, len(flags)))
+
+    merged: list[tuple[int, int]] = []
+    for s, e in raw:
+        if merged and s - merged[-1][1] < min_gap:
+            merged[-1] = (merged[-1][0], e)
+        else:
+            merged.append((s, e))
+    return [(s, e) for s, e in merged if e - s >= min_run]
+
+
+def detect_grid_bounds(im: Image.Image, cols: int, rows: int, alpha_threshold: int = 20,
+                        ) -> tuple[list[tuple[int, int]], list[tuple[int, int]], bool]:
+    """Detect actual pose column/row boundaries from the sheet's own alpha
+    channel (a real transparent gap between characters, not an assumed even
+    division -- see slice_cells_auto docstring). Returns (col_bounds,
+    row_bounds, matched) where matched is True only if the detected count
+    equals the job's declared grid; callers fall back to even division when
+    it doesn't, since a bound-count mismatch means we can't trust which
+    detected run maps to which requested cell.
+    """
+    w, h = im.size
+    alpha = im.split()[3].point(lambda a: 255 if a > alpha_threshold else 0)
+    col_flags, row_flags = alpha.getprojection()
+    # A real inter-pose gap should be a meaningful fraction of a cell's width/height;
+    # a stray disconnected limb pixel-cluster is much narrower than that.
+    min_gap_x = max(4, int(w / cols * 0.15))
+    min_gap_y = max(4, int(h / rows * 0.15))
+    min_run_x = max(4, int(w / cols * 0.10))
+    min_run_y = max(4, int(h / rows * 0.10))
+    col_runs = _content_runs(list(col_flags), min_gap_x, min_run_x)
+    row_runs = _content_runs(list(row_flags), min_gap_y, min_run_y)
+    matched = len(col_runs) == cols and len(row_runs) == rows
+    return col_runs, row_runs, matched
+
+
+def slice_cells_auto(im: Image.Image, cols: int, rows: int, margin_px: int = 6,
+                      ) -> tuple[list[Image.Image], bool]:
+    """Preferred slicing path: detect each pose's actual bounding gap from the
+    sheet's alpha channel (detect_grid_bounds) instead of assuming the model
+    hit an exact even division -- crew_facings.py already proved single-call
+    generation drifts, and this run of idle_base proved the model can ALSO
+    silently miscount cells within a single sheet (asked for 4 columns, drew
+    5), which breaks fixed-fraction slicing with visible neighbor bleed. When
+    the detected run count doesn't match the declared grid we can't safely
+    map runs to requested cells, so we fall back to the old even-division
+    slice_cells() (with a printed warning -- the job's cell records will
+    still carry per-cell QA that catches a bad slice's mangled proportions).
+    Returns (cells_in_reading_order, used_auto_detection).
+    """
+    im = pad_to_square(im)
+    col_runs, row_runs, matched = detect_grid_bounds(im, cols, rows)
+    if not matched:
+        return slice_cells(im, cols, rows), False
+
+    cells = []
+    for (ry0, ry1) in row_runs:
+        for (cx0, cx1) in col_runs:
+            x0 = max(0, cx0 - margin_px)
+            y0 = max(0, ry0 - margin_px)
+            x1 = min(im.width, cx1 + margin_px)
+            y1 = min(im.height, ry1 + margin_px)
+            cells.append(im.crop((x0, y0, x1, y1)))
+    return cells, True
 
 
 def generate_sheet(job: dict[str, Any], api_key: str, *, quality: str = "high",
@@ -232,7 +328,16 @@ def run_job(job: dict[str, Any], api_key: str, *, quality: str = "high",
     raw_path = CREW_DIR / f"_raw_{job['id']}.png"
     raw_im.save(raw_path)
 
-    raw_cells = slice_cells(raw_im, cols, rows)
+    raw_cells, used_auto = slice_cells_auto(raw_im, cols, rows)
+    if used_auto:
+        print(f"  slicing: auto-detected {cols}x{rows} pose boundaries from the alpha channel")
+    else:
+        print(f"  [warn] slicing: alpha-gap detection didn't find exactly {cols}x{rows} poses "
+              f"(model likely mis-counted the grid) -- fell back to even division, which can "
+              f"bleed between cells; inspect cell QA below closely")
+    if len(raw_cells) != n_expected:
+        raise SystemExit(f"job {job['id']}: sliced {len(raw_cells)} cells but {n_expected} were declared")
+
     cell_records = []
     for cell_spec, raw_cell in zip(job["cells"], raw_cells):
         out_name = f"crew_{job['state']}_{cell_spec['facing']}_{cell_spec['frame']}.png"
@@ -251,7 +356,8 @@ def run_job(job: dict[str, Any], api_key: str, *, quality: str = "high",
     record = {
         "id": job["id"], "state": job["state"], "grid": [cols, rows],
         "contract": job["contract"], "prompt": gen_result["prompt"], "usage": usage,
-        "raw_path": str(raw_path.relative_to(REPO_ROOT)), "cells": cell_records,
+        "raw_path": str(raw_path.relative_to(REPO_ROOT)), "sliced_with_auto_detection": used_auto,
+        "cells": cell_records,
     }
     return record
 
@@ -306,15 +412,31 @@ CARRY_WALK_POSES = [
     "walking while carrying a small cargo crate held against the chest with both arms, legs passing together, mirrored",
 ]
 
-JOBS: dict[str, dict[str, Any]] = {
-    # --- 1. BASE ---------------------------------------------------------
-    "idle_base": {
-        "id": "idle_base", "state": "idle", "grid": (4, 2), "contract": "stand",
+IDLE_POSE = ["standing idle, arms relaxed at sides, feet shoulder-width apart"]
+
+
+def _idle_job(facings: tuple[str, str]) -> dict[str, Any]:
+    return {
+        "id": f"idle_{facings[0]}_{facings[1]}", "state": "idle", "grid": (2, 1), "contract": "stand",
         "pose_common": "Standing idle pose, arms relaxed at sides, feet shoulder-width apart, "
                         "small flat contact shadow directly under the feet, no floor tile, no platform.",
-        "cells": [{"facing": f, "frame": "0", "pose": "standing idle"} for f in
-                  ["s", "se", "e", "ne", "n", "nw", "w", "sw"]],
-    },
+        "cells": _walk_cells(list(facings), IDLE_POSE),
+    }
+
+
+JOBS: dict[str, dict[str, Any]] = {
+    # --- 1. BASE -----------------------------------------------------------
+    # Split into 4 paired-facing sheets (2 cells each) rather than one 8-cell
+    # sheet: the idle_base 8-facings-in-one-image test (assets/sprites/gen2/
+    # crew/_test/) proved the model won't reliably hit an exact 8-pose count
+    # in a single call (drew 10, then 9, then 6 across three attempts), while
+    # this file's OWN walk_s_se job -- 2 facings, same small-grid shape --
+    # nailed its exact count on the first try. Small paired grids are the
+    # proven-reliable shape; a lone 8-facing grid is not.
+    "idle_s_se": _idle_job(("s", "se")),
+    "idle_e_ne": _idle_job(("e", "ne")),
+    "idle_n_nw": _idle_job(("n", "nw")),
+    "idle_w_sw": _idle_job(("w", "sw")),
 
     # --- 2. WALK (4x2 sheets of 2-facing frame-pairs) --------------------
     "walk_s_se": {

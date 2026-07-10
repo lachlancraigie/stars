@@ -1,0 +1,1235 @@
+{
+  "model": "openai/gpt-image-1-mini",
+  "jobs": {
+    "idle_base": {
+      "id": "idle_base",
+      "state": "idle",
+      "grid": [
+        2,
+        4
+      ],
+      "contract": "stand",
+      "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, no helmet, simplified featureless face, short dark hair or a fitted dark cap. Standing idle pose, arms relaxed at sides, feet shoulder-width apart, small flat contact shadow directly under the feet, no floor tile, no platform. Arrange the sheet as EXACTLY 2 equal columns by 4 equal rows in a strict uniform grid -- EXACTLY 8 cells total, no more and no fewer, EXACTLY 2 characters per row (count them: one, two), EXACTLY 4 rows (reading order left-to-right then top-to-bottom). Do NOT add an extra in-between pose anywhere -- there are only 8 poses listed below and the sheet must contain precisely those 8, nothing added. Each cell contains exactly ONE full-body pose of the SAME character -- identical jumpsuit color and trim, identical hair/cap, identical body proportions, identical cel-shading and outline weight in every cell, only the pose/facing changes as listed below. Leave a wide clear empty transparent gap of at least one head-width between adjacent cells in every row so no cell's subject overlaps or touches a neighboring cell's subject. Do not draw grid lines, cell borders, or dividers -- only empty transparent space separates the cells. Cells, in reading order:\n  Cell (row 1, col 1): standing idle, facing the camera (south/front view).\n  Cell (row 1, col 2): standing idle, facing toward lower-right (southeast, three-quarter front).\n  Cell (row 2, col 1): standing idle, facing right (east), full side profile.\n  Cell (row 2, col 2): standing idle, facing toward upper-right (northeast, three-quarter back).\n  Cell (row 3, col 1): standing idle, facing away from the camera (north/back view).\n  Cell (row 3, col 2): standing idle, facing toward upper-left (northwest, three-quarter back).\n  Cell (row 4, col 1): standing idle, facing left (west), full side profile.\n  Cell (row 4, col 2): standing idle, facing toward lower-left (southwest, three-quarter front). Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+      "usage": {
+        "prompt_tokens": 865,
+        "completion_tokens": 6240,
+        "total_tokens": 7105,
+        "cost": 0.0520825,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.0520825,
+          "upstream_inference_prompt_cost": 0.0021625,
+          "upstream_inference_completions_cost": 0.04992
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 6240
+        }
+      },
+      "raw_path": "assets\\sprites\\gen2\\crew\\_raw_idle_base.png",
+      "sliced_with_auto_detection": false,
+      "cells": [
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              207,
+              323
+            ],
+            "source_size": [
+              207,
+              323
+            ],
+            "scale": [
+              0.21671826625386997,
+              0.21671826625386997
+            ],
+            "target_bbox": [
+              234,
+              250,
+              279,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              234,
+              250,
+              279,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_idle_s_0.png",
+          "facing": "s",
+          "frame": "0",
+          "pose": "standing idle"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              137,
+              323
+            ],
+            "source_size": [
+              137,
+              323
+            ],
+            "scale": [
+              0.21671826625386997,
+              0.21671826625386997
+            ],
+            "target_bbox": [
+              241,
+              250,
+              271,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              241,
+              250,
+              271,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_idle_se_0.png",
+          "facing": "se",
+          "frame": "0",
+          "pose": "standing idle"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              165,
+              345
+            ],
+            "source_size": [
+              165,
+              345
+            ],
+            "scale": [
+              0.2028985507246377,
+              0.2028985507246377
+            ],
+            "target_bbox": [
+              240,
+              250,
+              273,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              242,
+              250,
+              272,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_idle_e_0.png",
+          "facing": "e",
+          "frame": "0",
+          "pose": "standing idle"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              151,
+              345
+            ],
+            "source_size": [
+              151,
+              345
+            ],
+            "scale": [
+              0.2028985507246377,
+              0.2028985507246377
+            ],
+            "target_bbox": [
+              240,
+              250,
+              271,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              240,
+              250,
+              271,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_idle_ne_0.png",
+          "facing": "ne",
+          "frame": "0",
+          "pose": "standing idle"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              148,
+              345
+            ],
+            "source_size": [
+              148,
+              345
+            ],
+            "scale": [
+              0.2028985507246377,
+              0.2028985507246377
+            ],
+            "target_bbox": [
+              241,
+              250,
+              271,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              242,
+              250,
+              271,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_idle_n_0.png",
+          "facing": "n",
+          "frame": "0",
+          "pose": "standing idle"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              163,
+              345
+            ],
+            "source_size": [
+              163,
+              345
+            ],
+            "scale": [
+              0.2028985507246377,
+              0.2028985507246377
+            ],
+            "target_bbox": [
+              240,
+              250,
+              273,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              240,
+              250,
+              273,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_idle_nw_0.png",
+          "facing": "nw",
+          "frame": "0",
+          "pose": "standing idle"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              200,
+              324
+            ],
+            "source_size": [
+              200,
+              324
+            ],
+            "scale": [
+              0.21604938271604937,
+              0.21604938271604937
+            ],
+            "target_bbox": [
+              234,
+              250,
+              277,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              234,
+              250,
+              277,
+              318
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_idle_w_0.png",
+          "facing": "w",
+          "frame": "0",
+          "pose": "standing idle"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              164,
+              331
+            ],
+            "source_size": [
+              164,
+              331
+            ],
+            "scale": [
+              0.21148036253776434,
+              0.21148036253776434
+            ],
+            "target_bbox": [
+              238,
+              250,
+              273,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              238,
+              250,
+              272,
+              319
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.05,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_idle_sw_0.png",
+          "facing": "sw",
+          "frame": "0",
+          "pose": "standing idle"
+        }
+      ]
+    },
+    "walk_s_se": {
+      "id": "walk_s_se",
+      "state": "walk",
+      "grid": [
+        4,
+        2
+      ],
+      "contract": "stand",
+      "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, no helmet, simplified featureless face, short dark hair or a fitted dark cap. A 4-frame walk cycle, small flat contact shadow under the forward foot each frame, no floor tile, no platform. Arrange the sheet as EXACTLY 4 equal columns by 2 equal rows in a strict uniform grid -- EXACTLY 8 cells total, no more and no fewer, EXACTLY 4 characters per row (count them: one, two, three, four), EXACTLY 2 rows (reading order left-to-right then top-to-bottom). Do NOT add an extra in-between pose anywhere -- there are only 8 poses listed below and the sheet must contain precisely those 8, nothing added. Each cell contains exactly ONE full-body pose of the SAME character -- identical jumpsuit color and trim, identical hair/cap, identical body proportions, identical cel-shading and outline weight in every cell, only the pose/facing changes as listed below. Leave a wide clear empty transparent gap of at least one head-width between adjacent cells in every row so no cell's subject overlaps or touches a neighboring cell's subject. Do not draw grid lines, cell borders, or dividers -- only empty transparent space separates the cells. Cells, in reading order:\n  Cell (row 1, col 1): walking mid-stride, left leg forward, right arm forward, facing the camera (south/front view).\n  Cell (row 1, col 2): walking with legs passing together (contact pose), weight centered, facing the camera (south/front view).\n  Cell (row 1, col 3): walking mid-stride, right leg forward, left arm forward, facing the camera (south/front view).\n  Cell (row 1, col 4): walking with legs passing together (contact pose), weight centered, mirrored arm swing from the previous pose, facing the camera (south/front view).\n  Cell (row 2, col 1): walking mid-stride, left leg forward, right arm forward, facing toward lower-right (southeast, three-quarter front).\n  Cell (row 2, col 2): walking with legs passing together (contact pose), weight centered, facing toward lower-right (southeast, three-quarter front).\n  Cell (row 2, col 3): walking mid-stride, right leg forward, left arm forward, facing toward lower-right (southeast, three-quarter front).\n  Cell (row 2, col 4): walking with legs passing together (contact pose), weight centered, mirrored arm swing from the previous pose, facing toward lower-right (southeast, three-quarter front). Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+      "usage": {
+        "prompt_tokens": 954,
+        "completion_tokens": 6208,
+        "total_tokens": 7162,
+        "cost": 0.052049,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.052049,
+          "upstream_inference_prompt_cost": 0.002385,
+          "upstream_inference_completions_cost": 0.049664
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 6208
+        }
+      },
+      "raw_path": "assets\\sprites\\gen2\\crew\\_raw_walk_s_se.png",
+      "sliced_with_auto_detection": false,
+      "cells": [
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              212,
+              419
+            ],
+            "source_size": [
+              212,
+              419
+            ],
+            "scale": [
+              0.16706443914081145,
+              0.16706443914081145
+            ],
+            "target_bbox": [
+              238,
+              250,
+              273,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              238,
+              250,
+              273,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_walk_s_0.png",
+          "facing": "s",
+          "frame": "0",
+          "pose": "walking mid-stride, left leg forward, right arm forward"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              201,
+              418
+            ],
+            "source_size": [
+              201,
+              418
+            ],
+            "scale": [
+              0.1674641148325359,
+              0.1674641148325359
+            ],
+            "target_bbox": [
+              239,
+              250,
+              273,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              239,
+              250,
+              273,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.43,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_walk_s_1.png",
+          "facing": "s",
+          "frame": "1",
+          "pose": "walking with legs passing together (contact pose), weight centered"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              164,
+              418
+            ],
+            "source_size": [
+              164,
+              418
+            ],
+            "scale": [
+              0.1674641148325359,
+              0.1674641148325359
+            ],
+            "target_bbox": [
+              242,
+              250,
+              269,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              242,
+              250,
+              269,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.15,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_walk_s_2.png",
+          "facing": "s",
+          "frame": "2",
+          "pose": "walking mid-stride, right leg forward, left arm forward"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              171,
+              418
+            ],
+            "source_size": [
+              171,
+              418
+            ],
+            "scale": [
+              0.1674641148325359,
+              0.1674641148325359
+            ],
+            "target_bbox": [
+              242,
+              250,
+              271,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              242,
+              250,
+              271,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.4,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_walk_s_3.png",
+          "facing": "s",
+          "frame": "3",
+          "pose": "walking with legs passing together (contact pose), weight centered, mirrored arm swing from the previous pose"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              210,
+              419
+            ],
+            "source_size": [
+              210,
+              419
+            ],
+            "scale": [
+              0.16706443914081145,
+              0.16706443914081145
+            ],
+            "target_bbox": [
+              238,
+              250,
+              273,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              238,
+              250,
+              273,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_walk_se_0.png",
+          "facing": "se",
+          "frame": "0",
+          "pose": "walking mid-stride, left leg forward, right arm forward"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              345,
+              419
+            ],
+            "source_size": [
+              345,
+              419
+            ],
+            "scale": [
+              0.16706443914081145,
+              0.16706443914081145
+            ],
+            "target_bbox": [
+              227,
+              250,
+              285,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              227,
+              250,
+              285,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.81,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_walk_se_1.png",
+          "facing": "se",
+          "frame": "1",
+          "pose": "walking with legs passing together (contact pose), weight centered"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              149,
+              419
+            ],
+            "source_size": [
+              149,
+              419
+            ],
+            "scale": [
+              0.16706443914081145,
+              0.16706443914081145
+            ],
+            "target_bbox": [
+              244,
+              250,
+              269,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              244,
+              250,
+              269,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.38,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_walk_se_2.png",
+          "facing": "se",
+          "frame": "2",
+          "pose": "walking mid-stride, right leg forward, left arm forward"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              170,
+              419
+            ],
+            "source_size": [
+              170,
+              419
+            ],
+            "scale": [
+              0.16706443914081145,
+              0.16706443914081145
+            ],
+            "target_bbox": [
+              242,
+              250,
+              270,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              242,
+              250,
+              270,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 2.35,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_walk_se_3.png",
+          "facing": "se",
+          "frame": "3",
+          "pose": "walking with legs passing together (contact pose), weight centered, mirrored arm swing from the previous pose"
+        }
+      ]
+    },
+    "idle_s_se": {
+      "id": "idle_s_se",
+      "state": "idle",
+      "grid": [
+        2,
+        1
+      ],
+      "contract": "stand",
+      "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, no helmet, simplified featureless face, short dark hair or a fitted dark cap. Standing idle pose, arms relaxed at sides, feet shoulder-width apart, small flat contact shadow directly under the feet, no floor tile, no platform. Arrange the sheet as EXACTLY 2 equal columns by 1 equal rows in a strict uniform grid -- EXACTLY 2 cells total, no more and no fewer, EXACTLY 2 characters per row (count them: one, two), EXACTLY 1 rows (reading order left-to-right then top-to-bottom). Do NOT add an extra in-between pose anywhere -- there are only 2 poses listed below and the sheet must contain precisely those 2, nothing added. Each cell contains exactly ONE full-body pose of the SAME character -- identical jumpsuit color and trim, identical hair/cap, identical body proportions, identical cel-shading and outline weight in every cell, only the pose/facing changes as listed below. Leave a wide clear empty transparent gap of at least one head-width between adjacent cells in every row so no cell's subject overlaps or touches a neighboring cell's subject. Do not draw grid lines, cell borders, or dividers -- only empty transparent space separates the cells. Cells, in reading order:\n  Cell (row 1, col 1): standing idle, arms relaxed at sides, feet shoulder-width apart, facing the camera (south/front view).\n  Cell (row 1, col 2): standing idle, arms relaxed at sides, feet shoulder-width apart, facing toward lower-right (southeast, three-quarter front). Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+      "usage": {
+        "prompt_tokens": 736,
+        "completion_tokens": 6208,
+        "total_tokens": 6944,
+        "cost": 0.051504,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.051504,
+          "upstream_inference_prompt_cost": 0.00184,
+          "upstream_inference_completions_cost": 0.049664
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 6208
+        }
+      },
+      "raw_path": "assets\\sprites\\gen2\\crew\\_raw_idle_s_se.png",
+      "sliced_with_auto_detection": true,
+      "cells": [
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              371,
+              838
+            ],
+            "source_size": [
+              371,
+              838
+            ],
+            "scale": [
+              0.08353221957040573,
+              0.08353221957040573
+            ],
+            "target_bbox": [
+              240,
+              250,
+              271,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              240,
+              250,
+              271,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 1.3,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_idle_s_0.png",
+          "facing": "s",
+          "frame": "0",
+          "pose": "standing idle, arms relaxed at sides, feet shoulder-width apart"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              307,
+              841
+            ],
+            "source_size": [
+              307,
+              841
+            ],
+            "scale": [
+              0.08323424494649227,
+              0.08323424494649227
+            ],
+            "target_bbox": [
+              243,
+              250,
+              269,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              243,
+              250,
+              269,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_idle_se_0.png",
+          "facing": "se",
+          "frame": "0",
+          "pose": "standing idle, arms relaxed at sides, feet shoulder-width apart"
+        }
+      ]
+    },
+    "idle_e_ne": {
+      "id": "idle_e_ne",
+      "state": "idle",
+      "grid": [
+        2,
+        1
+      ],
+      "contract": "stand",
+      "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, simplified featureless face, short dark cropped hair -- bare-headed in every single cell of the sheet, exactly the same haircut each time. Never wearing any cap, hat, hood, helmet, or other headwear in any cell, even from behind or from a three-quarter-back angle -- headwear choice must not vary from pose to pose. Standing idle pose, arms relaxed at sides, feet shoulder-width apart, small flat contact shadow directly under the feet, no floor tile, no platform. Arrange the sheet as EXACTLY 2 equal columns by 1 equal rows in a strict uniform grid -- EXACTLY 2 cells total, no more and no fewer, EXACTLY 2 characters per row (count them: one, two), EXACTLY 1 rows (reading order left-to-right then top-to-bottom). Do NOT add an extra in-between pose anywhere -- there are only 2 poses listed below and the sheet must contain precisely those 2, nothing added. Each cell contains exactly ONE full-body pose of the SAME character -- identical jumpsuit color and trim, identical hair/cap, identical body proportions, identical cel-shading and outline weight in every cell, only the pose/facing changes as listed below. Leave a wide clear empty transparent gap of at least one head-width between adjacent cells in every row so no cell's subject overlaps or touches a neighboring cell's subject. Do not draw grid lines, cell borders, or dividers -- only empty transparent space separates the cells. Cells, in reading order:\n  Cell (row 1, col 1): standing idle, arms relaxed at sides, feet shoulder-width apart, facing right (east), full side profile.\n  Cell (row 1, col 2): standing idle, arms relaxed at sides, feet shoulder-width apart, facing toward upper-right (northeast, three-quarter back). Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+      "usage": {
+        "prompt_tokens": 788,
+        "completion_tokens": 6208,
+        "total_tokens": 6996,
+        "cost": 0.051634,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.051634,
+          "upstream_inference_prompt_cost": 0.00197,
+          "upstream_inference_completions_cost": 0.049664
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 6208
+        }
+      },
+      "raw_path": "assets\\sprites\\gen2\\crew\\_raw_idle_e_ne.png",
+      "sliced_with_auto_detection": true,
+      "cells": [
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              250,
+              871
+            ],
+            "source_size": [
+              250,
+              871
+            ],
+            "scale": [
+              0.08036739380022963,
+              0.08036739380022963
+            ],
+            "target_bbox": [
+              246,
+              250,
+              266,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              246,
+              250,
+              266,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_idle_e_0.png",
+          "facing": "e",
+          "frame": "0",
+          "pose": "standing idle, arms relaxed at sides, feet shoulder-width apart"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              354,
+              870
+            ],
+            "source_size": [
+              354,
+              870
+            ],
+            "scale": [
+              0.08045977011494253,
+              0.08045977011494253
+            ],
+            "target_bbox": [
+              242,
+              250,
+              270,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              242,
+              250,
+              270,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.36,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_idle_ne_0.png",
+          "facing": "ne",
+          "frame": "0",
+          "pose": "standing idle, arms relaxed at sides, feet shoulder-width apart"
+        }
+      ]
+    },
+    "idle_n_nw": {
+      "id": "idle_n_nw",
+      "state": "idle",
+      "grid": [
+        2,
+        1
+      ],
+      "contract": "stand",
+      "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, no helmet, simplified featureless face, short dark hair or a fitted dark cap. Standing idle pose, arms relaxed at sides, feet shoulder-width apart, small flat contact shadow directly under the feet, no floor tile, no platform. Arrange the sheet as EXACTLY 2 equal columns by 1 equal rows in a strict uniform grid -- EXACTLY 2 cells total, no more and no fewer, EXACTLY 2 characters per row (count them: one, two), EXACTLY 1 rows (reading order left-to-right then top-to-bottom). Do NOT add an extra in-between pose anywhere -- there are only 2 poses listed below and the sheet must contain precisely those 2, nothing added. Each cell contains exactly ONE full-body pose of the SAME character -- identical jumpsuit color and trim, identical hair/cap, identical body proportions, identical cel-shading and outline weight in every cell, only the pose/facing changes as listed below. Leave a wide clear empty transparent gap of at least one head-width between adjacent cells in every row so no cell's subject overlaps or touches a neighboring cell's subject. Do not draw grid lines, cell borders, or dividers -- only empty transparent space separates the cells. Cells, in reading order:\n  Cell (row 1, col 1): standing idle, arms relaxed at sides, feet shoulder-width apart, facing away from the camera (north/back view).\n  Cell (row 1, col 2): standing idle, arms relaxed at sides, feet shoulder-width apart, facing toward upper-left (northwest, three-quarter back). Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+      "usage": {
+        "prompt_tokens": 737,
+        "completion_tokens": 6208,
+        "total_tokens": 6945,
+        "cost": 0.0515065,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.0515065,
+          "upstream_inference_prompt_cost": 0.0018425,
+          "upstream_inference_completions_cost": 0.049664
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 6208
+        }
+      },
+      "raw_path": "assets\\sprites\\gen2\\crew\\_raw_idle_n_nw.png",
+      "sliced_with_auto_detection": true,
+      "cells": [
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              337,
+              892
+            ],
+            "source_size": [
+              337,
+              892
+            ],
+            "scale": [
+              0.07847533632286996,
+              0.07847533632286996
+            ],
+            "target_bbox": [
+              243,
+              250,
+              269,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              243,
+              250,
+              269,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.47,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_idle_n_0.png",
+          "facing": "n",
+          "frame": "0",
+          "pose": "standing idle, arms relaxed at sides, feet shoulder-width apart"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              372,
+              894
+            ],
+            "source_size": [
+              372,
+              894
+            ],
+            "scale": [
+              0.07829977628635347,
+              0.07829977628635347
+            ],
+            "target_bbox": [
+              242,
+              250,
+              271,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              242,
+              250,
+              271,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.88,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_idle_nw_0.png",
+          "facing": "nw",
+          "frame": "0",
+          "pose": "standing idle, arms relaxed at sides, feet shoulder-width apart"
+        }
+      ]
+    },
+    "idle_w_sw": {
+      "id": "idle_w_sw",
+      "state": "idle",
+      "grid": [
+        2,
+        1
+      ],
+      "contract": "stand",
+      "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, simplified featureless face, short dark cropped hair -- bare-headed in every single cell of the sheet, exactly the same haircut each time. Never wearing any cap, hat, hood, helmet, or other headwear in any cell, even from behind or from a three-quarter-back angle -- headwear choice must not vary from pose to pose. Standing idle pose, arms relaxed at sides, feet shoulder-width apart, small flat contact shadow directly under the feet, no floor tile, no platform. Arrange the sheet as EXACTLY 2 equal columns by 1 equal rows in a strict uniform grid -- EXACTLY 2 cells total, no more and no fewer, EXACTLY 2 characters per row (count them: one, two), EXACTLY 1 rows (reading order left-to-right then top-to-bottom). Do NOT add an extra in-between pose anywhere -- there are only 2 poses listed below and the sheet must contain precisely those 2, nothing added. Each cell contains exactly ONE full-body pose of the SAME character -- identical jumpsuit color and trim, identical hair/cap, identical body proportions, identical cel-shading and outline weight in every cell, only the pose/facing changes as listed below. Leave a wide clear empty transparent gap of at least one head-width between adjacent cells in every row so no cell's subject overlaps or touches a neighboring cell's subject. Do not draw grid lines, cell borders, or dividers -- only empty transparent space separates the cells. Cells, in reading order:\n  Cell (row 1, col 1): standing idle, arms relaxed at sides, feet shoulder-width apart, facing left (west), full side profile.\n  Cell (row 1, col 2): standing idle, arms relaxed at sides, feet shoulder-width apart, facing toward lower-left (southwest, three-quarter front). Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+      "usage": {
+        "prompt_tokens": 787,
+        "completion_tokens": 6208,
+        "total_tokens": 6995,
+        "cost": 0.0516315,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.0516315,
+          "upstream_inference_prompt_cost": 0.0019675,
+          "upstream_inference_completions_cost": 0.049664
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 6208
+        }
+      },
+      "raw_path": "assets\\sprites\\gen2\\crew\\_raw_idle_w_sw.png",
+      "sliced_with_auto_detection": true,
+      "cells": [
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              296,
+              849
+            ],
+            "source_size": [
+              296,
+              849
+            ],
+            "scale": [
+              0.08244994110718493,
+              0.08244994110718493
+            ],
+            "target_bbox": [
+              244,
+              250,
+              268,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              245,
+              250,
+              267,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.09,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_idle_w_0.png",
+          "facing": "w",
+          "frame": "0",
+          "pose": "standing idle, arms relaxed at sides, feet shoulder-width apart"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              363,
+              857
+            ],
+            "source_size": [
+              363,
+              857
+            ],
+            "scale": [
+              0.08168028004667445,
+              0.08168028004667445
+            ],
+            "target_bbox": [
+              241,
+              250,
+              271,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              241,
+              250,
+              270,
+              319
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_idle_sw_0.png",
+          "facing": "sw",
+          "frame": "0",
+          "pose": "standing idle, arms relaxed at sides, feet shoulder-width apart"
+        }
+      ]
+    }
+  }
+}
