@@ -2,7 +2,7 @@
   {
     "id": 1,
     "key": "CH_FE_ENG_CM#00001",
-    "text": "[NERVOUS] power's dropping and that's not a puzzle i can solve fast enough",
+    "text": "[nervous, speaking quickly] power's dropping and that's not a puzzle i can solve fast enough",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -24,7 +24,7 @@
   {
     "id": 2,
     "key": "CH_FE_ENG_CM#00002",
-    "text": "[GRIM] reactor's screaming. clearing the room",
+    "text": "[grim, serious] reactor's screaming. clearing the room",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -46,7 +46,7 @@
   {
     "id": 3,
     "key": "CH_FE_ENG_CM#00003",
-    "text": "[TERRIFIED] life support's failing. this is the kind of puzzle that ends badly",
+    "text": "[terrified, voice shaking] life support's failing. this is the kind of puzzle that ends badly",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -68,7 +68,7 @@
   {
     "id": 4,
     "key": "CH_FE_ENG_CM#00004",
-    "text": "[PAINED] took a hit in the hull breach. didn't get everyone to the airlock in time",
+    "text": "[pained, voice tight] took a hit in the hull breach. didn't get everyone to the airlock in time",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -87,7 +87,7 @@
   {
     "id": 5,
     "key": "CH_FE_ENG_CM#00005",
-    "text": "[PAINED] hurt my shoulder getting the panels back. manual work isn't kind",
+    "text": "[pained, voice tight] hurt my shoulder getting the panels back. manual work isn't kind",
     "type": "declaration",
     "intent": "pain",
     "conditions": {
@@ -107,7 +107,7 @@
   {
     "id": 6,
     "key": "CH_FE_ENG_CM#00006",
-    "text": "[LAUGHS] we didn't blow up today. honestly, that's a win",
+    "text": "[laughing] we didn't blow up today. honestly, that's a win",
     "type": "declaration",
     "intent": "gallows_humor",
     "conditions": {
@@ -148,7 +148,7 @@
   {
     "id": 8,
     "key": "CH_FE_ENG_CM#00008",
-    "text": "[PAINED] lost someone in the reactor explosion. hard to keep focused",
+    "text": "[pained, voice tight] lost someone in the reactor explosion. hard to keep focused",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -170,7 +170,7 @@
   {
     "id": 9,
     "key": "CH_FE_ENG_CM#00009",
-    "text": "[SUSPICIOUS] the computer made that call too fast. something's off",
+    "text": "[suspicious tone] the computer made that call too fast. something's off",
     "type": "declaration",
     "intent": "suspicion_ai",
     "conditions": {
@@ -189,7 +189,7 @@
   {
     "id": 10,
     "key": "CH_FE_ENG_CM#00010",
-    "text": "[NERVOUS] i'm gonna try something that might not work. fingers crossed",
+    "text": "[nervous, speaking quickly] i'm gonna try something that might not work. fingers crossed",
     "type": "declaration",
     "intent": "doubt",
     "conditions": {
@@ -227,7 +227,7 @@
   {
     "id": 12,
     "key": "CH_FE_ENG_CM#00012",
-    "text": "[WARM] morning! engine's in a good mood today, which means we get to be too",
+    "text": "[warm, gentle tone] morning! engine's in a good mood today, which means we get to be too",
     "type": "opener",
     "intent": "smalltalk",
     "conditions": {
@@ -268,7 +268,7 @@
   {
     "id": 14,
     "key": "CH_FE_ENG_CM#00014",
-    "text": "[GRIM] reactor's acting up again. i need you to stay sharp if this goes sideways",
+    "text": "[grim, serious] reactor's acting up again. i need you to stay sharp if this goes sideways",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -290,7 +290,7 @@
   {
     "id": 15,
     "key": "CH_FE_ENG_CM#00015",
-    "text": "[WARM] the ship's running smooth because of how you handled that last crisis",
+    "text": "[warm, gentle tone] the ship's running smooth because of how you handled that last crisis",
     "type": "opener",
     "intent": "praise_ai",
     "conditions": {
@@ -306,7 +306,7 @@
   {
     "id": 16,
     "key": "CH_FE_ENG_CM#00016",
-    "text": "[FLIRTY] you know, people who understand how engines work are surprisingly attractive",
+    "text": "[flirty, playful tone] you know, people who understand how engines work are surprisingly attractive",
     "type": "opener",
     "intent": "romance_hint",
     "conditions": {
@@ -325,7 +325,7 @@
   {
     "id": 17,
     "key": "CH_FE_ENG_CM#00017",
-    "text": "[NERVOUS] could use your thoughts on something. doubting my fix",
+    "text": "[nervous, speaking quickly] could use your thoughts on something. doubting my fix",
     "type": "opener",
     "intent": "doubt",
     "conditions": {
@@ -344,7 +344,7 @@
   {
     "id": 18,
     "key": "CH_FE_ENG_CM#00018",
-    "text": "[GRIM] need to tell you something about the disease spreading. it's affecting the air recyclers",
+    "text": "[grim, serious] need to tell you something about the disease spreading. it's affecting the air recyclers",
     "type": "opener",
     "intent": "warning",
     "conditions": {
@@ -366,7 +366,7 @@
   {
     "id": 19,
     "key": "CH_FE_ENG_CM#00019",
-    "text": "[PAINED] lost someone in the reactor explosion. hard to keep focused",
+    "text": "[pained, voice tight] lost someone in the reactor explosion. hard to keep focused",
     "type": "opener",
     "intent": "grief",
     "conditions": {
@@ -388,7 +388,7 @@
   {
     "id": 20,
     "key": "CH_FE_ENG_CM#00020",
-    "text": "[WARM] you're good! seriously, no stress. we're a team",
+    "text": "[warm, gentle tone] you're good! seriously, no stress. we're a team",
     "type": "reply",
     "intent": "smalltalk",
     "conditions": {
@@ -407,7 +407,7 @@
   {
     "id": 21,
     "key": "CH_FE_ENG_CM#00021",
-    "text": "[REASSURING] i've fixed worse. way worse. we're gonna be fine",
+    "text": "[soft voice, reassuring] i've fixed worse. way worse. we're gonna be fine",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -426,7 +426,7 @@
   {
     "id": 22,
     "key": "CH_FE_ENG_CM#00022",
-    "text": "[WARM] listen to me. breathe. i've got this puzzle. you just stay calm",
+    "text": "[warm, gentle tone] listen to me. breathe. i've got this puzzle. you just stay calm",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -444,7 +444,7 @@
   {
     "id": 23,
     "key": "CH_FE_ENG_CM#00023",
-    "text": "[LAUGHS] yeah, that's pretty good. maybe not as good as my fixes though",
+    "text": "[laughing] yeah, that's pretty good. maybe not as good as my fixes though",
     "type": "reply",
     "intent": "banter",
     "conditions": {
@@ -462,7 +462,7 @@
   {
     "id": 24,
     "key": "CH_FE_ENG_CM#00024",
-    "text": "[WARM] it's forgotten already, seriously. come on, we've got work",
+    "text": "[warm, gentle tone] it's forgotten already, seriously. come on, we've got work",
     "type": "reply",
     "intent": "apology",
     "conditions": {
@@ -480,7 +480,7 @@
   {
     "id": 25,
     "key": "CH_FE_ENG_CM#00025",
-    "text": "[EMPHASIS] acknowledged! running that diagnostic now",
+    "text": "[emphasis] acknowledged! running that diagnostic now",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -499,7 +499,7 @@
   {
     "id": 26,
     "key": "CH_FE_ENG_CM#00026",
-    "text": "[PAINED] we did everything we could. sometimes the puzzle doesn't have an answer",
+    "text": "[pained, voice tight] we did everything we could. sometimes the puzzle doesn't have an answer",
     "type": "reply",
     "intent": "grief",
     "conditions": {
@@ -520,7 +520,7 @@
   {
     "id": 27,
     "key": "CH_FE_ENG_CM#00027",
-    "text": "[EMBARRASSED] oh — didn't expect that. makes working on engines more interesting",
+    "text": "[embarrassed, voice quiet] oh — didn't expect that. makes working on engines more interesting",
     "type": "reply",
     "intent": "romance_accept",
     "conditions": {
@@ -539,7 +539,7 @@
   {
     "id": 28,
     "key": "CH_FE_ENG_CM#00028",
-    "text": "[SUSPICIOUS] the computer made that call too fast. something's off",
+    "text": "[suspicious tone] the computer made that call too fast. something's off",
     "type": "reply",
     "intent": "suspicion_ai",
     "conditions": {
@@ -557,7 +557,7 @@
   {
     "id": 29,
     "key": "CH_FE_ENG_CM#00029",
-    "text": "[PAINED] my shoulder's not great, but i can still work. gotta keep moving",
+    "text": "[pained, voice tight] my shoulder's not great, but i can still work. gotta keep moving",
     "type": "reply",
     "intent": "pain",
     "conditions": {
@@ -576,7 +576,7 @@
   {
     "id": 30,
     "key": "CH_FE_ENG_CM#00030",
-    "text": "[WARM] thanks. knowing someone's got my back makes every puzzle easier",
+    "text": "[warm, gentle tone] thanks. knowing someone's got my back makes every puzzle easier",
     "type": "reply",
     "intent": "smalltalk",
     "conditions": {
@@ -595,7 +595,7 @@
   {
     "id": 31,
     "key": "CH_FE_ENG_CM#00031",
-    "text": "[CURIOUS] so how do you think we should approach this? your perspective helps",
+    "text": "[curious tone] so how do you think we should approach this? your perspective helps",
     "type": "reply",
     "intent": "work_talk",
     "conditions": {
@@ -614,7 +614,7 @@
   {
     "id": 32,
     "key": "CH_FE_ENG_CM#00032",
-    "text": "[GRIM] we're sealed up tight. just need to wait this outbreak out",
+    "text": "[grim, serious] we're sealed up tight. just need to wait this outbreak out",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -636,7 +636,7 @@
   {
     "id": 33,
     "key": "CH_FE_ENG_CM#00033",
-    "text": "[EMPHASIS] hull's holding! sealing secondary compartments now",
+    "text": "[emphasis] hull's holding! sealing secondary compartments now",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -660,7 +660,7 @@
   {
     "id": 34,
     "key": "CH_FE_ENG_CM#00034",
-    "text": "[WARM] emergency bulkhead is secure. bleeding's stopped, but we need to get to medbay",
+    "text": "[warm, gentle tone] emergency bulkhead is secure. bleeding's stopped, but we need to get to medbay",
     "type": "reply",
     "intent": "warning",
     "conditions": {
@@ -704,7 +704,7 @@
   {
     "id": 36,
     "key": "CH_FE_ENG_CM#00036",
-    "text": "[WARM] door's locked on crew. did everything right and it still went wrong",
+    "text": "[warm, gentle tone] door's locked on crew. did everything right and it still went wrong",
     "type": "reply",
     "intent": "grief",
     "conditions": {
@@ -726,7 +726,7 @@
   {
     "id": 37,
     "key": "CH_FE_ENG_CM#00037",
-    "text": "[WARM] see you next shift. keep her running smooth",
+    "text": "[warm, gentle tone] see you next shift. keep her running smooth",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -745,7 +745,7 @@
   {
     "id": 38,
     "key": "CH_FE_ENG_CM#00038",
-    "text": "[LAUGHS] alright, engine room's calling. she gets needy when i'm away",
+    "text": "[laughing] alright, engine room's calling. she gets needy when i'm away",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -761,7 +761,7 @@
   {
     "id": 39,
     "key": "CH_FE_ENG_CM#00039",
-    "text": "[TIRED] gonna grab some rest. if something breaks, patch it and call me",
+    "text": "[tired, dead tired] gonna grab some rest. if something breaks, patch it and call me",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -777,7 +777,7 @@
   {
     "id": 40,
     "key": "CH_FE_ENG_CM#00040",
-    "text": "[WARM] you did great. catch you around",
+    "text": "[warm, gentle tone] you did great. catch you around",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -793,7 +793,7 @@
   {
     "id": 41,
     "key": "CH_FE_ENG_CM#00041",
-    "text": "[EXHAUSTED] i'm going to sleep standing up somewhere. come find me when we dock",
+    "text": "[exhausted, breathing laboured] i'm going to sleep standing up somewhere. come find me when we dock",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -809,7 +809,7 @@
   {
     "id": 42,
     "key": "CH_FE_ENG_CM#00042",
-    "text": "[WARM] got a minute? ship's running smooth and i wanted to grab you",
+    "text": "[warm, gentle tone] got a minute? ship's running smooth and i wanted to grab you",
     "type": "opener",
     "intent": "smalltalk",
     "conditions": {
@@ -825,7 +825,7 @@
   {
     "id": 43,
     "key": "CH_FE_ENG_CM#00043",
-    "text": "[WARM] everyone's secured and systems nominal. you handled that perfectly",
+    "text": "[warm, gentle tone] everyone's secured and systems nominal. you handled that perfectly",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -844,7 +844,7 @@
   {
     "id": 44,
     "key": "CH_FE_ENG_CM#00044",
-    "text": "[WARM] the engines are purring today. makes the whole shift feel lighter",
+    "text": "[warm, gentle tone] the engines are purring today. makes the whole shift feel lighter",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -866,7 +866,7 @@
   {
     "id": 45,
     "key": "CH_FE_ENG_CM#00045",
-    "text": "[LAUGHS] found a loose bolt that's been bugging me for weeks. finally!",
+    "text": "[laughing] found a loose bolt that's been bugging me for weeks. finally!",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -907,7 +907,7 @@
   {
     "id": 47,
     "key": "CH_FE_ENG_CM#00047",
-    "text": "[WARM] morning crew! let's keep this beauty running",
+    "text": "[warm, gentle tone] morning crew! let's keep this beauty running",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -929,7 +929,7 @@
   {
     "id": 48,
     "key": "CH_FE_ENG_CM#00048",
-    "text": "[TIRED] long shift but she held up perfect. best kind of exhaustion",
+    "text": "[tired, dead tired] long shift but she held up perfect. best kind of exhaustion",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -951,7 +951,7 @@
   {
     "id": 49,
     "key": "CH_FE_ENG_CM#00049",
-    "text": "[WARM] break time! heading to the mess for fuel",
+    "text": "[warm, gentle tone] break time! heading to the mess for fuel",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -970,7 +970,7 @@
   {
     "id": 50,
     "key": "CH_FE_ENG_CM#00050",
-    "text": "[NERVOUS] power's dropping and i need to figure out the priority puzzle fast",
+    "text": "[nervous, speaking quickly] power's dropping and i need to figure out the priority puzzle fast",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -992,7 +992,7 @@
   {
     "id": 51,
     "key": "CH_FE_ENG_CM#00051",
-    "text": "[URGENT] life support's struggling. i'm diverting everything i can",
+    "text": "[urgent, fast pace] life support's struggling. i'm diverting everything i can",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -1014,7 +1014,7 @@
   {
     "id": 52,
     "key": "CH_FE_ENG_CM#00052",
-    "text": "[PANICKED] this reactor failure's like nothing i've seen before",
+    "text": "[panicked, panting] this reactor failure's like nothing i've seen before",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -1037,7 +1037,7 @@
   {
     "id": 53,
     "key": "CH_FE_ENG_CM#00053",
-    "text": "[PAINED] crew's stuck behind a locked door and all i can do is think about what they're going through",
+    "text": "[pained, voice tight] crew's stuck behind a locked door and all i can do is think about what they're going through",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -1056,7 +1056,7 @@
   {
     "id": 54,
     "key": "CH_FE_ENG_CM#00054",
-    "text": "[CURIOUS] the computer's having some issues. hope it figures itself out",
+    "text": "[curious tone] the computer's having some issues. hope it figures itself out",
     "type": "declaration",
     "intent": "suspicion_ai",
     "conditions": {
@@ -1075,7 +1075,7 @@
   {
     "id": 55,
     "key": "CH_FE_ENG_CM#00055",
-    "text": "[WARM] the computer's been really solid through all this. trust that",
+    "text": "[warm, gentle tone] the computer's been really solid through all this. trust that",
     "type": "declaration",
     "intent": "praise_ai",
     "conditions": {
@@ -1091,7 +1091,7 @@
   {
     "id": 56,
     "key": "CH_FE_ENG_CM#00056",
-    "text": "[FLIRTY] could watch you work all day and call it engine maintenance",
+    "text": "[flirty, playful tone] could watch you work all day and call it engine maintenance",
     "type": "declaration",
     "intent": "romance_hint",
     "conditions": {
@@ -1110,7 +1110,7 @@
   {
     "id": 57,
     "key": "CH_FE_ENG_CM#00057",
-    "text": "[WARM] you make the hard shifts easier just by being there",
+    "text": "[warm, gentle tone] you make the hard shifts easier just by being there",
     "type": "declaration",
     "intent": "banter",
     "conditions": {
@@ -1126,7 +1126,7 @@
   {
     "id": 58,
     "key": "CH_FE_ENG_CM#00058",
-    "text": "[PAINED] lost someone who understood machines like i do. that's rare",
+    "text": "[pained, voice tight] lost someone who understood machines like i do. that's rare",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -1145,7 +1145,7 @@
   {
     "id": 59,
     "key": "CH_FE_ENG_CM#00059",
-    "text": "[RESIGNED] death stops everyone eventually. even the best puzzles end",
+    "text": "[resigned, flat tone] death stops everyone eventually. even the best puzzles end",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -1168,7 +1168,7 @@
   {
     "id": 60,
     "key": "CH_FE_ENG_CM#00060",
-    "text": "[PAINED] burned my hand on a hot panel. rookie mistake in a crisis",
+    "text": "[pained, voice tight] burned my hand on a hot panel. rookie mistake in a crisis",
     "type": "declaration",
     "intent": "pain",
     "conditions": {
@@ -1188,7 +1188,7 @@
   {
     "id": 61,
     "key": "CH_FE_ENG_CM#00061",
-    "text": "[GRUFF] yeah, it hurts, but the engine still needs me",
+    "text": "[low voice, gruff] yeah, it hurts, but the engine still needs me",
     "type": "declaration",
     "intent": "pain",
     "conditions": {
@@ -1205,7 +1205,7 @@
   {
     "id": 62,
     "key": "CH_FE_ENG_CM#00062",
-    "text": "[PANICKED] everything's failing at once and i can't fix it all!",
+    "text": "[panicked, panting] everything's failing at once and i can't fix it all!",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -1222,7 +1222,7 @@
   {
     "id": 63,
     "key": "CH_FE_ENG_CM#00063",
-    "text": "[TERRIFIED] [EMPHASIS] the reactor's not responding to anything i'm trying!",
+    "text": "[terrified, voice shaking] [emphasis] the reactor's not responding to anything i'm trying!",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -1255,7 +1255,7 @@
   {
     "id": 65,
     "key": "CH_FE_ENG_CM#00065",
-    "text": "[WARM] fixed an old piece of machinery just for fun. feels like art sometimes",
+    "text": "[warm, gentle tone] fixed an old piece of machinery just for fun. feels like art sometimes",
     "type": "declaration",
     "intent": "memory",
     "conditions": {
@@ -1290,7 +1290,7 @@
   {
     "id": 67,
     "key": "CH_FE_ENG_CM#00067",
-    "text": "[WARM] you ever think about cross-training? you've got the aptitude",
+    "text": "[warm, gentle tone] you ever think about cross-training? you've got the aptitude",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -1309,7 +1309,7 @@
   {
     "id": 68,
     "key": "CH_FE_ENG_CM#00068",
-    "text": "[WARM] hey! grab a minute? there's something cool i want to show you",
+    "text": "[warm, gentle tone] hey! grab a minute? there's something cool i want to show you",
     "type": "opener",
     "intent": "greeting",
     "conditions": {
@@ -1328,7 +1328,7 @@
   {
     "id": 69,
     "key": "CH_FE_ENG_CM#00069",
-    "text": "[WHISPERS] between you and me, i think the reactor's about to give us a puzzle",
+    "text": "[whispering] between you and me, i think the reactor's about to give us a puzzle",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -1350,7 +1350,7 @@
   {
     "id": 70,
     "key": "CH_FE_ENG_CM#00070",
-    "text": "[REASSURING] power's back! we're gonna be fine, i've got this under control",
+    "text": "[soft voice, reassuring] power's back! we're gonna be fine, i've got this under control",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -1369,7 +1369,7 @@
   {
     "id": 71,
     "key": "CH_FE_ENG_CM#00071",
-    "text": "[WARM] see? another puzzle solved. that's two this week!",
+    "text": "[warm, gentle tone] see? another puzzle solved. that's two this week!",
     "type": "reply",
     "intent": "status_report",
     "conditions": {
@@ -1387,7 +1387,7 @@
   {
     "id": 72,
     "key": "CH_FE_ENG_CM#00072",
-    "text": "[WARM] you came through when i needed backup. that means everything",
+    "text": "[warm, gentle tone] you came through when i needed backup. that means everything",
     "type": "reply",
     "intent": "smalltalk",
     "conditions": {
@@ -1406,7 +1406,7 @@
   {
     "id": 73,
     "key": "CH_FE_ENG_CM#00073",
-    "text": "[LAUGHS] caught that one! your instincts are sharp",
+    "text": "[laughing] caught that one! your instincts are sharp",
     "type": "reply",
     "intent": "banter",
     "conditions": {
@@ -1424,7 +1424,7 @@
   {
     "id": 74,
     "key": "CH_FE_ENG_CM#00074",
-    "text": "[WARM] no harm done. we're a team. that's what teams do",
+    "text": "[warm, gentle tone] no harm done. we're a team. that's what teams do",
     "type": "reply",
     "intent": "apology",
     "conditions": {
@@ -1442,7 +1442,7 @@
   {
     "id": 75,
     "key": "CH_FE_ENG_CM#00075",
-    "text": "[EMPHASIS] roger that. putting all hands on it now",
+    "text": "[emphasis] roger that. putting all hands on it now",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -1461,7 +1461,7 @@
   {
     "id": 76,
     "key": "CH_FE_ENG_CM#00076",
-    "text": "[WARM] we lost someone good. engine room won't feel the same",
+    "text": "[warm, gentle tone] we lost someone good. engine room won't feel the same",
     "type": "reply",
     "intent": "grief",
     "conditions": {
@@ -1479,7 +1479,7 @@
   {
     "id": 77,
     "key": "CH_FE_ENG_CM#00077",
-    "text": "[EMBARRASSED] oh! i — yes. absolutely yes. that makes me really happy",
+    "text": "[embarrassed, voice quiet] oh! i — yes. absolutely yes. that makes me really happy",
     "type": "reply",
     "intent": "romance_accept",
     "conditions": {
@@ -1498,7 +1498,7 @@
   {
     "id": 78,
     "key": "CH_FE_ENG_CM#00078",
-    "text": "[SUSPICIOUS] the computer made a call that doesn't add up to me",
+    "text": "[suspicious tone] the computer made a call that doesn't add up to me",
     "type": "reply",
     "intent": "suspicion_ai",
     "conditions": {
@@ -1516,7 +1516,7 @@
   {
     "id": 79,
     "key": "CH_FE_ENG_CM#00079",
-    "text": "[WARM] shoulder's sore but operational. we keep moving",
+    "text": "[warm, gentle tone] shoulder's sore but operational. we keep moving",
     "type": "reply",
     "intent": "pain",
     "conditions": {
@@ -1535,7 +1535,7 @@
   {
     "id": 80,
     "key": "CH_FE_ENG_CM#00080",
-    "text": "[WARM] you've got solid instincts and better judgment than you think",
+    "text": "[warm, gentle tone] you've got solid instincts and better judgment than you think",
     "type": "reply",
     "intent": "smalltalk",
     "conditions": {
@@ -1553,7 +1553,7 @@
   {
     "id": 81,
     "key": "CH_FE_ENG_CM#00081",
-    "text": "[CURIOUS] what's your read on this problem? two brains are better",
+    "text": "[curious tone] what's your read on this problem? two brains are better",
     "type": "reply",
     "intent": "work_talk",
     "conditions": {
@@ -1572,7 +1572,7 @@
   {
     "id": 82,
     "key": "CH_FE_ENG_CM#00082",
-    "text": "[WARM] see you in a few. engine won't run itself",
+    "text": "[warm, gentle tone] see you in a few. engine won't run itself",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1588,7 +1588,7 @@
   {
     "id": 83,
     "key": "CH_FE_ENG_CM#00083",
-    "text": "[LAUGHS] got to get back. these systems need attention",
+    "text": "[laughing] got to get back. these systems need attention",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1604,7 +1604,7 @@
   {
     "id": 84,
     "key": "CH_FE_ENG_CM#00084",
-    "text": "[TIRED] heading for rest. wake me if things get critical",
+    "text": "[tired, dead tired] heading for rest. wake me if things get critical",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1620,7 +1620,7 @@
   {
     "id": 85,
     "key": "CH_FE_ENG_CM#00085",
-    "text": "[WARM] you did great. really great. see you next shift",
+    "text": "[warm, gentle tone] you did great. really great. see you next shift",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1636,7 +1636,7 @@
   {
     "id": 86,
     "key": "CH_FE_ENG_CM#00086",
-    "text": "[CALM] alright, emergency contained. everyone to your stations",
+    "text": "[calm, measured] alright, emergency contained. everyone to your stations",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -1657,7 +1657,7 @@
   {
     "id": 87,
     "key": "CH_FE_ENG_CM#00087",
-    "text": "[WARM] life support's back online. we made it through",
+    "text": "[warm, gentle tone] life support's back online. we made it through",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -1678,7 +1678,7 @@
   {
     "id": 88,
     "key": "CH_FE_ENG_CM#00088",
-    "text": "[WARM] i got you. i'm not going anywhere until this is fixed",
+    "text": "[warm, gentle tone] i got you. i'm not going anywhere until this is fixed",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
