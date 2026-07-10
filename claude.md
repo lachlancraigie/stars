@@ -33,7 +33,7 @@ A spaceship AI simulator. The player is the ship's computer. See `GDD.md` for fu
 
 2. **Corpus finalization** (orchestrator): run validator → fix stragglers → `python tools/dialogue/normalize_and_export.py` (normalizes tags AND regenerates all ElevenLabs CSVs; JSON is canonical) → commit.
 
-3. **Voice the expansion** — ElevenLabs quota re-added. Run `python tools/audio_gen/elevenlabs_batch.py` (resume-safe, skips existing 1,376 MPs; `voices.json` complete: 10 permanent SHIPAI custom voices + 14 stock; `voice_designs.json` has recipes; key in gitignored `tools/audio_gen/.env`). Use eleven_v3 for TTS.
+3. **Voice the expansion** — PARTIAL, BLOCKED ON CREDITS (2026-07-10): 1,550/2,482 voiced; quota exhausted mid-run (932 lines remain, ~80k chars needed). Once Lachlan tops up ElevenLabs: source the key then rerun — `set -a && . tools/audio_gen/.env && set +a && python tools/audio_gen/elevenlabs_batch.py` (script does NOT read .env itself; resume-safe, skips existing MP3s; eleven_v3 is the default).
 
 4. **Character animations** (Lachlan's priority; prior agent died before committing — restart fresh): states wanted: walk, sleeping, fighting, holding/carrying, dead, injured, floating zero-g + extras. Consistency strategy (test first, hard-stop ~$2.50 if it fails): (a) sheet-based generation — frames in one image can't drift, use strict grid prompts + PIL slicing; (b) palette-snap post-pass; (c) reference-anchor sheets on approved base. Naming: `assets/sprites/gen2/crew/crew_{state}_{facing}_{frame}.png` + `manifest.json`. Integrate into `crew_member_node.gd` (recently edited: bubbles + voice) with per-frame texture swap and LEGACY FALLBACK. Budget ~$10, report spend, verify both autodemos.
 
