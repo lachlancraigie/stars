@@ -18,7 +18,7 @@
   {
     "id": 2,
     "key": "EV_FE_SCI_CA#00002",
-    "text": "[CALM] quiet shift. i'm using it to catch up on charts nobody reads but me",
+    "text": "[calm, clinical] quiet shift. i'm using it to catch up on charts nobody reads but me",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -56,7 +56,7 @@
   {
     "id": 4,
     "key": "EV_FE_SCI_CA#00004",
-    "text": "[TIRED] shift concluded. no fatalities. acceptable outcome",
+    "text": "[tired, dead tired] shift concluded. no fatalities. acceptable outcome",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -75,7 +75,7 @@
   {
     "id": 5,
     "key": "EV_FE_SCI_CA#00005",
-    "text": "[GRIM] reactor readings are inconsistent with stated parameters. that concerns me",
+    "text": "[grim, heavy] reactor readings are inconsistent with stated parameters. that concerns me",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -94,7 +94,7 @@
   {
     "id": 6,
     "key": "EV_FE_SCI_CA#00006",
-    "text": "[URGENT] i need the engine room staffed immediately, this is not a request",
+    "text": "[urgent, fast pace] i need the engine room staffed immediately, this is not a request",
     "type": "declaration",
     "intent": "request_help",
     "conditions": {
@@ -113,7 +113,7 @@
   {
     "id": 7,
     "key": "EV_FE_SCI_CA#00007",
-    "text": "[TERRIFIED] i don't have a protocol for this and i don't like improvising with lives",
+    "text": "[terrified, voice shaking] i don't have a protocol for this and i don't like improvising with lives",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -133,7 +133,7 @@
   {
     "id": 8,
     "key": "EV_FE_SCI_CA#00008",
-    "text": "[CALM] repair confirmed. logging it and moving to the next problem",
+    "text": "[calm, clinical] repair confirmed. logging it and moving to the next problem",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -152,7 +152,7 @@
   {
     "id": 9,
     "key": "EV_FE_SCI_CA#00009",
-    "text": "[GRIM] power reserves below acceptable threshold. rationing begins now",
+    "text": "[grim, heavy] power reserves below acceptable threshold. rationing begins now",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -171,7 +171,7 @@
   {
     "id": 10,
     "key": "EV_FE_SCI_CA#00010",
-    "text": "[NERVOUS] air quality dropping faster than the model predicted. i don't like being wrong",
+    "text": "[nervous, speaking quickly] air quality dropping faster than the model predicted. i don't like being wrong",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -190,7 +190,7 @@
   {
     "id": 11,
     "key": "EV_FE_SCI_CA#00011",
-    "text": "[GRIM] hull integrity compromised. i'm reallocating every hand we have",
+    "text": "[grim, heavy] hull integrity compromised. i'm reallocating every hand we have",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -209,7 +209,7 @@
   {
     "id": 12,
     "key": "EV_FE_SCI_CA#00012",
-    "text": "[GRIM] a door was locked with a crew member behind it. i authorized it. i'll carry that",
+    "text": "[grim, heavy] a door was locked with a crew member behind it. i authorized it. i'll carry that",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -228,7 +228,7 @@
   {
     "id": 13,
     "key": "EV_FE_SCI_CA#00013",
-    "text": "[SUSPICIOUS] the AI's decision logs since the damage show inconsistencies. i'm reviewing them personally",
+    "text": "[suspicious tone] the AI's decision logs since the damage show inconsistencies. i'm reviewing them personally",
     "type": "declaration",
     "intent": "suspicion_ai",
     "conditions": {
@@ -247,7 +247,7 @@
   {
     "id": 14,
     "key": "EV_FE_SCI_CA#00014",
-    "text": "[CALM] crisis resolved. i'll want everyone's vitals checked before anyone sleeps",
+    "text": "[calm, clinical] crisis resolved. i'll want everyone's vitals checked before anyone sleeps",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -266,7 +266,7 @@
   {
     "id": 15,
     "key": "EV_FE_SCI_CA#00015",
-    "text": "[PAINED] we lost a crew member today. i'm documenting it properly. someone has to",
+    "text": "[pained, voice tight] we lost a crew member today. i'm documenting it properly. someone has to",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -289,7 +289,7 @@
   {
     "id": 16,
     "key": "EV_FE_SCI_CA#00016",
-    "text": "[GRIM] a contagion on a ship this size is a mathematics problem before it's a medical one",
+    "text": "[grim, heavy] a contagion on a ship this size is a mathematics problem before it's a medical one",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -308,7 +308,7 @@
   {
     "id": 17,
     "key": "EV_FE_SCI_CA#00017",
-    "text": "[GRIM] contain first, treat second, panic never. that's the order it happens in",
+    "text": "[grim, heavy] contain first, treat second, panic never. that's the order it happens in",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -327,7 +327,7 @@
   {
     "id": 18,
     "key": "EV_FE_SCI_CA#00018",
-    "text": "[PAINED] injury sustained. manageable. proceeding",
+    "text": "[pained, voice tight] injury sustained. manageable. proceeding",
     "type": "declaration",
     "intent": "pain",
     "conditions": {
@@ -347,7 +347,7 @@
   {
     "id": 19,
     "key": "EV_FE_SCI_CA#00019",
-    "text": "[GRIM] combat casualties incoming. clearing medbay, all non-critical cases to quarters",
+    "text": "[grim, heavy] combat casualties incoming. clearing medbay, all non-critical cases to quarters",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -369,7 +369,7 @@
   {
     "id": 20,
     "key": "EV_FE_SCI_CA#00020",
-    "text": "[SUSPICIOUS] i trust data. the AI is also data, which is exactly why i verify it",
+    "text": "[suspicious tone] i trust data. the AI is also data, which is exactly why i verify it",
     "type": "declaration",
     "intent": "suspicion_ai",
     "conditions": {
@@ -417,7 +417,7 @@
   {
     "id": 23,
     "key": "EV_FE_SCI_CA#00023",
-    "text": "[CALM] fear is a data point. i note it and continue functioning",
+    "text": "[calm, clinical] fear is a data point. i note it and continue functioning",
     "type": "declaration",
     "intent": "doubt",
     "conditions": {
@@ -506,7 +506,7 @@
   {
     "id": 28,
     "key": "EV_FE_SCI_CA#00028",
-    "text": "[GRIM] i need to brief you on the reactor readings before this escalates further",
+    "text": "[grim, heavy] i need to brief you on the reactor readings before this escalates further",
     "type": "opener",
     "intent": "warning",
     "conditions": {
@@ -525,7 +525,7 @@
   {
     "id": 29,
     "key": "EV_FE_SCI_CA#00029",
-    "text": "[GRIM] there's no gentle way to open this conversation, so i won't try",
+    "text": "[grim, heavy] there's no gentle way to open this conversation, so i won't try",
     "type": "opener",
     "intent": "grief",
     "conditions": {
@@ -544,7 +544,7 @@
   {
     "id": 30,
     "key": "EV_FE_SCI_CA#00030",
-    "text": "[SUSPICIOUS] i want a second opinion on the AI's recent decisions. yours",
+    "text": "[suspicious tone] i want a second opinion on the AI's recent decisions. yours",
     "type": "opener",
     "intent": "suspicion_ai",
     "conditions": {
@@ -576,7 +576,7 @@
   {
     "id": 32,
     "key": "EV_FE_SCI_CA#00032",
-    "text": "[CALM] i'm fine. i've been trained not to be otherwise, mostly",
+    "text": "[calm, clinical] i'm fine. i've been trained not to be otherwise, mostly",
     "type": "reply",
     "intent": "smalltalk",
     "conditions": {
@@ -595,7 +595,7 @@
   {
     "id": 33,
     "key": "EV_FE_SCI_CA#00033",
-    "text": "[REASSURING] the numbers support survival. i wouldn't tell you that if they didn't",
+    "text": "[soft voice, reassuring] the numbers support survival. i wouldn't tell you that if they didn't",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -614,7 +614,7 @@
   {
     "id": 34,
     "key": "EV_FE_SCI_CA#00034",
-    "text": "[CALM] panic changes nothing about the outcome except your odds. sit down and breathe",
+    "text": "[calm, clinical] panic changes nothing about the outcome except your odds. sit down and breathe",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -632,7 +632,7 @@
   {
     "id": 35,
     "key": "EV_FE_SCI_CA#00035",
-    "text": "[PAINED] we lost them. i reviewed every decision twice. it wasn't a failure of judgment",
+    "text": "[pained, voice tight] we lost them. i reviewed every decision twice. it wasn't a failure of judgment",
     "type": "reply",
     "intent": "grief",
     "conditions": {
@@ -653,7 +653,7 @@
   {
     "id": 36,
     "key": "EV_FE_SCI_CA#00036",
-    "text": "[SUSPICIOUS] i share your concern about the AI. i'm building a case, not a conspiracy",
+    "text": "[suspicious tone] i share your concern about the AI. i'm building a case, not a conspiracy",
     "type": "reply",
     "intent": "suspicion_ai",
     "conditions": {
@@ -672,7 +672,7 @@
   {
     "id": 37,
     "key": "EV_FE_SCI_CA#00037",
-    "text": "[CALM] you performed correctly under pressure. that's the only metric that matters",
+    "text": "[calm, clinical] you performed correctly under pressure. that's the only metric that matters",
     "type": "reply",
     "intent": "praise_ai",
     "conditions": {
@@ -709,7 +709,7 @@
   {
     "id": 39,
     "key": "EV_FE_SCI_CA#00039",
-    "text": "[CALM] that's a valid concern. i'll incorporate it into the plan",
+    "text": "[calm, clinical] that's a valid concern. i'll incorporate it into the plan",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -728,7 +728,7 @@
   {
     "id": 40,
     "key": "EV_FE_SCI_CA#00040",
-    "text": "[CALM] dismissed. go rest, that's a medical order as much as a captain's one",
+    "text": "[calm, clinical] dismissed. go rest, that's a medical order as much as a captain's one",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -760,7 +760,7 @@
   {
     "id": 42,
     "key": "EV_FE_SCI_CA#00042",
-    "text": "[CALM] i'll be on the bridge reviewing data. as always",
+    "text": "[calm, clinical] i'll be on the bridge reviewing data. as always",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -779,7 +779,7 @@
   {
     "id": 43,
     "key": "EV_FE_SCI_CA#00043",
-    "text": "[TIRED] this concludes my available composure for today. good night",
+    "text": "[tired, dead tired] this concludes my available composure for today. good night",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -795,7 +795,7 @@
   {
     "id": 44,
     "key": "EV_FE_SCI_CA#00044",
-    "text": "[CALM] meal interval. everyone maintains nutritional baseline. that's a captain's order.",
+    "text": "[calm, clinical] meal interval. everyone maintains nutritional baseline. that's a captain's order.",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -833,7 +833,7 @@
   {
     "id": 46,
     "key": "EV_FE_SCI_CA#00046",
-    "text": "[TIRED] shift concluded. crew status nominal. bridge is sealed. i can rest now.",
+    "text": "[tired, dead tired] shift concluded. crew status nominal. bridge is sealed. i can rest now.",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -852,7 +852,7 @@
   {
     "id": 47,
     "key": "EV_FE_SCI_CA#00047",
-    "text": "[GRIM] life support system is now a triage problem. i'm prioritizing medbay and bridge first, then life-critical areas.",
+    "text": "[grim, heavy] life support system is now a triage problem. i'm prioritizing medbay and bridge first, then life-critical areas.",
     "type": "declaration",
     "intent": "request_help",
     "conditions": {
@@ -871,7 +871,7 @@
   {
     "id": 48,
     "key": "EV_FE_SCI_CA#00048",
-    "text": "[URGENT] power reserves are now a strategic problem. i'm implementing rationing across non-essential systems immediately.",
+    "text": "[urgent, fast pace] power reserves are now a strategic problem. i'm implementing rationing across non-essential systems immediately.",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -890,7 +890,7 @@
   {
     "id": 49,
     "key": "EV_FE_SCI_CA#00049",
-    "text": "[GRIM] reactor status is critical. this is now a survival scenario. all non-essential personnel are moving to the forward sections.",
+    "text": "[grim, heavy] reactor status is critical. this is now a survival scenario. all non-essential personnel are moving to the forward sections.",
     "type": "declaration",
     "intent": "request_help",
     "conditions": {
@@ -909,7 +909,7 @@
   {
     "id": 50,
     "key": "EV_FE_SCI_CA#00050",
-    "text": "[CALM] all crew report to secondary duty stations. primary bridge is now under lockdown for repairs.",
+    "text": "[calm, clinical] all crew report to secondary duty stations. primary bridge is now under lockdown for repairs.",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -925,7 +925,7 @@
   {
     "id": 51,
     "key": "EV_FE_SCI_CA#00051",
-    "text": "[GRIM] i'm implementing command protocol seven. communications with the main section are cut. bridge becomes autonomous.",
+    "text": "[grim, heavy] i'm implementing command protocol seven. communications with the main section are cut. bridge becomes autonomous.",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -944,7 +944,7 @@
   {
     "id": 52,
     "key": "EV_FE_SCI_CA#00052",
-    "text": "[GRIM] i ordered that door sealed. it sealed with someone on the other side. i will account for that decision.",
+    "text": "[grim, heavy] i ordered that door sealed. it sealed with someone on the other side. i will account for that decision.",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -963,7 +963,7 @@
   {
     "id": 53,
     "key": "EV_FE_SCI_CA#00053",
-    "text": "[SUSPICIOUS] the AI's command decisions are now under my personal review. i'm reading every log entry.",
+    "text": "[suspicious tone] the AI's command decisions are now under my personal review. i'm reading every log entry.",
     "type": "declaration",
     "intent": "suspicion_ai",
     "conditions": {
@@ -982,7 +982,7 @@
   {
     "id": 54,
     "key": "EV_FE_SCI_CA#00054",
-    "text": "[CALM] the ship AI made the right call during the crisis. i'm commending it formally to the log.",
+    "text": "[calm, clinical] the ship AI made the right call during the crisis. i'm commending it formally to the log.",
     "type": "declaration",
     "intent": "praise_ai",
     "conditions": {
@@ -998,7 +998,7 @@
   {
     "id": 55,
     "key": "EV_FE_SCI_CA#00055",
-    "text": "[GRIM] i'm injured but functional. sending a medic would be wasteful right now. i'll report to medbay after this is resolved.",
+    "text": "[grim, heavy] i'm injured but functional. sending a medic would be wasteful right now. i'll report to medbay after this is resolved.",
     "type": "declaration",
     "intent": "pain",
     "conditions": {
@@ -1015,7 +1015,7 @@
   {
     "id": 56,
     "key": "EV_FE_SCI_CA#00056",
-    "text": "[PAINED] a crew member is dead. i signed the medical authorization that put them at risk. i will carry that.",
+    "text": "[pained, voice tight] a crew member is dead. i signed the medical authorization that put them at risk. i will carry that.",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -1037,7 +1037,7 @@
   {
     "id": 57,
     "key": "EV_FE_SCI_CA#00057",
-    "text": "[PANICKED] the situation is cascading beyond my predictive models. i can't see the next move. everything's falling apart.",
+    "text": "[panicked, panting] the situation is cascading beyond my predictive models. i can't see the next move. everything's falling apart.",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -1057,7 +1057,7 @@
   {
     "id": 58,
     "key": "EV_FE_SCI_CA#00058",
-    "text": "[TERRIFIED] i don't have a protocol for this. nothing in my training prepared me for losing this much. i'm losing.",
+    "text": "[terrified, voice shaking] i don't have a protocol for this. nothing in my training prepared me for losing this much. i'm losing.",
     "type": "reply",
     "intent": "fear_vent",
     "conditions": {
@@ -1076,7 +1076,7 @@
   {
     "id": 59,
     "key": "EV_FE_SCI_CA#00059",
-    "text": "[CALM] i'm consolidating our crew into two tenable positions. everyone else is on emergency protocols.",
+    "text": "[calm, clinical] i'm consolidating our crew into two tenable positions. everyone else is on emergency protocols.",
     "type": "opener",
     "intent": "status_report",
     "conditions": {
@@ -1092,7 +1092,7 @@
   {
     "id": 60,
     "key": "EV_FE_SCI_CA#00060",
-    "text": "[URGENT] i need a real-time casualty count and a resource assessment. ten minutes.",
+    "text": "[urgent, fast pace] i need a real-time casualty count and a resource assessment. ten minutes.",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -1108,7 +1108,7 @@
   {
     "id": 61,
     "key": "EV_FE_SCI_CA#00061",
-    "text": "[PAINED] they chose this when they put on the uniform. that doesn't make the loss lighter.",
+    "text": "[pained, voice tight] they chose this when they put on the uniform. that doesn't make the loss lighter.",
     "type": "reply",
     "intent": "grief",
     "conditions": {
@@ -1126,7 +1126,7 @@
   {
     "id": 62,
     "key": "EV_FE_SCI_CA#00062",
-    "text": "[CALM] your assessment matches mine. that's why i trust you with this task.",
+    "text": "[calm, clinical] your assessment matches mine. that's why i trust you with this task.",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -1145,7 +1145,7 @@
   {
     "id": 63,
     "key": "EV_FE_SCI_CA#00063",
-    "text": "[CALM] return to your post. report any changes directly to me.",
+    "text": "[calm, clinical] return to your post. report any changes directly to me.",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1161,7 +1161,7 @@
   {
     "id": 64,
     "key": "EV_FE_SCI_CA#00064",
-    "text": "[GRIM] we're not finished. rest when you can. that's all i'm granting.",
+    "text": "[grim, heavy] we're not finished. rest when you can. that's all i'm granting.",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1177,7 +1177,7 @@
   {
     "id": 65,
     "key": "EV_FE_SCI_CA#00065",
-    "text": "[DRY] someone re-shelved my pharmacy by color. it looks lovely. it will also kill somebody. undo it",
+    "text": "[dry tone] someone re-shelved my pharmacy by color. it looks lovely. it will also kill somebody. undo it",
     "type": "declaration",
     "intent": "complaint",
     "conditions": {
@@ -1212,7 +1212,7 @@
   {
     "id": 67,
     "key": "EV_FE_SCI_CA#00067",
-    "text": "[DRY] diagnosis: chronic comedian. prognosis: tolerated, barely",
+    "text": "[dry tone] diagnosis: chronic comedian. prognosis: tolerated, barely",
     "type": "reply",
     "intent": "banter",
     "conditions": {
@@ -1300,7 +1300,7 @@
   {
     "id": 72,
     "key": "EV_FE_SCI_CA#00072",
-    "text": "[DEADPAN] today's chart: two crises, zero deaths. by this ship's baseline, that's a wellness retreat",
+    "text": "[deadpan] today's chart: two crises, zero deaths. by this ship's baseline, that's a wellness retreat",
     "type": "declaration",
     "intent": "gallows_humor",
     "conditions": {
@@ -1319,7 +1319,7 @@
   {
     "id": 73,
     "key": "EV_FE_SCI_CA#00073",
-    "text": "[DRY] if the ship kills us, i want it noted i kept excellent records the whole way down",
+    "text": "[dry tone] if the ship kills us, i want it noted i kept excellent records the whole way down",
     "type": "reply",
     "intent": "gallows_humor",
     "conditions": {
@@ -1410,7 +1410,7 @@
   {
     "id": 78,
     "key": "EV_FE_SCI_CA#00078",
-    "text": "[CALM] your pulse is up, your reasoning is intact. that combination survives. hold onto the second part",
+    "text": "[calm, clinical] your pulse is up, your reasoning is intact. that combination survives. hold onto the second part",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -1428,7 +1428,7 @@
   {
     "id": 79,
     "key": "EV_FE_SCI_CA#00079",
-    "text": "[REASSURING] i've watched this crew beat worse odds while bleeding. the sample size is small but the trend is ours",
+    "text": "[soft voice, reassuring] i've watched this crew beat worse odds while bleeding. the sample size is small but the trend is ours",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -1447,7 +1447,7 @@
   {
     "id": 80,
     "key": "EV_FE_SCI_CA#00080",
-    "text": "[WARM] elevated heart rate, no fever, symptoms present only around you. i've ruled out everything but the obvious",
+    "text": "[warm, gentle tone] elevated heart rate, no fever, symptoms present only around you. i've ruled out everything but the obvious",
     "type": "opener",
     "intent": "romance_hint",
     "conditions": {
@@ -1481,7 +1481,7 @@
   {
     "id": 82,
     "key": "EV_FE_SCI_CA#00082",
-    "text": "[WARM] yes. i checked my judgment twice for bias. it held",
+    "text": "[warm, gentle tone] yes. i checked my judgment twice for bias. it held",
     "type": "reply",
     "intent": "romance_accept",
     "conditions": {
@@ -1518,7 +1518,7 @@
   {
     "id": 84,
     "key": "EV_FE_SCI_CA#00084",
-    "text": "[CALM] all hands: hydrate, sleep in shifts, report symptoms early. i can fix almost anything i hear about in time",
+    "text": "[calm, clinical] all hands: hydrate, sleep in shifts, report symptoms early. i can fix almost anything i hear about in time",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -1553,7 +1553,7 @@
   {
     "id": 86,
     "key": "EV_FE_SCI_CA#00086",
-    "text": "[CALM] we can live in the dark. we can't live without scrubbers. the priority list writes itself",
+    "text": "[calm, clinical] we can live in the dark. we can't live without scrubbers. the priority list writes itself",
     "type": "reply",
     "intent": "warning",
     "conditions": {
@@ -1575,7 +1575,7 @@
   {
     "id": 87,
     "key": "EV_FE_SCI_CA#00087",
-    "text": "[GRIM] oxygen curve says twenty hours at current burn. every calm person on this ship just bought us more",
+    "text": "[grim, heavy] oxygen curve says twenty hours at current burn. every calm person on this ship just bought us more",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -1616,7 +1616,7 @@
   {
     "id": 89,
     "key": "EV_FE_SCI_CA#00089",
-    "text": "[GRIM] i keep the names of everyone my orders have cost. today the list got longer. it stays legible",
+    "text": "[grim, heavy] i keep the names of everyone my orders have cost. today the list got longer. it stays legible",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -1677,7 +1677,7 @@
   {
     "id": 92,
     "key": "EV_FE_SCI_CA#00092",
-    "text": "[DRY] dismissed. if anything ruptures, bleeds, or explodes, i want to hear it from you before the alarm",
+    "text": "[dry tone] dismissed. if anything ruptures, bleeds, or explodes, i want to hear it from you before the alarm",
     "type": "closer",
     "intent": "gallows_humor",
     "conditions": {
@@ -1693,7 +1693,7 @@
   {
     "id": 93,
     "key": "EV_FE_SCI_CA#00093",
-    "text": "[WARM] go sleep. doctor's orders, captain's orders, and mine. three signatures, one instruction",
+    "text": "[warm, gentle tone] go sleep. doctor's orders, captain's orders, and mine. three signatures, one instruction",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
