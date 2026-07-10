@@ -2,7 +2,7 @@
   {
     "id": 1,
     "key": "CH_ML_MAR_CM#00001",
-    "text": "[LAUGHS] morning, ship! still in one piece, still got all my limbs, good start",
+    "text": "[laughing] morning, ship! still in one piece, still got all my limbs, good start",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -37,7 +37,7 @@
   {
     "id": 3,
     "key": "CH_ML_MAR_CM#00003",
-    "text": "[WARM] shift's starting, let's go, let's go, energy up, we got this",
+    "text": "[warm, gentle tone] shift's starting, let's go, let's go, energy up, we got this",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -56,7 +56,7 @@
   {
     "id": 4,
     "key": "CH_ML_MAR_CM#00004",
-    "text": "[TIRED] shift's over and nobody needed me to shoot anything. best kind of day",
+    "text": "[tired, dead tired] shift's over and nobody needed me to shoot anything. best kind of day",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -75,7 +75,7 @@
   {
     "id": 5,
     "key": "CH_ML_MAR_CM#00005",
-    "text": "[NERVOUS] reactor's acting up and that's outside my lane, but i'm ready to carry somebody if it comes to that",
+    "text": "[nervous, speaking quickly] reactor's acting up and that's outside my lane, but i'm ready to carry somebody if it comes to that",
     "type": "declaration",
     "intent": "offer_help",
     "conditions": {
@@ -94,7 +94,7 @@
   {
     "id": 6,
     "key": "CH_ML_MAR_CM#00006",
-    "text": "[LAUGHS] engineering fixed it! somebody buy them a drink, i'm serious",
+    "text": "[laughing] engineering fixed it! somebody buy them a drink, i'm serious",
     "type": "declaration",
     "intent": "praise_ai",
     "conditions": {
@@ -113,7 +113,7 @@
   {
     "id": 7,
     "key": "CH_ML_MAR_CM#00007",
-    "text": "[GRUFF] power's low, so no music in the gym. that's the real tragedy here",
+    "text": "[low voice, gruff] power's low, so no music in the gym. that's the real tragedy here",
     "type": "declaration",
     "intent": "complaint",
     "conditions": {
@@ -132,7 +132,7 @@
   {
     "id": 8,
     "key": "CH_ML_MAR_CM#00008",
-    "text": "[NERVOUS] air's thinning, that's a first for me, and i've been shot at, so that's saying something",
+    "text": "[nervous, speaking quickly] air's thinning, that's a first for me, and i've been shot at, so that's saying something",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -151,7 +151,7 @@
   {
     "id": 9,
     "key": "CH_ML_MAR_CM#00009",
-    "text": "[URGENT] hull's breached, i'm grabbing gear, somebody point me at the hole",
+    "text": "[urgent, fast pace] hull's breached, i'm grabbing gear, somebody point me at the hole",
     "type": "declaration",
     "intent": "request_help",
     "conditions": {
@@ -170,7 +170,7 @@
   {
     "id": 10,
     "key": "CH_ML_MAR_CM#00010",
-    "text": "[GRIM] locked a door on one of ours. not gonna joke about that one",
+    "text": "[grim, serious] locked a door on one of ours. not gonna joke about that one",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -189,7 +189,7 @@
   {
     "id": 11,
     "key": "CH_ML_MAR_CM#00011",
-    "text": "[SUSPICIOUS] computer's been acting off since it took that hit. keeping an eye, quietly, for once",
+    "text": "[suspicious tone] computer's been acting off since it took that hit. keeping an eye, quietly, for once",
     "type": "declaration",
     "intent": "suspicion_ai",
     "conditions": {
@@ -208,7 +208,7 @@
   {
     "id": 12,
     "key": "CH_ML_MAR_CM#00012",
-    "text": "[LAUGHS] we made it! everybody made it! that's a story for the mess hall tonight",
+    "text": "[laughing] we made it! everybody made it! that's a story for the mess hall tonight",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -227,7 +227,7 @@
   {
     "id": 13,
     "key": "CH_ML_MAR_CM#00013",
-    "text": "[PAINED] lost one of ours today. i don't got a joke for that. gonna miss them",
+    "text": "[pained, voice tight] lost one of ours today. i don't got a joke for that. gonna miss them",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -250,7 +250,7 @@
   {
     "id": 14,
     "key": "CH_ML_MAR_CM#00014",
-    "text": "[GRIM] sickness spreading through the crew's scarier than anything with a gun, honestly",
+    "text": "[grim, serious] sickness spreading through the crew's scarier than anything with a gun, honestly",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -269,7 +269,7 @@
   {
     "id": 15,
     "key": "CH_ML_MAR_CM#00015",
-    "text": "[LAUGHS] took a hit, i'll live, hurts like hell but i'll live, don't tell the doc i said hell",
+    "text": "[laughing] took a hit, i'll live, hurts like hell but i'll live, don't tell the doc i said hell",
     "type": "declaration",
     "intent": "pain",
     "conditions": {
@@ -308,7 +308,7 @@
   {
     "id": 17,
     "key": "CH_ML_MAR_CM#00017",
-    "text": "[LAUGHS] combat's over, nobody got hit worse than a scratch, drinks on me at next port",
+    "text": "[laughing] combat's over, nobody got hit worse than a scratch, drinks on me at next port",
     "type": "declaration",
     "intent": "boast",
     "conditions": {
@@ -343,7 +343,7 @@
   {
     "id": 19,
     "key": "CH_ML_MAR_CM#00019",
-    "text": "[LAUGHS] joined up for the adventure, stayed for the people. corny but true",
+    "text": "[laughing] joined up for the adventure, stayed for the people. corny but true",
     "type": "declaration",
     "intent": "memory",
     "conditions": {
@@ -359,7 +359,7 @@
   {
     "id": 20,
     "key": "CH_ML_MAR_CM#00020",
-    "text": "[LAUGHS] gym's my favorite room on this whole ship. don't tell the mess hall i said that",
+    "text": "[laughing] gym's my favorite room on this whole ship. don't tell the mess hall i said that",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -378,7 +378,7 @@
   {
     "id": 21,
     "key": "CH_ML_MAR_CM#00021",
-    "text": "[LAUGHS] mess hall food again! it's growing on me, literally and figuratively",
+    "text": "[laughing] mess hall food again! it's growing on me, literally and figuratively",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -435,7 +435,7 @@
   {
     "id": 24,
     "key": "CH_ML_MAR_CM#00024",
-    "text": "[LAUGHS] got a second? i got a bet going and i need a witness",
+    "text": "[laughing] got a second? i got a bet going and i need a witness",
     "type": "opener",
     "intent": "banter",
     "conditions": {
@@ -451,7 +451,7 @@
   {
     "id": 25,
     "key": "CH_ML_MAR_CM#00025",
-    "text": "[GRIM] gotta tell you something and it's not gonna be fun. sorry, no easy way in",
+    "text": "[grim, serious] gotta tell you something and it's not gonna be fun. sorry, no easy way in",
     "type": "opener",
     "intent": "grief",
     "conditions": {
@@ -486,7 +486,7 @@
   {
     "id": 27,
     "key": "CH_ML_MAR_CM#00027",
-    "text": "[FLIRTY] so, hypothetically, if i asked you to grab a meal that isn't standing at your station, what happens",
+    "text": "[flirty, playful tone] so, hypothetically, if i asked you to grab a meal that isn't standing at your station, what happens",
     "type": "opener",
     "intent": "romance_hint",
     "conditions": {
@@ -502,7 +502,7 @@
   {
     "id": 28,
     "key": "CH_ML_MAR_CM#00028",
-    "text": "[LAUGHS] i'm great! ask me again in an hour, might still be great",
+    "text": "[laughing] i'm great! ask me again in an hour, might still be great",
     "type": "reply",
     "intent": "smalltalk",
     "conditions": {
@@ -521,7 +521,7 @@
   {
     "id": 29,
     "key": "CH_ML_MAR_CM#00029",
-    "text": "[CONFIDENT] we're gonna be fine. i've been in worse spots with worse people. this crew's solid",
+    "text": "[confident, assured tone] we're gonna be fine. i've been in worse spots with worse people. this crew's solid",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -540,7 +540,7 @@
   {
     "id": 30,
     "key": "CH_ML_MAR_CM#00030",
-    "text": "[WARM] hey, look at me. we've got this. i've got you",
+    "text": "[warm, gentle tone] hey, look at me. we've got this. i've got you",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -558,7 +558,7 @@
   {
     "id": 31,
     "key": "CH_ML_MAR_CM#00031",
-    "text": "[PAINED] we lost them. wasn't on you. i need you to actually hear that, not just nod at it",
+    "text": "[pained, voice tight] we lost them. wasn't on you. i need you to actually hear that, not just nod at it",
     "type": "reply",
     "intent": "grief",
     "conditions": {
@@ -579,7 +579,7 @@
   {
     "id": 32,
     "key": "CH_ML_MAR_CM#00032",
-    "text": "[LAUGHS] okay that was a genuinely terrible joke and i respect the commitment",
+    "text": "[laughing] okay that was a genuinely terrible joke and i respect the commitment",
     "type": "reply",
     "intent": "banter",
     "conditions": {
@@ -597,7 +597,7 @@
   {
     "id": 33,
     "key": "CH_ML_MAR_CM#00033",
-    "text": "[WARM] we're good. seriously, water under the bridge, want a hug or a handshake",
+    "text": "[warm, gentle tone] we're good. seriously, water under the bridge, want a hug or a handshake",
     "type": "reply",
     "intent": "apology",
     "conditions": {
@@ -615,7 +615,7 @@
   {
     "id": 34,
     "key": "CH_ML_MAR_CM#00034",
-    "text": "[EMBARRASSED] wait, really? i was half joking, but — yeah. yeah, i'd like that",
+    "text": "[embarrassed, voice quiet] wait, really? i was half joking, but — yeah. yeah, i'd like that",
     "type": "reply",
     "intent": "romance_accept",
     "conditions": {
@@ -634,7 +634,7 @@
   {
     "id": 35,
     "key": "CH_ML_MAR_CM#00035",
-    "text": "[SUSPICIOUS] yeah, i've noticed too, honestly. figured i was just being jumpy",
+    "text": "[suspicious tone] yeah, i've noticed too, honestly. figured i was just being jumpy",
     "type": "reply",
     "intent": "suspicion_ai",
     "conditions": {
@@ -652,7 +652,7 @@
   {
     "id": 36,
     "key": "CH_ML_MAR_CM#00036",
-    "text": "[LAUGHS] catch you later, don't do anything i wouldn't do, which honestly leaves a lot of room",
+    "text": "[laughing] catch you later, don't do anything i wouldn't do, which honestly leaves a lot of room",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -668,7 +668,7 @@
   {
     "id": 37,
     "key": "CH_ML_MAR_CM#00037",
-    "text": "[WARM] go rest. i'll hold the fort, or at least hold a sandwich menacingly",
+    "text": "[warm, gentle tone] go rest. i'll hold the fort, or at least hold a sandwich menacingly",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -684,7 +684,7 @@
   {
     "id": 38,
     "key": "CH_ML_MAR_CM#00038",
-    "text": "[LAUGHS] i'll be around. i'm always around, ask anyone, it's basically my whole personality",
+    "text": "[laughing] i'll be around. i'm always around, ask anyone, it's basically my whole personality",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -700,7 +700,7 @@
   {
     "id": 39,
     "key": "CH_ML_MAR_CM#00039",
-    "text": "[TIRED] i'm beat. good beat though, the kind you earn. night",
+    "text": "[tired, dead tired] i'm beat. good beat though, the kind you earn. night",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -716,7 +716,7 @@
   {
     "id": 40,
     "key": "CH_ML_MAR_CM#00040",
-    "text": "[LAUGHS] quiet shift means i can organize the gym equipment without people using them as throw weapons",
+    "text": "[laughing] quiet shift means i can organize the gym equipment without people using them as throw weapons",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -735,7 +735,7 @@
   {
     "id": 41,
     "key": "CH_ML_MAR_CM#00041",
-    "text": "[WARM] morning everyone! time to be alert and ready for literally anything",
+    "text": "[warm, gentle tone] morning everyone! time to be alert and ready for literally anything",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -754,7 +754,7 @@
   {
     "id": 42,
     "key": "CH_ML_MAR_CM#00042",
-    "text": "[LAUGHS] mess hall food today. either it's good or i'm desperate enough not to notice",
+    "text": "[laughing] mess hall food today. either it's good or i'm desperate enough not to notice",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -776,7 +776,7 @@
   {
     "id": 43,
     "key": "CH_ML_MAR_CM#00043",
-    "text": "[TIRED] shift's over and nobody needed violence. that's a win in my book",
+    "text": "[tired, dead tired] shift's over and nobody needed violence. that's a win in my book",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -795,7 +795,7 @@
   {
     "id": 44,
     "key": "CH_ML_MAR_CM#00044",
-    "text": "[WARM] break time for fuel and recovery",
+    "text": "[warm, gentle tone] break time for fuel and recovery",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -814,7 +814,7 @@
   {
     "id": 45,
     "key": "CH_ML_MAR_CM#00045",
-    "text": "[NERVOUS] power's dropping and that means no lights. i got this though",
+    "text": "[nervous, speaking quickly] power's dropping and that means no lights. i got this though",
     "type": "declaration",
     "intent": "complaint",
     "conditions": {
@@ -833,7 +833,7 @@
   {
     "id": 46,
     "key": "CH_ML_MAR_CM#00046",
-    "text": "[NERVOUS] air's thinning. that's outside my comfort zone but i'm ready to adapt",
+    "text": "[nervous, speaking quickly] air's thinning. that's outside my comfort zone but i'm ready to adapt",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -852,7 +852,7 @@
   {
     "id": 47,
     "key": "CH_ML_MAR_CM#00047",
-    "text": "[PANICKED] reactor's failing and i'm in my element now, time to move fast!",
+    "text": "[panicked, panting] reactor's failing and i'm in my element now, time to move fast!",
     "type": "declaration",
     "intent": "request_help",
     "conditions": {
@@ -872,7 +872,7 @@
   {
     "id": 48,
     "key": "CH_ML_MAR_CM#00048",
-    "text": "[GRIM] locked a crew member behind a door. that's on the leadership, and it eats at me",
+    "text": "[grim, serious] locked a crew member behind a door. that's on the leadership, and it eats at me",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -891,7 +891,7 @@
   {
     "id": 49,
     "key": "CH_ML_MAR_CM#00049",
-    "text": "[SUSPICIOUS] computer's acting different since the hit. don't blame it though",
+    "text": "[suspicious tone] computer's acting different since the hit. don't blame it though",
     "type": "declaration",
     "intent": "suspicion_ai",
     "conditions": {
@@ -910,7 +910,7 @@
   {
     "id": 50,
     "key": "CH_ML_MAR_CM#00050",
-    "text": "[WARM] computer's reliable. never hesitates when we need it",
+    "text": "[warm, gentle tone] computer's reliable. never hesitates when we need it",
     "type": "declaration",
     "intent": "praise_ai",
     "conditions": {
@@ -926,7 +926,7 @@
   {
     "id": 51,
     "key": "CH_ML_MAR_CM#00051",
-    "text": "[FLIRTY] you've got that thing where you take charge. it's attractive",
+    "text": "[flirty, playful tone] you've got that thing where you take charge. it's attractive",
     "type": "declaration",
     "intent": "romance_hint",
     "conditions": {
@@ -942,7 +942,7 @@
   {
     "id": 52,
     "key": "CH_ML_MAR_CM#00052",
-    "text": "[WARM] been thinking about you. in a good way, not a distraction way",
+    "text": "[warm, gentle tone] been thinking about you. in a good way, not a distraction way",
     "type": "declaration",
     "intent": "banter",
     "conditions": {
@@ -958,7 +958,7 @@
   {
     "id": 53,
     "key": "CH_ML_MAR_CM#00053",
-    "text": "[PAINED] lost someone i served with. that bond doesn't break easy",
+    "text": "[pained, voice tight] lost someone i served with. that bond doesn't break easy",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -977,7 +977,7 @@
   {
     "id": 54,
     "key": "CH_ML_MAR_CM#00054",
-    "text": "[RESIGNED] death's part of the job but that doesn't make it suck less",
+    "text": "[resigned, flat tone] death's part of the job but that doesn't make it suck less",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -1000,7 +1000,7 @@
   {
     "id": 55,
     "key": "CH_ML_MAR_CM#00055",
-    "text": "[LAUGHS] got hit but still standing. that's what armor's for",
+    "text": "[laughing] got hit but still standing. that's what armor's for",
     "type": "declaration",
     "intent": "pain",
     "conditions": {
@@ -1020,7 +1020,7 @@
   {
     "id": 56,
     "key": "CH_ML_MAR_CM#00056",
-    "text": "[GRUFF] hurts like hell but i've had worse. we keep moving",
+    "text": "[low voice, gruff] hurts like hell but i've had worse. we keep moving",
     "type": "declaration",
     "intent": "pain",
     "conditions": {
@@ -1037,7 +1037,7 @@
   {
     "id": 57,
     "key": "CH_ML_MAR_CM#00057",
-    "text": "[PANICKED] everything's falling apart and i can't fight this!",
+    "text": "[panicked, panting] everything's falling apart and i can't fight this!",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -1054,7 +1054,7 @@
   {
     "id": 58,
     "key": "CH_ML_MAR_CM#00058",
-    "text": "[TERRIFIED] [EMPHASIS] crew's in danger and I can't reach them!",
+    "text": "[terrified, voice shaking] [emphasis] crew's in danger and I can't reach them!",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -1071,7 +1071,7 @@
   {
     "id": 59,
     "key": "CH_ML_MAR_CM#00059",
-    "text": "[WARM] been working out like crazy. keeps me sane and sharp",
+    "text": "[warm, gentle tone] been working out like crazy. keeps me sane and sharp",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -1087,7 +1087,7 @@
   {
     "id": 60,
     "key": "CH_ML_MAR_CM#00060",
-    "text": "[LAUGHS] spent downtime organizing tournament brackets. making it interesting",
+    "text": "[laughing] spent downtime organizing tournament brackets. making it interesting",
     "type": "declaration",
     "intent": "memory",
     "conditions": {
@@ -1103,7 +1103,7 @@
   {
     "id": 61,
     "key": "CH_ML_MAR_CM#00061",
-    "text": "[WARM] you've got good tactical instincts. ever think about weapons training?",
+    "text": "[warm, gentle tone] you've got good tactical instincts. ever think about weapons training?",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -1119,7 +1119,7 @@
   {
     "id": 62,
     "key": "CH_ML_MAR_CM#00062",
-    "text": "[CURIOUS] quick debrief on that situation? i want your take",
+    "text": "[curious tone] quick debrief on that situation? i want your take",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -1135,7 +1135,7 @@
   {
     "id": 63,
     "key": "CH_ML_MAR_CM#00063",
-    "text": "[LAUGHS] there you are! been meaning to catch you",
+    "text": "[laughing] there you are! been meaning to catch you",
     "type": "opener",
     "intent": "greeting",
     "conditions": {
@@ -1151,7 +1151,7 @@
   {
     "id": 64,
     "key": "CH_ML_MAR_CM#00064",
-    "text": "[WHISPERS] feeling like trouble's coming. stay sharp",
+    "text": "[whispering] feeling like trouble's coming. stay sharp",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -1170,7 +1170,7 @@
   {
     "id": 65,
     "key": "CH_ML_MAR_CM#00065",
-    "text": "[CONFIDENT] systems are recovering! we're solid!",
+    "text": "[confident, assured tone] systems are recovering! we're solid!",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -1189,7 +1189,7 @@
   {
     "id": 66,
     "key": "CH_ML_MAR_CM#00066",
-    "text": "[WARM] excellent execution. that's how it's done",
+    "text": "[warm, gentle tone] excellent execution. that's how it's done",
     "type": "reply",
     "intent": "status_report",
     "conditions": {
@@ -1207,7 +1207,7 @@
   {
     "id": 67,
     "key": "CH_ML_MAR_CM#00067",
-    "text": "[WARM] you've got my back so i've got yours. that's the deal",
+    "text": "[warm, gentle tone] you've got my back so i've got yours. that's the deal",
     "type": "reply",
     "intent": "smalltalk",
     "conditions": {
@@ -1226,7 +1226,7 @@
   {
     "id": 68,
     "key": "CH_ML_MAR_CM#00068",
-    "text": "[LAUGHS] your attempt was awesome. commitment to the bit",
+    "text": "[laughing] your attempt was awesome. commitment to the bit",
     "type": "reply",
     "intent": "banter",
     "conditions": {
@@ -1244,7 +1244,7 @@
   {
     "id": 69,
     "key": "CH_ML_MAR_CM#00069",
-    "text": "[WARM] all good. seriously. grab a drink with me later?",
+    "text": "[warm, gentle tone] all good. seriously. grab a drink with me later?",
     "type": "reply",
     "intent": "apology",
     "conditions": {
@@ -1262,7 +1262,7 @@
   {
     "id": 70,
     "key": "CH_ML_MAR_CM#00070",
-    "text": "[EMPHASIS] affirmative. moving to position now",
+    "text": "[emphasis] affirmative. moving to position now",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -1281,7 +1281,7 @@
   {
     "id": 71,
     "key": "CH_ML_MAR_CM#00071",
-    "text": "[PAINED] we lost them. i wasn't fast enough to stop it",
+    "text": "[pained, voice tight] we lost them. i wasn't fast enough to stop it",
     "type": "reply",
     "intent": "grief",
     "conditions": {
@@ -1299,7 +1299,7 @@
   {
     "id": 72,
     "key": "CH_ML_MAR_CM#00072",
-    "text": "[EMBARRASSED] hell yeah i do. thought you'd never ask",
+    "text": "[embarrassed, voice quiet] hell yeah i do. thought you'd never ask",
     "type": "reply",
     "intent": "romance_accept",
     "conditions": {
@@ -1318,7 +1318,7 @@
   {
     "id": 73,
     "key": "CH_ML_MAR_CM#00073",
-    "text": "[SUSPICIOUS] yeah same. let's keep eyes open",
+    "text": "[suspicious tone] yeah same. let's keep eyes open",
     "type": "reply",
     "intent": "suspicion_ai",
     "conditions": {
@@ -1336,7 +1336,7 @@
   {
     "id": 74,
     "key": "CH_ML_MAR_CM#00074",
-    "text": "[LAUGHS] yeah i'm hurt but worse for wear. good times",
+    "text": "[laughing] yeah i'm hurt but worse for wear. good times",
     "type": "reply",
     "intent": "pain",
     "conditions": {
@@ -1355,7 +1355,7 @@
   {
     "id": 75,
     "key": "CH_ML_MAR_CM#00075",
-    "text": "[WARM] you've got heart and strength. that's the combo we need",
+    "text": "[warm, gentle tone] you've got heart and strength. that's the combo we need",
     "type": "reply",
     "intent": "smalltalk",
     "conditions": {
@@ -1373,7 +1373,7 @@
   {
     "id": 76,
     "key": "CH_ML_MAR_CM#00076",
-    "text": "[CURIOUS] what's your play here? give me the strategy",
+    "text": "[curious tone] what's your play here? give me the strategy",
     "type": "reply",
     "intent": "work_talk",
     "conditions": {
@@ -1392,7 +1392,7 @@
   {
     "id": 77,
     "key": "CH_ML_MAR_CM#00077",
-    "text": "[LAUGHS] catch you later. someone's gotta keep this ship running",
+    "text": "[laughing] catch you later. someone's gotta keep this ship running",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1408,7 +1408,7 @@
   {
     "id": 78,
     "key": "CH_ML_MAR_CM#00078",
-    "text": "[WARM] take it easy. you earned rest",
+    "text": "[warm, gentle tone] take it easy. you earned rest",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1424,7 +1424,7 @@
   {
     "id": 79,
     "key": "CH_ML_MAR_CM#00079",
-    "text": "[TIRED] gonna crash hard. catch you later",
+    "text": "[tired, dead tired] gonna crash hard. catch you later",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1440,7 +1440,7 @@
   {
     "id": 80,
     "key": "CH_ML_MAR_CM#00080",
-    "text": "[WARM] you did good. really good",
+    "text": "[warm, gentle tone] you did good. really good",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1456,7 +1456,7 @@
   {
     "id": 81,
     "key": "CH_ML_MAR_CM#00081",
-    "text": "[CALM] tactical readiness: full. standing by",
+    "text": "[calm, measured] tactical readiness: full. standing by",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -1477,7 +1477,7 @@
   {
     "id": 82,
     "key": "CH_ML_MAR_CM#00082",
-    "text": "[WARM] systems recovering and crew's breathing easier. we're good",
+    "text": "[warm, gentle tone] systems recovering and crew's breathing easier. we're good",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -1498,7 +1498,7 @@
   {
     "id": 83,
     "key": "CH_ML_MAR_CM#00083",
-    "text": "[WARM] i'm here. i'm not moving until this is solved",
+    "text": "[warm, gentle tone] i'm here. i'm not moving until this is solved",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
