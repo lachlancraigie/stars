@@ -27,19 +27,15 @@ A spaceship AI simulator. The player is the ship's computer. See `GDD.md` for fu
 
 ---
 
-## RESUME QUEUE (work in order, one agent at a time)
+## RESUME QUEUE (work in order, one agent at a time — session detail in `notes.md`)
 
-1. **Finish dialogue to ~2,500 lines** — ✅ COMPLETE (2026-07-10): 2,482 lines across 24 files, all groups (CH/EV/GR/PA) done, validator 0 issues. (Note: commit ab32eac's message says 2,502 — true count is 2,482.)
-
-2. **Corpus finalization** — ✅ COMPLETE (2026-07-10): 0 tag fixes, all 24 ElevenLabs CSVs regenerated and committed (`ab32eac`).
-
-3. **Voice the expansion** — PARTIAL, BLOCKED ON CREDITS (2026-07-10): 1,550/2,482 voiced; quota exhausted mid-run (932 lines remain, ~80k chars needed). Once Lachlan tops up ElevenLabs: source the key then rerun — `set -a && . tools/audio_gen/.env && set +a && python tools/audio_gen/elevenlabs_batch.py` (script does NOT read .env itself; resume-safe, skips existing MP3s; eleven_v3 is the default).
-
-4. **Character animations** — ✅ COMPLETE (2026-07-10), pending Lachlan's eyeball of the contact sheet: consistency test PASSED (sheet-based paired-facing grids — 2 facings × ≤4 frames, NOT single 8-facing sheets — + palette-snap; evidence `assets/sprites/gen2/crew/_test/`). 11 states / 116 sprites + `manifest.json`, ~$1.80 of $10 spent. Integrated into `crew_member_node.gd` (manifest-driven, Kenney legacy fallback intact); fight/carry/floating art exists but has no gameplay trigger yet (TODO documented). Both autodemos clean. Commits `79c00df`/`1f0c35d`/`69f682e`.
-
-5. **Crew progression** — ✅ COMPLETE (2026-07-10): traits registry (`scripts/core/traits.gd`, 17 traits, 5-cap), earn triggers + leg-boundary resolution (`scripts/crew/crew_progression.gd`, new `EventBus.leg_boundary_reached`), Rest Saves, memorial (`GameState.fallen`), roster panel (C key, CREW/LOST tabs). Both autodemos + seeded soak clean (new `SHIPAI_FORCE_KILL` env hook). Commits `e092bcf`/`30a9d9c`. Deferred per spec/pin: FTL recruitment (PINNED), Shore Leave, trait-conditioned dialogue.
-
-6. **Sprint close-out**: consider fast-forwarding `main` (last synced `0619ecb` — ask Lachlan), CLAUDE.md consolidation, rotate the two API keys (they passed through chat).
+1. ~~Dialogue expansion~~ ✅ 2,482 lines / 24 files, validator clean
+2. ~~Corpus finalization~~ ✅ ElevenLabs CSVs regenerated (`ab32eac`)
+3. ElevenLabs voicing — ON HOLD (1,550/2,482 done, quota dead); superseded by the Fish v2 trial below. Rerun cmd in `notes.md` if ElevenLabs returns.
+4. ~~Character animations~~ ✅ integrated w/ Kenney fallback (`79c00df`/`1f0c35d`/`69f682e`); head-size consistency fix IN PROGRESS (measured head:height ratio gate, $3 cap)
+5. ~~Crew progression~~ ✅ (`e092bcf`/`30a9d9c`); FTL recruitment still PINNED
+6. **ACTIVE: Fish Audio v2 revoice** (Lachlan wants ElevenLabs replaced; s2.1-pro free through July). Skill: `skills/fishaudio.md` (gitignored — plaintext key; also in `tools/audio_gen/.env` as `FISH_API_KEY`). Lachlan's 26 handpicked voice IDs → `notes.md`. Phases: (A) Sonnet — map voices → 24 archetypes (primary + ranked alternates → `tools/audio_gen/fish_voices.json`), rewrite `docs/dialogue_spec.md` tag section for Fish `[]` syntax, update validator, write resume-safe `tools/audio_gen/fish_batch.py`; (B) Haiku ×4 sequential — per-group tag rewrite of corpus JSON (tags only, text/IDs untouched), validate + commit per file; (C) orchestrator — batch-generate all 2,482 MP3s → `assets/audio/dialogue_v2/` (gitignored) for Lachlan's review.
+7. **Sprint close-out**: fast-forward `main`? (last synced `0619ecb` — ask Lachlan) · rotate API keys (ElevenLabs/OpenRouter/Fish all passed through chat)
 
 ---
 

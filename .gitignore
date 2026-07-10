@@ -33,3 +33,9 @@ assets/audio/dialogue/
 # Python cache / tool logs
 __pycache__/
 tools/**/*.log
+
+# Fish Audio skill contains a plaintext API key - keep untracked
+skills/fishaudio.md
+
+# Generated audio v2 (Fish Audio revoice; large, regenerate via tools/audio_gen)
+assets/audio/dialogue_v2/
