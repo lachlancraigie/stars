@@ -40,6 +40,19 @@ func issue_directive(directive: AIDirective) -> bool:
 	return true
 
 
+# Active (issued, not yet rejected/completed) directives targeting a given crew member —
+# note "active" includes ACCEPTED ones too, since nothing currently emits
+# directive_completed (see _on_directive_completed below); that's a real gap for a future
+# task-completion pass, but it means this doubles today as "what has this crew member
+# agreed to / been asked to do" for RosterPanel's Inspect page (jobs & tasks section).
+func directives_for_crew(crew_id: String) -> Array[AIDirective]:
+	var result: Array[AIDirective] = []
+	for d: AIDirective in _active_directives:
+		if d.target_type == AIDirective.TargetType.CREW and d.target_id == crew_id:
+			result.append(d)
+	return result
+
+
 func record_deviation(severity: ObedienceEngine.Severity, description: String,
 		noticed_by_crew: bool = false) -> void:
 	obedience.record_deviation(severity, description, noticed_by_crew)

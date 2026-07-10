@@ -236,6 +236,7 @@ func _generate_one(crew_id: String, role: String, rank: String, archetype: Dicti
 	_roll_stats(crew, archetype)
 	_apply_class_adjustments(crew)
 	_roll_health(crew)
+	_roll_age(crew)
 	_assign_skills(crew, role, archetype)
 	_assign_equipment(crew)
 
@@ -338,6 +339,17 @@ func _apply_class_adjustments(crew: CrewMember) -> void:
 func _roll_health(crew: CrewMember) -> void:
 	crew.max_health = Checks.roll_max_health()
 	crew.health = crew.max_health
+
+
+# Flavour-only (info card / service record display, no mechanical effect) — captains/
+# officers skew a little older, matching the "years in service" implication of rank.
+const AGE_RANGE_BY_RANK: Dictionary = {
+	"captain": [34, 62], "officer": [28, 58], "crew_mate": [20, 50],
+}
+
+func _roll_age(crew: CrewMember) -> void:
+	var range_pair: Array = AGE_RANGE_BY_RANK.get(crew.rank, [20, 50])
+	crew.age = int(range_pair[0]) + randi() % (int(range_pair[1]) - int(range_pair[0]) + 1)
 
 
 # Skills follow the normal class rules; archetype preferred_skills (if any) are

@@ -1,12 +1,14 @@
+class_name RosterPanel
 extends CanvasLayer
 
 # Roster biography panel (docs/crew-progression-spec.md §5): "click a crew member -> service
 # record: name, archetype blurb, legs served, traits with blurbs, skills, relationships
 # (partner/friends via affinity), wounds. This panel is WHY death hurts — it's a biography,
-# not a stat block." Toggled by its own corner button / the C key rather than a world click
-# on the crew sprite — that click is already DirectiveMenu's "select crew, choose a
+# not a stat block." Toggled by its own corner button / the C key, OR opened focused on a
+# specific crew member via open_for_crew() (DirectiveMenu's "Inspect" button — see
+# CLICK MENU RESTRUCTURE) — that click is otherwise DirectiveMenu's "select crew, choose a
 # destination" gesture (Rule 1: nothing here ever moves crew, so it stays a pure read-only
-# side panel that can coexist with DirectiveMenu without fighting over the same click).
+# panel that can coexist with DirectiveMenu without fighting over the same click).
 #
 # A LOST tab reads GameState.fallen directly (CrewLifecycle.kill's memorial snapshot) since
 # a dead crew member has no CrewMemberNode left in the world to click on at all — the tab is
@@ -14,6 +16,11 @@ extends CanvasLayer
 #
 # Built programmatically like HUD/DirectiveMenu (no complex scene needed) — this file is
 # the whole implementation; RosterPanel.tscn is just the CanvasLayer + script wrapper.
+
+# Single live instance (Main only ever instantiates one), so other UI (DirectiveMenu's
+# Inspect button) can reach it without a scene-tree search — same "static registry" idiom
+# CrewMemberNode.nodes already uses for crew lookup.
+static var instance: RosterPanel = null
 
 const PANEL_BG: Color = Color(0.09, 0.11, 0.15, 0.95)
 const ACCENT: Color = Color(0.20, 0.80, 0.95)
@@ -42,6 +49,7 @@ var _tab_lost_btn: Button
 
 
 func _ready() -> void:
+	instance = self
 	layer = 6  # above DirectiveMenu (5) — a modal-ish inspection panel sits on top
 	_build_toggle_button()
 	# Live refresh: a trait earned, a death, a tier-up, or a stress change while the panel
@@ -77,6 +85,18 @@ func _toggle() -> void:
 		_close()
 	else:
 		_open_panel()
+
+
+# DirectiveMenu's "Inspect" entry (CLICK MENU RESTRUCTURE): open straight to a specific
+# crew member's CREW-tab detail, same panel as the C-key toggle — Inspect reuses this rather
+# than building a parallel bio view.
+func open_for_crew(crew_id: String) -> void:
+	_tab = "crew"
+	_selected_crew_id = crew_id
+	if not _open:
+		_open_panel()
+	else:
+		_refresh()
 
 
 func _open_panel() -> void:
@@ -278,10 +298,11 @@ func _render_crew_detail() -> void:
 
 	_add_title(crew.crew_name)
 	_add_label(_archetype_blurb(crew), DIM_TEXT)
-	_add_label("Legs served: %d" % crew.legs_served)
+	_add_label("Age %d · Legs served: %d" % [crew.age, crew.legs_served])
 	_add_label("Stress: %d (min %d)   Wounds: %d/%d" % [crew.stress, crew.min_stress, crew.wounds, crew.max_wounds])
 	if not crew.conditions.is_empty():
 		_add_label("Conditions: %s" % ", ".join(crew.conditions).replace("_", " "), DEBUFF_COLOUR)
+	_add_label("\"%s\"" % _inner_monologue(crew), DIM_TEXT)
 
 	_add_section("TRAITS")
 	if crew.traits.is_empty():
@@ -301,6 +322,9 @@ func _render_crew_detail() -> void:
 
 	_add_section("RELATIONSHIPS")
 	_render_relationships(crew.crew_id)
+
+	_render_jobs_section(crew)
+	_render_equipment_section(crew)
 
 
 func _render_fallen_detail() -> void:
@@ -380,6 +404,141 @@ func _top_affinities(crew_id: String, exclude_id: String) -> Array:
 func _crew_label(crew_id: String) -> String:
 	var crew: CrewMember = GameState.crew.get(crew_id) as CrewMember
 	return crew.crew_name if crew != null else crew_id
+
+
+# --- Inner monologue: a flavour line derived purely from existing sim state (current
+# behaviour + the strongest pressing need + mood/relationship state) — no new systems, per
+# the overhaul spec's explicit instruction. Not a dialogue-corpus line (out of scope:
+# resources/dialogue/ belongs to the parallel dialogue agent); a small, local, rule-based
+# sentence built from state this panel already reads elsewhere on the page. ---
+
+func _inner_monologue(crew: CrewMember) -> String:
+	var parts: Array[String] = [_state_line(crew)]
+	var need_line: String = _dominant_need_line(crew)
+	if need_line != "":
+		parts.append(need_line)
+	var social_line: String = _social_line(crew)
+	if social_line != "":
+		parts.append(social_line)
+	return " ".join(parts)
+
+
+func _state_line(crew: CrewMember) -> String:
+	match crew.current_state:
+		CrewStateMachine.SLEEPING:
+			return "Trying to get some rest."
+		CrewStateMachine.EATING:
+			return "Grabbing something to eat."
+		CrewStateMachine.PANICKING:
+			return "Barely holding it together."
+		CrewStateMachine.FROZEN:
+			return "Frozen up — can't seem to move."
+		CrewStateMachine.INCAPACITATED:
+			return "Down, and in no state to do anything."
+		CrewStateMachine.WORKING:
+			return "Focused on the job at hand."
+		_:
+			return "Between tasks right now."
+
+
+# Only the single MOST pressing need gets a line — matches this crew member's own worst
+# pressure rather than reading like a dumped stat block; below NEED_MENTION_THRESHOLD
+# nothing is bothering them enough to be worth a line.
+const NEED_MENTION_THRESHOLD: float = 0.5
+
+func _dominant_need_line(crew: CrewMember) -> String:
+	var needs: Dictionary = {
+		"hunger": crew.hunger, "fatigue": crew.fatigue, "fear": crew.fear,
+		"loneliness": crew.loneliness, "boredom": crew.boredom,
+	}
+	var worst_name: String = ""
+	var worst_val: float = NEED_MENTION_THRESHOLD
+	for need_name: String in needs:
+		var v: float = float(needs[need_name])
+		if v > worst_val:
+			worst_val = v
+			worst_name = need_name
+	match worst_name:
+		"hunger":
+			return "Hungrier than they'd like to admit."
+		"fatigue":
+			return "Running on fumes."
+		"fear":
+			return "Nerves are frayed."
+		"loneliness":
+			return "Wishing there were more people around."
+		"boredom":
+			return "Itching for something to do."
+		_:
+			return "Feeling steady." if crew.morale >= 0.6 else ""
+
+
+func _social_line(crew: CrewMember) -> String:
+	var partner_id: String = RelationshipGraph.partner_of(crew.crew_id)
+	if partner_id != "":
+		return "Keeps half an eye out for %s." % _crew_label(partner_id)
+	var trust: float = GameState.get_ai_trust(crew.crew_id)
+	if trust < 0.35:
+		return "Doesn't fully trust the ship's AI right now."
+	if trust > 0.75:
+		return "Trusts the AI's judgment without much hesitation."
+	return ""
+
+
+# --- Jobs & tasks: schedule block, current behaviour, and any directive the AI has issued
+# this crew member that hasn't been rejected/completed yet. ---
+
+func _render_jobs_section(crew: CrewMember) -> void:
+	_add_section("JOBS & TASKS")
+	_add_label("Schedule: %s phase" % CrewSchedule.phase_for(crew).capitalize())
+	var duty_room: String = GameState.get_room_of_type(String(CrewBehavior.DUTY_STATION.get(crew.role, "cargo")))
+	if duty_room != "":
+		_add_label("Duty station: %s" % _room_display_name(duty_room))
+
+	var task_line: String = "Current task: %s" % crew.current_state.capitalize()
+	var node: CrewMemberNode = CrewMemberNode.nodes.get(crew.crew_id) as CrewMemberNode
+	if node != null:
+		var dest: String = node.current_destination()
+		if dest != "":
+			task_line += " — heading to %s" % _room_display_name(dest)
+	_add_label(task_line)
+
+	var directives: Array[AIDirective] = AISystem.directives_for_crew(crew.crew_id)
+	if directives.is_empty():
+		_add_label("No pending directives.", DIM_TEXT)
+	else:
+		for d: AIDirective in directives:
+			_add_label("Directive: %s" % d.content)
+
+
+# --- Carried equipment (scripts/core/items.gd) ---
+
+func _render_equipment_section(crew: CrewMember) -> void:
+	_add_section("EQUIPMENT")
+	_add_label("Weapon: %s" % _item_name(crew.equipped_weapon))
+	_add_label("Armor: %s" % (_item_name(crew.armor_item) if crew.armor_item != "" else "None"))
+	if crew.inventory.is_empty():
+		_add_label("Nothing else carried.", DIM_TEXT)
+	else:
+		var names: Array[String] = []
+		for item_id: String in crew.inventory:
+			names.append(_item_name(item_id))
+		_add_label("Carrying: %s" % ", ".join(names))
+
+
+func _item_name(item_id: String) -> String:
+	if item_id == "":
+		return "None"
+	var item: Dictionary = Items.get_item(item_id)
+	return String(item.get("name", item_id))
+
+
+func _room_display_name(room_id: String) -> String:
+	if room_id == "":
+		return "nowhere"
+	if room_id == "corridor_main":
+		return "Corridor"
+	return room_id.capitalize()  # "life_support" -> "Life Support"
 
 
 # --- Small label builders ---

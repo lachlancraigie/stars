@@ -106,6 +106,26 @@ const STATE_COLORS: Dictionary = {
 # Registry so directive execution can find a crew's visual node by id.
 static var nodes: Dictionary = {}  # crew_id -> CrewMemberNode
 
+# World-px hit radius for "did this click land on a crew member" — shared by every
+# world-click UI (DirectiveMenu, EnvironmentMenu) so crew selection is picked exactly the
+# same way everywhere and doors/equipment never steal a click that actually landed on crew.
+const CLICK_RADIUS: float = 60.0
+
+
+# Nearest crew member to a world-space point within `radius`, or null if none qualifies.
+static func crew_at_world_point(world_point: Vector2, radius: float = CLICK_RADIUS) -> CrewMemberNode:
+	var best: CrewMemberNode = null
+	var best_dist: float = radius
+	for crew_id: String in nodes:
+		var node: CrewMemberNode = nodes[crew_id] as CrewMemberNode
+		if node == null:
+			continue
+		var d: float = node.global_position.distance_to(world_point)
+		if d <= best_dist:
+			best = node
+			best_dist = d
+	return best
+
 # Standing-point claims so two crew don't pick the same room spot to stand
 # at/settle into. crew_id -> {"room": room_id, "point": deck-px Vector2}.
 # Node-level and GameState-free by design (view-layer bookkeeping, not
@@ -346,6 +366,16 @@ func is_headed_to(room_id: String) -> bool:
 
 func is_busy() -> bool:
 	return _moving or not _route.is_empty() or _bypassing_door_id != ""
+
+
+# Room this crew member is currently walking toward, "" if not moving — the Inspect
+# page's "jobs & tasks" section reads this (RosterPanel), same idiom as is_headed_to.
+func current_destination() -> String:
+	if _pending_room != "":
+		return _pending_room
+	if not _route.is_empty():
+		return String(_route[_route.size() - 1])
+	return ""
 
 
 func _advance_route() -> void:

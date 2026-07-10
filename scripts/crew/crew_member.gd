@@ -19,6 +19,7 @@ extends Resource
 @export var pronoun_object: String = "them"
 @export var pronoun_possessive: String = "their"
 @export var archetype_tag: String = ""     # optional resources/dialogue/archetypes/*.json tag, e.g. "GR_ML_ENG_CM" (dialogue selects lines by this)
+@export var age: int = 30                  # flavour-only (service record / info card display); no mechanical effect
 
 # --- Mothership class ---
 @export var mship_class: String = "Teamster"   # "Marine" | "Android" | "Scientist" | "Teamster"
