@@ -21,7 +21,7 @@
   {
     "id": 2,
     "key": "GR_FE_ENG_OF#00002",
-    "text": "[MUTTERS] okay, okay, i hear you, just — there. that's better",
+    "text": "[low voice, muttering] okay, okay, i hear you, just — there. that's better",
     "type": "declaration",
     "intent": "work_talk",
     "conditions": {
@@ -56,7 +56,7 @@
   {
     "id": 4,
     "key": "GR_FE_ENG_OF#00004",
-    "text": "[SIGHS] twenty-six years and i still talk to engines more than people",
+    "text": "[sigh] twenty-six years and i still talk to engines more than people",
     "type": "declaration",
     "intent": "memory",
     "conditions": {
@@ -72,7 +72,7 @@
   {
     "id": 5,
     "key": "GR_FE_ENG_OF#00005",
-    "text": "[LAUGHS] traded a husband for a reactor core once. best deal i ever made",
+    "text": "[laughing] traded a husband for a reactor core once. best deal i ever made",
     "type": "declaration",
     "intent": "memory",
     "conditions": {
@@ -92,7 +92,7 @@
   {
     "id": 6,
     "key": "GR_FE_ENG_OF#00006",
-    "text": "[DRY] quiet shift. the ship's up to something, i can feel it in the deckplates",
+    "text": "[dry tone] quiet shift. the ship's up to something, i can feel it in the deckplates",
     "type": "declaration",
     "intent": "doubt",
     "conditions": {
@@ -111,7 +111,7 @@
   {
     "id": 7,
     "key": "GR_FE_ENG_OF#00007",
-    "text": "[WARM] nothing rattling, nothing sparking. i'll take the peace while it lasts",
+    "text": "[warm, gentle tone] nothing rattling, nothing sparking. i'll take the peace while it lasts",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -152,7 +152,7 @@
   {
     "id": 9,
     "key": "GR_FE_ENG_OF#00009",
-    "text": "[TIRED] shift's done. she held together, so did i. good enough",
+    "text": "[tired, dead tired] shift's done. she held together, so did i. good enough",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -171,7 +171,7 @@
   {
     "id": 10,
     "key": "GR_FE_ENG_OF#00010",
-    "text": "[GRIM] reactor's running hot and she's not telling me why. i don't love that",
+    "text": "[grim, heavy] reactor's running hot and she's not telling me why. i don't love that",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -193,7 +193,7 @@
   {
     "id": 11,
     "key": "GR_FE_ENG_OF#00011",
-    "text": "[URGENT] she's spiking, i need eyes on the coolant lines right now",
+    "text": "[urgent, fast pace] she's spiking, i need eyes on the coolant lines right now",
     "type": "declaration",
     "intent": "request_help",
     "conditions": {
@@ -215,7 +215,7 @@
   {
     "id": 12,
     "key": "GR_FE_ENG_OF#00012",
-    "text": "[TERRIFIED] core's screaming and i've never heard her make that sound before",
+    "text": "[terrified, voice shaking] core's screaming and i've never heard her make that sound before",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -238,7 +238,7 @@
   {
     "id": 13,
     "key": "GR_FE_ENG_OF#00013",
-    "text": "[EXHAUSTED] talked her down off the ledge. don't ask me what i promised her",
+    "text": "[exhausted, breathing laboured] talked her down off the ledge. don't ask me what i promised her",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -260,7 +260,7 @@
   {
     "id": 14,
     "key": "GR_FE_ENG_OF#00014",
-    "text": "[GRIM] power's low and everybody wants a miracle. i've only got wrenches",
+    "text": "[grim, heavy] power's low and everybody wants a miracle. i've only got wrenches",
     "type": "declaration",
     "intent": "complaint",
     "conditions": {
@@ -279,7 +279,7 @@
   {
     "id": 15,
     "key": "GR_FE_ENG_OF#00015",
-    "text": "[NERVOUS] scrubbers are wheezing. i've bought us maybe an hour",
+    "text": "[nervous, speaking quickly] scrubbers are wheezing. i've bought us maybe an hour",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -301,7 +301,7 @@
   {
     "id": 16,
     "key": "GR_FE_ENG_OF#00016",
-    "text": "[PANICKED] air's going and i can't sweet-talk oxygen back into a room",
+    "text": "[panicked, panting] air's going and i can't sweet-talk oxygen back into a room",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -324,7 +324,7 @@
   {
     "id": 17,
     "key": "GR_FE_ENG_OF#00017",
-    "text": "[GRIM] hull's open somewhere. whole ship's groaning about it",
+    "text": "[grim, heavy] hull's open somewhere. whole ship's groaning about it",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -343,7 +343,7 @@
   {
     "id": 18,
     "key": "GR_FE_ENG_OF#00018",
-    "text": "[URGENT] i need hands on this seam before she decides to open wider",
+    "text": "[urgent, fast pace] i need hands on this seam before she decides to open wider",
     "type": "declaration",
     "intent": "request_help",
     "conditions": {
@@ -362,7 +362,7 @@
   {
     "id": 19,
     "key": "GR_FE_ENG_OF#00019",
-    "text": "[GRIM] locked a door with one of ours on the wrong side. i hate this ship some days",
+    "text": "[grim, heavy] locked a door with one of ours on the wrong side. i hate this ship some days",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -381,7 +381,7 @@
   {
     "id": 20,
     "key": "GR_FE_ENG_OF#00020",
-    "text": "[SUSPICIOUS] computer's been twitchy since the damage. i'm watching it like a bad weld",
+    "text": "[suspicious tone] computer's been twitchy since the damage. i'm watching it like a bad weld",
     "type": "declaration",
     "intent": "suspicion_ai",
     "conditions": {
@@ -400,7 +400,7 @@
   {
     "id": 21,
     "key": "GR_FE_ENG_OF#00021",
-    "text": "[PROUD] she's purring again. that's a repair i'll brag about at the next port",
+    "text": "[proud tone] she's purring again. that's a repair i'll brag about at the next port",
     "type": "declaration",
     "intent": "boast",
     "conditions": {
@@ -423,7 +423,7 @@
   {
     "id": 22,
     "key": "GR_FE_ENG_OF#00022",
-    "text": "[RESIGNED] made it through another one, mule and all. i'll take that",
+    "text": "[resigned, flat tone] made it through another one, mule and all. i'll take that",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -442,7 +442,7 @@
   {
     "id": 23,
     "key": "GR_FE_ENG_OF#00023",
-    "text": "[PAINED] we lost someone today. this old girl doesn't know how to say sorry, so i'll say it for her",
+    "text": "[pained, voice tight] we lost someone today. this old girl doesn't know how to say sorry, so i'll say it for her",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -465,7 +465,7 @@
   {
     "id": 24,
     "key": "GR_FE_ENG_OF#00024",
-    "text": "[GRIM] disease loose on a ship this size is the one thing i can't fix with a wrench",
+    "text": "[grim, heavy] disease loose on a ship this size is the one thing i can't fix with a wrench",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -484,7 +484,7 @@
   {
     "id": 25,
     "key": "GR_FE_ENG_OF#00025",
-    "text": "[PAINED] took a knock. i've had worse from a bad coupling",
+    "text": "[pained, voice tight] took a knock. i've had worse from a bad coupling",
     "type": "declaration",
     "intent": "pain",
     "conditions": {
@@ -504,7 +504,7 @@
   {
     "id": 26,
     "key": "GR_FE_ENG_OF#00026",
-    "text": "[GRUFF] combat's not my trade. give me a fire and a wrench, i'll handle it my way",
+    "text": "[low voice, gruff] combat's not my trade. give me a fire and a wrench, i'll handle it my way",
     "type": "declaration",
     "intent": "complaint",
     "conditions": {
@@ -523,7 +523,7 @@
   {
     "id": 27,
     "key": "GR_FE_ENG_OF#00027",
-    "text": "[SUSPICIOUS] i don't trust anything that doesn't creak when it's tired. machines should creak",
+    "text": "[suspicious tone] i don't trust anything that doesn't creak when it's tired. machines should creak",
     "type": "declaration",
     "intent": "suspicion_ai",
     "conditions": {
@@ -539,7 +539,7 @@
   {
     "id": 28,
     "key": "GR_FE_ENG_OF#00028",
-    "text": "[RESIGNED] gotta hand it to the computer. that call kept my mule in one piece",
+    "text": "[resigned, flat tone] gotta hand it to the computer. that call kept my mule in one piece",
     "type": "declaration",
     "intent": "praise_ai",
     "conditions": {
@@ -555,7 +555,7 @@
   {
     "id": 29,
     "key": "GR_FE_ENG_OF#00029",
-    "text": "[WARM] Gus'd have this fixed slower and grumpier. i love him for it anyway",
+    "text": "[warm, gentle tone] Gus'd have this fixed slower and grumpier. i love him for it anyway",
     "type": "declaration",
     "intent": "romance_hint",
     "conditions": {
@@ -587,7 +587,7 @@
   {
     "id": 31,
     "key": "GR_FE_ENG_OF#00031",
-    "text": "[GRUFF] cargo bay's stacked wrong again. somebody's getting a lecture",
+    "text": "[low voice, gruff] cargo bay's stacked wrong again. somebody's getting a lecture",
     "type": "declaration",
     "intent": "complaint",
     "conditions": {
@@ -606,7 +606,7 @@
   {
     "id": 32,
     "key": "GR_FE_ENG_OF#00032",
-    "text": "[WARM] mess smells almost decent today. i'll allow it",
+    "text": "[warm, gentle tone] mess smells almost decent today. i'll allow it",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -628,7 +628,7 @@
   {
     "id": 33,
     "key": "GR_FE_ENG_OF#00033",
-    "text": "[SIGHS] i miss dirt that wasn't engine grease. real dirt, from a real planet",
+    "text": "[sigh] i miss dirt that wasn't engine grease. real dirt, from a real planet",
     "type": "declaration",
     "intent": "memory",
     "conditions": {
@@ -682,7 +682,7 @@
   {
     "id": 36,
     "key": "GR_FE_ENG_OF#00036",
-    "text": "[WARM] captain, before you ask — yes, it's handled, no, i won't explain how",
+    "text": "[warm, gentle tone] captain, before you ask — yes, it's handled, no, i won't explain how",
     "type": "opener",
     "intent": "status_report",
     "conditions": {
@@ -698,7 +698,7 @@
   {
     "id": 37,
     "key": "GR_FE_ENG_OF#00037",
-    "text": "[GRIM] we need to talk about the coolant loop before it talks for itself",
+    "text": "[grim, heavy] we need to talk about the coolant loop before it talks for itself",
     "type": "opener",
     "intent": "warning",
     "conditions": {
@@ -736,7 +736,7 @@
   {
     "id": 39,
     "key": "GR_FE_ENG_OF#00039",
-    "text": "[FLIRTY] you gonna keep flirting with that bulkhead or you got a minute for me",
+    "text": "[flirty, playful tone] you gonna keep flirting with that bulkhead or you got a minute for me",
     "type": "opener",
     "intent": "romance_hint",
     "conditions": {
@@ -752,7 +752,7 @@
   {
     "id": 40,
     "key": "GR_FE_ENG_OF#00040",
-    "text": "[SUSPICIOUS] something's off with the computer. tell me you've noticed too",
+    "text": "[suspicious tone] something's off with the computer. tell me you've noticed too",
     "type": "opener",
     "intent": "suspicion_ai",
     "conditions": {
@@ -768,7 +768,7 @@
   {
     "id": 41,
     "key": "GR_FE_ENG_OF#00041",
-    "text": "[GRUFF] fine. i'm fine. ask me again once i've yelled at something",
+    "text": "[low voice, gruff] fine. i'm fine. ask me again once i've yelled at something",
     "type": "reply",
     "intent": "smalltalk",
     "conditions": {
@@ -787,7 +787,7 @@
   {
     "id": 42,
     "key": "GR_FE_ENG_OF#00042",
-    "text": "[CONFIDENT] give me twenty minutes and a little sweet-talking, she'll sing again",
+    "text": "[confident, assured tone] give me twenty minutes and a little sweet-talking, she'll sing again",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -807,7 +807,7 @@
   {
     "id": 43,
     "key": "GR_FE_ENG_OF#00043",
-    "text": "[REASSURING] she's held worse than this. i wouldn't lie to you about my own engine",
+    "text": "[soft voice, reassuring] she's held worse than this. i wouldn't lie to you about my own engine",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -826,7 +826,7 @@
   {
     "id": 44,
     "key": "GR_FE_ENG_OF#00044",
-    "text": "[PAINED] we lost them. wasn't the ship's fault and it wasn't yours either",
+    "text": "[pained, voice tight] we lost them. wasn't the ship's fault and it wasn't yours either",
     "type": "reply",
     "intent": "grief",
     "conditions": {
@@ -847,7 +847,7 @@
   {
     "id": 45,
     "key": "GR_FE_ENG_OF#00045",
-    "text": "[WARM] you did good today. don't let it go to your head, but you did good",
+    "text": "[warm, gentle tone] you did good today. don't let it go to your head, but you did good",
     "type": "reply",
     "intent": "praise_ai",
     "conditions": {
@@ -866,7 +866,7 @@
   {
     "id": 46,
     "key": "GR_FE_ENG_OF#00046",
-    "text": "[SUSPICIOUS] not saying it's gone rogue. saying keep a hand near the manual override",
+    "text": "[suspicious tone] not saying it's gone rogue. saying keep a hand near the manual override",
     "type": "reply",
     "intent": "suspicion_ai",
     "conditions": {
@@ -888,7 +888,7 @@
   {
     "id": 47,
     "key": "GR_FE_ENG_OF#00047",
-    "text": "[EMBARRASSED] i, uh — yeah. i was hoping you'd say something like that",
+    "text": "[embarrassed, voice quiet] i, uh — yeah. i was hoping you'd say something like that",
     "type": "reply",
     "intent": "romance_accept",
     "conditions": {
@@ -907,7 +907,7 @@
   {
     "id": 48,
     "key": "GR_FE_ENG_OF#00048",
-    "text": "[GRUFF] not now, Gus. maybe not ever. it's not you, it's every ship i've loved and lost",
+    "text": "[low voice, gruff] not now, Gus. maybe not ever. it's not you, it's every ship i've loved and lost",
     "type": "reply",
     "intent": "romance_reject",
     "conditions": {
@@ -926,7 +926,7 @@
   {
     "id": 49,
     "key": "GR_FE_ENG_OF#00049",
-    "text": "[WARM] good talk. get some rest, you look like the ship feels",
+    "text": "[warm, gentle tone] good talk. get some rest, you look like the ship feels",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -942,7 +942,7 @@
   {
     "id": 50,
     "key": "GR_FE_ENG_OF#00050",
-    "text": "[GRUFF] that's enough chatting, this mule needs feeding",
+    "text": "[low voice, gruff] that's enough chatting, this mule needs feeding",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -961,7 +961,7 @@
   {
     "id": 51,
     "key": "GR_FE_ENG_OF#00051",
-    "text": "[TIRED] i'm done for the day. if she breaks again it can wait till i've slept",
+    "text": "[tired, dead tired] i'm done for the day. if she breaks again it can wait till i've slept",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -977,7 +977,7 @@
   {
     "id": 52,
     "key": "GR_FE_ENG_OF#00052",
-    "text": "[WARM] rest easy tonight. we earned it, her and me both",
+    "text": "[warm, gentle tone] rest easy tonight. we earned it, her and me both",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -996,7 +996,7 @@
   {
     "id": 53,
     "key": "GR_FE_ENG_OF#00053",
-    "text": "[WARM] whole shift and not one tantrum out of her. who are you and what'd you do with my mule",
+    "text": "[warm, gentle tone] whole shift and not one tantrum out of her. who are you and what'd you do with my mule",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -1022,7 +1022,7 @@
   {
     "id": 54,
     "key": "GR_FE_ENG_OF#00054",
-    "text": "[MUTTERS] quiet like this in the yards meant the hull you were cutting still had secrets in it",
+    "text": "[low voice, muttering] quiet like this in the yards meant the hull you were cutting still had secrets in it",
     "type": "declaration",
     "intent": "doubt",
     "conditions": {
@@ -1041,7 +1041,7 @@
   {
     "id": 55,
     "key": "GR_FE_ENG_OF#00055",
-    "text": "[DRY] this protein brick's tougher than the deck plate i cut yesterday. i'd know. i chewed both",
+    "text": "[dry tone] this protein brick's tougher than the deck plate i cut yesterday. i'd know. i chewed both",
     "type": "declaration",
     "intent": "complaint",
     "conditions": {
@@ -1063,7 +1063,7 @@
   {
     "id": 56,
     "key": "GR_FE_ENG_OF#00056",
-    "text": "[WARM] hot food, warm engine, nobody bleeding. somebody frame this day",
+    "text": "[warm, gentle tone] hot food, warm engine, nobody bleeding. somebody frame this day",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -1111,7 +1111,7 @@
   {
     "id": 58,
     "key": "GR_FE_ENG_OF#00058",
-    "text": "[TIRED] handing her over balanced and fed. wrote down every lie she told me today for the next shift",
+    "text": "[tired, dead tired] handing her over balanced and fed. wrote down every lie she told me today for the next shift",
     "type": "declaration",
     "intent": "work_talk",
     "conditions": {
@@ -1133,7 +1133,7 @@
   {
     "id": 59,
     "key": "GR_FE_ENG_OF#00059",
-    "text": "[GRIM] power's down to scraps. heat the people or light the halls — she can't haul both, so pick",
+    "text": "[grim, heavy] power's down to scraps. heat the people or light the halls — she can't haul both, so pick",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -1152,7 +1152,7 @@
   {
     "id": 60,
     "key": "GR_FE_ENG_OF#00060",
-    "text": "[MUTTERS] rationing amps like the last week of a salvage tow. hated it then, hate it now",
+    "text": "[low voice, muttering] rationing amps like the last week of a salvage tow. hated it then, hate it now",
     "type": "declaration",
     "intent": "complaint",
     "conditions": {
@@ -1171,7 +1171,7 @@
   {
     "id": 61,
     "key": "GR_FE_ENG_OF#00061",
-    "text": "[GRIM] scrubbers first. always scrubbers. you can fix anything in bad air except your own lungs",
+    "text": "[grim, heavy] scrubbers first. always scrubbers. you can fix anything in bad air except your own lungs",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -1215,7 +1215,7 @@
   {
     "id": 63,
     "key": "GR_FE_ENG_OF#00063",
-    "text": "[ANGRY] a door that locks on its own crew is scrap wearing a uniform. i'll pull its actuator myself",
+    "text": "[angry] a door that locks on its own crew is scrap wearing a uniform. i'll pull its actuator myself",
     "type": "declaration",
     "intent": "complaint",
     "conditions": {
@@ -1234,7 +1234,7 @@
   {
     "id": 64,
     "key": "GR_FE_ENG_OF#00064",
-    "text": "[GRIM] cut a hundred doors open in the yards. never had somebody knocking from the other side before",
+    "text": "[grim, heavy] cut a hundred doors open in the yards. never had somebody knocking from the other side before",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -1257,7 +1257,7 @@
   {
     "id": 65,
     "key": "GR_FE_ENG_OF#00065",
-    "text": "[RESIGNED] computer's hurt and still trimming the power fair. that's a work ethic i can respect",
+    "text": "[resigned, flat tone] computer's hurt and still trimming the power fair. that's a work ethic i can respect",
     "type": "declaration",
     "intent": "praise_ai",
     "conditions": {
@@ -1276,7 +1276,7 @@
   {
     "id": 66,
     "key": "GR_FE_ENG_OF#00066",
-    "text": "[PAINED] every wreck i ever stripped had a crew once. today i learned what that costs to know",
+    "text": "[pained, voice tight] every wreck i ever stripped had a crew once. today i learned what that costs to know",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -1299,7 +1299,7 @@
   {
     "id": 67,
     "key": "GR_FE_ENG_OF#00067",
-    "text": "[PAINED] shoulder's grinding like a dry bearing. i'd swap the part out if anybody sold them for people",
+    "text": "[pained, voice tight] shoulder's grinding like a dry bearing. i'd swap the part out if anybody sold them for people",
     "type": "declaration",
     "intent": "pain",
     "conditions": {
@@ -1319,7 +1319,7 @@
   {
     "id": 68,
     "key": "GR_FE_ENG_OF#00068",
-    "text": "[PANICKED] she's tearing at the seams and my hands are too small to hold a whole ship together",
+    "text": "[panicked, panting] she's tearing at the seams and my hands are too small to hold a whole ship together",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -1339,7 +1339,7 @@
   {
     "id": 69,
     "key": "GR_FE_ENG_OF#00069",
-    "text": "[WARM] i keep a nameplate off every ship i ever stripped. box of ghosts under my bunk. they like the engine noise",
+    "text": "[warm, gentle tone] i keep a nameplate off every ship i ever stripped. box of ghosts under my bunk. they like the engine noise",
     "type": "declaration",
     "intent": "memory",
     "conditions": {
@@ -1378,7 +1378,7 @@
   {
     "id": 71,
     "key": "GR_FE_ENG_OF#00071",
-    "text": "[DRY] port inspectors. thirty seconds aboard and they chalk a weld i'd hang my own weight off",
+    "text": "[dry tone] port inspectors. thirty seconds aboard and they chalk a weld i'd hang my own weight off",
     "type": "declaration",
     "intent": "complaint",
     "conditions": {
@@ -1394,7 +1394,7 @@
   {
     "id": 72,
     "key": "GR_FE_ENG_OF#00072",
-    "text": "[WARM] Gus fell asleep mid-sentence about manifold torque again. didn't have the heart to say he'd told me twice already",
+    "text": "[warm, gentle tone] Gus fell asleep mid-sentence about manifold torque again. didn't have the heart to say he'd told me twice already",
     "type": "declaration",
     "intent": "romance_hint",
     "conditions": {
@@ -1429,7 +1429,7 @@
   {
     "id": 74,
     "key": "GR_FE_ENG_OF#00074",
-    "text": "[GRUFF] sit. eat. the mule will still be broken when you're done chewing",
+    "text": "[low voice, gruff] sit. eat. the mule will still be broken when you're done chewing",
     "type": "opener",
     "intent": "smalltalk",
     "conditions": {
@@ -1451,7 +1451,7 @@
   {
     "id": 75,
     "key": "GR_FE_ENG_OF#00075",
-    "text": "[GRIM] captain, we're choosing what freezes tonight. i want your say before i start pulling breakers",
+    "text": "[grim, heavy] captain, we're choosing what freezes tonight. i want your say before i start pulling breakers",
     "type": "opener",
     "intent": "warning",
     "conditions": {
@@ -1470,7 +1470,7 @@
   {
     "id": 76,
     "key": "GR_FE_ENG_OF#00076",
-    "text": "[URGENT] air plant's wheezing like a hauled-up diver. i need spare hands and spare filters, that order",
+    "text": "[urgent, fast pace] air plant's wheezing like a hauled-up diver. i need spare hands and spare filters, that order",
     "type": "opener",
     "intent": "request_help",
     "conditions": {
@@ -1492,7 +1492,7 @@
   {
     "id": 77,
     "key": "GR_FE_ENG_OF#00077",
-    "text": "[SUSPICIOUS] computer rerouted power without asking me. it's hurt, fine, but it better not make a habit of it",
+    "text": "[suspicious tone] computer rerouted power without asking me. it's hurt, fine, but it better not make a habit of it",
     "type": "opener",
     "intent": "suspicion_ai",
     "conditions": {
@@ -1527,7 +1527,7 @@
   {
     "id": 79,
     "key": "GR_FE_ENG_OF#00079",
-    "text": "[PAINED] come sit with me a minute. the dead don't need us tonight, but the living do",
+    "text": "[pained, voice tight] come sit with me a minute. the dead don't need us tonight, but the living do",
     "type": "opener",
     "intent": "grief",
     "conditions": {
@@ -1569,7 +1569,7 @@
   {
     "id": 81,
     "key": "GR_FE_ENG_OF#00081",
-    "text": "[DRY] nothing's broken and nobody's bleeding, and it's making my teeth itch. talk to me about anything",
+    "text": "[dry tone] nothing's broken and nobody's bleeding, and it's making my teeth itch. talk to me about anything",
     "type": "opener",
     "intent": "smalltalk",
     "conditions": {
@@ -1588,7 +1588,7 @@
   {
     "id": 82,
     "key": "GR_FE_ENG_OF#00082",
-    "text": "[TIRED] that's the shift. buy you a cup of whatever the mess is calling coffee",
+    "text": "[tired, dead tired] that's the shift. buy you a cup of whatever the mess is calling coffee",
     "type": "opener",
     "intent": "smalltalk",
     "conditions": {
@@ -1607,7 +1607,7 @@
   {
     "id": 83,
     "key": "GR_FE_ENG_OF#00083",
-    "text": "[WARM] still upright, still greasy. day's young though",
+    "text": "[warm, gentle tone] still upright, still greasy. day's young though",
     "type": "reply",
     "intent": "smalltalk",
     "conditions": {
@@ -1626,7 +1626,7 @@
   {
     "id": 84,
     "key": "GR_FE_ENG_OF#00084",
-    "text": "[LAUGHS] tastes like the inside of a filter housing. eat it anyway, you'll want the ballast",
+    "text": "[laughing] tastes like the inside of a filter housing. eat it anyway, you'll want the ballast",
     "type": "reply",
     "intent": "smalltalk",
     "conditions": {
@@ -1651,7 +1651,7 @@
   {
     "id": 85,
     "key": "GR_FE_ENG_OF#00085",
-    "text": "[CALM] we've got amps to breathe and amps to think, in that order. the rest is comfort, and comfort keeps",
+    "text": "[calm, measured] we've got amps to breathe and amps to think, in that order. the rest is comfort, and comfort keeps",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -1673,7 +1673,7 @@
   {
     "id": 86,
     "key": "GR_FE_ENG_OF#00086",
-    "text": "[CONFIDENT] she's not dying, she's sulking. i've talked her out of blacker moods than this",
+    "text": "[confident, assured tone] she's not dying, she's sulking. i've talked her out of blacker moods than this",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -1695,7 +1695,7 @@
   {
     "id": 87,
     "key": "GR_FE_ENG_OF#00087",
-    "text": "[ANGRY] don't defend that door to me. steel doesn't get to make choices about people",
+    "text": "[angry] don't defend that door to me. steel doesn't get to make choices about people",
     "type": "reply",
     "intent": "complaint",
     "conditions": {
@@ -1717,7 +1717,7 @@
   {
     "id": 88,
     "key": "GR_FE_ENG_OF#00088",
-    "text": "[SUSPICIOUS] i've watched it too. it hesitates now, like a winch with a frayed line. you don't stand under that",
+    "text": "[suspicious tone] i've watched it too. it hesitates now, like a winch with a frayed line. you don't stand under that",
     "type": "reply",
     "intent": "suspicion_ai",
     "conditions": {
@@ -1739,7 +1739,7 @@
   {
     "id": 89,
     "key": "GR_FE_ENG_OF#00089",
-    "text": "[RESIGNED] fine, credit where it's due. the computer trims a power load better than my last two juniors",
+    "text": "[resigned, flat tone] fine, credit where it's due. the computer trims a power load better than my last two juniors",
     "type": "reply",
     "intent": "praise_ai",
     "conditions": {
@@ -1758,7 +1758,7 @@
   {
     "id": 90,
     "key": "GR_FE_ENG_OF#00090",
-    "text": "[WARM] you don't carry it alone. that's the whole point of a crew, love",
+    "text": "[warm, gentle tone] you don't carry it alone. that's the whole point of a crew, love",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -1779,7 +1779,7 @@
   {
     "id": 91,
     "key": "GR_FE_ENG_OF#00091",
-    "text": "[GRUFF] quit walking on it and let the doc look. machines get downtime. so do you",
+    "text": "[low voice, gruff] quit walking on it and let the doc look. machines get downtime. so do you",
     "type": "reply",
     "intent": "offer_help",
     "conditions": {
@@ -1798,7 +1798,7 @@
   {
     "id": 92,
     "key": "GR_FE_ENG_OF#00092",
-    "text": "[PAINED] i've been dinged worse by a swinging hook. eyes on the gauge, not on me",
+    "text": "[pained, voice tight] i've been dinged worse by a swinging hook. eyes on the gauge, not on me",
     "type": "reply",
     "intent": "pain",
     "conditions": {
@@ -1818,7 +1818,7 @@
   {
     "id": 93,
     "key": "GR_FE_ENG_OF#00093",
-    "text": "[FLIRTY] keep sweet-talking me like that and i'll start thinking you want something torqued",
+    "text": "[flirty, playful tone] keep sweet-talking me like that and i'll start thinking you want something torqued",
     "type": "reply",
     "intent": "romance_hint",
     "conditions": {
@@ -1837,7 +1837,7 @@
   {
     "id": 94,
     "key": "GR_FE_ENG_OF#00094",
-    "text": "[EMBARRASSED] ah, hell. c'mere then, before i change my mind and marry the reactor instead",
+    "text": "[embarrassed, voice quiet] ah, hell. c'mere then, before i change my mind and marry the reactor instead",
     "type": "reply",
     "intent": "romance_accept",
     "conditions": {
@@ -1856,7 +1856,7 @@
   {
     "id": 95,
     "key": "GR_FE_ENG_OF#00095",
-    "text": "[LAUGHS] that's grim. that's real grim. save it for my funeral, it'll land better",
+    "text": "[laughing] that's grim. that's real grim. save it for my funeral, it'll land better",
     "type": "reply",
     "intent": "gallows_humor",
     "conditions": {
@@ -1875,7 +1875,7 @@
   {
     "id": 96,
     "key": "GR_FE_ENG_OF#00096",
-    "text": "[CURIOUS] run that noise past me again. slow, like you're selling me a used ship",
+    "text": "[curious tone] run that noise past me again. slow, like you're selling me a used ship",
     "type": "reply",
     "intent": "work_talk",
     "conditions": {
@@ -1894,7 +1894,7 @@
   {
     "id": 97,
     "key": "GR_FE_ENG_OF#00097",
-    "text": "[PANICKED] i hear it, i hear it — everybody out of the compartment, argue with me after",
+    "text": "[panicked, panting] i hear it, i hear it — everybody out of the compartment, argue with me after",
     "type": "reply",
     "intent": "fear_vent",
     "conditions": {
@@ -1914,7 +1914,7 @@
   {
     "id": 98,
     "key": "GR_FE_ENG_OF#00098",
-    "text": "[WARM] go on, get. me and the old cow have words to exchange in private",
+    "text": "[warm, gentle tone] go on, get. me and the old cow have words to exchange in private",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1933,7 +1933,7 @@
   {
     "id": 99,
     "key": "GR_FE_ENG_OF#00099",
-    "text": "[TIRED] enough. the mule can hold her grudges till morning, and so can i",
+    "text": "[tired, dead tired] enough. the mule can hold her grudges till morning, and so can i",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1952,7 +1952,7 @@
   {
     "id": 100,
     "key": "GR_FE_ENG_OF#00100",
-    "text": "[GRUFF] settled then. i'll bring the wrenches, you bring the nerve",
+    "text": "[low voice, gruff] settled then. i'll bring the wrenches, you bring the nerve",
     "type": "closer",
     "intent": "work_talk",
     "conditions": {
@@ -1971,7 +1971,7 @@
   {
     "id": 101,
     "key": "GR_FE_ENG_OF#00101",
-    "text": "[WARM] we lived, she flew, and nobody i love is in the medbay tonight. good night",
+    "text": "[warm, gentle tone] we lived, she flew, and nobody i love is in the medbay tonight. good night",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1990,7 +1990,7 @@
   {
     "id": 102,
     "key": "GR_FE_ENG_OF#00102",
-    "text": "[DRY] tell the captain the readings are boring again. best news this boat ever gets",
+    "text": "[dry tone] tell the captain the readings are boring again. best news this boat ever gets",
     "type": "closer",
     "intent": "status_report",
     "conditions": {
