@@ -19,4 +19,8 @@ static func tick(delta: float) -> void:
 	if GameState.reactor_online:
 		return
 	var drain: float = BASE_DRAIN_PER_SEC + PER_ROOM_DRAIN_PER_SEC * GameState.powered_rooms.size()
+	# Overseer mercy knob (docs/director-spec.md §4): hard-floored at 0.90 by
+	# ScenarioDirector itself (never more than a 10% slowdown) — read here, not
+	# special-cased, so this is the only line PowerModel needs for it.
+	drain *= float(ScenarioDirector.modifiers.get("battery_drain_mult", 1.0))
 	GameState.set_battery_charge(GameState.battery_charge - drain * delta)

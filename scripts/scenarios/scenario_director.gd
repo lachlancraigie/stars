@@ -83,11 +83,40 @@ var _debug: bool = false
 var _debug_accum: float = 0.0
 const DEBUG_PRINT_INTERVAL: float = 5.0
 
+# AUTODEMO detection (spec §7): scripted verification runs must stay deterministic,
+# so while SHIPAI_AUTODEMO is set the Overseer still computes performance_score (for
+# debug visibility) but never moves `heat` away from neutral — `modifiers` therefore
+# stays at its identity values throughout the whole demo.
+var _autodemo: bool = false
+
+# ---------------------------------------------------------------------------
+# Step 2 (spec §4/§6): the ONE knob surface every mercy/pressure consumer reads —
+# EventPool (cooldown/crisis-weight), RepairModel + Door (check_bonus, via the
+# extra_bonus parameter Checks.perform_check already exposes), PowerModel (battery
+# drain). No consumer special-cases heat directly; they all just read `modifiers`.
+# ---------------------------------------------------------------------------
+var modifiers: Dictionary = {
+	"cooldown_mult": 1.0,        # event/beat cooldowns: <1 compresses (cruising), >1 stretches (mercy)
+	"crisis_weight_mult": 1.0,   # crisis-flagged event draw weight: >1 raises, <1 (down to 0.5) halves
+	"check_bonus": 0,            # mercy only: repair/bypass check target bonus, hard-capped at +5
+	"battery_drain_mult": 1.0,   # mercy only: battery drain multiplier, hard-floored at 0.90 (<=10% slower)
+}
+
+const COOLDOWN_MULT_MIN: float = 0.6
+const COOLDOWN_MULT_MAX: float = 1.4
+const COOLDOWN_MULT_SENSITIVITY: float = 0.8
+const CRISIS_WEIGHT_MULT_MIN: float = 0.5
+const CRISIS_WEIGHT_MULT_MAX: float = 2.0
+const CRISIS_WEIGHT_SENSITIVITY: float = 2.0
+const MERCY_CHECK_BONUS_MAX: int = 5           # spec §4 hard rule: "+5 on repair/bypass check targets"
+const MERCY_BATTERY_DRAIN_FLOOR: float = 0.90  # spec §4 hard rule: "slightly slower ... (<=10%)"
+
 
 func _ready() -> void:
 	EventBus.time_ticked.connect(_on_tick)
 	EventBus.scenario_event_triggered.connect(_on_event_fired)
 	_debug = OS.get_environment("SHIPAI_DIRECTOR_DEBUG") == "1"
+	_autodemo = OS.get_environment("SHIPAI_AUTODEMO") != ""
 	_connect_overseer_inputs()
 
 
@@ -141,13 +170,17 @@ func _drift_tone(elapsed: float) -> void:
 
 
 func _consider_event(elapsed: float) -> void:
+	# Overseer knob (spec §4 "delay the next scheduled beat" / "one extra beat of
+	# quiet"): the SAME cooldown_mult EventPool reads also stretches/compresses this
+	# director's own idle-pressure pacing, so mercy and pressure both land here too.
+	var effective_cooldown_min: float = EVENT_COOLDOWN_MIN * float(modifiers.get("cooldown_mult", 1.0))
 	var time_since_last: float = elapsed - _last_event_time
 	# Only consider firing when past the minimum cooldown
-	if time_since_last < EVENT_COOLDOWN_MIN:
+	if time_since_last < effective_cooldown_min:
 		return
 	# Probability of firing scales with idle time and tension
 	var idle_pressure: float = clampf(
-		(time_since_last - EVENT_COOLDOWN_MIN) / ESCALATION_IDLE_THRESHOLD, 0.0, 1.0)
+		(time_since_last - effective_cooldown_min) / ESCALATION_IDLE_THRESHOLD, 0.0, 1.0)
 	var fire_chance: float = idle_pressure * (0.3 + tension * 0.4)
 	if randf() < fire_chance * TONE_DRIFT_RATE * 100.0:
 		var event: ScenarioEvent = _pool.draw(GameState.scenario_tone, elapsed, scenario_flags)
@@ -248,7 +281,12 @@ func _update_overseer(elapsed: float, delta: float) -> void:
 	_accumulate_continuous_pushes(elapsed, delta)
 	_prune_samples(elapsed)
 	performance_score = clampf(_perf_sum / SCORE_NORMALIZER, -1.0, 1.0)
-	_update_heat(elapsed, delta)
+	# AUTODEMO holds heat neutral (spec §7) so scripted verification stays
+	# deterministic — performance_score still computes (visible in debug output)
+	# but never moves heat, so `modifiers` stays at its identity values below.
+	if not _autodemo:
+		_update_heat(elapsed, delta)
+	_update_modifiers()
 	if _debug:
 		_print_debug(elapsed, delta)
 
@@ -308,6 +346,37 @@ func _update_heat(elapsed: float, delta: float) -> void:
 		heat = move_toward(heat, _heat_target, HEAT_SLEW_PER_SEC * delta)
 
 
+# Step 5 (spec §3/§5) will apply the per-leg escalation floor here —
+# `effective_heat = max(heat, leg_escalation_floor)` — so mercy can never read a
+# heat lower than the floor allows. Until the leg counter exists this is just
+# `heat` itself; every modifier below is already written against this call so
+# step 5 only has to change this one function.
+func _effective_heat() -> float:
+	return heat
+
+
+# The single knob surface (spec §4/§6) — recomputed every tick from effective
+# heat so every consumer (EventPool, RepairModel/Door via Checks' extra_bonus,
+# PowerModel) reads one coherent, already-bounded picture instead of each doing
+# its own heat math. Pressure knobs (cooldown/crisis-weight) move symmetrically
+# around neutral heat (0.5); mercy knobs (check_bonus/battery_drain_mult) only
+# ever engage below neutral and are hard-capped exactly at the spec's bounds.
+func _update_modifiers() -> void:
+	var h: float = _effective_heat()
+	var dev: float = h - 0.5   # -0.5 (smashed) .. 0 (neutral) .. +0.5 (cruising)
+
+	modifiers.cooldown_mult = clampf(
+		1.0 - dev * COOLDOWN_MULT_SENSITIVITY, COOLDOWN_MULT_MIN, COOLDOWN_MULT_MAX)
+	modifiers.crisis_weight_mult = clampf(
+		1.0 + dev * CRISIS_WEIGHT_SENSITIVITY, CRISIS_WEIGHT_MULT_MIN, CRISIS_WEIGHT_MULT_MAX)
+
+	# mercy_pressure: 0 at/above neutral heat, ramping to 1 at heat 0.0 — scales the
+	# two mercy knobs smoothly but never lets them exceed the spec's hard caps.
+	var mercy_pressure: float = clampf(-dev, 0.0, 0.5) / 0.5
+	modifiers.check_bonus = int(round(mercy_pressure * float(MERCY_CHECK_BONUS_MAX)))
+	modifiers.battery_drain_mult = 1.0 - mercy_pressure * (1.0 - MERCY_BATTERY_DRAIN_FLOOR)
+
+
 func _average_living_stress() -> float:
 	var total: float = 0.0
 	var count: int = 0
@@ -340,5 +409,7 @@ func _print_debug(elapsed: float, delta: float) -> void:
 	if _debug_accum < DEBUG_PRINT_INTERVAL:
 		return
 	_debug_accum = 0.0
-	print("[OVERSEER] t=%.0fs heat=%.3f target=%.3f score=%.3f moving=%s samples=%d" % [
-		elapsed, heat, _heat_target, performance_score, _heat_moving, _perf_samples.size()])
+	print("[OVERSEER] t=%.0fs heat=%.3f target=%.3f score=%.3f moving=%s autodemo=%s samples=%d" % [
+		elapsed, heat, _heat_target, performance_score, _heat_moving, _autodemo, _perf_samples.size()])
+	print("[OVERSEER]   modifiers: cooldown=%.2f crisis_weight=%.2f check_bonus=+%d battery_drain=%.2f" % [
+		modifiers.cooldown_mult, modifiers.crisis_weight_mult, modifiers.check_bonus, modifiers.battery_drain_mult])

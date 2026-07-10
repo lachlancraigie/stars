@@ -101,7 +101,10 @@ func attempt_crew_bypass(crew: CrewMember) -> void:
 
 	var skill_bonus: int = crew.best_skill_bonus(BYPASS_SKILLS)
 	var item_bonus: int = int(crew.item_bonus("door_bypass_bonus"))
-	var result: Checks.CheckResult = Checks.perform_check(crew, "intellect", "", false, false, skill_bonus + item_bonus)
+	# Overseer mercy knob (docs/director-spec.md §4): +5 max, hard-capped by
+	# ScenarioDirector itself — never visible to the player, never announced.
+	var mercy_bonus: int = int(ScenarioDirector.modifiers.get("check_bonus", 0))
+	var result: Checks.CheckResult = Checks.perform_check(crew, "intellect", "", false, false, skill_bonus + item_bonus + mercy_bonus)
 	var time_mult: float = crew.item_time_multiplier("door_bypass_time_mult")
 
 	var eta: float

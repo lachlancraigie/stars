@@ -2,6 +2,18 @@ class_name EventPool
 extends RefCounted
 
 # Weighted draw from a pool of ScenarioEvents filtered by tone and conditions.
+#
+# Overseer knob hooks (docs/director-spec.md §4/§6): cooldowns and crisis-event
+# weights read a single shared surface, ScenarioDirector.modifiers, rather than
+# each maintaining separate pressure/mercy logic — "no scattered special cases".
+# An event counts as a "crisis" event (eligible for the crisis_weight_mult knob)
+# if any of its outcomes are one of CRISIS_OUTCOME_TYPES; this is a generic,
+# content-agnostic classification so future scenarios opt in for free just by
+# using those outcome types.
+
+const CRISIS_OUTCOME_TYPES: Array[String] = [
+	"reactor_failure", "life_support_failure", "ai_core_damage", "ship_destroyed", "crew_fear_spike",
+]
 
 var _events: Array[ScenarioEvent] = []
 
@@ -23,12 +35,13 @@ func draw(tone: float, elapsed: float, flags: Dictionary) -> ScenarioEvent:
 
 func _get_eligible(tone: float, elapsed: float, flags: Dictionary) -> Array[ScenarioEvent]:
 	var result: Array[ScenarioEvent] = []
+	var cooldown_mult: float = float(ScenarioDirector.modifiers.get("cooldown_mult", 1.0))
 	for event in _events:
 		if event.one_shot and event.has_fired:
 			continue
 		if elapsed < event.min_elapsed:
 			continue
-		if elapsed - event.last_fired < event.cooldown:
+		if elapsed - event.last_fired < event.cooldown * cooldown_mult:
 			continue
 		if tone < event.tone_min or tone > event.tone_max:
 			continue
@@ -39,16 +52,34 @@ func _get_eligible(tone: float, elapsed: float, flags: Dictionary) -> Array[Scen
 
 
 func _weighted_pick(eligible: Array[ScenarioEvent]) -> ScenarioEvent:
+	var weights: Array[float] = []
 	var total_weight: float = 0.0
 	for event in eligible:
-		total_weight += event.weight
+		var w: float = _effective_weight(event)
+		weights.append(w)
+		total_weight += w
 	var roll: float = randf() * total_weight
 	var cumulative: float = 0.0
-	for event in eligible:
-		cumulative += event.weight
+	for i in eligible.size():
+		cumulative += weights[i]
 		if roll <= cumulative:
-			return event
+			return eligible[i]
 	return eligible.back()
+
+
+# Crisis-flagged events get the Overseer's crisis_weight_mult; everything else
+# draws at its authored weight, unmodified.
+func _effective_weight(event: ScenarioEvent) -> float:
+	if not _is_crisis_event(event):
+		return event.weight
+	return event.weight * float(ScenarioDirector.modifiers.get("crisis_weight_mult", 1.0))
+
+
+func _is_crisis_event(event: ScenarioEvent) -> bool:
+	for outcome in event.outcomes:
+		if String(outcome.get("type", "")) in CRISIS_OUTCOME_TYPES:
+			return true
+	return false
 
 
 func _conditions_met(event: ScenarioEvent, flags: Dictionary) -> bool:
