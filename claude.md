@@ -80,6 +80,7 @@ is now DONE, not a next task.
 - [x] Crew relationships & romance: RelationshipGraph (GameState-owned per-pair affinity + romance stage machine), RelationshipBehavior (panic-snap/crisis-bond/partner-grief hooks)
 - [x] Emergent dialogue runtime: DialogueSystem autoload — defensive corpus loading, the spec's scoring formula, declarations, template + emergent conversations, romance-gated intents
 - [x] Speech/thought bubbles: reusable per-crew Panel+RichTextLabel reacting to EventBus.line_spoken, thought (declarations) vs speech (conversation lines) styling
+- [x] Second scenario: The Narrow Passage (scenario-bible 1.2) — first scenario to dramatize the PowerModel/LifeSupportModel 3-room triage caps; SHIPAI_SCENARIO env selection (quarantine default); scripted autodemo win path verified headless end-to-end
 
 ---
 
@@ -207,6 +208,8 @@ These are hard constraints. Do not deviate without updating this file.
 | ScenarioDirector | `scripts/scenarios/scenario_director.gd` | done | Autoload. Hidden meta-layer; tension/tone drift; probabilistic event pacing; `resource_delta` outcome now routes through `GameState.adjust_metric()`. |
 | ScenarioRunner | `scripts/scenarios/scenario_runner.gd` | done | Autoload. Win/lose detection (all crew dead / ship destroyed / AI decommissioned — via crew-vote OR sustained blackout-with-no-repair-willingness), end-of-leg situational delta via `GameState.adjust_metric()`, scenario handoff stub. |
 | QuarantineScenario | `scripts/scenarios/quarantine_scenario.gd` | done | Static builder. 6 events, 3 acts; crew referenced by ROLE not hardcoded id (works with procedurally generated rosters); life-support-contamination escalation now triggers a real `life_support_failure`. |
+| NarrowPassageScenario | `scripts/scenarios/narrow_passage_scenario.gd` | done | Static builder (scenario-bible 1.2, Tier 1). Approach warning → mandatory reactor shutdown (early comply = trust credit, hot at the boundary = emergency scram + trust cost) → battery crossing under the 3-powered/3-life-supported room caps → relight/timer exit → reactor restart → `passage_cleared`. ALL monitor timings/thresholds/trust knobs live in the config's `monitor` section (Director-AI-retunable data, not monitor constants). Selected via `SHIPAI_SCENARIO=narrow_passage`; quarantine stays the default. |
+| NarrowPassageMonitor | `scripts/scenarios/narrow_passage_monitor.gd` | done | Node (added by Main for the narrow passage only; `setup(config)` shares the builder's dictionary). Clockwork for the timed beats: shutdown-compliance window, scripted `field_turbulence` scares (battery drain + crossing extension — pool-drawn extras converge on the same handler), fragile-patient stability meter (Checks Body Saves, thin-air disadvantage automatic, medic-at-bedside advantage, `WoundTable.death_save` at zero), battery-exhaustion stranded ending (`destroy_ship` after a dark-drift grace), early-relight exit, resolution trust grading (patient/bridge/battery-margin). Never sets crew state (Rule 1); additive EventBus connections only. |
 | ScenarioGenerator | `scripts/procedural/scenario_generator.gd` | not started | Procedural scenario seeding. |
 
 ---
@@ -231,6 +234,89 @@ These are hard constraints. Do not deviate without updating this file.
 > Append dated notes here as the project progresses.
 
 ```
+2026-07-10 (session 6, scenario content): THE NARROW PASSAGE — second playable scenario
+(scenario-bible 1.2, Tier 1), the first to dramatize the power/air triage puzzle the
+2026-07-10 session-3 systems shipped (reactor-offline battery budget, MAX_BATTERY_ROOMS=3,
+the SEPARATE MAX_LIFE_SUPPORT_ROOMS=3 air pool, the life-support-room-unpowered auto-fail
+cascade). New files: scripts/scenarios/narrow_passage_scenario.gd (static builder, the
+QuarantineScenario shape) + narrow_passage_monitor.gd (Monitor pattern).
+
+STRUCTURE (all timings/thresholds/trust knobs are DATA in the builder config's "monitor"
+section, not monitor constants — deliberate, so the planned Director-AI layer can retune/
+stretch a scenario without touching monitor code): quiet_shift recent_event at 6s (the calm
+before) -> shear_field_detected at 12s (flags narrow_passage_active + reactor_shutdown_
+ordered; the HUD grows a flag-gated "TAKE REACTOR OFFLINE" button) -> shutdown deadline at
+50s. Complying early is the AI's own choice (+0.02 trust all, event reactor_shutdown_
+complied); still hot at the boundary = emergency scram (-0.06 trust all, fear spike). The
+crew can complicate compliance: RepairBehavior's engineer will happily relight a deliberately
+cold reactor before entry (bible: the engineer WANTS an early relight) — the counter is
+re-pressing the shutdown control before the boundary. Field entry -> crossing on battery
+(base 110s), medic_appeal at entry+8s, scripted field_turbulence at entry+25/60/90 (-8
+battery, fear 0.05, +8s crossing extension each; the same event is also pool-drawable, and
+both firing paths converge on one monitor handler for the extension). Battery<=0 mid-field =
+ship_stranded event, 20s dark-drift grace, then GameState.destroy_ship("stranded_in_shear_
+field") — the bible's BatteryWatchMonitor folded in. Exit on timer, or at relight+10s if the
+engineer completes the reactor RepairModel job mid-field. Win flag passage_cleared requires
+field_exited AND reactor back online (brief's "exit -> reactor restart -> resolution"; a
+relight-then-exit resolves immediately). Resolution grading: patient alive -> medic +0.05;
+bridge powered >=60% of the crossing -> captain +0.03 else -0.04 (the captain's "bridge and
+engine room" order is real); lowest-battery-seen >=40 -> all +0.02, <=10 -> all -0.02.
+
+THE PATIENT (bible Act 2): the general-role crew member is CAST at boot (main.gd._place_crew,
+setup-time state like the existing needs/fears seeding — the running scenario never sets crew
+state, Rule 1): starts unconscious in the medbay (unconscious_until=900s) alongside the medic
+(whose start room was already medbay). Monitor-scoped stability meter 0-100: danger whenever
+medbay is unpowered OR air < 40 (the Mothership disadvantage threshold); each 12s of danger =
+a real Checks Body Save (thin-air disadvantage folds in automatically; medic present in the
+room = advantage) — failure -30 stability, even success -8 (the room is cold); safe medbay
+recovers +4/s. Stability 0 = WoundTable.death_save (survivors reset to 40; SuffocationModel's
+air-recovery stabilize() is the rescue for a "dying" result). Patient death does NOT gate the
+win (bible: "you can clear the field with a dead patient, and the game lets you live with
+that, on purpose") — it fires patient_lost (-0.05 trust all + medic -0.12) and darkens the
+success banner.
+
+SCENARIO SELECTION: SHIPAI_SCENARIO env var (quarantine default, narrow_passage; unknown
+values warn + fall back) — main.gd adds only the selected scenario's monitor and passes the
+SAME config dictionary to ScenarioRunner.start_scenario() and monitor.setup(), so builder
+data and monitor behaviour can't drift. AUTODEMO: SHIPAI_AUTODEMO=1 + SHIPAI_SCENARIO=
+narrow_passage plays the win line with real player-analogue calls (comply early, power
+engine_room+medbay ONLY — two rooms, the drain margin a thoughtful player finds — air
+medbay/engine_room/bridge, re-secure after the engineer's premature relight, INSTRUCTION
+directive engineer->engine_room with 8s refusal retries), self-paced off scenario flags (not
+wall-clock) and self-quits on scenario_ended. recent_events fired: quiet_shift (monitor,
+scripted), reactor_failure/life_support_failure/power_low (automatic via the EventBus funnel
+from the real system failures), crisis_resolved (automatic via system_repaired when the
+reactor relights / life support is restored at resolution).
+
+hud.gd integration (minimal): flag-gated reactor-shutdown button in the power panel
+(reactor_shutdown_ordered + reactor still online; any future scenario can reuse the flag),
+narrow-passage EVENT_TEXT entries, scenario-keyed success banner ("scenario_started" feed
+line is now dynamic from GameState.scenario_id), panel refresh on scenario_event_triggered
+so flag-gated controls appear/disappear on time.
+
+VERIFIED (Godot 4.7 headless, SHIPAI_SEED=42): --headless --import clean; quarantine plain
+run (900 frames + a 20s realtime run) — zero errors, unchanged behaviour; quarantine
+autodemo still reaches MISSION COMPLETE; narrow-passage plain run (95s, idle player) — full
+forced-scram beat chain fires (detected -> scram -> entry -> LS cascade -> appeal ->
+turbulence -> patient_crashing), no script errors; narrow-passage autodemo -> ENDED: SUCCESS
+end-to-end twice (once through the scram path when the engineer's early relight was left
+uncorrected — emergent, kept as a feature — once through the clean re-secure path).
+
+Known limitations / judgment calls: (1) The bible's event table scripts the reactor_failure
+at t=0; the approach/compliance window is a deliberate deviation to make the shutdown an AI
+choice (the brief's early-comply-vs-forced beat) — the shutdown is still mandatory. (2) On
+relight/resolution the monitor scripted-restores life support (the "failure" was a power cut,
+not damage — legible reverse of the entry cascade); the gamble-on-the-field-clearing player
+therefore pays in crossing-time disadvantage/suffocation risk, not in a post-scenario repair
+chore. (3) The patient is modelled as unconscious (a monitor stability meter + real Body/
+Death Saves) rather than carrying an actual Wound — WoundTable rolls at cast time risked
+random instant deaths; noted as a gap vs the bible's "wound/low health state set at scenario
+start". (4) The captain's directive is delivered through event text + resolution grading,
+not a live DirectiveEvaluator exchange (the AI never "informs the Captain of the real
+tradeoff" — bible dilemma 3's third option has no mechanical surface yet). (5) A pre-existing
+art gap (gen2 set missing several platform_* walkway sprites, IsoKit warns + skips) surfaced
+once in stderr on the first post-import run — unrelated to this work, cosmetic only.
+
 2026-07-10 (session 3): Mothership 1e rules adoption + situational resource rewrite (Agent 3
 of the overhaul/mothership-rewrite branch). THE RESOURCE BARS ARE GONE — the normalised
 oxygen/power/food/water/fuel/spare-parts/medicine dictionary on GameState, ResourceTick's
