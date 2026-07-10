@@ -79,6 +79,11 @@ func _ready() -> void:
 		func(cid, _cause): _push_feed("☠ %s has died." % _crew_name(cid)))
 	EventBus.crew_injury.connect(
 		func(cid, severity, _wtype): _push_feed("%s: %s" % [_crew_name(cid), severity.capitalize().replace("_", " ")]))
+	# Trait moments announce themselves diegetically (docs/crew-progression-spec.md §5).
+	EventBus.crew_trait_gained.connect(
+		func(cid, tid): _push_feed("★ %s: %s" % [_crew_name(cid), Traits.display_name(tid)]))
+	EventBus.crew_skill_tier_up.connect(
+		func(cid, skill, tier): _push_feed("★ %s: %s is now %s." % [_crew_name(cid), skill, tier]))
 	EventBus.scenario_ended.connect(_on_scenario_ended)
 
 	EventBus.power_mode_changed.connect(func(_online): _refresh_power_panel())

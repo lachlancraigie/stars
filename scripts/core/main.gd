@@ -58,6 +58,7 @@ func _ready() -> void:
 	_start_scenario()
 	_setup_autoshot()
 	_setup_force_flags()
+	_setup_force_kill()
 
 
 # --- Setup ---
@@ -270,6 +271,12 @@ func _connect_debug_output() -> void:
 		func(a, b, room_id): print("[CONVO]     %s <-> %s in %s" % [_crew_label(a), _crew_label(b), room_id]))
 	EventBus.crew_romance_started.connect(
 		func(a, b): print("[ROMANCE]   %s + %s" % [_crew_label(a), _crew_label(b)]))
+	EventBus.crew_trait_gained.connect(
+		func(cid, tid): print("[TRAIT]     %s earned %s" % [_crew_label(cid), Traits.display_name(tid)]))
+	EventBus.crew_skill_tier_up.connect(
+		func(cid, skill, tier): print("[SKILL]     %s: %s -> %s" % [_crew_label(cid), skill, tier]))
+	EventBus.crew_rest_save_resolved.connect(
+		func(cid, success, worst): print("[REST]      %s rest save (%s): %s" % [_crew_label(cid), worst, "success" if success else "failure"]))
 
 
 func _crew_label(crew_id: String) -> String:
@@ -296,6 +303,30 @@ func _setup_force_flags() -> void:
 				continue
 			print("[FORCE-FLAG] setting '%s'" % f)
 			ScenarioDirector.set_flag(f))
+
+
+# --- Dev-only: SHIPAI_FORCE_KILL=<role> kills that role's crew member 2s after boot
+# through the normal CrewLifecycle funnel — exists to soak-test the crew-progression death
+# path (memorial entry, witnessed-death trait rolls, Widowed) without waiting for an
+# organic death (docs/crew-progression-spec.md §7 point 5's forced verification run).
+# Fires BEFORE _setup_force_flags' 3s flag timer on purpose, so a forced death lands
+# inside the leg whose boundary those forced flags then trigger. Never read outside this
+# hook; no effect at all unless the env var is set.
+
+const FORCE_KILL_DELAY: float = 2.0
+
+func _setup_force_kill() -> void:
+	var role: String = OS.get_environment("SHIPAI_FORCE_KILL")
+	if role == "":
+		return
+	get_tree().create_timer(FORCE_KILL_DELAY).timeout.connect(func():
+		var crew_id: String = GameState.get_crew_of_role(role)
+		var crew: CrewMember = GameState.crew.get(crew_id) as CrewMember
+		if crew == null:
+			push_warning("SHIPAI_FORCE_KILL: no crew with role '%s'" % role)
+			return
+		print("[FORCE-KILL] killing %s (%s)" % [crew_id, role])
+		CrewLifecycle.kill(crew, "forced_debug"))
 
 
 # --- Headless verification: SHIPAI_AUTOSHOT=<dir> saves timed screenshots ---

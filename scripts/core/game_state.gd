@@ -82,6 +82,10 @@ var fallen: Array[Dictionary] = []
 
 func record_fallen(entry: Dictionary) -> void:
 	fallen.append(entry)
+	var trait_ids: Array = entry.get("traits", [])
+	print("[MEMORIAL] %s — cause: %s, legs served: %d, traits: %s" % [
+		String(entry.get("name", "?")), String(entry.get("cause", "unknown")),
+		int(entry.get("legs_served", 0)), ", ".join(trait_ids) if not trait_ids.is_empty() else "none"])
 
 
 # --- Power ---
