@@ -21,7 +21,7 @@
   {
     "id": 2,
     "key": "EV_ML_MAR_CM#00002",
-    "text": "[CALM] Quiet shift's fine by me. Gives me time to get equipment maintenance done.",
+    "text": "[calm, matter-of-fact] Quiet shift's fine by me. Gives me time to get equipment maintenance done.",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -59,7 +59,7 @@
   {
     "id": 4,
     "key": "EV_ML_MAR_CM#00004",
-    "text": "[TIRED] Nothing got breached. Nobody got hurt. That's a good day.",
+    "text": "[tired, dead tired] Nothing got breached. Nobody got hurt. That's a good day.",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -78,7 +78,7 @@
   {
     "id": 5,
     "key": "EV_ML_MAR_CM#00005",
-    "text": "[CALM] Hull's breached. I'm securing the corridor. Get clear now.",
+    "text": "[calm, matter-of-fact] Hull's breached. I'm securing the corridor. Get clear now.",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -97,7 +97,7 @@
   {
     "id": 6,
     "key": "EV_ML_MAR_CM#00006",
-    "text": "[URGENT] Contact in the aft section. All personnel move to secure positions. Now.",
+    "text": "[urgent, fast pace] Contact in the aft section. All personnel move to secure positions. Now.",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -135,7 +135,7 @@
   {
     "id": 8,
     "key": "EV_ML_MAR_CM#00008",
-    "text": "[CALM] Took a hit but still mobile. Still sharp.",
+    "text": "[calm, matter-of-fact] Took a hit but still mobile. Still sharp.",
     "type": "declaration",
     "intent": "pain",
     "conditions": {
@@ -190,7 +190,7 @@
   {
     "id": 11,
     "key": "EV_ML_MAR_CM#00011",
-    "text": "[SUSPICIOUS] AI protocols shifted during the firefight. Timing seems off. I'm keeping watch.",
+    "text": "[suspicious tone] AI protocols shifted during the firefight. Timing seems off. I'm keeping watch.",
     "type": "declaration",
     "intent": "suspicion_ai",
     "conditions": {
@@ -209,7 +209,7 @@
   {
     "id": 12,
     "key": "EV_ML_MAR_CM#00012",
-    "text": "[GRIM] Lost someone today. I'll make sure it means something.",
+    "text": "[grim, heavy] Lost someone today. I'll make sure it means something.",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -232,7 +232,7 @@
   {
     "id": 13,
     "key": "EV_ML_MAR_CM#00013",
-    "text": "[CALM] Life support's compromised forward. I'm moving to position there. Stay alert.",
+    "text": "[calm, matter-of-fact] Life support's compromised forward. I'm moving to position there. Stay alert.",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -289,7 +289,7 @@
   {
     "id": 16,
     "key": "EV_ML_MAR_CM#00016",
-    "text": "[CALM] I've got weapons trained on that area. Clear the corridor.",
+    "text": "[calm, matter-of-fact] I've got weapons trained on that area. Clear the corridor.",
     "type": "opener",
     "intent": "warning",
     "conditions": {
@@ -321,7 +321,7 @@
   {
     "id": 18,
     "key": "EV_ML_MAR_CM#00018",
-    "text": "[CALM] We're holding the position. I need your support on my left.",
+    "text": "[calm, matter-of-fact] We're holding the position. I need your support on my left.",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -340,7 +340,7 @@
   {
     "id": 19,
     "key": "EV_ML_MAR_CM#00019",
-    "text": "[WARM] You kept your head when everything was chaos. Good work out there.",
+    "text": "[warm, gentle tone] You kept your head when everything was chaos. Good work out there.",
     "type": "opener",
     "intent": "praise_ai",
     "conditions": {
@@ -356,7 +356,7 @@
   {
     "id": 20,
     "key": "EV_ML_MAR_CM#00020",
-    "text": "[CALM] There's something we need to talk about regarding security protocols. Later though.",
+    "text": "[calm, matter-of-fact] There's something we need to talk about regarding security protocols. Later though.",
     "type": "opener",
     "intent": "complaint",
     "conditions": {
@@ -388,7 +388,7 @@
   {
     "id": 22,
     "key": "EV_ML_MAR_CM#00022",
-    "text": "[CALM] I'm good. You should check yourself.",
+    "text": "[calm, matter-of-fact] I'm good. You should check yourself.",
     "type": "reply",
     "intent": "smalltalk",
     "conditions": {
@@ -426,7 +426,7 @@
   {
     "id": 24,
     "key": "EV_ML_MAR_CM#00024",
-    "text": "[CALM] Fear keeps you sharp. Channel it. Don't let it control you.",
+    "text": "[calm, matter-of-fact] Fear keeps you sharp. Channel it. Don't let it control you.",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -444,7 +444,7 @@
   {
     "id": 25,
     "key": "EV_ML_MAR_CM#00025",
-    "text": "[CALM] Let me look at that. I can help.",
+    "text": "[calm, matter-of-fact] Let me look at that. I can help.",
     "type": "reply",
     "intent": "offer_help",
     "conditions": {
@@ -481,7 +481,7 @@
   {
     "id": 27,
     "key": "EV_ML_MAR_CM#00027",
-    "text": "[SUSPICIOUS] Your concerns about the AI match what I've seen in tactical responses. Worth monitoring.",
+    "text": "[suspicious tone] Your concerns about the AI match what I've seen in tactical responses. Worth monitoring.",
     "type": "reply",
     "intent": "suspicion_ai",
     "conditions": {
@@ -500,7 +500,7 @@
   {
     "id": 28,
     "key": "EV_ML_MAR_CM#00028",
-    "text": "[DRY] That was the protocol. Still the protocol. Nothing's changed.",
+    "text": "[dry tone] That was the protocol. Still the protocol. Nothing's changed.",
     "type": "reply",
     "intent": "banter",
     "conditions": {
@@ -537,7 +537,7 @@
   {
     "id": 30,
     "key": "EV_ML_MAR_CM#00030",
-    "text": "[CALM] Think clearly and move deliberately. Everything else is noise.",
+    "text": "[calm, matter-of-fact] Think clearly and move deliberately. Everything else is noise.",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -556,7 +556,7 @@
   {
     "id": 31,
     "key": "EV_ML_MAR_CM#00031",
-    "text": "[WARM] You made the right call under pressure. That's all that matters.",
+    "text": "[warm, gentle tone] You made the right call under pressure. That's all that matters.",
     "type": "reply",
     "intent": "praise_ai",
     "conditions": {
@@ -574,7 +574,7 @@
   {
     "id": 32,
     "key": "EV_ML_MAR_CM#00032",
-    "text": "[CALM] That was correct. I would've done the same.",
+    "text": "[calm, matter-of-fact] That was correct. I would've done the same.",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -592,7 +592,7 @@
   {
     "id": 33,
     "key": "EV_ML_MAR_CM#00033",
-    "text": "[WARM] I'm glad you're here. That's not something I say lightly.",
+    "text": "[warm, gentle tone] I'm glad you're here. That's not something I say lightly.",
     "type": "reply",
     "intent": "romance_hint",
     "conditions": {
@@ -630,7 +630,7 @@
   {
     "id": 35,
     "key": "EV_ML_MAR_CM#00035",
-    "text": "[PANICKED] No, you need medical attention right now. This isn't negotiable.",
+    "text": "[panicked, panting] No, you need medical attention right now. This isn't negotiable.",
     "type": "reply",
     "intent": "pain",
     "conditions": {
@@ -650,7 +650,7 @@
   {
     "id": 36,
     "key": "EV_ML_MAR_CM#00036",
-    "text": "[TERRIFIED] Hostile contact is closing. We don't have much time. I don't know if we can hold this position.",
+    "text": "[terrified, voice shaking] Hostile contact is closing. We don't have much time. I don't know if we can hold this position.",
     "type": "reply",
     "intent": "fear_vent",
     "conditions": {
@@ -692,7 +692,7 @@
   {
     "id": 38,
     "key": "EV_ML_MAR_CM#00038",
-    "text": "[CALM] Quarters are secure. Nothing else to do today.",
+    "text": "[calm, matter-of-fact] Quarters are secure. Nothing else to do today.",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -711,7 +711,7 @@
   {
     "id": 39,
     "key": "EV_ML_MAR_CM#00039",
-    "text": "[TIRED] I'll keep watch if anything develops. Get some rest.",
+    "text": "[tired, dead tired] I'll keep watch if anything develops. Get some rest.",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -743,7 +743,7 @@
   {
     "id": 41,
     "key": "EV_ML_MAR_CM#00041",
-    "text": "[GRIM] Perimeter's locked down. I'll maintain position.",
+    "text": "[grim, heavy] Perimeter's locked down. I'll maintain position.",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -759,7 +759,7 @@
   {
     "id": 42,
     "key": "EV_ML_MAR_CM#00042",
-    "text": "[CALM] Shift's done. Everything's secure. Rest well.",
+    "text": "[calm, matter-of-fact] Shift's done. Everything's secure. Rest well.",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -775,7 +775,7 @@
   {
     "id": 43,
     "key": "EV_ML_MAR_CM#00043",
-    "text": "[CALM] All clear. Get some rest.",
+    "text": "[calm, matter-of-fact] All clear. Get some rest.",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -791,7 +791,7 @@
   {
     "id": 44,
     "key": "EV_ML_MAR_CM#00044",
-    "text": "[URGENT] All hands to defensive positions. Potential incursion in forward section. Move now.",
+    "text": "[urgent, fast pace] All hands to defensive positions. Potential incursion in forward section. Move now.",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -810,7 +810,7 @@
   {
     "id": 45,
     "key": "EV_ML_MAR_CM#00045",
-    "text": "[CALM] Here's what we need to do. Follow my lead and we'll get through this.",
+    "text": "[calm, matter-of-fact] Here's what we need to do. Follow my lead and we'll get through this.",
     "type": "opener",
     "intent": "reassurance",
     "conditions": {
@@ -826,7 +826,7 @@
   {
     "id": 46,
     "key": "EV_ML_MAR_CM#00046",
-    "text": "[DRY] Threat's eliminated. That's what counted today.",
+    "text": "[dry tone] Threat's eliminated. That's what counted today.",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -864,7 +864,7 @@
   {
     "id": 48,
     "key": "EV_ML_MAR_CM#00048",
-    "text": "[PAINED] Bleeding's stopped. Wound's sealed. I can move.",
+    "text": "[pained, voice tight] Bleeding's stopped. Wound's sealed. I can move.",
     "type": "declaration",
     "intent": "pain",
     "conditions": {
@@ -881,7 +881,7 @@
   {
     "id": 49,
     "key": "EV_ML_MAR_CM#00049",
-    "text": "[CALM] Airlock's sealed. Forward section's isolated. No spread.",
+    "text": "[calm, matter-of-fact] Airlock's sealed. Forward section's isolated. No spread.",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -900,7 +900,7 @@
   {
     "id": 50,
     "key": "EV_ML_MAR_CM#00050",
-    "text": "[WARM] You've got good instincts. Trust them.",
+    "text": "[warm, gentle tone] You've got good instincts. Trust them.",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -918,7 +918,7 @@
   {
     "id": 51,
     "key": "EV_ML_MAR_CM#00051",
-    "text": "[CALM] I want to run defensive scenarios with you. Nothing imminent, just being ready.",
+    "text": "[calm, matter-of-fact] I want to run defensive scenarios with you. Nothing imminent, just being ready.",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -966,7 +966,7 @@
   {
     "id": 54,
     "key": "EV_ML_MAR_CM#00054",
-    "text": "[CALM] That checks out. I trust your assessment.",
+    "text": "[calm, matter-of-fact] That checks out. I trust your assessment.",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -985,7 +985,7 @@
   {
     "id": 55,
     "key": "EV_ML_MAR_CM#00055",
-    "text": "[CALM] Meal time means restocking rations and checking the weapons locker temperature.",
+    "text": "[calm, matter-of-fact] Meal time means restocking rations and checking the weapons locker temperature.",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -1023,7 +1023,7 @@
   {
     "id": 57,
     "key": "EV_ML_MAR_CM#00057",
-    "text": "[TIRED] Perimeter's secure. Nobody got hurt. Weapons still locked and loaded for next time.",
+    "text": "[tired, dead tired] Perimeter's secure. Nobody got hurt. Weapons still locked and loaded for next time.",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -1042,7 +1042,7 @@
   {
     "id": 58,
     "key": "EV_ML_MAR_CM#00058",
-    "text": "[CALM] Life support systems are critical. I'm securing the corridors to minimize exposure to bad air.",
+    "text": "[calm, matter-of-fact] Life support systems are critical. I'm securing the corridors to minimize exposure to bad air.",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -1061,7 +1061,7 @@
   {
     "id": 59,
     "key": "EV_ML_MAR_CM#00059",
-    "text": "[GRIM] Power situation means lights out in three sections. Switching to night-vision protocols.",
+    "text": "[grim, heavy] Power situation means lights out in three sections. Switching to night-vision protocols.",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -1080,7 +1080,7 @@
   {
     "id": 60,
     "key": "EV_ML_MAR_CM#00060",
-    "text": "[CALM] Reactor malfunction means everyone stays clear of the aft sections. That's a hard perimeter.",
+    "text": "[calm, matter-of-fact] Reactor malfunction means everyone stays clear of the aft sections. That's a hard perimeter.",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -1099,7 +1099,7 @@
   {
     "id": 61,
     "key": "EV_ML_MAR_CM#00061",
-    "text": "[GRIM] Airlock sealed. Section is lost. We hold the line here.",
+    "text": "[grim, heavy] Airlock sealed. Section is lost. We hold the line here.",
     "type": "declaration",
     "intent": "acknowledgment",
     "conditions": {
@@ -1118,7 +1118,7 @@
   {
     "id": 62,
     "key": "EV_ML_MAR_CM#00062",
-    "text": "[SUSPICIOUS] The AI's tactical suggestions have gotten slower since the damage. Timing matters in a fight.",
+    "text": "[suspicious tone] The AI's tactical suggestions have gotten slower since the damage. Timing matters in a fight.",
     "type": "declaration",
     "intent": "suspicion_ai",
     "conditions": {
@@ -1137,7 +1137,7 @@
   {
     "id": 63,
     "key": "EV_ML_MAR_CM#00063",
-    "text": "[WARM] The AI called that threat correctly. Saved us from an ambush. Good work.",
+    "text": "[warm, gentle tone] The AI called that threat correctly. Saved us from an ambush. Good work.",
     "type": "declaration",
     "intent": "praise_ai",
     "conditions": {
@@ -1153,7 +1153,7 @@
   {
     "id": 64,
     "key": "EV_ML_MAR_CM#00064",
-    "text": "[PAINED] Got cut. Nothing deep. Still operational. Combat effectiveness at ninety percent.",
+    "text": "[pained, voice tight] Got cut. Nothing deep. Still operational. Combat effectiveness at ninety percent.",
     "type": "declaration",
     "intent": "pain",
     "conditions": {
@@ -1170,7 +1170,7 @@
   {
     "id": 65,
     "key": "EV_ML_MAR_CM#00065",
-    "text": "[GRIM] A crew member fell in the corridors. I was supposed to have their back. I didn't.",
+    "text": "[grim, heavy] A crew member fell in the corridors. I was supposed to have their back. I didn't.",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -1192,7 +1192,7 @@
   {
     "id": 66,
     "key": "EV_ML_MAR_CM#00066",
-    "text": "[PANICKED] The breach is spreading and I can't seal it fast enough. We're losing entire sections.",
+    "text": "[panicked, panting] The breach is spreading and I can't seal it fast enough. We're losing entire sections.",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -1212,7 +1212,7 @@
   {
     "id": 67,
     "key": "EV_ML_MAR_CM#00067",
-    "text": "[TERRIFIED] Enemy contact is advancing. We're getting pushed back. I don't see how we hold this position.",
+    "text": "[terrified, voice shaking] Enemy contact is advancing. We're getting pushed back. I don't see how we hold this position.",
     "type": "reply",
     "intent": "fear_vent",
     "conditions": {
@@ -1235,7 +1235,7 @@
   {
     "id": 68,
     "key": "EV_ML_MAR_CM#00068",
-    "text": "[CALM] Spent the quiet hours stripping and cleaning my rifle. Meditation and maintenance.",
+    "text": "[calm, matter-of-fact] Spent the quiet hours stripping and cleaning my rifle. Meditation and maintenance.",
     "type": "declaration",
     "intent": "memory",
     "conditions": {
@@ -1267,7 +1267,7 @@
   {
     "id": 70,
     "key": "EV_ML_MAR_CM#00070",
-    "text": "[WARM] You handled that contact by the book. Exactly how I would've done it.",
+    "text": "[warm, gentle tone] You handled that contact by the book. Exactly how I would've done it.",
     "type": "opener",
     "intent": "praise_ai",
     "conditions": {
@@ -1283,7 +1283,7 @@
   {
     "id": 71,
     "key": "EV_ML_MAR_CM#00071",
-    "text": "[CALM] You did what you had to do. The mission came first. That's the job.",
+    "text": "[calm, matter-of-fact] You did what you had to do. The mission came first. That's the job.",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -1301,7 +1301,7 @@
   {
     "id": 72,
     "key": "EV_ML_MAR_CM#00072",
-    "text": "[CALM] Your assessment is correct. I trust your read on the situation.",
+    "text": "[calm, matter-of-fact] Your assessment is correct. I trust your read on the situation.",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -1320,7 +1320,7 @@
   {
     "id": 73,
     "key": "EV_ML_MAR_CM#00073",
-    "text": "[CALM] Keep your position. I'll monitor communications from here.",
+    "text": "[calm, matter-of-fact] Keep your position. I'll monitor communications from here.",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1336,7 +1336,7 @@
   {
     "id": 74,
     "key": "EV_ML_MAR_CM#00074",
-    "text": "[GRIM] Hold the line. We're not retreating.",
+    "text": "[grim, heavy] Hold the line. We're not retreating.",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1352,7 +1352,7 @@
   {
     "id": 75,
     "key": "EV_ML_MAR_CM#00075",
-    "text": "[DRY] Someone borrowed my cleaning kit. Borrowed. Without the bringing-back part.",
+    "text": "[dry tone] Someone borrowed my cleaning kit. Borrowed. Without the bringing-back part.",
     "type": "declaration",
     "intent": "complaint",
     "conditions": {
@@ -1472,7 +1472,7 @@
   {
     "id": 82,
     "key": "EV_ML_MAR_CM#00082",
-    "text": "[DRY] Dying's easy. Filling out the incident report after is the hard part.",
+    "text": "[dry tone] Dying's easy. Filling out the incident report after is the hard part.",
     "type": "reply",
     "intent": "gallows_humor",
     "conditions": {
@@ -1560,7 +1560,7 @@
   {
     "id": 87,
     "key": "EV_ML_MAR_CM#00087",
-    "text": "[CALM] You're still here. Gear's intact. Odds improved twice today already. Keep breathing.",
+    "text": "[calm, matter-of-fact] You're still here. Gear's intact. Odds improved twice today already. Keep breathing.",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -1578,7 +1578,7 @@
   {
     "id": 88,
     "key": "EV_ML_MAR_CM#00088",
-    "text": "[WARM] Sit. Clean something with me. Hands busy, head quiets. Old trick. Works.",
+    "text": "[warm, gentle tone] Sit. Clean something with me. Hands busy, head quiets. Old trick. Works.",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -1597,7 +1597,7 @@
   {
     "id": 89,
     "key": "EV_ML_MAR_CM#00089",
-    "text": "[WARM] I saved you a seat at chow. Been doing it a while. Figured you'd noticed.",
+    "text": "[warm, gentle tone] I saved you a seat at chow. Been doing it a while. Figured you'd noticed.",
     "type": "opener",
     "intent": "romance_hint",
     "conditions": {
@@ -1634,7 +1634,7 @@
   {
     "id": 91,
     "key": "EV_ML_MAR_CM#00091",
-    "text": "[WARM] Yes. Short answer. Meant long.",
+    "text": "[warm, gentle tone] Yes. Short answer. Meant long.",
     "type": "reply",
     "intent": "romance_accept",
     "conditions": {
@@ -1671,7 +1671,7 @@
   {
     "id": 93,
     "key": "EV_ML_MAR_CM#00093",
-    "text": "[CALM] Torch discipline. Short bursts, low beam. We make the batteries outlast the problem.",
+    "text": "[calm, matter-of-fact] Torch discipline. Short bursts, low beam. We make the batteries outlast the problem.",
     "type": "reply",
     "intent": "work_talk",
     "conditions": {
@@ -1732,7 +1732,7 @@
   {
     "id": 96,
     "key": "EV_ML_MAR_CM#00096",
-    "text": "[GRIM] Stood post at that door for two years. Today it did its job. Hate that it had to.",
+    "text": "[grim, heavy] Stood post at that door for two years. Today it did its job. Hate that it had to.",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -1841,7 +1841,7 @@
   {
     "id": 102,
     "key": "EV_ML_MAR_CM#00102",
-    "text": "[CALM] Rack out. I've got the corridor. Nothing gets past a bored marine.",
+    "text": "[calm, matter-of-fact] Rack out. I've got the corridor. Nothing gets past a bored marine.",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
