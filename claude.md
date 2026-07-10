@@ -32,7 +32,7 @@ A spaceship AI simulator. The player is the ship's computer. See `GDD.md` for fu
 1. ~~Dialogue expansion~~ ✅ 2,482 lines / 24 files, validator clean
 2. ~~Corpus finalization~~ ✅ ElevenLabs CSVs regenerated (`ab32eac`)
 3. ElevenLabs voicing — ON HOLD (1,550/2,482 done, quota dead); superseded by the Fish v2 trial below. Rerun cmd in `notes.md` if ElevenLabs returns.
-4. ~~Character animations~~ ✅ integrated w/ Kenney fallback (`79c00df`/`1f0c35d`/`69f682e`); head-size consistency fix IN PROGRESS (measured head:height ratio gate, $3 cap)
+4. ~~Character animations~~ ✅ integrated w/ Kenney fallback (`79c00df`/`1f0c35d`/`69f682e`); head-size fix ✅ (`eed1e7e`, QA tool `tools/image_gen/crew_proportion_qa.py`) — new contact sheet awaiting Lachlan's verdict
 5. ~~Crew progression~~ ✅ (`e092bcf`/`30a9d9c`); FTL recruitment still PINNED
 6. **ACTIVE: Fish Audio v2 revoice** (Lachlan wants ElevenLabs replaced; s2.1-pro free through July). Skill: `skills/fishaudio.md` (gitignored — plaintext key; also in `tools/audio_gen/.env` as `FISH_API_KEY`). Lachlan's 26 handpicked voice IDs → `notes.md`. Phases: (A) Sonnet — map voices → 24 archetypes (primary + ranked alternates → `tools/audio_gen/fish_voices.json`), rewrite `docs/dialogue_spec.md` tag section for Fish `[]` syntax, update validator, write resume-safe `tools/audio_gen/fish_batch.py`; (B) Haiku ×4 sequential — per-group tag rewrite of corpus JSON (tags only, text/IDs untouched), validate + commit per file; (C) orchestrator — batch-generate all 2,482 MP3s → `assets/audio/dialogue_v2/` (gitignored) for Lachlan's review.
 7. **Sprint close-out**: fast-forward `main`? (last synced `0619ecb` — ask Lachlan) · rotate API keys (ElevenLabs/OpenRouter/Fish all passed through chat)
