@@ -2,7 +2,7 @@
   {
     "id": 1,
     "key": "GR_ML_SCI_OF#00001",
-    "text": "[CALM] systems operational. no surprises yet. give it time",
+    "text": "[calm, measured] systems operational. no surprises yet. give it time",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -18,7 +18,7 @@
   {
     "id": 2,
     "key": "GR_ML_SCI_OF#00002",
-    "text": "shift starting. [TIRED] already used to say this with some hope",
+    "text": "shift starting. [tired, dead tired] already used to say this with some hope",
     "type": "opener",
     "intent": "greeting",
     "conditions": {
@@ -37,7 +37,7 @@
   {
     "id": 3,
     "key": "GR_ML_SCI_OF#00003",
-    "text": "[DEADPAN] quiet shift means the problems are slow-moving. that's not better. that's just delayed",
+    "text": "[deadpan] quiet shift means the problems are slow-moving. that's not better. that's just delayed",
     "type": "reply",
     "intent": "doubt",
     "conditions": {
@@ -59,7 +59,7 @@
   {
     "id": 4,
     "key": "GR_ML_SCI_OF#00004",
-    "text": "[GRUFF] sit down. before you ask, the answer is no. we can't fix that",
+    "text": "[low voice, gruff] sit down. before you ask, the answer is no. we can't fix that",
     "type": "opener",
     "intent": "pain",
     "conditions": {
@@ -78,7 +78,7 @@
   {
     "id": 5,
     "key": "GR_ML_SCI_OF#00005",
-    "text": "[SIGHS] there are thirty-seven crew on record i didn't save. [DEADPAN] i remember all of them",
+    "text": "[sigh] there are thirty-seven crew on record i didn't save. [deadpan] i remember all of them",
     "type": "declaration",
     "intent": "memory",
     "conditions": {
@@ -98,7 +98,7 @@
   {
     "id": 6,
     "key": "GR_ML_SCI_OF#00006",
-    "text": "reactor's showing cascade stress fractures. [GRUFF] sugar-coating: it's dead. we just don't know when",
+    "text": "reactor's showing cascade stress fractures. [low voice, gruff] sugar-coating: it's dead. we just don't know when",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -120,7 +120,7 @@
   {
     "id": 7,
     "key": "GR_ML_SCI_OF#00007",
-    "text": "[DRY] back in the academy, they taught us bedside manner. [DEADPAN] back in the academy, nobody died",
+    "text": "[dry tone] back in the academy, they taught us bedside manner. [deadpan] back in the academy, nobody died",
     "type": "reply",
     "intent": "doubt",
     "conditions": {
@@ -139,7 +139,7 @@
   {
     "id": 8,
     "key": "GR_ML_SCI_OF#00008",
-    "text": "[NERVOUS] systems are failing in cascade. [EMPHASIS] this is the part where it gets interesting",
+    "text": "[nervous, speaking quickly] systems are failing in cascade. [emphasis] this is the part where it gets interesting",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -158,7 +158,7 @@
   {
     "id": 9,
     "key": "GR_ML_SCI_OF#00009",
-    "text": "[CALM] life support is degrading. at current rates, [GRUFF] let's not do the math",
+    "text": "[calm, measured] life support is degrading. at current rates, [low voice, gruff] let's not do the math",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -177,7 +177,7 @@
   {
     "id": 10,
     "key": "GR_ML_SCI_OF#00010",
-    "text": "[GRIM] door locked with someone on the far side. [SIGHS] adds one more to the list",
+    "text": "[grim, heavy] door locked with someone on the far side. [sigh] adds one more to the list",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -199,7 +199,7 @@
   {
     "id": 11,
     "key": "GR_ML_SCI_OF#00011",
-    "text": "[URGENT] hull breach. [GRUFF] sit down. this is going to be loud",
+    "text": "[urgent, fast pace] hull breach. [low voice, gruff] sit down. this is going to be loud",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -218,7 +218,7 @@
   {
     "id": 12,
     "key": "GR_ML_SCI_OF#00012",
-    "text": "[CALM] pathogen spreading faster than containment. [DEADPAN] this will get worse before it doesn't",
+    "text": "[calm, measured] pathogen spreading faster than containment. [deadpan] this will get worse before it doesn't",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -237,7 +237,7 @@
   {
     "id": 13,
     "key": "GR_ML_SCI_OF#00013",
-    "text": "repair successful. [GRUFF] temporary. everything is temporary. enjoy it while it lasts",
+    "text": "repair successful. [low voice, gruff] temporary. everything is temporary. enjoy it while it lasts",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -256,7 +256,7 @@
   {
     "id": 14,
     "key": "GR_ML_SCI_OF#00014",
-    "text": "[EMPHASIS] someone's injured. sit down. [GRUFF] this is going to hurt before it hurts less",
+    "text": "[emphasis] someone's injured. sit down. [low voice, gruff] this is going to hurt before it hurts less",
     "type": "declaration",
     "intent": "acknowledgment",
     "conditions": {
@@ -275,7 +275,7 @@
   {
     "id": 15,
     "key": "GR_ML_SCI_OF#00015",
-    "text": "[DEADPAN] someone died. [SIGHS] i'll write it down. add them to the list of names i carry",
+    "text": "[deadpan] someone died. [sigh] i'll write it down. add them to the list of names i carry",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -298,7 +298,7 @@
   {
     "id": 16,
     "key": "GR_ML_SCI_OF#00016",
-    "text": "[CALM] combat is happening. [GRUFF] get to medbay. we'll need the space",
+    "text": "[calm, measured] combat is happening. [low voice, gruff] get to medbay. we'll need the space",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -317,7 +317,7 @@
   {
     "id": 17,
     "key": "GR_ML_SCI_OF#00017",
-    "text": "crisis handled. [DEADPAN] next crisis is already forming. but i'll take what i can get",
+    "text": "crisis handled. [deadpan] next crisis is already forming. but i'll take what i can get",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -336,7 +336,7 @@
   {
     "id": 18,
     "key": "GR_ML_SCI_OF#00018",
-    "text": "[GRUFF] AI core is failing. that's the second-worst thing that can happen to a ship",
+    "text": "[low voice, gruff] AI core is failing. that's the second-worst thing that can happen to a ship",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -355,7 +355,7 @@
   {
     "id": 19,
     "key": "GR_ML_SCI_OF#00019",
-    "text": "[TIRED] meal time. [DEADPAN] i remember the last time i had one of those. it was better",
+    "text": "[tired, dead tired] meal time. [deadpan] i remember the last time i had one of those. it was better",
     "type": "opener",
     "intent": "smalltalk",
     "conditions": {
@@ -377,7 +377,7 @@
   {
     "id": 20,
     "key": "GR_ML_SCI_OF#00020",
-    "text": "[RESIGNED] shift over. everyone still breathing. [GRUFF] that's a win today",
+    "text": "[resigned, flat tone] shift over. everyone still breathing. [low voice, gruff] that's a win today",
     "type": "reply",
     "intent": "farewell",
     "conditions": {
@@ -399,7 +399,7 @@
   {
     "id": 21,
     "key": "GR_ML_SCI_OF#00021",
-    "text": "[CALM] sit down. we have a lot to discuss and not much time",
+    "text": "[calm, measured] sit down. we have a lot to discuss and not much time",
     "type": "opener",
     "intent": "greeting",
     "conditions": {
@@ -418,7 +418,7 @@
   {
     "id": 22,
     "key": "GR_ML_SCI_OF#00022",
-    "text": "[GRUFF] problems are stacking. [DEADPAN] no. that's not dramatic. that's just accurate",
+    "text": "[low voice, gruff] problems are stacking. [deadpan] no. that's not dramatic. that's just accurate",
     "type": "opener",
     "intent": "warning",
     "conditions": {
@@ -434,7 +434,7 @@
   {
     "id": 23,
     "key": "GR_ML_SCI_OF#00023",
-    "text": "[CALM] something needs fixing. [GRUFF] i need someone who won't panic when i'm honest about it",
+    "text": "[calm, measured] something needs fixing. [low voice, gruff] i need someone who won't panic when i'm honest about it",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -455,7 +455,7 @@
   {
     "id": 24,
     "key": "GR_ML_SCI_OF#00024",
-    "text": "[DRY] you look terrible. [GRUFF] i mean that professionally",
+    "text": "[dry tone] you look terrible. [low voice, gruff] i mean that professionally",
     "type": "opener",
     "intent": "banter",
     "conditions": {
@@ -471,7 +471,7 @@
   {
     "id": 25,
     "key": "GR_ML_SCI_OF#00025",
-    "text": "[NERVOUS] systems failing in cascade. [EMPHASIS] we're in the part of the medical text nobody wants to read",
+    "text": "[nervous, speaking quickly] systems failing in cascade. [emphasis] we're in the part of the medical text nobody wants to read",
     "type": "reply",
     "intent": "fear_vent",
     "conditions": {
@@ -490,7 +490,7 @@
   {
     "id": 26,
     "key": "GR_ML_SCI_OF#00026",
-    "text": "[CALM] sit down. you're going to survive this. [GRUFF] i'm not going to let you be number thirty-eight",
+    "text": "[calm, measured] sit down. you're going to survive this. [low voice, gruff] i'm not going to let you be number thirty-eight",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -510,7 +510,7 @@
   {
     "id": 27,
     "key": "GR_ML_SCI_OF#00027",
-    "text": "[DEADPAN] that was competent work. [GRUFF] i notice because incompetence usually kills people",
+    "text": "[deadpan] that was competent work. [low voice, gruff] i notice because incompetence usually kills people",
     "type": "reply",
     "intent": "praise_ai",
     "conditions": {
@@ -529,7 +529,7 @@
   {
     "id": 28,
     "key": "GR_ML_SCI_OF#00028",
-    "text": "[CALM] i've seen worse approaches. [GRUFF] not by much. but worse",
+    "text": "[calm, measured] i've seen worse approaches. [low voice, gruff] not by much. but worse",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -548,7 +548,7 @@
   {
     "id": 29,
     "key": "GR_ML_SCI_OF#00029",
-    "text": "[SUSPICIOUS] the AI's diagnosis doesn't match the symptoms. [GRUFF] that concerns me",
+    "text": "[suspicious tone] the AI's diagnosis doesn't match the symptoms. [low voice, gruff] that concerns me",
     "type": "reply",
     "intent": "suspicion_ai",
     "conditions": {
@@ -567,7 +567,7 @@
   {
     "id": 30,
     "key": "GR_ML_SCI_OF#00030",
-    "text": "[GRIM] Nakamura was a good field medic. [SIGHS] Nakamura is on my list now",
+    "text": "[grim, heavy] Nakamura was a good field medic. [sigh] Nakamura is on my list now",
     "type": "reply",
     "intent": "memory",
     "conditions": {
@@ -592,7 +592,7 @@
   {
     "id": 31,
     "key": "GR_ML_SCI_OF#00031",
-    "text": "[DRY] you're panicking. [GRUFF] panic kills faster than the disease does",
+    "text": "[dry tone] you're panicking. [low voice, gruff] panic kills faster than the disease does",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -611,7 +611,7 @@
   {
     "id": 32,
     "key": "GR_ML_SCI_OF#00032",
-    "text": "[DEADPAN] you're making a romantic advance. [WARM] i appreciate more than i can admit",
+    "text": "[deadpan] you're making a romantic advance. [warm, gentle tone] i appreciate more than i can admit",
     "type": "reply",
     "intent": "banter",
     "conditions": {
@@ -630,7 +630,7 @@
   {
     "id": 33,
     "key": "GR_ML_SCI_OF#00033",
-    "text": "[CALM] crisis handled. [DEADPAN] next one's already starting. but i'll document this one first",
+    "text": "[calm, measured] crisis handled. [deadpan] next one's already starting. but i'll document this one first",
     "type": "closer",
     "intent": "status_report",
     "conditions": {
@@ -652,7 +652,7 @@
   {
     "id": 34,
     "key": "GR_ML_SCI_OF#00034",
-    "text": "[GRUFF] you'll survive. i'm not very warm about it, but you will",
+    "text": "[low voice, gruff] you'll survive. i'm not very warm about it, but you will",
     "type": "closer",
     "intent": "reassurance",
     "conditions": {
@@ -671,7 +671,7 @@
   {
     "id": 35,
     "key": "GR_ML_SCI_OF#00035",
-    "text": "[DRY] goodbye. try not to make me add you to my list",
+    "text": "[dry tone] goodbye. try not to make me add you to my list",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -690,7 +690,7 @@
   {
     "id": 36,
     "key": "GR_ML_SCI_OF#00036",
-    "text": "[EMPHASIS] all systems critical. [GRUFF] i've stitched together crews on ships that didn't make port. this is familiar",
+    "text": "[emphasis] all systems critical. [low voice, gruff] i've stitched together crews on ships that didn't make port. this is familiar",
     "type": "reply",
     "intent": "work_talk",
     "conditions": {
@@ -709,7 +709,7 @@
   {
     "id": 37,
     "key": "GR_ML_SCI_OF#00037",
-    "text": "[PANICKED] too many injuries. [EMPHASIS] not enough beds. [URGENT] i'm losing count",
+    "text": "[panicked, panting] too many injuries. [emphasis] not enough beds. [urgent, fast pace] i'm losing count",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -726,7 +726,7 @@
   {
     "id": 38,
     "key": "GR_ML_SCI_OF#00038",
-    "text": "[CALM] i stopped doing bedside manner around the second ship i lost crews on. [GRUFF] it was kinder to be honest",
+    "text": "[calm, measured] i stopped doing bedside manner around the second ship i lost crews on. [low voice, gruff] it was kinder to be honest",
     "type": "reply",
     "intent": "memory",
     "conditions": {
@@ -748,7 +748,7 @@
   {
     "id": 39,
     "key": "GR_ML_SCI_OF#00039",
-    "text": "[ANGRY] the AI's made five bad calls this week. [EMPHASIS] five",
+    "text": "[angry] the AI's made five bad calls this week. [emphasis] five",
     "type": "opener",
     "intent": "suspicion_ai",
     "conditions": {
@@ -767,7 +767,7 @@
   {
     "id": 40,
     "key": "GR_ML_SCI_OF#00040",
-    "text": "[GRUFF] sit down. this is going to be direct and it's going to hurt",
+    "text": "[low voice, gruff] sit down. this is going to be direct and it's going to hurt",
     "type": "reply",
     "intent": "warning",
     "conditions": {
@@ -786,7 +786,7 @@
   {
     "id": 41,
     "key": "GR_ML_SCI_OF#00041",
-    "text": "[DEADPAN] gallows humor is what you do when the diagnosis is terminal. [GRUFF] i didn't invent it",
+    "text": "[deadpan] gallows humor is what you do when the diagnosis is terminal. [low voice, gruff] i didn't invent it",
     "type": "reply",
     "intent": "gallows_humor",
     "conditions": {
@@ -805,7 +805,7 @@
   {
     "id": 42,
     "key": "GR_ML_SCI_OF#00042",
-    "text": "[CALM] everyone who dies on this ship. [SIGHS] i'll remember them. whether i want to or not",
+    "text": "[calm, measured] everyone who dies on this ship. [sigh] i'll remember them. whether i want to or not",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -824,7 +824,7 @@
   {
     "id": 43,
     "key": "GR_ML_SCI_OF#00043",
-    "text": "[GRUFF] you ask why i keep that list. [DEADPAN] because names matter. because they died",
+    "text": "[low voice, gruff] you ask why i keep that list. [deadpan] because names matter. because they died",
     "type": "reply",
     "intent": "memory",
     "conditions": {
@@ -843,7 +843,7 @@
   {
     "id": 44,
     "key": "GR_ML_SCI_OF#00044",
-    "text": "[CALM] i'm still here. that means you're still part of the calculation",
+    "text": "[calm, measured] i'm still here. that means you're still part of the calculation",
     "type": "closer",
     "intent": "reassurance",
     "conditions": {
@@ -862,7 +862,7 @@
   {
     "id": 45,
     "key": "GR_ML_SCI_OF#00045",
-    "text": "[TIRED] you kept your head. [GRUFF] that's rare. hold onto it",
+    "text": "[tired, dead tired] you kept your head. [low voice, gruff] that's rare. hold onto it",
     "type": "closer",
     "intent": "praise_ai",
     "conditions": {
@@ -881,7 +881,7 @@
   {
     "id": 46,
     "key": "GR_ML_SCI_OF#00046",
-    "text": "[EMPHASIS] nothing heals clean on a ship like this. [GRUFF] but i'll make sure it holds",
+    "text": "[emphasis] nothing heals clean on a ship like this. [low voice, gruff] but i'll make sure it holds",
     "type": "opener",
     "intent": "complaint",
     "conditions": {
@@ -900,7 +900,7 @@
   {
     "id": 47,
     "key": "GR_ML_SCI_OF#00047",
-    "text": "[DRY] you keep coming back to my medbay. [CALM] i've learned to look for you in the blood work",
+    "text": "[dry tone] you keep coming back to my medbay. [calm, measured] i've learned to look for you in the blood work",
     "type": "reply",
     "intent": "romance_hint",
     "conditions": {
@@ -922,7 +922,7 @@
   {
     "id": 48,
     "key": "GR_ML_SCI_OF#00048",
-    "text": "[DEADPAN] you're asking me to be hopeful. [GRUFF] i remember what happened to hope on the Reeves",
+    "text": "[deadpan] you're asking me to be hopeful. [low voice, gruff] i remember what happened to hope on the Reeves",
     "type": "reply",
     "intent": "doubt",
     "conditions": {
@@ -941,7 +941,7 @@
   {
     "id": 49,
     "key": "GR_ML_SCI_OF#00049",
-    "text": "[RESIGNED] this will get worse. [CALM] but worse is something i know how to manage",
+    "text": "[resigned, flat tone] this will get worse. [calm, measured] but worse is something i know how to manage",
     "type": "opener",
     "intent": "warning",
     "conditions": {
@@ -957,7 +957,7 @@
   {
     "id": 50,
     "key": "GR_ML_SCI_OF#00050",
-    "text": "[CALM] everyone who sits down in my medbay. [GRUFF] they matter to me. whether they know it or not",
+    "text": "[calm, measured] everyone who sits down in my medbay. [low voice, gruff] they matter to me. whether they know it or not",
     "type": "closer",
     "intent": "praise_ai",
     "conditions": {
@@ -976,7 +976,7 @@
   {
     "id": 51,
     "key": "GR_ML_SCI_OF#00051",
-    "text": "[DEADPAN] you're looking for reassurance. [GRUFF] the honest kind or the useful kind",
+    "text": "[deadpan] you're looking for reassurance. [low voice, gruff] the honest kind or the useful kind",
     "type": "opener",
     "intent": "greeting",
     "conditions": {
@@ -992,7 +992,7 @@
   {
     "id": 52,
     "key": "GR_ML_SCI_OF#00052",
-    "text": "[CALM] pressure seals failing. [GRUFF] slowly. which is the worst kind of failure",
+    "text": "[calm, measured] pressure seals failing. [low voice, gruff] slowly. which is the worst kind of failure",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -1011,7 +1011,7 @@
   {
     "id": 53,
     "key": "GR_ML_SCI_OF#00053",
-    "text": "[TIRED] another day where nobody asks how i'm holding up. [GRUFF] probably better that way",
+    "text": "[tired, dead tired] another day where nobody asks how i'm holding up. [low voice, gruff] probably better that way",
     "type": "declaration",
     "intent": "complaint",
     "conditions": {
@@ -1030,7 +1030,7 @@
   {
     "id": 54,
     "key": "GR_ML_SCI_OF#00054",
-    "text": "[GRUFF] i've kept people alive with less. [CALM] not better. just less",
+    "text": "[low voice, gruff] i've kept people alive with less. [calm, measured] not better. just less",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -1049,7 +1049,7 @@
   {
     "id": 55,
     "key": "GR_ML_SCI_OF#00055",
-    "text": "[NERVOUS] temperature rising in life support. [EMPHASIS] we need to find the heat source before it cascades",
+    "text": "[nervous, speaking quickly] temperature rising in life support. [emphasis] we need to find the heat source before it cascades",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -1071,7 +1071,7 @@
   {
     "id": 56,
     "key": "GR_ML_SCI_OF#00056",
-    "text": "[DRY] the good news is you're not dying today. [DEADPAN] the bad news is tomorrow's still open",
+    "text": "[dry tone] the good news is you're not dying today. [deadpan] the bad news is tomorrow's still open",
     "type": "reply",
     "intent": "banter",
     "conditions": {
@@ -1090,7 +1090,7 @@
   {
     "id": 57,
     "key": "GR_ML_SCI_OF#00057",
-    "text": "[GRUFF] request help. [CALM] that means you're finally thinking straight",
+    "text": "[low voice, gruff] request help. [calm, measured] that means you're finally thinking straight",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -1110,7 +1110,7 @@
   {
     "id": 58,
     "key": "GR_ML_SCI_OF#00058",
-    "text": "[GRIM] Valdez was supposed to be here. [SIGHS] instead i'm saying his name into the void",
+    "text": "[grim, heavy] Valdez was supposed to be here. [sigh] instead i'm saying his name into the void",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -1132,7 +1132,7 @@
   {
     "id": 59,
     "key": "GR_ML_SCI_OF#00059",
-    "text": "[CALM] the medbay's ready for casualties. [GRUFF] i hope i don't have to use it",
+    "text": "[calm, measured] the medbay's ready for casualties. [low voice, gruff] i hope i don't have to use it",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -1154,7 +1154,7 @@
   {
     "id": 60,
     "key": "GR_ML_SCI_OF#00060",
-    "text": "[EMPHASIS] something's not adding up. [SUSPICIOUS] the AI's readings don't match what i'm seeing",
+    "text": "[emphasis] something's not adding up. [suspicious tone] the AI's readings don't match what i'm seeing",
     "type": "opener",
     "intent": "suspicion_ai",
     "conditions": {
@@ -1173,7 +1173,7 @@
   {
     "id": 61,
     "key": "GR_ML_SCI_OF#00061",
-    "text": "[TIRED] i used to believe in recovery. [DEADPAN] now i settle for survival",
+    "text": "[tired, dead tired] i used to believe in recovery. [deadpan] now i settle for survival",
     "type": "reply",
     "intent": "memory",
     "conditions": {
@@ -1195,7 +1195,7 @@
   {
     "id": 62,
     "key": "GR_ML_SCI_OF#00062",
-    "text": "[GRUFF] blood work doesn't lie. [CALM] people do. all the time",
+    "text": "[low voice, gruff] blood work doesn't lie. [calm, measured] people do. all the time",
     "type": "reply",
     "intent": "doubt",
     "conditions": {
@@ -1214,7 +1214,7 @@
   {
     "id": 63,
     "key": "GR_ML_SCI_OF#00063",
-    "text": "[NERVOUS] the infection's spreading faster than containment. [EMPHASIS] we're losing this one",
+    "text": "[nervous, speaking quickly] the infection's spreading faster than containment. [emphasis] we're losing this one",
     "type": "reply",
     "intent": "fear_vent",
     "conditions": {
@@ -1236,7 +1236,7 @@
   {
     "id": 64,
     "key": "GR_ML_SCI_OF#00064",
-    "text": "[CALM] offer help. [DEADPAN] that usually means you want something worse than what's already happening",
+    "text": "[calm, measured] offer help. [deadpan] that usually means you want something worse than what's already happening",
     "type": "reply",
     "intent": "work_talk",
     "conditions": {
@@ -1255,7 +1255,7 @@
   {
     "id": 65,
     "key": "GR_ML_SCI_OF#00065",
-    "text": "[RESIGNED] this injury's going to slow you down. [GRUFF] not as much as death would",
+    "text": "[resigned, flat tone] this injury's going to slow you down. [low voice, gruff] not as much as death would",
     "type": "opener",
     "intent": "pain",
     "conditions": {
@@ -1275,7 +1275,7 @@
   {
     "id": 66,
     "key": "GR_ML_SCI_OF#00066",
-    "text": "[GRUFF] everyone panics. [CALM] the ones who survive are the ones who panic quietly",
+    "text": "[low voice, gruff] everyone panics. [calm, measured] the ones who survive are the ones who panic quietly",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -1294,7 +1294,7 @@
   {
     "id": 67,
     "key": "GR_ML_SCI_OF#00067",
-    "text": "[CALM] systems holding. [DEADPAN] for now. everything's temporary on a failing ship",
+    "text": "[calm, measured] systems holding. [deadpan] for now. everything's temporary on a failing ship",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -1310,7 +1310,7 @@
   {
     "id": 68,
     "key": "GR_ML_SCI_OF#00068",
-    "text": "[DRY] you're asking about the captain. [GRUFF] the captain's making decisions i wouldn't make",
+    "text": "[dry tone] you're asking about the captain. [low voice, gruff] the captain's making decisions i wouldn't make",
     "type": "reply",
     "intent": "banter",
     "conditions": {
@@ -1329,7 +1329,7 @@
   {
     "id": 69,
     "key": "GR_ML_SCI_OF#00069",
-    "text": "[EMPHASIS] multiple failures converging. [NERVOUS] this is the moment where it all unravels",
+    "text": "[emphasis] multiple failures converging. [nervous, speaking quickly] this is the moment where it all unravels",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -1345,7 +1345,7 @@
   {
     "id": 70,
     "key": "GR_ML_SCI_OF#00070",
-    "text": "[CALM] the AI's suggestion has merit. [GRUFF] doesn't mean i like relying on it",
+    "text": "[calm, measured] the AI's suggestion has merit. [low voice, gruff] doesn't mean i like relying on it",
     "type": "reply",
     "intent": "praise_ai",
     "conditions": {
@@ -1364,7 +1364,7 @@
   {
     "id": 71,
     "key": "GR_ML_SCI_OF#00071",
-    "text": "[GRUFF] you want my opinion. [DRY] that's your first mistake",
+    "text": "[low voice, gruff] you want my opinion. [dry tone] that's your first mistake",
     "type": "opener",
     "intent": "banter",
     "conditions": {
@@ -1380,7 +1380,7 @@
   {
     "id": 72,
     "key": "GR_ML_SCI_OF#00072",
-    "text": "[TIRED] another shift. [DEADPAN] last shift felt longer. maybe i'm getting numb to it",
+    "text": "[tired, dead tired] another shift. [deadpan] last shift felt longer. maybe i'm getting numb to it",
     "type": "declaration",
     "intent": "complaint",
     "conditions": {
@@ -1402,7 +1402,7 @@
   {
     "id": 73,
     "key": "GR_ML_SCI_OF#00073",
-    "text": "[CALM] structural integrity failing. [URGENT] the walls aren't going to hold much longer",
+    "text": "[calm, measured] structural integrity failing. [urgent, fast pace] the walls aren't going to hold much longer",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -1424,7 +1424,7 @@
   {
     "id": 74,
     "key": "GR_ML_SCI_OF#00074",
-    "text": "[DEADPAN] you're making a joke. [GRUFF] the fact that you can still joke means you'll probably survive",
+    "text": "[deadpan] you're making a joke. [low voice, gruff] the fact that you can still joke means you'll probably survive",
     "type": "reply",
     "intent": "gallows_humor",
     "conditions": {
@@ -1443,7 +1443,7 @@
   {
     "id": 75,
     "key": "GR_ML_SCI_OF#00075",
-    "text": "[GRUFF] you've got questions. [CALM] i've got answers. most of them are bad",
+    "text": "[low voice, gruff] you've got questions. [calm, measured] i've got answers. most of them are bad",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -1462,7 +1462,7 @@
   {
     "id": 76,
     "key": "GR_ML_SCI_OF#00076",
-    "text": "[GRIM] loss of consciousness coming. [EMPHASIS] whoever this is, i know what's happening next",
+    "text": "[grim, heavy] loss of consciousness coming. [emphasis] whoever this is, i know what's happening next",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -1484,7 +1484,7 @@
   {
     "id": 77,
     "key": "GR_ML_SCI_OF#00077",
-    "text": "[CALM] something wrong with the readings. [SUSPICIOUS] the AI should have caught that",
+    "text": "[calm, measured] something wrong with the readings. [suspicious tone] the AI should have caught that",
     "type": "reply",
     "intent": "suspicion_ai",
     "conditions": {
@@ -1503,7 +1503,7 @@
   {
     "id": 78,
     "key": "GR_ML_SCI_OF#00078",
-    "text": "[DEADPAN] the disease is winning. [CALM] which means we have maybe six hours before it spreads beyond containment",
+    "text": "[deadpan] the disease is winning. [calm, measured] which means we have maybe six hours before it spreads beyond containment",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -1522,7 +1522,7 @@
   {
     "id": 79,
     "key": "GR_ML_SCI_OF#00079",
-    "text": "[GRUFF] you survived. [CALM] that makes you statistically interesting",
+    "text": "[low voice, gruff] you survived. [calm, measured] that makes you statistically interesting",
     "type": "closer",
     "intent": "praise_ai",
     "conditions": {
@@ -1541,7 +1541,7 @@
   {
     "id": 80,
     "key": "GR_ML_SCI_OF#00080",
-    "text": "[NERVOUS] i'm at the edge of what i can do. [EMPHASIS] the rest is luck",
+    "text": "[nervous, speaking quickly] i'm at the edge of what i can do. [emphasis] the rest is luck",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -1557,7 +1557,7 @@
   {
     "id": 81,
     "key": "GR_ML_SCI_OF#00081",
-    "text": "[DRY] you want reassurance. [GRUFF] the honest kind is: i don't know if you'll make it",
+    "text": "[dry tone] you want reassurance. [low voice, gruff] the honest kind is: i don't know if you'll make it",
     "type": "reply",
     "intent": "doubt",
     "conditions": {
@@ -1576,7 +1576,7 @@
   {
     "id": 82,
     "key": "GR_ML_SCI_OF#00082",
-    "text": "[CALM] door seals locked down. [DEADPAN] whatever's on the far side of that door isn't coming back",
+    "text": "[calm, measured] door seals locked down. [deadpan] whatever's on the far side of that door isn't coming back",
     "type": "declaration",
     "intent": "acknowledgment",
     "conditions": {
@@ -1595,7 +1595,7 @@
   {
     "id": 83,
     "key": "GR_ML_SCI_OF#00083",
-    "text": "[GRUFF] you want to know if it hurts. [CALM] yes. but the alternative hurts worse",
+    "text": "[low voice, gruff] you want to know if it hurts. [calm, measured] yes. but the alternative hurts worse",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -1615,7 +1615,7 @@
   {
     "id": 84,
     "key": "GR_ML_SCI_OF#00084",
-    "text": "[TIRED] another name. [SIGHS] i'll find space in the list",
+    "text": "[tired, dead tired] another name. [sigh] i'll find space in the list",
     "type": "reply",
     "intent": "memory",
     "conditions": {
@@ -1640,7 +1640,7 @@
   {
     "id": 85,
     "key": "GR_ML_SCI_OF#00085",
-    "text": "[EMPHASIS] nobody gets out of this unscathed. [CALM] the best we do is limp through",
+    "text": "[emphasis] nobody gets out of this unscathed. [calm, measured] the best we do is limp through",
     "type": "opener",
     "intent": "warning",
     "conditions": {
@@ -1656,7 +1656,7 @@
   {
     "id": 86,
     "key": "GR_ML_SCI_OF#00086",
-    "text": "[DEADPAN] you're asking about the android. [GRUFF] can't infect something that doesn't breathe",
+    "text": "[deadpan] you're asking about the android. [low voice, gruff] can't infect something that doesn't breathe",
     "type": "reply",
     "intent": "work_talk",
     "conditions": {
@@ -1676,7 +1676,7 @@
   {
     "id": 87,
     "key": "GR_ML_SCI_OF#00087",
-    "text": "[CALM] i've triage'd worse than this. [GRUFF] that ship didn't make it either",
+    "text": "[calm, measured] i've triage'd worse than this. [low voice, gruff] that ship didn't make it either",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -1695,7 +1695,7 @@
   {
     "id": 88,
     "key": "GR_ML_SCI_OF#00088",
-    "text": "[GRUFF] you want honesty. [DEADPAN] you're stable. that's as good as it gets right now",
+    "text": "[low voice, gruff] you want honesty. [deadpan] you're stable. that's as good as it gets right now",
     "type": "closer",
     "intent": "reassurance",
     "conditions": {
@@ -1715,7 +1715,7 @@
   {
     "id": 89,
     "key": "GR_ML_SCI_OF#00089",
-    "text": "[NERVOUS] cascading failures. [EMPHASIS] this is the moment everything stops pretending it's going to hold",
+    "text": "[nervous, speaking quickly] cascading failures. [emphasis] this is the moment everything stops pretending it's going to hold",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -1731,7 +1731,7 @@
   {
     "id": 90,
     "key": "GR_ML_SCI_OF#00090",
-    "text": "[CALM] repair's holding. [DEADPAN] until it doesn't. which could be hours. could be minutes",
+    "text": "[calm, measured] repair's holding. [deadpan] until it doesn't. which could be hours. could be minutes",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -1750,7 +1750,7 @@
   {
     "id": 91,
     "key": "GR_ML_SCI_OF#00091",
-    "text": "[DRY] you want to be useful. [CALM] sit still. not getting worse is useful",
+    "text": "[dry tone] you want to be useful. [calm, measured] sit still. not getting worse is useful",
     "type": "reply",
     "intent": "banter",
     "conditions": {
@@ -1772,7 +1772,7 @@
   {
     "id": 92,
     "key": "GR_ML_SCI_OF#00092",
-    "text": "[GRUFF] you're asking about hope. [DEADPAN] hope is what gets people killed. i prefer pragmatism",
+    "text": "[low voice, gruff] you're asking about hope. [deadpan] hope is what gets people killed. i prefer pragmatism",
     "type": "reply",
     "intent": "doubt",
     "conditions": {
@@ -1791,7 +1791,7 @@
   {
     "id": 93,
     "key": "GR_ML_SCI_OF#00093",
-    "text": "[CALM] crisis is over. [DEADPAN] the cost is being tallied. i can feel it",
+    "text": "[calm, measured] crisis is over. [deadpan] the cost is being tallied. i can feel it",
     "type": "closer",
     "intent": "status_report",
     "conditions": {
@@ -1813,7 +1813,7 @@
   {
     "id": 94,
     "key": "GR_ML_SCI_OF#00094",
-    "text": "[GRUFF] you want to discuss the meal. [CALM] it's either better than yesterday or i'm losing my taste",
+    "text": "[low voice, gruff] you want to discuss the meal. [calm, measured] it's either better than yesterday or i'm losing my taste",
     "type": "reply",
     "intent": "smalltalk",
     "conditions": {
@@ -1838,7 +1838,7 @@
   {
     "id": 95,
     "key": "GR_ML_SCI_OF#00095",
-    "text": "[DEADPAN] the shift's done. [CALM] everyone's still breathing. [GRUFF] that's enough for today",
+    "text": "[deadpan] the shift's done. [calm, measured] everyone's still breathing. [low voice, gruff] that's enough for today",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1860,7 +1860,7 @@
   {
     "id": 96,
     "key": "GR_ML_SCI_OF#00096",
-    "text": "[EMPHASIS] quiet shifts are the ones before the bad ones. [GRUFF] i never trust quiet",
+    "text": "[emphasis] quiet shifts are the ones before the bad ones. [low voice, gruff] i never trust quiet",
     "type": "reply",
     "intent": "suspicion_ai",
     "conditions": {
@@ -1882,7 +1882,7 @@
   {
     "id": 97,
     "key": "GR_ML_SCI_OF#00097",
-    "text": "[CALM] everyone's injuries documented. [DEADPAN] everyone's in my records. permanently",
+    "text": "[calm, measured] everyone's injuries documented. [deadpan] everyone's in my records. permanently",
     "type": "declaration",
     "intent": "acknowledgment",
     "conditions": {
@@ -1904,7 +1904,7 @@
   {
     "id": 98,
     "key": "GR_ML_SCI_OF#00098",
-    "text": "[GRUFF] you're trying to survive. [CALM] that's smarter than most people. stick with that",
+    "text": "[low voice, gruff] you're trying to survive. [calm, measured] that's smarter than most people. stick with that",
     "type": "reply",
     "intent": "praise_ai",
     "conditions": {
@@ -1923,7 +1923,7 @@
   {
     "id": 99,
     "key": "GR_ML_SCI_OF#00099",
-    "text": "[RESIGNED] the list gets longer. [SIGHS] it always does. i just keep adding names",
+    "text": "[resigned, flat tone] the list gets longer. [sigh] it always does. i just keep adding names",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -1942,7 +1942,7 @@
   {
     "id": 100,
     "key": "GR_ML_SCI_OF#00100",
-    "text": "[CALM] i'm still here. [GRUFF] that's the only promise i can make anymore",
+    "text": "[calm, measured] i'm still here. [low voice, gruff] that's the only promise i can make anymore",
     "type": "closer",
     "intent": "reassurance",
     "conditions": {
