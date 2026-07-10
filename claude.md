@@ -50,12 +50,12 @@ A spaceship AI simulator. The player is the ship's computer. See `GDD.md` for fu
 
 ## Gameplay Backlog (next up after resume queue)
 
-1. DirectiveMenu "lock/unlock door" directive type (mechanics exist, no UI)
+1. ~~Door lock/unlock UI~~ ✅ + full click-interaction overhaul (2026-07-10, `9dd37f6`/`bc18d59`/`7706f53`): crew menu w/ Move-to submenu + Inspect page (equipment/monologue/jobs), top-right info card w/ portrait, door Open/Close+Lock/Unlock (decoupled axes), Repair→designate-crew directive flow
 2. Visual hookup for room power/air state (signals emit; no RoomBase dimming yet)
 3. Combat resolver (WoundTable/apply_damage implemented; nothing calls it — Bad Cargo scenario is the vehicle)
 4. Bubble editor pass (fixed 260px width looks oversized on short lines)
 5. CampaignManager for between-run structure
-6. Crew portraits in HUD/bubbles
+6. Crew portraits in bubbles (info-card portrait shipped; bubbles still plain)
 
 **Blocked on**: nothing hard. SaveManager stub by design — `ScenarioRunner`'s leg-boundary hook calls `SaveManager.save_checkpoint()`, still a no-op.
 
