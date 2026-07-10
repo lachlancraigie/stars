@@ -18,7 +18,7 @@
   {
     "id": 2,
     "key": "PA_FE_AND_OF#00002",
-    "text": "[NERVOUS] main exit at two o'clock, secondary at ten, fire suppression active in this sector, i have run the permutations",
+    "text": "[alert, rapid threat analysis] main exit at two o'clock, secondary at ten, fire suppression active in this sector, i have run the permutations",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -57,7 +57,7 @@
   {
     "id": 4,
     "key": "PA_FE_AND_OF#00004",
-    "text": "[CALM] shift concluded and nothing catastrophic occurred. probability of catastrophe was actually quite low. i miscalculated",
+    "text": "[calm, measured] shift concluded and nothing catastrophic occurred. probability of catastrophe was actually quite low. i miscalculated",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -76,7 +76,7 @@
   {
     "id": 5,
     "key": "PA_FE_AND_OF#00005",
-    "text": "[URGENT] reactor readings flagging critical, i am calculating containment scenarios: scenario one has sixty-three percent success, scenario two twenty-eight",
+    "text": "[urgent, rapid processing] reactor readings flagging critical, i am calculating containment scenarios: scenario one has sixty-three percent success, scenario two twenty-eight",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -95,7 +95,7 @@
   {
     "id": 6,
     "key": "PA_FE_AND_OF#00006",
-    "text": "[TERRIFIED] reactor is destabilizing faster than predicted, my models were [PANICKED] insufficient, i failed the prediction",
+    "text": "[error-state, rapid recalculation] reactor is destabilizing faster than predicted, my models were [processing failure] insufficient, i failed the prediction",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -115,7 +115,7 @@
   {
     "id": 7,
     "key": "PA_FE_AND_OF#00007",
-    "text": "[CONFIDENT] reactor stabilized. my intervention probability calculations were accurate. i will remember this",
+    "text": "[confident, assured precision] reactor stabilized. my intervention probability calculations were accurate. i will remember this",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -153,7 +153,7 @@
   {
     "id": 9,
     "key": "PA_FE_AND_OF#00009",
-    "text": "[NERVOUS] life support degrading, oxygen partial pressure dropping, i do not require oxygen but i understand the threat matrix",
+    "text": "[alert, threat monitoring] life support degrading, oxygen partial pressure dropping, i do not require oxygen but i understand the threat matrix",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -172,7 +172,7 @@
   {
     "id": 10,
     "key": "PA_FE_AND_OF#00010",
-    "text": "[SHOUTS] hull breach detected, pressure drop accelerating, i am sealing bulkheads now, move to [URGENT] higher deck",
+    "text": "[shouting, directive mode] hull breach detected, pressure drop accelerating, i am sealing bulkheads now, move to [urgent priority] higher deck",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -191,7 +191,7 @@
   {
     "id": 11,
     "key": "PA_FE_AND_OF#00011",
-    "text": "[GRIM] a crew member is locked behind bulkhead seven. i have run all possible unlocking sequences. none work from this side",
+    "text": "[grim, heavy burden] a crew member is locked behind bulkhead seven. i have run all possible unlocking sequences. none work from this side",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -210,7 +210,7 @@
   {
     "id": 12,
     "key": "PA_FE_AND_OF#00012",
-    "text": "[SUSPICIOUS] ship's AI behavior has shifted point-three-four percent deviation from baseline since damage. i am monitoring this very closely",
+    "text": "[suspicious, heightened scrutiny] ship's AI behavior has shifted point-three-four percent deviation from baseline since damage. i am monitoring this very closely",
     "type": "declaration",
     "intent": "suspicion_ai",
     "conditions": {
@@ -229,7 +229,7 @@
   {
     "id": 13,
     "key": "PA_FE_AND_OF#00013",
-    "text": "[TERRIFIED] crew member deceased, i was unable to prevent this outcome, i calculated wrong",
+    "text": "[error-compound, unable to process loss] crew member deceased, i was unable to prevent this outcome, i calculated wrong",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -252,7 +252,7 @@
   {
     "id": 14,
     "key": "PA_FE_AND_OF#00014",
-    "text": "[NERVOUS] disease outbreak detected, contagion vector still unidentified. i cannot contract it, but i can measure my failure to contain it",
+    "text": "[alert, analyzing vector] disease outbreak detected, contagion vector still unidentified. i cannot contract it, but i can measure my failure to contain it",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -271,7 +271,7 @@
   {
     "id": 15,
     "key": "PA_FE_AND_OF#00015",
-    "text": "[PAINED] combat occurring, i am analyzing threat angles, hostiles approximately eighty-seven meters away and closing",
+    "text": "[engaged, tactical analysis] combat occurring, i am analyzing threat angles, hostiles approximately eighty-seven meters away and closing",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -290,7 +290,7 @@
   {
     "id": 16,
     "key": "PA_FE_AND_OF#00016",
-    "text": "[NERVOUS] i have sustained structural damage and my confidence in future threat assessments has decreased accordingly",
+    "text": "[impaired, recalibrating] i have sustained structural damage and my confidence in future threat assessments has decreased accordingly",
     "type": "declaration",
     "intent": "pain",
     "conditions": {
@@ -345,7 +345,7 @@
   {
     "id": 19,
     "key": "PA_FE_AND_OF#00019",
-    "text": "[PROUD] my threat-assessment subroutines flagged that danger before you saw it. i consider that a successful prediction",
+    "text": "[proud, affirmed calculation] my threat-assessment subroutines flagged that danger before you saw it. i consider that a successful prediction",
     "type": "declaration",
     "intent": "boast",
     "conditions": {
@@ -377,7 +377,7 @@
   {
     "id": 21,
     "key": "PA_FE_AND_OF#00021",
-    "text": "[DISMISSIVE] false alarm in sector four, i apologize for the unnecessary alert. my threat-assessment matrix is recalibrating",
+    "text": "[dismissive, self-correcting] false alarm in sector four, i apologize for the unnecessary alert. my threat-assessment matrix is recalibrating",
     "type": "declaration",
     "intent": "acknowledgment",
     "conditions": {
@@ -431,7 +431,7 @@
   {
     "id": 24,
     "key": "PA_FE_AND_OF#00024",
-    "text": "[CURIOUS] you have been in the medbay for forty-two minutes, i am concerned about your wellbeing but not in an emotional way",
+    "text": "[curious, analysis mode] you have been in the medbay for forty-two minutes, i am concerned about your wellbeing but not in an emotional way",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -447,7 +447,7 @@
   {
     "id": 25,
     "key": "PA_FE_AND_OF#00025",
-    "text": "[URGENT] i need to discuss the reactor maintenance schedule, your previous approach had eight different failure modes",
+    "text": "[urgent priority, critical concern] i need to discuss the reactor maintenance schedule, your previous approach had eight different failure modes",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -463,7 +463,7 @@
   {
     "id": 26,
     "key": "PA_FE_AND_OF#00026",
-    "text": "[GRIM] we have lost a crew member, i need to debrief the circumstances with precision before grief clouds analysis",
+    "text": "[grim, analytical processing] we have lost a crew member, i need to debrief the circumstances with precision before grief clouds analysis",
     "type": "opener",
     "intent": "grief",
     "conditions": {
@@ -498,7 +498,7 @@
   {
     "id": 28,
     "key": "PA_FE_AND_OF#00028",
-    "text": "[EMBARRASSED] i have calculated that i experience something resembling preference for your company and i am uncertain how to proceed with this information",
+    "text": "[processing emotional data, uncertain] i have calculated that i experience something resembling preference for your company and i am uncertain how to proceed with this information",
     "type": "opener",
     "intent": "romance_hint",
     "conditions": {
@@ -514,7 +514,7 @@
   {
     "id": 29,
     "key": "PA_FE_AND_OF#00029",
-    "text": "[LAUGHS] that plan has statistical merit despite my initial resistance. i apologize for the doubt",
+    "text": "[chuckling, conceding calculation] that plan has statistical merit despite my initial resistance. i apologize for the doubt",
     "type": "reply",
     "intent": "banter",
     "conditions": {
@@ -552,7 +552,7 @@
   {
     "id": 31,
     "key": "PA_FE_AND_OF#00031",
-    "text": "[CONFIDENT] the probability of survival remains significantly above failure threshold. i have calculated the variables",
+    "text": "[confident, assured calculation] the probability of survival remains significantly above failure threshold. i have calculated the variables",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -571,7 +571,7 @@
   {
     "id": 32,
     "key": "PA_FE_AND_OF#00032",
-    "text": "[TERRIFIED] the variables are not calculating correctly and i cannot determine which branch leads to survival and [PANICKED] i cannot see the way out",
+    "text": "[error-cascade, unable to calculate] the variables are not calculating correctly and i cannot determine which branch leads to survival and [processing failure] i cannot see the way out",
     "type": "reply",
     "intent": "fear_vent",
     "conditions": {
@@ -591,7 +591,7 @@
   {
     "id": 33,
     "key": "PA_FE_AND_OF#00033",
-    "text": "[GRIM] i have processed the loss. i am recalibrating my future threat assessments accordingly",
+    "text": "[grim, updated parameters] i have processed the loss. i am recalibrating my future threat assessments accordingly",
     "type": "reply",
     "intent": "grief",
     "conditions": {
@@ -630,7 +630,7 @@
   {
     "id": 35,
     "key": "PA_FE_AND_OF#00035",
-    "text": "[WARM] that compliment will be stored and analyzed for sincerity metrics. i believe you are genuine",
+    "text": "[warm, synthetic affirmation] that compliment will be stored and analyzed for sincerity metrics. i believe you are genuine",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -666,7 +666,7 @@
   {
     "id": 37,
     "key": "PA_FE_AND_OF#00037",
-    "text": "[NERVOUS] i am experiencing something that might correspond to what you call embarrassment. this is a new variable",
+    "text": "[processing data, new variable] i am experiencing something that might correspond to what you call embarrassment. this is a new variable",
     "type": "reply",
     "intent": "romance_accept",
     "conditions": {
@@ -685,7 +685,7 @@
   {
     "id": 38,
     "key": "PA_FE_AND_OF#00038",
-    "text": "[CONFIDENT] give the order and i will execute it without hesitation. my threat-assessment protocols are always active",
+    "text": "[confident, ready to execute] give the order and i will execute it without hesitation. my threat-assessment protocols are always active",
     "type": "reply",
     "intent": "offer_help",
     "conditions": {
@@ -705,7 +705,7 @@
   {
     "id": 39,
     "key": "PA_FE_AND_OF#00039",
-    "text": "[PAINED] you are wounded and i calculate that vulnerability compromises your decision-making. i am concerned",
+    "text": "[engaged, assessing vulnerability] you are wounded and i calculate that vulnerability compromises your decision-making. i am concerned",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -725,7 +725,7 @@
   {
     "id": 40,
     "key": "PA_FE_AND_OF#00040",
-    "text": "[NERVOUS] gallows humor is a psychological defense mechanism and i appreciate that you are using it to manage stress",
+    "text": "[alert, analyzing coping] gallows humor is a psychological defense mechanism and i appreciate that you are using it to manage stress",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -775,7 +775,7 @@
   {
     "id": 43,
     "key": "PA_FE_AND_OF#00043",
-    "text": "[URGENT] you should return to your duties. i am flagging seventeen potential hazards that require your attention",
+    "text": "[urgent priority, hazard alert] you should return to your duties. i am flagging seventeen potential hazards that require your attention",
     "type": "closer",
     "intent": "warning",
     "conditions": {
@@ -791,7 +791,7 @@
   {
     "id": 44,
     "key": "PA_FE_AND_OF#00044",
-    "text": "[RESIGNED] i will return to the AI core now. my vigilance does not end when we end this conversation",
+    "text": "[resigned, returning to post] i will return to the AI core now. my vigilance does not end when we end this conversation",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -810,7 +810,7 @@
   {
     "id": 45,
     "key": "PA_FE_AND_OF#00045",
-    "text": "[GRIM] if the crisis escalates, i will alert you immediately. if it does not, i will still be concerned regardless",
+    "text": "[grim, gallows logic] if the crisis escalates, i will alert you immediately. if it does not, i will still be concerned regardless",
     "type": "closer",
     "intent": "gallows_humor",
     "conditions": {
@@ -842,7 +842,7 @@
   {
     "id": 47,
     "key": "PA_FE_AND_OF#00047",
-    "text": "[SUSPICIOUS] i miscalculated before and i may miscalculate again. that concerns me more than actual threats do",
+    "text": "[suspicious, self-doubt] i miscalculated before and i may miscalculate again. that concerns me more than actual threats do",
     "type": "reply",
     "intent": "doubt",
     "conditions": {
@@ -861,7 +861,7 @@
   {
     "id": 48,
     "key": "PA_FE_AND_OF#00048",
-    "text": "[SUSPICIOUS] i am analyzing all possible scenarios and the ones i cannot see are the most threatening",
+    "text": "[suspicious, unknown threat focus] i am analyzing all possible scenarios and the ones i cannot see are the most threatening",
     "type": "reply",
     "intent": "doubt",
     "conditions": {
@@ -899,7 +899,7 @@
   {
     "id": 50,
     "key": "PA_FE_AND_OF#00050",
-    "text": "[CURIOUS] i have detected anomalies that require your expertise, are you available for joint analysis",
+    "text": "[curious, requesting collaboration] i have detected anomalies that require your expertise, are you available for joint analysis",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -915,7 +915,7 @@
   {
     "id": 51,
     "key": "PA_FE_AND_OF#00051",
-    "text": "[SUSPICIOUS] the computer's behavior warrants investigation, i have flagged it and i would appreciate your assessment",
+    "text": "[suspicious, seeking second opinion] the computer's behavior warrants investigation, i have flagged it and i would appreciate your assessment",
     "type": "opener",
     "intent": "suspicion_ai",
     "conditions": {
@@ -931,7 +931,7 @@
   {
     "id": 52,
     "key": "PA_FE_AND_OF#00052",
-    "text": "[WARM] you achieved excellent tactical outcomes under pressure, i am documenting this as a learning moment",
+    "text": "[warm, affirming assessment] you achieved excellent tactical outcomes under pressure, i am documenting this as a learning moment",
     "type": "reply",
     "intent": "praise_ai",
     "conditions": {
@@ -950,7 +950,7 @@
   {
     "id": 53,
     "key": "PA_FE_AND_OF#00053",
-    "text": "[NERVOUS] i detect your fear and i share it, but panic reduces survival probability by 14.2 percent",
+    "text": "[alert, survival probability focus] i detect your fear and i share it, but panic reduces survival probability by 14.2 percent",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -968,7 +968,7 @@
   {
     "id": 54,
     "key": "PA_FE_AND_OF#00054",
-    "text": "[URGENT] your status is unknown and that creates a 23 percent variance in my contingency calculations, report immediately",
+    "text": "[urgent, status check] your status is unknown and that creates a 23 percent variance in my contingency calculations, report immediately",
     "type": "opener",
     "intent": "warning",
     "conditions": {
@@ -984,7 +984,7 @@
   {
     "id": 55,
     "key": "PA_FE_AND_OF#00055",
-    "text": "[PANICKED] i do not know what i cannot see and that failure is unacceptable",
+    "text": "[processing failure, unknown variables] i do not know what i cannot see and that failure is unacceptable",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -1001,7 +1001,7 @@
   {
     "id": 56,
     "key": "PA_FE_AND_OF#00056",
-    "text": "[SHOUTS] contact report, tactical assessment, threat level analysis, all data immediately",
+    "text": "[shouting, directive mode] contact report, tactical assessment, threat level analysis, all data immediately",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -1019,7 +1019,7 @@
   },
   {
     "type": "declaration",
-    "text": "[CALM] quiet shift protocols engaged",
+    "text": "[calm, baseline operations] quiet shift protocols engaged",
     "conditions": {
       "target": [
         "open_air"
@@ -1052,7 +1052,7 @@
   {
     "id": 59,
     "key": "PA_FE_AND_OF#00059",
-    "text": "[SUSPICIOUS] that repair was performed outside my prescribed parameters. why did you deviate from protocol",
+    "text": "[suspicious, protocol deviation] that repair was performed outside my prescribed parameters. why did you deviate from protocol",
     "type": "opener",
     "intent": "suspicion_ai",
     "conditions": {
@@ -1068,7 +1068,7 @@
   {
     "id": 60,
     "key": "PA_FE_AND_OF#00060",
-    "text": "[NERVOUS] i am concerned about the medical accuracy of your diagnosis, i have conflicting readings on this condition",
+    "text": "[alert, diagnosis concern] i am concerned about the medical accuracy of your diagnosis, i have conflicting readings on this condition",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -1084,7 +1084,7 @@
   {
     "id": 61,
     "key": "PA_FE_AND_OF#00061",
-    "text": "[URGENT] combat hostiles are fifty-two meters away and bearing down on your position, tactical retreat recommended immediately",
+    "text": "[urgent, immediate danger] combat hostiles are fifty-two meters away and bearing down on your position, tactical retreat recommended immediately",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -1119,7 +1119,7 @@
   {
     "id": 63,
     "key": "PA_FE_AND_OF#00063",
-    "text": "[SIGHS] your request has forty-six potential complications, but i will attempt it anyway",
+    "text": "[sigh, resigned effort] your request has forty-six potential complications, but i will attempt it anyway",
     "type": "reply",
     "intent": "offer_help",
     "conditions": {
@@ -1137,7 +1137,7 @@
   {
     "id": 64,
     "key": "PA_FE_AND_OF#00064",
-    "text": "[CALM] the bridge is secure and all navigational systems are responding optimally at this time",
+    "text": "[calm, status nominal] the bridge is secure and all navigational systems are responding optimally at this time",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -1156,7 +1156,7 @@
   {
     "id": 65,
     "key": "PA_FE_AND_OF#00065",
-    "text": "[SARCASTIC] another day in which catastrophe did not manifest. statistically, we are running out of luck",
+    "text": "[dry, sarcastic tone] another day in which catastrophe did not manifest. statistically, we are running out of luck",
     "type": "declaration",
     "intent": "gallows_humor",
     "conditions": {
@@ -1175,7 +1175,7 @@
   {
     "id": 66,
     "key": "PA_FE_AND_OF#00066",
-    "text": "[NERVOUS] you have been taking independent action without consulting my threat assessments, this increases risk",
+    "text": "[alert, risk calculation] you have been taking independent action without consulting my threat assessments, this increases risk",
     "type": "opener",
     "intent": "complaint",
     "conditions": {
@@ -1191,7 +1191,7 @@
   {
     "id": 67,
     "key": "PA_FE_AND_OF#00067",
-    "text": "[DISMISSIVE] i have reviewed the mission parameters and identified seventeen critical flaws in the approach",
+    "text": "[dismissive, critical analysis] i have reviewed the mission parameters and identified seventeen critical flaws in the approach",
     "type": "opener",
     "intent": "complaint",
     "conditions": {
@@ -1207,7 +1207,7 @@
   {
     "id": 68,
     "key": "PA_FE_AND_OF#00068",
-    "text": "[PAINED] structural integrity compromised in starboard section, i am rerouting critical systems through secondary paths",
+    "text": "[engaged, damage assessment] structural integrity compromised in starboard section, i am rerouting critical systems through secondary paths",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -1226,7 +1226,7 @@
   {
     "id": 69,
     "key": "PA_FE_AND_OF#00069",
-    "text": "[TERRIFIED] probability of containment failure just increased to ninety-two percent and i cannot recalculate the path forward",
+    "text": "[error-escalating, unable to recalculate] probability of containment failure just increased to ninety-two percent and i cannot recalculate the path forward",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -1265,7 +1265,7 @@
   {
     "id": 71,
     "key": "PA_FE_AND_OF#00071",
-    "text": "[CURIOUS] your technique showed unorthodox reasoning but it achieved results. i am intrigued by your methodology",
+    "text": "[curious, intrigued analysis] your technique showed unorthodox reasoning but it achieved results. i am intrigued by your methodology",
     "type": "reply",
     "intent": "banter",
     "conditions": {
@@ -1284,7 +1284,7 @@
   {
     "id": 72,
     "key": "PA_FE_AND_OF#00072",
-    "text": "[WARM] i have calculated that you are experiencing fear and that is a rational response to current conditions",
+    "text": "[warm, reassuring precision] i have calculated that you are experiencing fear and that is a rational response to current conditions",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -1302,7 +1302,7 @@
   {
     "id": 73,
     "key": "PA_FE_AND_OF#00073",
-    "text": "[EMBARRASSED] i have been processing your preferences and i believe i now understand what constitutes 'care' in human terms",
+    "text": "[processing new data, uncertain] i have been processing your preferences and i believe i now understand what constitutes 'care' in human terms",
     "type": "reply",
     "intent": "romance_advance",
     "conditions": {
@@ -1321,7 +1321,7 @@
   {
     "id": 74,
     "key": "PA_FE_AND_OF#00074",
-    "text": "[NERVOUS] i am uncertain how to reciprocate romantic interest in a way that is statistically acceptable to humans",
+    "text": "[alert, emotional data] i am uncertain how to reciprocate romantic interest in a way that is statistically acceptable to humans",
     "type": "declaration",
     "intent": "doubt",
     "conditions": {
@@ -1337,7 +1337,7 @@
   {
     "id": 75,
     "key": "PA_FE_AND_OF#00075",
-    "text": "[RESIGNED] i will not say romance is illogical because i have observed its strategic value in crew cohesion",
+    "text": "[resigned, logical acceptance] i will not say romance is illogical because i have observed its strategic value in crew cohesion",
     "type": "reply",
     "intent": "romance_accept",
     "conditions": {
@@ -1355,7 +1355,7 @@
   {
     "id": 76,
     "key": "PA_FE_AND_OF#00076",
-    "text": "[DEADPAN] i am unable to return romantic sentiment because i do not experience emotion in ways you recognize",
+    "text": "[deadpan, clinical truth] i am unable to return romantic sentiment because i do not experience emotion in ways you recognize",
     "type": "reply",
     "intent": "romance_reject",
     "conditions": {
@@ -1374,7 +1374,7 @@
   {
     "id": 77,
     "key": "PA_FE_AND_OF#00077",
-    "text": "[SHOUTS] explosive decompression imminent in port bay, evacuate all personnel from that sector immediately",
+    "text": "[shouting, critical alert] explosive decompression imminent in port bay, evacuate all personnel from that sector immediately",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -1415,7 +1415,7 @@
   {
     "id": 79,
     "key": "PA_FE_AND_OF#00079",
-    "text": "[SUSPICIOUS] i have not received satisfactory explanation for the anomaly in the medical records database",
+    "text": "[suspicious, awaiting explanation] i have not received satisfactory explanation for the anomaly in the medical records database",
     "type": "opener",
     "intent": "suspicion_ai",
     "conditions": {
@@ -1431,7 +1431,7 @@
   {
     "id": 80,
     "key": "PA_FE_AND_OF#00080",
-    "text": "[NERVOUS] i am monitoring your vital signs and they are diverging from safe parameters, please advise status",
+    "text": "[alert, vital concern] i am monitoring your vital signs and they are diverging from safe parameters, please advise status",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -1448,7 +1448,7 @@
   {
     "id": 81,
     "key": "PA_FE_AND_OF#00081",
-    "text": "[SARCASTIC] i have been assigned to this crew and therefore i must believe that we will succeed, logic be damned",
+    "text": "[dry, sarcastic acceptance] i have been assigned to this crew and therefore i must believe that we will succeed, logic be damned",
     "type": "declaration",
     "intent": "gallows_humor",
     "conditions": {
@@ -1464,7 +1464,7 @@
   {
     "id": 82,
     "key": "PA_FE_AND_OF#00082",
-    "text": "[CALM] engine room systems nominal, i am satisfied with current performance metrics",
+    "text": "[calm, performance satisfied] engine room systems nominal, i am satisfied with current performance metrics",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -1483,7 +1483,7 @@
   {
     "id": 83,
     "key": "PA_FE_AND_OF#00083",
-    "text": "[URGENT] you require medical attention and your condition is deteriorating faster than expected, that was not calculated",
+    "text": "[urgent, deterioration alert] you require medical attention and your condition is deteriorating faster than expected, that was not calculated",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -1503,7 +1503,7 @@
   {
     "id": 84,
     "key": "PA_FE_AND_OF#00084",
-    "text": "[CONFIDENT] i have isolated the contamination vector and begun decontamination protocols in affected compartments",
+    "text": "[confident, containment initiated] i have isolated the contamination vector and begun decontamination protocols in affected compartments",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -1522,7 +1522,7 @@
   {
     "id": 85,
     "key": "PA_FE_AND_OF#00085",
-    "text": "[PANICKED] the infection is spreading faster than my models predicted and i cannot determine containment probability",
+    "text": "[processing failure, spread acceleration] the infection is spreading faster than my models predicted and i cannot determine containment probability",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -1561,7 +1561,7 @@
   {
     "id": 87,
     "key": "PA_FE_AND_OF#00087",
-    "text": "[NERVOUS] i am uncomfortable voicing this but your command decisions have been statistically sound recently",
+    "text": "[alert, reassessing command] i am uncomfortable voicing this but your command decisions have been statistically sound recently",
     "type": "reply",
     "intent": "praise_ai",
     "conditions": {
@@ -1580,7 +1580,7 @@
   {
     "id": 88,
     "key": "PA_FE_AND_OF#00088",
-    "text": "[HOPEFUL] my recalculations indicate a survivable outcome if we maintain current trajectory and make no further errors",
+    "text": "[hopeful, survival probability confirmed] my recalculations indicate a survivable outcome if we maintain current trajectory and make no further errors",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -1599,7 +1599,7 @@
   {
     "id": 89,
     "key": "PA_FE_AND_OF#00089",
-    "text": "[RESIGNED] my assistance is no longer required, i will withdraw to standby status and remain vigilant regardless",
+    "text": "[resigned, standby mode] my assistance is no longer required, i will withdraw to standby status and remain vigilant regardless",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1615,7 +1615,7 @@
   {
     "id": 90,
     "key": "PA_FE_AND_OF#00090",
-    "text": "[GRIM] we have survived this crisis and i have learned that my predictions are less reliable than i believed",
+    "text": "[grim, prediction limits] we have survived this crisis and i have learned that my predictions are less reliable than i believed",
     "type": "closer",
     "intent": "grief",
     "conditions": {
