@@ -1173,5 +1173,537 @@
     },
     "reply_to_intents": [],
     "weight": 1.0
+  },
+  {
+    "id": 65,
+    "key": "EV_FE_SCI_CA#00065",
+    "text": "[DRY] someone re-shelved my pharmacy by color. it looks lovely. it will also kill somebody. undo it",
+    "type": "declaration",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "location": [
+        "medbay"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 66,
+    "key": "EV_FE_SCI_CA#00066",
+    "text": "your duty log says eight hours. your cortisol says twenty. one of these is lying to me",
+    "type": "opener",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 67,
+    "key": "EV_FE_SCI_CA#00067",
+    "text": "[DRY] diagnosis: chronic comedian. prognosis: tolerated, barely",
+    "type": "reply",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "banter"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 68,
+    "key": "EV_FE_SCI_CA#00068",
+    "text": "you're baiting your captain. bold. i'd prescribe caution but you'd just build a tolerance",
+    "type": "reply",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "banter",
+      "boast"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 69,
+    "key": "EV_FE_SCI_CA#00069",
+    "text": "reviewed the fuel curves against the medical stores. we run out of patience before we run out of either. acceptable",
+    "type": "declaration",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 70,
+    "key": "EV_FE_SCI_CA#00070",
+    "text": "bring me three numbers: air margin, fuel margin, crew hours slept. i'll make the decision from there",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 71,
+    "key": "EV_FE_SCI_CA#00071",
+    "text": "command note: i round every estimate down. optimism is a rounding error i can't afford",
+    "type": "declaration",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 72,
+    "key": "EV_FE_SCI_CA#00072",
+    "text": "[DEADPAN] today's chart: two crises, zero deaths. by this ship's baseline, that's a wellness retreat",
+    "type": "declaration",
+    "intent": "gallows_humor",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "recent_events": [
+        "crisis_resolved"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 73,
+    "key": "EV_FE_SCI_CA#00073",
+    "text": "[DRY] if the ship kills us, i want it noted i kept excellent records the whole way down",
+    "type": "reply",
+    "intent": "gallows_humor",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "gallows_humor",
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 74,
+    "key": "EV_FE_SCI_CA#00074",
+    "text": "in the trauma bay we called the quiet hour before dawn the shift lull. i still don't trust it",
+    "type": "declaration",
+    "intent": "memory",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "recent_events": [
+        "quiet_shift"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 75,
+    "key": "EV_FE_SCI_CA#00075",
+    "text": "i remember my first command loss. the second-guessing outlived the grief. i budget for both now",
+    "type": "reply",
+    "intent": "memory",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "memory",
+      "grief"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 76,
+    "key": "EV_FE_SCI_CA#00076",
+    "text": "i signed today's course change knowing the data was thin. captains sign anyway. that's the whole job",
+    "type": "declaration",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 77,
+    "key": "EV_FE_SCI_CA#00077",
+    "text": "your doubt is clinically appropriate. mine is too. we proceed anyway, carefully",
+    "type": "reply",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "doubt"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 78,
+    "key": "EV_FE_SCI_CA#00078",
+    "text": "[CALM] your pulse is up, your reasoning is intact. that combination survives. hold onto the second part",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 79,
+    "key": "EV_FE_SCI_CA#00079",
+    "text": "[REASSURING] i've watched this crew beat worse odds while bleeding. the sample size is small but the trend is ours",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "doubt"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 80,
+    "key": "EV_FE_SCI_CA#00080",
+    "text": "[WARM] elevated heart rate, no fever, symptoms present only around you. i've ruled out everything but the obvious",
+    "type": "opener",
+    "intent": "romance_hint",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 81,
+    "key": "EV_FE_SCI_CA#00081",
+    "text": "i triage everything, and you keep coming up first. that's as romantic as my vocabulary gets",
+    "type": "reply",
+    "intent": "romance_advance",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "romance_hint"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 82,
+    "key": "EV_FE_SCI_CA#00082",
+    "text": "[WARM] yes. i checked my judgment twice for bias. it held",
+    "type": "reply",
+    "intent": "romance_accept",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "romance_advance"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 83,
+    "key": "EV_FE_SCI_CA#00083",
+    "text": "captain's log, informal: hull sound, crew tired, coffee low. threat assessment: the coffee",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 84,
+    "key": "EV_FE_SCI_CA#00084",
+    "text": "[CALM] all hands: hydrate, sleep in shifts, report symptoms early. i can fix almost anything i hear about in time",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 85,
+    "key": "EV_FE_SCI_CA#00085",
+    "text": "power triage, in order: air, medbay, doors, everything else. nobody's comfort made the list. mine included",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "recent_events": [
+        "power_low"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 86,
+    "key": "EV_FE_SCI_CA#00086",
+    "text": "[CALM] we can live in the dark. we can't live without scrubbers. the priority list writes itself",
+    "type": "reply",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "recent_events": [
+        "power_low"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "complaint",
+      "warning"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 87,
+    "key": "EV_FE_SCI_CA#00087",
+    "text": "[GRIM] oxygen curve says twenty hours at current burn. every calm person on this ship just bought us more",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 14,
+      "recent_events": [
+        "life_support_failure"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 88,
+    "key": "EV_FE_SCI_CA#00088",
+    "text": "symptoms of hypoxia arrive before the alarm does. anyone dizzy or euphoric reports to me immediately",
+    "type": "reply",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "recent_events": [
+        "life_support_failure"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "warning",
+      "status_report"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 89,
+    "key": "EV_FE_SCI_CA#00089",
+    "text": "[GRIM] i keep the names of everyone my orders have cost. today the list got longer. it stays legible",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "recent_events": [
+        "door_locked_on_crew"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 90,
+    "key": "EV_FE_SCI_CA#00090",
+    "text": "the door was my call, not yours. you carried out an order. i carry the order",
+    "type": "reply",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 14,
+      "recent_events": [
+        "door_locked_on_crew"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "grief",
+      "doubt"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 91,
+    "key": "EV_FE_SCI_CA#00091",
+    "text": "i need two volunteers with steady hands and no head wounds. medbay, ten minutes",
+    "type": "opener",
+    "intent": "request_help",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "recent_events": [
+        "injury",
+        "combat"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 92,
+    "key": "EV_FE_SCI_CA#00092",
+    "text": "[DRY] dismissed. if anything ruptures, bleeds, or explodes, i want to hear it from you before the alarm",
+    "type": "closer",
+    "intent": "gallows_humor",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 93,
+    "key": "EV_FE_SCI_CA#00093",
+    "text": "[WARM] go sleep. doctor's orders, captain's orders, and mine. three signatures, one instruction",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
   }
 ]

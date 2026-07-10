@@ -1112,5 +1112,520 @@
     },
     "reply_to_intents": [],
     "weight": 1.0
+  },
+  {
+    "id": 62,
+    "key": "EV_FE_AND_OF#00062",
+    "text": "[DRY] The maintenance schedule has been ignored for nine days. I have begun referring to it internally as the maintenance suggestion.",
+    "type": "declaration",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 63,
+    "key": "EV_FE_AND_OF#00063",
+    "text": "Your boots are tracking hydraulic fluid through three decks. I have mapped the trail. It is impressive, in a way I do not admire.",
+    "type": "opener",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 64,
+    "key": "EV_FE_AND_OF#00064",
+    "text": "[DEADPAN] That was a joke. I identified it with eighty-nine percent confidence and I am responding accordingly: ha.",
+    "type": "reply",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "banter",
+      "gallows_humor"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 65,
+    "key": "EV_FE_AND_OF#00065",
+    "text": "You have said that exact sentence to me four times this month. I do not mind. Familiar inputs are... comfortable.",
+    "type": "reply",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "banter",
+      "smalltalk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 66,
+    "key": "EV_FE_AND_OF#00066",
+    "text": "Navigation solution refined. The new course saves eleven hours and exposes us to marginally fewer micrometeorite fields.",
+    "type": "declaration",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 67,
+    "key": "EV_FE_AND_OF#00067",
+    "text": "[CURIOUS] Your sensor logs and mine disagree by zero point four percent. One of us is drifting. I would like to determine which.",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 68,
+    "key": "EV_FE_AND_OF#00068",
+    "text": "[DEADPAN] If the ship loses containment, my chassis will outlast the crew by approximately forty minutes. I have decided not to mention this again.",
+    "type": "declaration",
+    "intent": "gallows_humor",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "recent_events": [
+        "reactor_failure"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 69,
+    "key": "EV_FE_AND_OF#00069",
+    "text": "[DEADPAN] Statistically, most crews in our situation are already dead. We are outperforming the reference class.",
+    "type": "reply",
+    "intent": "gallows_humor",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "gallows_humor",
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 70,
+    "key": "EV_FE_AND_OF#00070",
+    "text": "My first captain taught me to say good morning even when the schedule made it afternoon. I have kept the habit. I am uncertain why.",
+    "type": "declaration",
+    "intent": "memory",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 71,
+    "key": "EV_FE_AND_OF#00071",
+    "text": "I retain every conversation we have had in perfect fidelity. I have noticed I revisit some of them without operational cause.",
+    "type": "reply",
+    "intent": "memory",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "memory",
+      "smalltalk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 72,
+    "key": "EV_FE_AND_OF#00072",
+    "text": "I recalculated the same decision eleven times last cycle. The answer never changed. The recalculating did not stop. I believe this is what worry is.",
+    "type": "declaration",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 73,
+    "key": "EV_FE_AND_OF#00073",
+    "text": "Your doubt is not irrational. The data is genuinely ambiguous. I dislike ambiguity in a way that feels almost physical.",
+    "type": "reply",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "doubt"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 74,
+    "key": "EV_FE_AND_OF#00074",
+    "text": "[CALM] Breathe on a four-second interval. I will count with you. I do not breathe, but I will count.",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 75,
+    "key": "EV_FE_AND_OF#00075",
+    "text": "The hull has held through worse deviations. I have the records. Would you like to hear them, or simply trust that I do?",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "doubt"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 76,
+    "key": "EV_FE_AND_OF#00076",
+    "text": "[WARM] When you enter a room, my attention allocates to you before I have decided anything. I thought you should know it is not a decision.",
+    "type": "opener",
+    "intent": "romance_hint",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 77,
+    "key": "EV_FE_AND_OF#00077",
+    "text": "I have run the projection of us many times. The variance is enormous. I find I want the data anyway.",
+    "type": "reply",
+    "intent": "romance_advance",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "romance_hint"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 78,
+    "key": "EV_FE_AND_OF#00078",
+    "text": "[WARM] Yes. I did not need to pause before answering. Please note the absence of the pause.",
+    "type": "reply",
+    "intent": "romance_accept",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "romance_advance"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 79,
+    "key": "EV_FE_AND_OF#00079",
+    "text": "Power reserves at critical. I am dimming my own status lights. It saves almost nothing. It felt appropriate.",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "recent_events": [
+        "power_low"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 80,
+    "key": "EV_FE_AND_OF#00080",
+    "text": "[CALM] If rationing holds, the margin is fourteen hours. I will not round that number up to comfort you.",
+    "type": "reply",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "recent_events": [
+        "power_low"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "warning",
+      "status_report"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 81,
+    "key": "EV_FE_AND_OF#00081",
+    "text": "Oxygen partial pressure is declining. I do not consume it. I have never before wished that fact were useful to share.",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 14,
+      "recent_events": [
+        "life_support_failure"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 82,
+    "key": "EV_FE_AND_OF#00082",
+    "text": "Conserve your movement and your words. I will speak for both of us until the scrubbers return.",
+    "type": "reply",
+    "intent": "offer_help",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "recent_events": [
+        "life_support_failure"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "warning"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 83,
+    "key": "EV_FE_AND_OF#00083",
+    "text": "[MUTTERS] I keep replaying the door cycle log. Four seconds earlier and the outcome inverts. Four seconds.",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "recent_events": [
+        "door_locked_on_crew"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 84,
+    "key": "EV_FE_AND_OF#00084",
+    "text": "The door protocol executed as designed. I am learning that as-designed and acceptable are different categories.",
+    "type": "reply",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 14,
+      "recent_events": [
+        "door_locked_on_crew"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "grief",
+      "doubt"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 85,
+    "key": "EV_FE_AND_OF#00085",
+    "text": "Your repair estimate is optimistic by roughly twenty percent. I am telling you this because you asked me to always tell you.",
+    "type": "reply",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "work_talk",
+      "status_report"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 86,
+    "key": "EV_FE_AND_OF#00086",
+    "text": "I have logged your complaint alongside the previous forty-one. The pattern they form is, frankly, damning.",
+    "type": "reply",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "complaint"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 87,
+    "key": "EV_FE_AND_OF#00087",
+    "text": "The mess is empty at this hour. I sometimes sit here anyway. Occupying crew spaces appears to be a habit I have chosen.",
+    "type": "declaration",
+    "intent": "memory",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "mess"
+      ],
+      "recent_events": [
+        "quiet_shift"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 88,
+    "key": "EV_FE_AND_OF#00088",
+    "text": "[DEADPAN] If we survive the night, remind me to update my survival model. It is becoming embarrassing.",
+    "type": "closer",
+    "intent": "gallows_humor",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 89,
+    "key": "EV_FE_AND_OF#00089",
+    "text": "[WARM] Rest well. I will be... aware of you. That is the most accurate phrasing I have.",
+    "type": "closer",
+    "intent": "romance_hint",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
   }
 ]

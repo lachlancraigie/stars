@@ -992,5 +992,1021 @@
     },
     "reply_to_intents": [],
     "weight": 1.0
+  },
+  {
+    "id": 53,
+    "key": "GR_FE_ENG_OF#00053",
+    "text": "[WARM] whole shift and not one tantrum out of her. who are you and what'd you do with my mule",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "mood": [
+        "ok",
+        "high"
+      ],
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "quiet_shift"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 54,
+    "key": "GR_FE_ENG_OF#00054",
+    "text": "[MUTTERS] quiet like this in the yards meant the hull you were cutting still had secrets in it",
+    "type": "declaration",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 7,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "quiet_shift"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 55,
+    "key": "GR_FE_ENG_OF#00055",
+    "text": "[DRY] this protein brick's tougher than the deck plate i cut yesterday. i'd know. i chewed both",
+    "type": "declaration",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "mess"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "meal_time"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 56,
+    "key": "GR_FE_ENG_OF#00056",
+    "text": "[WARM] hot food, warm engine, nobody bleeding. somebody frame this day",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "mood": [
+        "ok",
+        "high"
+      ],
+      "location": [
+        "mess"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "meal_time"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 57,
+    "key": "GR_FE_ENG_OF#00057",
+    "text": "morning, you old cow. cough up your secrets before my coffee's done, i hate surprises after",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "shift_start"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 58,
+    "key": "GR_FE_ENG_OF#00058",
+    "text": "[TIRED] handing her over balanced and fed. wrote down every lie she told me today for the next shift",
+    "type": "declaration",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "shift_end"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 59,
+    "key": "GR_FE_ENG_OF#00059",
+    "text": "[GRIM] power's down to scraps. heat the people or light the halls — she can't haul both, so pick",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "power_low"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 60,
+    "key": "GR_FE_ENG_OF#00060",
+    "text": "[MUTTERS] rationing amps like the last week of a salvage tow. hated it then, hate it now",
+    "type": "declaration",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "power_low"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 61,
+    "key": "GR_FE_ENG_OF#00061",
+    "text": "[GRIM] scrubbers first. always scrubbers. you can fix anything in bad air except your own lungs",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "location": [
+        "life_support"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "life_support_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 62,
+    "key": "GR_FE_ENG_OF#00062",
+    "text": "[PLEADING] come on, sweetheart, don't quit on me out here. that's how ships end up in yards like mine",
+    "type": "declaration",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "reactor_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 63,
+    "key": "GR_FE_ENG_OF#00063",
+    "text": "[ANGRY] a door that locks on its own crew is scrap wearing a uniform. i'll pull its actuator myself",
+    "type": "declaration",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "door_locked_on_crew"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 64,
+    "key": "GR_FE_ENG_OF#00064",
+    "text": "[GRIM] cut a hundred doors open in the yards. never had somebody knocking from the other side before",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 14,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "door_locked_on_crew"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 65,
+    "key": "GR_FE_ENG_OF#00065",
+    "text": "[RESIGNED] computer's hurt and still trimming the power fair. that's a work ethic i can respect",
+    "type": "declaration",
+    "intent": "praise_ai",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "ai_damaged"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 66,
+    "key": "GR_FE_ENG_OF#00066",
+    "text": "[PAINED] every wreck i ever stripped had a crew once. today i learned what that costs to know",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 14,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 67,
+    "key": "GR_FE_ENG_OF#00067",
+    "text": "[PAINED] shoulder's grinding like a dry bearing. i'd swap the part out if anybody sold them for people",
+    "type": "declaration",
+    "intent": "pain",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "wounded": true,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "injury"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 68,
+    "key": "GR_FE_ENG_OF#00068",
+    "text": "[PANICKED] she's tearing at the seams and my hands are too small to hold a whole ship together",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 13,
+      "stress_max": 20,
+      "panic": true,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "hull_breach"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 69,
+    "key": "GR_FE_ENG_OF#00069",
+    "text": "[WARM] i keep a nameplate off every ship i ever stripped. box of ghosts under my bunk. they like the engine noise",
+    "type": "declaration",
+    "intent": "memory",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 70,
+    "key": "GR_FE_ENG_OF#00070",
+    "text": "batch under the aft coolant tank's about ready. it's medicinal, if the captain asks",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "mood": [
+        "ok",
+        "high"
+      ],
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 71,
+    "key": "GR_FE_ENG_OF#00071",
+    "text": "[DRY] port inspectors. thirty seconds aboard and they chalk a weld i'd hang my own weight off",
+    "type": "declaration",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 72,
+    "key": "GR_FE_ENG_OF#00072",
+    "text": "[WARM] Gus fell asleep mid-sentence about manifold torque again. didn't have the heart to say he'd told me twice already",
+    "type": "declaration",
+    "intent": "romance_hint",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 73,
+    "key": "GR_FE_ENG_OF#00073",
+    "text": "up and at it. she behaved all night, which means she's saving something special for us",
+    "type": "opener",
+    "intent": "greeting",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "shift_start"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 74,
+    "key": "GR_FE_ENG_OF#00074",
+    "text": "[GRUFF] sit. eat. the mule will still be broken when you're done chewing",
+    "type": "opener",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "mess"
+      ],
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "meal_time"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 75,
+    "key": "GR_FE_ENG_OF#00075",
+    "text": "[GRIM] captain, we're choosing what freezes tonight. i want your say before i start pulling breakers",
+    "type": "opener",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "CA"
+      ],
+      "recent_events": [
+        "power_low"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 76,
+    "key": "GR_FE_ENG_OF#00076",
+    "text": "[URGENT] air plant's wheezing like a hauled-up diver. i need spare hands and spare filters, that order",
+    "type": "opener",
+    "intent": "request_help",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "location": [
+        "life_support"
+      ],
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "life_support_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 77,
+    "key": "GR_FE_ENG_OF#00077",
+    "text": "[SUSPICIOUS] computer rerouted power without asking me. it's hurt, fine, but it better not make a habit of it",
+    "type": "opener",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "ai_damaged"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 78,
+    "key": "GR_FE_ENG_OF#00078",
+    "text": "hey. you. eat something that isn't coffee, or i start telling people whose wrench keeps turning up in my toolbox",
+    "type": "opener",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "GR_ML_ENG_CM"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 79,
+    "key": "GR_FE_ENG_OF#00079",
+    "text": "[PAINED] come sit with me a minute. the dead don't need us tonight, but the living do",
+    "type": "opener",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 14,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 80,
+    "key": "GR_FE_ENG_OF#00080",
+    "text": "walk the cargo racks with me. something back there's ticking like a cheap clock and i want a witness",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "location": [
+        "cargo"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 81,
+    "key": "GR_FE_ENG_OF#00081",
+    "text": "[DRY] nothing's broken and nobody's bleeding, and it's making my teeth itch. talk to me about anything",
+    "type": "opener",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "quiet_shift"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 82,
+    "key": "GR_FE_ENG_OF#00082",
+    "text": "[TIRED] that's the shift. buy you a cup of whatever the mess is calling coffee",
+    "type": "opener",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "shift_end"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 83,
+    "key": "GR_FE_ENG_OF#00083",
+    "text": "[WARM] still upright, still greasy. day's young though",
+    "type": "reply",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "greeting",
+      "smalltalk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 84,
+    "key": "GR_FE_ENG_OF#00084",
+    "text": "[LAUGHS] tastes like the inside of a filter housing. eat it anyway, you'll want the ballast",
+    "type": "reply",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "mess"
+      ],
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "meal_time"
+      ]
+    },
+    "reply_to_intents": [
+      "smalltalk",
+      "complaint"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 85,
+    "key": "GR_FE_ENG_OF#00085",
+    "text": "[CALM] we've got amps to breathe and amps to think, in that order. the rest is comfort, and comfort keeps",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "power_low"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "complaint"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 86,
+    "key": "GR_FE_ENG_OF#00086",
+    "text": "[CONFIDENT] she's not dying, she's sulking. i've talked her out of blacker moods than this",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "reactor_failure"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "doubt"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 87,
+    "key": "GR_FE_ENG_OF#00087",
+    "text": "[ANGRY] don't defend that door to me. steel doesn't get to make choices about people",
+    "type": "reply",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "door_locked_on_crew"
+      ]
+    },
+    "reply_to_intents": [
+      "status_report",
+      "reassurance"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 88,
+    "key": "GR_FE_ENG_OF#00088",
+    "text": "[SUSPICIOUS] i've watched it too. it hesitates now, like a winch with a frayed line. you don't stand under that",
+    "type": "reply",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "ai_damaged"
+      ]
+    },
+    "reply_to_intents": [
+      "suspicion_ai",
+      "doubt"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 89,
+    "key": "GR_FE_ENG_OF#00089",
+    "text": "[RESIGNED] fine, credit where it's due. the computer trims a power load better than my last two juniors",
+    "type": "reply",
+    "intent": "praise_ai",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "praise_ai",
+      "status_report"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 90,
+    "key": "GR_FE_ENG_OF#00090",
+    "text": "[WARM] you don't carry it alone. that's the whole point of a crew, love",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 14,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [
+      "grief"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 91,
+    "key": "GR_FE_ENG_OF#00091",
+    "text": "[GRUFF] quit walking on it and let the doc look. machines get downtime. so do you",
+    "type": "reply",
+    "intent": "offer_help",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "pain",
+      "complaint"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 92,
+    "key": "GR_FE_ENG_OF#00092",
+    "text": "[PAINED] i've been dinged worse by a swinging hook. eyes on the gauge, not on me",
+    "type": "reply",
+    "intent": "pain",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "wounded": true,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "offer_help",
+      "reassurance"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 93,
+    "key": "GR_FE_ENG_OF#00093",
+    "text": "[FLIRTY] keep sweet-talking me like that and i'll start thinking you want something torqued",
+    "type": "reply",
+    "intent": "romance_hint",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "GR_ML_ENG_CM"
+      ]
+    },
+    "reply_to_intents": [
+      "banter",
+      "smalltalk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 94,
+    "key": "GR_FE_ENG_OF#00094",
+    "text": "[EMBARRASSED] ah, hell. c'mere then, before i change my mind and marry the reactor instead",
+    "type": "reply",
+    "intent": "romance_accept",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "GR_ML_ENG_CM"
+      ]
+    },
+    "reply_to_intents": [
+      "romance_hint",
+      "romance_advance"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 95,
+    "key": "GR_FE_ENG_OF#00095",
+    "text": "[LAUGHS] that's grim. that's real grim. save it for my funeral, it'll land better",
+    "type": "reply",
+    "intent": "gallows_humor",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "gallows_humor",
+      "banter"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 96,
+    "key": "GR_FE_ENG_OF#00096",
+    "text": "[CURIOUS] run that noise past me again. slow, like you're selling me a used ship",
+    "type": "reply",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "work_talk",
+      "status_report"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 97,
+    "key": "GR_FE_ENG_OF#00097",
+    "text": "[PANICKED] i hear it, i hear it — everybody out of the compartment, argue with me after",
+    "type": "reply",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 13,
+      "stress_max": 20,
+      "panic": true,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "warning",
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 98,
+    "key": "GR_FE_ENG_OF#00098",
+    "text": "[WARM] go on, get. me and the old cow have words to exchange in private",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 99,
+    "key": "GR_FE_ENG_OF#00099",
+    "text": "[TIRED] enough. the mule can hold her grudges till morning, and so can i",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "shift_end"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 100,
+    "key": "GR_FE_ENG_OF#00100",
+    "text": "[GRUFF] settled then. i'll bring the wrenches, you bring the nerve",
+    "type": "closer",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "work_talk",
+      "offer_help"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 101,
+    "key": "GR_FE_ENG_OF#00101",
+    "text": "[WARM] we lived, she flew, and nobody i love is in the medbay tonight. good night",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "crisis_resolved"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 102,
+    "key": "GR_FE_ENG_OF#00102",
+    "text": "[DRY] tell the captain the readings are boring again. best news this boat ever gets",
+    "type": "closer",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "quiet_shift"
+      ]
+    },
+    "reply_to_intents": [
+      "status_report",
+      "smalltalk"
+    ],
+    "weight": 1.0
   }
 ]

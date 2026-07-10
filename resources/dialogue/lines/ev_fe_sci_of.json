@@ -1313,5 +1313,516 @@
     },
     "reply_to_intents": [],
     "weight": 1.0
+  },
+  {
+    "id": 72,
+    "key": "EV_FE_SCI_OF#00072",
+    "text": "[SIGHS] Someone has been treating the burn kit as a general toolbox again. Gauze is not insulation tape.",
+    "type": "declaration",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "location": [
+        "medbay"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 73,
+    "key": "EV_FE_SCI_OF#00073",
+    "text": "You skipped your follow-up. Twice. I don't chase patients, but I do find them.",
+    "type": "opener",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 74,
+    "key": "EV_FE_SCI_OF#00074",
+    "text": "[DRY] Your self-diagnosis is fascinating and wrong. Medicine thanks you for your enthusiasm.",
+    "type": "reply",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "banter",
+      "boast"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 75,
+    "key": "EV_FE_SCI_OF#00075",
+    "text": "[LAUGHS] No, I can't prescribe you a day off from him. There's no billing code for that.",
+    "type": "reply",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "banter",
+      "complaint"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 76,
+    "key": "EV_FE_SCI_OF#00076",
+    "text": "Checklist, out loud: antiseptics stocked, plasma chilled, splints counted twice. Say it, then trust it.",
+    "type": "declaration",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "location": [
+        "medbay"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 77,
+    "key": "EV_FE_SCI_OF#00077",
+    "text": "[CURIOUS] Tell me what the engine room air smells like today. You'd be surprised what a medic learns from that.",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "ENG"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 78,
+    "key": "EV_FE_SCI_OF#00078",
+    "text": "[DEADPAN] The medbay's quiet. Either everyone's healthy or everyone's hiding their symptoms. Experience votes for the second.",
+    "type": "declaration",
+    "intent": "gallows_humor",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "location": [
+        "medbay"
+      ],
+      "recent_events": [
+        "quiet_shift"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 79,
+    "key": "EV_FE_SCI_OF#00079",
+    "text": "[DRY] If we make it through this, the case study alone will be worth the trauma. Small comfort. Real comfort.",
+    "type": "reply",
+    "intent": "gallows_humor",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "gallows_humor",
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 80,
+    "key": "EV_FE_SCI_OF#00080",
+    "text": "My first year out here, I learned that shipboard medicine is mostly listening. The bodies tell you late. The people tell you early.",
+    "type": "declaration",
+    "intent": "memory",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 81,
+    "key": "EV_FE_SCI_OF#00081",
+    "text": "I remember treating you when you first came aboard. You lied about the pain then too.",
+    "type": "reply",
+    "intent": "memory",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "memory",
+      "pain"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 82,
+    "key": "EV_FE_SCI_OF#00082",
+    "text": "I calibrated the scanner three times tonight. The scanner's fine. It's my certainty that needed the calibration.",
+    "type": "declaration",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 83,
+    "key": "EV_FE_SCI_OF#00083",
+    "text": "Doubt is a fine instrument if you read it and put it down. Don't hold it all shift.",
+    "type": "reply",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "doubt"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 84,
+    "key": "EV_FE_SCI_OF#00084",
+    "text": "[CALM] Hand on your shoulder. Now: your breathing, your heart, your thoughts, in that order. We'll steady all three.",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 85,
+    "key": "EV_FE_SCI_OF#00085",
+    "text": "[WARM] Grief is not an illness. I'm not going to treat it. I'm just going to sit here while it moves through.",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 14,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "grief"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 86,
+    "key": "EV_FE_SCI_OF#00086",
+    "text": "[WARM] I keep tea ready at the end of your shift. It stopped being a coincidence weeks ago.",
+    "type": "opener",
+    "intent": "romance_hint",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 87,
+    "key": "EV_FE_SCI_OF#00087",
+    "text": "I spend my days keeping people alive. You're the one who makes me feel like it worked.",
+    "type": "reply",
+    "intent": "romance_advance",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "romance_hint"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 88,
+    "key": "EV_FE_SCI_OF#00088",
+    "text": "[WARM] Yes. And before you ask — no, I didn't need to think it over. Some diagnoses are instant.",
+    "type": "reply",
+    "intent": "romance_accept",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "romance_advance"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 89,
+    "key": "EV_FE_SCI_OF#00089",
+    "text": "Power's down, so we're back to basics: pressure, elevation, clean hands, good light where we can find it.",
+    "type": "declaration",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "recent_events": [
+        "power_low"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 90,
+    "key": "EV_FE_SCI_OF#00090",
+    "text": "[CALM] The cold storage holds for eighteen hours without power. After that, I start making decisions I'd rather not.",
+    "type": "reply",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "recent_events": [
+        "power_low"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "warning",
+      "work_talk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 91,
+    "key": "EV_FE_SCI_OF#00091",
+    "text": "[CALM] Low oxygen shows up as bad temper before it shows up as blue lips. Be patient with each other out there.",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "recent_events": [
+        "life_support_failure"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 92,
+    "key": "EV_FE_SCI_OF#00092",
+    "text": "Sit. Slow breaths through the nose. The scrubbers are being fixed and panic burns air we've promised elsewhere.",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "recent_events": [
+        "life_support_failure"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 93,
+    "key": "EV_FE_SCI_OF#00093",
+    "text": "[GRIM] I certified the death behind that door without ever reaching my patient. There's no protocol for how that feels.",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "recent_events": [
+        "door_locked_on_crew"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 94,
+    "key": "EV_FE_SCI_OF#00094",
+    "text": "You made a call that saved this side of the door. Treat the guilt like a wound: clean it, dress it, don't pick at it.",
+    "type": "reply",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 14,
+      "recent_events": [
+        "door_locked_on_crew"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "grief",
+      "doubt"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 95,
+    "key": "EV_FE_SCI_OF#00095",
+    "text": "You're favoring that left side. Come by the medbay before it becomes a story you tell wrong.",
+    "type": "opener",
+    "intent": "offer_help",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 96,
+    "key": "EV_FE_SCI_OF#00096",
+    "text": "[PAINED] Pulled a shoulder lifting a patient. The irony is noted, filed, and hurting.",
+    "type": "declaration",
+    "intent": "pain",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "wounded": true,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 97,
+    "key": "EV_FE_SCI_OF#00097",
+    "text": "I was short with you during triage. Priority sorting isn't personal, but it can feel that way. I'm sorry.",
+    "type": "reply",
+    "intent": "apology",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "complaint"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 98,
+    "key": "EV_FE_SCI_OF#00098",
+    "text": "[DRY] Off you go. Try to come back with stories, not symptoms.",
+    "type": "closer",
+    "intent": "gallows_humor",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 99,
+    "key": "EV_FE_SCI_OF#00099",
+    "text": "[WARM] Last thing before you go — you're healthier than you think, and braver than you feel. Both are on your chart.",
+    "type": "closer",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
   }
 ]

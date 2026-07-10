@@ -1084,5 +1084,509 @@
     },
     "reply_to_intents": [],
     "weight": 1.0
+  },
+  {
+    "id": 60,
+    "key": "EV_FE_MAR_OF#00060",
+    "text": "[DRY] Third time this week someone's left the armory unlogged. I don't repeat orders. I start assigning inventory duty instead.",
+    "type": "declaration",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 61,
+    "key": "EV_FE_MAR_OF#00061",
+    "text": "Your gear was stowed wrong. Once is tired. Twice is a habit. Fix the habit.",
+    "type": "opener",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 62,
+    "key": "EV_FE_MAR_OF#00062",
+    "text": "[DRY] You want to arm-wrestle a marine officer for the last coffee ration. I admire the confidence. I'll still take the coffee.",
+    "type": "reply",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "banter"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 63,
+    "key": "EV_FE_MAR_OF#00063",
+    "text": "[LAUGHS] That's the worst tactical plan I've heard all week, and I sat through the drill review.",
+    "type": "reply",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "banter",
+      "boast"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 64,
+    "key": "EV_FE_MAR_OF#00064",
+    "text": "Ran lane drills in the cargo bay this morning. Reaction times are up. Formation discipline still needs work.",
+    "type": "declaration",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "location": [
+        "cargo"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 65,
+    "key": "EV_FE_MAR_OF#00065",
+    "text": "Walk me through your section's chokepoints. Slowly. I want to know them like you do.",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 66,
+    "key": "EV_FE_MAR_OF#00066",
+    "text": "[DEADPAN] The ship's trying to kill us slightly slower than yesterday. In this line of work, that's momentum.",
+    "type": "declaration",
+    "intent": "gallows_humor",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 67,
+    "key": "EV_FE_MAR_OF#00067",
+    "text": "[DRY] If it wanted us dead efficiently, it's had chances. Sloppy work. I'd write it up.",
+    "type": "reply",
+    "intent": "gallows_humor",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "gallows_humor",
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 68,
+    "key": "EV_FE_MAR_OF#00068",
+    "text": "First posting, my CO said calm is a discipline, not a gift. Took me six years to understand she wasn't being modest.",
+    "type": "declaration",
+    "intent": "memory",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 69,
+    "key": "EV_FE_MAR_OF#00069",
+    "text": "I remember that op differently. In mine, you were the one who held the corridor. Chronology says I'm right.",
+    "type": "reply",
+    "intent": "memory",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "memory",
+      "boast"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 70,
+    "key": "EV_FE_MAR_OF#00070",
+    "text": "[GRIM] I gave the right order today. I'd give it again. There's a version of me that keeps asking anyway.",
+    "type": "declaration",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 71,
+    "key": "EV_FE_MAR_OF#00071",
+    "text": "Doubt before the order is planning. Doubt after is just weather. Let it pass through.",
+    "type": "reply",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "doubt"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 72,
+    "key": "EV_FE_MAR_OF#00072",
+    "text": "[CALM] Look at me. Your hands are steady, your line is holding, and I am not worried about you. That's a report, not a kindness.",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 73,
+    "key": "EV_FE_MAR_OF#00073",
+    "text": "[WARM] You're wounded, so I'll say it gently: you did enough. Now let someone else carry the next hour.",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "pain",
+      "grief"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 74,
+    "key": "EV_FE_MAR_OF#00074",
+    "text": "[WARM] I ran tomorrow's roster twice so our breaks line up. That's the whole confession.",
+    "type": "opener",
+    "intent": "romance_hint",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 75,
+    "key": "EV_FE_MAR_OF#00075",
+    "text": "I don't do anything halfway. You should know that before you say yes to me.",
+    "type": "reply",
+    "intent": "romance_advance",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "romance_hint"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 76,
+    "key": "EV_FE_MAR_OF#00076",
+    "text": "[WARM] Yes. Clear, direct, one time. That's how I give every answer that matters.",
+    "type": "reply",
+    "intent": "romance_accept",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "romance_advance"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 77,
+    "key": "EV_FE_MAR_OF#00077",
+    "text": "Power's rationed. I've cut the training simulators first. We keep the med equipment, we keep the doors, we keep the air.",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "recent_events": [
+        "power_low"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 78,
+    "key": "EV_FE_MAR_OF#00078",
+    "text": "[CALM] Dark corridors don't change patrol discipline. Torches, pairs, tight intervals. Same job, less light.",
+    "type": "reply",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "recent_events": [
+        "power_low"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "warning",
+      "complaint"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 79,
+    "key": "EV_FE_MAR_OF#00079",
+    "text": "[CALM] Air's going bad aft. I've staged everyone forward in order of need. Wounded first. Then the rest of us.",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "recent_events": [
+        "life_support_failure"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 80,
+    "key": "EV_FE_MAR_OF#00080",
+    "text": "Slow your breathing. Shallow talk, short answers. We spend air like it's ammunition now.",
+    "type": "reply",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "recent_events": [
+        "life_support_failure"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "warning"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 81,
+    "key": "EV_FE_MAR_OF#00081",
+    "text": "[GRIM] Debrief, chronological: alarm, breach, order given, door closed, one name unaccounted. I'll say that name at the service myself.",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "recent_events": [
+        "door_locked_on_crew"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 82,
+    "key": "EV_FE_MAR_OF#00082",
+    "text": "You want someone to blame for that door. Use me. That's what the rank is for.",
+    "type": "reply",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 14,
+      "recent_events": [
+        "door_locked_on_crew"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "grief",
+      "complaint"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 83,
+    "key": "EV_FE_MAR_OF#00083",
+    "text": "Give me the heavy end. That's not chivalry, it's load distribution.",
+    "type": "reply",
+    "intent": "offer_help",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "request_help"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 84,
+    "key": "EV_FE_MAR_OF#00084",
+    "text": "[CONFIDENT] I've never lost a drill to this crew. I keep score. Quietly, but I keep it.",
+    "type": "declaration",
+    "intent": "boast",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 85,
+    "key": "EV_FE_MAR_OF#00085",
+    "text": "That order came out sharper than you deserved. Noted, corrected, won't repeat.",
+    "type": "reply",
+    "intent": "apology",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "complaint"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 86,
+    "key": "EV_FE_MAR_OF#00086",
+    "text": "[DRY] Try not to die before breakfast. The paperwork's worse than the grief.",
+    "type": "closer",
+    "intent": "gallows_humor",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 87,
+    "key": "EV_FE_MAR_OF#00087",
+    "text": "[WARM] Go on. I'll watch you to the end of the corridor. Old habit I've decided to keep.",
+    "type": "closer",
+    "intent": "romance_hint",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
   }
 ]

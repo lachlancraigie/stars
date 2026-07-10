@@ -1348,5 +1348,510 @@
     },
     "reply_to_intents": [],
     "weight": 1.0
+  },
+  {
+    "id": 75,
+    "key": "EV_ML_MAR_CM#00075",
+    "text": "[DRY] Someone borrowed my cleaning kit. Borrowed. Without the bringing-back part.",
+    "type": "declaration",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 76,
+    "key": "EV_ML_MAR_CM#00076",
+    "text": "Your mag was stowed loose. Fix it. Loose gear costs seconds. Seconds cost more.",
+    "type": "opener",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 77,
+    "key": "EV_ML_MAR_CM#00077",
+    "text": "[DEADPAN] Funny. Write it down. I'll laugh on my day off.",
+    "type": "reply",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "banter"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 78,
+    "key": "EV_ML_MAR_CM#00078",
+    "text": "You talk enough for both of us. Works out. I listen enough for both of us.",
+    "type": "reply",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "banter",
+      "smalltalk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 79,
+    "key": "EV_ML_MAR_CM#00079",
+    "text": "Walked the cargo hold twice. Counted the shadows. Same number as yesterday. Good.",
+    "type": "declaration",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "location": [
+        "cargo"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 80,
+    "key": "EV_ML_MAR_CM#00080",
+    "text": "Show me your section's blind spots. Every room has two. Most people know one.",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 81,
+    "key": "EV_ML_MAR_CM#00081",
+    "text": "[DEADPAN] Ship's trying new ways to kill us. Points for creativity. None for execution.",
+    "type": "declaration",
+    "intent": "gallows_humor",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 82,
+    "key": "EV_ML_MAR_CM#00082",
+    "text": "[DRY] Dying's easy. Filling out the incident report after is the hard part.",
+    "type": "reply",
+    "intent": "gallows_humor",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "gallows_humor",
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 83,
+    "key": "EV_ML_MAR_CM#00083",
+    "text": "Basic training, they took our watches. Learned to count time by breath. Still do it on long watches.",
+    "type": "declaration",
+    "intent": "memory",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 84,
+    "key": "EV_ML_MAR_CM#00084",
+    "text": "I remember that drop. You froze for one second, then you moved right. The second part is what I kept.",
+    "type": "reply",
+    "intent": "memory",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "memory",
+      "doubt"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 85,
+    "key": "EV_ML_MAR_CM#00085",
+    "text": "Cleaned my rifle twice tonight. It was clean the first time. That's how I know something's on my mind.",
+    "type": "declaration",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 86,
+    "key": "EV_ML_MAR_CM#00086",
+    "text": "Everybody second-guesses. Difference is when. Before the fight, fine. During, never. After, briefly.",
+    "type": "reply",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "doubt"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 87,
+    "key": "EV_ML_MAR_CM#00087",
+    "text": "[CALM] You're still here. Gear's intact. Odds improved twice today already. Keep breathing.",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 88,
+    "key": "EV_ML_MAR_CM#00088",
+    "text": "[WARM] Sit. Clean something with me. Hands busy, head quiets. Old trick. Works.",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 13,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "grief",
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 89,
+    "key": "EV_ML_MAR_CM#00089",
+    "text": "[WARM] I saved you a seat at chow. Been doing it a while. Figured you'd noticed.",
+    "type": "opener",
+    "intent": "romance_hint",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "location": [
+        "mess"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 90,
+    "key": "EV_ML_MAR_CM#00090",
+    "text": "I don't say much. So when I say I want you around, count it double.",
+    "type": "reply",
+    "intent": "romance_advance",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "romance_hint"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 91,
+    "key": "EV_ML_MAR_CM#00091",
+    "text": "[WARM] Yes. Short answer. Meant long.",
+    "type": "reply",
+    "intent": "romance_accept",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "romance_advance"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 92,
+    "key": "EV_ML_MAR_CM#00092",
+    "text": "Power's low. Good news: I train in the dark. Bad news: so does whatever else is out here.",
+    "type": "declaration",
+    "intent": "gallows_humor",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "recent_events": [
+        "power_low"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 93,
+    "key": "EV_ML_MAR_CM#00093",
+    "text": "[CALM] Torch discipline. Short bursts, low beam. We make the batteries outlast the problem.",
+    "type": "reply",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "recent_events": [
+        "power_low"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "warning"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 94,
+    "key": "EV_ML_MAR_CM#00094",
+    "text": "Thin air. Moving slow on purpose. Everything at half speed, everything still done.",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "recent_events": [
+        "life_support_failure"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 95,
+    "key": "EV_ML_MAR_CM#00095",
+    "text": "Stop talking. Breathe slower. I'll watch the corridor for both of us.",
+    "type": "reply",
+    "intent": "offer_help",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "recent_events": [
+        "life_support_failure"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 96,
+    "key": "EV_ML_MAR_CM#00096",
+    "text": "[GRIM] Stood post at that door for two years. Today it did its job. Hate that it had to.",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "recent_events": [
+        "door_locked_on_crew"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 97,
+    "key": "EV_ML_MAR_CM#00097",
+    "text": "The door closed on my watch. Their name goes in my log, my handwriting. That's what I can still do.",
+    "type": "reply",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 14,
+      "recent_events": [
+        "door_locked_on_crew"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "grief"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 98,
+    "key": "EV_ML_MAR_CM#00098",
+    "text": "[CONFIDENT] Fastest strip-and-reassemble on the ship. Blindfolded. Timed. Witnessed.",
+    "type": "declaration",
+    "intent": "boast",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 99,
+    "key": "EV_ML_MAR_CM#00099",
+    "text": "Give me your watch rotation tonight. You're done standing. I'm not.",
+    "type": "reply",
+    "intent": "offer_help",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "pain",
+      "grief"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 100,
+    "key": "EV_ML_MAR_CM#00100",
+    "text": "Was blunt earlier. Bluntness is a tool. Wrong tool for that moment.",
+    "type": "reply",
+    "intent": "apology",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "complaint"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 101,
+    "key": "EV_ML_MAR_CM#00101",
+    "text": "[DEADPAN] Going on watch. If anything eats me, avenge the rifle. It's the expensive part.",
+    "type": "closer",
+    "intent": "gallows_humor",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 102,
+    "key": "EV_ML_MAR_CM#00102",
+    "text": "[CALM] Rack out. I've got the corridor. Nothing gets past a bored marine.",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
   }
 ]

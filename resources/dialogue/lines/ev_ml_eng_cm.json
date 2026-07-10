@@ -1353,5 +1353,515 @@
     },
     "reply_to_intents": [],
     "weight": 1.0
+  },
+  {
+    "id": 75,
+    "key": "EV_ML_ENG_CM#00075",
+    "text": "[MUTTERS] Somebody's been storing personal cargo against the coolant lines again. It's warm. It's convenient. It's also how fires start.",
+    "type": "declaration",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "location": [
+        "engine_room",
+        "cargo"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 76,
+    "key": "EV_ML_ENG_CM#00076",
+    "text": "Whoever tuned the recycler last shift, we need to talk. Not angry. Just very specific.",
+    "type": "opener",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 77,
+    "key": "EV_ML_ENG_CM#00077",
+    "text": "[DRY] Sure, hit it harder. That works on stuck bolts and nothing else in the known universe.",
+    "type": "reply",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "banter",
+      "complaint"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 78,
+    "key": "EV_ML_ENG_CM#00078",
+    "text": "You want the honest number or the number that lets you sleep? I keep both in stock.",
+    "type": "reply",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "work_talk",
+      "banter"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 79,
+    "key": "EV_ML_ENG_CM#00079",
+    "text": "Today's list: coolant flush, filter swap, that rattle in deck two. Three items. One shift. Doable.",
+    "type": "declaration",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "recent_events": [
+        "shift_start"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 80,
+    "key": "EV_ML_ENG_CM#00080",
+    "text": "Hold this steady for me. Two minutes. I'll teach you what the torque numbers mean while we're at it.",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 81,
+    "key": "EV_ML_ENG_CM#00081",
+    "text": "[DEADPAN] The ship groans more than I do. We're aging at about the same rate. One of us gets replacement parts.",
+    "type": "declaration",
+    "intent": "gallows_humor",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 82,
+    "key": "EV_ML_ENG_CM#00082",
+    "text": "[DRY] If that pump dies, it dies doing what it loved. Vibrating alarmingly.",
+    "type": "reply",
+    "intent": "gallows_humor",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "gallows_humor",
+      "complaint"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 83,
+    "key": "EV_ML_ENG_CM#00083",
+    "text": "My first chief made me hand-copy the coolant schematics. Said the ship should live in your hands, not the manual. He was right.",
+    "type": "declaration",
+    "intent": "memory",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 84,
+    "key": "EV_ML_ENG_CM#00084",
+    "text": "I remember that overhaul. Three days, no sleep, and the hum came back clean. Best sound I know.",
+    "type": "reply",
+    "intent": "memory",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "memory",
+      "work_talk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 85,
+    "key": "EV_ML_ENG_CM#00085",
+    "text": "Step one, check the reading. Step two, check the gauge. Step three, admit the problem might be me. Running step three now.",
+    "type": "declaration",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 86,
+    "key": "EV_ML_ENG_CM#00086",
+    "text": "Second-guessing is fine at the bench. Not at the panel. Bring me the doubt before you touch the switch.",
+    "type": "reply",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "doubt"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 87,
+    "key": "EV_ML_ENG_CM#00087",
+    "text": "[CALM] Listen to the engines a second. Steady. That's the sound of nothing being wrong yet. Hold onto it.",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 88,
+    "key": "EV_ML_ENG_CM#00088",
+    "text": "One step, then the next. Machines get fixed that way. People steady the same way.",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "doubt"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 89,
+    "key": "EV_ML_ENG_CM#00089",
+    "text": "[WARM] I fixed the heater in your quarters before you noticed it was failing. That's how I say things.",
+    "type": "opener",
+    "intent": "romance_hint",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 90,
+    "key": "EV_ML_ENG_CM#00090",
+    "text": "I check everything twice. I checked this feeling for a year. It holds load.",
+    "type": "reply",
+    "intent": "romance_advance",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "romance_hint"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 91,
+    "key": "EV_ML_ENG_CM#00091",
+    "text": "[WARM] Yes. No diagnostics needed on that one.",
+    "type": "reply",
+    "intent": "romance_accept",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "romance_advance"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 92,
+    "key": "EV_ML_ENG_CM#00092",
+    "text": "Grid's down to reserves. Order of shutdown: lights, heaters, comfort systems. The air stays on if I have to crank it by hand.",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "recent_events": [
+        "power_low"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 93,
+    "key": "EV_ML_ENG_CM#00093",
+    "text": "[CALM] I can squeeze maybe six more hours from the cells if everyone stops opening the big doors. Small habits, big margin.",
+    "type": "reply",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "recent_events": [
+        "power_low"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "warning",
+      "complaint"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 94,
+    "key": "EV_ML_ENG_CM#00094",
+    "text": "Scrubber two's fouled and scrubber one's carrying the ship. I'm rebuilding two right now. Talk to me while I work if you want.",
+    "type": "declaration",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "recent_events": [
+        "life_support_failure"
+      ],
+      "location": [
+        "life_support"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 95,
+    "key": "EV_ML_ENG_CM#00095",
+    "text": "Air system's my problem now. Your problem is staying calm and breathing slow. Split the work with me.",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "recent_events": [
+        "life_support_failure"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "warning"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 96,
+    "key": "EV_ML_ENG_CM#00096",
+    "text": "[MUTTERS] I maintain those doors. Greased the runners myself. Never thought about which side of them people would end up on.",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "recent_events": [
+        "door_locked_on_crew"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 97,
+    "key": "EV_ML_ENG_CM#00097",
+    "text": "The mechanism did exactly what I built it to do. That's the part I can't put down.",
+    "type": "reply",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 14,
+      "recent_events": [
+        "door_locked_on_crew"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "grief",
+      "doubt"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 98,
+    "key": "EV_ML_ENG_CM#00098",
+    "text": "[PROUD] Ten years, and this ship has never lost main power on my watch for more than nine minutes. That number matters to me.",
+    "type": "declaration",
+    "intent": "boast",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 99,
+    "key": "EV_ML_ENG_CM#00099",
+    "text": "I need a second pair of hands on the manifold. Strong grip, steady nerves, no questions till we're done.",
+    "type": "opener",
+    "intent": "request_help",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 100,
+    "key": "EV_ML_ENG_CM#00100",
+    "text": "I snapped at you near the reactor. Heat does that to me. The words were wrong, the urgency wasn't.",
+    "type": "reply",
+    "intent": "apology",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "complaint"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 101,
+    "key": "EV_ML_ENG_CM#00101",
+    "text": "[DRY] Off shift. If you hear grinding from the engine room, it's either the pumps or me. Both are fine.",
+    "type": "closer",
+    "intent": "gallows_humor",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 102,
+    "key": "EV_ML_ENG_CM#00102",
+    "text": "Leaving the panel open overnight. Anyone touches it, I'll know by the fingerprints in the grease.",
+    "type": "closer",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
   }
 ]
