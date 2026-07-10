@@ -37,7 +37,7 @@ A spaceship AI simulator. The player is the ship's computer. See `GDD.md` for fu
 
 4. **Character animations** — ✅ COMPLETE (2026-07-10), pending Lachlan's eyeball of the contact sheet: consistency test PASSED (sheet-based paired-facing grids — 2 facings × ≤4 frames, NOT single 8-facing sheets — + palette-snap; evidence `assets/sprites/gen2/crew/_test/`). 11 states / 116 sprites + `manifest.json`, ~$1.80 of $10 spent. Integrated into `crew_member_node.gd` (manifest-driven, Kenney legacy fallback intact); fight/carry/floating art exists but has no gameplay trigger yet (TODO documented). Both autodemos clean. Commits `79c00df`/`1f0c35d`/`69f682e`.
 
-5. **Crew progression** — per `docs/crew-progression-spec.md` §7: traits registry, earn triggers, leg-boundary Rest Saves, memorial, roster biography panel. PINNED — do NOT build FTL-style replacement crew recruitment yet.
+5. **Crew progression** — ✅ COMPLETE (2026-07-10): traits registry (`scripts/core/traits.gd`, 17 traits, 5-cap), earn triggers + leg-boundary resolution (`scripts/crew/crew_progression.gd`, new `EventBus.leg_boundary_reached`), Rest Saves, memorial (`GameState.fallen`), roster panel (C key, CREW/LOST tabs). Both autodemos + seeded soak clean (new `SHIPAI_FORCE_KILL` env hook). Commits `e092bcf`/`30a9d9c`. Deferred per spec/pin: FTL recruitment (PINNED), Shore Leave, trait-conditioned dialogue.
 
 6. **Sprint close-out**: consider fast-forwarding `main` (last synced `0619ecb` — ask Lachlan), CLAUDE.md consolidation, rotate the two API keys (they passed through chat).
 
@@ -46,7 +46,7 @@ A spaceship AI simulator. The player is the ship's computer. See `GDD.md` for fu
 ## Operational Facts
 
 - **Godot 4.7**: `& "$env:LOCALAPPDATA\Programs\Godot\Godot.exe"` (NOT on PATH). After any new `class_name`: `--path "D:\code\stars" --headless --import` first, then verify with `--headless --quit-after 600 res://scenes/Main.tscn` and grep for `SCRIPT ERROR`.
-- **Env hooks**: `SHIPAI_SCENARIO=narrow_passage|quarantine` · `SHIPAI_AUTODEMO=1` · `SHIPAI_SEED` · `SHIPAI_FORCE_HEAT` / `SHIPAI_FORCE_FLAG` / `SHIPAI_DIRECTOR_DEBUG=1`
+- **Env hooks**: `SHIPAI_SCENARIO=narrow_passage|quarantine` · `SHIPAI_AUTODEMO=1` · `SHIPAI_SEED` · `SHIPAI_FORCE_HEAT` / `SHIPAI_FORCE_FLAG` / `SHIPAI_FORCE_KILL=<archetype>` / `SHIPAI_DIRECTOR_DEBUG=1`
 - **Secrets**: `tools/audio_gen/.env` (ElevenLabs), `tools/image_gen/.env` (OpenRouter) — gitignored, never commit/print. `assets/audio/dialogue/` gitignored (1,376 MP3s on disk).
 - **Commit style**: explicit paths only (never `git add -A`), end messages with Claude Co-Authored-By line, retry once on index.lock.
 
