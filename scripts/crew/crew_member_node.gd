@@ -2,10 +2,13 @@ class_name CrewMemberNode
 extends Node2D
 
 # Visual representation of a CrewMember resource.
-# Registers crew_data into GameState on _ready; renders a legacy-kit astronaut
-# (8 facings, role tint), walks multi-hop routes along the ship graph, and
-# z-sorts against deck props by y. Lives inside the ShipDeck node so its
-# position shares the rooms' deck coordinate space.
+# Registers crew_data into GameState on _ready; renders a per-state/facing/frame gen2
+# crew sprite (assets/sprites/gen2/crew/, manifest-driven — see _apply_gen2_sprite),
+# falling back to the legacy Kenney astronaut kit whenever the gen2 manifest or a
+# specific texture is missing (_apply_legacy_sprite, unchanged from before this sprite
+# swap was added). Walks multi-hop routes along the ship graph, and z-sorts against deck
+# props by y. Lives inside the ShipDeck node so its position shares the rooms' deck
+# coordinate space.
 #
 # Collision (crew count is capped ~12, so O(N²)/frame is cheap): soft
 # pairwise separation nudges `position` apart when crew get within
@@ -31,7 +34,9 @@ const SEPARATION_PERP_BIAS_IDLE: float = 0.1     # standing: mostly straight-apa
 const STANDING_CLAIM_ATTEMPTS: int = 5   # resample tries when a candidate standing point is already claimed
 
 # Role -> kit astronaut variant + tint. Tints multiply, so light suits take
-# the colour while dark visors/boots stay dark. Labels match the tint.
+# the colour while dark visors/boots stay dark. Labels match the tint. The gen2 set is a
+# single character design (no per-role variant art), so only the tint half of this table
+# applies there — see _apply_gen2_sprite.
 const ROLE_VARIANT: Dictionary = {
 	"captain": "astronautA", "engineer": "astronautA",
 	"medic": "astronautB", "general": "astronautB",
@@ -43,6 +48,28 @@ const ROLE_TINT: Dictionary = {
 	"general":  Color(0.72, 0.85, 1.00),
 }
 const FALLBACK_ROLE: String = "general"
+
+# Gen2 crew art (tools/image_gen/crew_sheet_gen.py; consistency-gate evidence at
+# assets/sprites/gen2/crew/_test/test_verdict.json). MANDATORY fallback: manifest.json
+# missing, or a specific state/facing/frame texture missing, drops straight back to
+# _apply_legacy_sprite() below — see _apply_sprite().
+const GEN2_CREW_DIR: String = "res://assets/sprites/gen2/crew/"
+const GEN2_MANIFEST_PATH: String = GEN2_CREW_DIR + "manifest.json"
+
+# 8-way facing -> its left/right mirror. A gen2 state's manifest doesn't always cover all
+# 8 facings (e.g. "sleeping" is a fixed side-view bunk pose, facing "e" only) — mirroring
+# via Sprite2D.flip_h lets a missing e.g. "w" still show the "e" art facing the right way,
+# rather than silently picking an arbitrary facing. s/n mirror to themselves (front/back
+# views are left-right symmetric enough for this simplified character).
+const FACING_MIRROR: Dictionary = {
+	"e": "w", "w": "e", "ne": "nw", "nw": "ne", "se": "sw", "sw": "se", "s": "s", "n": "n",
+}
+
+# CrewStateMachine states that already have a real, existing signal to key sprite state
+# off (wounds/incapacitation/sleep — see _gen2_sprite_state). fight_melee/fight_ranged/
+# carry_walk/carry_idle/floating art is generated and listed in the manifest but has no
+# live gameplay trigger yet (no combat resolver/carrying-item/zero-g flag exists —
+# CLAUDE.md backlog #3) — TODO(crew): map those states here once those systems land.
 
 # Speech/thought bubble (DialogueSystem's EventBus.line_spoken -> here). One reusable
 # Panel+RichTextLabel per crew, built once in _ready() and restyled/resized per line rather
@@ -85,6 +112,29 @@ static var nodes: Dictionary = {}  # crew_id -> CrewMemberNode
 # authoritative simulation state — see CLAUDE.md Rule 3).
 static var _point_claims: Dictionary = {}
 
+# Gen2 manifest cache — loaded once for the whole process (every CrewMemberNode shares
+# it), not per-instance. _gen2_available stays false (mandatory legacy fallback) when
+# manifest.json doesn't exist or fails to parse.
+static var _gen2_manifest: Dictionary = {}
+static var _gen2_manifest_checked: bool = false
+static var _gen2_available: bool = false
+
+
+static func _ensure_gen2_manifest() -> void:
+	if _gen2_manifest_checked:
+		return
+	_gen2_manifest_checked = true
+	# FileAccess.get_file_as_string (matches dialogue_system.gd's JSON-loading convention)
+	# returns "" for a missing file, which JSON.parse_string then fails to parse as a
+	# Dictionary — that failure IS the mandatory legacy-fallback path, so no separate
+	# existence check is needed here.
+	var text: String = FileAccess.get_file_as_string(GEN2_MANIFEST_PATH)
+	var parsed: Variant = JSON.parse_string(text)
+	if typeof(parsed) != TYPE_DICTIONARY or not (parsed as Dictionary).has("states"):
+		return
+	_gen2_manifest = parsed
+	_gen2_available = true
+
 @export var crew_data: CrewMember
 
 @onready var sprite: Sprite2D = $Sprite2D
@@ -102,6 +152,10 @@ var _pending_room: String = ""           # room we are currently walking into
 var _bob_t: float = 0.0
 var _current_texture_key: String = ""
 var _status_dot: ColorRect
+
+var _gen2_frame_t: float = 0.0     # accumulates every tick; drives cycle-mode animation frame index
+var _gen2_state_key: String = ""   # last resolved gen2 sprite state name, to reset _gen2_frame_t on change
+var _gen2_dead_variant: int = -1   # picked once per crew (crew_id hash) — dead poses are variants, not a loop
 
 var _bubble_anchor: Node2D
 var _bubble_panel: Panel
@@ -170,6 +224,10 @@ func _exit_tree() -> void:
 func _process(delta: float) -> void:
 	if TimeManager.is_paused():
 		return
+	# Drives gen2 cycle-mode animation frame indices (_apply_gen2_sprite) — accumulated
+	# unconditionally so states that animate while stationary (sleeping/injured_idle) keep
+	# advancing even though _moving's branch below returns early for everything else.
+	_gen2_frame_t += delta
 	if crew_data.current_state in [CrewStateMachine.INCAPACITATED, CrewStateMachine.FROZEN]:
 		_moving = false
 		_route.clear()
@@ -189,6 +247,7 @@ func _process(delta: float) -> void:
 			sprite.position.x = sin(Time.get_ticks_msec() * 0.04) * 2.0
 		_apply_separation(delta, false)
 		z_index = IsoKit.z_for(position.y)
+		_apply_sprite()  # idle-but-animated gen2 states (sleeping, injured_idle) still need per-frame updates
 		return
 
 	var to_target: Vector2 = _target_pos - position
@@ -447,7 +506,102 @@ func _update_facing(to_target: Vector2) -> void:
 	_facing = ["E", "SE", "S", "SW", "W", "NW", "N", "NE"][bucket]
 
 
+# Picks the gen2 sprite when the manifest/texture resolve, otherwise falls back to the
+# legacy Kenney kit exactly as before this sprite-swap system existed (mandatory per the
+# animation workstream brief — see the GEN2_CREW_DIR const comment above).
 func _apply_sprite() -> void:
+	_ensure_gen2_manifest()
+	if _gen2_available and _apply_gen2_sprite():
+		return
+	_apply_legacy_sprite()
+
+
+# Maps the crew's live simulation fields onto a gen2 manifest state name. Only covers
+# states with a real existing trigger today (current_state/wounds) — see the
+# GEN2_CREW_DIR const comment for the generated-but-unwired states (fight/carry/floating).
+func _gen2_sprite_state() -> String:
+	if crew_data.current_state == CrewStateMachine.INCAPACITATED:
+		# Covers actual death AND alive-but-down (unconscious/comatose/dying —
+		# CrewStateMachine.evaluate() routes all of them through INCAPACITATED). Matches
+		# the legacy kit's own rotate-90 treatment of the same state, which doesn't
+		# distinguish "dead" from "down" either.
+		return "dead"
+	if crew_data.current_state == CrewStateMachine.SLEEPING:
+		return "sleeping"
+	if crew_data.current_state == CrewStateMachine.FROZEN:
+		return "injured_idle"  # catatonic — no dedicated art commissioned; closest "not okay, standing" pose
+	if crew_data.wounds > 0:
+		return "injured_walk" if _moving else "injured_idle"
+	return "walk" if _moving else "idle"
+
+
+# Resolves a facing against a manifest state that may not cover all 8 compass directions
+# (e.g. "sleeping" is "e" only) — exact facing, then its mirror via flip_h, then whatever
+# facing the state does have, so something always renders instead of silently failing.
+func _gen2_resolve_facing(facings: Array, facing: String) -> Dictionary:
+	if facing in facings:
+		return {"facing": facing, "flip_h": false}
+	var mirrored: String = FACING_MIRROR.get(facing, "")
+	if mirrored in facings:
+		return {"facing": mirrored, "flip_h": true}
+	if not facings.is_empty():
+		return {"facing": facings[0], "flip_h": false}
+	return {"facing": "", "flip_h": false}
+
+
+# Returns true if a gen2 frame was actually applied. False means "no usable manifest
+# entry or texture for this state" and the caller (_apply_sprite) falls back to legacy.
+func _apply_gen2_sprite() -> bool:
+	var state: String = _gen2_sprite_state()
+	var state_info: Dictionary = (_gen2_manifest.get("states", {}) as Dictionary).get(state, {})
+	if state_info.is_empty():
+		return false
+
+	if state != _gen2_state_key:
+		_gen2_state_key = state
+		_gen2_frame_t = 0.0
+
+	var frame_count: int = int(state_info.get("frame_count", 1))
+	var frame: int = 0
+	if state_info.get("animation_mode", "cycle") == "static_variant":
+		# Corpse pose variants, not a loop — pick once per crew member and hold it.
+		if _gen2_dead_variant < 0:
+			_gen2_dead_variant = absi(hash(crew_data.crew_id)) % maxi(1, frame_count)
+		frame = _gen2_dead_variant
+	elif frame_count > 1:
+		var fps: float = float(state_info.get("fps", 0.0))
+		if fps > 0.0:
+			frame = int(_gen2_frame_t * fps) % frame_count
+
+	var resolved: Dictionary = _gen2_resolve_facing(state_info.get("facings", []), _facing.to_lower())
+	var facing: String = resolved.get("facing", "")
+	if facing == "":
+		return false
+
+	var key: String = "gen2:%s:%s:%d" % [state, facing, frame]
+	if key != _current_texture_key:
+		var path: String = "%screw_%s_%s_%d.png" % [GEN2_CREW_DIR, state, facing, frame]
+		if not ResourceLoader.exists(path):
+			return false
+		var texture: Texture2D = load(path)
+		if texture == null:
+			return false
+		sprite.texture = texture
+		sprite.flip_h = resolved.get("flip_h", false)
+		_current_texture_key = key
+
+	sprite.rotation_degrees = 0.0  # gen2 "dead" is a real prone sprite — no rotate-90 hack needed
+	var role: String = crew_data.role if ROLE_VARIANT.has(crew_data.role) else FALLBACK_ROLE
+	var tint: Color = ROLE_TINT.get(role, Color.WHITE)
+	if state == "dead":
+		tint = tint.darkened(0.55)
+	elif crew_data.current_state == CrewStateMachine.PANICKING:
+		tint = tint * Color(1.0, 0.62, 0.58)
+	sprite.self_modulate = tint
+	return true
+
+
+func _apply_legacy_sprite() -> void:
 	var role: String = crew_data.role if ROLE_VARIANT.has(crew_data.role) else FALLBACK_ROLE
 	var key: String = "%s_%s" % [ROLE_VARIANT[role], _facing]
 	var collapsed: bool = crew_data.current_state == CrewStateMachine.INCAPACITATED
@@ -458,6 +612,7 @@ func _apply_sprite() -> void:
 			push_warning("CrewMemberNode '%s': missing kit sprite '%s'" % [crew_data.crew_id, key])
 			return
 		sprite.texture = texture
+		sprite.flip_h = false
 		_current_texture_key = key
 
 	sprite.rotation_degrees = 90.0 if collapsed else 0.0

@@ -7,9 +7,13 @@ extends RefCounted
 # That means any sprite placed with ANCHOR_OFFSET sits correctly on the
 # grid cell at its node position — tiles, props, and characters alike.
 
-# Environment art comes from the gen2 cel-shaded set (docs/style-bible-v2.md); crew
-# rendering stays on the legacy Kenney astronauts (gen2 crew failed the cross-facing
-# consistency test) — CrewMemberNode carries its own legacy KIT_DIR for that reason.
+# Environment art comes from the gen2 cel-shaded set (docs/style-bible-v2.md). Crew now
+# also render gen2 art (assets/sprites/gen2/crew/, manifest-driven per state/facing/frame
+# — the earlier single reference-anchored-call approach failed the cross-facing
+# consistency test, but sheet-based generation + palette-snap passed it; see
+# assets/sprites/gen2/crew/_test/test_verdict.json), with a mandatory fallback to the
+# legacy Kenney astronauts whenever gen2 crew art is missing — CrewMemberNode carries its
+# own legacy KIT_DIR for that reason.
 const KIT_DIR: String = "res://assets/sprites/gen2/"
 
 const TILE_HALF_W: float = 65.0   # half of the 130px diamond width
