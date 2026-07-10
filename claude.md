@@ -31,12 +31,17 @@ Deck composition lives in `scripts/ship/iso_kit.gd` + `scripts/ship/deck_plan.gd
 3. Campaign handoff after scenario end (currently ends on the banner)
 4. Visual hookup for room power/air state (EventBus.room_power_changed/room_air_changed/ai_core_status_changed already emit; no dimming/particle response in RoomBase yet — see 2026-07-10 session 3 note)
 5. Combat resolver — CrewMember.apply_damage()/WoundTable are fully implemented but nothing in the live game calls apply_damage() yet (no weapons fire); dormant, ready to wire up
-6. Dialogue system (Agent 2, parallel branch work) consuming `EventBus.recent_event` + the Mothership stat/skill/archetype surface now in place
+6. Bubble visuals are only statically/behaviourally verified (no Godot GUI available this session — see 2026-07-10 session 5 note); worth an eyeballing pass in the editor for spacing/legibility
+7. Crew portraits/avatars for the archetype voices now exist under `tools/audio_gen/`/`tools/image_gen/` (parallel work, not this session's) — could surface in the HUD/bubbles later
 
 Done this session (Agent 4, camera + collision — see 2026-07-10 session note addendum below): Camera2D pan/zoom
 (deck no longer statically fitted — DeckCamera auto-fits DeckPlan.deck_bounds() as the default zoom, then
 supports wheel-zoom-to-cursor, drag/WASD/edge-scroll pan, clamped so the deck can't be lost off-screen) and
 crew soft-collision/standing-point claiming (CrewMemberNode).
+
+Done this session (Agent 2/"crew simulation", see 2026-07-10 session 5 note): the crew shift-cycle schedule,
+crew relationships/romance, the full emergent dialogue runtime, and speech/thought bubbles — the item 6 above
+is now DONE, not a next task.
 
 **Blocked on**: nothing hard. SaveManager still stubbed by design (checkpoints resolved, unimplemented).
 
@@ -71,6 +76,10 @@ crew soft-collision/standing-point claiming (CrewMemberNode).
 - [x] Room-type contract: scenario/behaviour code (QuarantineMonitor, CrewBehavior duty stations, crew start rooms) now looks up rooms by TYPE via `GameState.get_room_of_type()` instead of hardcoded ids, so it works on any generated layout
 - [x] Camera2D pan/zoom: DeckCamera auto-fits the generated deck as the default zoom, wheel-zoom toward cursor (clamped), drag/WASD/edge-scroll pan (clamped via deck_bounds); Starfield moved into its own CanvasLayer so it stays screen-fixed under the new camera; DirectiveMenu hit-testing/placement made camera-aware
 - [x] Crew soft-collision + standing-point claiming: CrewMemberNode applies cheap O(N²) perpendicular-biased separation steering (never stalls route-following/panic-flee/hold_room_until) and claims DeckPlan standing points via a static registry so crew don't stack
+- [x] Crew daily schedule: CrewSchedule shift-cycle (work/meal/recreation/sleep) layered on CrewBehavior's IDLE branch; needs/crises/repair duty/accepted directives all still outrank it
+- [x] Crew relationships & romance: RelationshipGraph (GameState-owned per-pair affinity + romance stage machine), RelationshipBehavior (panic-snap/crisis-bond/partner-grief hooks)
+- [x] Emergent dialogue runtime: DialogueSystem autoload — defensive corpus loading, the spec's scoring formula, declarations, template + emergent conversations, romance-gated intents
+- [x] Speech/thought bubbles: reusable per-crew Panel+RichTextLabel reacting to EventBus.line_spoken, thought (declarations) vs speech (conversation lines) styling
 
 ---
 
@@ -139,8 +148,8 @@ These are hard constraints. Do not deviate without updating this file.
 
 | System | Location | Status | Notes |
 |---|---|---|---|
-| EventBus | `scripts/core/event_bus.gd` | stub done | Autoload. All cross-system signals defined. |
-| GameState | `scripts/core/game_state.gd` | stub done | Autoload. Resource/trust/access mutators wired to EventBus. |
+| EventBus | `scripts/core/event_bus.gd` | done | Autoload. All cross-system signals defined; `recent_event` is the dialogue-facing funnel (now also forwards `crisis_resolved` from system-repair/AI-core-recovery/the quarantine's own resolution). `line_spoken`/`conversation_started`/`conversation_ended`/`crew_romance_started`/`crew_relationship_changed` are all now actually emitted (DialogueSystem/RelationshipGraph), not just declared. |
+| GameState | `scripts/core/game_state.gd` | done | Autoload. Resource/trust/access mutators wired to EventBus. Also owns `crew_relationships` (per-pair affinity/flags/romance_stage, mutated by RelationshipGraph) and `crew_side_projects` (crew_id → hobby id, lazily assigned by `side_projects.gd`). |
 | SaveManager | `scripts/core/save_manager.gd` | stub done | Autoload. Checkpoint structure stubbed; unimplemented. |
 | TimeManager | `scripts/core/time_manager.gd` | stub done | Autoload. Real-time with pause, 1x/2x speed, 0.25s tick interval. |
 | RoomDefinition | `scripts/ship/room_definition.gd` | done | Resource. Room data schema for ShipConfig. |
@@ -156,8 +165,10 @@ These are hard constraints. Do not deviate without updating this file.
 | LifeSupportModel | `scripts/ship/life_support_model.gd` | done | Static utility. Per-room air quality (0-100) degrades/recovers over minutes depending on `life_support_online` + diverted-room caps; auto-fails if the life_support room loses power. Feeds Checks environmental disadvantage + SuffocationModel. |
 | RepairModel | `scripts/ship/repair_model.gd` | done | Static utility. Resolves already-started `GameState.repair_jobs` (reactor/life_support/ai_core) via periodic Intellect+skill Checks; completion re-onlines the target system. |
 | CrewMember | `scripts/crew/crew_member.gd` | done | Resource. Full Mothership 1e character: Four Stats, Three Saves, Class, Health/Wounds, Stress/Panic transient state, Skills, Equipment, plus dialogue-facing identity (`archetype_tag`, `rank`, pronouns) — and the pre-existing needs/personality/social simulation layer, unchanged and complementary. |
-| CrewMemberNode | `scripts/crew/crew_member_node.gd` | done | Node2D. Kit astronaut w/ 8 facings + role tint + status dot; multi-hop route walking (graph path + walkway waypoints); y-based z-sort; `static nodes` registry. Soft O(N²) pairwise separation steering (`_apply_separation`, ~half-tile personal radius, perpendicular-biased so it doesn't fight forward progress, displacement clamped to the current room's floor rect / walkway-union bounds) keeps crew from stacking without ever stalling route-following, panic-flee, or hold_room_until. A static `_point_claims` registry (`_claim_standing_point`) keeps two crew from picking the same DeckPlan standing point/duty station. |
-| CrewBehavior | `scripts/crew/crew_behavior.gd` | done | Node (added by Main). Autonomous crew movement per state; honours accepted directives via `hold_room_until`; panic overrides; FROZEN (Catatonic) treated like INCAPACITATED. |
+| CrewMemberNode | `scripts/crew/crew_member_node.gd` | done | Node2D. Kit astronaut w/ 8 facings + role tint + status dot; multi-hop route walking (graph path + walkway waypoints); y-based z-sort; `static nodes` registry. Soft O(N²) pairwise separation steering (`_apply_separation`, ~half-tile personal radius, perpendicular-biased so it doesn't fight forward progress, displacement clamped to the current room's floor rect / walkway-union bounds) keeps crew from stacking without ever stalling route-following, panic-flee, or hold_room_until. A static `_point_claims` registry (`_claim_standing_point`) keeps two crew from picking the same DeckPlan standing point/duty station. Now also owns the speech/thought bubble: one reusable Panel+RichTextLabel built in `_ready()` (`_build_bubble`), restyled/resized per `EventBus.line_spoken` (`_show_bubble`) — declarations render as dimmed/italic thought (no tail), conversation lines as normal speech (with a tail polygon); world-space child (`z_as_relative=false`, large fixed z_index) so it scales with DeckCamera zoom like everything else on the deck. |
+| CrewBehavior | `scripts/crew/crew_behavior.gd` | done | Node (added by Main). Autonomous crew movement per state; honours accepted directives via `hold_room_until`; panic overrides; FROZEN (Catatonic) treated like INCAPACITATED. An otherwise-IDLE crew member now defers to CrewSchedule (work/meal/recreation/sleep) — see `_decide_idle_schedule`; priority is incapacitated/frozen > panic > needs (sleep/eat/boredom-work) > an in-progress repair assignment > an accepted directive's hold > the schedule. EATING now correctly paths to "mess" (was "quarters" — a latent bug the schedule work surfaced). |
+| CrewSchedule | `scripts/crew/crew_schedule.gd` | done | RefCounted static utility (same shape as CrewStateMachine/NeedsModel). Ship-wide day cycle (`DAY_LENGTH`=360s at 1x) split into work/meal/recreation/sleep phases; `phase_for(crew)` applies a small stable per-crew time jitter so the crew doesn't transition in lockstep. `check_phase_transition()` (called from CrewBehavior's tick) emits the corpus's shift_start/shift_end/meal_time/quiet_shift `recent_event`s on each GLOBAL (unjittered) phase change. `recreation_room_for()` sends idle crew to their side project (`side_projects.gd`), their accepted romance partner's room, or the mess. `repair_duty_room()` is what makes an in-progress repair job outrank recreation. |
+| SideProjects | `scripts/crew/side_projects.gd` | done | RefCounted static utility (predecessor's checkpoint stub, unmodified — reviewed and kept as-is). Small data-driven hobby list (tinkering/reading/exercise/plant/cards/journaling); a hobby is assigned once per crew member (`GameState.crew_side_projects`, stable for the run) and resolves to a room TYPE CrewSchedule routes them to during recreation. |
 | RepairBehavior | `scripts/crew/repair_behavior.gd` | done | Node (added by Main). Crew-side decision of WHETHER to start a repair job (reactor/life_support/ai_core) — requires an on-scene skilled crew member; ai_core repair is additionally trust-gated. Lives in crew-behaviour space, not `scripts/ai/`, per Rule 1. |
 | AICoreSystem | `scripts/ai/ai_core_system.gd` | done | Node (added by Main) + static helpers. AI's own degraded-mode self-limits: door-unlock lag, rotating sensor gaps, directive-issue latency. Blackout gating (`GameState.ai_core_can_act()`) is checked directly by AISystem/Door. |
 | CrewLifecycle | `scripts/crew/crew_lifecycle.gd` | done | Static utility. Single funnel for crew death (any cause) → `is_alive=false` + `crew_died` emission, so needs-collapse/Death-Save/suffocation/sabotage deaths are all consistent. |
@@ -174,15 +185,17 @@ These are hard constraints. Do not deviate without updating this file.
 | Starfield | `scripts/ship/starfield.gd` | done | Node2D, wrapped in its own CanvasLayer (layer -10, added by Main) rather than merely being a ShipDeck sibling — needed once DeckCamera exists, since a Camera2D's transform affects the whole viewport's canvas, not just its own subtree, so CanvasLayer is the only thing that stays screen-fixed. Procedural 3-layer parallax starfield; each layer draws its stars once via `_draw()` and only ever translates (sine drift + an optional tiny DeckCamera-pan-driven parallax nudge) — no per-frame redraw. z_index -1000 within its own layer. |
 | Ship hull silhouette | `scripts/ship/ship_layout_builder.gd` (`_build_hull`) | done | Polygon2D + Line2D built from `DeckPlan.HULL_POLYGON` (nose taper + per-row flanks + aft engine block, generated in ShipLayoutGen). z_index -10/-9, behind floors, in front of the starfield. |
 | Semi-transparent walls + door gates | `scripts/procedural/ship_layout_gen.gd` (wall segments) + `scripts/ship/door.gd` | done | Generator emits per-room boundary wall tiles (skipping connected edges); front-facing (SE/SW) walls render more transparent than back-facing (NE/NW) since painter's order draws them over the interior. Door gate sprite recolours red/green via `Door.refresh_gate_visual()` on lock/unlock. |
-| QuarantineMonitor | `scripts/scenarios/quarantine_monitor.gd` | done | Node (added by Main). Timed medbay-occupancy logic that sets `vasquez_isolated`/`pathogen_contained`; drives `objective_changed`. Resolves "the infected crew member"/"the medic" via `GameState.get_crew_of_role()`, not hardcoded ids — works with any procedurally generated roster. |
+| QuarantineMonitor | `scripts/scenarios/quarantine_monitor.gd` | done | Node (added by Main). Timed medbay-occupancy logic that sets `vasquez_isolated`/`pathogen_contained`; drives `objective_changed`. Resolves "the infected crew member"/"the medic" via `GameState.get_crew_of_role()`, not hardcoded ids — works with any procedurally generated roster. Containment success now also emits `recent_event("crisis_resolved", ...)` — dialogue/relationship-facing (see DialogueSystem/RelationshipGraph). |
 | DirectiveActionHandler | `scripts/ai/directive_action_handler.gd` | done | Node. Executes movement for directives the crew *accepted* (`move_to_room`). Respects Rule 1. |
 | DirectiveMenu | `scripts/ui/directive_menu.gd` + `scenes/ui/DirectiveMenu.tscn` | done | CanvasLayer. Click-on-crew select + contextual destination menu → `AISystem.issue_directive`. Hit-testing compares in world space (crew `global_position` vs. the CanvasLayer's mouse position converted via `get_canvas_transform().affine_inverse()`); the selection ring/menu popup convert a crew node's world position to screen space via `get_global_transform_with_canvas()` — both needed to stay correct now that DeckCamera can pan/zoom. |
 | NeedsModel | `scripts/crew/needs_model.gd` | done | Static utility. Per-tick hunger/fatigue/fear/loneliness/boredom/morale. Fear's O2-scarcity term now reads per-room air (LifeSupportModel) instead of the old ship-wide oxygen bar. |
 | SuffocationModel | `scripts/crew/suffocation_model.gd` | done | Static utility. Mothership oxygen survival rules: room air < critical threshold → Body Save every ~round or a Death Save (via WoundTable), through Checks. Androids exempt. |
 | CrewStateMachine | `scripts/crew/crew_state_machine.gd` | done | Static utility. Priority-based state eval with hysteresis; adds FROZEN (Catatonic) and INCAPACITATED triggers for retired/unconscious/dying/comatose Mothership states. |
 | CrewSystem | `scripts/crew/crew_system.gd` | done | Autoload. Ticks all crew (needs, suffocation, death-clock resolution, state eval); propagates reactor/life-support/power/ai-core crises into fear spikes. |
-| PersonalityCore | `scripts/crew/personality_core.gd` | not started | Traits, fears, values, goals. |
-| RelationshipGraph | `scripts/crew/relationship_graph.gd` | not started | Crew social network. |
+| PersonalityCore | `scripts/crew/personality_core.gd` | not started | Traits, fears, values, goals — CrewMember already carries `traits`/`fears`/`values`/`goals` arrays (main.gd seeds a couple per role) and the dialogue-spec archetype (personality×gender×career×rank) now stands in for most of what this would formalize; still nothing dedicated. |
+| RelationshipGraph | `scripts/crew/relationship_graph.gd` | done | RefCounted static utility (Checks/CrewStateMachine/NeedsModel shape) over `GameState.crew_relationships` (per-pair affinity -1..1 + flags + romance_stage, Rule 3). Moves affinity on a small legible set (praise/apology/insult/banter/etc via `on_line_spoken`, conversations completed, shared crisis survived, snapped-at-while-panicking, romance accept/reject) and drives the romance_hint→romance_advance→romance_accept/reject stage machine (`can_hint`/`can_advance`/`would_accept`, personality-flavoured thresholds from the archetype tag prefix, rejection cooldown, monogamy via `partner_of`). `on_crew_died` gives a surviving partner a heavy grief/stress hit. |
+| RelationshipBehavior | `scripts/crew/relationship_behavior.gd` | done | Node (added by Main). Thin EventBus listener over RelationshipGraph for the social events that originate outside the dialogue system: panic bystanders (`crew_state_changed`→PANICKING), a resolved crisis (`recent_event` "crisis_resolved"), and a crew death (`crew_died`). DialogueSystem calls RelationshipGraph directly for per-line/per-conversation hooks since it already has speaker/target/intent in hand. |
+| DialogueSystem | `scripts/crew/dialogue_system.gd` | done | Autoload (appended last in project.godot). Implements docs/dialogue_spec.md's "Runtime selection" formula exactly: hard filters (panic/stress bounds/wounded/reply_to_intents/the romance gate) kept separate from scored terms (weight + 2.0 event + 1.0 location + 1.0 target + 1.0 mood + 0.5 stress-band-closeness − 5.0 repetition-in-10min), weighted-random pick among the top-scoring tier. Loads archetypes/lines/conversations defensively (skip+log invalid, keep whatever loaded — 24 archetypes/1376 lines/22 templates load cleanly today). Declarations fire from a per-crew idle timer scaled by stress and are always rendered as thoughts. Conversations: a periodic per-room scan (chance weighted by CrewSchedule phase) prefers a matching template (participants by tag or career/rank code, same-intent/type substitution when the referenced archetype isn't the one actually present) else builds an emergent opener→reply→…→closer chain (3-6 parts); every turn re-checks both participants are still present/alive/not panicking. |
 | AIDirective | `scripts/ai/ai_directive.gd` | done | Resource. Type/target/content/confidence/priority/tags + hidden intent fields. |
 | AccessLevel | `scripts/ai/access_level.gd` | done | Constants + static checks. 8 domains, 4 levels; type→min-access mapping. |
 | TrustModel | `scripts/ai/trust_model.gd` | done | Static utility. Named delta constants; modify() and modify_all() helpers. |
@@ -359,6 +372,164 @@ panic-flee, or fight hold_room_until. No Godot binary available this session eit
 validated statically only (bracket/indentation balance, class_name uniqueness, Godot 4
 Camera2D/Transform2D API cross-checked against known semantics); first editor open will
 need to regenerate the script class cache for the new DeckCamera class.
+
+2026-07-10 (session 5, Agent 2 — crew simulation: schedule, relationships, dialogue,
+bubbles): Rebuilt the CREW SIMULATION workstream from the interrupted predecessor's
+checkpoint (781348b — a side_projects.gd stub + event_bus/game_state scaffolding for
+crew_relationships/crew_side_projects, kept and built on rather than replaced) into four
+verified subsystems, each its own commit.
+
+SCHEDULE (scripts/crew/crew_schedule.gd) — a ship-wide day cycle (DAY_LENGTH=360s at 1x:
+work 0-45%, meal 45-55%, recreation 55-75%, sleep 75-100%; a small stable per-crew time
+jitter, `_crew_jitter`, keeps transitions from snapping in lockstep) layered onto
+CrewBehavior's existing IDLE branch — CrewStateMachine/NeedsModel were extended, not
+replaced. Priority order (highest first): incapacitated/frozen > panic > needs-driven
+states (sleep/eat/boredom-work, unchanged, still computed first in CrewBehavior's outer
+match) > an in-progress repair assignment (CrewSchedule.repair_duty_room — makes
+RepairBehavior duties outrank recreation, since RepairBehavior itself never moves crew,
+only decides whether to start a job on whoever's already on-scene) > an accepted
+directive's hold_room_until (unchanged _honouring_directive gate) > the schedule itself.
+Fixed a latent bug the work surfaced: EATING was pathing to "quarters" instead of "mess".
+CrewSchedule.check_phase_transition() (called once/tick from CrewBehavior) emits the
+corpus's shift_start/shift_end/meal_time/quiet_shift `recent_event`s on each GLOBAL
+(unjittered) phase change — these had text in ~30+ corpus lines but no emitter before this
+session. Side projects (the predecessor's stub, reviewed and left as-is) bias recreation
+location; couples (see below) preferentially spend recreation together via
+`recreation_room_for`'s partner-join check.
+
+RELATIONSHIPS & ROMANCE (scripts/crew/relationship_graph.gd + relationship_behavior.gd) —
+GameState.crew_relationships (per-pair, pair_key sorted so it's order-independent):
+affinity -1..1, flags[], romance_stage ("none"|"hinted"|"advancing"|"accepted"),
+rejected_until. RelationshipGraph is a pure static utility (Checks/CrewStateMachine/
+NeedsModel shape); RelationshipBehavior (Node, added by Main) is the thin EventBus
+listener that decides WHEN to call it for social events outside the dialogue system.
+WHAT MOVES AFFINITY (the "small legible set"): conversation completed +0.02; per-line
+intent when a line has a resolvable specific addressee — praise/reassurance/offer_help
++0.03, apology +0.04, banter/gallows_humor/grief +0.02, insult -0.06, complaint -0.02,
+warning -0.01 (DialogueSystem calls RelationshipGraph.on_line_spoken for every such line);
+snapped at while panicking -0.04 (bystanders in the panicking crew member's room, on the
+first PANICKING transition); a resolved ship-wide crisis +0.05 for every living pair
+(recent_event "crisis_resolved" — see below); romance accepted +0.15, rejected -0.05.
+ROMANCE ARC: romance_hint -> romance_advance -> romance_accept/reject, all driven by
+`on_line_spoken` the moment a romance-intent line is actually spoken (not gated on the
+conversation completing) — can_hint()/can_advance() require both crew unpartnered, no
+active track between them, affinity above a threshold (0.40, personality-flavoured: ±0.03
+to +0.08 by the archetype tag's personality prefix — cheerful hints more readily,
+paranoid holds back more), and past any post-rejection cooldown (240s); would_accept()
+(threshold 0.55, same personality flavouring) is the hard gate DialogueSystem uses to
+decide which of romance_accept/romance_reject is even a valid reply candidate. Accepting
+sets a "couple" flag and fires the (previously declared-but-unemitted) crew_romance_started
+signal. partner_of()/are_couple() implement monogamy. on_crew_died() gives a surviving
+partner a heavy grief/stress hit (+6 stress, pain +0.4, loneliness +0.5, fear +0.3) plus a
+"lost_partner" flag. The dialogue corpus's "crisis_resolved" recent_event had ~30 lines
+conditioning on it but NO emitter anywhere before this session — wired in EventBus._ready()
+(reactor/life-support recovery, AI core returning to online) and QuarantineMonitor
+(pathogen_contained).
+
+DIALOGUE RUNTIME (scripts/crew/dialogue_system.gd, autoload, appended LAST in
+project.godot) — implements docs/dialogue_spec.md's "Runtime selection" section as close
+to verbatim as the prose allows. Loads resources/dialogue/{archetypes,lines,conversations}
+at _ready() with defensive parsing (every file/entry individually try-checked; malformed
+entries are push_warning'd and skipped, not fatal) into per-archetype-tag line pools, a
+key->line lookup (for template resolution), and career-code fallback pools ("crew with no
+archetype lines fall back to any same-career pool, else stay quiet" — built once from
+every loaded archetype's own pool, keyed by the tag's career dimension). Confirmed loading
+cleanly: 24 archetypes, 1376 lines, 22 conversation templates. SELECTION is one shared
+function, `_score(crew, line, ctx)`: hard filters (panic flag / stress bounds / wounded /
+reply_to_intents-when-answering / the romance gate) return a HARD_FAIL sentinel and are
+never scored, matching the spec's explicit separation; everything else adds to
+`score = weight + 2.0*recent_event + 1.0*location + 1.0*target + 1.0*mood +
+0.5*stress_band_closeness - 5.0*repetition(10min)`. `_pick_line` takes the max score, then
+weighted-random-picks among every candidate within TOP_SCORE_MARGIN (1.0) of it, weighted
+by each line's own `weight` field. DECLARATIONS (type "declaration", always target:
+open_air) fire from a per-crew idle timer (12-45s, shorter under higher stress) and are
+ALWAYS the "thought" side of the corpus (docs/dialogue_spec.md's Display section: "Thought
+bubbles... reuse declaration lines with target: open_air") — this resolved what would
+otherwise be an ambiguity between the two systems' specs. CONVERSATIONS: a periodic
+per-room scan (every 4s) groups eligible crew (alive, not mid-route, IDLE/EATING/WORKING —
+WORKING is included deliberately: the corpus's own "work_talk" intent implies on-shift
+banter, and with one crew per duty station excluding it would make the two crew who
+actually share a room while working — e.g. the quarantine's medic+patient in medbay —
+unable to ever talk) by room, then rolls a chance weighted by CrewSchedule phase (0.12
+if either is mid-shift, 0.65 if both are in recreation, 0.35 otherwise). REPLY-CHAINING:
+a matching conversation TEMPLATE is tried first — participants matched by exact archetype
+tag OR a career/rank code (_spec_matches), template-level conditions (recent_events/
+stress_min/max, checked against whichever of the two crew makes it stricter) filtered,
+then each line-slot resolved: if the live speaker's own archetype_tag matches the
+template's referenced tag exactly, use that exact line; otherwise substitute a line of the
+SAME type+intent from the live speaker's own pool ("the runtime substitutes lines of
+matching intent from whichever archetype is actually present" — spec) — every resolved
+line, exact or substituted, still passes through the full `_score` hard-filter check (so a
+template can't force a line through panic/stress/romance-gate mismatches); a slot that
+can't resolve truncates the queue (or aborts the template entirely if it's the opener).
+Falling back to EMERGENT chaining: an opener from either party (whichever has one),
+then alternating replies whose reply_to_intents contains the prior line's intent, 3-6
+parts, preferring a closer-type line on the last planned turn (falling back to a plain
+reply if none fits) so the exchange usually lands on a real goodbye rather than just
+stopping. Every turn (template or emergent) re-checks both participants are still alive,
+in the room, and not panicking immediately before speaking — "a panicking or departing
+speaker breaks the chain" — not just at conversation start. ROMANCE GATING: any line whose
+intent is romance_hint/advance/accept/reject is hard-filtered through
+RelationshipGraph.can_hint/can_advance/would_accept inside `_score` itself, so the gate
+applies uniformly whether the line came from a template's fast path, a template
+substitution, or emergent selection. Verified via a throwaway probe scene (built, run,
+then deleted — not committed) that called the (GDScript-"private"-by-convention-only)
+selection functions directly with a real generated roster: template substitution, emergent
+chaining, and the full romance stage machine all behaved correctly; caught one real bug
+this way (a typed-Array ternary — `Array[String] x = a if cond else b` — that GDScript
+accepts at parse time but rejects at runtime as "Trying to assign an array of type Array
+to a variable of type Array[String]"; fixed in `_pick_reply`). Also verified live: the
+quarantine AUTODEMO win run (SHIPAI_SEED=42) organically produced a real conversation
+(medic Marisol <-> patient Julio in medbay: "You should eat..." -> "i'm good!..." ->
+"Dismissed. Rest while you can.") without any scripted intervention, and the scenario
+still completes to SUCCESS.
+
+BUBBLES (scripts/crew/crew_member_node.gd) — one reusable Panel+RichTextLabel per crew
+(built once in `_build_bubble`, called from `_ready()`, same pattern as the existing
+`_status_dot`), restyled and resized per line rather than instantiated per-line. Reacts to
+EventBus.line_spoken filtered to `crew_id == crew_data.crew_id`; line_type "declaration" ->
+thought (italic bbcode, dimmed colour, no tail); anything else (opener/reply/closer) ->
+speech (brighter text, bordered panel, a small tail polygon). World-space: a plain Node2D
+child of CrewMemberNode (not a CanvasLayer), `z_as_relative=false` with a large fixed
+z_index (4000) so it always draws above the sprite/props regardless of the crew's own
+dynamic y-sort z — it pans/scales with DeckCamera for free, as intended. Auto-sized from a
+character-count heuristic (`_estimate_bubble_size`) rather than an async
+fit_content/get_content_height layout pass — deliberately, so two lines arriving close
+together (e.g. three consecutive lines from the same speaker mid-conversation) can't race
+each other's deferred layout; any in-flight fade tween is `kill()`'d before a new line
+starts for the same reason. Held ~4-6s (base + a small per-character reading-time bonus,
+capped) then fades over 0.6s. Not visually screenshotted this session (see Known
+limitations below) — behaviourally verified only (no script errors across many
+show/hide/re-trigger cycles in the AUTODEMO run, including the 3-line medbay exchange
+above exercising the tween-kill path).
+
+Signals added/newly-emitted (all pre-declared by the predecessor's checkpoint except the
+`recent_event` crisis_resolved forwarding, which is new): line_spoken, conversation_started,
+conversation_ended, crew_romance_started, crew_relationship_changed.
+
+Known limitations / risks: (1) No Godot GUI available this session either (same as every
+prior session) — verification was `--headless --import` + `--headless --quit-after N
+res://scenes/Main.tscn`, both plain and with SHIPAI_SEED/SHIPAI_AUTODEMO/SHIPAI_AUTOSHOT,
+checked for SCRIPT ERROR/ERROR lines, plus the throwaway probe scene described above. The
+existing SHIPAI_AUTOSHOT screenshot path (main.gd's `_save_screenshot`) errors in headless
+mode (`get_viewport().get_texture().get_image()` returns null under the dummy rendering
+driver) — this is a pre-existing limitation of headless + screenshot capture, not
+something this session introduced or could visually route around; bubble APPEARANCE
+(sizing/legibility/colour) is therefore unverified by eye and worth a look in the editor.
+(2) Conversations are naturally rarer than they'll eventually feel in a longer session:
+NeedsModel's boredom recovers slowly under WORKING (~12+ minutes to fall back below the
+IDLE threshold at default rates), so within a short headless run most crew are WORKING
+(solo, one per duty station) most of the time; the quarantine scenario's own directive-
+driven medbay convergence is what reliably produces a conversation quickly, which is also
+why WORKING was deliberately included in dialogue eligibility (see above) rather than
+excluded. (3) The recent_event window (RECENT_EVENT_WINDOW_SECONDS=180s, "last N minutes")
+and the top-score tier margin (TOP_SCORE_MARGIN=1.0) are both documented judgment calls —
+the spec states the repetition window exactly (10 min) but leaves these two open. (4) Template
+conditions' stress_min/max are checked against whichever of the two participants makes the
+condition stricter (max of the two for stress_min, min of the two for stress_max) — a
+reasonable reading of "the pair's" stress with no single obviously-correct interpretation
+in the spec. (5) side_projects.gd is the predecessor's stub, reviewed and kept verbatim —
+its hobby->location pool is small (6 entries) and could grow later.
 
 2026-07-09 (session 2): Procedural ship generation + visual overhaul (Agent 1 of the
 overhaul/mothership-rewrite branch). New scripts/procedural/ship_layout_gen.gd generates a
