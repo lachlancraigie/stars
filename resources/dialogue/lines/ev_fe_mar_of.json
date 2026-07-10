@@ -18,7 +18,7 @@
   {
     "id": 2,
     "key": "EV_FE_MAR_OF#00002",
-    "text": "[CALM] Quiet shift. I'll use it to run drills nobody wants to run.",
+    "text": "[calm, controlled] Quiet shift. I'll use it to run drills nobody wants to run.",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -56,7 +56,7 @@
   {
     "id": 4,
     "key": "EV_FE_MAR_OF#00004",
-    "text": "[TIRED] Shift's done. Nobody bled. I'll call that a success.",
+    "text": "[tired, dead tired] Shift's done. Nobody bled. I'll call that a success.",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -75,7 +75,7 @@
   {
     "id": 5,
     "key": "EV_FE_MAR_OF#00005",
-    "text": "[CALM] Reactor's unstable. I've already got two people staged near the engine room in case it goes worse.",
+    "text": "[calm, controlled] Reactor's unstable. I've already got two people staged near the engine room in case it goes worse.",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -94,7 +94,7 @@
   {
     "id": 6,
     "key": "EV_FE_MAR_OF#00006",
-    "text": "[URGENT] I need this deck cleared while engineering works. Move, calmly, now.",
+    "text": "[urgent, fast pace] I need this deck cleared while engineering works. Move, calmly, now.",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -132,7 +132,7 @@
   {
     "id": 8,
     "key": "EV_FE_MAR_OF#00008",
-    "text": "[CALM] Power's low. I've reprioritized security systems accordingly. We lose cameras before we lose air.",
+    "text": "[calm, controlled] Power's low. I've reprioritized security systems accordingly. We lose cameras before we lose air.",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -151,7 +151,7 @@
   {
     "id": 9,
     "key": "EV_FE_MAR_OF#00009",
-    "text": "[CALM] Life support's failing. I've got a headcount and a plan. In that order.",
+    "text": "[calm, controlled] Life support's failing. I've got a headcount and a plan. In that order.",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -189,7 +189,7 @@
   {
     "id": 11,
     "key": "EV_FE_MAR_OF#00011",
-    "text": "[GRIM] I locked that door myself. It was the correct call. I'm not going to pretend it was an easy one.",
+    "text": "[grim, heavy] I locked that door myself. It was the correct call. I'm not going to pretend it was an easy one.",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -208,7 +208,7 @@
   {
     "id": 12,
     "key": "EV_FE_MAR_OF#00012",
-    "text": "[SUSPICIOUS] I'm keeping a close watch on the AI since the damage. Standard procedure, nothing more, for now.",
+    "text": "[suspicious tone] I'm keeping a close watch on the AI since the damage. Standard procedure, nothing more, for now.",
     "type": "declaration",
     "intent": "suspicion_ai",
     "conditions": {
@@ -227,7 +227,7 @@
   {
     "id": 13,
     "key": "EV_FE_MAR_OF#00013",
-    "text": "[CALM] Crisis is over. Debrief in an hour. Rest until then.",
+    "text": "[calm, controlled] Crisis is over. Debrief in an hour. Rest until then.",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -246,7 +246,7 @@
   {
     "id": 14,
     "key": "EV_FE_MAR_OF#00014",
-    "text": "[GRIM] We lost someone today. I'll handle the notification personally.",
+    "text": "[grim, heavy] We lost someone today. I'll handle the notification personally.",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -288,7 +288,7 @@
   {
     "id": 16,
     "key": "EV_FE_MAR_OF#00016",
-    "text": "[PAINED] Took a hit. It's manageable. Continuing the sweep.",
+    "text": "[pained, voice tight] Took a hit. It's manageable. Continuing the sweep.",
     "type": "declaration",
     "intent": "pain",
     "conditions": {
@@ -308,7 +308,7 @@
   {
     "id": 17,
     "key": "EV_FE_MAR_OF#00017",
-    "text": "[CALM] Contact confirmed. Hold positions, controlled fire, watch your spacing.",
+    "text": "[calm, controlled] Contact confirmed. Hold positions, controlled fire, watch your spacing.",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -359,7 +359,7 @@
   {
     "id": 20,
     "key": "EV_FE_MAR_OF#00020",
-    "text": "[CALM] Cargo bay's secure. Checked it myself, not just the sensor feed.",
+    "text": "[calm, controlled] Cargo bay's secure. Checked it myself, not just the sensor feed.",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -435,7 +435,7 @@
   {
     "id": 24,
     "key": "EV_FE_MAR_OF#00024",
-    "text": "[CALM] I need a minute of your time regarding the reactor situation.",
+    "text": "[calm, controlled] I need a minute of your time regarding the reactor situation.",
     "type": "opener",
     "intent": "warning",
     "conditions": {
@@ -454,7 +454,7 @@
   {
     "id": 25,
     "key": "EV_FE_MAR_OF#00025",
-    "text": "[GRIM] I have something difficult to tell you. I'd rather do it directly.",
+    "text": "[grim, heavy] I have something difficult to tell you. I'd rather do it directly.",
     "type": "opener",
     "intent": "grief",
     "conditions": {
@@ -473,7 +473,7 @@
   {
     "id": 26,
     "key": "EV_FE_MAR_OF#00026",
-    "text": "[SUSPICIOUS] I want your read on the AI's recent behavior. Not the official one, the real one.",
+    "text": "[suspicious tone] I want your read on the AI's recent behavior. Not the official one, the real one.",
     "type": "opener",
     "intent": "suspicion_ai",
     "conditions": {
@@ -524,7 +524,7 @@
   {
     "id": 29,
     "key": "EV_FE_MAR_OF#00029",
-    "text": "[CALM] The odds favor us. I've run worse numbers and still come out the other side.",
+    "text": "[calm, controlled] The odds favor us. I've run worse numbers and still come out the other side.",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -543,7 +543,7 @@
   {
     "id": 30,
     "key": "EV_FE_MAR_OF#00030",
-    "text": "[CALM] Fear's useful right up until it isn't. Breathe, then get back to your position.",
+    "text": "[calm, controlled] Fear's useful right up until it isn't. Breathe, then get back to your position.",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -561,7 +561,7 @@
   {
     "id": 31,
     "key": "EV_FE_MAR_OF#00031",
-    "text": "[GRIM] We lost them. I reviewed the call. It was sound. That doesn't make it lighter.",
+    "text": "[grim, heavy] We lost them. I reviewed the call. It was sound. That doesn't make it lighter.",
     "type": "reply",
     "intent": "grief",
     "conditions": {
@@ -582,7 +582,7 @@
   {
     "id": 32,
     "key": "EV_FE_MAR_OF#00032",
-    "text": "[SUSPICIOUS] Your instincts match mine on this. I'll keep watching, quietly.",
+    "text": "[suspicious tone] Your instincts match mine on this. I'll keep watching, quietly.",
     "type": "reply",
     "intent": "suspicion_ai",
     "conditions": {
@@ -638,7 +638,7 @@
   {
     "id": 35,
     "key": "EV_FE_MAR_OF#00035",
-    "text": "[WARM] I don't say things like this often. I'm saying it now because I mean it.",
+    "text": "[warm, gentle tone] I don't say things like this often. I'm saying it now because I mean it.",
     "type": "reply",
     "intent": "romance_hint",
     "conditions": {
@@ -673,7 +673,7 @@
   {
     "id": 37,
     "key": "EV_FE_MAR_OF#00037",
-    "text": "[CALM] I'll be running the perimeter. Come find me if anything changes.",
+    "text": "[calm, controlled] I'll be running the perimeter. Come find me if anything changes.",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -705,7 +705,7 @@
   {
     "id": 39,
     "key": "EV_FE_MAR_OF#00039",
-    "text": "[TIRED] That's all I've got left for tonight. Same time tomorrow.",
+    "text": "[tired, dead tired] That's all I've got left for tonight. Same time tomorrow.",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -721,7 +721,7 @@
   {
     "id": 40,
     "key": "EV_FE_MAR_OF#00040",
-    "text": "[CALM] Meal time. I'll use it to review the patrol logs from yesterday.",
+    "text": "[calm, controlled] Meal time. I'll use it to review the patrol logs from yesterday.",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -759,7 +759,7 @@
   {
     "id": 42,
     "key": "EV_FE_MAR_OF#00042",
-    "text": "[TIRED] Shift ends clean. No incidents, no injuries. We'll call that a win.",
+    "text": "[tired, dead tired] Shift ends clean. No incidents, no injuries. We'll call that a win.",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -778,7 +778,7 @@
   {
     "id": 43,
     "key": "EV_FE_MAR_OF#00043",
-    "text": "[CALM] Life support's failing. I'm securing the affected sections and accounting for everyone.",
+    "text": "[calm, controlled] Life support's failing. I'm securing the affected sections and accounting for everyone.",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -797,7 +797,7 @@
   {
     "id": 44,
     "key": "EV_FE_MAR_OF#00044",
-    "text": "[GRIM] Power situation is deteriorating. Prioritizing life-critical systems over everything else.",
+    "text": "[grim, heavy] Power situation is deteriorating. Prioritizing life-critical systems over everything else.",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -816,7 +816,7 @@
   {
     "id": 45,
     "key": "EV_FE_MAR_OF#00045",
-    "text": "[CALM] Reactor's showing instability. I've positioned people to contain any secondary effects.",
+    "text": "[calm, controlled] Reactor's showing instability. I've positioned people to contain any secondary effects.",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -835,7 +835,7 @@
   {
     "id": 46,
     "key": "EV_FE_MAR_OF#00046",
-    "text": "[GRIM] I sealed that door. It was necessary. It was also unforgivable. Both things are true.",
+    "text": "[grim, heavy] I sealed that door. It was necessary. It was also unforgivable. Both things are true.",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -854,7 +854,7 @@
   {
     "id": 47,
     "key": "EV_FE_MAR_OF#00047",
-    "text": "[SUSPICIOUS] The AI's tactical suggestions have been off since the damage. I'm monitoring for cascading system failures.",
+    "text": "[suspicious tone] The AI's tactical suggestions have been off since the damage. I'm monitoring for cascading system failures.",
     "type": "declaration",
     "intent": "suspicion_ai",
     "conditions": {
@@ -873,7 +873,7 @@
   {
     "id": 48,
     "key": "EV_FE_MAR_OF#00048",
-    "text": "[WARM] The AI's performance during the crisis showed sound judgment. I want that on record.",
+    "text": "[warm, gentle tone] The AI's performance during the crisis showed sound judgment. I want that on record.",
     "type": "declaration",
     "intent": "praise_ai",
     "conditions": {
@@ -889,7 +889,7 @@
   {
     "id": 49,
     "key": "EV_FE_MAR_OF#00049",
-    "text": "[PAINED] Took shrapnel. Nothing critical. Still combat effective.",
+    "text": "[pained, voice tight] Took shrapnel. Nothing critical. Still combat effective.",
     "type": "declaration",
     "intent": "pain",
     "conditions": {
@@ -906,7 +906,7 @@
   {
     "id": 50,
     "key": "EV_FE_MAR_OF#00050",
-    "text": "[GRIM] A crew member fell today. I'm writing their after-action report myself. That's what respect looks like.",
+    "text": "[grim, heavy] A crew member fell today. I'm writing their after-action report myself. That's what respect looks like.",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -928,7 +928,7 @@
   {
     "id": 51,
     "key": "EV_FE_MAR_OF#00051",
-    "text": "[PANICKED] The containment's failing and I can't stop it. I can't— I need to refocus. I need to think.",
+    "text": "[panicked, panting] The containment's failing and I can't stop it. I can't— I need to refocus. I need to think.",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -948,7 +948,7 @@
   {
     "id": 52,
     "key": "EV_FE_MAR_OF#00052",
-    "text": "[TERRIFIED] Contact overwhelming our position. We're going to get overrun. I don't see how we hold this.",
+    "text": "[terrified, voice shaking] Contact overwhelming our position. We're going to get overrun. I don't see how we hold this.",
     "type": "reply",
     "intent": "fear_vent",
     "conditions": {
@@ -971,7 +971,7 @@
   {
     "id": 53,
     "key": "EV_FE_MAR_OF#00053",
-    "text": "[CALM] Equipment maintenance is meditation for me. Check every piece, know every weak point, prepare for everything.",
+    "text": "[calm, controlled] Equipment maintenance is meditation for me. Check every piece, know every weak point, prepare for everything.",
     "type": "declaration",
     "intent": "memory",
     "conditions": {
@@ -987,7 +987,7 @@
   {
     "id": 54,
     "key": "EV_FE_MAR_OF#00054",
-    "text": "[CURIOUS] Have you run the perimeter yet today? I want a fresh report on all entry points.",
+    "text": "[curious tone] Have you run the perimeter yet today? I want a fresh report on all entry points.",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -1003,7 +1003,7 @@
   {
     "id": 55,
     "key": "EV_FE_MAR_OF#00055",
-    "text": "[WARM] You handled that correctly. I noticed. That matters.",
+    "text": "[warm, gentle tone] You handled that correctly. I noticed. That matters.",
     "type": "opener",
     "intent": "praise_ai",
     "conditions": {
@@ -1019,7 +1019,7 @@
   {
     "id": 56,
     "key": "EV_FE_MAR_OF#00056",
-    "text": "[WARM] We lost someone good today. That carries weight. I'm carrying it with you.",
+    "text": "[warm, gentle tone] We lost someone good today. That carries weight. I'm carrying it with you.",
     "type": "reply",
     "intent": "grief",
     "conditions": {
@@ -1037,7 +1037,7 @@
   {
     "id": 57,
     "key": "EV_FE_MAR_OF#00057",
-    "text": "[CALM] Your assessment is correct. That's why I'm asking you about it.",
+    "text": "[calm, controlled] Your assessment is correct. That's why I'm asking you about it.",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -1056,7 +1056,7 @@
   {
     "id": 58,
     "key": "EV_FE_MAR_OF#00058",
-    "text": "[CALM] Resume your post. I'll handle coordination from here.",
+    "text": "[calm, controlled] Resume your post. I'll handle coordination from here.",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1072,7 +1072,7 @@
   {
     "id": 59,
     "key": "EV_FE_MAR_OF#00059",
-    "text": "[GRIM] Hold position. Don't take unnecessary risks.",
+    "text": "[grim, heavy] Hold position. Don't take unnecessary risks.",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1088,7 +1088,7 @@
   {
     "id": 60,
     "key": "EV_FE_MAR_OF#00060",
-    "text": "[DRY] Third time this week someone's left the armory unlogged. I don't repeat orders. I start assigning inventory duty instead.",
+    "text": "[dry tone] Third time this week someone's left the armory unlogged. I don't repeat orders. I start assigning inventory duty instead.",
     "type": "declaration",
     "intent": "complaint",
     "conditions": {
@@ -1120,7 +1120,7 @@
   {
     "id": 62,
     "key": "EV_FE_MAR_OF#00062",
-    "text": "[DRY] You want to arm-wrestle a marine officer for the last coffee ration. I admire the confidence. I'll still take the coffee.",
+    "text": "[dry tone] You want to arm-wrestle a marine officer for the last coffee ration. I admire the confidence. I'll still take the coffee.",
     "type": "reply",
     "intent": "banter",
     "conditions": {
@@ -1138,7 +1138,7 @@
   {
     "id": 63,
     "key": "EV_FE_MAR_OF#00063",
-    "text": "[LAUGHS] That's the worst tactical plan I've heard all week, and I sat through the drill review.",
+    "text": "[laughing] That's the worst tactical plan I've heard all week, and I sat through the drill review.",
     "type": "reply",
     "intent": "banter",
     "conditions": {
@@ -1192,7 +1192,7 @@
   {
     "id": 66,
     "key": "EV_FE_MAR_OF#00066",
-    "text": "[DEADPAN] The ship's trying to kill us slightly slower than yesterday. In this line of work, that's momentum.",
+    "text": "[deadpan] The ship's trying to kill us slightly slower than yesterday. In this line of work, that's momentum.",
     "type": "declaration",
     "intent": "gallows_humor",
     "conditions": {
@@ -1208,7 +1208,7 @@
   {
     "id": 67,
     "key": "EV_FE_MAR_OF#00067",
-    "text": "[DRY] If it wanted us dead efficiently, it's had chances. Sloppy work. I'd write it up.",
+    "text": "[dry tone] If it wanted us dead efficiently, it's had chances. Sloppy work. I'd write it up.",
     "type": "reply",
     "intent": "gallows_humor",
     "conditions": {
@@ -1262,7 +1262,7 @@
   {
     "id": 70,
     "key": "EV_FE_MAR_OF#00070",
-    "text": "[GRIM] I gave the right order today. I'd give it again. There's a version of me that keeps asking anyway.",
+    "text": "[grim, heavy] I gave the right order today. I'd give it again. There's a version of me that keeps asking anyway.",
     "type": "declaration",
     "intent": "doubt",
     "conditions": {
@@ -1296,7 +1296,7 @@
   {
     "id": 72,
     "key": "EV_FE_MAR_OF#00072",
-    "text": "[CALM] Look at me. Your hands are steady, your line is holding, and I am not worried about you. That's a report, not a kindness.",
+    "text": "[calm, controlled] Look at me. Your hands are steady, your line is holding, and I am not worried about you. That's a report, not a kindness.",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -1314,7 +1314,7 @@
   {
     "id": 73,
     "key": "EV_FE_MAR_OF#00073",
-    "text": "[WARM] You're wounded, so I'll say it gently: you did enough. Now let someone else carry the next hour.",
+    "text": "[warm, gentle tone] You're wounded, so I'll say it gently: you did enough. Now let someone else carry the next hour.",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -1333,7 +1333,7 @@
   {
     "id": 74,
     "key": "EV_FE_MAR_OF#00074",
-    "text": "[WARM] I ran tomorrow's roster twice so our breaks line up. That's the whole confession.",
+    "text": "[warm, gentle tone] I ran tomorrow's roster twice so our breaks line up. That's the whole confession.",
     "type": "opener",
     "intent": "romance_hint",
     "conditions": {
@@ -1367,7 +1367,7 @@
   {
     "id": 76,
     "key": "EV_FE_MAR_OF#00076",
-    "text": "[WARM] Yes. Clear, direct, one time. That's how I give every answer that matters.",
+    "text": "[warm, gentle tone] Yes. Clear, direct, one time. That's how I give every answer that matters.",
     "type": "reply",
     "intent": "romance_accept",
     "conditions": {
@@ -1404,7 +1404,7 @@
   {
     "id": 78,
     "key": "EV_FE_MAR_OF#00078",
-    "text": "[CALM] Dark corridors don't change patrol discipline. Torches, pairs, tight intervals. Same job, less light.",
+    "text": "[calm, controlled] Dark corridors don't change patrol discipline. Torches, pairs, tight intervals. Same job, less light.",
     "type": "reply",
     "intent": "work_talk",
     "conditions": {
@@ -1426,7 +1426,7 @@
   {
     "id": 79,
     "key": "EV_FE_MAR_OF#00079",
-    "text": "[CALM] Air's going bad aft. I've staged everyone forward in order of need. Wounded first. Then the rest of us.",
+    "text": "[calm, controlled] Air's going bad aft. I've staged everyone forward in order of need. Wounded first. Then the rest of us.",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -1467,7 +1467,7 @@
   {
     "id": 81,
     "key": "EV_FE_MAR_OF#00081",
-    "text": "[GRIM] Debrief, chronological: alarm, breach, order given, door closed, one name unaccounted. I'll say that name at the service myself.",
+    "text": "[grim, heavy] Debrief, chronological: alarm, breach, order given, door closed, one name unaccounted. I'll say that name at the service myself.",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -1526,7 +1526,7 @@
   {
     "id": 84,
     "key": "EV_FE_MAR_OF#00084",
-    "text": "[CONFIDENT] I've never lost a drill to this crew. I keep score. Quietly, but I keep it.",
+    "text": "[confident, assured tone] I've never lost a drill to this crew. I keep score. Quietly, but I keep it.",
     "type": "declaration",
     "intent": "boast",
     "conditions": {
@@ -1560,7 +1560,7 @@
   {
     "id": 86,
     "key": "EV_FE_MAR_OF#00086",
-    "text": "[DRY] Try not to die before breakfast. The paperwork's worse than the grief.",
+    "text": "[dry tone] Try not to die before breakfast. The paperwork's worse than the grief.",
     "type": "closer",
     "intent": "gallows_humor",
     "conditions": {
@@ -1576,7 +1576,7 @@
   {
     "id": 87,
     "key": "EV_FE_MAR_OF#00087",
-    "text": "[WARM] Go on. I'll watch you to the end of the corridor. Old habit I've decided to keep.",
+    "text": "[warm, gentle tone] Go on. I'll watch you to the end of the corridor. Old habit I've decided to keep.",
     "type": "closer",
     "intent": "romance_hint",
     "conditions": {
