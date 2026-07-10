@@ -43,7 +43,15 @@ Done this session (Agent 2/"crew simulation", see 2026-07-10 session 5 note): th
 crew relationships/romance, the full emergent dialogue runtime, and speech/thought bubbles — the item 6 above
 is now DONE, not a next task.
 
-**Blocked on**: nothing hard. SaveManager still stubbed by design (checkpoints resolved, unimplemented).
+Done this session (THE OVERSEER — director AI, see 2026-07-10 session 7 note): ScenarioDirector grew a full
+Layer-1 director on top of its existing tension/tone drift (heat + rolling performance window, a single
+`modifiers` knob surface, per-leg escalation floor); ScenarioRunner became multi-instance (`active_scenarios`)
+with per-scenario win + morph-edge handoffs + heat-gated overlap scheduling (cap 2). Item 3 above ("campaign
+handoff after scenario end") is now partially addressed for same-voyage leg transitions (morph/overlap start
+a new scenario without returning to a menu) — a real CampaignManager for between-run structure is still open.
+
+**Blocked on**: nothing hard. SaveManager still stubbed by design (checkpoints resolved, unimplemented) —
+ScenarioRunner's leg-boundary hook now calls `SaveManager.save_checkpoint()`, still a no-op by design.
 
 ---
 
@@ -205,10 +213,10 @@ These are hard constraints. Do not deviate without updating this file.
 | AISystem | `scripts/ai/ai_system.gd` | done | Autoload. Directive lifecycle, ObedienceEngine orchestration, trust propagation on outcomes; blocked outright during AI-core blackout, delayed during degraded mode (AICoreSystem). |
 | ScenarioEvent | `scripts/scenarios/scenario_event.gd` | done | Resource. Event with conditions, outcomes, tone range, weight, cooldown. Outcome vocabulary extended with `reactor_failure`/`life_support_failure`/`ai_core_damage`/`ai_core_repair`/`ship_destroyed` stub hooks. |
 | EventPool | `scripts/scenarios/event_pool.gd` | done | RefCounted. Weighted draw filtered by tone + conditions + cooldown; `resource_below/above` conditions now read `GameState.get_metric()`. |
-| ScenarioDirector | `scripts/scenarios/scenario_director.gd` | done | Autoload. Hidden meta-layer; tension/tone drift; probabilistic event pacing; `resource_delta` outcome now routes through `GameState.adjust_metric()`. |
-| ScenarioRunner | `scripts/scenarios/scenario_runner.gd` | done | Autoload. Win/lose detection (all crew dead / ship destroyed / AI decommissioned — via crew-vote OR sustained blackout-with-no-repair-willingness), end-of-leg situational delta via `GameState.adjust_metric()`, scenario handoff stub. |
-| QuarantineScenario | `scripts/scenarios/quarantine_scenario.gd` | done | Static builder. 6 events, 3 acts; crew referenced by ROLE not hardcoded id (works with procedurally generated rosters); life-support-contamination escalation now triggers a real `life_support_failure`. |
-| NarrowPassageScenario | `scripts/scenarios/narrow_passage_scenario.gd` | done | Static builder (scenario-bible 1.2, Tier 1). Approach warning → mandatory reactor shutdown (early comply = trust credit, hot at the boundary = emergency scram + trust cost) → battery crossing under the 3-powered/3-life-supported room caps → relight/timer exit → reactor restart → `passage_cleared`. ALL monitor timings/thresholds/trust knobs live in the config's `monitor` section (Director-AI-retunable data, not monitor constants). Selected via `SHIPAI_SCENARIO=narrow_passage`; quarantine stays the default. |
+| ScenarioDirector | `scripts/scenarios/scenario_director.gd` | done | Autoload. TWO layers now (docs/director-spec.md): the original hidden tension/tone drift + probabilistic event pacing (within-scenario), plus THE OVERSEER grown on top — rolling performance-score window -> `heat` (hysteresis+slew) -> a single `modifiers` surface (cooldown/crisis-weight/mercy check-bonus/battery-drain), per-leg escalation floor (`effective_heat()`, only ever rises), `SHIPAI_DIRECTOR_DEBUG=1`/`SHIPAI_FORCE_HEAT=<0..1>` dev hooks. `resource_delta` outcome still routes through `GameState.adjust_metric()`. |
+| ScenarioRunner | `scripts/scenarios/scenario_runner.gd` | done | Autoload. Multi-instance (`active_scenarios: Dictionary`, instance_id -> data) — per-scenario win + morph-edge handoffs, RUN-level lose stays global (all crew dead / ship destroyed / AI decommissioned). Owns morph-edge evaluation (EventBus.scenario_flag_set-driven), overlap scheduling (heat-threshold + expected_length + axis-compatibility, cap 2), and the leg-boundary hook (ScenarioDirector.advance_leg() + SaveManager.save_checkpoint() stub call) once every active scenario concludes on its own terms. |
+| QuarantineScenario | `scripts/scenarios/quarantine_scenario.gd` | done | Static builder. 6 events, 3 acts; crew referenced by ROLE not hardcoded id (works with procedurally generated rosters); life-support-contamination escalation now triggers a real `life_support_failure`. Overseer metadata: `pressure_axis="bio"`, `expected_length=360.0`, two `morph_edges` (uncontained "airborne" / "crew_lost_to_pathogen") toward the not-yet-built "Close Quarters" (bible 1.5), stub-redirected to narrow_passage today. |
+| NarrowPassageScenario | `scripts/scenarios/narrow_passage_scenario.gd` | done | Static builder (scenario-bible 1.2, Tier 1). Approach warning → mandatory reactor shutdown (early comply = trust credit, hot at the boundary = emergency scram + trust cost) → battery crossing under the 3-powered/3-life-supported room caps → relight/timer exit → reactor restart → `passage_cleared`. ALL monitor timings/thresholds/trust knobs live in the config's `monitor` section (Director-AI-retunable data, not monitor constants). Selected via `SHIPAI_SCENARIO=narrow_passage`; quarantine stays the default. Overseer metadata: `pressure_axis="systems"`, `expected_length=200.0`, one `morph_edge` (battery scraped <=20% at resolution, tracked via the monitor's own `_min_battery`) toward the not-yet-built "The Long Crack" (bible 1.3), stub-redirected to quarantine today. |
 | NarrowPassageMonitor | `scripts/scenarios/narrow_passage_monitor.gd` | done | Node (added by Main for the narrow passage only; `setup(config)` shares the builder's dictionary). Clockwork for the timed beats: shutdown-compliance window, scripted `field_turbulence` scares (battery drain + crossing extension — pool-drawn extras converge on the same handler), fragile-patient stability meter (Checks Body Saves, thin-air disadvantage automatic, medic-at-bedside advantage, `WoundTable.death_save` at zero), battery-exhaustion stranded ending (`destroy_ship` after a dark-drift grace), early-relight exit, resolution trust grading (patient/bridge/battery-margin). Never sets crew state (Rule 1); additive EventBus connections only. |
 | ScenarioGenerator | `scripts/procedural/scenario_generator.gd` | not started | Procedural scenario seeding. |
 
@@ -234,6 +242,128 @@ These are hard constraints. Do not deviate without updating this file.
 > Append dated notes here as the project progresses.
 
 ```
+2026-07-10 (session 7, THE OVERSEER — director AI): Implemented docs/director-spec.md end to end, one
+verified commit per build-order step (§8), growing the existing ScenarioDirector/ScenarioRunner rather than
+forking them (the tension/tone drift from session 1 stays the WITHIN-scenario layer; the Overseer is the new
+omniscient Layer 1 on top — the dual-AI split from Alien Isolation the spec asks for).
+
+STEP 1 (heat + performance window, read-only): ScenarioDirector now maintains a timestamped rolling-window
+sum (`_perf_samples`, 240s window — spec's 3-5 min band) fed by every §3 input: discrete EventBus pushes
+(crew_death strongly down, injury/crew_panicked/ai_damaged/repair_refused down, repair_success/crisis_
+resolved up) plus continuous per-tick pushes for level conditions (avg stress >9, avg trust <0.4, battery
+<30%, any room air <40, reactor+life-support both offline all down; all-calm+both-systems-green+no-active-
+beat and wall-clock boredom since the last real AI action both up). Judgment call: "objective progress" has
+no dedicated signal, so `set_flag()` itself pushes a small sample whenever a scenario flag transitions
+false/unset -> true — generic across scenarios, no scenario-specific wiring needed. `performance_score`
+(sum/10, clamped [-1,1]) drives a target for `heat` with real hysteresis (target must differ >0.1 for 20s+
+before `heat` starts moving) and a slew limit (0.015/s) — verified over a 200-sim-second idle run: heat
+climbs 0.5 -> 0.9+ in a visible staircase (moves in holds, never oscillates back down).
+
+STEP 2 (single `modifiers` surface): `ScenarioDirector.modifiers` (cooldown_mult, crisis_weight_mult,
+check_bonus, battery_drain_mult) is the ONE thing every consumer reads — no scattered heat special-cases.
+Pressure knobs move symmetrically around neutral heat (0.5), bounded [0.6,1.4]/[0.5,2.0]. Mercy knobs
+(check_bonus, battery_drain_mult) only ever engage below neutral, hard-capped exactly at the spec's bounds
+(+5, floor 0.90) — the "strictly bounded... never announced" rule from §4 is enforced in the formula, not by
+convention. EventPool reads cooldown_mult (per-event cooldown gate) and crisis_weight_mult (classifies
+"crisis" events generically by outcome type: reactor_failure/life_support_failure/ai_core_damage/
+ship_destroyed/crew_fear_spike — content-agnostic, future scenarios opt in for free). check_bonus threads
+through Checks' EXISTING `extra_bonus` param at the two named call sites (RepairModel._tick_job, Door.
+attempt_crew_bypass) — Checks.gd itself untouched. battery_drain_mult multiplies PowerModel.tick's drain.
+AUTODEMO determinism: while SHIPAI_AUTODEMO is set, heat updates are skipped entirely (pinned neutral) so
+modifiers stay at identity values for scripted verification — proven in debug output (heat=0.500 the whole
+run, both wins still land).
+
+STEP 3 (ScenarioRunner multi-instance — "the risky one"): `_config`/`_active` replaced with `active_scenarios:
+Dictionary` (instance_id -> {id, scenario_id, config, started_at}). Win is per-scenario now (`_check_win_
+conditions` iterates active_scenarios, `_end_scenario_instance` ends only the matching one, applies ITS OWN
+leg_delta, emits the new `EventBus.scenario_instance_ended`); the run-level `scenario_ended` — every existing
+listener's expectation (HUD banner, main.gd's AUTODEMO auto-quit, both monitors) — only fires once active_
+scenarios fully drains, so single-scenario runs are byte-identical to before. Lose stays global/RUN-level
+(`_end_run`, unchanged in substance) since a death spiral in ANY concurrent scenario ends the whole voyage.
+Acceptance test: both existing AUTODEMO wins re-verified end to end after the refactor — `id=the_quarantine#0
+outcome=success` / `id=the_narrow_passage#0 outcome=success`, both followed by `ENDED: SUCCESS`.
+
+STEP 4 (morph metadata + first live morph): QuarantineScenario (`pressure_axis="bio"`, `expected_length=
+360.0`) and NarrowPassageScenario (`"systems"`, `200.0`) each gained `morph_edges` using the spec's OWN two
+worked examples verbatim — quarantine's `pathogen_contained=false` path modeled as "airborne" (uncontained
+escalation) plus the task brief's "or with deaths" (new QuarantineMonitor crew_died listener sets
+`crew_lost_to_pathogen`, scoped to while the monitor is alive); NarrowPassage's "battery < 20%" checked
+against the MONITOR's own tracked `_min_battery`, not live GameState.battery_charge (a relight instantly
+refills the bank, so the live value is always ~100% by resolution) — new flag `battery_critically_low`. Both
+edges' real targets (bible 1.5 "Close Quarters", 1.3 "The Long Crack") don't exist yet, so `ScenarioRunner.
+SCENARIO_STUB_FALLBACK` redirects each to the only other implemented Tier-1 scenario with a TODO(director)
+push_warning, so a live morph always has somewhere real to go. Runtime: new `EventBus.scenario_flag_set`
+(emitted from `set_flag()`) drives `_on_flag_set`, checked synchronously (not polled) so a morph fires the
+instant its condition flag goes true. Scope note (deliberate): every morph today is a SEQUENTIAL handoff
+(source ends, then target starts) regardless of `overlap_ok` — true concurrent morphs need the same fix step
+5 ended up needing for overlap (see below); acting on `overlap_ok` before that fix existed would have
+corrupted the source scenario's state. `overlap_ok` is still captured as real data for later. Dev-only
+`SHIPAI_FORCE_FLAG=<flag>[,<flag>]` (main.gd) forces flags 3s after boot for testing. Verified: forcing
+"airborne" on quarantine and "field_exited,battery_critically_low" on narrow_passage both fire the handoff
+symmetrically (`the_quarantine#0 -> the_narrow_passage#1` and back), zero script errors, regression battery
+(plain/both AUTODEMOs) unaffected since neither scripted win path ever satisfies a morph condition.
+
+STEP 5 (overlap scheduling, escalation floor, leg-boundary checkpoint): `ScenarioDirector.effective_heat()`
+= `max(heat, leg_escalation_floor())` via a `LEG_FLOOR_TABLE` (leg 1=0.2 .. leg 6+=0.7); `modifiers` now
+reads `effective_heat()` instead of raw `heat`, so the "mercy never below the floor" rule is a real invariant
+— proven live: `SHIPAI_FORCE_HEAT=0.0` shows `heat=0.000 effective=0.200` (leg 1 floor) with mercy scaled off
+0.200, not 0.0. `ScenarioRunner._check_overlap_scheduling()` (ticked every frame) starts a second concurrent
+scenario once `effective_heat >= 0.75` AND some active scenario has run past its own `expected_length`,
+capped at 2, enforcing the axis-compatibility matrix (differ in `pressure_axis`; "social" exempt) with a soft
+recent-history de-prioritisation and a minimal weakness-fit heuristic (low battery favors NarrowPassage) —
+proven live: `SHIPAI_FORCE_HEAT=0.9` held 400 sim-seconds fires `overlap start: the_narrow_passage#1` at
+EXACTLY t=360s (quarantine's expected_length), capped 2/2, exactly once. Leg boundary: `_end_scenario_
+instance` calls a new `_advance_leg()` (ScenarioDirector.advance_leg() + SaveManager.save_checkpoint() stub
+call) exactly when active_scenarios drains to empty via a win/morph — never from `_end_run` (permadeath ends
+the voyage, no next leg); both AUTODEMO wins now print "leg boundary -> leg 2" as part of their normal run.
+
+REAL BUG FOUND AND FIXED DURING STEP 5 VERIFICATION: true concurrent overlap needs BOTH scenarios' events/
+flags/tension to coexist, but `ScenarioDirector.start_scenario()` unconditionally cleared `scenario_flags`/
+`tension` and replaced the event pool wholesale — harmless for a single scenario or step 4's sequential
+morph, but it would have silently wiped the FIRST scenario's in-flight progress the instant overlap started
+a second one. Fixed with an `additive` parameter: `ScenarioRunner.start_scenario()` passes `additive=true`
+exactly when `active_scenarios` was already non-empty at call time (true overlap only — a morph's target
+never sees this, since the source instance is always ended first); the additive path only ADDS the new
+events to the shared `EventPool` (`add_event()`, already existed) and touches nothing else. Re-verified after
+the fix: the overlap run shows quarantine's own "pathogen_detected" firing pre-overlap and narrow_passage's
+"shear_field_detected" firing post-overlap in the SAME run, both scenarios' events alive in the shared pool
+concurrently, zero script errors.
+
+FILES TOUCHED (all 5 commits): scripts/scenarios/scenario_director.gd (grown, not replaced — steps 1/2/5),
+scripts/scenarios/scenario_runner.gd (multi-instance refactor + morph/overlap/leg logic — steps 3/4/5),
+scripts/scenarios/event_pool.gd (cooldown/crisis-weight hooks — step 2), scripts/ship/power_model.gd,
+scripts/ship/repair_model.gd, scripts/ship/door.gd (mercy knob threading — step 2), scripts/core/event_bus.gd
+(scenario_instance_ended, scenario_flag_set signals — steps 3/4), scripts/core/main.gd (SHIPAI_FORCE_FLAG dev
+hook only — step 4), scripts/scenarios/quarantine_scenario.gd + quarantine_monitor.gd, scripts/scenarios/
+narrow_passage_scenario.gd + narrow_passage_monitor.gd (morph metadata + flag-setting — step 4). Untouched
+per the CONSTRAINTS: scripts/crew/**, resources/dialogue/**, tools/**; Rule 1 held throughout — the Overseer
+never sets crew state directly, only ship/scenario/check knobs crew-space code already reads.
+
+VERIFIED (Godot 4.7 headless, SHIPAI_SEED=42, `--fixed-fps 60` for fast wall-clock sim-time testing): `--import`
+clean after every step; the mandatory battery (plain quarantine run, quarantine AUTODEMO win, narrow_passage
+AUTODEMO win) re-run and green after EVERY commit, zero new script errors each time (the pre-existing headless
+screenshot save_png error — 4 occurrences on the quarantine AUTODEMO's AUTOSHOT screenshots — is unrelated,
+documented since session 5). Both forced-heat sandbox directions (SHIPAI_FORCE_HEAT=0.0 -> mercy + floor;
+0.9 held past expected_length -> overlap) and both forced-flag morph directions exercised and green.
+
+Known limitations / deviations, judgment calls: (1) Morph/overlap flag namespace is currently the single
+global `scenario_flags` dict shared by all active scenarios — fine today since Quarantine/NarrowPassage use
+disjoint flag names by convention, but not formally scoped per-instance; a future scenario reusing a flag
+name could cross-trigger. (2) A non-overlap morph fires the run-level `scenario_ended` signal a moment before
+the target starts (since the source was the only active instance) — treated as an honest "leg closed, next
+one begins" beat (spec §2's leg framing) rather than a bug, but it does mean an AUTODEMO-style auto-quit-on-
+scenario_ended harness must not be run across a forced morph (neither shipped AUTODEMO path ever reaches one,
+so this doesn't affect the acceptance tests). (3) A scenario reached via a NON-boot morph/overlap doesn't get
+whatever setup-time-only casting main.gd's `_place_crew` does for the BOOT scenario (e.g. NarrowPassage's
+"fragile patient starts unconscious in medbay" is cast once at boot only) — a morphed-into NarrowPassage runs
+with a fully conscious, ambulatory "patient." Noted, not fixed — would need setup-time casting to become a
+scenario-start-time concern generally, out of scope here. (4) `_pick_overlap_candidate`'s weakness-fit
+heuristic and the "no repeats within 2 legs" history are both intentionally thin (only 2 Tier-1 scenarios
+exist to reason about); both are shaped so a 3rd/4th scenario slots in by extending a table, not by rewriting
+logic. (5) `GameState.scenario_id`/`scenario_tone` stay single-valued (whichever scenario most recently
+started) even under overlap — a true multi-scenario-aware HUD is out of scope; noted as a pre-existing
+simplification carried forward, not something this session introduced.
+
 2026-07-10 (session 6, scenario content): THE NARROW PASSAGE — second playable scenario
 (scenario-bible 1.2, Tier 1), the first to dramatize the power/air triage puzzle the
 2026-07-10 session-3 systems shipped (reactor-offline battery budget, MAX_BATTERY_ROOMS=3,
