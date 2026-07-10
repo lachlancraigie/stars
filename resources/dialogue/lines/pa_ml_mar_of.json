@@ -907,5 +907,690 @@
     },
     "reply_to_intents": [],
     "weight": 1.0
+  },
+  {
+    "id": 51,
+    "key": "PA_ML_MAR_OF#00051",
+    "text": "all sectors accounted for, coverage is solid except for that junction east of medbay and i'm working on it",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "location": [
+        "corridor"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 52,
+    "key": "PA_ML_MAR_OF#00052",
+    "text": "[URGENT] we need to overhaul our response protocols, i've identified gaps in our defensive positioning and they're costing us time",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 53,
+    "key": "PA_ML_MAR_OF#00053",
+    "text": "[NERVOUS] ammunition is at 73 percent, secondary stores at 58 percent, we're burning through reserves faster than i calculated",
+    "type": "declaration",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 54,
+    "key": "PA_ML_MAR_OF#00054",
+    "text": "[CONFIDENT] fallback to secondary positions is solid, i've run the scenarios and we hold them",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "warning"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 55,
+    "key": "PA_ML_MAR_OF#00055",
+    "text": "[GRUFF] debrief's done, back to sector coverage, stay alert",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 56,
+    "key": "PA_ML_MAR_OF#00056",
+    "text": "[SUSPICIOUS] that alert came from the wrong sensor grid, i'm rechecking the whole system because i don't trust false positives",
+    "type": "declaration",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 57,
+    "key": "PA_ML_MAR_OF#00057",
+    "text": "[GRUFF] need to redistribute crew positions, forward positions are stretched too thin for a sustained assault",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "CA",
+        "OF"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 58,
+    "key": "PA_ML_MAR_OF#00058",
+    "text": "[NERVOUS] the south corridor expansion, nobody patrols it, it's dark up there and something could be using it as a vector",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "location": [
+        "corridor"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 59,
+    "key": "PA_ML_MAR_OF#00059",
+    "text": "[CONFIDENT] i understand the fear, but we've run contingency for this exact scenario and we'll hold positions",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 60,
+    "key": "PA_ML_MAR_OF#00060",
+    "text": "[TIRED] shift's done, twelve hours without incident, that's twice as good as last week",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "shift_end"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 61,
+    "key": "PA_ML_MAR_OF#00061",
+    "text": "main corridor is locked down, secondary passage is patrolled, cargo section has three blind spots i'm monitoring",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 62,
+    "key": "PA_ML_MAR_OF#00062",
+    "text": "[NERVOUS] i need to strengthen defensive stations and i need crew volunteers, people who've trained and won't panic",
+    "type": "opener",
+    "intent": "request_help",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "CA",
+        "OF"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 63,
+    "key": "PA_ML_MAR_OF#00063",
+    "text": "[ANGRY] door locking system failed twice today, we're one failure away from being trapped and i don't like that",
+    "type": "declaration",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 64,
+    "key": "PA_ML_MAR_OF#00064",
+    "text": "[LAUGHS] reckless plan, absolutely reckless, which is why it might work, and also why it keeps me up at night",
+    "type": "reply",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "boast",
+      "banter"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 65,
+    "key": "PA_ML_MAR_OF#00065",
+    "text": "[PROUD] spotted the attack pattern two weeks before it happened, tactical analysis is still solid",
+    "type": "declaration",
+    "intent": "boast",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 66,
+    "key": "PA_ML_MAR_OF#00066",
+    "text": "[GRUFF] perimeter secure, threat assessment current, what's your status",
+    "type": "opener",
+    "intent": "greeting",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 67,
+    "key": "PA_ML_MAR_OF#00067",
+    "text": "[NERVOUS] if the reactor cascades, we seal the engine room and everybody in there is expendable, that's the contingency i've briefed",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 68,
+    "key": "PA_ML_MAR_OF#00068",
+    "text": "[GRUFF] my shot, my responsibility, i apologize, target identification was compromised, won't happen again",
+    "type": "reply",
+    "intent": "apology",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "apology",
+      "complaint"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 69,
+    "key": "PA_ML_MAR_OF#00069",
+    "text": "[URGENT] threat level is escalating and i'm raising alert status to maximum, stay ready",
+    "type": "closer",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 70,
+    "key": "PA_ML_MAR_OF#00070",
+    "text": "[SUSPICIOUS] the AI is recommending the tactic i wanted to avoid, which means either the threat is worse than i thought or it's making assumptions i don't like",
+    "type": "declaration",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 71,
+    "key": "PA_ML_MAR_OF#00071",
+    "text": "[GRUFF] new protocols are implemented effective immediately, everyone retrains today, no exceptions",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 72,
+    "key": "PA_ML_MAR_OF#00072",
+    "text": "[CONFIDENT] that recommendation was sound, i'm logging it as useful tactical input, keep analyzing",
+    "type": "declaration",
+    "intent": "praise_ai",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 73,
+    "key": "PA_ML_MAR_OF#00073",
+    "text": "[SUSPICIOUS] those repairs look rushed and i'm not confident they're holding, maybe let it rest before we trust it",
+    "type": "reply",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "status_report"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 74,
+    "key": "PA_ML_MAR_OF#00074",
+    "text": "[NERVOUS] there's a sensor gap where the west section meets the north corridor, we're blind there and that's unacceptable",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "location": [
+        "corridor"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 75,
+    "key": "PA_ML_MAR_OF#00075",
+    "text": "[GRIM] lost one of the best tacticians we had, and now i'm running point position with less backup",
+    "type": "opener",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 76,
+    "key": "PA_ML_MAR_OF#00076",
+    "text": "[WARM] we're gonna get through this, i've got the perimeter locked and we've got retreat routes if we need them",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "grief"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 77,
+    "key": "PA_ML_MAR_OF#00077",
+    "text": "[PAINED] bullet's lodged where it hurts, still operational but the pain's affecting my decision-making speed",
+    "type": "declaration",
+    "intent": "pain",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "wounded": true,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 78,
+    "key": "PA_ML_MAR_OF#00078",
+    "text": "[GRUFF] get some rest, i've got forward positions covered and perimeter sweep runs automated",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 79,
+    "key": "PA_ML_MAR_OF#00079",
+    "text": "[MUTTERS] ship's vulnerable in too many places and we're not staffed to cover them all, that keeps me up at night",
+    "type": "declaration",
+    "intent": "memory",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 80,
+    "key": "PA_ML_MAR_OF#00080",
+    "text": "[URGENT] we're implementing sector lockdowns, communication will be restricted, everyone needs to know the backup frequencies",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 81,
+    "key": "PA_ML_MAR_OF#00081",
+    "text": "[CONFIDENT] held the position, minimal losses, defensive matrix performed as briefed",
+    "type": "declaration",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 82,
+    "key": "PA_ML_MAR_OF#00082",
+    "text": "[TERRIFIED] i don't have enough crew to hold both corridors and the engine room if multiple things fail at once",
+    "type": "reply",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 10,
+      "stress_max": 16,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "warning"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 83,
+    "key": "PA_ML_MAR_OF#00083",
+    "text": "[NERVOUS] backup power is at critical levels, which means in 4 hours we lose weapons charging capability",
+    "type": "declaration",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "power_low"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 84,
+    "key": "PA_ML_MAR_OF#00084",
+    "text": "[GRUFF] i need you to analyze our defensive weak points with fresh eyes, where would you attack this position",
+    "type": "opener",
+    "intent": "request_help",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 85,
+    "key": "PA_ML_MAR_OF#00085",
+    "text": "[PAINED] lost them and i keep calculating where my defensive positioning failed them",
+    "type": "reply",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 14,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [
+      "grief"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 86,
+    "key": "PA_ML_MAR_OF#00086",
+    "text": "i've served on ships that failed because people didn't listen to threat warnings, i won't let that happen here",
+    "type": "declaration",
+    "intent": "memory",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 87,
+    "key": "PA_ML_MAR_OF#00087",
+    "text": "[GRUFF] night watch starts, perimeter's quiet but i'll be watching anyway",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 88,
+    "key": "PA_ML_MAR_OF#00088",
+    "text": "[NERVOUS] weapons cache is secure, ammunition logged and accounted for, but the count's lower than expected",
+    "type": "declaration",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 89,
+    "key": "PA_ML_MAR_OF#00089",
+    "text": "[URGENT] cascade failure risk is climbing if we don't repair the secondary bulkhead, one failure triggers everything",
+    "type": "opener",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 90,
+    "key": "PA_ML_MAR_OF#00090",
+    "text": "[CONFIDENT] my crew is trained, my protocols are sound, and i will keep everyone on this ship alive",
+    "type": "declaration",
+    "intent": "boast",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
   }
 ]
