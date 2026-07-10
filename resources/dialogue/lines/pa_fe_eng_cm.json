@@ -2,7 +2,7 @@
   {
     "id": 1,
     "key": "PA_FE_ENG_CM#00001",
-    "text": "[NERVOUS] reactor's making a sound again, maybe nothing, probably something, gonna check it three more times",
+    "text": "[nervous, speaking quickly] reactor's making a sound again, maybe nothing, probably something, gonna check it three more times",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -43,7 +43,7 @@
   {
     "id": 3,
     "key": "PA_FE_ENG_CM#00003",
-    "text": "[EXHAUSTED] shift's over and the seals held and i'm gonna sleep now which is my favorite part of the day",
+    "text": "[exhausted, breathing laboured] shift's over and the seals held and i'm gonna sleep now which is my favorite part of the day",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -62,7 +62,7 @@
   {
     "id": 4,
     "key": "PA_FE_ENG_CM#00004",
-    "text": "[TERRIFIED] reactor's spiking and the coolant gauge is lying to me i know it is because [URGENT] nothing's supposed to spike like this",
+    "text": "[terrified, voice shaking] reactor's spiking and the coolant gauge is lying to me i know it is because [urgent, fast pace] nothing's supposed to spike like this",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -84,7 +84,7 @@
   {
     "id": 5,
     "key": "PA_FE_ENG_CM#00005",
-    "text": "[PANICKED] the reactor is going to explode and i calculated that wrong and i [TERRIFIED] i don't know which valve is which anymore",
+    "text": "[panicked, panting] the reactor is going to explode and i calculated that wrong and i [terrified, voice shaking] i don't know which valve is which anymore",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -107,7 +107,7 @@
   {
     "id": 6,
     "key": "PA_FE_ENG_CM#00006",
-    "text": "[LAUGHS] fixed it barely barely barely, seriously don't ask me the margin because i'm still shaking",
+    "text": "[laughing, shaky relief] fixed it barely barely barely, seriously don't ask me the margin because i'm still shaking",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -148,7 +148,7 @@
   {
     "id": 8,
     "key": "PA_FE_ENG_CM#00008",
-    "text": "[NERVOUS] air's getting thin and i cannot fix that from the engine room, i'm sorry, i'm sorry i couldn't fix that",
+    "text": "[nervous, speaking quickly] air's getting thin and i cannot fix that from the engine room, i'm sorry, i'm sorry i couldn't fix that",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -170,7 +170,7 @@
   {
     "id": 9,
     "key": "PA_FE_ENG_CM#00009",
-    "text": "[SHOUTS] hull breach, i'm sealing the engine room bulkhead from this side, if that's wrong i'm really sorry",
+    "text": "[shouting] hull breach, i'm sealing the engine room bulkhead from this side, if that's wrong i'm really sorry",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -192,7 +192,7 @@
   {
     "id": 10,
     "key": "PA_FE_ENG_CM#00010",
-    "text": "[GRIM] someone got locked in and i can't reach them from engineering and i triple-checked and triple-checked",
+    "text": "[grim, heavy] someone got locked in and i can't reach them from engineering and i triple-checked and triple-checked",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -214,7 +214,7 @@
   {
     "id": 11,
     "key": "PA_FE_ENG_CM#00011",
-    "text": "[SUSPICIOUS] the AI's been acting weird and i don't trust anything when the AI acts weird, i need to check things more",
+    "text": "[suspicious tone] the AI's been acting weird and i don't trust anything when the AI acts weird, i need to check things more",
     "type": "declaration",
     "intent": "suspicion_ai",
     "conditions": {
@@ -236,7 +236,7 @@
   {
     "id": 12,
     "key": "PA_FE_ENG_CM#00012",
-    "text": "[PAINED] someone died and i was down in the engine room and i didn't see it and i couldn't stop it",
+    "text": "[pained, voice tight] someone died and i was down in the engine room and i didn't see it and i couldn't stop it",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -259,7 +259,7 @@
   {
     "id": 13,
     "key": "PA_FE_ENG_CM#00013",
-    "text": "[NERVOUS] disease spreading and i can't seal it away like i seal the engine room, diseases don't work like that but i wish they did",
+    "text": "[nervous, speaking quickly] disease spreading and i can't seal it away like i seal the engine room, diseases don't work like that but i wish they did",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -278,7 +278,7 @@
   {
     "id": 14,
     "key": "PA_FE_ENG_CM#00014",
-    "text": "[PAINED] got a scrape down here and it's nothing, probably fine, okay it's not fine but it's not a big deal either",
+    "text": "[pained, voice tight] got a scrape down here and it's nothing, probably fine, okay it's not fine but it's not a big deal either",
     "type": "declaration",
     "intent": "pain",
     "conditions": {
@@ -301,7 +301,7 @@
   {
     "id": 15,
     "key": "PA_FE_ENG_CM#00015",
-    "text": "[SHOUTS] combat happening and i'm stuck in the engine room hoping nobody shoots through the bulkhead",
+    "text": "[shouting] combat happening and i'm stuck in the engine room hoping nobody shoots through the bulkhead",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -342,7 +342,7 @@
   {
     "id": 17,
     "key": "PA_FE_ENG_CM#00017",
-    "text": "[PROUD] i predicted that the secondary line was going to fail before anyone else noticed and i was right, which is good, but also scary",
+    "text": "[proud tone] i predicted that the secondary line was going to fail before anyone else noticed and i was right, which is good, but also scary",
     "type": "declaration",
     "intent": "boast",
     "conditions": {
@@ -361,7 +361,7 @@
   {
     "id": 18,
     "key": "PA_FE_ENG_CM#00018",
-    "text": "[LAUGHS] nobody's asking me anything but i'm gonna recite worst-case scenarios anyway because they help me think",
+    "text": "[laughing] nobody's asking me anything but i'm gonna recite worst-case scenarios anyway because they help me think",
     "type": "declaration",
     "intent": "gallows_humor",
     "conditions": {
@@ -380,7 +380,7 @@
   {
     "id": 19,
     "key": "PA_FE_ENG_CM#00019",
-    "text": "[NERVOUS] i was trained on a broken ship and learned to fix broken ships and now every ship feels broken to me",
+    "text": "[nervous, speaking quickly] i was trained on a broken ship and learned to fix broken ships and now every ship feels broken to me",
     "type": "declaration",
     "intent": "memory",
     "conditions": {
@@ -396,7 +396,7 @@
   {
     "id": 20,
     "key": "PA_FE_ENG_CM#00020",
-    "text": "[DISMISSIVE] false alarm in the coolant lines, i'm sorry i panicked, i'm always panicking, sorry",
+    "text": "[dismissive tone] false alarm in the coolant lines, i'm sorry i panicked, i'm always panicking, sorry",
     "type": "declaration",
     "intent": "acknowledgment",
     "conditions": {
@@ -453,7 +453,7 @@
   {
     "id": 23,
     "key": "PA_FE_ENG_CM#00023",
-    "text": "[NERVOUS] i need to talk about the fuel lines and also seventeen other things i'm worried about but we can start with fuel",
+    "text": "[nervous, speaking quickly] i need to talk about the fuel lines and also seventeen other things i'm worried about but we can start with fuel",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -472,7 +472,7 @@
   {
     "id": 24,
     "key": "PA_FE_ENG_CM#00024",
-    "text": "[URGENT] we need to check every seal and connector, i know i checked them yesterday but what if i missed something",
+    "text": "[urgent, fast pace] we need to check every seal and connector, i know i checked them yesterday but what if i missed something",
     "type": "opener",
     "intent": "warning",
     "conditions": {
@@ -488,7 +488,7 @@
   {
     "id": 25,
     "key": "PA_FE_ENG_CM#00025",
-    "text": "[GRIM] we lost someone and i'm in the engine room where i can't see what's happening and that's terrible",
+    "text": "[grim, heavy] we lost someone and i'm in the engine room where i can't see what's happening and that's terrible",
     "type": "opener",
     "intent": "grief",
     "conditions": {
@@ -523,7 +523,7 @@
   {
     "id": 27,
     "key": "PA_FE_ENG_CM#00027",
-    "text": "[EMBARRASSED] i think about you when i'm checking the same seal for the fourth time and that might mean something",
+    "text": "[embarrassed, voice quiet] i think about you when i'm checking the same seal for the fourth time and that might mean something",
     "type": "opener",
     "intent": "romance_hint",
     "conditions": {
@@ -539,7 +539,7 @@
   {
     "id": 28,
     "key": "PA_FE_ENG_CM#00028",
-    "text": "[LAUGHS] your plan is terrible but it'll probably work somehow, sorry for doubting it",
+    "text": "[laughing] your plan is terrible but it'll probably work somehow, sorry for doubting it",
     "type": "reply",
     "intent": "banter",
     "conditions": {
@@ -577,7 +577,7 @@
   {
     "id": 30,
     "key": "PA_FE_ENG_CM#00030",
-    "text": "[CALM] we're gonna be fine, i've checked all the systems twice, probably fine, definitely fine, okay maybe thrice",
+    "text": "[calm, measured] we're gonna be fine, i've checked all the systems twice, probably fine, definitely fine, okay maybe thrice",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -596,7 +596,7 @@
   {
     "id": 31,
     "key": "PA_FE_ENG_CM#00031",
-    "text": "[NERVOUS] i don't know if we make it through this and that's the most honest thing i can tell you right now",
+    "text": "[nervous, speaking quickly] i don't know if we make it through this and that's the most honest thing i can tell you right now",
     "type": "reply",
     "intent": "fear_vent",
     "conditions": {
@@ -615,7 +615,7 @@
   {
     "id": 32,
     "key": "PA_FE_ENG_CM#00032",
-    "text": "[PAINED] we lost them and i keep replaying what i could have done different in the engine room",
+    "text": "[pained, voice tight] we lost them and i keep replaying what i could have done different in the engine room",
     "type": "reply",
     "intent": "grief",
     "conditions": {
@@ -636,7 +636,7 @@
   {
     "id": 33,
     "key": "PA_FE_ENG_CM#00033",
-    "text": "[NERVOUS] i noticed the AI acting weird too and i'm glad it's not just me because that would be worse",
+    "text": "[nervous, speaking quickly] i noticed the AI acting weird too and i'm glad it's not just me because that would be worse",
     "type": "reply",
     "intent": "suspicion_ai",
     "conditions": {
@@ -654,7 +654,7 @@
   {
     "id": 34,
     "key": "PA_FE_ENG_CM#00034",
-    "text": "[WARM] thank you for saying that, i'm putting that in my mental file labeled 'proof i'm doing okay'",
+    "text": "[warm, gentle tone] thank you for saying that, i'm putting that in my mental file labeled 'proof i'm doing okay'",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -690,7 +690,7 @@
   {
     "id": 36,
     "key": "PA_FE_ENG_CM#00036",
-    "text": "[EMBARRASSED] i think i'm experiencing what people call attraction and it's distracting me from checking gauges, which is bad",
+    "text": "[embarrassed, voice quiet] i think i'm experiencing what people call attraction and it's distracting me from checking gauges, which is bad",
     "type": "reply",
     "intent": "romance_accept",
     "conditions": {
@@ -709,7 +709,7 @@
   {
     "id": 37,
     "key": "PA_FE_ENG_CM#00037",
-    "text": "[CONFIDENT] i can fix that, i've fixed worse, give me three hours and don't ask me about it until it's done",
+    "text": "[confident, assured tone] i can fix that, i've fixed worse, give me three hours and don't ask me about it until it's done",
     "type": "reply",
     "intent": "offer_help",
     "conditions": {
@@ -728,7 +728,7 @@
   {
     "id": 38,
     "key": "PA_FE_ENG_CM#00038",
-    "text": "[NERVOUS] you're hurt and i'm worried about that even though i'm already worried about seventeen other things",
+    "text": "[nervous, speaking quickly] you're hurt and i'm worried about that even though i'm already worried about seventeen other things",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -748,7 +748,7 @@
   {
     "id": 39,
     "key": "PA_FE_ENG_CM#00039",
-    "text": "[NERVOUS] i appreciate gallows humor, it means you're managing the catastrophic thinking like i do",
+    "text": "[nervous, speaking quickly] i appreciate gallows humor, it means you're managing the catastrophic thinking like i do",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -766,7 +766,7 @@
   {
     "id": 40,
     "key": "PA_FE_ENG_CM#00040",
-    "text": "[SUSPICIOUS] i think i screwed something up but i can't figure out what, which is worse than knowing what i screwed up",
+    "text": "[suspicious tone] i think i screwed something up but i can't figure out what, which is worse than knowing what i screwed up",
     "type": "reply",
     "intent": "doubt",
     "conditions": {
@@ -785,7 +785,7 @@
   {
     "id": 41,
     "key": "PA_FE_ENG_CM#00041",
-    "text": "[RESIGNED] i'm heading back to the engine room, there's always something i haven't checked thoroughly enough",
+    "text": "[resigned, flat tone] i'm heading back to the engine room, there's always something i haven't checked thoroughly enough",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -801,7 +801,7 @@
   {
     "id": 42,
     "key": "PA_FE_ENG_CM#00042",
-    "text": "[WARM] get some rest, i'll keep watching the engines so you don't have to worry",
+    "text": "[warm, gentle tone] get some rest, i'll keep watching the engines so you don't have to worry",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -817,7 +817,7 @@
   {
     "id": 43,
     "key": "PA_FE_ENG_CM#00043",
-    "text": "[NERVOUS] go, move, check on the bridge, i'll handle everything down here and possibly panic quietly",
+    "text": "[nervous, speaking quickly] go, move, check on the bridge, i'll handle everything down here and possibly panic quietly",
     "type": "closer",
     "intent": "warning",
     "conditions": {
@@ -833,7 +833,7 @@
   {
     "id": 44,
     "key": "PA_FE_ENG_CM#00044",
-    "text": "[GRIM] if everything falls apart i'll be here in the engine room doing everything i can, which probably won't be enough",
+    "text": "[grim, heavy] if everything falls apart i'll be here in the engine room doing everything i can, which probably won't be enough",
     "type": "closer",
     "intent": "gallows_humor",
     "conditions": {
@@ -849,7 +849,7 @@
   {
     "id": 45,
     "key": "PA_FE_ENG_CM#00045",
-    "text": "[LAUGHS] later, and thanks for not making fun of me for checking things so many times",
+    "text": "[laughing] later, and thanks for not making fun of me for checking things so many times",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -865,7 +865,7 @@
   {
     "id": 46,
     "key": "PA_FE_ENG_CM#00046",
-    "text": "[PANICKED] i've checked everything twice and i'm still terrified that something's going to fail catastrophically",
+    "text": "[panicked, panting] i've checked everything twice and i'm still terrified that something's going to fail catastrophically",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -885,7 +885,7 @@
   {
     "id": 47,
     "key": "PA_FE_ENG_CM#00047",
-    "text": "[TERRIFIED] the quiet shift is ending and something's about to break and i don't know what and i'm sorry",
+    "text": "[terrified, voice shaking] the quiet shift is ending and something's about to break and i don't know what and i'm sorry",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -904,7 +904,7 @@
   {
     "id": 48,
     "key": "PA_FE_ENG_CM#00048",
-    "text": "[SHOUTS] all systems nominal but i'm still checking because nominal doesn't mean safe",
+    "text": "[shouting] all systems nominal but i'm still checking because nominal doesn't mean safe",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -923,7 +923,7 @@
   {
     "id": 49,
     "key": "PA_FE_ENG_CM#00049",
-    "text": "[URGENT] meal time is happening and i forgot to eat again because i was checking seals",
+    "text": "[urgent, fast pace] meal time is happening and i forgot to eat again because i was checking seals",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -945,7 +945,7 @@
   {
     "id": 50,
     "key": "PA_FE_ENG_CM#00050",
-    "text": "[CALM] this time i'm pretty sure i got it right, which is either confidence or delusion, honestly they feel the same",
+    "text": "[calm, measured] this time i'm pretty sure i got it right, which is either confidence or delusion, honestly they feel the same",
     "type": "declaration",
     "intent": "boast",
     "conditions": {
@@ -964,7 +964,7 @@
   {
     "id": 51,
     "key": "PA_FE_ENG_CM#00051",
-    "text": "[NERVOUS] someone's gonna ask me if i checked the coolant pressure and yes i did, twice, it's fine, probably",
+    "text": "[nervous, speaking quickly] someone's gonna ask me if i checked the coolant pressure and yes i did, twice, it's fine, probably",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -983,7 +983,7 @@
   {
     "id": 52,
     "key": "PA_FE_ENG_CM#00052",
-    "text": "[EXHAUSTED] been down here too long checking things, everything's fine but i can't convince myself to stop checking",
+    "text": "[exhausted, breathing laboured] been down here too long checking things, everything's fine but i can't convince myself to stop checking",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -1005,7 +1005,7 @@
   {
     "id": 53,
     "key": "PA_FE_ENG_CM#00053",
-    "text": "[TERRIFIED] the reactor readings don't make sense and i'm checking my instruments and they're fine and that's worse because maybe it's not the instruments",
+    "text": "[terrified, voice shaking] the reactor readings don't make sense and i'm checking my instruments and they're fine and that's worse because maybe it's not the instruments",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -1027,7 +1027,7 @@
   {
     "id": 54,
     "key": "PA_FE_ENG_CM#00054",
-    "text": "[WARM] thank you for coming down here and letting me talk about this even though i'm probably being paranoid",
+    "text": "[warm, gentle tone] thank you for coming down here and letting me talk about this even though i'm probably being paranoid",
     "type": "opener",
     "intent": "greeting",
     "conditions": {
@@ -1046,7 +1046,7 @@
   {
     "id": 55,
     "key": "PA_FE_ENG_CM#00055",
-    "text": "[NERVOUS] the secondary cooling loop is making a noise and it might be fine but i can't sleep when it's making that noise",
+    "text": "[nervous, speaking quickly] the secondary cooling loop is making a noise and it might be fine but i can't sleep when it's making that noise",
     "type": "opener",
     "intent": "complaint",
     "conditions": {
@@ -1065,7 +1065,7 @@
   {
     "id": 56,
     "key": "PA_FE_ENG_CM#00056",
-    "text": "[PAINED] i got banged up pretty bad trying to reroute the power conduits, it was stupid but we needed it done",
+    "text": "[pained, voice tight] i got banged up pretty bad trying to reroute the power conduits, it was stupid but we needed it done",
     "type": "declaration",
     "intent": "pain",
     "conditions": {
@@ -1085,7 +1085,7 @@
   {
     "id": 57,
     "key": "PA_FE_ENG_CM#00057",
-    "text": "[SARCASTIC] yeah the engines are fine, everything's fine, we're all gonna be fine, and if we're not it won't be because i didn't try",
+    "text": "[dry, sarcastic tone] yeah the engines are fine, everything's fine, we're all gonna be fine, and if we're not it won't be because i didn't try",
     "type": "declaration",
     "intent": "gallows_humor",
     "conditions": {
@@ -1104,7 +1104,7 @@
   {
     "id": 58,
     "key": "PA_FE_ENG_CM#00058",
-    "text": "[URGENT] the captain needs something, probably wants the engines to do something impossible, but i'll try anyway",
+    "text": "[urgent, fast pace] the captain needs something, probably wants the engines to do something impossible, but i'll try anyway",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -1120,7 +1120,7 @@
   {
     "id": 59,
     "key": "PA_FE_ENG_CM#00059",
-    "text": "[NERVOUS] i heard about that repair you tried and it didn't work and i'm wondering if i would've done it different",
+    "text": "[nervous, speaking quickly] i heard about that repair you tried and it didn't work and i'm wondering if i would've done it different",
     "type": "opener",
     "intent": "suspicion_ai",
     "conditions": {
@@ -1136,7 +1136,7 @@
   {
     "id": 60,
     "key": "PA_FE_ENG_CM#00060",
-    "text": "[CURIOUS] wait, you're complimenting my work, that's not something that happens very often",
+    "text": "[curious tone] wait, you're complimenting my work, that's not something that happens very often",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -1154,7 +1154,7 @@
   {
     "id": 61,
     "key": "PA_FE_ENG_CM#00061",
-    "text": "[SARCASTIC] your plan is so bad it might actually be genius, i can't tell the difference anymore",
+    "text": "[dry, sarcastic tone] your plan is so bad it might actually be genius, i can't tell the difference anymore",
     "type": "reply",
     "intent": "banter",
     "conditions": {
@@ -1173,7 +1173,7 @@
   {
     "id": 62,
     "key": "PA_FE_ENG_CM#00062",
-    "text": "[DEADPAN] i have romantic feelings and i'm not equipped to process them while also maintaining critical systems",
+    "text": "[deadpan] i have romantic feelings and i'm not equipped to process them while also maintaining critical systems",
     "type": "declaration",
     "intent": "doubt",
     "conditions": {
@@ -1192,7 +1192,7 @@
   {
     "id": 63,
     "key": "PA_FE_ENG_CM#00063",
-    "text": "[EMBARRASSED] i want to ask you something but asking feels scarier than any reactor problem i've faced",
+    "text": "[embarrassed, voice quiet] i want to ask you something but asking feels scarier than any reactor problem i've faced",
     "type": "opener",
     "intent": "romance_advance",
     "conditions": {
@@ -1208,7 +1208,7 @@
   {
     "id": 64,
     "key": "PA_FE_ENG_CM#00064",
-    "text": "[WARM] i think i want you to stay nearby, not for work stuff, just because it helps me worry less",
+    "text": "[warm, gentle tone] i think i want you to stay nearby, not for work stuff, just because it helps me worry less",
     "type": "declaration",
     "intent": "romance_hint",
     "conditions": {
@@ -1227,7 +1227,7 @@
   {
     "id": 65,
     "key": "PA_FE_ENG_CM#00065",
-    "text": "[NERVOUS] you said something nice and now i'm blushing which is distracting me from checking pressure gauges",
+    "text": "[nervous, speaking quickly] you said something nice and now i'm blushing which is distracting me from checking pressure gauges",
     "type": "reply",
     "intent": "romance_accept",
     "conditions": {
@@ -1246,7 +1246,7 @@
   {
     "id": 66,
     "key": "PA_FE_ENG_CM#00066",
-    "text": "[DRY] i'm not great at the romance thing, i prefer my relationships like i prefer my engines: well-maintained and predictable",
+    "text": "[dry tone] i'm not great at the romance thing, i prefer my relationships like i prefer my engines: well-maintained and predictable",
     "type": "reply",
     "intent": "romance_reject",
     "conditions": {
@@ -1265,7 +1265,7 @@
   {
     "id": 67,
     "key": "PA_FE_ENG_CM#00067",
-    "text": "[NERVOUS] the bridge isn't responding and i don't know what's happening up there and it's making me panic down here",
+    "text": "[nervous, speaking quickly] the bridge isn't responding and i don't know what's happening up there and it's making me panic down here",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -1284,7 +1284,7 @@
   {
     "id": 68,
     "key": "PA_FE_ENG_CM#00068",
-    "text": "[URGENT] that wasn't your fault, you did everything right, i'm just paranoid about everything",
+    "text": "[urgent, fast pace] that wasn't your fault, you did everything right, i'm just paranoid about everything",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -1303,7 +1303,7 @@
   {
     "id": 69,
     "key": "PA_FE_ENG_CM#00069",
-    "text": "[SHOUTS] i can get you more power but you gotta ask and then i gotta reroute from somewhere else and something's gonna get sacrificed",
+    "text": "[shouting] i can get you more power but you gotta ask and then i gotta reroute from somewhere else and something's gonna get sacrificed",
     "type": "reply",
     "intent": "offer_help",
     "conditions": {
@@ -1321,7 +1321,7 @@
   {
     "id": 70,
     "key": "PA_FE_ENG_CM#00070",
-    "text": "[PANICKED] i'm not panicking, i'm just checking things really carefully which only looks like panicking to most people",
+    "text": "[panicked, panting] i'm not panicking, i'm just checking things really carefully which only looks like panicking to most people",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -1341,7 +1341,7 @@
   {
     "id": 71,
     "key": "PA_FE_ENG_CM#00071",
-    "text": "[CALM] did you know the first ship i worked on had so many problems that i thought they were normal, now i'm broken",
+    "text": "[calm, measured] did you know the first ship i worked on had so many problems that i thought they were normal, now i'm broken",
     "type": "declaration",
     "intent": "memory",
     "conditions": {
@@ -1360,7 +1360,7 @@
   {
     "id": 72,
     "key": "PA_FE_ENG_CM#00072",
-    "text": "[SIGHS] yeah i know i check things too much but it's the only way i can sleep at night which is not much",
+    "text": "[sigh] yeah i know i check things too much but it's the only way i can sleep at night which is not much",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -1379,7 +1379,7 @@
   {
     "id": 73,
     "key": "PA_FE_ENG_CM#00073",
-    "text": "[NERVOUS] you're making bad choices and i hate watching it happen and i'm too junior to stop you",
+    "text": "[nervous, speaking quickly] you're making bad choices and i hate watching it happen and i'm too junior to stop you",
     "type": "opener",
     "intent": "complaint",
     "conditions": {
@@ -1395,7 +1395,7 @@
   {
     "id": 74,
     "key": "PA_FE_ENG_CM#00074",
-    "text": "[TERRIFIED] somebody's screaming somewhere and i can't help because i'm locked in the engine room",
+    "text": "[terrified, voice shaking] somebody's screaming somewhere and i can't help because i'm locked in the engine room",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -1417,7 +1417,7 @@
   {
     "id": 75,
     "key": "PA_FE_ENG_CM#00075",
-    "text": "[NERVOUS] apology accepted, i guess, even though i'm apologizing for my own paranoia which is weird",
+    "text": "[nervous, speaking quickly] apology accepted, i guess, even though i'm apologizing for my own paranoia which is weird",
     "type": "reply",
     "intent": "apology",
     "conditions": {
@@ -1435,7 +1435,7 @@
   {
     "id": 76,
     "key": "PA_FE_ENG_CM#00076",
-    "text": "[NERVOUS] i watched the disease outbreak and i'm thinking about how it could spread through the ventilation system",
+    "text": "[nervous, speaking quickly] i watched the disease outbreak and i'm thinking about how it could spread through the ventilation system",
     "type": "reply",
     "intent": "fear_vent",
     "conditions": {
@@ -1471,7 +1471,7 @@
   {
     "id": 78,
     "key": "PA_FE_ENG_CM#00078",
-    "text": "[URGENT] the power system's more fragile than you'd think and i've been keeping it together with worry and duct tape",
+    "text": "[urgent, fast pace] the power system's more fragile than you'd think and i've been keeping it together with worry and duct tape",
     "type": "opener",
     "intent": "warning",
     "conditions": {
@@ -1487,7 +1487,7 @@
   {
     "id": 79,
     "key": "PA_FE_ENG_CM#00079",
-    "text": "[CURIOUS] wait, you actually listened to my concerns and took them seriously, that never happens",
+    "text": "[curious tone] wait, you actually listened to my concerns and took them seriously, that never happens",
     "type": "reply",
     "intent": "praise_ai",
     "conditions": {
@@ -1506,7 +1506,7 @@
   {
     "id": 80,
     "key": "PA_FE_ENG_CM#00080",
-    "text": "[NERVOUS] i've watched you make that same mistake three times and i've been trying to figure out how to tell you",
+    "text": "[nervous, speaking quickly] i've watched you make that same mistake three times and i've been trying to figure out how to tell you",
     "type": "reply",
     "intent": "banter",
     "conditions": {
@@ -1525,7 +1525,7 @@
   {
     "id": 81,
     "key": "PA_FE_ENG_CM#00081",
-    "text": "[RESIGNED] back to the engine room and back to checking things, it never gets easier",
+    "text": "[resigned, flat tone] back to the engine room and back to checking things, it never gets easier",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1541,7 +1541,7 @@
   {
     "id": 82,
     "key": "PA_FE_ENG_CM#00082",
-    "text": "[CONFIDENT] i'll fix whatever needs fixing, i always do, even if it scares me",
+    "text": "[confident, assured tone] i'll fix whatever needs fixing, i always do, even if it scares me",
     "type": "closer",
     "intent": "offer_help",
     "conditions": {
@@ -1557,7 +1557,7 @@
   {
     "id": 83,
     "key": "PA_FE_ENG_CM#00083",
-    "text": "[WARM] and hey, thanks for asking how i was doing, not everyone remembers to do that",
+    "text": "[warm, gentle tone] and hey, thanks for asking how i was doing, not everyone remembers to do that",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1573,7 +1573,7 @@
   {
     "id": 84,
     "key": "PA_FE_ENG_CM#00084",
-    "text": "[NERVOUS] something's different about the power signature and i can't explain it but i know it's different",
+    "text": "[nervous, speaking quickly] something's different about the power signature and i can't explain it but i know it's different",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -1589,7 +1589,7 @@
   {
     "id": 85,
     "key": "PA_FE_ENG_CM#00085",
-    "text": "[GRIM] we survived another day which means tomorrow i'll find something new to worry about instead",
+    "text": "[grim, heavy] we survived another day which means tomorrow i'll find something new to worry about instead",
     "type": "closer",
     "intent": "gallows_humor",
     "conditions": {
@@ -1605,7 +1605,7 @@
   {
     "id": 86,
     "key": "PA_FE_ENG_CM#00086",
-    "text": "[EXHAUSTED] i'm coming up to the mess but honestly i'd rather stay in the engine room where i understand the problems",
+    "text": "[exhausted, breathing laboured] i'm coming up to the mess but honestly i'd rather stay in the engine room where i understand the problems",
     "type": "declaration",
     "intent": "complaint",
     "conditions": {
@@ -1627,7 +1627,7 @@
   {
     "id": 87,
     "key": "PA_FE_ENG_CM#00087",
-    "text": "[SUSPICIOUS] i heard there's a rumor that i check things too many times and yeah that's completely accurate",
+    "text": "[suspicious tone] i heard there's a rumor that i check things too many times and yeah that's completely accurate",
     "type": "declaration",
     "intent": "acknowledgment",
     "conditions": {
@@ -1646,7 +1646,7 @@
   {
     "id": 88,
     "key": "PA_FE_ENG_CM#00088",
-    "text": "[NERVOUS] the repair went better than i expected which is somehow more terrifying because now something else might fail",
+    "text": "[nervous, speaking quickly] the repair went better than i expected which is somehow more terrifying because now something else might fail",
     "type": "declaration",
     "intent": "doubt",
     "conditions": {
@@ -1668,7 +1668,7 @@
   {
     "id": 89,
     "key": "PA_FE_ENG_CM#00089",
-    "text": "[HOPEFUL] maybe this time nothing catastrophic will happen, probably not, but maybe",
+    "text": "[hopeful tone] maybe this time nothing catastrophic will happen, probably not, but maybe",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -1690,7 +1690,7 @@
   {
     "id": 90,
     "key": "PA_FE_ENG_CM#00090",
-    "text": "[WARM] i'm not great at asking for help so thank you for helping anyway",
+    "text": "[warm, gentle tone] i'm not great at asking for help so thank you for helping anyway",
     "type": "closer",
     "intent": "acknowledgment",
     "conditions": {
