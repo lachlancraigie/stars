@@ -28,6 +28,13 @@ enum TargetType {
 # Executed by DirectiveActionHandler only when the crew *accepts* the directive.
 @export var move_to_room: String = ""
 
+# Repair target this directive asks the crew to work on ("reactor" | "life_support" |
+# "ai_core", matching GameState.repair_jobs keys / RepairModel.REPAIR_SKILLS). Empty = no
+# repair action. Executed by DirectiveActionHandler only on acceptance, same pattern as
+# move_to_room — the UI never calls GameState.start_repair_job directly (Architecture
+# Rule 1: no direct crew control from UI, directives only).
+@export var repair_target: String = ""
+
 # Tags for conflict detection in DirectiveEvaluator.
 # e.g. "danger", "sacrifice", "abandon", "deceive" — matched against crew fears/values.
 @export var content_tags: Array[String] = []

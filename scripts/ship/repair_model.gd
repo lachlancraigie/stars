@@ -25,6 +25,23 @@ const REPAIR_SKILLS: Dictionary = {
 }
 
 
+# Whether `target_id` currently needs repair — the single authority both RepairBehavior's
+# autonomous consideration and EnvironmentMenu's "click damaged equipment" hit-test read,
+# so a UI-visible Repair option and the crew's own willingness to start a job never disagree
+# about what counts as "damaged" (overhaul spec: "Only show Repair on things RepairModel
+# considers damaged/repairable").
+static func is_damaged(target_id: String) -> bool:
+	match target_id:
+		"reactor":
+			return not GameState.reactor_online
+		"life_support":
+			return not GameState.life_support_online
+		"ai_core":
+			return GameState.ai_core_status != "online"
+		_:
+			return false
+
+
 static func tick(delta: float) -> void:
 	for target_id: String in GameState.repair_jobs.keys():
 		_tick_job(target_id, delta)

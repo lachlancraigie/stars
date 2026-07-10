@@ -16,10 +16,17 @@ func _ready() -> void:
 
 func _on_directive_accepted(crew_id: String, directive: Resource) -> void:
 	var d := directive as AIDirective
-	if d == null or d.move_to_room == "":
+	if d == null:
 		return
-	var node: CrewMemberNode = CrewMemberNode.nodes.get(crew_id) as CrewMemberNode
-	if node:
-		# The crew agreed to go — they also stay a while rather than wandering
-		# straight back out, so complying with the AI visibly means something.
-		node.move_to_room(d.move_to_room, 60.0)
+	if d.move_to_room != "":
+		var node: CrewMemberNode = CrewMemberNode.nodes.get(crew_id) as CrewMemberNode
+		if node:
+			# The crew agreed to go — they also stay a while rather than wandering
+			# straight back out, so complying with the AI visibly means something.
+			node.move_to_room(d.move_to_room, 60.0)
+	if d.repair_target != "":
+		# Same shape as move_to_room above: the world-effect only plays out once the crew
+		# has agreed. GameState.start_repair_job is the same funnel RepairBehavior's own
+		# autonomous consideration uses (scripts/crew/repair_behavior.gd) — it no-ops if a
+		# job is already running (e.g. RepairBehavior beat the directive to it).
+		GameState.start_repair_job(d.repair_target, crew_id)

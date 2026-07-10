@@ -54,15 +54,7 @@ func _consider(target_id: String, room_type: String, trust_gated: bool) -> void:
 
 
 func _needs_repair(target_id: String) -> bool:
-	match target_id:
-		"reactor":
-			return not GameState.reactor_online
-		"life_support":
-			return not GameState.life_support_online
-		"ai_core":
-			return GameState.ai_core_status != "online"
-		_:
-			return false
+	return RepairModel.is_damaged(target_id)
 
 
 func _find_eligible_crew(target_id: String, room_id: String) -> CrewMember:
