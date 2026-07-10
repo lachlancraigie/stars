@@ -21,7 +21,7 @@
   {
     "id": 2,
     "key": "EV_ML_ENG_CM#00002",
-    "text": "[CALM] Quiet shift means I can run the maintenance I've been pushing off. Not complaining.",
+    "text": "[calm, procedural] Quiet shift means I can run the maintenance I've been pushing off. Not complaining.",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -62,7 +62,7 @@
   {
     "id": 4,
     "key": "EV_ML_ENG_CM#00004",
-    "text": "[TIRED] Shift's done. No alerts, no fires, no failures. I'm calling that perfect.",
+    "text": "[tired, dead tired] Shift's done. No alerts, no fires, no failures. I'm calling that perfect.",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -81,7 +81,7 @@
   {
     "id": 5,
     "key": "EV_ML_ENG_CM#00005",
-    "text": "[CALM] Reactor's at critical. I'm stepping through shutdown procedure. Step one, step two, step three.",
+    "text": "[calm, procedural] Reactor's at critical. I'm stepping through shutdown procedure. Step one, step two, step three.",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -100,7 +100,7 @@
   {
     "id": 6,
     "key": "EV_ML_ENG_CM#00006",
-    "text": "[URGENT] Reactor containment is failing. Step back and let me work. Don't ask questions.",
+    "text": "[urgent, fast pace] Reactor containment is failing. Step back and let me work. Don't ask questions.",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -138,7 +138,7 @@
   {
     "id": 8,
     "key": "EV_ML_ENG_CM#00008",
-    "text": "[CALM] Power's draining. I'm rerouting backup systems. Core functions stay online.",
+    "text": "[calm, procedural] Power's draining. I'm rerouting backup systems. Core functions stay online.",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -157,7 +157,7 @@
   {
     "id": 9,
     "key": "EV_ML_ENG_CM#00009",
-    "text": "[CALM] Life support's compromised. Sealing secondary systems. We'll lose the aft section but we hold here.",
+    "text": "[calm, procedural] Life support's compromised. Sealing secondary systems. We'll lose the aft section but we hold here.",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -176,7 +176,7 @@
   {
     "id": 10,
     "key": "EV_ML_ENG_CM#00010",
-    "text": "[CALM] Hull breach detected. Pressure dropping aft. Sealing bulkheads now. Step by step.",
+    "text": "[calm, procedural] Hull breach detected. Pressure dropping aft. Sealing bulkheads now. Step by step.",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -230,7 +230,7 @@
   {
     "id": 13,
     "key": "EV_ML_ENG_CM#00013",
-    "text": "[SUSPICIOUS] The AI's showing irregularities in engine control protocols. Could be damage. Could be something else.",
+    "text": "[suspicious tone] The AI's showing irregularities in engine control protocols. Could be damage. Could be something else.",
     "type": "declaration",
     "intent": "suspicion_ai",
     "conditions": {
@@ -249,7 +249,7 @@
   {
     "id": 14,
     "key": "EV_ML_ENG_CM#00014",
-    "text": "[PAINED] Took a burn. Still functional. Got work to finish.",
+    "text": "[pained, voice tight] Took a burn. Still functional. Got work to finish.",
     "type": "declaration",
     "intent": "pain",
     "conditions": {
@@ -288,7 +288,7 @@
   {
     "id": 16,
     "key": "EV_ML_ENG_CM#00016",
-    "text": "[CALM] Working on this. Nobody touch anything until I say it's clear.",
+    "text": "[calm, procedural] Working on this. Nobody touch anything until I say it's clear.",
     "type": "opener",
     "intent": "warning",
     "conditions": {
@@ -320,7 +320,7 @@
   {
     "id": 18,
     "key": "EV_ML_ENG_CM#00018",
-    "text": "[CALM] The reactor situation is worse than the report said. I need you focused on this.",
+    "text": "[calm, procedural] The reactor situation is worse than the report said. I need you focused on this.",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -339,7 +339,7 @@
   {
     "id": 19,
     "key": "EV_ML_ENG_CM#00019",
-    "text": "[WARM] You worked the repair correctly. Good instincts under pressure.",
+    "text": "[warm, gentle tone] You worked the repair correctly. Good instincts under pressure.",
     "type": "opener",
     "intent": "praise_ai",
     "conditions": {
@@ -355,7 +355,7 @@
   {
     "id": 20,
     "key": "EV_ML_ENG_CM#00020",
-    "text": "[CALM] We need to talk about the power distribution issue. Not now, later when we're safe.",
+    "text": "[calm, procedural] We need to talk about the power distribution issue. Not now, later when we're safe.",
     "type": "opener",
     "intent": "complaint",
     "conditions": {
@@ -387,7 +387,7 @@
   {
     "id": 22,
     "key": "EV_ML_ENG_CM#00022",
-    "text": "[CALM] I'm fine. Been worse. You?",
+    "text": "[calm, procedural] I'm fine. Been worse. You?",
     "type": "reply",
     "intent": "smalltalk",
     "conditions": {
@@ -425,7 +425,7 @@
   {
     "id": 24,
     "key": "EV_ML_ENG_CM#00024",
-    "text": "[CALM] Panic doesn't fix machines. Focus does. Breathe and let me walk you through this.",
+    "text": "[calm, procedural] Panic doesn't fix machines. Focus does. Breathe and let me walk you through this.",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -443,7 +443,7 @@
   {
     "id": 25,
     "key": "EV_ML_ENG_CM#00025",
-    "text": "[CALM] Let me see it. I can probably do something about that.",
+    "text": "[calm, procedural] Let me see it. I can probably do something about that.",
     "type": "reply",
     "intent": "offer_help",
     "conditions": {
@@ -480,7 +480,7 @@
   {
     "id": 27,
     "key": "EV_ML_ENG_CM#00027",
-    "text": "[SUSPICIOUS] I've been watching too. Something's off about how the AI prioritizes load. Could mean nothing.",
+    "text": "[suspicious tone] I've been watching too. Something's off about how the AI prioritizes load. Could mean nothing.",
     "type": "reply",
     "intent": "suspicion_ai",
     "conditions": {
@@ -499,7 +499,7 @@
   {
     "id": 28,
     "key": "EV_ML_ENG_CM#00028",
-    "text": "[DRY] Yeah, the manual says the same thing you just told me. Doesn't make either of us wrong.",
+    "text": "[dry tone] Yeah, the manual says the same thing you just told me. Doesn't make either of us wrong.",
     "type": "reply",
     "intent": "banter",
     "conditions": {
@@ -536,7 +536,7 @@
   {
     "id": 30,
     "key": "EV_ML_ENG_CM#00030",
-    "text": "[CALM] Things are breaking differently than expected. But they're breakable. That means fixable.",
+    "text": "[calm, procedural] Things are breaking differently than expected. But they're breakable. That means fixable.",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -555,7 +555,7 @@
   {
     "id": 31,
     "key": "EV_ML_ENG_CM#00031",
-    "text": "[WARM] You didn't panic and you didn't freeze. That's what matters when the pressure's on.",
+    "text": "[warm, gentle tone] You didn't panic and you didn't freeze. That's what matters when the pressure's on.",
     "type": "reply",
     "intent": "praise_ai",
     "conditions": {
@@ -573,7 +573,7 @@
   {
     "id": 32,
     "key": "EV_ML_ENG_CM#00032",
-    "text": "[CALM] That's the right call. I would've made the same one.",
+    "text": "[calm, procedural] That's the right call. I would've made the same one.",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -591,7 +591,7 @@
   {
     "id": 33,
     "key": "EV_ML_ENG_CM#00033",
-    "text": "[WARM] This job's easier with you on it. That's all I mean to say.",
+    "text": "[warm, gentle tone] This job's easier with you on it. That's all I mean to say.",
     "type": "reply",
     "intent": "romance_hint",
     "conditions": {
@@ -629,7 +629,7 @@
   {
     "id": 35,
     "key": "EV_ML_ENG_CM#00035",
-    "text": "[PANICKED] No no no, get that burned hand to the medic before it gets worse. Now.",
+    "text": "[panicked, panting] No no no, get that burned hand to the medic before it gets worse. Now.",
     "type": "reply",
     "intent": "pain",
     "conditions": {
@@ -649,7 +649,7 @@
   {
     "id": 36,
     "key": "EV_ML_ENG_CM#00036",
-    "text": "[TERRIFIED] The containment's failing faster than I predicted. We have maybe minutes before the reactor breaches.",
+    "text": "[terrified, voice shaking] The containment's failing faster than I predicted. We have maybe minutes before the reactor breaches.",
     "type": "reply",
     "intent": "fear_vent",
     "conditions": {
@@ -691,7 +691,7 @@
   {
     "id": 38,
     "key": "EV_ML_ENG_CM#00038",
-    "text": "[CALM] Engine room's secure. Come back if you need anything else.",
+    "text": "[calm, procedural] Engine room's secure. Come back if you need anything else.",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -710,7 +710,7 @@
   {
     "id": 39,
     "key": "EV_ML_ENG_CM#00039",
-    "text": "[TIRED] I'll be here working if the alarms start again. Rest if you can.",
+    "text": "[tired, dead tired] I'll be here working if the alarms start again. Rest if you can.",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -745,7 +745,7 @@
   {
     "id": 41,
     "key": "EV_ML_ENG_CM#00041",
-    "text": "[GRIM] Engine room's sealed. I'll keep watch from here.",
+    "text": "[grim, heavy] Engine room's sealed. I'll keep watch from here.",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -761,7 +761,7 @@
   {
     "id": 42,
     "key": "EV_ML_ENG_CM#00042",
-    "text": "[CALM] Shift's done. Systems are stable. Same time tomorrow.",
+    "text": "[calm, procedural] Shift's done. Systems are stable. Same time tomorrow.",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -777,7 +777,7 @@
   {
     "id": 43,
     "key": "EV_ML_ENG_CM#00043",
-    "text": "[CALM] Everything's holding. Go get some rest.",
+    "text": "[calm, procedural] Everything's holding. Go get some rest.",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -793,7 +793,7 @@
   {
     "id": 44,
     "key": "EV_ML_ENG_CM#00044",
-    "text": "[URGENT] I need everyone not engineering to evacuate the aft section now. Structural integrity's compromised.",
+    "text": "[urgent, fast pace] I need everyone not engineering to evacuate the aft section now. Structural integrity's compromised.",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -812,7 +812,7 @@
   {
     "id": 45,
     "key": "EV_ML_ENG_CM#00045",
-    "text": "[CALM] I'm stepping through each system, checking tolerances, verifying redundancies. We're going to be fine.",
+    "text": "[calm, procedural] I'm stepping through each system, checking tolerances, verifying redundancies. We're going to be fine.",
     "type": "opener",
     "intent": "reassurance",
     "conditions": {
@@ -828,7 +828,7 @@
   {
     "id": 46,
     "key": "EV_ML_ENG_CM#00046",
-    "text": "[DRY] The reactor's stable. That's not a metaphor or an opinion. That's what the readings say.",
+    "text": "[dry tone] The reactor's stable. That's not a metaphor or an opinion. That's what the readings say.",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -866,7 +866,7 @@
   {
     "id": 48,
     "key": "EV_ML_ENG_CM#00048",
-    "text": "[PAINED] Engine room burn. It's cauterized. I'll function.",
+    "text": "[pained, voice tight] Engine room burn. It's cauterized. I'll function.",
     "type": "declaration",
     "intent": "pain",
     "conditions": {
@@ -883,7 +883,7 @@
   {
     "id": 49,
     "key": "EV_ML_ENG_CM#00049",
-    "text": "[CALM] Rerouting power to life support. Main grid's compromised but the core's salvageable.",
+    "text": "[calm, procedural] Rerouting power to life support. Main grid's compromised but the core's salvageable.",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -902,7 +902,7 @@
   {
     "id": 50,
     "key": "EV_ML_ENG_CM#00050",
-    "text": "[WARM] You took that pressure better than I would have. That matters to me.",
+    "text": "[warm, gentle tone] You took that pressure better than I would have. That matters to me.",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -920,7 +920,7 @@
   {
     "id": 51,
     "key": "EV_ML_ENG_CM#00051",
-    "text": "[GRIM] We lost someone down there today. I should have seen the problem sooner.",
+    "text": "[grim, heavy] We lost someone down there today. I should have seen the problem sooner.",
     "type": "opener",
     "intent": "grief",
     "conditions": {
@@ -939,7 +939,7 @@
   {
     "id": 52,
     "key": "EV_ML_ENG_CM#00052",
-    "text": "[CALM] I've got something I need your attention on. It's going to take a few minutes.",
+    "text": "[calm, procedural] I've got something I need your attention on. It's going to take a few minutes.",
     "type": "opener",
     "intent": "smalltalk",
     "conditions": {
@@ -971,7 +971,7 @@
   {
     "id": 54,
     "key": "EV_ML_ENG_CM#00054",
-    "text": "[CALM] You're right. That's exactly what I was thinking.",
+    "text": "[calm, procedural] You're right. That's exactly what I was thinking.",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -990,7 +990,7 @@
   {
     "id": 55,
     "key": "EV_ML_ENG_CM#00055",
-    "text": "[CALM] Meal break. I'll check the secondary cooling systems while I eat. Multitasking.",
+    "text": "[calm, procedural] Meal break. I'll check the secondary cooling systems while I eat. Multitasking.",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -1028,7 +1028,7 @@
   {
     "id": 57,
     "key": "EV_ML_ENG_CM#00057",
-    "text": "[TIRED] All systems holding. No alerts, no surprises. That's the shift I wanted.",
+    "text": "[tired, dead tired] All systems holding. No alerts, no surprises. That's the shift I wanted.",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -1047,7 +1047,7 @@
   {
     "id": 58,
     "key": "EV_ML_ENG_CM#00058",
-    "text": "[CALM] Life support's not responding to reroutes. I'm working through the diagnostics manually.",
+    "text": "[calm, procedural] Life support's not responding to reroutes. I'm working through the diagnostics manually.",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -1066,7 +1066,7 @@
   {
     "id": 59,
     "key": "EV_ML_ENG_CM#00059",
-    "text": "[URGENT] Battery's depleting faster than predicted. Everything I can't run, I'm shutting down now.",
+    "text": "[urgent, fast pace] Battery's depleting faster than predicted. Everything I can't run, I'm shutting down now.",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -1085,7 +1085,7 @@
   {
     "id": 60,
     "key": "EV_ML_ENG_CM#00060",
-    "text": "[CALM] Reactor containment is holding. I'm watching it like a hawk. One wrong move and this gets worse.",
+    "text": "[calm, procedural] Reactor containment is holding. I'm watching it like a hawk. One wrong move and this gets worse.",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -1123,7 +1123,7 @@
   {
     "id": 62,
     "key": "EV_ML_ENG_CM#00062",
-    "text": "[SUSPICIOUS] The AI's power distribution algorithms seem erratic since the hit. Could be damage. Could be something else.",
+    "text": "[suspicious tone] The AI's power distribution algorithms seem erratic since the hit. Could be damage. Could be something else.",
     "type": "declaration",
     "intent": "suspicion_ai",
     "conditions": {
@@ -1142,7 +1142,7 @@
   {
     "id": 63,
     "key": "EV_ML_ENG_CM#00063",
-    "text": "[WARM] The AI rerouted power exactly when I needed it. That was good timing and good thinking.",
+    "text": "[warm, gentle tone] The AI rerouted power exactly when I needed it. That was good timing and good thinking.",
     "type": "declaration",
     "intent": "praise_ai",
     "conditions": {
@@ -1158,7 +1158,7 @@
   {
     "id": 64,
     "key": "EV_ML_ENG_CM#00064",
-    "text": "[PAINED] Reactor fuel burn. Deep. Still got hands though. Still got work to do.",
+    "text": "[pained, voice tight] Reactor fuel burn. Deep. Still got hands though. Still got work to do.",
     "type": "declaration",
     "intent": "pain",
     "conditions": {
@@ -1175,7 +1175,7 @@
   {
     "id": 65,
     "key": "EV_ML_ENG_CM#00065",
-    "text": "[GRIM] Lost someone in the reactor room today. I was three rooms over. Should've checked on them sooner.",
+    "text": "[grim, heavy] Lost someone in the reactor room today. I was three rooms over. Should've checked on them sooner.",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -1197,7 +1197,7 @@
   {
     "id": 66,
     "key": "EV_ML_ENG_CM#00066",
-    "text": "[PANICKED] Everything's failing at once and I can't fix it fast enough. The systems are pulling me in twelve different directions.",
+    "text": "[panicked, panting] Everything's failing at once and I can't fix it fast enough. The systems are pulling me in twelve different directions.",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -1217,7 +1217,7 @@
   {
     "id": 67,
     "key": "EV_ML_ENG_CM#00067",
-    "text": "[TERRIFIED] The containment field's fluctuating. I can't stabilize it. If this goes, we don't make it.",
+    "text": "[terrified, voice shaking] The containment field's fluctuating. I can't stabilize it. If this goes, we don't make it.",
     "type": "reply",
     "intent": "fear_vent",
     "conditions": {
@@ -1240,7 +1240,7 @@
   {
     "id": 68,
     "key": "EV_ML_ENG_CM#00068",
-    "text": "[CALM] I've been working on optimizing the engine efficiency protocols. Small gains compound.",
+    "text": "[calm, procedural] I've been working on optimizing the engine efficiency protocols. Small gains compound.",
     "type": "declaration",
     "intent": "memory",
     "conditions": {
@@ -1272,7 +1272,7 @@
   {
     "id": 70,
     "key": "EV_ML_ENG_CM#00070",
-    "text": "[WARM] You caught the problem before it cascaded. That's the kind of situational awareness that saves lives.",
+    "text": "[warm, gentle tone] You caught the problem before it cascaded. That's the kind of situational awareness that saves lives.",
     "type": "opener",
     "intent": "praise_ai",
     "conditions": {
@@ -1288,7 +1288,7 @@
   {
     "id": 71,
     "key": "EV_ML_ENG_CM#00071",
-    "text": "[CALM] Your input on the power distribution is sound. I'm incorporating it.",
+    "text": "[calm, procedural] Your input on the power distribution is sound. I'm incorporating it.",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -1307,7 +1307,7 @@
   {
     "id": 72,
     "key": "EV_ML_ENG_CM#00072",
-    "text": "[WARM] You don't have to carry this alone. That's what the team's for.",
+    "text": "[warm, gentle tone] You don't have to carry this alone. That's what the team's for.",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -1325,7 +1325,7 @@
   {
     "id": 73,
     "key": "EV_ML_ENG_CM#00073",
-    "text": "[CALM] I'll be here in the engine room if anything shifts. Check on me before you sleep.",
+    "text": "[calm, procedural] I'll be here in the engine room if anything shifts. Check on me before you sleep.",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1341,7 +1341,7 @@
   {
     "id": 74,
     "key": "EV_ML_ENG_CM#00074",
-    "text": "[GRIM] These systems won't fix themselves. Neither will I. But we're both still standing.",
+    "text": "[grim, heavy] These systems won't fix themselves. Neither will I. But we're both still standing.",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1393,7 +1393,7 @@
   {
     "id": 77,
     "key": "EV_ML_ENG_CM#00077",
-    "text": "[DRY] Sure, hit it harder. That works on stuck bolts and nothing else in the known universe.",
+    "text": "[dry tone] Sure, hit it harder. That works on stuck bolts and nothing else in the known universe.",
     "type": "reply",
     "intent": "banter",
     "conditions": {
@@ -1482,7 +1482,7 @@
   {
     "id": 82,
     "key": "EV_ML_ENG_CM#00082",
-    "text": "[DRY] If that pump dies, it dies doing what it loved. Vibrating alarmingly.",
+    "text": "[dry tone] If that pump dies, it dies doing what it loved. Vibrating alarmingly.",
     "type": "reply",
     "intent": "gallows_humor",
     "conditions": {
@@ -1570,7 +1570,7 @@
   {
     "id": 87,
     "key": "EV_ML_ENG_CM#00087",
-    "text": "[CALM] Listen to the engines a second. Steady. That's the sound of nothing being wrong yet. Hold onto it.",
+    "text": "[calm, procedural] Listen to the engines a second. Steady. That's the sound of nothing being wrong yet. Hold onto it.",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -1607,7 +1607,7 @@
   {
     "id": 89,
     "key": "EV_ML_ENG_CM#00089",
-    "text": "[WARM] I fixed the heater in your quarters before you noticed it was failing. That's how I say things.",
+    "text": "[warm, gentle tone] I fixed the heater in your quarters before you noticed it was failing. That's how I say things.",
     "type": "opener",
     "intent": "romance_hint",
     "conditions": {
@@ -1641,7 +1641,7 @@
   {
     "id": 91,
     "key": "EV_ML_ENG_CM#00091",
-    "text": "[WARM] Yes. No diagnostics needed on that one.",
+    "text": "[warm, gentle tone] Yes. No diagnostics needed on that one.",
     "type": "reply",
     "intent": "romance_accept",
     "conditions": {
@@ -1678,7 +1678,7 @@
   {
     "id": 93,
     "key": "EV_ML_ENG_CM#00093",
-    "text": "[CALM] I can squeeze maybe six more hours from the cells if everyone stops opening the big doors. Small habits, big margin.",
+    "text": "[calm, procedural] I can squeeze maybe six more hours from the cells if everyone stops opening the big doors. Small habits, big margin.",
     "type": "reply",
     "intent": "work_talk",
     "conditions": {
@@ -1835,7 +1835,7 @@
   {
     "id": 101,
     "key": "EV_ML_ENG_CM#00101",
-    "text": "[DRY] Off shift. If you hear grinding from the engine room, it's either the pumps or me. Both are fine.",
+    "text": "[dry tone] Off shift. If you hear grinding from the engine room, it's either the pumps or me. Both are fine.",
     "type": "closer",
     "intent": "gallows_humor",
     "conditions": {
