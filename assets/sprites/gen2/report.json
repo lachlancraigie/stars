@@ -1144,77 +1144,51 @@
     "crew_astronaut_idle_s": {
       "id": "crew_astronaut_idle_s",
       "category": "crew",
+      "anchored_on": null,
       "attempts": [
         {
           "attempt": 1,
-          "prompt": "Clean cel-shaded isometric game sprite, 2:1 dimetric camera angle (26.57 degrees above horizontal, matching SimCity/RollerCoaster Tycoon isometric -- the diamond floor footprint is exactly twice as wide as it is tall), flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, standing idle, no helmet, simplified featureless face. A full-body character standing upright, feet at 61% down the frame, centered horizontally, body extending upward, facing toward the camera (south/front view), chunky simplified proportions (large head-to-body ratio is fine, no fine facial detail), standing idle pose, arms at sides. The character is the ONLY thing in the image: absolutely no floor, no ground plate, no tile, no platform beneath the feet -- only a small flat contact shadow directly under the feet, on a fully transparent background. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only.",
-          "usage": {
-            "prompt_tokens": 464,
-            "completion_tokens": 6240,
-            "total_tokens": 6704,
-            "cost": 0.05108,
-            "is_byok": false,
-            "prompt_tokens_details": {
-              "cached_tokens": 0
-            },
-            "cost_details": {
-              "upstream_inference_cost": 0.05108,
-              "upstream_inference_prompt_cost": 0.00116,
-              "upstream_inference_completions_cost": 0.04992
-            },
-            "completion_tokens_details": {
-              "reasoning_tokens": 0,
-              "image_tokens": 6240
-            }
-          },
-          "qa": {
-            "notes": [],
-            "canvas_ok": true,
-            "has_alpha": true,
-            "centroid": [
-              258.0149370706745,
-              252.4910792494583
-            ],
-            "centroid_ok": true,
-            "pass": true
-          }
+          "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, standing idle, no helmet, simplified featureless face. A full-body character standing upright, feet at 61% down the frame, centered horizontally, body extending upward, facing toward the camera (south/front view), chunky simplified proportions (large head-to-body ratio is fine, no fine facial detail), standing idle pose, arms at sides. The character is the ONLY thing in the image: absolutely no floor, no ground plate, no tile, no platform beneath the feet -- only a small flat contact shadow directly under the feet, on a fully transparent background. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+          "note": "RECONSTRUCTED: this asset was generated by tools/image_gen/crew_facings.py during the session that was interrupted mid-run; the PNG was saved to disk but the report.json write recording its prompt/usage/QA was lost (a later env_batch.py run held an earlier in-memory copy of report.json and overwrote the file, dropping this entry, though it never touched the PNG itself). Prompt text below is reconstructed deterministically from crew_facings.py's own compose logic (pure function of the asset id), which is unchanged on disk -- it is exactly what was sent. Original usage/cost for the lost call cannot be recovered and is not counted in any budget tracked by this session."
         }
       ],
+      "staged_path": "assets/sprites/gen2/crew_astronaut_idle_s.png",
+      "normalize": {
+        "source_bbox": [
+          242,
+          250,
+          271,
+          320
+        ],
+        "source_size": [
+          29,
+          70
+        ],
+        "scale": [
+          1.0,
+          1.0
+        ],
+        "target_bbox": [
+          242,
+          250,
+          271,
+          320
+        ]
+      },
       "final_qa": {
         "notes": [],
         "canvas_ok": true,
         "has_alpha": true,
         "bbox": [
-          234,
+          242,
           250,
-          277,
+          271,
           320
         ],
         "anchored_ok": true,
+        "interior_hole_pct": 3.91,
+        "solid_ok": true,
         "pass": true
-      },
-      "staged_path": "assets\\sprites\\gen2\\crew_astronaut_idle_s.png",
-      "normalize": {
-        "source_bbox": [
-          122,
-          21,
-          398,
-          475
-        ],
-        "source_size": [
-          276,
-          454
-        ],
-        "scale": [
-          0.15418502202643172,
-          0.15418502202643172
-        ],
-        "target_bbox": [
-          234,
-          250,
-          277,
-          320
-        ]
       }
     },
     "wall_nw": {
@@ -1262,6 +1236,2999 @@
         "notes": [
           "derived: horizontal mirror of wall_se (key-light facet flips; accepted)"
         ],
+        "pass": true
+      }
+    },
+    "tile_bridge": {
+      "id": "tile_bridge",
+      "category": "floor",
+      "attempts": [
+        {
+          "attempt": 1,
+          "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. Bridge command-deck floor tile: dark steel plating with a subtle painted cyan chevron pointing toward one corner and thin panel seams. Completely flat and empty -- no consoles, no chairs, no 3D objects, only the painted floor surface. Isometric floor tile filling the 2:1 diamond footprint exactly: the tile's diamond silhouette is centered horizontally in the frame and centered vertically at 61% down from the top (not the frame's vertical center), spanning the middle 25% of the frame width. Surface detail (panels, markings, equipment) stays within the diamond, flush with the floor, no vertical walls, no ceiling, designed to tile edge-to-edge with identical floor tiles. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+          "usage": {
+            "prompt_tokens": 536,
+            "completion_tokens": 6208,
+            "total_tokens": 6744,
+            "cost": 0.051004,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.051004,
+              "upstream_inference_prompt_cost": 0.00134,
+              "upstream_inference_completions_cost": 0.049664
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 6208
+            }
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              191,
+              279,
+              321,
+              344
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          }
+        }
+      ],
+      "normalize": {
+        "source_bbox": [
+          68,
+          144,
+          420,
+          369
+        ],
+        "source_size": [
+          352,
+          225
+        ],
+        "scale": [
+          0.3693181818181818,
+          0.28888888888888886
+        ],
+        "target_bbox": [
+          191,
+          279,
+          321,
+          344
+        ]
+      },
+      "final_qa": {
+        "notes": [],
+        "canvas_ok": true,
+        "has_alpha": true,
+        "bbox": [
+          191,
+          279,
+          321,
+          344
+        ],
+        "anchored_ok": true,
+        "interior_hole_pct": 0.0,
+        "solid_ok": true,
+        "pass": true
+      },
+      "staged_path": "assets\\sprites\\gen2\\tile_bridge.png"
+    },
+    "tile_mess": {
+      "id": "tile_mess",
+      "category": "floor",
+      "attempts": [
+        {
+          "attempt": 1,
+          "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. Mess hall floor tile: off-white galley plating with a warm amber trim line along the panel seams. Completely flat and empty -- no tables, no furniture, no 3D objects, only the painted floor surface. Isometric floor tile filling the 2:1 diamond footprint exactly: the tile's diamond silhouette is centered horizontally in the frame and centered vertically at 61% down from the top (not the frame's vertical center), spanning the middle 25% of the frame width. Surface detail (panels, markings, equipment) stays within the diamond, flush with the floor, no vertical walls, no ceiling, designed to tile edge-to-edge with identical floor tiles. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+          "usage": {
+            "prompt_tokens": 531,
+            "completion_tokens": 6208,
+            "total_tokens": 6739,
+            "cost": 0.0509915,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.0509915,
+              "upstream_inference_prompt_cost": 0.0013275,
+              "upstream_inference_completions_cost": 0.049664
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 6208
+            }
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              191,
+              279,
+              321,
+              344
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          }
+        }
+      ],
+      "normalize": {
+        "source_bbox": [
+          4,
+          104,
+          476,
+          406
+        ],
+        "source_size": [
+          472,
+          302
+        ],
+        "scale": [
+          0.2754237288135593,
+          0.2152317880794702
+        ],
+        "target_bbox": [
+          191,
+          279,
+          321,
+          344
+        ]
+      },
+      "final_qa": {
+        "notes": [],
+        "canvas_ok": true,
+        "has_alpha": true,
+        "bbox": [
+          191,
+          279,
+          321,
+          344
+        ],
+        "anchored_ok": true,
+        "interior_hole_pct": 0.0,
+        "solid_ok": true,
+        "pass": true
+      },
+      "staged_path": "assets\\sprites\\gen2\\tile_mess.png"
+    },
+    "tile_quarters": {
+      "id": "tile_quarters",
+      "category": "floor",
+      "attempts": [
+        {
+          "attempt": 1,
+          "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. Crew quarters floor tile: quiet steel plating with two large off-white inset floor panels. Completely flat and empty -- no bunks, no furniture, no 3D objects, only the painted floor surface. Isometric floor tile filling the 2:1 diamond footprint exactly: the tile's diamond silhouette is centered horizontally in the frame and centered vertically at 61% down from the top (not the frame's vertical center), spanning the middle 25% of the frame width. Surface detail (panels, markings, equipment) stays within the diamond, flush with the floor, no vertical walls, no ceiling, designed to tile edge-to-edge with identical floor tiles. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+          "usage": {
+            "prompt_tokens": 528,
+            "completion_tokens": 6208,
+            "total_tokens": 6736,
+            "cost": 0.050984,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.050984,
+              "upstream_inference_prompt_cost": 0.00132,
+              "upstream_inference_completions_cost": 0.049664
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 6208
+            }
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              191,
+              279,
+              321,
+              344
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          }
+        }
+      ],
+      "normalize": {
+        "source_bbox": [
+          54,
+          145,
+          447,
+          386
+        ],
+        "source_size": [
+          393,
+          241
+        ],
+        "scale": [
+          0.33078880407124683,
+          0.2697095435684647
+        ],
+        "target_bbox": [
+          191,
+          279,
+          321,
+          344
+        ]
+      },
+      "final_qa": {
+        "notes": [],
+        "canvas_ok": true,
+        "has_alpha": true,
+        "bbox": [
+          191,
+          279,
+          321,
+          344
+        ],
+        "anchored_ok": true,
+        "interior_hole_pct": 0.0,
+        "solid_ok": true,
+        "pass": true
+      },
+      "staged_path": "assets\\sprites\\gen2\\tile_quarters.png"
+    },
+    "tile_life_support": {
+      "id": "tile_life_support",
+      "category": "floor",
+      "attempts": [
+        {
+          "attempt": 1,
+          "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. Life support room floor tile: steel plating with a painted cyan oxygen-line marking and one flush vent grate drawn flat into the surface. Completely flat and empty -- no machines, no tanks, no 3D objects, only the painted floor surface. Isometric floor tile filling the 2:1 diamond footprint exactly: the tile's diamond silhouette is centered horizontally in the frame and centered vertically at 61% down from the top (not the frame's vertical center), spanning the middle 25% of the frame width. Surface detail (panels, markings, equipment) stays within the diamond, flush with the floor, no vertical walls, no ceiling, designed to tile edge-to-edge with identical floor tiles. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+          "usage": {
+            "prompt_tokens": 536,
+            "completion_tokens": 6208,
+            "total_tokens": 6744,
+            "cost": 0.051004,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.051004,
+              "upstream_inference_prompt_cost": 0.00134,
+              "upstream_inference_completions_cost": 0.049664
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 6208
+            }
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              191,
+              279,
+              321,
+              344
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          }
+        }
+      ],
+      "normalize": {
+        "source_bbox": [
+          0,
+          93,
+          506,
+          419
+        ],
+        "source_size": [
+          506,
+          326
+        ],
+        "scale": [
+          0.25691699604743085,
+          0.19938650306748465
+        ],
+        "target_bbox": [
+          191,
+          279,
+          321,
+          344
+        ]
+      },
+      "final_qa": {
+        "notes": [],
+        "canvas_ok": true,
+        "has_alpha": true,
+        "bbox": [
+          191,
+          279,
+          321,
+          344
+        ],
+        "anchored_ok": true,
+        "interior_hole_pct": 0.0,
+        "solid_ok": true,
+        "pass": true
+      },
+      "staged_path": "assets\\sprites\\gen2\\tile_life_support.png"
+    },
+    "tile_ai_core": {
+      "id": "tile_ai_core",
+      "category": "floor",
+      "attempts": [
+        {
+          "attempt": 1,
+          "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. AI core room floor tile: dark steel plating with thin glowing cyan data-trace lines running across it like circuit paths. Completely flat and empty -- no server pillars, no 3D objects, only the painted floor surface. Isometric floor tile filling the 2:1 diamond footprint exactly: the tile's diamond silhouette is centered horizontally in the frame and centered vertically at 61% down from the top (not the frame's vertical center), spanning the middle 25% of the frame width. Surface detail (panels, markings, equipment) stays within the diamond, flush with the floor, no vertical walls, no ceiling, designed to tile edge-to-edge with identical floor tiles. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+          "usage": {
+            "prompt_tokens": 532,
+            "completion_tokens": 6208,
+            "total_tokens": 6740,
+            "cost": 0.050994,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.050994,
+              "upstream_inference_prompt_cost": 0.00133,
+              "upstream_inference_completions_cost": 0.049664
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 6208
+            }
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              191,
+              279,
+              321,
+              344
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          }
+        }
+      ],
+      "normalize": {
+        "source_bbox": [
+          0,
+          99,
+          504,
+          416
+        ],
+        "source_size": [
+          504,
+          317
+        ],
+        "scale": [
+          0.25793650793650796,
+          0.20504731861198738
+        ],
+        "target_bbox": [
+          191,
+          279,
+          321,
+          344
+        ]
+      },
+      "final_qa": {
+        "notes": [],
+        "canvas_ok": true,
+        "has_alpha": true,
+        "bbox": [
+          191,
+          279,
+          321,
+          344
+        ],
+        "anchored_ok": true,
+        "interior_hole_pct": 0.0,
+        "solid_ok": true,
+        "pass": true
+      },
+      "staged_path": "assets\\sprites\\gen2\\tile_ai_core.png"
+    },
+    "tile_airlock": {
+      "id": "tile_airlock",
+      "category": "floor",
+      "attempts": [
+        {
+          "attempt": 1,
+          "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. Airlock floor tile: heavy reinforced plating with an amber-and-dark chevron hazard border painted around its edge. Completely flat and empty -- no hatch mechanism, no 3D objects, only the painted floor surface. Isometric floor tile filling the 2:1 diamond footprint exactly: the tile's diamond silhouette is centered horizontally in the frame and centered vertically at 61% down from the top (not the frame's vertical center), spanning the middle 25% of the frame width. Surface detail (panels, markings, equipment) stays within the diamond, flush with the floor, no vertical walls, no ceiling, designed to tile edge-to-edge with identical floor tiles. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+          "usage": {
+            "prompt_tokens": 530,
+            "completion_tokens": 6208,
+            "total_tokens": 6738,
+            "cost": 0.050989,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.050989,
+              "upstream_inference_prompt_cost": 0.001325,
+              "upstream_inference_completions_cost": 0.049664
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 6208
+            }
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              191,
+              279,
+              321,
+              344
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          }
+        }
+      ],
+      "normalize": {
+        "source_bbox": [
+          0,
+          94,
+          501,
+          422
+        ],
+        "source_size": [
+          501,
+          328
+        ],
+        "scale": [
+          0.25948103792415167,
+          0.19817073170731708
+        ],
+        "target_bbox": [
+          191,
+          279,
+          321,
+          344
+        ]
+      },
+      "final_qa": {
+        "notes": [],
+        "canvas_ok": true,
+        "has_alpha": true,
+        "bbox": [
+          191,
+          279,
+          321,
+          344
+        ],
+        "anchored_ok": true,
+        "interior_hole_pct": 0.0,
+        "solid_ok": true,
+        "pass": true
+      },
+      "staged_path": "assets\\sprites\\gen2\\tile_airlock.png"
+    },
+    "desk_computer_SE": {
+      "id": "desk_computer_SE",
+      "category": "prop",
+      "attempts": [
+        {
+          "attempt": 1,
+          "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A compact sci-fi computer desk workstation with a small angled terminal screen on top, facing the lower-right (south-east) A single freestanding object standing on the floor diamond's center point: its base/contact shadow sits at 61% down the frame, centered horizontally, the object extending upward from that point within the frame -- no floor tile needs to be drawn under it, only the object and its small flat contact shadow. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+          "usage": {
+            "prompt_tokens": 479,
+            "completion_tokens": 6240,
+            "total_tokens": 6719,
+            "cost": 0.0511175,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.0511175,
+              "upstream_inference_prompt_cost": 0.0011975,
+              "upstream_inference_completions_cost": 0.04992
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 6240
+            }
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              212,
+              220,
+              300,
+              330
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          }
+        }
+      ],
+      "normalize": {
+        "source_bbox": [
+          126,
+          93,
+          386,
+          417
+        ],
+        "source_size": [
+          260,
+          324
+        ],
+        "scale": [
+          0.3384615384615385,
+          0.3384615384615385
+        ],
+        "target_bbox": [
+          212,
+          220,
+          300,
+          330
+        ]
+      },
+      "final_qa": {
+        "notes": [],
+        "canvas_ok": true,
+        "has_alpha": true,
+        "bbox": [
+          212,
+          220,
+          300,
+          330
+        ],
+        "anchored_ok": true,
+        "interior_hole_pct": 0.0,
+        "solid_ok": true,
+        "pass": true
+      },
+      "staged_path": "assets\\sprites\\gen2\\desk_computer_SE.png"
+    },
+    "desk_computerScreen_SE": {
+      "id": "desk_computerScreen_SE",
+      "category": "prop",
+      "attempts": [
+        {
+          "attempt": 1,
+          "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A sci-fi computer desk with one large upright monitor screen showing a small cyan display, facing the lower-right (south-east) A single freestanding object standing on the floor diamond's center point: its base/contact shadow sits at 61% down the frame, centered horizontally, the object extending upward from that point within the frame -- no floor tile needs to be drawn under it, only the object and its small flat contact shadow. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+          "usage": {
+            "prompt_tokens": 480,
+            "completion_tokens": 6208,
+            "total_tokens": 6688,
+            "cost": 0.050864,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.050864,
+              "upstream_inference_prompt_cost": 0.0012,
+              "upstream_inference_completions_cost": 0.049664
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 6208
+            }
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              212,
+              222,
+              300,
+              330
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          }
+        }
+      ],
+      "normalize": {
+        "source_bbox": [
+          123,
+          98,
+          378,
+          411
+        ],
+        "source_size": [
+          255,
+          313
+        ],
+        "scale": [
+          0.34509803921568627,
+          0.34509803921568627
+        ],
+        "target_bbox": [
+          212,
+          222,
+          300,
+          330
+        ]
+      },
+      "final_qa": {
+        "notes": [],
+        "canvas_ok": true,
+        "has_alpha": true,
+        "bbox": [
+          212,
+          222,
+          300,
+          330
+        ],
+        "anchored_ok": true,
+        "interior_hole_pct": 0.0,
+        "solid_ok": true,
+        "pass": true
+      },
+      "staged_path": "assets\\sprites\\gen2\\desk_computerScreen_SE.png"
+    },
+    "desk_computerCorner_SE": {
+      "id": "desk_computerCorner_SE",
+      "category": "prop",
+      "attempts": [
+        {
+          "attempt": 1,
+          "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. An L-shaped corner computer desk with a small terminal screen, facing the lower-right (south-east) A single freestanding object standing on the floor diamond's center point: its base/contact shadow sits at 61% down the frame, centered horizontally, the object extending upward from that point within the frame -- no floor tile needs to be drawn under it, only the object and its small flat contact shadow. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+          "usage": {
+            "prompt_tokens": 475,
+            "completion_tokens": 6208,
+            "total_tokens": 6683,
+            "cost": 0.0508515,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.0508515,
+              "upstream_inference_prompt_cost": 0.0011875,
+              "upstream_inference_completions_cost": 0.049664
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 6208
+            }
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              208,
+              253,
+              304,
+              330
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 9.55,
+            "solid_ok": true,
+            "pass": true
+          }
+        }
+      ],
+      "normalize": {
+        "source_bbox": [
+          92,
+          113,
+          411,
+          370
+        ],
+        "source_size": [
+          319,
+          257
+        ],
+        "scale": [
+          0.30094043887147337,
+          0.30094043887147337
+        ],
+        "target_bbox": [
+          208,
+          253,
+          304,
+          330
+        ]
+      },
+      "final_qa": {
+        "notes": [],
+        "canvas_ok": true,
+        "has_alpha": true,
+        "bbox": [
+          208,
+          253,
+          304,
+          330
+        ],
+        "anchored_ok": true,
+        "interior_hole_pct": 9.55,
+        "solid_ok": true,
+        "pass": true
+      },
+      "staged_path": "assets\\sprites\\gen2\\desk_computerCorner_SE.png"
+    },
+    "desk_chair_SE": {
+      "id": "desk_chair_SE",
+      "category": "prop",
+      "attempts": [
+        {
+          "attempt": 1,
+          "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A simple sci-fi swivel desk chair, facing the lower-right (south-east) A single freestanding object standing on the floor diamond's center point: its base/contact shadow sits at 61% down the frame, centered horizontally, the object extending upward from that point within the frame -- no floor tile needs to be drawn under it, only the object and its small flat contact shadow. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+          "usage": {
+            "prompt_tokens": 471,
+            "completion_tokens": 6240,
+            "total_tokens": 6711,
+            "cost": 0.0510975,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.0510975,
+              "upstream_inference_prompt_cost": 0.0011775,
+              "upstream_inference_completions_cost": 0.04992
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 6240
+            }
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              234,
+              249,
+              278,
+              330
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.3,
+            "solid_ok": true,
+            "pass": true
+          }
+        }
+      ],
+      "normalize": {
+        "source_bbox": [
+          141,
+          33,
+          380,
+          472
+        ],
+        "source_size": [
+          239,
+          439
+        ],
+        "scale": [
+          0.18410041841004185,
+          0.18410041841004185
+        ],
+        "target_bbox": [
+          234,
+          249,
+          278,
+          330
+        ]
+      },
+      "final_qa": {
+        "notes": [],
+        "canvas_ok": true,
+        "has_alpha": true,
+        "bbox": [
+          234,
+          249,
+          278,
+          330
+        ],
+        "anchored_ok": true,
+        "interior_hole_pct": 0.3,
+        "solid_ok": true,
+        "pass": true
+      },
+      "staged_path": "assets\\sprites\\gen2\\desk_chair_SE.png"
+    },
+    "desk_chairArms_SE": {
+      "id": "desk_chairArms_SE",
+      "category": "prop",
+      "attempts": [
+        {
+          "attempt": 1,
+          "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A sci-fi office chair with armrests, facing the lower-right (south-east) A single freestanding object standing on the floor diamond's center point: its base/contact shadow sits at 61% down the frame, centered horizontally, the object extending upward from that point within the frame -- no floor tile needs to be drawn under it, only the object and its small flat contact shadow. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+          "usage": {
+            "prompt_tokens": 472,
+            "completion_tokens": 6240,
+            "total_tokens": 6712,
+            "cost": 0.0511,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.0511,
+              "upstream_inference_prompt_cost": 0.00118,
+              "upstream_inference_completions_cost": 0.04992
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 6240
+            }
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              232,
+              242,
+              280,
+              330
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 1.23,
+            "solid_ok": true,
+            "pass": true
+          }
+        }
+      ],
+      "normalize": {
+        "source_bbox": [
+          140,
+          41,
+          370,
+          465
+        ],
+        "source_size": [
+          230,
+          424
+        ],
+        "scale": [
+          0.20869565217391303,
+          0.20869565217391303
+        ],
+        "target_bbox": [
+          232,
+          242,
+          280,
+          330
+        ]
+      },
+      "final_qa": {
+        "notes": [],
+        "canvas_ok": true,
+        "has_alpha": true,
+        "bbox": [
+          232,
+          242,
+          280,
+          330
+        ],
+        "anchored_ok": true,
+        "interior_hole_pct": 1.23,
+        "solid_ok": true,
+        "pass": true
+      },
+      "staged_path": "assets\\sprites\\gen2\\desk_chairArms_SE.png"
+    },
+    "desk_chairArms_NW": {
+      "id": "desk_chairArms_NW",
+      "category": "prop",
+      "attempts": [
+        {
+          "attempt": 1,
+          "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A sci-fi office chair with armrests, facing away from the camera toward the upper-left (north-west), seen from behind so its backrest faces the viewer A single freestanding object standing on the floor diamond's center point: its base/contact shadow sits at 61% down the frame, centered horizontally, the object extending upward from that point within the frame -- no floor tile needs to be drawn under it, only the object and its small flat contact shadow. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+          "usage": {
+            "prompt_tokens": 487,
+            "completion_tokens": 6240,
+            "total_tokens": 6727,
+            "cost": 0.0511375,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.0511375,
+              "upstream_inference_prompt_cost": 0.0012175,
+              "upstream_inference_completions_cost": 0.04992
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 6240
+            }
+          },
+          "qa": {
+            "notes": [
+              "bbox (238, 244, 280, 327) != normalization target [232, 244, 280, 330] (+-2)"
+            ],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              238,
+              244,
+              280,
+              327
+            ],
+            "anchored_ok": false,
+            "interior_hole_pct": 0.09,
+            "solid_ok": true,
+            "pass": false
+          }
+        },
+        {
+          "attempt": 2,
+          "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A sci-fi office chair with armrests, facing away from the camera toward the upper-left (north-west), seen from behind so its backrest faces the viewer A single freestanding object standing on the floor diamond's center point: its base/contact shadow sits at 61% down the frame, centered horizontally, the object extending upward from that point within the frame -- no floor tile needs to be drawn under it, only the object and its small flat contact shadow. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+          "usage": {
+            "prompt_tokens": 487,
+            "completion_tokens": 6240,
+            "total_tokens": 6727,
+            "cost": 0.0511375,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.0511375,
+              "upstream_inference_prompt_cost": 0.0012175,
+              "upstream_inference_completions_cost": 0.04992
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 6240
+            }
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              232,
+              238,
+              280,
+              329
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          }
+        }
+      ],
+      "normalize": {
+        "source_bbox": [
+          133,
+          29,
+          370,
+          483
+        ],
+        "source_size": [
+          237,
+          454
+        ],
+        "scale": [
+          0.20253164556962025,
+          0.20253164556962025
+        ],
+        "target_bbox": [
+          232,
+          238,
+          280,
+          330
+        ]
+      },
+      "final_qa": {
+        "notes": [],
+        "canvas_ok": true,
+        "has_alpha": true,
+        "bbox": [
+          232,
+          238,
+          280,
+          329
+        ],
+        "anchored_ok": true,
+        "interior_hole_pct": 0.0,
+        "solid_ok": true,
+        "pass": true
+      },
+      "staged_path": "assets\\sprites\\gen2\\desk_chairArms_NW.png"
+    },
+    "desk_chairStool_NW": {
+      "id": "desk_chairStool_NW",
+      "category": "prop",
+      "attempts": [
+        {
+          "attempt": 1,
+          "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A low round work stool, seen from slightly behind at the isometric angle A single freestanding object standing on the floor diamond's center point: its base/contact shadow sits at 61% down the frame, centered horizontally, the object extending upward from that point within the frame -- no floor tile needs to be drawn under it, only the object and its small flat contact shadow. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+          "usage": {
+            "prompt_tokens": 470,
+            "completion_tokens": 6240,
+            "total_tokens": 6710,
+            "cost": 0.051095,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.051095,
+              "upstream_inference_prompt_cost": 0.001175,
+              "upstream_inference_completions_cost": 0.04992
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 6240
+            }
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              236,
+              277,
+              276,
+              330
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 6.82,
+            "solid_ok": true,
+            "pass": true
+          }
+        }
+      ],
+      "normalize": {
+        "source_bbox": [
+          124,
+          83,
+          388,
+          433
+        ],
+        "source_size": [
+          264,
+          350
+        ],
+        "scale": [
+          0.15151515151515152,
+          0.15151515151515152
+        ],
+        "target_bbox": [
+          236,
+          277,
+          276,
+          330
+        ]
+      },
+      "final_qa": {
+        "notes": [],
+        "canvas_ok": true,
+        "has_alpha": true,
+        "bbox": [
+          236,
+          277,
+          276,
+          330
+        ],
+        "anchored_ok": true,
+        "interior_hole_pct": 6.82,
+        "solid_ok": true,
+        "pass": true
+      },
+      "staged_path": "assets\\sprites\\gen2\\desk_chairStool_NW.png"
+    },
+    "barrel_SE": {
+      "id": "barrel_SE",
+      "category": "prop",
+      "attempts": [
+        {
+          "attempt": 1,
+          "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A single sci-fi storage barrel drum with a lid ring A single freestanding object standing on the floor diamond's center point: its base/contact shadow sits at 61% down the frame, centered horizontally, the object extending upward from that point within the frame -- no floor tile needs to be drawn under it, only the object and its small flat contact shadow. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+          "usage": {
+            "prompt_tokens": 466,
+            "completion_tokens": 6240,
+            "total_tokens": 6706,
+            "cost": 0.051085,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.051085,
+              "upstream_inference_prompt_cost": 0.001165,
+              "upstream_inference_completions_cost": 0.04992
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 6240
+            }
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              238,
+              274,
+              274,
+              330
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          }
+        }
+      ],
+      "normalize": {
+        "source_bbox": [
+          138,
+          61,
+          385,
+          444
+        ],
+        "source_size": [
+          247,
+          383
+        ],
+        "scale": [
+          0.145748987854251,
+          0.145748987854251
+        ],
+        "target_bbox": [
+          238,
+          274,
+          274,
+          330
+        ]
+      },
+      "final_qa": {
+        "notes": [],
+        "canvas_ok": true,
+        "has_alpha": true,
+        "bbox": [
+          238,
+          274,
+          274,
+          330
+        ],
+        "anchored_ok": true,
+        "interior_hole_pct": 0.0,
+        "solid_ok": true,
+        "pass": true
+      },
+      "staged_path": "assets\\sprites\\gen2\\barrel_SE.png"
+    },
+    "barrels_SE": {
+      "id": "barrels_SE",
+      "category": "prop",
+      "attempts": [
+        {
+          "attempt": 1,
+          "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A tight cluster of three sci-fi storage barrel drums A single freestanding object standing on the floor diamond's center point: its base/contact shadow sits at 61% down the frame, centered horizontally, the object extending upward from that point within the frame -- no floor tile needs to be drawn under it, only the object and its small flat contact shadow. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+          "usage": {
+            "prompt_tokens": 465,
+            "completion_tokens": 4160,
+            "total_tokens": 4625,
+            "cost": 0.0344425,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.0344425,
+              "upstream_inference_prompt_cost": 0.0011625,
+              "upstream_inference_completions_cost": 0.03328
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 4160
+            }
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              221,
+              260,
+              291,
+              330
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          }
+        }
+      ],
+      "normalize": {
+        "source_bbox": [
+          62,
+          45,
+          472,
+          454
+        ],
+        "source_size": [
+          410,
+          409
+        ],
+        "scale": [
+          0.17073170731707318,
+          0.17073170731707318
+        ],
+        "target_bbox": [
+          221,
+          260,
+          291,
+          330
+        ]
+      },
+      "final_qa": {
+        "notes": [],
+        "canvas_ok": true,
+        "has_alpha": true,
+        "bbox": [
+          221,
+          260,
+          291,
+          330
+        ],
+        "anchored_ok": true,
+        "interior_hole_pct": 0.0,
+        "solid_ok": true,
+        "pass": true
+      },
+      "staged_path": "assets\\sprites\\gen2\\barrels_SE.png"
+    },
+    "barrels_rail_SE": {
+      "id": "barrels_rail_SE",
+      "category": "prop",
+      "attempts": [
+        {
+          "attempt": 1,
+          "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. Two sci-fi storage barrels secured behind a low safety railing A single freestanding object standing on the floor diamond's center point: its base/contact shadow sits at 61% down the frame, centered horizontally, the object extending upward from that point within the frame -- no floor tile needs to be drawn under it, only the object and its small flat contact shadow. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+          "usage": {
+            "prompt_tokens": 466,
+            "completion_tokens": 4160,
+            "total_tokens": 4626,
+            "cost": 0.034445,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.034445,
+              "upstream_inference_prompt_cost": 0.001165,
+              "upstream_inference_completions_cost": 0.03328
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 4160
+            }
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              211,
+              251,
+              301,
+              330
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 3.03,
+            "solid_ok": true,
+            "pass": true
+          }
+        }
+      ],
+      "normalize": {
+        "source_bbox": [
+          13,
+          50,
+          500,
+          475
+        ],
+        "source_size": [
+          487,
+          425
+        ],
+        "scale": [
+          0.18480492813141683,
+          0.18480492813141683
+        ],
+        "target_bbox": [
+          211,
+          251,
+          301,
+          330
+        ]
+      },
+      "final_qa": {
+        "notes": [],
+        "canvas_ok": true,
+        "has_alpha": true,
+        "bbox": [
+          211,
+          251,
+          301,
+          330
+        ],
+        "anchored_ok": true,
+        "interior_hole_pct": 3.03,
+        "solid_ok": true,
+        "pass": true
+      },
+      "staged_path": "assets\\sprites\\gen2\\barrels_rail_SE.png"
+    },
+    "machine_barrel_NE": {
+      "id": "machine_barrel_NE",
+      "category": "prop",
+      "attempts": [
+        {
+          "attempt": 1,
+          "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A barrel-shaped machine tank with a small gauge panel and a pipe stub on top A single freestanding object standing on the floor diamond's center point: its base/contact shadow sits at 61% down the frame, centered horizontally, the object extending upward from that point within the frame -- no floor tile needs to be drawn under it, only the object and its small flat contact shadow. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+          "usage": {
+            "prompt_tokens": 471,
+            "completion_tokens": 6240,
+            "total_tokens": 6711,
+            "cost": 0.0510975,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.0510975,
+              "upstream_inference_prompt_cost": 0.0011775,
+              "upstream_inference_completions_cost": 0.04992
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 6240
+            }
+          },
+          "qa": {
+            "notes": [
+              "bbox (245, 246, 283, 315) != normalization target [228, 232, 283, 330] (+-2)"
+            ],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              245,
+              246,
+              283,
+              315
+            ],
+            "anchored_ok": false,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": false
+          }
+        },
+        {
+          "attempt": 2,
+          "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A barrel-shaped machine tank with a small gauge panel and a pipe stub on top A single freestanding object standing on the floor diamond's center point: its base/contact shadow sits at 61% down the frame, centered horizontally, the object extending upward from that point within the frame -- no floor tile needs to be drawn under it, only the object and its small flat contact shadow. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+          "usage": {
+            "prompt_tokens": 471,
+            "completion_tokens": 6240,
+            "total_tokens": 6711,
+            "cost": 0.0510975,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.0510975,
+              "upstream_inference_prompt_cost": 0.0011775,
+              "upstream_inference_completions_cost": 0.04992
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 6240
+            }
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              228,
+              236,
+              283,
+              330
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          }
+        }
+      ],
+      "normalize": {
+        "source_bbox": [
+          132,
+          45,
+          381,
+          470
+        ],
+        "source_size": [
+          249,
+          425
+        ],
+        "scale": [
+          0.22088353413654618,
+          0.22088353413654618
+        ],
+        "target_bbox": [
+          228,
+          236,
+          283,
+          330
+        ]
+      },
+      "final_qa": {
+        "notes": [],
+        "canvas_ok": true,
+        "has_alpha": true,
+        "bbox": [
+          228,
+          236,
+          283,
+          330
+        ],
+        "anchored_ok": true,
+        "interior_hole_pct": 0.0,
+        "solid_ok": true,
+        "pass": true
+      },
+      "staged_path": "assets\\sprites\\gen2\\machine_barrel_NE.png"
+    },
+    "machine_barrelLarge_SW": {
+      "id": "machine_barrelLarge_SW",
+      "category": "prop",
+      "attempts": [
+        {
+          "attempt": 1,
+          "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A large industrial cylindrical tank machine with pipes and a gauge cluster A single freestanding object standing on the floor diamond's center point: its base/contact shadow sits at 61% down the frame, centered horizontally, the object extending upward from that point within the frame -- no floor tile needs to be drawn under it, only the object and its small flat contact shadow. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+          "error": "HTTP 520 from OpenRouter images API: {\"error\":{\"message\":\"OpenAI image upstream returned 520\",\"code\":520,\"metadata\":{\"provider_name\":\"OpenAI\"}}}"
+        },
+        {
+          "attempt": 2,
+          "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A large industrial cylindrical tank machine with pipes and a gauge cluster A single freestanding object standing on the floor diamond's center point: its base/contact shadow sits at 61% down the frame, centered horizontally, the object extending upward from that point within the frame -- no floor tile needs to be drawn under it, only the object and its small flat contact shadow. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+          "usage": {
+            "prompt_tokens": 467,
+            "completion_tokens": 6240,
+            "total_tokens": 6707,
+            "cost": 0.0510875,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.0510875,
+              "upstream_inference_prompt_cost": 0.0011675,
+              "upstream_inference_completions_cost": 0.04992
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 6240
+            }
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              208,
+              148,
+              303,
+              330
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 2.95,
+            "solid_ok": true,
+            "pass": true
+          }
+        }
+      ],
+      "normalize": {
+        "source_bbox": [
+          130,
+          25,
+          376,
+          495
+        ],
+        "source_size": [
+          246,
+          470
+        ],
+        "scale": [
+          0.3861788617886179,
+          0.3861788617886179
+        ],
+        "target_bbox": [
+          208,
+          148,
+          303,
+          330
+        ]
+      },
+      "final_qa": {
+        "notes": [],
+        "canvas_ok": true,
+        "has_alpha": true,
+        "bbox": [
+          208,
+          148,
+          303,
+          330
+        ],
+        "anchored_ok": true,
+        "interior_hole_pct": 2.95,
+        "solid_ok": true,
+        "pass": true
+      },
+      "staged_path": "assets\\sprites\\gen2\\machine_barrelLarge_SW.png"
+    },
+    "machine_generator_SE": {
+      "id": "machine_generator_SE",
+      "category": "prop",
+      "attempts": [
+        {
+          "attempt": 1,
+          "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A compact generator machine unit with side vents and a small status light A single freestanding object standing on the floor diamond's center point: its base/contact shadow sits at 61% down the frame, centered horizontally, the object extending upward from that point within the frame -- no floor tile needs to be drawn under it, only the object and its small flat contact shadow. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+          "usage": {
+            "prompt_tokens": 468,
+            "completion_tokens": 6208,
+            "total_tokens": 6676,
+            "cost": 0.050834,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.050834,
+              "upstream_inference_prompt_cost": 0.00117,
+              "upstream_inference_completions_cost": 0.049664
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 6208
+            }
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              216,
+              251,
+              296,
+              330
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          }
+        }
+      ],
+      "normalize": {
+        "source_bbox": [
+          94,
+          107,
+          402,
+          413
+        ],
+        "source_size": [
+          308,
+          306
+        ],
+        "scale": [
+          0.2597402597402597,
+          0.2597402597402597
+        ],
+        "target_bbox": [
+          216,
+          251,
+          296,
+          330
+        ]
+      },
+      "final_qa": {
+        "notes": [],
+        "canvas_ok": true,
+        "has_alpha": true,
+        "bbox": [
+          216,
+          251,
+          296,
+          330
+        ],
+        "anchored_ok": true,
+        "interior_hole_pct": 0.0,
+        "solid_ok": true,
+        "pass": true
+      },
+      "staged_path": "assets\\sprites\\gen2\\machine_generator_SE.png"
+    },
+    "machine_generatorLarge_SE": {
+      "id": "machine_generatorLarge_SE",
+      "category": "prop",
+      "attempts": [
+        {
+          "attempt": 1,
+          "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A large generator machine with exposed coil housing and thick power cables A single freestanding object standing on the floor diamond's center point: its base/contact shadow sits at 61% down the frame, centered horizontally, the object extending upward from that point within the frame -- no floor tile needs to be drawn under it, only the object and its small flat contact shadow. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+          "usage": {
+            "prompt_tokens": 467,
+            "completion_tokens": 4160,
+            "total_tokens": 4627,
+            "cost": 0.0344475,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.0344475,
+              "upstream_inference_prompt_cost": 0.0011675,
+              "upstream_inference_completions_cost": 0.03328
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 4160
+            }
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              201,
+              208,
+              311,
+              330
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          }
+        }
+      ],
+      "normalize": {
+        "source_bbox": [
+          69,
+          47,
+          442,
+          460
+        ],
+        "source_size": [
+          373,
+          413
+        ],
+        "scale": [
+          0.2949061662198391,
+          0.2949061662198391
+        ],
+        "target_bbox": [
+          201,
+          208,
+          311,
+          330
+        ]
+      },
+      "final_qa": {
+        "notes": [],
+        "canvas_ok": true,
+        "has_alpha": true,
+        "bbox": [
+          201,
+          208,
+          311,
+          330
+        ],
+        "anchored_ok": true,
+        "interior_hole_pct": 0.0,
+        "solid_ok": true,
+        "pass": true
+      },
+      "staged_path": "assets\\sprites\\gen2\\machine_generatorLarge_SE.png"
+    },
+    "machine_wireless_SE": {
+      "id": "machine_wireless_SE",
+      "category": "prop",
+      "attempts": [
+        {
+          "attempt": 1,
+          "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A comms machine cabinet with a short antenna mast and a small cyan screen A single freestanding object standing on the floor diamond's center point: its base/contact shadow sits at 61% down the frame, centered horizontally, the object extending upward from that point within the frame -- no floor tile needs to be drawn under it, only the object and its small flat contact shadow. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+          "usage": {
+            "prompt_tokens": 470,
+            "completion_tokens": 6240,
+            "total_tokens": 6710,
+            "cost": 0.051095,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.051095,
+              "upstream_inference_prompt_cost": 0.001175,
+              "upstream_inference_completions_cost": 0.04992
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 6240
+            }
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              226,
+              188,
+              286,
+              330
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          }
+        }
+      ],
+      "normalize": {
+        "source_bbox": [
+          162,
+          22,
+          353,
+          475
+        ],
+        "source_size": [
+          191,
+          453
+        ],
+        "scale": [
+          0.31413612565445026,
+          0.31413612565445026
+        ],
+        "target_bbox": [
+          226,
+          188,
+          286,
+          330
+        ]
+      },
+      "final_qa": {
+        "notes": [],
+        "canvas_ok": true,
+        "has_alpha": true,
+        "bbox": [
+          226,
+          188,
+          286,
+          330
+        ],
+        "anchored_ok": true,
+        "interior_hole_pct": 0.0,
+        "solid_ok": true,
+        "pass": true
+      },
+      "staged_path": "assets\\sprites\\gen2\\machine_wireless_SE.png"
+    },
+    "machine_wirelessCable_SE": {
+      "id": "machine_wirelessCable_SE",
+      "category": "prop",
+      "attempts": [
+        {
+          "attempt": 1,
+          "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A comms machine cabinet with a cable spool and a conduit running to a small junction box A single freestanding object standing on the floor diamond's center point: its base/contact shadow sits at 61% down the frame, centered horizontally, the object extending upward from that point within the frame -- no floor tile needs to be drawn under it, only the object and its small flat contact shadow. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+          "usage": {
+            "prompt_tokens": 473,
+            "completion_tokens": 6240,
+            "total_tokens": 6713,
+            "cost": 0.0511025,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.0511025,
+              "upstream_inference_prompt_cost": 0.0011825,
+              "upstream_inference_completions_cost": 0.04992
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 6240
+            }
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              221,
+              238,
+              291,
+              330
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 3.62,
+            "solid_ok": true,
+            "pass": true
+          }
+        }
+      ],
+      "normalize": {
+        "source_bbox": [
+          105,
+          55,
+          400,
+          444
+        ],
+        "source_size": [
+          295,
+          389
+        ],
+        "scale": [
+          0.23728813559322035,
+          0.23728813559322035
+        ],
+        "target_bbox": [
+          221,
+          238,
+          291,
+          330
+        ]
+      },
+      "final_qa": {
+        "notes": [],
+        "canvas_ok": true,
+        "has_alpha": true,
+        "bbox": [
+          221,
+          238,
+          291,
+          330
+        ],
+        "anchored_ok": true,
+        "interior_hole_pct": 3.62,
+        "solid_ok": true,
+        "pass": true
+      },
+      "staged_path": "assets\\sprites\\gen2\\machine_wirelessCable_SE.png"
+    },
+    "pipe_straight_SE": {
+      "id": "pipe_straight_SE",
+      "category": "prop",
+      "attempts": [
+        {
+          "attempt": 1,
+          "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A single straight industrial pipe segment on two low support feet, running diagonally at the isometric angle toward the lower-right A single freestanding object standing on the floor diamond's center point: its base/contact shadow sits at 61% down the frame, centered horizontally, the object extending upward from that point within the frame -- no floor tile needs to be drawn under it, only the object and its small flat contact shadow. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+          "usage": {
+            "prompt_tokens": 479,
+            "completion_tokens": 6208,
+            "total_tokens": 6687,
+            "cost": 0.0508615,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.0508615,
+              "upstream_inference_prompt_cost": 0.0011975,
+              "upstream_inference_completions_cost": 0.049664
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 6208
+            }
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              201,
+              244,
+              311,
+              330
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          }
+        }
+      ],
+      "normalize": {
+        "source_bbox": [
+          71,
+          119,
+          421,
+          393
+        ],
+        "source_size": [
+          350,
+          274
+        ],
+        "scale": [
+          0.3142857142857143,
+          0.3142857142857143
+        ],
+        "target_bbox": [
+          201,
+          244,
+          311,
+          330
+        ]
+      },
+      "final_qa": {
+        "notes": [],
+        "canvas_ok": true,
+        "has_alpha": true,
+        "bbox": [
+          201,
+          244,
+          311,
+          330
+        ],
+        "anchored_ok": true,
+        "interior_hole_pct": 0.0,
+        "solid_ok": true,
+        "pass": true
+      },
+      "staged_path": "assets\\sprites\\gen2\\pipe_straight_SE.png"
+    },
+    "pipe_ring_SE": {
+      "id": "pipe_ring_SE",
+      "category": "prop",
+      "attempts": [
+        {
+          "attempt": 1,
+          "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. An industrial pipe segment with a bolted ring joint collar, on low support feet, running diagonally toward the lower-right A single freestanding object standing on the floor diamond's center point: its base/contact shadow sits at 61% down the frame, centered horizontally, the object extending upward from that point within the frame -- no floor tile needs to be drawn under it, only the object and its small flat contact shadow. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+          "usage": {
+            "prompt_tokens": 479,
+            "completion_tokens": 6208,
+            "total_tokens": 6687,
+            "cost": 0.0508615,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.0508615,
+              "upstream_inference_prompt_cost": 0.0011975,
+              "upstream_inference_completions_cost": 0.049664
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 6208
+            }
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              211,
+              256,
+              301,
+              330
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          }
+        }
+      ],
+      "normalize": {
+        "source_bbox": [
+          52,
+          92,
+          457,
+          425
+        ],
+        "source_size": [
+          405,
+          333
+        ],
+        "scale": [
+          0.2222222222222222,
+          0.2222222222222222
+        ],
+        "target_bbox": [
+          211,
+          256,
+          301,
+          330
+        ]
+      },
+      "final_qa": {
+        "notes": [],
+        "canvas_ok": true,
+        "has_alpha": true,
+        "bbox": [
+          211,
+          256,
+          301,
+          330
+        ],
+        "anchored_ok": true,
+        "interior_hole_pct": 0.0,
+        "solid_ok": true,
+        "pass": true
+      },
+      "staged_path": "assets\\sprites\\gen2\\pipe_ring_SE.png"
+    },
+    "pipe_ringHigh_SE": {
+      "id": "pipe_ringHigh_SE",
+      "category": "prop",
+      "attempts": [
+        {
+          "attempt": 1,
+          "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. An elevated industrial pipe with a bolted ring joint, raised on two tall support columns, running diagonally toward the lower-right A single freestanding object standing on the floor diamond's center point: its base/contact shadow sits at 61% down the frame, centered horizontally, the object extending upward from that point within the frame -- no floor tile needs to be drawn under it, only the object and its small flat contact shadow. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+          "usage": {
+            "prompt_tokens": 480,
+            "completion_tokens": 6208,
+            "total_tokens": 6688,
+            "cost": 0.050864,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.050864,
+              "upstream_inference_prompt_cost": 0.0012,
+              "upstream_inference_completions_cost": 0.049664
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 6208
+            }
+          },
+          "qa": {
+            "notes": [
+              "34.6% of the subject is interior transparency (holes) -- the model keyed out interior fills; regenerate with the solidity clause"
+            ],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              211,
+              246,
+              301,
+              330
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 34.58,
+            "solid_ok": false,
+            "pass": false
+          }
+        },
+        {
+          "attempt": 2,
+          "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. An elevated industrial pipe with a bolted ring joint, raised on two tall support columns, running diagonally toward the lower-right A single freestanding object standing on the floor diamond's center point: its base/contact shadow sits at 61% down the frame, centered horizontally, the object extending upward from that point within the frame -- no floor tile needs to be drawn under it, only the object and its small flat contact shadow. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent. CORRECTION: the previous attempt had transparent see-through areas INSIDE the subject -- every part of the subject must be painted fully opaque with solid palette colors; no interior region may be left transparent.",
+          "usage": {
+            "prompt_tokens": 520,
+            "completion_tokens": 6240,
+            "total_tokens": 6760,
+            "cost": 0.05122,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.05122,
+              "upstream_inference_prompt_cost": 0.0013,
+              "upstream_inference_completions_cost": 0.04992
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 6240
+            }
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              211,
+              229,
+              301,
+              330
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 3.05,
+            "solid_ok": true,
+            "pass": true
+          }
+        }
+      ],
+      "normalize": {
+        "source_bbox": [
+          85,
+          108,
+          427,
+          492
+        ],
+        "source_size": [
+          342,
+          384
+        ],
+        "scale": [
+          0.2631578947368421,
+          0.2631578947368421
+        ],
+        "target_bbox": [
+          211,
+          229,
+          301,
+          330
+        ]
+      },
+      "final_qa": {
+        "notes": [],
+        "canvas_ok": true,
+        "has_alpha": true,
+        "bbox": [
+          211,
+          229,
+          301,
+          330
+        ],
+        "anchored_ok": true,
+        "interior_hole_pct": 3.05,
+        "solid_ok": true,
+        "pass": true
+      },
+      "staged_path": "assets\\sprites\\gen2\\pipe_ringHigh_SE.png"
+    },
+    "pipe_supportHigh_SE": {
+      "id": "pipe_supportHigh_SE",
+      "category": "prop",
+      "attempts": [
+        {
+          "attempt": 1,
+          "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A single tall industrial pipe support column with a saddle bracket on top A single freestanding object standing on the floor diamond's center point: its base/contact shadow sits at 61% down the frame, centered horizontally, the object extending upward from that point within the frame -- no floor tile needs to be drawn under it, only the object and its small flat contact shadow. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+          "usage": {
+            "prompt_tokens": 468,
+            "completion_tokens": 6240,
+            "total_tokens": 6708,
+            "cost": 0.05109,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.05109,
+              "upstream_inference_prompt_cost": 0.00117,
+              "upstream_inference_completions_cost": 0.04992
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 6240
+            }
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              225,
+              180,
+              287,
+              330
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          }
+        }
+      ],
+      "normalize": {
+        "source_bbox": [
+          185,
+          45,
+          359,
+          466
+        ],
+        "source_size": [
+          174,
+          421
+        ],
+        "scale": [
+          0.35629453681710216,
+          0.35629453681710216
+        ],
+        "target_bbox": [
+          225,
+          180,
+          287,
+          330
+        ]
+      },
+      "final_qa": {
+        "notes": [],
+        "canvas_ok": true,
+        "has_alpha": true,
+        "bbox": [
+          225,
+          180,
+          287,
+          330
+        ],
+        "anchored_ok": true,
+        "interior_hole_pct": 0.0,
+        "solid_ok": true,
+        "pass": true
+      },
+      "staged_path": "assets\\sprites\\gen2\\pipe_supportHigh_SE.png"
+    },
+    "pipe_cross_SE": {
+      "id": "pipe_cross_SE",
+      "category": "prop",
+      "attempts": [
+        {
+          "attempt": 1,
+          "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. An industrial pipe cross junction: two pipe runs crossing at the isometric angle with a bolted center collar, on low support feet A single freestanding object standing on the floor diamond's center point: its base/contact shadow sits at 61% down the frame, centered horizontally, the object extending upward from that point within the frame -- no floor tile needs to be drawn under it, only the object and its small flat contact shadow. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+          "usage": {
+            "prompt_tokens": 481,
+            "completion_tokens": 4160,
+            "total_tokens": 4641,
+            "cost": 0.0344825,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.0344825,
+              "upstream_inference_prompt_cost": 0.0012025,
+              "upstream_inference_completions_cost": 0.03328
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 4160
+            }
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              201,
+              219,
+              311,
+              330
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          }
+        }
+      ],
+      "normalize": {
+        "source_bbox": [
+          43,
+          44,
+          474,
+          479
+        ],
+        "source_size": [
+          431,
+          435
+        ],
+        "scale": [
+          0.2552204176334107,
+          0.2552204176334107
+        ],
+        "target_bbox": [
+          201,
+          219,
+          311,
+          330
+        ]
+      },
+      "final_qa": {
+        "notes": [],
+        "canvas_ok": true,
+        "has_alpha": true,
+        "bbox": [
+          201,
+          219,
+          311,
+          330
+        ],
+        "anchored_ok": true,
+        "interior_hole_pct": 0.0,
+        "solid_ok": true,
+        "pass": true
+      },
+      "staged_path": "assets\\sprites\\gen2\\pipe_cross_SE.png"
+    },
+    "pipe_entrance_SE": {
+      "id": "pipe_entrance_SE",
+      "category": "prop",
+      "attempts": [
+        {
+          "attempt": 1,
+          "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A large pipe entrance structure: a short tunnel mouth with a reinforced ring frame, facing the lower-right A single freestanding object standing on the floor diamond's center point: its base/contact shadow sits at 61% down the frame, centered horizontally, the object extending upward from that point within the frame -- no floor tile needs to be drawn under it, only the object and its small flat contact shadow. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+          "usage": {
+            "prompt_tokens": 475,
+            "completion_tokens": 6240,
+            "total_tokens": 6715,
+            "cost": 0.0511075,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.0511075,
+              "upstream_inference_prompt_cost": 0.0011875,
+              "upstream_inference_completions_cost": 0.04992
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 6240
+            }
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              206,
+              228,
+              306,
+              330
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          }
+        }
+      ],
+      "normalize": {
+        "source_bbox": [
+          94,
+          90,
+          418,
+          420
+        ],
+        "source_size": [
+          324,
+          330
+        ],
+        "scale": [
+          0.30864197530864196,
+          0.30864197530864196
+        ],
+        "target_bbox": [
+          206,
+          228,
+          306,
+          330
+        ]
+      },
+      "final_qa": {
+        "notes": [],
+        "canvas_ok": true,
+        "has_alpha": true,
+        "bbox": [
+          206,
+          228,
+          306,
+          330
+        ],
+        "anchored_ok": true,
+        "interior_hole_pct": 0.0,
+        "solid_ok": true,
+        "pass": true
+      },
+      "staged_path": "assets\\sprites\\gen2\\pipe_entrance_SE.png"
+    },
+    "structure_closed_SE": {
+      "id": "structure_closed_SE",
+      "category": "prop",
+      "attempts": [
+        {
+          "attempt": 1,
+          "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A closed structural storage cabinet locker unit with panel doors and a small status light A single freestanding object standing on the floor diamond's center point: its base/contact shadow sits at 61% down the frame, centered horizontally, the object extending upward from that point within the frame -- no floor tile needs to be drawn under it, only the object and its small flat contact shadow. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+          "usage": {
+            "prompt_tokens": 470,
+            "completion_tokens": 6240,
+            "total_tokens": 6710,
+            "cost": 0.051095,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.051095,
+              "upstream_inference_prompt_cost": 0.001175,
+              "upstream_inference_completions_cost": 0.04992
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 6240
+            }
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              216,
+              217,
+              296,
+              330
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.11,
+            "solid_ok": true,
+            "pass": true
+          }
+        }
+      ],
+      "normalize": {
+        "source_bbox": [
+          89,
+          23,
+          423,
+          495
+        ],
+        "source_size": [
+          334,
+          472
+        ],
+        "scale": [
+          0.23952095808383234,
+          0.23952095808383234
+        ],
+        "target_bbox": [
+          216,
+          217,
+          296,
+          330
+        ]
+      },
+      "final_qa": {
+        "notes": [],
+        "canvas_ok": true,
+        "has_alpha": true,
+        "bbox": [
+          216,
+          217,
+          296,
+          330
+        ],
+        "anchored_ok": true,
+        "interior_hole_pct": 0.11,
+        "solid_ok": true,
+        "pass": true
+      },
+      "staged_path": "assets\\sprites\\gen2\\structure_closed_SE.png"
+    },
+    "desk_computerScreen_SW": {
+      "id": "desk_computerScreen_SW",
+      "category": "prop",
+      "derived_from": "desk_computerScreen_SE",
+      "attempts": [],
+      "staged_path": "assets\\sprites\\gen2\\desk_computerScreen_SW.png",
+      "final_qa": {
+        "canvas_ok": true,
+        "has_alpha": true,
+        "anchored_ok": true,
+        "interior_hole_pct": 0.0,
+        "solid_ok": true,
+        "pass": true,
+        "notes": [
+          "derived: mirror of desk_computerScreen_SE"
+        ]
+      }
+    },
+    "desk_computerCorner_SW": {
+      "id": "desk_computerCorner_SW",
+      "category": "prop",
+      "derived_from": "desk_computerCorner_SE",
+      "attempts": [],
+      "staged_path": "assets\\sprites\\gen2\\desk_computerCorner_SW.png",
+      "final_qa": {
+        "canvas_ok": true,
+        "has_alpha": true,
+        "anchored_ok": true,
+        "interior_hole_pct": 9.55,
+        "solid_ok": true,
+        "pass": true,
+        "notes": [
+          "derived: mirror of desk_computerCorner_SE"
+        ]
+      }
+    },
+    "desk_chairArms_SW": {
+      "id": "desk_chairArms_SW",
+      "category": "prop",
+      "derived_from": "desk_chairArms_SE",
+      "attempts": [],
+      "staged_path": "assets\\sprites\\gen2\\desk_chairArms_SW.png",
+      "final_qa": {
+        "canvas_ok": true,
+        "has_alpha": true,
+        "anchored_ok": true,
+        "interior_hole_pct": 1.23,
+        "solid_ok": true,
+        "pass": true,
+        "notes": [
+          "derived: mirror of desk_chairArms_SE"
+        ]
+      }
+    },
+    "barrel_SW": {
+      "id": "barrel_SW",
+      "category": "prop",
+      "derived_from": "barrel_SE",
+      "attempts": [],
+      "staged_path": "assets\\sprites\\gen2\\barrel_SW.png",
+      "final_qa": {
+        "canvas_ok": true,
+        "has_alpha": true,
+        "anchored_ok": true,
+        "interior_hole_pct": 0.0,
+        "solid_ok": true,
+        "pass": true,
+        "notes": [
+          "derived: mirror of barrel_SE"
+        ]
+      }
+    },
+    "barrels_NW": {
+      "id": "barrels_NW",
+      "category": "prop",
+      "derived_from": "barrels_SE",
+      "attempts": [],
+      "staged_path": "assets\\sprites\\gen2\\barrels_NW.png",
+      "final_qa": {
+        "canvas_ok": true,
+        "has_alpha": true,
+        "anchored_ok": true,
+        "interior_hole_pct": 0.0,
+        "solid_ok": true,
+        "pass": true,
+        "notes": [
+          "derived: mirror of barrels_SE"
+        ]
+      }
+    },
+    "barrels_NE": {
+      "id": "barrels_NE",
+      "category": "prop",
+      "derived_from": "barrels_SE",
+      "attempts": [],
+      "staged_path": "assets\\sprites\\gen2\\barrels_NE.png",
+      "final_qa": {
+        "canvas_ok": true,
+        "has_alpha": true,
+        "anchored_ok": true,
+        "interior_hole_pct": 0.0,
+        "solid_ok": true,
+        "pass": true,
+        "notes": [
+          "derived: copy of barrels_SE"
+        ]
+      }
+    },
+    "machine_barrel_NW": {
+      "id": "machine_barrel_NW",
+      "category": "prop",
+      "derived_from": "machine_barrel_NE",
+      "attempts": [],
+      "staged_path": "assets\\sprites\\gen2\\machine_barrel_NW.png",
+      "final_qa": {
+        "canvas_ok": true,
+        "has_alpha": true,
+        "anchored_ok": true,
+        "interior_hole_pct": 0.0,
+        "solid_ok": true,
+        "pass": true,
+        "notes": [
+          "derived: mirror of machine_barrel_NE"
+        ]
+      }
+    },
+    "machine_generator_SW": {
+      "id": "machine_generator_SW",
+      "category": "prop",
+      "derived_from": "machine_generator_SE",
+      "attempts": [],
+      "staged_path": "assets\\sprites\\gen2\\machine_generator_SW.png",
+      "final_qa": {
+        "canvas_ok": true,
+        "has_alpha": true,
+        "anchored_ok": true,
+        "interior_hole_pct": 0.0,
+        "solid_ok": true,
+        "pass": true,
+        "notes": [
+          "derived: mirror of machine_generator_SE"
+        ]
+      }
+    },
+    "machine_wireless_SW": {
+      "id": "machine_wireless_SW",
+      "category": "prop",
+      "derived_from": "machine_wireless_SE",
+      "attempts": [],
+      "staged_path": "assets\\sprites\\gen2\\machine_wireless_SW.png",
+      "final_qa": {
+        "canvas_ok": true,
+        "has_alpha": true,
+        "anchored_ok": true,
+        "interior_hole_pct": 0.0,
+        "solid_ok": true,
+        "pass": true,
+        "notes": [
+          "derived: mirror of machine_wireless_SE"
+        ]
+      }
+    },
+    "pipe_ring_NW": {
+      "id": "pipe_ring_NW",
+      "category": "prop",
+      "derived_from": "pipe_ring_SE",
+      "attempts": [],
+      "staged_path": "assets\\sprites\\gen2\\pipe_ring_NW.png",
+      "final_qa": {
+        "canvas_ok": true,
+        "has_alpha": true,
+        "anchored_ok": true,
+        "interior_hole_pct": 0.0,
+        "solid_ok": true,
+        "pass": true,
+        "notes": [
+          "derived: mirror of pipe_ring_SE"
+        ]
+      }
+    },
+    "corridor_wall_NE": {
+      "id": "corridor_wall_NE",
+      "category": "wall",
+      "derived_from": "wall_ne",
+      "attempts": [],
+      "staged_path": "assets\\sprites\\gen2\\corridor_wall_NE.png",
+      "final_qa": {
+        "notes": [
+          "derived: exact-name copy of wall_ne for WALL_SPRITE_FOR_EDGE"
+        ],
+        "canvas_ok": true,
+        "has_alpha": true,
+        "bbox": [
+          249,
+          212,
+          321,
+          348
+        ],
+        "anchored_ok": true,
+        "interior_hole_pct": 0.0,
+        "solid_ok": true,
+        "pass": true
+      }
+    },
+    "corridor_wall_NW": {
+      "id": "corridor_wall_NW",
+      "category": "wall",
+      "derived_from": "wall_nw",
+      "attempts": [],
+      "staged_path": "assets\\sprites\\gen2\\corridor_wall_NW.png",
+      "final_qa": {
+        "canvas_ok": true,
+        "has_alpha": true,
+        "bbox": [
+          191,
+          212,
+          263,
+          348
+        ],
+        "anchored_ok": true,
+        "interior_hole_pct": 0.0,
+        "solid_ok": true,
+        "notes": [
+          "derived: exact-name copy of wall_nw for WALL_SPRITE_FOR_EDGE"
+        ],
+        "pass": true
+      }
+    },
+    "corridor_wall_SE": {
+      "id": "corridor_wall_SE",
+      "category": "wall",
+      "derived_from": "wall_se",
+      "attempts": [],
+      "staged_path": "assets\\sprites\\gen2\\corridor_wall_SE.png",
+      "final_qa": {
+        "notes": [
+          "derived: exact-name copy of wall_se for WALL_SPRITE_FOR_EDGE"
+        ],
+        "canvas_ok": true,
+        "has_alpha": true,
+        "bbox": [
+          191,
+          207,
+          263,
+          348
+        ],
+        "anchored_ok": true,
+        "interior_hole_pct": 0.0,
+        "solid_ok": true,
+        "pass": true
+      }
+    },
+    "corridor_wall_SW": {
+      "id": "corridor_wall_SW",
+      "category": "wall",
+      "derived_from": "wall_sw",
+      "attempts": [],
+      "staged_path": "assets\\sprites\\gen2\\corridor_wall_SW.png",
+      "final_qa": {
+        "canvas_ok": true,
+        "has_alpha": true,
+        "bbox": [
+          249,
+          207,
+          321,
+          348
+        ],
+        "anchored_ok": true,
+        "interior_hole_pct": 0.0,
+        "solid_ok": true,
+        "notes": [
+          "derived: exact-name copy of wall_sw for WALL_SPRITE_FOR_EDGE"
+        ],
+        "pass": true
+      }
+    },
+    "crew_astronaut_idle_e": {
+      "id": "crew_astronaut_idle_e",
+      "category": "crew",
+      "anchored_on": "crew_astronaut_idle_s",
+      "attempts": [
+        {
+          "attempt": 1,
+          "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, standing idle, no helmet, simplified featureless face. A full-body character standing upright, feet at 61% down the frame, centered horizontally, body extending upward, facing to the right (east view), full side profile, chunky simplified proportions (large head-to-body ratio is fine, no fine facial detail), standing idle pose, arms at sides. The character is the ONLY thing in the image: absolutely no floor, no ground plate, no tile, no platform beneath the feet -- only a small flat contact shadow directly under the feet, on a fully transparent background. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent. This must be EXACTLY the same character as in the reference image: same jumpsuit colors, same body proportions, same head size, same hair, same outline weight, same cel shading, same camera angle -- only the facing direction changes.",
+          "note": "RECONSTRUCTED: this asset was generated by tools/image_gen/crew_facings.py during the session that was interrupted mid-run; the PNG was saved to disk but the report.json write recording its prompt/usage/QA was lost (a later env_batch.py run held an earlier in-memory copy of report.json and overwrote the file, dropping this entry, though it never touched the PNG itself). Prompt text below is reconstructed deterministically from crew_facings.py's own compose logic (pure function of the asset id), which is unchanged on disk -- it is exactly what was sent. Original usage/cost for the lost call cannot be recovered and is not counted in any budget tracked by this session."
+        }
+      ],
+      "staged_path": "assets/sprites/gen2/crew_astronaut_idle_e.png",
+      "normalize": {
+        "source_bbox": [
+          244,
+          250,
+          267,
+          320
+        ],
+        "source_size": [
+          23,
+          70
+        ],
+        "scale": [
+          1.0,
+          1.0
+        ],
+        "target_bbox": [
+          244,
+          250,
+          267,
+          320
+        ]
+      },
+      "final_qa": {
+        "notes": [],
+        "canvas_ok": true,
+        "has_alpha": true,
+        "bbox": [
+          244,
+          250,
+          267,
+          320
+        ],
+        "anchored_ok": true,
+        "interior_hole_pct": 0.35,
+        "solid_ok": true,
+        "pass": true
+      }
+    },
+    "crew_astronaut_idle_n": {
+      "id": "crew_astronaut_idle_n",
+      "category": "crew",
+      "anchored_on": "crew_astronaut_idle_s",
+      "attempts": [
+        {
+          "attempt": 1,
+          "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, standing idle, no helmet, simplified featureless face. A full-body character standing upright, feet at 61% down the frame, centered horizontally, body extending upward, facing away from the camera (north/back view), seen from behind, chunky simplified proportions (large head-to-body ratio is fine, no fine facial detail), standing idle pose, arms at sides. The character is the ONLY thing in the image: absolutely no floor, no ground plate, no tile, no platform beneath the feet -- only a small flat contact shadow directly under the feet, on a fully transparent background. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent. This must be EXACTLY the same character as in the reference image: same jumpsuit colors, same body proportions, same head size, same hair, same outline weight, same cel shading, same camera angle -- only the facing direction changes.",
+          "note": "RECONSTRUCTED: this asset was generated by tools/image_gen/crew_facings.py during the session that was interrupted mid-run; the PNG was saved to disk but the report.json write recording its prompt/usage/QA was lost (a later env_batch.py run held an earlier in-memory copy of report.json and overwrote the file, dropping this entry, though it never touched the PNG itself). Prompt text below is reconstructed deterministically from crew_facings.py's own compose logic (pure function of the asset id), which is unchanged on disk -- it is exactly what was sent. Original usage/cost for the lost call cannot be recovered and is not counted in any budget tracked by this session."
+        }
+      ],
+      "staged_path": "assets/sprites/gen2/crew_astronaut_idle_n.png",
+      "normalize": {
+        "source_bbox": [
+          242,
+          250,
+          271,
+          320
+        ],
+        "source_size": [
+          29,
+          70
+        ],
+        "scale": [
+          1.0,
+          1.0
+        ],
+        "target_bbox": [
+          242,
+          250,
+          271,
+          320
+        ]
+      },
+      "final_qa": {
+        "notes": [],
+        "canvas_ok": true,
+        "has_alpha": true,
+        "bbox": [
+          242,
+          250,
+          271,
+          320
+        ],
+        "anchored_ok": true,
+        "interior_hole_pct": 3.28,
+        "solid_ok": true,
+        "pass": true
+      }
+    },
+    "crew_astronaut_idle_w": {
+      "id": "crew_astronaut_idle_w",
+      "category": "crew",
+      "anchored_on": "crew_astronaut_idle_s",
+      "attempts": [
+        {
+          "attempt": 1,
+          "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, standing idle, no helmet, simplified featureless face. A full-body character standing upright, feet at 61% down the frame, centered horizontally, body extending upward, facing to the left (west view), full side profile, chunky simplified proportions (large head-to-body ratio is fine, no fine facial detail), standing idle pose, arms at sides. The character is the ONLY thing in the image: absolutely no floor, no ground plate, no tile, no platform beneath the feet -- only a small flat contact shadow directly under the feet, on a fully transparent background. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent. This must be EXACTLY the same character as in the reference image: same jumpsuit colors, same body proportions, same head size, same hair, same outline weight, same cel shading, same camera angle -- only the facing direction changes.",
+          "note": "RECONSTRUCTED: this asset was generated by tools/image_gen/crew_facings.py during the session that was interrupted mid-run; the PNG was saved to disk but the report.json write recording its prompt/usage/QA was lost (a later env_batch.py run held an earlier in-memory copy of report.json and overwrote the file, dropping this entry, though it never touched the PNG itself). Prompt text below is reconstructed deterministically from crew_facings.py's own compose logic (pure function of the asset id), which is unchanged on disk -- it is exactly what was sent. Original usage/cost for the lost call cannot be recovered and is not counted in any budget tracked by this session."
+        }
+      ],
+      "staged_path": "assets/sprites/gen2/crew_astronaut_idle_w.png",
+      "normalize": {
+        "source_bbox": [
+          246,
+          250,
+          267,
+          320
+        ],
+        "source_size": [
+          21,
+          70
+        ],
+        "scale": [
+          1.0,
+          1.0
+        ],
+        "target_bbox": [
+          246,
+          250,
+          267,
+          320
+        ]
+      },
+      "final_qa": {
+        "notes": [],
+        "canvas_ok": true,
+        "has_alpha": true,
+        "bbox": [
+          246,
+          250,
+          267,
+          320
+        ],
+        "anchored_ok": true,
+        "interior_hole_pct": 0.0,
+        "solid_ok": true,
+        "pass": true
+      }
+    },
+    "machine_barrelLarge_NW": {
+      "id": "machine_barrelLarge_NW",
+      "category": "prop",
+      "derived_from": "machine_barrelLarge_SW",
+      "attempts": [],
+      "staged_path": "assets\\sprites\\gen2\\machine_barrelLarge_NW.png",
+      "final_qa": {
+        "canvas_ok": true,
+        "has_alpha": true,
+        "anchored_ok": true,
+        "interior_hole_pct": 2.95,
+        "solid_ok": true,
+        "pass": true,
+        "notes": [
+          "derived: copy of machine_barrelLarge_SW"
+        ]
+      }
+    },
+    "gate_simple_SE": {
+      "id": "gate_simple_SE",
+      "category": "door",
+      "derived_from": "door_gate",
+      "attempts": [],
+      "staged_path": "assets/sprites/gen2/gate_simple_SE.png",
+      "final_qa": {
+        "notes": [
+          "derived: exact-name copy of door_gate for DeckPlan's literal Kenney-name constant 'gate_simple_SE' (deck_plan.gd)"
+        ],
+        "canvas_ok": true,
+        "has_alpha": true,
+        "bbox": [
+          214,
+          202,
+          298,
+          343
+        ],
+        "anchored_ok": true,
+        "interior_hole_pct": 0.0,
+        "solid_ok": true,
+        "pass": true
+      }
+    },
+    "platform_center_SE": {
+      "id": "platform_center_SE",
+      "category": "floor",
+      "derived_from": "tile_corridor",
+      "attempts": [],
+      "staged_path": "assets/sprites/gen2/platform_center_SE.png",
+      "final_qa": {
+        "notes": [
+          "derived: exact-name copy of tile_corridor for DeckPlan's literal Kenney-name constant 'platform_center_SE' (deck_plan.gd)"
+        ],
+        "canvas_ok": true,
+        "has_alpha": true,
+        "bbox": [
+          191,
+          279,
+          321,
+          344
+        ],
+        "anchored_ok": true,
         "pass": true
       }
     }
