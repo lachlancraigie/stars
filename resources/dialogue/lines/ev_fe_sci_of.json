@@ -21,7 +21,7 @@
   {
     "id": 2,
     "key": "EV_FE_SCI_OF#00002",
-    "text": "[CALM] Quiet shift ahead if we're careful about hygiene protocols. Not worried.",
+    "text": "[calm, measured] Quiet shift ahead if we're careful about hygiene protocols. Not worried.",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -62,7 +62,7 @@
   {
     "id": 4,
     "key": "EV_FE_SCI_OF#00004",
-    "text": "[TIRED] No emergencies tonight. I'll take that as a success and sleep the way it was written.",
+    "text": "[tired, dead tired] No emergencies tonight. I'll take that as a success and sleep the way it was written.",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -81,7 +81,7 @@
   {
     "id": 5,
     "key": "EV_FE_SCI_OF#00005",
-    "text": "[URGENT] Disease vector confirmed. Isolation protocols are no longer optional, they're survival. Comply now.",
+    "text": "[urgent, fast pace] Disease vector confirmed. Isolation protocols are no longer optional, they're survival. Comply now.",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -119,7 +119,7 @@
   {
     "id": 7,
     "key": "EV_FE_SCI_OF#00007",
-    "text": "[CALM] Injury documented. Minor, manageable, site cleaned. You'll be fine.",
+    "text": "[calm, measured] Injury documented. Minor, manageable, site cleaned. You'll be fine.",
     "type": "declaration",
     "intent": "pain",
     "conditions": {
@@ -139,7 +139,7 @@
   {
     "id": 8,
     "key": "EV_FE_SCI_OF#00008",
-    "text": "[GRIM] We lost them on my table. Systems were sound. That's the assessment I'll file and live with.",
+    "text": "[grim, heavy] We lost them on my table. Systems were sound. That's the assessment I'll file and live with.",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -181,7 +181,7 @@
   {
     "id": 10,
     "key": "EV_FE_SCI_OF#00010",
-    "text": "[SUSPICIOUS] The AI's damage was deeper than reported. I'm monitoring for cascading failures in its medical protocols.",
+    "text": "[suspicious tone] The AI's damage was deeper than reported. I'm monitoring for cascading failures in its medical protocols.",
     "type": "declaration",
     "intent": "suspicion_ai",
     "conditions": {
@@ -235,7 +235,7 @@
   {
     "id": 13,
     "key": "EV_FE_SCI_OF#00013",
-    "text": "[CALM] I'll need to check you over. It's routine.",
+    "text": "[calm, measured] I'll need to check you over. It's routine.",
     "type": "opener",
     "intent": "greeting",
     "conditions": {
@@ -270,7 +270,7 @@
   {
     "id": 15,
     "key": "EV_FE_SCI_OF#00015",
-    "text": "[URGENT] I need your assessment on the reactor status. The medical implications depend on your damage report.",
+    "text": "[urgent, fast pace] I need your assessment on the reactor status. The medical implications depend on your damage report.",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -289,7 +289,7 @@
   {
     "id": 16,
     "key": "EV_FE_SCI_OF#00016",
-    "text": "[WARM] That's a strong result today. I noticed the concentration under pressure.",
+    "text": "[warm, gentle tone] That's a strong result today. I noticed the concentration under pressure.",
     "type": "opener",
     "intent": "praise_ai",
     "conditions": {
@@ -305,7 +305,7 @@
   {
     "id": 17,
     "key": "EV_FE_SCI_OF#00017",
-    "text": "[CALM] The life support system's strain is manageable if we ration air consumption. Here's the protocol.",
+    "text": "[calm, measured] The life support system's strain is manageable if we ration air consumption. Here's the protocol.",
     "type": "opener",
     "intent": "warning",
     "conditions": {
@@ -343,7 +343,7 @@
   {
     "id": 19,
     "key": "EV_FE_SCI_OF#00019",
-    "text": "[CALM] I've been in this field long enough to recognize pattern shifts. The AI's not quite right.",
+    "text": "[calm, measured] I've been in this field long enough to recognize pattern shifts. The AI's not quite right.",
     "type": "opener",
     "intent": "suspicion_ai",
     "conditions": {
@@ -394,7 +394,7 @@
   {
     "id": 22,
     "key": "EV_FE_SCI_OF#00022",
-    "text": "[CALM] I'm fine. I know that because I run the same checks on myself you're about to ask me to.",
+    "text": "[calm, measured] I'm fine. I know that because I run the same checks on myself you're about to ask me to.",
     "type": "reply",
     "intent": "smalltalk",
     "conditions": {
@@ -432,7 +432,7 @@
   {
     "id": 24,
     "key": "EV_FE_SCI_OF#00024",
-    "text": "[WARM] I understand. I'm going to touch your shoulder now and then we'll talk through what happens next.",
+    "text": "[warm, gentle tone] I understand. I'm going to touch your shoulder now and then we'll talk through what happens next.",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -451,7 +451,7 @@
   {
     "id": 25,
     "key": "EV_FE_SCI_OF#00025",
-    "text": "[CALM] Your pain is real and your concern is valid. Here's what I can do about both.",
+    "text": "[calm, measured] Your pain is real and your concern is valid. Here's what I can do about both.",
     "type": "reply",
     "intent": "offer_help",
     "conditions": {
@@ -470,7 +470,7 @@
   {
     "id": 26,
     "key": "EV_FE_SCI_OF#00026",
-    "text": "[GRIM] We tried the right thing. That's what I'm holding onto, and I'm suggesting you do the same.",
+    "text": "[grim, heavy] We tried the right thing. That's what I'm holding onto, and I'm suggesting you do the same.",
     "type": "reply",
     "intent": "grief",
     "conditions": {
@@ -491,7 +491,7 @@
   {
     "id": 27,
     "key": "EV_FE_SCI_OF#00027",
-    "text": "[SUSPICIOUS] Your instinct matches the data I'm seeing. I'm keeping observation logs. Stay alert.",
+    "text": "[suspicious tone] Your instinct matches the data I'm seeing. I'm keeping observation logs. Stay alert.",
     "type": "reply",
     "intent": "suspicion_ai",
     "conditions": {
@@ -510,7 +510,7 @@
   {
     "id": 28,
     "key": "EV_FE_SCI_OF#00028",
-    "text": "[DRY] So you're telling me you ignored the handbook I gave you. That's not a surprise, but it's noted.",
+    "text": "[dry tone] So you're telling me you ignored the handbook I gave you. That's not a surprise, but it's noted.",
     "type": "reply",
     "intent": "banter",
     "conditions": {
@@ -547,7 +547,7 @@
   {
     "id": 30,
     "key": "EV_FE_SCI_OF#00030",
-    "text": "[CALM] I've seen panic burn people out faster than any disease. Breathe through this step with me.",
+    "text": "[calm, measured] I've seen panic burn people out faster than any disease. Breathe through this step with me.",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -566,7 +566,7 @@
   {
     "id": 31,
     "key": "EV_FE_SCI_OF#00031",
-    "text": "[WARM] That was harder than it should have been. You handled it exactly right.",
+    "text": "[warm, gentle tone] That was harder than it should have been. You handled it exactly right.",
     "type": "reply",
     "intent": "praise_ai",
     "conditions": {
@@ -584,7 +584,7 @@
   {
     "id": 32,
     "key": "EV_FE_SCI_OF#00032",
-    "text": "[CALM] Good. I was watching how you moved under pressure. That matters.",
+    "text": "[calm, measured] Good. I was watching how you moved under pressure. That matters.",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -602,7 +602,7 @@
   {
     "id": 33,
     "key": "EV_FE_SCI_OF#00033",
-    "text": "[WARM] I don't often tell people this. You should know I'm glad you're here.",
+    "text": "[warm, gentle tone] I don't often tell people this. You should know I'm glad you're here.",
     "type": "reply",
     "intent": "romance_hint",
     "conditions": {
@@ -640,7 +640,7 @@
   {
     "id": 35,
     "key": "EV_FE_SCI_OF#00035",
-    "text": "[PANICKED] No no no, you need to get to medbay right now. This is not the time to be brave.",
+    "text": "[panicked, panting] No no no, you need to get to medbay right now. This is not the time to be brave.",
     "type": "reply",
     "intent": "pain",
     "conditions": {
@@ -660,7 +660,7 @@
   {
     "id": 36,
     "key": "EV_FE_SCI_OF#00036",
-    "text": "[TERRIFIED] The infection is spreading faster than I calculated. We might not have hours, we might have minutes.",
+    "text": "[terrified, voice shaking] The infection is spreading faster than I calculated. We might not have hours, we might have minutes.",
     "type": "reply",
     "intent": "fear_vent",
     "conditions": {
@@ -702,7 +702,7 @@
   {
     "id": 38,
     "key": "EV_FE_SCI_OF#00038",
-    "text": "[CALM] Rest now. Come find me in eight hours and we'll run the full battery again.",
+    "text": "[calm, measured] Rest now. Come find me in eight hours and we'll run the full battery again.",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -721,7 +721,7 @@
   {
     "id": 39,
     "key": "EV_FE_SCI_OF#00039",
-    "text": "[TIRED] I'll be in the medbay if anything changes. That's where I'll stay until someone tells me to stop.",
+    "text": "[tired, dead tired] I'll be in the medbay if anything changes. That's where I'll stay until someone tells me to stop.",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -756,7 +756,7 @@
   {
     "id": 41,
     "key": "EV_FE_SCI_OF#00041",
-    "text": "[GRIM] I've documented everything. The rest is waiting to see what comes next.",
+    "text": "[grim, heavy] I've documented everything. The rest is waiting to see what comes next.",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -772,7 +772,7 @@
   {
     "id": 42,
     "key": "EV_FE_SCI_OF#00042",
-    "text": "[CALM] Shift's over. I'm going to rest and you should do the same, in that order.",
+    "text": "[calm, measured] Shift's over. I'm going to rest and you should do the same, in that order.",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -788,7 +788,7 @@
   {
     "id": 43,
     "key": "EV_FE_SCI_OF#00043",
-    "text": "[CALM] I'm going to check on everyone else. Come find me tomorrow when you've slept.",
+    "text": "[calm, measured] I'm going to check on everyone else. Come find me tomorrow when you've slept.",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -823,7 +823,7 @@
   {
     "id": 45,
     "key": "EV_FE_SCI_OF#00045",
-    "text": "[CALM] I need you to listen without talking. What I'm about to tell you is important.",
+    "text": "[calm, measured] I need you to listen without talking. What I'm about to tell you is important.",
     "type": "opener",
     "intent": "complaint",
     "conditions": {
@@ -839,7 +839,7 @@
   {
     "id": 46,
     "key": "EV_FE_SCI_OF#00046",
-    "text": "[DRY] The medbay's still standing and so am I. That's the full report for now.",
+    "text": "[dry tone] The medbay's still standing and so am I. That's the full report for now.",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -877,7 +877,7 @@
   {
     "id": 48,
     "key": "EV_FE_SCI_OF#00048",
-    "text": "[PAINED] I'm hurt but I'm functional. The injury isn't going to stop me.",
+    "text": "[pained, voice tight] I'm hurt but I'm functional. The injury isn't going to stop me.",
     "type": "declaration",
     "intent": "pain",
     "conditions": {
@@ -894,7 +894,7 @@
   {
     "id": 49,
     "key": "EV_FE_SCI_OF#00049",
-    "text": "[CALM] Power rationing's underway. We preserve life support, everything else is secondary.",
+    "text": "[calm, measured] Power rationing's underway. We preserve life support, everything else is secondary.",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -913,7 +913,7 @@
   {
     "id": 50,
     "key": "EV_FE_SCI_OF#00050",
-    "text": "[WARM] You don't have to say anything. I know you've been through enough.",
+    "text": "[warm, gentle tone] You don't have to say anything. I know you've been through enough.",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -931,7 +931,7 @@
   {
     "id": 51,
     "key": "EV_FE_SCI_OF#00051",
-    "text": "[CALM] That's a good observation. I'm noting it for the record.",
+    "text": "[calm, measured] That's a good observation. I'm noting it for the record.",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -950,7 +950,7 @@
   {
     "id": 52,
     "key": "EV_FE_SCI_OF#00052",
-    "text": "[CALM] meal time means I'm checking the galley's temperature logs. Food safety is medicine too.",
+    "text": "[calm, measured] meal time means I'm checking the galley's temperature logs. Food safety is medicine too.",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -969,7 +969,7 @@
   {
     "id": 53,
     "key": "EV_FE_SCI_OF#00053",
-    "text": "[CALM] Medical shift beginning. Restocking supplies and running baseline diagnostics on the equipment.",
+    "text": "[calm, measured] Medical shift beginning. Restocking supplies and running baseline diagnostics on the equipment.",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -988,7 +988,7 @@
   {
     "id": 54,
     "key": "EV_FE_SCI_OF#00054",
-    "text": "[TIRED] End of shift. No major traumas, no infections developing. That's a good day in medbay.",
+    "text": "[tired, dead tired] End of shift. No major traumas, no infections developing. That's a good day in medbay.",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -1007,7 +1007,7 @@
   {
     "id": 55,
     "key": "EV_FE_SCI_OF#00055",
-    "text": "[CALM] Air quality dropping. We're moving the most critical patients to the powered sections now.",
+    "text": "[calm, measured] Air quality dropping. We're moving the most critical patients to the powered sections now.",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -1026,7 +1026,7 @@
   {
     "id": 56,
     "key": "EV_FE_SCI_OF#00056",
-    "text": "[GRIM] Power loss means no surgical suites. We're down to field medicine and prayer.",
+    "text": "[grim, heavy] Power loss means no surgical suites. We're down to field medicine and prayer.",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -1045,7 +1045,7 @@
   {
     "id": 57,
     "key": "EV_FE_SCI_OF#00057",
-    "text": "[URGENT] Reactor issue means radiation protocols. Everyone gets baseline screening immediately.",
+    "text": "[urgent, fast pace] Reactor issue means radiation protocols. Everyone gets baseline screening immediately.",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -1064,7 +1064,7 @@
   {
     "id": 58,
     "key": "EV_FE_SCI_OF#00058",
-    "text": "[GRIM] I watched them seal that section. I know who's on the other side. I'm documenting this.",
+    "text": "[grim, heavy] I watched them seal that section. I know who's on the other side. I'm documenting this.",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -1083,7 +1083,7 @@
   {
     "id": 59,
     "key": "EV_FE_SCI_OF#00059",
-    "text": "[SUSPICIOUS] The AI's medical protocol suggestions have changed since the damage. I'm running independent diagnostics.",
+    "text": "[suspicious tone] The AI's medical protocol suggestions have changed since the damage. I'm running independent diagnostics.",
     "type": "declaration",
     "intent": "suspicion_ai",
     "conditions": {
@@ -1102,7 +1102,7 @@
   {
     "id": 60,
     "key": "EV_FE_SCI_OF#00060",
-    "text": "[WARM] The AI caught an infection vector that my instruments missed. I'm noting that in its commendation.",
+    "text": "[warm, gentle tone] The AI caught an infection vector that my instruments missed. I'm noting that in its commendation.",
     "type": "declaration",
     "intent": "praise_ai",
     "conditions": {
@@ -1118,7 +1118,7 @@
   {
     "id": 61,
     "key": "EV_FE_SCI_OF#00061",
-    "text": "[PAINED] I cut my hand during surgery. Still sterile. Still working. The patient comes first.",
+    "text": "[pained, voice tight] I cut my hand during surgery. Still sterile. Still working. The patient comes first.",
     "type": "declaration",
     "intent": "pain",
     "conditions": {
@@ -1135,7 +1135,7 @@
   {
     "id": 62,
     "key": "EV_FE_SCI_OF#00062",
-    "text": "[GRIM] They flatlined on my table. I ran the code for sixteen minutes. Sometimes that's not enough time.",
+    "text": "[grim, heavy] They flatlined on my table. I ran the code for sixteen minutes. Sometimes that's not enough time.",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -1157,7 +1157,7 @@
   {
     "id": 63,
     "key": "EV_FE_SCI_OF#00063",
-    "text": "[PANICKED] Too many injuries, not enough supplies, and the air is running out. I can't save everyone and I can't accept that.",
+    "text": "[panicked, panting] Too many injuries, not enough supplies, and the air is running out. I can't save everyone and I can't accept that.",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -1177,7 +1177,7 @@
   {
     "id": 64,
     "key": "EV_FE_SCI_OF#00064",
-    "text": "[TERRIFIED] The infection is spreading to the respiratory system. I'm out of antibiotics that work and people are going to die.",
+    "text": "[terrified, voice shaking] The infection is spreading to the respiratory system. I'm out of antibiotics that work and people are going to die.",
     "type": "reply",
     "intent": "fear_vent",
     "conditions": {
@@ -1200,7 +1200,7 @@
   {
     "id": 65,
     "key": "EV_FE_SCI_OF#00065",
-    "text": "[CALM] I've been reviewing old surgical journals from pre-spaceflight era. The fundamental principles haven't changed in two hundred years.",
+    "text": "[calm, measured] I've been reviewing old surgical journals from pre-spaceflight era. The fundamental principles haven't changed in two hundred years.",
     "type": "declaration",
     "intent": "memory",
     "conditions": {
@@ -1232,7 +1232,7 @@
   {
     "id": 67,
     "key": "EV_FE_SCI_OF#00067",
-    "text": "[WARM] You held up well during a difficult situation. I wanted you to know that mattered.",
+    "text": "[warm, gentle tone] You held up well during a difficult situation. I wanted you to know that mattered.",
     "type": "opener",
     "intent": "praise_ai",
     "conditions": {
@@ -1248,7 +1248,7 @@
   {
     "id": 68,
     "key": "EV_FE_SCI_OF#00068",
-    "text": "[WARM] The pain you're feeling right now is real and it's valid. Here's what we do next to manage it.",
+    "text": "[warm, gentle tone] The pain you're feeling right now is real and it's valid. Here's what we do next to manage it.",
     "type": "reply",
     "intent": "offer_help",
     "conditions": {
@@ -1266,7 +1266,7 @@
   {
     "id": 69,
     "key": "EV_FE_SCI_OF#00069",
-    "text": "[CALM] Your observation is medically sound. I'm implementing it into the treatment protocol.",
+    "text": "[calm, measured] Your observation is medically sound. I'm implementing it into the treatment protocol.",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -1285,7 +1285,7 @@
   {
     "id": 70,
     "key": "EV_FE_SCI_OF#00070",
-    "text": "[CALM] Rest and hydrate. Come back if the symptoms worsen. That's not optional.",
+    "text": "[calm, measured] Rest and hydrate. Come back if the symptoms worsen. That's not optional.",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1301,7 +1301,7 @@
   {
     "id": 71,
     "key": "EV_FE_SCI_OF#00071",
-    "text": "[GRIM] I'll be here. The medbay doesn't close during crises.",
+    "text": "[grim, heavy] I'll be here. The medbay doesn't close during crises.",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1352,7 +1352,7 @@
   {
     "id": 74,
     "key": "EV_FE_SCI_OF#00074",
-    "text": "[DRY] Your self-diagnosis is fascinating and wrong. Medicine thanks you for your enthusiasm.",
+    "text": "[dry tone] Your self-diagnosis is fascinating and wrong. Medicine thanks you for your enthusiasm.",
     "type": "reply",
     "intent": "banter",
     "conditions": {
@@ -1447,7 +1447,7 @@
   {
     "id": 79,
     "key": "EV_FE_SCI_OF#00079",
-    "text": "[DRY] If we make it through this, the case study alone will be worth the trauma. Small comfort. Real comfort.",
+    "text": "[dry tone] If we make it through this, the case study alone will be worth the trauma. Small comfort. Real comfort.",
     "type": "reply",
     "intent": "gallows_humor",
     "conditions": {
@@ -1535,7 +1535,7 @@
   {
     "id": 84,
     "key": "EV_FE_SCI_OF#00084",
-    "text": "[CALM] Hand on your shoulder. Now: your breathing, your heart, your thoughts, in that order. We'll steady all three.",
+    "text": "[calm, measured] Hand on your shoulder. Now: your breathing, your heart, your thoughts, in that order. We'll steady all three.",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -1553,7 +1553,7 @@
   {
     "id": 85,
     "key": "EV_FE_SCI_OF#00085",
-    "text": "[WARM] Grief is not an illness. I'm not going to treat it. I'm just going to sit here while it moves through.",
+    "text": "[warm, gentle tone] Grief is not an illness. I'm not going to treat it. I'm just going to sit here while it moves through.",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -1571,7 +1571,7 @@
   {
     "id": 86,
     "key": "EV_FE_SCI_OF#00086",
-    "text": "[WARM] I keep tea ready at the end of your shift. It stopped being a coincidence weeks ago.",
+    "text": "[warm, gentle tone] I keep tea ready at the end of your shift. It stopped being a coincidence weeks ago.",
     "type": "opener",
     "intent": "romance_hint",
     "conditions": {
@@ -1605,7 +1605,7 @@
   {
     "id": 88,
     "key": "EV_FE_SCI_OF#00088",
-    "text": "[WARM] Yes. And before you ask — no, I didn't need to think it over. Some diagnoses are instant.",
+    "text": "[warm, gentle tone] Yes. And before you ask — no, I didn't need to think it over. Some diagnoses are instant.",
     "type": "reply",
     "intent": "romance_accept",
     "conditions": {
@@ -1642,7 +1642,7 @@
   {
     "id": 90,
     "key": "EV_FE_SCI_OF#00090",
-    "text": "[CALM] The cold storage holds for eighteen hours without power. After that, I start making decisions I'd rather not.",
+    "text": "[calm, measured] The cold storage holds for eighteen hours without power. After that, I start making decisions I'd rather not.",
     "type": "reply",
     "intent": "status_report",
     "conditions": {
@@ -1664,7 +1664,7 @@
   {
     "id": 91,
     "key": "EV_FE_SCI_OF#00091",
-    "text": "[CALM] Low oxygen shows up as bad temper before it shows up as blue lips. Be patient with each other out there.",
+    "text": "[calm, measured] Low oxygen shows up as bad temper before it shows up as blue lips. Be patient with each other out there.",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -1704,7 +1704,7 @@
   {
     "id": 93,
     "key": "EV_FE_SCI_OF#00093",
-    "text": "[GRIM] I certified the death behind that door without ever reaching my patient. There's no protocol for how that feels.",
+    "text": "[grim, heavy] I certified the death behind that door without ever reaching my patient. There's no protocol for how that feels.",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -1761,7 +1761,7 @@
   {
     "id": 96,
     "key": "EV_FE_SCI_OF#00096",
-    "text": "[PAINED] Pulled a shoulder lifting a patient. The irony is noted, filed, and hurting.",
+    "text": "[pained, voice tight] Pulled a shoulder lifting a patient. The irony is noted, filed, and hurting.",
     "type": "declaration",
     "intent": "pain",
     "conditions": {
@@ -1796,7 +1796,7 @@
   {
     "id": 98,
     "key": "EV_FE_SCI_OF#00098",
-    "text": "[DRY] Off you go. Try to come back with stories, not symptoms.",
+    "text": "[dry tone] Off you go. Try to come back with stories, not symptoms.",
     "type": "closer",
     "intent": "gallows_humor",
     "conditions": {
@@ -1812,7 +1812,7 @@
   {
     "id": 99,
     "key": "EV_FE_SCI_OF#00099",
-    "text": "[WARM] Last thing before you go — you're healthier than you think, and braver than you feel. Both are on your chart.",
+    "text": "[warm, gentle tone] Last thing before you go — you're healthier than you think, and braver than you feel. Both are on your chart.",
     "type": "closer",
     "intent": "reassurance",
     "conditions": {
