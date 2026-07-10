@@ -36,6 +36,19 @@ LABEL_H = 34
 PAD = 14
 COLS = 4
 CHECKER = 20  # checker cell size
+SECTION_H = 34  # header strip inserted whenever the category changes
+
+# Category display order (matches docs/style-bible-v2.md's per-category framing
+# table); anything with an unrecognised/missing category sorts last so a typo
+# in report.json can't silently vanish from the sheet.
+CATEGORY_ORDER = ["floor", "wall", "door", "prop", "crew"]
+
+
+def category_rank(category: str) -> int:
+    try:
+        return CATEGORY_ORDER.index(category)
+    except ValueError:
+        return len(CATEGORY_ORDER)
 
 # Crop window on the 512x512 canvas centered on the grid-contract action area
 # (diamond at (256,311), subjects rise above it): x 146..366, y 131..351.
@@ -63,46 +76,66 @@ def load_font(size: int) -> ImageFont.ImageFont:
 
 
 def band(assets: list[dict], out_dir: Path, *, checker_light, checker_dark, text_color, band_label: str) -> Image.Image:
-    rows = (len(assets) + COLS - 1) // COLS
+    # Group by category (already sorted (category_rank, id) by the caller) so
+    # the sheet reads as sections -- floor / wall / door / prop / crew -- with
+    # a header strip between them, instead of one flat alphabetical grid.
+    groups: list[tuple[str, list[dict]]] = []
+    for asset in assets:
+        cat = asset.get("category") or "(uncategorized)"
+        if not groups or groups[-1][0] != cat:
+            groups.append((cat, []))
+        groups[-1][1].append(asset)
+
     cell_w = THUMB + PAD * 2
     cell_h = THUMB + LABEL_H * 2 + PAD * 2
     width = cell_w * COLS
-    height = cell_h * rows + 40  # header strip
+    total_rows = sum((len(g) + COLS - 1) // COLS for _, g in groups)
+    height = 40 + total_rows * cell_h + len(groups) * SECTION_H
 
     canvas = checker_bg((width, height), checker_light, checker_dark)
     draw = ImageDraw.Draw(canvas)
     font = load_font(16)
+    font_section = load_font(18)
     font_small = load_font(13)
     draw.text((PAD, 8), band_label, fill=text_color, font=font)
 
-    for i, asset in enumerate(assets):
-        col, row = i % COLS, i // COLS
-        cx = col * cell_w + PAD
-        cy = 40 + row * cell_h + PAD
+    y_cursor = 40
+    for cat, group in groups:
+        draw.rectangle([0, y_cursor, width, y_cursor + SECTION_H], fill=checker_dark)
+        draw.text((PAD, y_cursor + 6), f"{cat.upper()}  ({len(group)})", fill=text_color, font=font_section)
+        y_cursor += SECTION_H
 
-        png_path = out_dir / f"{asset['id']}.png"
-        if png_path.exists():
-            sprite = Image.open(png_path).convert("RGBA")
-            if sprite.size == (512, 512):
-                # Draw the IsoKit contract diamond under the sprite so anchor
-                # consistency across assets is visible at a glance, then crop
-                # to the action window (the rest of the canvas is empty air).
-                overlay = Image.new("RGBA", sprite.size, (0, 0, 0, 0))
-                odraw = ImageDraw.Draw(overlay)
-                odraw.polygon(DIAMOND, outline=(255, 60, 120, 200))
-                composed = Image.alpha_composite(overlay, sprite)
-                sprite = composed.crop(CROP)
-            sprite.thumbnail((THUMB, THUMB), Image.LANCZOS)
-            offset = (cx + (THUMB - sprite.width) // 2, cy + (THUMB - sprite.height) // 2)
-            canvas.paste(sprite, offset, sprite)
-        else:
-            draw.rectangle([cx, cy, cx + THUMB, cy + THUMB], outline=text_color)
-            draw.text((cx + 8, cy + THUMB // 2), "MISSING", fill=text_color, font=font_small)
+        for i, asset in enumerate(group):
+            col, row = i % COLS, i // COLS
+            cx = col * cell_w + PAD
+            cy = y_cursor + row * cell_h + PAD
 
-        label_y = cy + THUMB + 4
-        draw.text((cx, label_y), asset["id"], fill=text_color, font=font_small)
-        status = asset.get("qa_status", "no QA data")
-        draw.text((cx, label_y + 16), status, fill=text_color, font=font_small)
+            png_path = out_dir / f"{asset['id']}.png"
+            if png_path.exists():
+                sprite = Image.open(png_path).convert("RGBA")
+                if sprite.size == (512, 512):
+                    # Draw the IsoKit contract diamond under the sprite so anchor
+                    # consistency across assets is visible at a glance, then crop
+                    # to the action window (the rest of the canvas is empty air).
+                    overlay = Image.new("RGBA", sprite.size, (0, 0, 0, 0))
+                    odraw = ImageDraw.Draw(overlay)
+                    odraw.polygon(DIAMOND, outline=(255, 60, 120, 200))
+                    composed = Image.alpha_composite(overlay, sprite)
+                    sprite = composed.crop(CROP)
+                sprite.thumbnail((THUMB, THUMB), Image.LANCZOS)
+                offset = (cx + (THUMB - sprite.width) // 2, cy + (THUMB - sprite.height) // 2)
+                canvas.paste(sprite, offset, sprite)
+            else:
+                draw.rectangle([cx, cy, cx + THUMB, cy + THUMB], outline=text_color)
+                draw.text((cx + 8, cy + THUMB // 2), "MISSING", fill=text_color, font=font_small)
+
+            label_y = cy + THUMB + 4
+            draw.text((cx, label_y), asset["id"], fill=text_color, font=font_small)
+            status = asset.get("qa_status", "no QA data")
+            draw.text((cx, label_y + 16), status, fill=text_color, font=font_small)
+
+        rows_in_group = (len(group) + COLS - 1) // COLS
+        y_cursor += rows_in_group * cell_h
 
     return canvas
 
@@ -128,7 +161,7 @@ def main(argv: list[str] | None = None) -> int:
             else:
                 status = "FAILED (no image)"
             assets.append({"id": asset_id, "category": rec.get("category", ""), "qa_status": status})
-        assets.sort(key=lambda a: a["id"])
+        assets.sort(key=lambda a: (category_rank(a["category"]), a["id"]))
     else:
         # fall back to whatever PNGs exist on disk
         for png in sorted(out_dir.glob("*.png")):
