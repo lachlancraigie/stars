@@ -40,6 +40,7 @@ from typing import Any
 from PIL import Image, ImageDraw, ImageFont
 
 import generate as gen
+from normalize_gen2 import interior_hole_pct
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 REPO_ROOT = SCRIPT_DIR.parent.parent
@@ -63,10 +64,14 @@ MODEL = gen.DEFAULT_MODEL  # openai/gpt-image-1-mini
 # ---------------------------------------------------------------------------
 
 STYLE_LOCK = (
-    "Clean cel-shaded isometric game sprite, 2:1 dimetric camera angle (26.57 degrees "
-    "above horizontal, matching SimCity/RollerCoaster Tycoon isometric -- the diamond "
-    "floor footprint is exactly twice as wide as it is tall), flat frontal key light "
-    "from the upper-left only. Two to three flat color tones per surface with hard "
+    # Camera clause: "VB / grid-locked" wording -- won the 2026-07-10 A/B test
+    # against explicit-angle phrasing (VA); see docs/style-bible-v2.md.
+    "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: "
+    "the ground plane is a grid of flat diamonds exactly twice as wide as they are "
+    "tall, the object's footprint and every horizontal edge align to those diamond "
+    "diagonals, vertical edges stay strictly vertical, and the camera is never "
+    "steeper than 27 degrees above the horizon. Flat frontal key light from the "
+    "upper-left only. Two to three flat color tones per surface with hard "
     "edges between them, absolutely no gradients, no soft shading, no ambient "
     "occlusion blur, no texture noise, no painterly brushwork, no photographic "
     "detail. Thin uniform-weight dark outline (#14171C) around the silhouette and "
@@ -83,7 +88,13 @@ NEGATIVE = (
     "camera angle other than the specified 2:1 dimetric, fisheye or perspective "
     "distortion, multiple copies of the subject, collage or grid layout, background "
     "scenery beyond the subject and its immediate contact shadow, text, watermark, "
-    "logo, signature, frame/border. Transparent background. Single subject only."
+    "logo, signature, frame/border. Transparent background. Single subject only. "
+    # Solidity clause: added after the hole audit found the model keying out
+    # large interior fills (mattress 55%, door leaf 47% transparent) when asked
+    # for a transparent background. QA flood-fills for interior holes.
+    "The subject itself must be completely solid and fully opaque everywhere -- "
+    "no see-through parts, no transparent windows or glass, no cut-out holes; "
+    "only the area OUTSIDE the subject's silhouette is transparent."
 )
 
 FRAMING = {
@@ -248,11 +259,18 @@ def compose_prompt(asset: dict[str, Any], *, corrective: str | None = None) -> s
 
 def normalize_to_canvas(png_bytes: bytes) -> Image.Image:
     im = Image.open(io.BytesIO(png_bytes)).convert("RGBA")
-    if im.size != (CANVAS * 2, CANVAS * 2):
-        # Model didn't return the expected fixed 1024x1024 -- resize (not crop)
-        # to 1024 first so the 2:1 downscale below still lands on 512x512.
-        im = im.resize((CANVAS * 2, CANVAS * 2), Image.LANCZOS)
-    im = im.resize((CANVAS, CANVAS), Image.LANCZOS)
+    if im.width != im.height:
+        # The model sometimes picks a portrait/landscape canvas (1024x1536 /
+        # 1536x1024) despite the square subject framing. Pad with transparency
+        # to a centered square -- never stretch, which would distort the
+        # subject's projection angles (normalize_gen2.py only ever scales the
+        # bbox uniformly afterwards, so a distortion here would be permanent).
+        side = max(im.size)
+        padded = Image.new("RGBA", (side, side), (0, 0, 0, 0))
+        padded.paste(im, ((side - im.width) // 2, (side - im.height) // 2))
+        im = padded
+    if im.size != (CANVAS, CANVAS):
+        im = im.resize((CANVAS, CANVAS), Image.LANCZOS)
     return im
 
 
@@ -314,7 +332,18 @@ def run_qa(im: Image.Image) -> dict[str, Any]:
                 f"({tx}+-{tol_x}, {ty}+-{tol_y})"
             )
 
-    qa["pass"] = qa["canvas_ok"] and qa["has_alpha"] and qa["centroid_ok"]
+    # Threshold 10%: solid objects with keyed-out fills (a 55%-transparent
+    # mattress, a 47%-transparent door leaf) fail; leggy furniture whose
+    # enclosed under-table daylight legitimately shows the floor (2-8%) passes.
+    hole_pct = interior_hole_pct(rgba)
+    qa["interior_hole_pct"] = round(hole_pct, 2)
+    qa["solid_ok"] = hole_pct <= 10.0
+    if not qa["solid_ok"]:
+        qa["notes"].append(
+            f"{hole_pct:.1f}% of subject area is interior transparency (holes)"
+        )
+
+    qa["pass"] = qa["canvas_ok"] and qa["has_alpha"] and qa["centroid_ok"] and qa["solid_ok"]
     return qa
 
 
@@ -336,6 +365,12 @@ def corrective_prompt_for(qa: dict[str, Any]) -> str:
             "CORRECTION: the previous attempt was off-center -- move the entire subject "
             f"{horiz} and {vert} so its base/footprint sits centered horizontally and at "
             "61% down from the top of the frame, with no cropping."
+        )
+    if qa.get("solid_ok") is False:
+        clauses.append(
+            "CORRECTION: the previous attempt had transparent see-through areas INSIDE "
+            "the subject -- every part of the subject must be painted fully opaque with "
+            "solid palette colors; no interior region may be left transparent."
         )
     return " ".join(clauses)
 

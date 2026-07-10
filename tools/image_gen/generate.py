@@ -168,8 +168,9 @@ def generate_image(
     background: str = DEFAULT_BACKGROUND,
     quality: str = DEFAULT_QUALITY,
     output_compression: int | None = None,
+    input_references: list[Path] | None = None,
     api_key: str | None = None,
-    timeout: float = 120.0,
+    timeout: float = 180.0,
 ) -> dict[str, Any]:
     """Call POST /api/v1/images. Returns a dict with keys:
     png_bytes, model, background_requested, usage (raw usage block, if any),
@@ -189,6 +190,21 @@ def generate_image(
     }
     if output_compression is not None:
         body["output_compression"] = output_compression
+    if input_references:
+        # Reference images (style anchors / edit sources). Format per the
+        # OpenRouter image-generation docs: array of {type: "image_url",
+        # image_url: {url}} objects; base64 data URLs are accepted, which we
+        # use so local staged sprites never need public hosting.
+        body["input_references"] = [
+            {
+                "type": "image_url",
+                "image_url": {
+                    "url": "data:image/png;base64,"
+                    + base64.b64encode(Path(p).read_bytes()).decode("ascii")
+                },
+            }
+            for p in input_references
+        ]
 
     data = json.dumps(body).encode("utf-8")
     req = urllib.request.Request(

@@ -86,6 +86,40 @@ def alpha_bbox(im: Image.Image) -> tuple[int, int, int, int] | None:
     return alpha.point(lambda a: 255 if a > ALPHA_T else 0).getbbox()
 
 
+def interior_hole_pct(im: Image.Image) -> float:
+    """% of subject area that is interior transparency ('holes'): transparent
+    pixels NOT reachable from the canvas border by flood fill. Catches the
+    model keying out large interior fills (e.g. a mattress or door leaf),
+    which corner-transparency checks miss entirely."""
+    from collections import deque
+
+    rgba = im.convert("RGBA")
+    w, h = rgba.size
+    a = rgba.split()[3].load()
+    transparent = [[a[x, y] <= ALPHA_T for x in range(w)] for y in range(h)]
+    reached = [[False] * w for _ in range(h)]
+    dq: deque = deque()
+    for x in range(w):
+        for y in (0, h - 1):
+            if transparent[y][x] and not reached[y][x]:
+                reached[y][x] = True
+                dq.append((x, y))
+    for y in range(h):
+        for x in (0, w - 1):
+            if transparent[y][x] and not reached[y][x]:
+                reached[y][x] = True
+                dq.append((x, y))
+    while dq:
+        x, y = dq.popleft()
+        for nx, ny in ((x - 1, y), (x + 1, y), (x, y - 1), (x, y + 1)):
+            if 0 <= nx < w and 0 <= ny < h and transparent[ny][nx] and not reached[ny][nx]:
+                reached[ny][nx] = True
+                dq.append((nx, ny))
+    holes = sum(1 for y in range(h) for x in range(w) if transparent[y][x] and not reached[y][x])
+    subject = sum(1 for y in range(h) for x in range(w) if not transparent[y][x])
+    return 100.0 * holes / max(1, subject)
+
+
 def normalize(im: Image.Image, rule: dict[str, Any]) -> tuple[Image.Image, dict[str, Any]]:
     rgba = im.convert("RGBA")
     bbox = alpha_bbox(rgba)
@@ -149,7 +183,19 @@ def qa_normalized(im: Image.Image, rule: dict[str, Any], info: dict[str, Any]) -
         if not qa["anchored_ok"]:
             qa["notes"].append(f"bbox {bbox} != normalization target {target} (+-{tol})")
 
-    qa["pass"] = qa["canvas_ok"] and qa["has_alpha"] and qa["anchored_ok"]
+    # Threshold 10%: catches keyed-out solid fills (55% mattress, 47% door
+    # leaf) while passing leggy furniture whose enclosed under-table daylight
+    # legitimately shows the floor through it (2-8%).
+    hole_pct = interior_hole_pct(rgba)
+    qa["interior_hole_pct"] = round(hole_pct, 2)
+    qa["solid_ok"] = hole_pct <= 10.0
+    if not qa["solid_ok"]:
+        qa["notes"].append(
+            f"{hole_pct:.1f}% of the subject is interior transparency (holes) -- "
+            "the model keyed out interior fills; regenerate with the solidity clause"
+        )
+
+    qa["pass"] = qa["canvas_ok"] and qa["has_alpha"] and qa["anchored_ok"] and qa["solid_ok"]
     return qa
 
 
@@ -160,17 +206,69 @@ def rule_for(asset_id: str, category: str) -> dict[str, Any]:
     return NORM_RULES[key]
 
 
+def mirror_walls(report: dict[str, Any]) -> None:
+    """Derive the NW/SW wall orientations by horizontally flipping the
+    normalized NE/SE walls. Because the canvas is already normalized
+    (NE wall right-anchored at x=321, bottom 348), a plain flip lands the
+    mirrored bbox exactly on the opposite corner's legacy anchor
+    (512-321=191), matching corridor_wall_NW / corridor_wall_SW.
+
+    Trade-off, deliberately accepted for this kit: mirroring flips which
+    facet catches the upper-left key light. On thin near-symmetric wall
+    panels this reads fine and buys perfect cross-orientation consistency
+    (the pair is pixel-identical geometry); regenerate instead if walls
+    ever gain strongly asymmetric detail.
+    """
+    for src_id, dst_id in (("wall_ne", "wall_nw"), ("wall_se", "wall_sw")):
+        src_path = OUT_DIR / f"{src_id}.png"
+        if not src_path.exists():
+            print(f"{dst_id}: source {src_id}.png missing, skipping")
+            continue
+        im = Image.open(src_path).convert("RGBA")
+        mirrored = im.transpose(Image.FLIP_LEFT_RIGHT)
+        dst_path = OUT_DIR / f"{dst_id}.png"
+        mirrored.save(dst_path)
+
+        bbox = alpha_bbox(mirrored)
+        hole_pct = interior_hole_pct(mirrored)
+        qa = {
+            "canvas_ok": mirrored.size == (CANVAS, CANVAS),
+            "has_alpha": True,
+            "bbox": bbox,
+            "anchored_ok": True,  # geometric mirror of an already-anchored sprite
+            "interior_hole_pct": round(hole_pct, 2),
+            "solid_ok": hole_pct <= 10.0,
+            "notes": [f"derived: horizontal mirror of {src_id} (key-light facet flips; accepted)"],
+        }
+        qa["pass"] = qa["canvas_ok"] and qa["solid_ok"]
+        report["results"][dst_id] = {
+            "id": dst_id,
+            "category": "wall",
+            "derived_from": src_id,
+            "attempts": [],
+            "staged_path": str(dst_path.relative_to(REPO_ROOT)),
+            "final_qa": qa,
+        }
+        print(f"{dst_id}: [{'PASS' if qa['pass'] else 'FLAGGED'}] mirrored from {src_id}, bbox {bbox}")
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     parser.add_argument("--only", type=str, default=None)
+    parser.add_argument("--mirror-walls", action="store_true",
+                        help="derive wall_nw/wall_sw from normalized wall_ne/wall_se")
     args = parser.parse_args(argv)
 
     report_path = OUT_DIR / "report.json"
     report = json.loads(report_path.read_text(encoding="utf-8"))
     only = set(args.only.split(",")) if args.only else None
 
-    for asset_id, rec in report["results"].items():
+    for asset_id, rec in list(report["results"].items()):
         if only and asset_id not in only:
+            continue
+        if rec.get("derived_from"):
+            # mirrored sprites are already in normalized space; re-running the
+            # anchor rules on them would re-anchor to the wrong corner
             continue
         staged = rec.get("staged_path")
         if not staged:
@@ -191,6 +289,9 @@ def main(argv: list[str] | None = None) -> int:
         rec["final_qa"] = qa
         status = "PASS" if qa["pass"] else "FLAGGED"
         print(f"{asset_id}: [{status}] {info.get('source_size')} -> bbox {qa.get('bbox')} notes={qa['notes']}")
+
+    if args.mirror_walls:
+        mirror_walls(report)
 
     report_path.write_text(json.dumps(report, indent=2, default=str), encoding="utf-8")
     print(f"report updated: {report_path}")
