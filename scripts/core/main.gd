@@ -18,6 +18,7 @@ extends Node2D
 const CREW_SCENE: String = "res://scenes/crew/CrewMember.tscn"
 const DIRECTIVE_MENU_SCENE: String = "res://scenes/ui/DirectiveMenu.tscn"
 const ROSTER_PANEL_SCENE: String = "res://scenes/ui/RosterPanel.tscn"
+const ENVIRONMENT_MENU_SCENE: String = "res://scenes/ui/EnvironmentMenu.tscn"
 const CLEAR_COLOR: Color = Color(0.055, 0.07, 0.10)
 
 # Rect (screen px) the deck is auto-fitted into at the default zoom — kept
@@ -217,6 +218,9 @@ func _add_directive_ui() -> void:
 	var roster_scene: PackedScene = load(ROSTER_PANEL_SCENE)
 	if roster_scene:
 		add_child(roster_scene.instantiate())
+	var env_scene: PackedScene = load(ENVIRONMENT_MENU_SCENE)
+	if env_scene:
+		add_child(env_scene.instantiate())
 
 
 func _start_scenario() -> void:

@@ -15,11 +15,13 @@ extends Node2D
 # later attempt succeeds. Equipment (crowbar/cutting torch/engineer's toolkit) shortens the
 # time and/or adds a flat bonus to the check via item tags (see scripts/core/items.gd).
 
-# Gate sprite tint per lock state — both semi-transparent so the doorway stays
+# Gate sprite tint per lock/open state — all semi-transparent so the doorway stays
 # readable either way; ShipLayoutBuilder assigns gate_sprite when it places the
-# gate at the door's deck cell.
+# gate at the door's deck cell. Priority when several apply: jammed > locked > closed >
+# open (see refresh_gate_visual).
 const LOCKED_TINT: Color = Color(0.95, 0.30, 0.25, 0.80)
 const UNLOCKED_TINT: Color = Color(0.55, 0.90, 0.70, 0.55)
+const CLOSED_TINT: Color = Color(0.65, 0.68, 0.75, 0.65)
 const JAMMED_TINT: Color = Color(0.55, 0.20, 0.75, 0.85)
 
 const BYPASS_SKILLS: Array[String] = ["Hacking", "Computers", "Engineering", "Mechanical Repair"]
@@ -35,6 +37,13 @@ const LOCKOUT_TRUST_EVERY: int = 3          # every Nth lockout on the same door
 @export var is_locked: bool = false
 @export var ai_override_enabled: bool = true
 @export var jammed: bool = false
+# Physical leaf state — purely cosmetic (gate sprite tint), INDEPENDENT of is_locked.
+# ShipGraph pathfinding is gated by is_locked alone (see GameState.get_locked_doors()),
+# never by this — a closed-but-unlocked door is still freely walkable, same as before this
+# field existed. Kept as its own axis so EnvironmentMenu's "Open/Close" toggle and
+# "Lock/Unlock" toggle are genuinely independent, per the overhaul spec (lock must work
+# regardless of the door's current open/closed state).
+@export var is_open: bool = true
 
 var gate_sprite: Sprite2D = null
 var _bypassing_crew_ids: Dictionary = {}   # crew_id -> true, guards against double-attempts
@@ -48,26 +57,44 @@ func _ready() -> void:
 func open() -> void:
 	is_locked = false
 	jammed = false
+	is_open = true
 	EventBus.door_state_changed.emit(door_id, true)
 	refresh_gate_visual()
 
 
 func lock() -> void:
 	is_locked = true
-	EventBus.door_state_changed.emit(door_id, false)
+	# Deliberately does NOT touch is_open — locking is orthogonal to the physical leaf
+	# position (EnvironmentMenu: "lock must work in either open or closed state").
 	refresh_gate_visual()
 
 
-# Recolours the gate sprite to reflect is_locked/jammed. Safe to call before the gate
-# sprite exists (ShipLayoutBuilder may set it after _ready()) or if a door has
-# no deck-plan cell at all (some connections are undoored/borderless).
+# Physical open/close only — no lock interaction, no AI-access gating (unlike ai_unlock()
+# below; swinging a leaf open/shut isn't a security-sensitive action, only unlocking is).
+# EnvironmentMenu's "Open"/"Close" toggle calls this when the door isn't locked; when
+# locked it calls ai_unlock() instead, which also sets is_open true on success via open().
+func set_open(value: bool) -> void:
+	if is_open == value:
+		return
+	is_open = value
+	EventBus.door_state_changed.emit(door_id, is_open)
+	refresh_gate_visual()
+
+
+# Recolours the gate sprite to reflect jammed/is_locked/is_open. Safe to call before the
+# gate sprite exists (ShipLayoutBuilder may set it after _ready()) or if a door has no
+# deck-plan cell at all (some connections are undoored/borderless).
 func refresh_gate_visual() -> void:
 	if gate_sprite == null:
 		return
 	if jammed:
 		gate_sprite.modulate = JAMMED_TINT
+	elif is_locked:
+		gate_sprite.modulate = LOCKED_TINT
+	elif not is_open:
+		gate_sprite.modulate = CLOSED_TINT
 	else:
-		gate_sprite.modulate = LOCKED_TINT if is_locked else UNLOCKED_TINT
+		gate_sprite.modulate = UNLOCKED_TINT
 
 
 func request_crew_override(crew_id: String) -> void:
