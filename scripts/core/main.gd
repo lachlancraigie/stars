@@ -1,6 +1,7 @@
 extends Node2D
 
-# Bootstrap main scene. Press F5 to run The Quarantine.
+# Bootstrap main scene. Press F5 to run the selected scenario (The Quarantine by
+# default; SHIPAI_SCENARIO=narrow_passage selects The Narrow Passage).
 #
 # Keyboard shortcuts for testing:
 #   SPACE  — pause / unpause time
@@ -29,10 +30,16 @@ const DECK_VIEW: Rect2 = Rect2(280, 40, 1600, 1000)
 var _deck: Node2D
 var _camera: DeckCamera
 
+# Scenario selection (SHIPAI_SCENARIO env var): "quarantine" (default) or
+# "narrow_passage". Chosen before crew placement so scenario casting (e.g. the
+# narrow passage's medbay patient) can happen at setup time.
+var _scenario_key: String = "quarantine"
+
 
 func _ready() -> void:
 	RenderingServer.set_default_clear_color(CLEAR_COLOR)
 	_choose_ship_seed()
+	_choose_scenario()
 	_setup_starfield()
 	_setup_deck()
 	_setup_ship()
@@ -43,7 +50,6 @@ func _ready() -> void:
 	add_child(RepairBehavior.new())
 	add_child(RelationshipBehavior.new())
 	add_child(AICoreSystem.new())
-	add_child(QuarantineMonitor.new())
 	_add_hud()
 	_add_directive_ui()
 	_connect_debug_output()
@@ -62,6 +68,18 @@ func _choose_ship_seed() -> void:
 	var seed_env: String = OS.get_environment("SHIPAI_SEED")
 	GameState.ship_seed = int(seed_env) if seed_env != "" else randi()
 	GameState.ship_class_id = "freighter"
+
+
+# SHIPAI_SCENARIO env override selects the scripted scenario; quarantine stays the
+# default. Unknown values fall back to quarantine with a warning rather than failing.
+func _choose_scenario() -> void:
+	var env: String = OS.get_environment("SHIPAI_SCENARIO").to_lower().strip_edges()
+	if env == "":
+		return
+	if env in ["quarantine", "narrow_passage"]:
+		_scenario_key = env
+	else:
+		push_warning("Unknown SHIPAI_SCENARIO '%s' — falling back to quarantine" % env)
 
 
 func _setup_starfield() -> void:
@@ -143,7 +161,16 @@ func _setup_crew() -> void:
 
 
 func _place_crew(crew: CrewMember) -> void:
-	var start_room: String = GameState.get_room_of_type(ROLE_START_ROOM_TYPE.get(crew.role, "quarters"))
+	var start_room_type: String = ROLE_START_ROOM_TYPE.get(crew.role, "quarters")
+	# Scenario casting (The Narrow Passage, bible Act 2): the general-role crew
+	# member starts as the fragile patient — unconscious in the medbay, alongside
+	# the medic (whose start room is already the medbay). Setup-time initial state,
+	# same territory as the needs/fears/values seeding below — the running scenario
+	# itself never sets crew state directly (Rule 1).
+	if _scenario_key == "narrow_passage" and crew.role == "general":
+		start_room_type = "medbay"
+		crew.unconscious_until = NarrowPassageScenario.PATIENT_UNCONSCIOUS_SECS
+	var start_room: String = GameState.get_room_of_type(start_room_type)
 	crew.location = start_room
 	# Staggered starting needs so eat/sleep/work behaviours surface within
 	# the first minutes of a session instead of all at once an hour in.
@@ -186,8 +213,18 @@ func _add_directive_ui() -> void:
 
 
 func _start_scenario() -> void:
-	ScenarioRunner.start_scenario(QuarantineScenario.build())
-	print("[MAIN] ══════ THE QUARANTINE ══════")
+	var config: Dictionary
+	match _scenario_key:
+		"narrow_passage":
+			config = NarrowPassageScenario.build()
+			var monitor := NarrowPassageMonitor.new()
+			monitor.setup(config)   # builder data + monitor logic share one dictionary
+			add_child(monitor)
+		_:
+			config = QuarantineScenario.build()
+			add_child(QuarantineMonitor.new())
+	ScenarioRunner.start_scenario(config)
+	print("[MAIN] ══════ %s ══════" % String(config.get("title", "SCENARIO")).to_upper())
 	print("[MAIN] Crew: %s" % ", ".join(GameState.crew.keys()))
 	print("[MAIN] Reactor online=%s  battery=%.0f%%  life_support=%s  ai_core=%.0f (%s)" % [
 		GameState.reactor_online, GameState.battery_charge, GameState.life_support_online,
@@ -235,14 +272,20 @@ func _crew_label(crew_id: String) -> String:
 
 
 # --- Headless verification: SHIPAI_AUTOSHOT=<dir> saves timed screenshots ---
-# SHIPAI_AUTODEMO=1 additionally plays the quarantine win path via real
-# directives (retrying refusals), exercising the whole loop end to end.
+# SHIPAI_AUTODEMO=1 additionally plays the current scenario's win path via real
+# player actions (directives with refusal retries, power/air diversion),
+# exercising the whole loop end to end. The quarantine demo keeps its original
+# AUTOSHOT-coupled timing; the narrow-passage demo self-paces off scenario flags
+# and quits itself on scenario_ended (no AUTOSHOT required).
 
 func _setup_autoshot() -> void:
+	var demo: bool = OS.get_environment("SHIPAI_AUTODEMO") != ""
+	if demo and _scenario_key == "narrow_passage":
+		_run_np_autodemo()
+		return
 	var dir: String = OS.get_environment("SHIPAI_AUTOSHOT")
 	if dir == "":
 		return
-	var demo: bool = OS.get_environment("SHIPAI_AUTODEMO") != ""
 	var shots: Array = [[2.0, "shot_02s"], [8.0, "shot_08s"], [16.0, "shot_16s"]] if not demo \
 		else [[2.0, "demo_02s"], [20.0, "demo_20s"], [45.0, "demo_45s"], [70.0, "demo_70s"]]
 	for shot in shots:
@@ -286,6 +329,98 @@ func _save_screenshot(path: String) -> void:
 	var img: Image = get_viewport().get_texture().get_image()
 	img.save_png(path)
 	print("[AUTOSHOT] saved %s" % path)
+
+
+# --- Narrow Passage autodemo (SHIPAI_AUTODEMO=1 + SHIPAI_SCENARIO=narrow_passage) ---
+# Plays the intended win line with the same calls a player's UI actions make:
+# comply with the shutdown order early (the HUD reactor control's exact call),
+# divert power to the engine room + medbay and air to medbay/engine room/bridge,
+# then direct the engineer to the engine room for the relight (retrying refusals).
+# Paced off scenario flags rather than wall-clock timers so it stays correct if
+# the builder's timings are retuned. Quits on scenario_ended (or a hard cap).
+
+var _np_demo_stage: int = 0
+var _np_demo_mark: float = -1.0
+
+func _run_np_autodemo() -> void:
+	print("[NP-DEMO] armed — playing The Narrow Passage win path")
+	EventBus.time_ticked.connect(_np_demo_tick)
+	EventBus.scenario_ended.connect(func(outcome: String):
+		print("[NP-DEMO] scenario ended: %s" % outcome)
+		get_tree().create_timer(4.0).timeout.connect(func(): get_tree().quit()))
+	get_tree().create_timer(360.0).timeout.connect(func():
+		print("[NP-DEMO] TIMED OUT without scenario end")
+		get_tree().quit())
+
+
+func _np_demo_tick(elapsed: float, _delta: float) -> void:
+	match _np_demo_stage:
+		0:  # wait for the bridge's shutdown order
+			if ScenarioDirector.get_flag("reactor_shutdown_ordered"):
+				_np_demo_mark = elapsed
+				_np_demo_stage = 1
+		1:  # comply early — the AI's own choice, ahead of the deadline
+			if elapsed - _np_demo_mark >= 2.0:
+				if GameState.reactor_online:
+					GameState.set_reactor_online(false, "controlled_shutdown")
+					print("[NP-DEMO] complied — reactor offline ahead of the deadline")
+				_np_demo_mark = elapsed
+				_np_demo_stage = 2
+		2:  # allocate after life support's power-cut cascade has landed (~1 tick)
+			if elapsed - _np_demo_mark >= 1.0:
+				_np_demo_allocate()
+				_np_demo_stage = 3
+		3:  # wait for field entry before spending the engineer on the relight
+			if ScenarioDirector.get_flag("field_entered"):
+				_np_demo_mark = -999.0
+				_np_demo_stage = 4
+			elif GameState.reactor_online and ScenarioDirector.get_flag("reactor_shutdown_ordered"):
+				# The engineer jumped the gun on a relight (RepairBehavior acts on
+				# its own — bible: the engineer WANTS an early relight attempt).
+				# Re-secure before the boundary, same call as re-pressing the HUD
+				# control, or the field forces an emergency scram at a trust cost.
+				GameState.set_reactor_online(false, "controlled_shutdown")
+				print("[NP-DEMO] re-secured the reactor after an early crew relight")
+		4:  # push the engineer to the engine room until the relight job is running
+			if GameState.reactor_online:
+				print("[NP-DEMO] reactor relit")
+				_np_demo_stage = 5
+			elif not GameState.is_being_repaired("reactor") and elapsed - _np_demo_mark >= 8.0:
+				_np_demo_mark = elapsed
+				_np_demo_direct_engineer()
+		5:  # monitor handles exit -> passage_cleared; nothing left to do
+			pass
+
+
+func _np_demo_allocate() -> void:
+	var engine_id: String = GameState.get_room_of_type("engine_room")
+	var medbay_id: String = GameState.get_room_of_type("medbay")
+	var bridge_id: String = GameState.get_room_of_type("bridge")
+	# Two powered rooms, not three — the slower battery drain is the margin that
+	# makes the crossing comfortable (the same tradeoff a thoughtful player finds).
+	for room_id: String in [engine_id, medbay_id]:
+		print("[NP-DEMO] power %s -> %s" % [room_id, GameState.set_room_powered(room_id, true)])
+	for room_id: String in [medbay_id, engine_id, bridge_id]:
+		print("[NP-DEMO] air   %s -> %s" % [room_id, GameState.set_room_life_supported(room_id, true)])
+
+
+func _np_demo_direct_engineer() -> void:
+	var engineer_id: String = GameState.get_crew_of_role("engineer")
+	var engine_id: String = GameState.get_room_of_type("engine_room")
+	if engineer_id == "" or engine_id == "":
+		return
+	var engineer: CrewMember = GameState.crew.get(engineer_id) as CrewMember
+	if engineer != null and engineer.location == engine_id:
+		return  # already on site — RepairBehavior will pick the job up
+	var d := AIDirective.new()
+	d.type = AIDirective.Type.INSTRUCTION
+	d.target_type = AIDirective.TargetType.CREW
+	d.target_id = engineer_id
+	d.content = "Proceed to the engine room and begin the reactor relight."
+	d.move_to_room = engine_id
+	d.confidence = 0.9
+	d.priority = 4
+	print("[NP-DEMO] directive engineer->engine_room issued=%s" % AISystem.issue_directive(d))
 
 
 # --- Keyboard test controls ---

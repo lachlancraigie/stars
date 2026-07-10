@@ -19,8 +19,9 @@ const FEED_COLOUR: Color = Color(0.65, 0.72, 0.80)
 const DIM_TEXT: Color = Color(0.55, 0.60, 0.68)
 
 # Player-readable text for scenario event ids (fallback: prettified id).
+# "scenario_started" is handled dynamically in _on_scenario_event (multi-scenario).
 const EVENT_TEXT: Dictionary = {
-	"scenario_started": "Scenario started: The Quarantine",
+	# The Quarantine
 	"pathogen_detected": "⚠ Biosensors flag an anomalous pathogen in a returning crew member's bloodwork.",
 	"pathogen_spreads": "⚠ Secondary exposure — the ship's engineer's bioscan shows the same signature.",
 	"symptoms_appear": "The infected crew member reports feeling feverish.",
@@ -28,7 +29,27 @@ const EVENT_TEXT: Dictionary = {
 	"life_support_contaminated": "☣ Pathogen detected in the air recyclers.",
 	"vasquez_isolated": "The infected crew member is isolated in the Medbay.",
 	"pathogen_contained": "✔ Containment protocol complete.",
+	# The Narrow Passage
+	"shear_field_detected": "⚠ Shear field ahead. Captain's orders: reactor offline before entry, bridge and engine room stay powered.",
+	"reactor_shutdown_complied": "Reactor secured for field transit — a clean, procedural shutdown.",
+	"reactor_forced_scram": "⚠ Emergency scram at the field boundary — the reactor was still hot.",
+	"field_entry": "The ship enters the shear field. Battery power only.",
+	"medic_appeal": "Medic: keep the Medbay powered and breathing — the patient won't survive cold, thin air.",
+	"field_turbulence": "⚠ Shear turbulence — battery reserves hit; the crossing lengthens.",
+	"patient_crashing": "⚠ The patient in the Medbay is crashing.",
+	"patient_lost": "☠ The medbay patient did not survive the crossing.",
+	"ship_stranded": "⚠ Battery exhausted — the ship is dark inside the field.",
+	"field_exited": "The ship clears the shear field. The reactor is cold.",
+	"passage_cleared": "✔ Passage cleared.",
 }
+
+# Scenario id -> success-banner text. Narrow passage success text varies with the
+# patient's fate (bible: a dead patient colors the ending, it doesn't gate the win).
+const SUCCESS_TEXT: Dictionary = {
+	"the_quarantine": "MISSION COMPLETE\nPathogen contained. The voyage continues.",
+	"the_narrow_passage": "MISSION COMPLETE\nThe field is behind us. All hands accounted for.",
+}
+const SUCCESS_TEXT_NP_PATIENT_LOST: String = "MISSION COMPLETE\nThe field is behind us. Not everyone made it through."
 
 var _objective_label: Label
 var _feed_box: VBoxContainer
@@ -37,6 +58,7 @@ var _panel: Panel
 var _reactor_label: Label
 var _battery_label: Label
 var _life_support_label: Label
+var _shutdown_btn: Button          # scenario-requested reactor shutdown (flag-gated)
 var _room_rows: Dictionary = {}   # room_id -> {power_btn: Button, ls_btn: Button, air_label: Label}
 
 var _blackout_layer: CanvasLayer = null
@@ -98,6 +120,16 @@ func _build_power_panel() -> void:
 	vbox.add_child(_battery_label)
 	vbox.add_child(_life_support_label)
 
+	# Reactor shutdown control — only visible while a scenario has set the
+	# "reactor_shutdown_ordered" flag with the reactor still running (The Narrow
+	# Passage's compliance window; any future scenario can reuse the same flag).
+	_shutdown_btn = Button.new()
+	_shutdown_btn.text = "TAKE REACTOR OFFLINE"
+	_shutdown_btn.custom_minimum_size = Vector2(PANEL_WIDTH - PANEL_PADDING * 2, ROW_HEIGHT - 4)
+	_shutdown_btn.visible = false
+	_shutdown_btn.pressed.connect(_on_reactor_shutdown_pressed)
+	vbox.add_child(_shutdown_btn)
+
 	var sep := HSeparator.new()
 	vbox.add_child(sep)
 
@@ -136,7 +168,8 @@ func _build_power_panel() -> void:
 
 		_room_rows[room_id] = {"power_btn": power_btn, "ls_btn": ls_btn, "air_label": air_label}
 
-	_panel.size = Vector2(PANEL_WIDTH, vbox.position.y * 2 + (3 + _room_rows.size()) * (ROW_HEIGHT + 3) + 10)
+	# 4 header rows now: reactor/battery/life-support labels + the shutdown button.
+	_panel.size = Vector2(PANEL_WIDTH, vbox.position.y * 2 + (4 + _room_rows.size()) * (ROW_HEIGHT + 3) + 10)
 
 
 func _make_status_label() -> Label:
@@ -158,11 +191,19 @@ func _on_life_support_toggle(room_id: String) -> void:
 	GameState.set_room_life_supported(room_id, not GameState.get_room_life_supported(room_id))
 
 
+func _on_reactor_shutdown_pressed() -> void:
+	if GameState.reactor_online and ScenarioDirector.get_flag("reactor_shutdown_ordered"):
+		GameState.set_reactor_online(false, "controlled_shutdown")
+
+
 func _refresh_power_panel() -> void:
 	if _reactor_label == null:
 		return
 	_reactor_label.text = "Reactor: ONLINE" if GameState.reactor_online else "Reactor: BATTERY MODE"
 	_reactor_label.add_theme_color_override("font_color", NORMAL_COLOUR if GameState.reactor_online else WARNING_COLOUR)
+
+	_shutdown_btn.visible = GameState.reactor_online \
+		and ScenarioDirector.get_flag("reactor_shutdown_ordered")
 
 	var battery_pct: float = 0.0 if GameState.battery_capacity <= 0.0 else \
 		100.0 * GameState.battery_charge / GameState.battery_capacity
@@ -243,7 +284,12 @@ func _on_objective_changed(text: String) -> void:
 
 
 func _on_scenario_event(event_id: String) -> void:
-	_push_feed(EVENT_TEXT.get(event_id, event_id.capitalize()))
+	if event_id == "scenario_started":
+		_push_feed("Scenario started: %s" % GameState.scenario_id.capitalize())
+	else:
+		_push_feed(EVENT_TEXT.get(event_id, event_id.capitalize()))
+	# Scenario events can flip flag-gated controls (the reactor shutdown window).
+	_refresh_power_panel()
 
 
 func _on_scenario_ended(outcome: String) -> void:
@@ -254,7 +300,7 @@ func _on_scenario_ended(outcome: String) -> void:
 
 	var banner := Label.new()
 	var won: bool = outcome == "success"
-	banner.text = "MISSION COMPLETE\nPathogen contained. The voyage continues." if won \
+	banner.text = _success_text() if won \
 		else "MISSION FAILED\n%s" % outcome.capitalize().replace("_", " ")
 	banner.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	banner.add_theme_font_size_override("font_size", 44)
@@ -263,6 +309,13 @@ func _on_scenario_ended(outcome: String) -> void:
 	banner.position = Vector2(0, 460)
 	banner.size = Vector2(1920, 160)
 	add_child(banner)
+
+
+func _success_text() -> String:
+	if GameState.scenario_id == "the_narrow_passage" and ScenarioDirector.get_flag("patient_lost"):
+		return SUCCESS_TEXT_NP_PATIENT_LOST
+	return SUCCESS_TEXT.get(GameState.scenario_id,
+		"MISSION COMPLETE\nThe voyage continues.")
 
 
 # --- AI core blackout overlay ---
