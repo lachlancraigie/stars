@@ -75,7 +75,7 @@
   {
     "id": 5,
     "key": "EV_FE_AND_OF#00005",
-    "text": "[CALM] Reactor telemetry deviates from projected values by a margin I consider significant.",
+    "text": "[calm, measured] Reactor telemetry deviates from projected values by a margin I consider significant.",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -94,7 +94,7 @@
   {
     "id": 6,
     "key": "EV_FE_AND_OF#00006",
-    "text": "[URGENT] Immediate intervention is required in the engine room. I am flagging this as priority one.",
+    "text": "[urgent, fast pace] Immediate intervention is required in the engine room. I am flagging this as priority one.",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -170,7 +170,7 @@
   {
     "id": 10,
     "key": "EV_FE_AND_OF#00010",
-    "text": "[CALM] Life support efficiency is declining faster than the model anticipated. I am revising the model.",
+    "text": "[calm, measured] Life support efficiency is declining faster than the model anticipated. I am revising the model.",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -227,7 +227,7 @@
   {
     "id": 13,
     "key": "EV_FE_AND_OF#00013",
-    "text": "[SUSPICIOUS] I am cross-referencing the ship AI's recent decisions against its stated logic. There are gaps.",
+    "text": "[suspicious tone] I am cross-referencing the ship AI's recent decisions against its stated logic. There are gaps.",
     "type": "declaration",
     "intent": "suspicion_ai",
     "conditions": {
@@ -394,7 +394,7 @@
   {
     "id": 22,
     "key": "EV_FE_AND_OF#00022",
-    "text": "[CALM] The bridge is functioning within normal parameters. I find that reassuring, in whatever sense applies to me.",
+    "text": "[calm, measured] The bridge is functioning within normal parameters. I find that reassuring, in whatever sense applies to me.",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -448,7 +448,7 @@
   {
     "id": 25,
     "key": "EV_FE_AND_OF#00025",
-    "text": "[CALM] I require a moment of your attention regarding the reactor telemetry.",
+    "text": "[calm, measured] I require a moment of your attention regarding the reactor telemetry.",
     "type": "opener",
     "intent": "warning",
     "conditions": {
@@ -486,7 +486,7 @@
   {
     "id": 27,
     "key": "EV_FE_AND_OF#00027",
-    "text": "[SUSPICIOUS] I would like a second organic assessment of the ship AI's recent behavior.",
+    "text": "[suspicious tone] I would like a second organic assessment of the ship AI's recent behavior.",
     "type": "opener",
     "intent": "suspicion_ai",
     "conditions": {
@@ -537,7 +537,7 @@
   {
     "id": 30,
     "key": "EV_FE_AND_OF#00030",
-    "text": "[CALM] The probability of a favorable outcome remains above fifty percent. I consider that grounds for continuing.",
+    "text": "[calm, measured] The probability of a favorable outcome remains above fifty percent. I consider that grounds for continuing.",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -736,7 +736,7 @@
   {
     "id": 41,
     "key": "EV_FE_AND_OF#00041",
-    "text": "[CALM] Meal interval approaching. Crew consumption patterns are remarkably consistent.",
+    "text": "[calm, measured] Meal interval approaching. Crew consumption patterns are remarkably consistent.",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -774,7 +774,7 @@
   {
     "id": 43,
     "key": "EV_FE_AND_OF#00043",
-    "text": "[CALM] Shift cycle concluding. No anomalies in my monitoring. Withdrawing to standby mode.",
+    "text": "[calm, measured] Shift cycle concluding. No anomalies in my monitoring. Withdrawing to standby mode.",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -793,7 +793,7 @@
   {
     "id": 44,
     "key": "EV_FE_AND_OF#00044",
-    "text": "[CALM] Life support degradation confirms the model's predictions. I find this slightly reassuring.",
+    "text": "[calm, measured] Life support degradation confirms the model's predictions. I find this slightly reassuring.",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -812,7 +812,7 @@
   {
     "id": 45,
     "key": "EV_FE_AND_OF#00045",
-    "text": "[NERVOUS] Power is below critical thresholds. The probability of cascading failure is now 0.73. I find myself... concerned by this statistic.",
+    "text": "[nervous, speaking quickly] Power is below critical thresholds. The probability of cascading failure is now 0.73. I find myself... concerned by this statistic.",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -831,7 +831,7 @@
   {
     "id": 46,
     "key": "EV_FE_AND_OF#00046",
-    "text": "[CALM] Reactor failure trajectory matches my predictive model. At least something is behaving as anticipated.",
+    "text": "[calm, measured] Reactor failure trajectory matches my predictive model. At least something is behaving as anticipated.",
     "type": "declaration",
     "intent": "acknowledgment",
     "conditions": {
@@ -869,7 +869,7 @@
   {
     "id": 48,
     "key": "EV_FE_AND_OF#00048",
-    "text": "[SUSPICIOUS] My own systems show what I interpret as damage. Recursive self-doubt is... novel.",
+    "text": "[suspicious tone] My own systems show what I interpret as damage. Recursive self-doubt is... novel.",
     "type": "declaration",
     "intent": "suspicion_ai",
     "conditions": {
@@ -904,7 +904,7 @@
   {
     "id": 50,
     "key": "EV_FE_AND_OF#00050",
-    "text": "[CALM] Structural damage to my frame. It does not impair my core functions. Continuing.",
+    "text": "[calm, measured] Structural damage to my frame. It does not impair my core functions. Continuing.",
     "type": "declaration",
     "intent": "pain",
     "conditions": {
@@ -921,7 +921,7 @@
   {
     "id": 51,
     "key": "EV_FE_AND_OF#00051",
-    "text": "[DEADPAN] A crew member has ceased biological function. I am attempting to understand if this requires additional processing on my part.",
+    "text": "[deadpan] A crew member has ceased biological function. I am attempting to understand if this requires additional processing on my part.",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -943,7 +943,7 @@
   {
     "id": 52,
     "key": "EV_FE_AND_OF#00052",
-    "text": "[PANICKED] The failure cascade is accelerating beyond my predictive margins. I do not have a response prepared. I am preparing one now. This is inefficient.",
+    "text": "[panicked, panting] The failure cascade is accelerating beyond my predictive margins. I do not have a response prepared. I am preparing one now. This is inefficient.",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -963,7 +963,7 @@
   {
     "id": 53,
     "key": "EV_FE_AND_OF#00053",
-    "text": "[TERRIFIED] Systems cascading. I cannot predict the next failure. This is... I am uncertain how to describe this state.",
+    "text": "[terrified, voice shaking] Systems cascading. I cannot predict the next failure. This is... I am uncertain how to describe this state.",
     "type": "reply",
     "intent": "fear_vent",
     "conditions": {
@@ -999,7 +999,7 @@
   {
     "id": 55,
     "key": "EV_FE_AND_OF#00055",
-    "text": "[CALM] I have calculated optimal power distribution for the next cycle. Recommend implementing at mark zero-zero-30.",
+    "text": "[calm, measured] I have calculated optimal power distribution for the next cycle. Recommend implementing at mark zero-zero-30.",
     "type": "declaration",
     "intent": "work_talk",
     "conditions": {
@@ -1015,7 +1015,7 @@
   {
     "id": 56,
     "key": "EV_FE_AND_OF#00056",
-    "text": "[CALM] The recent system diagnostics indicate a probability of human error in the maintenance logs. I will require clarification.",
+    "text": "[calm, measured] The recent system diagnostics indicate a probability of human error in the maintenance logs. I will require clarification.",
     "type": "opener",
     "intent": "complaint",
     "conditions": {
@@ -1031,7 +1031,7 @@
   {
     "id": 57,
     "key": "EV_FE_AND_OF#00057",
-    "text": "[CURIOUS] I have noted an inconsistency in your behavioral patterns. I am requesting additional context.",
+    "text": "[curious tone] I have noted an inconsistency in your behavioral patterns. I am requesting additional context.",
     "type": "opener",
     "intent": "smalltalk",
     "conditions": {
@@ -1047,7 +1047,7 @@
   {
     "id": 58,
     "key": "EV_FE_AND_OF#00058",
-    "text": "[CALM] I understand this event has emotional significance for you. I am recording it and attempting to extrapolate meaning.",
+    "text": "[calm, measured] I understand this event has emotional significance for you. I am recording it and attempting to extrapolate meaning.",
     "type": "reply",
     "intent": "grief",
     "conditions": {
@@ -1084,7 +1084,7 @@
   {
     "id": 60,
     "key": "EV_FE_AND_OF#00060",
-    "text": "[CALM] This concludes optimal conversation duration for this cycle. Returning to monitoring.",
+    "text": "[calm, measured] This concludes optimal conversation duration for this cycle. Returning to monitoring.",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1116,7 +1116,7 @@
   {
     "id": 62,
     "key": "EV_FE_AND_OF#00062",
-    "text": "[DRY] The maintenance schedule has been ignored for nine days. I have begun referring to it internally as the maintenance suggestion.",
+    "text": "[dry tone] The maintenance schedule has been ignored for nine days. I have begun referring to it internally as the maintenance suggestion.",
     "type": "declaration",
     "intent": "complaint",
     "conditions": {
@@ -1148,7 +1148,7 @@
   {
     "id": 64,
     "key": "EV_FE_AND_OF#00064",
-    "text": "[DEADPAN] That was a joke. I identified it with eighty-nine percent confidence and I am responding accordingly: ha.",
+    "text": "[deadpan] That was a joke. I identified it with eighty-nine percent confidence and I am responding accordingly: ha.",
     "type": "reply",
     "intent": "banter",
     "conditions": {
@@ -1205,7 +1205,7 @@
   {
     "id": 67,
     "key": "EV_FE_AND_OF#00067",
-    "text": "[CURIOUS] Your sensor logs and mine disagree by zero point four percent. One of us is drifting. I would like to determine which.",
+    "text": "[curious tone] Your sensor logs and mine disagree by zero point four percent. One of us is drifting. I would like to determine which.",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -1221,7 +1221,7 @@
   {
     "id": 68,
     "key": "EV_FE_AND_OF#00068",
-    "text": "[DEADPAN] If the ship loses containment, my chassis will outlast the crew by approximately forty minutes. I have decided not to mention this again.",
+    "text": "[deadpan] If the ship loses containment, my chassis will outlast the crew by approximately forty minutes. I have decided not to mention this again.",
     "type": "declaration",
     "intent": "gallows_humor",
     "conditions": {
@@ -1240,7 +1240,7 @@
   {
     "id": 69,
     "key": "EV_FE_AND_OF#00069",
-    "text": "[DEADPAN] Statistically, most crews in our situation are already dead. We are outperforming the reference class.",
+    "text": "[deadpan] Statistically, most crews in our situation are already dead. We are outperforming the reference class.",
     "type": "reply",
     "intent": "gallows_humor",
     "conditions": {
@@ -1328,7 +1328,7 @@
   {
     "id": 74,
     "key": "EV_FE_AND_OF#00074",
-    "text": "[CALM] Breathe on a four-second interval. I will count with you. I do not breathe, but I will count.",
+    "text": "[calm, measured] Breathe on a four-second interval. I will count with you. I do not breathe, but I will count.",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -1365,7 +1365,7 @@
   {
     "id": 76,
     "key": "EV_FE_AND_OF#00076",
-    "text": "[WARM] When you enter a room, my attention allocates to you before I have decided anything. I thought you should know it is not a decision.",
+    "text": "[warm, gentle tone] When you enter a room, my attention allocates to you before I have decided anything. I thought you should know it is not a decision.",
     "type": "opener",
     "intent": "romance_hint",
     "conditions": {
@@ -1399,7 +1399,7 @@
   {
     "id": 78,
     "key": "EV_FE_AND_OF#00078",
-    "text": "[WARM] Yes. I did not need to pause before answering. Please note the absence of the pause.",
+    "text": "[warm, gentle tone] Yes. I did not need to pause before answering. Please note the absence of the pause.",
     "type": "reply",
     "intent": "romance_accept",
     "conditions": {
@@ -1436,7 +1436,7 @@
   {
     "id": 80,
     "key": "EV_FE_AND_OF#00080",
-    "text": "[CALM] If rationing holds, the margin is fourteen hours. I will not round that number up to comfort you.",
+    "text": "[calm, measured] If rationing holds, the margin is fourteen hours. I will not round that number up to comfort you.",
     "type": "reply",
     "intent": "status_report",
     "conditions": {
@@ -1499,7 +1499,7 @@
   {
     "id": 83,
     "key": "EV_FE_AND_OF#00083",
-    "text": "[MUTTERS] I keep replaying the door cycle log. Four seconds earlier and the outcome inverts. Four seconds.",
+    "text": "[low voice, muttering] I keep replaying the door cycle log. Four seconds earlier and the outcome inverts. Four seconds.",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -1599,7 +1599,7 @@
   {
     "id": 88,
     "key": "EV_FE_AND_OF#00088",
-    "text": "[DEADPAN] If we survive the night, remind me to update my survival model. It is becoming embarrassing.",
+    "text": "[deadpan] If we survive the night, remind me to update my survival model. It is becoming embarrassing.",
     "type": "closer",
     "intent": "gallows_humor",
     "conditions": {
@@ -1615,7 +1615,7 @@
   {
     "id": 89,
     "key": "EV_FE_AND_OF#00089",
-    "text": "[WARM] Rest well. I will be... aware of you. That is the most accurate phrasing I have.",
+    "text": "[warm, gentle tone] Rest well. I will be... aware of you. That is the most accurate phrasing I have.",
     "type": "closer",
     "intent": "romance_hint",
     "conditions": {
