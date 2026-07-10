@@ -81,7 +81,8 @@ signal ai_decommission_attempted(initiator_crew_id: String)
 signal objective_changed(text: String)  # current player-facing goal line for the HUD
 signal scenario_event_triggered(event_id: String)
 signal scenario_event_resolved(event_id: String, outcome: String)
-signal scenario_ended(outcome: String)  # "crew_dead" | "ship_destroyed" | "ai_decommissioned" | "success"
+signal scenario_ended(outcome: String)  # "crew_dead" | "ship_destroyed" | "ai_decommissioned" | "success" — fires once ALL active scenarios have ended (the run-level signal every existing listener expects)
+signal scenario_instance_ended(instance_id: String, outcome: String)  # per-scenario end, overlap-aware (docs/director-spec.md §5/§8 step 3) — fires for EVERY scenario instance that ends, including ones scenario_ended doesn't cover because other scenarios are still running
 
 
 # Mothership rewrite (2026-07-09): several signals above forward into `recent_event` — a
