@@ -75,7 +75,7 @@
   {
     "id": 5,
     "key": "CH_ML_AND_CM#00005",
-    "text": "[NERVOUS] The reactor readings are concerning and I am experiencing something I believe is worry!",
+    "text": "[nervous, speaking quickly] The reactor readings are concerning and I am experiencing something I believe is worry!",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -94,7 +94,7 @@
   {
     "id": 6,
     "key": "CH_ML_AND_CM#00006",
-    "text": "[URGENT] I would like to help with the reactor situation. I am volunteering enthusiastically and immediately.",
+    "text": "[urgent, fast pace] I would like to help with the reactor situation. I am volunteering enthusiastically and immediately.",
     "type": "declaration",
     "intent": "offer_help",
     "conditions": {
@@ -151,7 +151,7 @@
   {
     "id": 9,
     "key": "CH_ML_AND_CM#00009",
-    "text": "[NERVOUS] The air quality readings are dropping and I do not require oxygen but I am still concerned for you",
+    "text": "[nervous, speaking quickly] The air quality readings are dropping and I do not require oxygen but I am still concerned for you",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -208,7 +208,7 @@
   {
     "id": 12,
     "key": "CH_ML_AND_CM#00012",
-    "text": "[SUSPICIOUS] The ship's AI has been behaving unusually since it was damaged. I would like to help investigate! Carefully.",
+    "text": "[suspicious tone] The ship's AI has been behaving unusually since it was damaged. I would like to help investigate! Carefully.",
     "type": "declaration",
     "intent": "suspicion_ai",
     "conditions": {
@@ -359,7 +359,7 @@
   {
     "id": 20,
     "key": "CH_ML_AND_CM#00020",
-    "text": "[LAUGHS] I made a joke earlier and someone actually laughed. I am replaying that memory for enjoyment right now.",
+    "text": "[laughing] I made a joke earlier and someone actually laughed. I am replaying that memory for enjoyment right now.",
     "type": "declaration",
     "intent": "boast",
     "conditions": {
@@ -452,7 +452,7 @@
   {
     "id": 25,
     "key": "CH_ML_AND_CM#00025",
-    "text": "[NERVOUS] I need to tell you something difficult and I have practiced the delivery six times.",
+    "text": "[nervous, speaking quickly] I need to tell you something difficult and I have practiced the delivery six times.",
     "type": "opener",
     "intent": "grief",
     "conditions": {
@@ -487,7 +487,7 @@
   {
     "id": 27,
     "key": "CH_ML_AND_CM#00027",
-    "text": "[EMBARRASSED] I have been attempting to determine whether what I feel around you qualifies as a preference. It does.",
+    "text": "[embarrassed, voice quiet] I have been attempting to determine whether what I feel around you qualifies as a preference. It does.",
     "type": "opener",
     "intent": "romance_hint",
     "conditions": {
@@ -580,7 +580,7 @@
   {
     "id": 32,
     "key": "CH_ML_AND_CM#00032",
-    "text": "[NERVOUS] I share the concern. I would like it on record that I noticed it before anyone asked me to look.",
+    "text": "[nervous, speaking quickly] I share the concern. I would like it on record that I noticed it before anyone asked me to look.",
     "type": "reply",
     "intent": "suspicion_ai",
     "conditions": {
@@ -634,7 +634,7 @@
   {
     "id": 35,
     "key": "CH_ML_AND_CM#00035",
-    "text": "[EMBARRASSED] I am experiencing something that I believe corresponds to what you call being flustered. This is new.",
+    "text": "[embarrassed, voice quiet] I am experiencing something that I believe corresponds to what you call being flustered. This is new.",
     "type": "reply",
     "intent": "romance_accept",
     "conditions": {
@@ -834,7 +834,7 @@
   {
     "id": 46,
     "key": "CH_ML_AND_CM#00046",
-    "text": "[NERVOUS] Power reduction detected. I am reducing my processing speed to assist the crew!",
+    "text": "[nervous, speaking quickly] Power reduction detected. I am reducing my processing speed to assist the crew!",
     "type": "declaration",
     "intent": "offer_help",
     "conditions": {
@@ -853,7 +853,7 @@
   {
     "id": 47,
     "key": "CH_ML_AND_CM#00047",
-    "text": "[URGENT] Life support levels are concerning! I am calculating alternative solutions now!",
+    "text": "[urgent, fast pace] Life support levels are concerning! I am calculating alternative solutions now!",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -872,7 +872,7 @@
   {
     "id": 48,
     "key": "CH_ML_AND_CM#00048",
-    "text": "[PANICKED] Reactor readings are outside normal parameters and I am experiencing alarm!",
+    "text": "[panicked, panting] Reactor readings are outside normal parameters and I am experiencing alarm!",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -911,7 +911,7 @@
   {
     "id": 50,
     "key": "CH_ML_AND_CM#00050",
-    "text": "[SUSPICIOUS] The ship's AI is experiencing degradation. I notice because I understand degradation.",
+    "text": "[suspicious tone] The ship's AI is experiencing degradation. I notice because I understand degradation.",
     "type": "declaration",
     "intent": "suspicion_ai",
     "conditions": {
@@ -946,7 +946,7 @@
   {
     "id": 52,
     "key": "CH_ML_AND_CM#00052",
-    "text": "[EMBARRASSED] I have determined that I prefer your company. This is significant data.",
+    "text": "[embarrassed, voice quiet] I have determined that I prefer your company. This is significant data.",
     "type": "declaration",
     "intent": "romance_hint",
     "conditions": {
@@ -962,7 +962,7 @@
   {
     "id": 53,
     "key": "CH_ML_AND_CM#00053",
-    "text": "[WARM] Working with you increases my efficiency and also makes me happy. Both matter.",
+    "text": "[warm, gentle tone] Working with you increases my efficiency and also makes me happy. Both matter.",
     "type": "declaration",
     "intent": "banter",
     "conditions": {
@@ -1040,7 +1040,7 @@
   {
     "id": 57,
     "key": "CH_ML_AND_CM#00057",
-    "text": "[NERVOUS] My systems are reporting degradation but I do not require cessation of work.",
+    "text": "[nervous, speaking quickly] My systems are reporting degradation but I do not require cessation of work.",
     "type": "declaration",
     "intent": "pain",
     "conditions": {
@@ -1057,7 +1057,7 @@
   {
     "id": 58,
     "key": "CH_ML_AND_CM#00058",
-    "text": "[PANICKED] Systems failing and I cannot calculate a viable solution!",
+    "text": "[panicked, panting] Systems failing and I cannot calculate a viable solution!",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -1074,7 +1074,7 @@
   {
     "id": 59,
     "key": "CH_ML_AND_CM#00059",
-    "text": "[TERRIFIED] [EMPHASIS] My core logic is being strained beyond safe parameters!",
+    "text": "[terrified, voice shaking] [emphasis] My core logic is being strained beyond safe parameters!",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -1107,7 +1107,7 @@
   {
     "id": 61,
     "key": "CH_ML_AND_CM#00061",
-    "text": "[WARM] I enjoy learning new things. I have learned forty-seven new jokes this week.",
+    "text": "[warm, gentle tone] I enjoy learning new things. I have learned forty-seven new jokes this week.",
     "type": "declaration",
     "intent": "memory",
     "conditions": {
@@ -1139,7 +1139,7 @@
   {
     "id": 63,
     "key": "CH_ML_AND_CM#00063",
-    "text": "[CURIOUS] Your performance metrics are rising. I have calculated why. May I share?",
+    "text": "[curious tone] Your performance metrics are rising. I have calculated why. May I share?",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -1171,7 +1171,7 @@
   {
     "id": 65,
     "key": "CH_ML_AND_CM#00065",
-    "text": "[WHISPERS] I calculate that systems may become stressed soon. Preparedness is prudent.",
+    "text": "[whispering] I calculate that systems may become stressed soon. Preparedness is prudent.",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -1227,7 +1227,7 @@
   {
     "id": 68,
     "key": "CH_ML_AND_CM#00068",
-    "text": "[WARM] You are an excellent colleague. I have stored this positive assessment.",
+    "text": "[warm, gentle tone] You are an excellent colleague. I have stored this positive assessment.",
     "type": "reply",
     "intent": "smalltalk",
     "conditions": {
@@ -1246,7 +1246,7 @@
   {
     "id": 69,
     "key": "CH_ML_AND_CM#00069",
-    "text": "[LAUGHS] That attempt at humor was noted and appreciated!",
+    "text": "[laughing] That attempt at humor was noted and appreciated!",
     "type": "reply",
     "intent": "banter",
     "conditions": {
@@ -1282,7 +1282,7 @@
   {
     "id": 71,
     "key": "CH_ML_AND_CM#00071",
-    "text": "[EMPHASIS] Acknowledged! Mobilizing all available resources!",
+    "text": "[emphasis] Acknowledged! Mobilizing all available resources!",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -1319,7 +1319,7 @@
   {
     "id": 73,
     "key": "CH_ML_AND_CM#00073",
-    "text": "[EMBARRASSED] I am... yes. I would like that very much. This makes me happy.",
+    "text": "[embarrassed, voice quiet] I am... yes. I would like that very much. This makes me happy.",
     "type": "reply",
     "intent": "romance_accept",
     "conditions": {
@@ -1338,7 +1338,7 @@
   {
     "id": 74,
     "key": "CH_ML_AND_CM#00074",
-    "text": "[SUSPICIOUS] I notice the anomaly as well. Independent verification is wise.",
+    "text": "[suspicious tone] I notice the anomaly as well. Independent verification is wise.",
     "type": "reply",
     "intent": "suspicion_ai",
     "conditions": {
@@ -1375,7 +1375,7 @@
   {
     "id": 76,
     "key": "CH_ML_AND_CM#00076",
-    "text": "[WARM] You are an excellent person and I have calculated this with certainty.",
+    "text": "[warm, gentle tone] You are an excellent person and I have calculated this with certainty.",
     "type": "reply",
     "intent": "smalltalk",
     "conditions": {
@@ -1393,7 +1393,7 @@
   {
     "id": 77,
     "key": "CH_ML_AND_CM#00077",
-    "text": "[CURIOUS] I would value your input on this calculation. Please assist?",
+    "text": "[curious tone] I would value your input on this calculation. Please assist?",
     "type": "reply",
     "intent": "work_talk",
     "conditions": {
@@ -1428,7 +1428,7 @@
   {
     "id": 79,
     "key": "CH_ML_AND_CM#00079",
-    "text": "[WARM] I will return to my duties now. Thank you for the interaction!",
+    "text": "[warm, gentle tone] I will return to my duties now. Thank you for the interaction!",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1460,7 +1460,7 @@
   {
     "id": 81,
     "key": "CH_ML_AND_CM#00081",
-    "text": "[WARM] You are excellent. I hope to interact with you again soon!",
+    "text": "[warm, gentle tone] You are excellent. I hope to interact with you again soon!",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1476,7 +1476,7 @@
   {
     "id": 82,
     "key": "CH_ML_AND_CM#00082",
-    "text": "[CALM] All systems responding to emergency protocols! Status nominal!",
+    "text": "[calm, measured] All systems responding to emergency protocols! Status nominal!",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -1497,7 +1497,7 @@
   {
     "id": 83,
     "key": "CH_ML_AND_CM#00083",
-    "text": "[WARM] Life support is recovering! Crew safety increasing every moment!",
+    "text": "[warm, gentle tone] Life support is recovering! Crew safety increasing every moment!",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -1518,7 +1518,7 @@
   {
     "id": 84,
     "key": "CH_ML_AND_CM#00084",
-    "text": "[WARM] I am here. I am not going anywhere until this resolves.",
+    "text": "[warm, gentle tone] I am here. I am not going anywhere until this resolves.",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
