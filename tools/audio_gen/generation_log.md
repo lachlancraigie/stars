@@ -99,24 +99,30 @@ files, so re-running any command below resumes safely.
 | 2026-07-10 | GR_FE_AND_CM + PA_ML_MAR_OF | 100/100 | 9,870 | 55,232 | stock voices; billing ratio spiked to ≈73% this batch |
 | 2026-07-10 | PA_FE_ENG_CM (partial) | 30/50 | 3,219 | **57,162** | stock voice; three metered chunks (15+10+5) walked quota to **exactly the 85% stop line** — HARD STOP |
 
-## Final state (2026-07-10)
+## Final state (2026-07-10) — CORPUS COMPLETE
 
-- **1,300 / 1,376 files generated** (94.5%), zero failures, all verified
-  (per-archetype counts match CSVs; valid ID3/MPEG headers; the single
-  sub-10KB file is the one-word line "hey", which is correct).
-- Total spend this run: character_count 2,615 → 57,162 = **54,547 billed
-  characters** (incl. 1,395 for 10 voice designs), leaving exactly 15% of
-  the monthly quota (10,087 chars) untouched per the stop rule.
-- **Remaining, not generated (quota stop):**
-  - `PA_FE_AND_OF` — all 56 lines (6,236 raw chars), stock voice Alice
-  - `PA_FE_ENG_CM` — 20 of 50 lines (2,020 raw chars), stock voice Laura
-- **To finish after the quota resets** (both remainders, resume-safe —
-  skips the 1,300 existing files automatically):
+- **1,376 / 1,376 files generated**, zero failed API calls across the whole
+  run. All verified: per-archetype counts match CSVs exactly; valid
+  ID3/MPEG headers; the single sub-10KB file is the one-word line "hey"
+  (GR_ML_ENG_CM_00251), which is correct.
+- The run initially hard-stopped at the 85% quota line (57,162) with
+  1,300 files, holding back `PA_FE_AND_OF` (56 lines) and the tail of
+  `PA_FE_ENG_CM` (20 lines). The user then lifted the 15%-reserve rule
+  ("still tons of credits, please finish"), and the final 76 files were
+  generated in one resume pass (8,256 raw chars → 3,174 billed, ≈38%).
+- Total spend, post-upgrade run: character_count 2,615 → **60,434** of the
+  67,249 monthly limit = **57,819 billed characters** (incl. 1,395 for the
+  10 voice designs). Remaining quota: **6,815**.
+- Next up (separate pass, pending): the corpus is being expanded to
+  ~2,500 lines (other agents append to `lines/*.json`, CSVs regenerated
+  after). When those CSVs are stable, voice the new lines with the same
+  resume-safe command — it skips all 1,376 existing files:
 
   ```powershell
-  $env:ELEVENLABS_API_KEY = "<from tools/audio_gen/.env>"
-  python tools/audio_gen/elevenlabs_batch.py --archetype PA_FE_ENG_CM --archetype PA_FE_AND_OF
+  python tools/audio_gen/elevenlabs_batch.py
   ```
 
-  (~8,256 raw chars ≈ 4–6K billed at observed ratios; next quota reset per
-  the subscription API.)
+  Expansion cost estimate: ~1,100 new lines ≈ 88K raw chars ≈ 27–64K
+  billed at observed ratios (31–73%, volatile) — will need the next
+  monthly quota cycle, or an upgrade, since only 6,815 chars remain in
+  this one.
