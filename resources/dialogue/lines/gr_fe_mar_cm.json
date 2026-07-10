@@ -2,7 +2,7 @@
   {
     "id": 1,
     "key": "GR_FE_MAR_CM#00001",
-    "text": "[GRUFF] all clear. two exits from this room. back door, if it goes south",
+    "text": "[low voice, gruff] all clear. two exits from this room. back door, if it goes south",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -59,7 +59,7 @@
   {
     "id": 4,
     "key": "GR_FE_MAR_CM#00004",
-    "text": "[MUTTERS] reactor's making sounds. bad sounds. the kind that kill people slow",
+    "text": "[low voice, muttering] reactor's making sounds. bad sounds. the kind that kill people slow",
     "type": "opener",
     "intent": "warning",
     "conditions": {
@@ -81,7 +81,7 @@
   {
     "id": 5,
     "key": "GR_FE_MAR_CM#00005",
-    "text": "[SIGHS] been here thirty years. lost two ships. lost more people than I care to count",
+    "text": "[sigh] been here thirty years. lost two ships. lost more people than I care to count",
     "type": "declaration",
     "intent": "memory",
     "conditions": {
@@ -101,7 +101,7 @@
   {
     "id": 6,
     "key": "GR_FE_MAR_CM#00006",
-    "text": "mess is getting low on supplies. [GRUFF] that's a problem nobody talks about until it's too late",
+    "text": "mess is getting low on supplies. [low voice, gruff] that's a problem nobody talks about until it's too late",
     "type": "reply",
     "intent": "complaint",
     "conditions": {
@@ -123,7 +123,7 @@
   {
     "id": 7,
     "key": "GR_FE_MAR_CM#00007",
-    "text": "[DRY] back to the wall. always. habit dies harder than people do",
+    "text": "[dry tone] back to the wall. always. habit dies harder than people do",
     "type": "reply",
     "intent": "smalltalk",
     "conditions": {
@@ -142,7 +142,7 @@
   {
     "id": 8,
     "key": "GR_FE_MAR_CM#00008",
-    "text": "[NERVOUS] business is picking up. that's not a good thing. business means people die",
+    "text": "[nervous, speaking quickly] business is picking up. that's not a good thing. business means people die",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -161,7 +161,7 @@
   {
     "id": 9,
     "key": "GR_FE_MAR_CM#00009",
-    "text": "hands hurt. [DEADPAN] they've hurt for twenty years. they'll keep working anyway",
+    "text": "hands hurt. [deadpan] they've hurt for twenty years. they'll keep working anyway",
     "type": "reply",
     "intent": "pain",
     "conditions": {
@@ -180,7 +180,7 @@
   {
     "id": 10,
     "key": "GR_FE_MAR_CM#00010",
-    "text": "[GRIM] Vasquez. [SIGHS] Vasquez was solid. Vasquez is gone. that's the real problem now",
+    "text": "[grim, heavy] Vasquez. [sigh] Vasquez was solid. Vasquez is gone. that's the real problem now",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -203,7 +203,7 @@
   {
     "id": 11,
     "key": "GR_FE_MAR_CM#00011",
-    "text": "[CALM] reactor's down. that's the worst kind of business. prep for lockdown",
+    "text": "[calm, measured] reactor's down. that's the worst kind of business. prep for lockdown",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -222,7 +222,7 @@
   {
     "id": 12,
     "key": "GR_FE_MAR_CM#00012",
-    "text": "[URGENT] life support's failing. get to high ground. [GRUFF] get to somewhere defensible",
+    "text": "[urgent, fast pace] life support's failing. get to high ground. [low voice, gruff] get to somewhere defensible",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -241,7 +241,7 @@
   {
     "id": 13,
     "key": "GR_FE_MAR_CM#00013",
-    "text": "[ANGRY] door locked with crew on the other side. [MUTTERS] just like the Cortez. history doesn't change",
+    "text": "[angry] door locked with crew on the other side. [low voice, muttering] just like the Cortez. history doesn't change",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -263,7 +263,7 @@
   {
     "id": 14,
     "key": "GR_FE_MAR_CM#00014",
-    "text": "[CALM] breach is sealed. we're still flying. call that a win",
+    "text": "[calm, measured] breach is sealed. we're still flying. call that a win",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -282,7 +282,7 @@
   {
     "id": 15,
     "key": "GR_FE_MAR_CM#00015",
-    "text": "someone's hurt. [GRUFF] that's bad business. get them to medbay now",
+    "text": "someone's hurt. [low voice, gruff] that's bad business. get them to medbay now",
     "type": "declaration",
     "intent": "acknowledgment",
     "conditions": {
@@ -301,7 +301,7 @@
   {
     "id": 16,
     "key": "GR_FE_MAR_CM#00016",
-    "text": "[EMPHASIS] pathogen spreading. this is a containment problem. seal the affected areas",
+    "text": "[emphasis] pathogen spreading. this is a containment problem. seal the affected areas",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -320,7 +320,7 @@
   {
     "id": 17,
     "key": "GR_FE_MAR_CM#00017",
-    "text": "[CALM] repair complete. people can rest now. [SIGHS] for a while",
+    "text": "[calm, measured] repair complete. people can rest now. [sigh] for a while",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -339,7 +339,7 @@
   {
     "id": 18,
     "key": "GR_FE_MAR_CM#00018",
-    "text": "[DEADPAN] AI's starting to fail. that's the second-worst business after losing crew",
+    "text": "[deadpan] AI's starting to fail. that's the second-worst business after losing crew",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -358,7 +358,7 @@
   {
     "id": 19,
     "key": "GR_FE_MAR_CM#00019",
-    "text": "crisis is handled. [GRUFF] for now. but nothing stays handled",
+    "text": "crisis is handled. [low voice, gruff] for now. but nothing stays handled",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -377,7 +377,7 @@
   {
     "id": 20,
     "key": "GR_FE_MAR_CM#00020",
-    "text": "[MUTTERS] meal time. the last one for someone. that's how odds work",
+    "text": "[low voice, muttering] meal time. the last one for someone. that's how odds work",
     "type": "opener",
     "intent": "smalltalk",
     "conditions": {
@@ -399,7 +399,7 @@
   {
     "id": 21,
     "key": "GR_FE_MAR_CM#00021",
-    "text": "[NERVOUS] business is starting. keep weapons close",
+    "text": "[nervous, speaking quickly] business is starting. keep weapons close",
     "type": "opener",
     "intent": "warning",
     "conditions": {
@@ -418,7 +418,7 @@
   {
     "id": 22,
     "key": "GR_FE_MAR_CM#00022",
-    "text": "shift over. everyone who came in is still here. [GRUFF] that's luck",
+    "text": "shift over. everyone who came in is still here. [low voice, gruff] that's luck",
     "type": "opener",
     "intent": "farewell",
     "conditions": {
@@ -437,7 +437,7 @@
   {
     "id": 23,
     "key": "GR_FE_MAR_CM#00023",
-    "text": "[GRUFF] you're with me now. means i keep you alive. means you trust i know what i'm doing",
+    "text": "[low voice, gruff] you're with me now. means i keep you alive. means you trust i know what i'm doing",
     "type": "opener",
     "intent": "banter",
     "conditions": {
@@ -453,7 +453,7 @@
   {
     "id": 24,
     "key": "GR_FE_MAR_CM#00024",
-    "text": "something needs doing. [CALM] i'll do it. nobody else has to",
+    "text": "something needs doing. [calm, measured] i'll do it. nobody else has to",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -475,7 +475,7 @@
   {
     "id": 25,
     "key": "GR_FE_MAR_CM#00025",
-    "text": "[NERVOUS] things are bad. [EMPHASIS] i've seen worse. we survived those. we'll survive this",
+    "text": "[nervous, speaking quickly] things are bad. [emphasis] i've seen worse. we survived those. we'll survive this",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -494,7 +494,7 @@
   {
     "id": 26,
     "key": "GR_FE_MAR_CM#00026",
-    "text": "[DRY] you're scared. that's smart. scared keeps people alive. but don't let it move your hands",
+    "text": "[dry tone] you're scared. that's smart. scared keeps people alive. but don't let it move your hands",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -514,7 +514,7 @@
   {
     "id": 27,
     "key": "GR_FE_MAR_CM#00027",
-    "text": "[ANGRY] that was stupid and reckless. [GRUFF] also the only move we had. good work",
+    "text": "[angry] that was stupid and reckless. [low voice, gruff] also the only move we had. good work",
     "type": "reply",
     "intent": "praise_ai",
     "conditions": {
@@ -533,7 +533,7 @@
   {
     "id": 28,
     "key": "GR_FE_MAR_CM#00028",
-    "text": "[DEADPAN] you think that will work. it won't. but we try anyway. that's the job",
+    "text": "[deadpan] you think that will work. it won't. but we try anyway. that's the job",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -552,7 +552,7 @@
   {
     "id": 29,
     "key": "GR_FE_MAR_CM#00029",
-    "text": "[SUSPICIOUS] the AI made a call that doesn't sit right. [GRUFF] third time this week",
+    "text": "[suspicious tone] the AI made a call that doesn't sit right. [low voice, gruff] third time this week",
     "type": "reply",
     "intent": "suspicion_ai",
     "conditions": {
@@ -571,7 +571,7 @@
   {
     "id": 30,
     "key": "GR_FE_MAR_CM#00030",
-    "text": "[GRIM] Chen was solid. Chen watched my back on the Reeves. [SIGHS] not watching anything now",
+    "text": "[grim, heavy] Chen was solid. Chen watched my back on the Reeves. [sigh] not watching anything now",
     "type": "reply",
     "intent": "memory",
     "conditions": {
@@ -597,7 +597,7 @@
   {
     "id": 31,
     "key": "GR_FE_MAR_CM#00031",
-    "text": "[GRUFF] you're still here. that means you're loyal or too stupid to leave. either way. you're mine",
+    "text": "[low voice, gruff] you're still here. that means you're loyal or too stupid to leave. either way. you're mine",
     "type": "reply",
     "intent": "banter",
     "conditions": {
@@ -616,7 +616,7 @@
   {
     "id": 32,
     "key": "GR_FE_MAR_CM#00032",
-    "text": "[EMPHASIS] i don't doubt you. i doubt everything. but not you",
+    "text": "[emphasis] i don't doubt you. i doubt everything. but not you",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -635,7 +635,7 @@
   {
     "id": 33,
     "key": "GR_FE_MAR_CM#00033",
-    "text": "[CALM] the Cortez had a better reactor. the Reeves had better crew. this ship has us. that's enough",
+    "text": "[calm, measured] the Cortez had a better reactor. the Reeves had better crew. this ship has us. that's enough",
     "type": "closer",
     "intent": "memory",
     "conditions": {
@@ -654,7 +654,7 @@
   {
     "id": 34,
     "key": "GR_FE_MAR_CM#00034",
-    "text": "[GRUFF] business handled. for now. get some rest. next shift gets worse",
+    "text": "[low voice, gruff] business handled. for now. get some rest. next shift gets worse",
     "type": "closer",
     "intent": "status_report",
     "conditions": {
@@ -676,7 +676,7 @@
   {
     "id": 35,
     "key": "GR_FE_MAR_CM#00035",
-    "text": "[DEADPAN] i'll keep you alive. that's not a promise. that's a job description",
+    "text": "[deadpan] i'll keep you alive. that's not a promise. that's a job description",
     "type": "closer",
     "intent": "reassurance",
     "conditions": {
@@ -695,7 +695,7 @@
   {
     "id": 36,
     "key": "GR_FE_MAR_CM#00036",
-    "text": "[CALM] doors locked. windows covered. we hold this room. [GRUFF] that's how you stay alive",
+    "text": "[calm, measured] doors locked. windows covered. we hold this room. [low voice, gruff] that's how you stay alive",
     "type": "reply",
     "intent": "work_talk",
     "conditions": {
@@ -717,7 +717,7 @@
   {
     "id": 37,
     "key": "GR_FE_MAR_CM#00037",
-    "text": "[PANICKED] too many exits. can't cover them all. business is here. [EMPHASIS] everyone move",
+    "text": "[panicked, panting] too many exits. can't cover them all. business is here. [emphasis] everyone move",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -737,7 +737,7 @@
   {
     "id": 38,
     "key": "GR_FE_MAR_CM#00038",
-    "text": "[DRY] you're thinking about leaving. [GRUFF] don't. i need you here. we all need each other now",
+    "text": "[dry tone] you're thinking about leaving. [low voice, gruff] don't. i need you here. we all need each other now",
     "type": "reply",
     "intent": "banter",
     "conditions": {
@@ -756,7 +756,7 @@
   {
     "id": 39,
     "key": "GR_FE_MAR_CM#00039",
-    "text": "[ANGRY] the ship AI isn't giving me the information i need. [EMPHASIS] that's very bad business",
+    "text": "[angry] the ship AI isn't giving me the information i need. [emphasis] that's very bad business",
     "type": "opener",
     "intent": "suspicion_ai",
     "conditions": {
@@ -775,7 +775,7 @@
   {
     "id": 40,
     "key": "GR_FE_MAR_CM#00040",
-    "text": "[GRUFF] you're hurt. sit down. i'll patch you. [SIGHS] i'm good at patching people",
+    "text": "[low voice, gruff] you're hurt. sit down. i'll patch you. [sigh] i'm good at patching people",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -795,7 +795,7 @@
   {
     "id": 41,
     "key": "GR_FE_MAR_CM#00041",
-    "text": "[DEADPAN] gallows humor is all we've got left. [GRUFF] so we laugh at the dark. might as well",
+    "text": "[deadpan] gallows humor is all we've got left. [low voice, gruff] so we laugh at the dark. might as well",
     "type": "reply",
     "intent": "gallows_humor",
     "conditions": {
@@ -814,7 +814,7 @@
   {
     "id": 42,
     "key": "GR_FE_MAR_CM#00042",
-    "text": "[CALM] everyone who dies here. i'll remember them. i remember all of them",
+    "text": "[calm, measured] everyone who dies here. i'll remember them. i remember all of them",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -833,7 +833,7 @@
   {
     "id": 43,
     "key": "GR_FE_MAR_CM#00043",
-    "text": "[GRUFF] you asked why i keep checking exits. three tours. two ships. that's why. you matter enough to me to stay paranoid",
+    "text": "[low voice, gruff] you asked why i keep checking exits. three tours. two ships. that's why. you matter enough to me to stay paranoid",
     "type": "reply",
     "intent": "romance_hint",
     "conditions": {
@@ -852,7 +852,7 @@
   {
     "id": 44,
     "key": "GR_FE_MAR_CM#00044",
-    "text": "[EMPHASIS] i'm not leaving. [GRUFF] none of us are. that's what loyalty means",
+    "text": "[emphasis] i'm not leaving. [low voice, gruff] none of us are. that's what loyalty means",
     "type": "closer",
     "intent": "reassurance",
     "conditions": {
@@ -871,7 +871,7 @@
   {
     "id": 45,
     "key": "GR_FE_MAR_CM#00045",
-    "text": "[CALM] goodbye. don't make me regret keeping you alive",
+    "text": "[calm, measured] goodbye. don't make me regret keeping you alive",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -890,7 +890,7 @@
   {
     "id": 46,
     "key": "GR_FE_MAR_CM#00046",
-    "text": "[ANGRY] someone said this would be easy. [GRUFF] nobody easy survives. nobody",
+    "text": "[angry] someone said this would be easy. [low voice, gruff] nobody easy survives. nobody",
     "type": "opener",
     "intent": "complaint",
     "conditions": {
@@ -906,7 +906,7 @@
   {
     "id": 47,
     "key": "GR_FE_MAR_CM#00047",
-    "text": "[DRY] i learned that gallows humor from a good person. she didn't make it off the Cortez",
+    "text": "[dry tone] i learned that gallows humor from a good person. she didn't make it off the Cortez",
     "type": "reply",
     "intent": "memory",
     "conditions": {
@@ -925,7 +925,7 @@
   {
     "id": 48,
     "key": "GR_FE_MAR_CM#00048",
-    "text": "[NERVOUS] if this goes like the Reeves, we're in real business. [GRUFF] i won't let that happen",
+    "text": "[nervous, speaking quickly] if this goes like the Reeves, we're in real business. [low voice, gruff] i won't let that happen",
     "type": "opener",
     "intent": "warning",
     "conditions": {
@@ -944,7 +944,7 @@
   {
     "id": 49,
     "key": "GR_FE_MAR_CM#00049",
-    "text": "[CALM] you kept your head. that's why you're still breathing. keep it",
+    "text": "[calm, measured] you kept your head. that's why you're still breathing. keep it",
     "type": "closer",
     "intent": "praise_ai",
     "conditions": {
@@ -963,7 +963,7 @@
   {
     "id": 50,
     "key": "GR_FE_MAR_CM#00050",
-    "text": "[DEADPAN] next time you see me checking exits. don't ask why. just follow my lead and stay alive",
+    "text": "[deadpan] next time you see me checking exits. don't ask why. just follow my lead and stay alive",
     "type": "closer",
     "intent": "work_talk",
     "conditions": {
@@ -982,7 +982,7 @@
   {
     "id": 51,
     "key": "GR_FE_MAR_CM#00051",
-    "text": "[DRY] quiet shift. i still checked every hatch twice. no extra charge",
+    "text": "[dry tone] quiet shift. i still checked every hatch twice. no extra charge",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -1001,7 +1001,7 @@
   {
     "id": 52,
     "key": "GR_FE_MAR_CM#00052",
-    "text": "[MUTTERS] the Reeves went quiet like this for two days first. then it wasn't quiet",
+    "text": "[low voice, muttering] the Reeves went quiet like this for two days first. then it wasn't quiet",
     "type": "declaration",
     "intent": "doubt",
     "conditions": {
@@ -1020,7 +1020,7 @@
   {
     "id": 53,
     "key": "GR_FE_MAR_CM#00053",
-    "text": "[CALM] rations again. i've eaten worse in places that were shooting at me",
+    "text": "[calm, measured] rations again. i've eaten worse in places that were shooting at me",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -1042,7 +1042,7 @@
   {
     "id": 54,
     "key": "GR_FE_MAR_CM#00054",
-    "text": "[WARM] whole crew eating in one room. makes me twitchy. makes me happy too. weird",
+    "text": "[warm, gentle tone] whole crew eating in one room. makes me twitchy. makes me happy too. weird",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -1087,7 +1087,7 @@
   {
     "id": 56,
     "key": "GR_FE_MAR_CM#00056",
-    "text": "[TIRED] end of watch. handing over a boring log. best gift there is",
+    "text": "[tired, dead tired] end of watch. handing over a boring log. best gift there is",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -1106,7 +1106,7 @@
   {
     "id": 57,
     "key": "GR_FE_MAR_CM#00057",
-    "text": "[GRIM] power's rationed. dark corridors are ambush corridors. keep your light on your kit",
+    "text": "[grim, heavy] power's rationed. dark corridors are ambush corridors. keep your light on your kit",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -1125,7 +1125,7 @@
   {
     "id": 58,
     "key": "GR_FE_MAR_CM#00058",
-    "text": "[MUTTERS] cold rooms, dim lights. siege conditions. i know how sieges end",
+    "text": "[low voice, muttering] cold rooms, dim lights. siege conditions. i know how sieges end",
     "type": "declaration",
     "intent": "complaint",
     "conditions": {
@@ -1144,7 +1144,7 @@
   {
     "id": 59,
     "key": "GR_FE_MAR_CM#00059",
-    "text": "[CALM] thin air is quiet business. you don't notice it killing you until it has. move now",
+    "text": "[calm, measured] thin air is quiet business. you don't notice it killing you until it has. move now",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -1163,7 +1163,7 @@
   {
     "id": 60,
     "key": "GR_FE_MAR_CM#00060",
-    "text": "[NERVOUS] reactor's down. can't shoot a reactor back to life. hate problems i can't shoot",
+    "text": "[nervous, speaking quickly] reactor's down. can't shoot a reactor back to life. hate problems i can't shoot",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -1182,7 +1182,7 @@
   {
     "id": 61,
     "key": "GR_FE_MAR_CM#00061",
-    "text": "[ANGRY] locked doors with crew behind them. i've cut through three in my life. never fast enough",
+    "text": "[angry] locked doors with crew behind them. i've cut through three in my life. never fast enough",
     "type": "declaration",
     "intent": "complaint",
     "conditions": {
@@ -1201,7 +1201,7 @@
   {
     "id": 62,
     "key": "GR_FE_MAR_CM#00062",
-    "text": "[GRIM] i still hear the Cortez sometimes. fists on a hatch. you don't forget the rhythm",
+    "text": "[grim, heavy] i still hear the Cortez sometimes. fists on a hatch. you don't forget the rhythm",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -1223,7 +1223,7 @@
   {
     "id": 63,
     "key": "GR_FE_MAR_CM#00063",
-    "text": "[SUSPICIOUS] damaged AI is a wounded sentry. still armed. still on the wire. watch it",
+    "text": "[suspicious tone] damaged AI is a wounded sentry. still armed. still on the wire. watch it",
     "type": "declaration",
     "intent": "suspicion_ai",
     "conditions": {
@@ -1242,7 +1242,7 @@
   {
     "id": 64,
     "key": "GR_FE_MAR_CM#00064",
-    "text": "[DEADPAN] computer called the threat before i did. i don't love that. i respect it",
+    "text": "[deadpan] computer called the threat before i did. i don't love that. i respect it",
     "type": "declaration",
     "intent": "praise_ai",
     "conditions": {
@@ -1258,7 +1258,7 @@
   {
     "id": 65,
     "key": "GR_FE_MAR_CM#00065",
-    "text": "[CALM] kept tags from every crew i've lost. the drawer's heavier than it should be",
+    "text": "[calm, measured] kept tags from every crew i've lost. the drawer's heavier than it should be",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -1281,7 +1281,7 @@
   {
     "id": 66,
     "key": "GR_FE_MAR_CM#00066",
-    "text": "[PAINED] caught some. seen worse on a training day. don't make it a thing",
+    "text": "[pained, voice tight] caught some. seen worse on a training day. don't make it a thing",
     "type": "declaration",
     "intent": "pain",
     "conditions": {
@@ -1301,7 +1301,7 @@
   {
     "id": 67,
     "key": "GR_FE_MAR_CM#00067",
-    "text": "[DEADPAN] the leg works fine. the leg and i have an agreement. we don't discuss it",
+    "text": "[deadpan] the leg works fine. the leg and i have an agreement. we don't discuss it",
     "type": "declaration",
     "intent": "pain",
     "conditions": {
@@ -1318,7 +1318,7 @@
   {
     "id": 68,
     "key": "GR_FE_MAR_CM#00068",
-    "text": "[PANICKED] contact everywhere and no clean lanes. this is the Reeves again. this is the Reeves",
+    "text": "[panicked, panting] contact everywhere and no clean lanes. this is the Reeves again. this is the Reeves",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -1338,7 +1338,7 @@
   {
     "id": 69,
     "key": "GR_FE_MAR_CM#00069",
-    "text": "[CALM] stripped and oiled my rifle twice this week. hasn't fired in years. keeps the hands honest",
+    "text": "[calm, measured] stripped and oiled my rifle twice this week. hasn't fired in years. keeps the hands honest",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -1357,7 +1357,7 @@
   {
     "id": 70,
     "key": "GR_FE_MAR_CM#00070",
-    "text": "[DRY] i sew unit patches on my duffel. three tours' worth. it's not sentiment. it's inventory",
+    "text": "[dry tone] i sew unit patches on my duffel. three tours' worth. it's not sentiment. it's inventory",
     "type": "declaration",
     "intent": "memory",
     "conditions": {
@@ -1392,7 +1392,7 @@
   {
     "id": 72,
     "key": "GR_FE_MAR_CM#00072",
-    "text": "[GRUFF] eat slower. food's the one thing out here that isn't trying to kill you",
+    "text": "[low voice, gruff] eat slower. food's the one thing out here that isn't trying to kill you",
     "type": "opener",
     "intent": "smalltalk",
     "conditions": {
@@ -1414,7 +1414,7 @@
   {
     "id": 73,
     "key": "GR_FE_MAR_CM#00073",
-    "text": "[CALM] power's low. buddy up in the dark sections. nobody walks alone past cargo",
+    "text": "[calm, measured] power's low. buddy up in the dark sections. nobody walks alone past cargo",
     "type": "opener",
     "intent": "warning",
     "conditions": {
@@ -1452,7 +1452,7 @@
   {
     "id": 75,
     "key": "GR_FE_MAR_CM#00075",
-    "text": "[SUSPICIOUS] the computer's watching some rooms and not others now. i've mapped the gaps. want them",
+    "text": "[suspicious tone] the computer's watching some rooms and not others now. i've mapped the gaps. want them",
     "type": "opener",
     "intent": "suspicion_ai",
     "conditions": {
@@ -1471,7 +1471,7 @@
   {
     "id": 76,
     "key": "GR_FE_MAR_CM#00076",
-    "text": "[DRY] you again. good. i was running out of people worth guarding",
+    "text": "[dry tone] you again. good. i was running out of people worth guarding",
     "type": "opener",
     "intent": "banter",
     "conditions": {
@@ -1487,7 +1487,7 @@
   {
     "id": 77,
     "key": "GR_FE_MAR_CM#00077",
-    "text": "[GRUFF] you knew them better than me. tell me one good story. that's how we carried it in my old unit",
+    "text": "[low voice, gruff] you knew them better than me. tell me one good story. that's how we carried it in my old unit",
     "type": "opener",
     "intent": "grief",
     "conditions": {
@@ -1510,7 +1510,7 @@
   {
     "id": 78,
     "key": "GR_FE_MAR_CM#00078",
-    "text": "[URGENT] breach response. you, with me. bring the sealant, i'll bring the muscle",
+    "text": "[urgent, fast pace] breach response. you, with me. bring the sealant, i'll bring the muscle",
     "type": "opener",
     "intent": "request_help",
     "conditions": {
@@ -1529,7 +1529,7 @@
   {
     "id": 79,
     "key": "GR_FE_MAR_CM#00079",
-    "text": "[CALM] you look like you're carrying something heavy. hand some of it here. i'm rated for weight",
+    "text": "[calm, measured] you look like you're carrying something heavy. hand some of it here. i'm rated for weight",
     "type": "opener",
     "intent": "offer_help",
     "conditions": {
@@ -1545,7 +1545,7 @@
   {
     "id": 80,
     "key": "GR_FE_MAR_CM#00080",
-    "text": "[DEADPAN] good news. if the air runs out, we stop paying for rations. everything's a trade",
+    "text": "[deadpan] good news. if the air runs out, we stop paying for rations. everything's a trade",
     "type": "opener",
     "intent": "gallows_humor",
     "conditions": {
@@ -1580,7 +1580,7 @@
   {
     "id": 82,
     "key": "GR_FE_MAR_CM#00082",
-    "text": "[DEADPAN] it's calories. chew, swallow, live. gourmet's for stations",
+    "text": "[deadpan] it's calories. chew, swallow, live. gourmet's for stations",
     "type": "reply",
     "intent": "smalltalk",
     "conditions": {
@@ -1605,7 +1605,7 @@
   {
     "id": 83,
     "key": "GR_FE_MAR_CM#00083",
-    "text": "[CALM] dark's just dark. i've held worse ground with less light. stay close",
+    "text": "[calm, measured] dark's just dark. i've held worse ground with less light. stay close",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -1627,7 +1627,7 @@
   {
     "id": 84,
     "key": "GR_FE_MAR_CM#00084",
-    "text": "[GRUFF] slow your breathing. that's not comfort talk, it's math. shallow and calm buys minutes",
+    "text": "[low voice, gruff] slow your breathing. that's not comfort talk, it's math. shallow and calm buys minutes",
     "type": "reply",
     "intent": "warning",
     "conditions": {
@@ -1649,7 +1649,7 @@
   {
     "id": 85,
     "key": "GR_FE_MAR_CM#00085",
-    "text": "[ANGRY] don't tell me the door did its job. its job is our people. it failed",
+    "text": "[angry] don't tell me the door did its job. its job is our people. it failed",
     "type": "reply",
     "intent": "complaint",
     "conditions": {
@@ -1671,7 +1671,7 @@
   {
     "id": 86,
     "key": "GR_FE_MAR_CM#00086",
-    "text": "[CALM] noted. we treat it like a wounded sentry then. respect, distance, and a backup plan",
+    "text": "[calm, measured] noted. we treat it like a wounded sentry then. respect, distance, and a backup plan",
     "type": "reply",
     "intent": "suspicion_ai",
     "conditions": {
@@ -1690,7 +1690,7 @@
   {
     "id": 87,
     "key": "GR_FE_MAR_CM#00087",
-    "text": "[GRUFF] the computer held the line today. i've served with people who didn't",
+    "text": "[low voice, gruff] the computer held the line today. i've served with people who didn't",
     "type": "reply",
     "intent": "praise_ai",
     "conditions": {
@@ -1709,7 +1709,7 @@
   {
     "id": 88,
     "key": "GR_FE_MAR_CM#00088",
-    "text": "[CALM] you say their name, you square your kit, you keep moving. the order matters",
+    "text": "[calm, measured] you say their name, you square your kit, you keep moving. the order matters",
     "type": "reply",
     "intent": "grief",
     "conditions": {
@@ -1730,7 +1730,7 @@
   {
     "id": 89,
     "key": "GR_FE_MAR_CM#00089",
-    "text": "[GRUFF] wound's clean. i've packed worse with less. you'll carry a story, not a limp",
+    "text": "[low voice, gruff] wound's clean. i've packed worse with less. you'll carry a story, not a limp",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -1749,7 +1749,7 @@
   {
     "id": 90,
     "key": "GR_FE_MAR_CM#00090",
-    "text": "[DEADPAN] i'm fine. that's not bravado. bravado's louder",
+    "text": "[deadpan] i'm fine. that's not bravado. bravado's louder",
     "type": "reply",
     "intent": "pain",
     "conditions": {
@@ -1769,7 +1769,7 @@
   {
     "id": 91,
     "key": "GR_FE_MAR_CM#00091",
-    "text": "[DRY] funny. you'd have lasted a week in my old unit. that's a compliment. mostly",
+    "text": "[dry tone] funny. you'd have lasted a week in my old unit. that's a compliment. mostly",
     "type": "reply",
     "intent": "banter",
     "conditions": {
@@ -1788,7 +1788,7 @@
   {
     "id": 92,
     "key": "GR_FE_MAR_CM#00092",
-    "text": "[EMBARRASSED] i saved you the good rations twice now. figure that out at your own pace",
+    "text": "[embarrassed, voice quiet] i saved you the good rations twice now. figure that out at your own pace",
     "type": "reply",
     "intent": "romance_hint",
     "conditions": {
@@ -1807,7 +1807,7 @@
   {
     "id": 93,
     "key": "GR_FE_MAR_CM#00093",
-    "text": "[CALM] the Cortez had a card game every third shift. i still deal three hands sometimes. habit",
+    "text": "[calm, measured] the Cortez had a card game every third shift. i still deal three hands sometimes. habit",
     "type": "reply",
     "intent": "memory",
     "conditions": {
@@ -1826,7 +1826,7 @@
   {
     "id": 94,
     "key": "GR_FE_MAR_CM#00094",
-    "text": "[PANICKED] out of lanes, out of cover. everybody behind me. behind me, now",
+    "text": "[panicked, panting] out of lanes, out of cover. everybody behind me. behind me, now",
     "type": "reply",
     "intent": "fear_vent",
     "conditions": {
@@ -1865,7 +1865,7 @@
   {
     "id": 96,
     "key": "GR_FE_MAR_CM#00096",
-    "text": "[CALM] watch your six. i'll watch the rest",
+    "text": "[calm, measured] watch your six. i'll watch the rest",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1881,7 +1881,7 @@
   {
     "id": 97,
     "key": "GR_FE_MAR_CM#00097",
-    "text": "[TIRED] off watch. if anything moves wrong, wake me. i mean anything",
+    "text": "[tired, dead tired] off watch. if anything moves wrong, wake me. i mean anything",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1900,7 +1900,7 @@
   {
     "id": 98,
     "key": "GR_FE_MAR_CM#00098",
-    "text": "[GRUFF] we hold. that's the whole plan. it's held before",
+    "text": "[low voice, gruff] we hold. that's the whole plan. it's held before",
     "type": "closer",
     "intent": "reassurance",
     "conditions": {
@@ -1919,7 +1919,7 @@
   {
     "id": 99,
     "key": "GR_FE_MAR_CM#00099",
-    "text": "[DEADPAN] cheer up. statistically, something's already gone wrong somewhere else",
+    "text": "[deadpan] cheer up. statistically, something's already gone wrong somewhere else",
     "type": "closer",
     "intent": "gallows_humor",
     "conditions": {
@@ -1938,7 +1938,7 @@
   {
     "id": 100,
     "key": "GR_FE_MAR_CM#00100",
-    "text": "[CALM] stand down. clean your kit before you sleep. tomorrow thanks you",
+    "text": "[calm, measured] stand down. clean your kit before you sleep. tomorrow thanks you",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
