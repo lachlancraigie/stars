@@ -946,5 +946,372 @@
       "boast"
     ],
     "weight": 1.0
+  },
+  {
+    "id": 52,
+    "key": "EV_FE_SCI_OF#00052",
+    "text": "[CALM] meal time means I'm checking the galley's temperature logs. Food safety is medicine too.",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "recent_events": [
+        "meal_time"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 53,
+    "key": "EV_FE_SCI_OF#00053",
+    "text": "[CALM] Medical shift beginning. Restocking supplies and running baseline diagnostics on the equipment.",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "recent_events": [
+        "shift_start"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 54,
+    "key": "EV_FE_SCI_OF#00054",
+    "text": "[TIRED] End of shift. No major traumas, no infections developing. That's a good day in medbay.",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "recent_events": [
+        "shift_end"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 55,
+    "key": "EV_FE_SCI_OF#00055",
+    "text": "[CALM] Air quality dropping. We're moving the most critical patients to the powered sections now.",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "recent_events": [
+        "life_support_failure"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 56,
+    "key": "EV_FE_SCI_OF#00056",
+    "text": "[GRIM] Power loss means no surgical suites. We're down to field medicine and prayer.",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "recent_events": [
+        "power_low"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 57,
+    "key": "EV_FE_SCI_OF#00057",
+    "text": "[URGENT] Reactor issue means radiation protocols. Everyone gets baseline screening immediately.",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "recent_events": [
+        "reactor_failure"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 58,
+    "key": "EV_FE_SCI_OF#00058",
+    "text": "[GRIM] I watched them seal that section. I know who's on the other side. I'm documenting this.",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "recent_events": [
+        "door_locked_on_crew"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 59,
+    "key": "EV_FE_SCI_OF#00059",
+    "text": "[SUSPICIOUS] The AI's medical protocol suggestions have changed since the damage. I'm running independent diagnostics.",
+    "type": "declaration",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "recent_events": [
+        "ai_damaged"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 60,
+    "key": "EV_FE_SCI_OF#00060",
+    "text": "[WARM] The AI caught an infection vector that my instruments missed. I'm noting that in its commendation.",
+    "type": "declaration",
+    "intent": "praise_ai",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 61,
+    "key": "EV_FE_SCI_OF#00061",
+    "text": "[PAINED] I cut my hand during surgery. Still sterile. Still working. The patient comes first.",
+    "type": "declaration",
+    "intent": "pain",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "wounded": true,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 62,
+    "key": "EV_FE_SCI_OF#00062",
+    "text": "[GRIM] They flatlined on my table. I ran the code for sixteen minutes. Sometimes that's not enough time.",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "mood": [
+        "grim"
+      ],
+      "recent_events": [
+        "crew_death"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 63,
+    "key": "EV_FE_SCI_OF#00063",
+    "text": "[PANICKED] Too many injuries, not enough supplies, and the air is running out. I can't save everyone and I can't accept that.",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 14,
+      "stress_max": 20,
+      "panic": true,
+      "recent_events": [
+        "combat"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 64,
+    "key": "EV_FE_SCI_OF#00064",
+    "text": "[TERRIFIED] The infection is spreading to the respiratory system. I'm out of antibiotics that work and people are going to die.",
+    "type": "reply",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 12,
+      "stress_max": 18,
+      "panic": true,
+      "recent_events": [
+        "disease_outbreak"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [
+      "warning",
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 65,
+    "key": "EV_FE_SCI_OF#00065",
+    "text": "[CALM] I've been reviewing old surgical journals from pre-spaceflight era. The fundamental principles haven't changed in two hundred years.",
+    "type": "declaration",
+    "intent": "memory",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 66,
+    "key": "EV_FE_SCI_OF#00066",
+    "text": "[CURIOUS] Can you describe the exact location and nature of the pain? Every detail helps the diagnosis.",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 67,
+    "key": "EV_FE_SCI_OF#00067",
+    "text": "[WARM] You held up well during a difficult situation. I wanted you to know that mattered.",
+    "type": "opener",
+    "intent": "praise_ai",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 68,
+    "key": "EV_FE_SCI_OF#00068",
+    "text": "[WARM] The pain you're feeling right now is real and it's valid. Here's what we do next to manage it.",
+    "type": "reply",
+    "intent": "offer_help",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "pain"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 69,
+    "key": "EV_FE_SCI_OF#00069",
+    "text": "[CALM] Your observation is medically sound. I'm implementing it into the treatment protocol.",
+    "type": "reply",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "status_report",
+      "work_talk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 70,
+    "key": "EV_FE_SCI_OF#00070",
+    "text": "[CALM] Rest and hydrate. Come back if the symptoms worsen. That's not optional.",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 71,
+    "key": "EV_FE_SCI_OF#00071",
+    "text": "[GRIM] I'll be here. The medbay doesn't close during crises.",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
   }
 ]

@@ -986,5 +986,372 @@
       "work_talk"
     ],
     "weight": 1.0
+  },
+  {
+    "id": 55,
+    "key": "EV_ML_ENG_CM#00055",
+    "text": "[CALM] Meal break. I'll check the secondary cooling systems while I eat. Multitasking.",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "recent_events": [
+        "meal_time"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 56,
+    "key": "EV_ML_ENG_CM#00056",
+    "text": "Running the full system sweep now. Baseline diagnostics first. Then the real work.",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "recent_events": [
+        "shift_start"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 57,
+    "key": "EV_ML_ENG_CM#00057",
+    "text": "[TIRED] All systems holding. No alerts, no surprises. That's the shift I wanted.",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "recent_events": [
+        "shift_end"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 58,
+    "key": "EV_ML_ENG_CM#00058",
+    "text": "[CALM] Life support's not responding to reroutes. I'm working through the diagnostics manually.",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "recent_events": [
+        "life_support_failure"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 59,
+    "key": "EV_ML_ENG_CM#00059",
+    "text": "[URGENT] Battery's depleting faster than predicted. Everything I can't run, I'm shutting down now.",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 14,
+      "recent_events": [
+        "power_low"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 60,
+    "key": "EV_ML_ENG_CM#00060",
+    "text": "[CALM] Reactor containment is holding. I'm watching it like a hawk. One wrong move and this gets worse.",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "recent_events": [
+        "reactor_failure"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 61,
+    "key": "EV_ML_ENG_CM#00061",
+    "text": "That section's sealed. Means I can't reach the auxiliary power through there anymore. Working around it.",
+    "type": "declaration",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "recent_events": [
+        "door_locked_on_crew"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 62,
+    "key": "EV_ML_ENG_CM#00062",
+    "text": "[SUSPICIOUS] The AI's power distribution algorithms seem erratic since the hit. Could be damage. Could be something else.",
+    "type": "declaration",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "recent_events": [
+        "ai_damaged"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 63,
+    "key": "EV_ML_ENG_CM#00063",
+    "text": "[WARM] The AI rerouted power exactly when I needed it. That was good timing and good thinking.",
+    "type": "declaration",
+    "intent": "praise_ai",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 64,
+    "key": "EV_ML_ENG_CM#00064",
+    "text": "[PAINED] Reactor fuel burn. Deep. Still got hands though. Still got work to do.",
+    "type": "declaration",
+    "intent": "pain",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "wounded": true,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 65,
+    "key": "EV_ML_ENG_CM#00065",
+    "text": "[GRIM] Lost someone in the reactor room today. I was three rooms over. Should've checked on them sooner.",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "mood": [
+        "grim"
+      ],
+      "recent_events": [
+        "crew_death"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 66,
+    "key": "EV_ML_ENG_CM#00066",
+    "text": "[PANICKED] Everything's failing at once and I can't fix it fast enough. The systems are pulling me in twelve different directions.",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 14,
+      "stress_max": 20,
+      "panic": true,
+      "recent_events": [
+        "reactor_failure"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 67,
+    "key": "EV_ML_ENG_CM#00067",
+    "text": "[TERRIFIED] The containment field's fluctuating. I can't stabilize it. If this goes, we don't make it.",
+    "type": "reply",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 12,
+      "stress_max": 18,
+      "panic": true,
+      "recent_events": [
+        "reactor_failure"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [
+      "warning",
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 68,
+    "key": "EV_ML_ENG_CM#00068",
+    "text": "[CALM] I've been working on optimizing the engine efficiency protocols. Small gains compound.",
+    "type": "declaration",
+    "intent": "memory",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 69,
+    "key": "EV_ML_ENG_CM#00069",
+    "text": "[CURIOUS] Can you keep watch here while I work on the secondary conduit? Just for thirty minutes.",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 70,
+    "key": "EV_ML_ENG_CM#00070",
+    "text": "[WARM] You caught the problem before it cascaded. That's the kind of situational awareness that saves lives.",
+    "type": "opener",
+    "intent": "praise_ai",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 71,
+    "key": "EV_ML_ENG_CM#00071",
+    "text": "[CALM] Your input on the power distribution is sound. I'm incorporating it.",
+    "type": "reply",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "status_report",
+      "work_talk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 72,
+    "key": "EV_ML_ENG_CM#00072",
+    "text": "[WARM] You don't have to carry this alone. That's what the team's for.",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "grief"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 73,
+    "key": "EV_ML_ENG_CM#00073",
+    "text": "[CALM] I'll be here in the engine room if anything shifts. Check on me before you sleep.",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 74,
+    "key": "EV_ML_ENG_CM#00074",
+    "text": "[GRIM] These systems won't fix themselves. Neither will I. But we're both still standing.",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
   }
 ]

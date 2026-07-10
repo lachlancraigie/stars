@@ -1016,5 +1016,37 @@
     },
     "reply_to_intents": [],
     "weight": 1.0
+  },
+  {
+    "type": "declaration",
+    "text": "[CALM] quiet shift protocols engaged",
+    "conditions": {
+      "target": [
+        "open_air"
+      ],
+      "stress_max": 6,
+      "stress_min": 2
+    },
+    "weight": 1.0,
+    "id": 57,
+    "intent": "smalltalk",
+    "key": "PA_FE_AND_OF#00057",
+    "reply_to_intents": []
+  },
+  {
+    "type": "declaration",
+    "text": "meal time initiated",
+    "conditions": {
+      "target": [
+        "open_air"
+      ],
+      "stress_max": 5,
+      "stress_min": 2
+    },
+    "weight": 1.0,
+    "id": 58,
+    "intent": "smalltalk",
+    "key": "PA_FE_AND_OF#00058",
+    "reply_to_intents": []
   }
 ]

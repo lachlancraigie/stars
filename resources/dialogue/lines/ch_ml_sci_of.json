@@ -736,5 +736,848 @@
     },
     "reply_to_intents": [],
     "weight": 1.0
+  },
+  {
+    "id": 40,
+    "key": "CH_ML_SCI_OF#00040",
+    "text": "[WARM] quiet shift in sickbay is my favorite kind of shift",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "location": [
+        "medbay"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "quiet_shift"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 41,
+    "key": "CH_ML_SCI_OF#00041",
+    "text": "[LAUGHS] finally cataloged all those biological samples. organization is satisfaction",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 42,
+    "key": "CH_ML_SCI_OF#00042",
+    "text": "[WARM] meal time! heading out to actually taste food with my mouth",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "location": [
+        "mess"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "meal_time"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 43,
+    "key": "CH_ML_SCI_OF#00043",
+    "text": "[WARM] shift's on! sickbay's ready to not have patients",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "location": [
+        "medbay"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "shift_start"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 44,
+    "key": "CH_ML_SCI_OF#00044",
+    "text": "[TIRED] shift complete and crew's intact. literally the goal",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 8,
+      "location": [
+        "medbay"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "shift_end"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 45,
+    "key": "CH_ML_SCI_OF#00045",
+    "text": "[WARM] break time for sustenance and reflection",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "meal_time"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 46,
+    "key": "CH_ML_SCI_OF#00046",
+    "text": "[NERVOUS] power dropping means sickbay's running on minimal equipment",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "power_low"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 47,
+    "key": "CH_ML_SCI_OF#00047",
+    "text": "[URGENT] air quality degrading and patients' oxygen needs are rising",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "location": [
+        "medbay"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "life_support_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 48,
+    "key": "CH_ML_SCI_OF#00048",
+    "text": "[PANICKED] reactor failure incoming trauma and i need to be ready",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 14,
+      "panic": true,
+      "location": [
+        "medbay"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "reactor_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 49,
+    "key": "CH_ML_SCI_OF#00049",
+    "text": "[PAINED] door locked and crew behind it. i've been thinking about what i could have prevented",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 14,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "door_locked_on_crew"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 50,
+    "key": "CH_ML_SCI_OF#00050",
+    "text": "[CURIOUS] the computer's struggling but i understand degradation",
+    "type": "declaration",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "ai_damaged"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 51,
+    "key": "CH_ML_SCI_OF#00051",
+    "text": "[WARM] the computer's brilliant. never complained about any of my puns",
+    "type": "declaration",
+    "intent": "praise_ai",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 52,
+    "key": "CH_ML_SCI_OF#00052",
+    "text": "[FLIRTY] intelligence and compassion are your best features. second best anyway",
+    "type": "declaration",
+    "intent": "romance_hint",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 53,
+    "key": "CH_ML_SCI_OF#00053",
+    "text": "[WARM] you make these long shifts feel shorter and better",
+    "type": "declaration",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 54,
+    "key": "CH_ML_SCI_OF#00054",
+    "text": "[PAINED] lost a patient. lost a person. that weight stays with you",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 10,
+      "stress_max": 15,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 55,
+    "key": "CH_ML_SCI_OF#00055",
+    "text": "[RESIGNED] medicine can't save everyone. intellectually i know. emotionally i hate it",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 14,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 56,
+    "key": "CH_ML_SCI_OF#00056",
+    "text": "[PAINED] got injured during emergency medical procedures. ironic",
+    "type": "declaration",
+    "intent": "pain",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "wounded": true,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "injury"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 57,
+    "key": "CH_ML_SCI_OF#00057",
+    "text": "[GRUFF] yeah i'm hurt but patients are priority. doctor's oath and all",
+    "type": "declaration",
+    "intent": "pain",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "wounded": true,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 58,
+    "key": "CH_ML_SCI_OF#00058",
+    "text": "[PANICKED] multiple critical patients and i can't be in all places!",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 10,
+      "stress_max": 15,
+      "panic": true,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 59,
+    "key": "CH_ML_SCI_OF#00059",
+    "text": "[TERRIFIED] [EMPHASIS] patient coding and air quality failing simultaneously!",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 11,
+      "stress_max": 16,
+      "panic": true,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 60,
+    "key": "CH_ML_SCI_OF#00060",
+    "text": "[WARM] been researching advanced surgical techniques in downtime",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 61,
+    "key": "CH_ML_SCI_OF#00061",
+    "text": "[CURIOUS] working on a new hypothesis about stress-related physiology",
+    "type": "declaration",
+    "intent": "memory",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 62,
+    "key": "CH_ML_SCI_OF#00062",
+    "text": "[WARM] how's your wellbeing today? real answer",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "location": [
+        "medbay"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 63,
+    "key": "CH_ML_SCI_OF#00063",
+    "text": "[CURIOUS] you've got medical aptitude. interested in learning more?",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "medbay"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 64,
+    "key": "CH_ML_SCI_OF#00064",
+    "text": "[WARM] hey! come on in. sickbay's open and judgment-free",
+    "type": "opener",
+    "intent": "greeting",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "medbay"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 65,
+    "key": "CH_ML_SCI_OF#00065",
+    "text": "[WHISPERS] systems are showing concerning patterns. something's coming",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "location": [
+        "medbay"
+      ],
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "reactor_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 66,
+    "key": "CH_ML_SCI_OF#00066",
+    "text": "[REASSURING] systems stable and crew recovering! we made it!",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "warning"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 67,
+    "key": "CH_ML_SCI_OF#00067",
+    "text": "[WARM] another successful day in medicine. perfection achieved",
+    "type": "reply",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "acknowledgment"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 68,
+    "key": "CH_ML_SCI_OF#00068",
+    "text": "[WARM] you've got solid instincts and an even solider heart",
+    "type": "reply",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "acknowledgment",
+      "praise_ai"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 69,
+    "key": "CH_ML_SCI_OF#00069",
+    "text": "[LAUGHS] terrible joke but excellent delivery",
+    "type": "reply",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "banter"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 70,
+    "key": "CH_ML_SCI_OF#00070",
+    "text": "[WARM] apology accepted. want a lollipop and forgiveness?",
+    "type": "reply",
+    "intent": "apology",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "apology"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 71,
+    "key": "CH_ML_SCI_OF#00071",
+    "text": "[EMPHASIS] acknowledged. prepping sickbay for incoming",
+    "type": "reply",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "work_talk",
+      "warning"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 72,
+    "key": "CH_ML_SCI_OF#00072",
+    "text": "[PAINED] we lost them. i want you to know i tried everything",
+    "type": "reply",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "grief"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 73,
+    "key": "CH_ML_SCI_OF#00073",
+    "text": "[EMBARRASSED] oh wow — yes. absolutely yes. you just made my entire week",
+    "type": "reply",
+    "intent": "romance_accept",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "romance_hint",
+      "romance_advance"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 74,
+    "key": "CH_ML_SCI_OF#00074",
+    "text": "[SUSPICIOUS] i want to trust it, but let's double-check independently",
+    "type": "reply",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "suspicion_ai"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 75,
+    "key": "CH_ML_SCI_OF#00075",
+    "text": "[WARM] pain's manageable. patient care continues",
+    "type": "reply",
+    "intent": "pain",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "wounded": true,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "pain"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 76,
+    "key": "CH_ML_SCI_OF#00076",
+    "text": "[WARM] you've got integrity and intelligence. valuable combination",
+    "type": "reply",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "praise_ai"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 77,
+    "key": "CH_ML_SCI_OF#00077",
+    "text": "[CURIOUS] what's your clinical judgment? i value your perspective",
+    "type": "reply",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "doubt",
+      "work_talk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 78,
+    "key": "CH_ML_SCI_OF#00078",
+    "text": "[WARM] catch you later. sickbay waits for no one",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 79,
+    "key": "CH_ML_SCI_OF#00079",
+    "text": "[LAUGHS] patients awaiting. hopefully metaphorically",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 80,
+    "key": "CH_ML_SCI_OF#00080",
+    "text": "[TIRED] going to rest. medical orders from yours truly",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 81,
+    "key": "CH_ML_SCI_OF#00081",
+    "text": "[WARM] you were excellent today. genuinely",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 82,
+    "key": "CH_ML_SCI_OF#00082",
+    "text": "[CALM] emergency protocols engaged. sickbay ready",
+    "type": "reply",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "reactor_failure"
+      ]
+    },
+    "reply_to_intents": [
+      "warning"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 83,
+    "key": "CH_ML_SCI_OF#00083",
+    "text": "[WARM] air's recovering and vitals are normalizing. everyone's going to be fine",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "life_support_failure"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 84,
+    "key": "CH_ML_SCI_OF#00084",
+    "text": "[WARM] i'm staying. we'll figure this out together",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent"
+    ],
+    "weight": 1.0
   }
 ]

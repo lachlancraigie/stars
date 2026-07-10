@@ -712,5 +712,805 @@
     },
     "reply_to_intents": [],
     "weight": 1.0
+  },
+  {
+    "id": 40,
+    "key": "CH_ML_MAR_CM#00040",
+    "text": "[LAUGHS] quiet shift means i can organize the gym equipment without people using them as throw weapons",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "quiet_shift"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 41,
+    "key": "CH_ML_MAR_CM#00041",
+    "text": "[WARM] morning everyone! time to be alert and ready for literally anything",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "shift_start"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 42,
+    "key": "CH_ML_MAR_CM#00042",
+    "text": "[LAUGHS] mess hall food today. either it's good or i'm desperate enough not to notice",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "location": [
+        "mess"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "meal_time"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 43,
+    "key": "CH_ML_MAR_CM#00043",
+    "text": "[TIRED] shift's over and nobody needed violence. that's a win in my book",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "shift_end"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 44,
+    "key": "CH_ML_MAR_CM#00044",
+    "text": "[WARM] break time for fuel and recovery",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "meal_time"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 45,
+    "key": "CH_ML_MAR_CM#00045",
+    "text": "[NERVOUS] power's dropping and that means no lights. i got this though",
+    "type": "declaration",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "power_low"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 46,
+    "key": "CH_ML_MAR_CM#00046",
+    "text": "[NERVOUS] air's thinning. that's outside my comfort zone but i'm ready to adapt",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "life_support_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 47,
+    "key": "CH_ML_MAR_CM#00047",
+    "text": "[PANICKED] reactor's failing and i'm in my element now, time to move fast!",
+    "type": "declaration",
+    "intent": "request_help",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 14,
+      "panic": true,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "reactor_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 48,
+    "key": "CH_ML_MAR_CM#00048",
+    "text": "[GRIM] locked a crew member behind a door. that's on the leadership, and it eats at me",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 14,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "door_locked_on_crew"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 49,
+    "key": "CH_ML_MAR_CM#00049",
+    "text": "[SUSPICIOUS] computer's acting different since the hit. don't blame it though",
+    "type": "declaration",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "ai_damaged"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 50,
+    "key": "CH_ML_MAR_CM#00050",
+    "text": "[WARM] computer's reliable. never hesitates when we need it",
+    "type": "declaration",
+    "intent": "praise_ai",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 51,
+    "key": "CH_ML_MAR_CM#00051",
+    "text": "[FLIRTY] you've got that thing where you take charge. it's attractive",
+    "type": "declaration",
+    "intent": "romance_hint",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 52,
+    "key": "CH_ML_MAR_CM#00052",
+    "text": "[WARM] been thinking about you. in a good way, not a distraction way",
+    "type": "declaration",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 53,
+    "key": "CH_ML_MAR_CM#00053",
+    "text": "[PAINED] lost someone i served with. that bond doesn't break easy",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 10,
+      "stress_max": 15,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 54,
+    "key": "CH_ML_MAR_CM#00054",
+    "text": "[RESIGNED] death's part of the job but that doesn't make it suck less",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 14,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 55,
+    "key": "CH_ML_MAR_CM#00055",
+    "text": "[LAUGHS] got hit but still standing. that's what armor's for",
+    "type": "declaration",
+    "intent": "pain",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "wounded": true,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "injury"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 56,
+    "key": "CH_ML_MAR_CM#00056",
+    "text": "[GRUFF] hurts like hell but i've had worse. we keep moving",
+    "type": "declaration",
+    "intent": "pain",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "wounded": true,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 57,
+    "key": "CH_ML_MAR_CM#00057",
+    "text": "[PANICKED] everything's falling apart and i can't fight this!",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 10,
+      "stress_max": 15,
+      "panic": true,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 58,
+    "key": "CH_ML_MAR_CM#00058",
+    "text": "[TERRIFIED] [EMPHASIS] crew's in danger and I can't reach them!",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 11,
+      "stress_max": 16,
+      "panic": true,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 59,
+    "key": "CH_ML_MAR_CM#00059",
+    "text": "[WARM] been working out like crazy. keeps me sane and sharp",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 60,
+    "key": "CH_ML_MAR_CM#00060",
+    "text": "[LAUGHS] spent downtime organizing tournament brackets. making it interesting",
+    "type": "declaration",
+    "intent": "memory",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 61,
+    "key": "CH_ML_MAR_CM#00061",
+    "text": "[WARM] you've got good tactical instincts. ever think about weapons training?",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 62,
+    "key": "CH_ML_MAR_CM#00062",
+    "text": "[CURIOUS] quick debrief on that situation? i want your take",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 63,
+    "key": "CH_ML_MAR_CM#00063",
+    "text": "[LAUGHS] there you are! been meaning to catch you",
+    "type": "opener",
+    "intent": "greeting",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 64,
+    "key": "CH_ML_MAR_CM#00064",
+    "text": "[WHISPERS] feeling like trouble's coming. stay sharp",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "reactor_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 65,
+    "key": "CH_ML_MAR_CM#00065",
+    "text": "[CONFIDENT] systems are recovering! we're solid!",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "warning"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 66,
+    "key": "CH_ML_MAR_CM#00066",
+    "text": "[WARM] excellent execution. that's how it's done",
+    "type": "reply",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "acknowledgment"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 67,
+    "key": "CH_ML_MAR_CM#00067",
+    "text": "[WARM] you've got my back so i've got yours. that's the deal",
+    "type": "reply",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "acknowledgment",
+      "praise_ai"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 68,
+    "key": "CH_ML_MAR_CM#00068",
+    "text": "[LAUGHS] your attempt was awesome. commitment to the bit",
+    "type": "reply",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "banter"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 69,
+    "key": "CH_ML_MAR_CM#00069",
+    "text": "[WARM] all good. seriously. grab a drink with me later?",
+    "type": "reply",
+    "intent": "apology",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "apology"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 70,
+    "key": "CH_ML_MAR_CM#00070",
+    "text": "[EMPHASIS] affirmative. moving to position now",
+    "type": "reply",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "work_talk",
+      "warning"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 71,
+    "key": "CH_ML_MAR_CM#00071",
+    "text": "[PAINED] we lost them. i wasn't fast enough to stop it",
+    "type": "reply",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "grief"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 72,
+    "key": "CH_ML_MAR_CM#00072",
+    "text": "[EMBARRASSED] hell yeah i do. thought you'd never ask",
+    "type": "reply",
+    "intent": "romance_accept",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "romance_hint",
+      "romance_advance"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 73,
+    "key": "CH_ML_MAR_CM#00073",
+    "text": "[SUSPICIOUS] yeah same. let's keep eyes open",
+    "type": "reply",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "suspicion_ai"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 74,
+    "key": "CH_ML_MAR_CM#00074",
+    "text": "[LAUGHS] yeah i'm hurt but worse for wear. good times",
+    "type": "reply",
+    "intent": "pain",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "wounded": true,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "pain"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 75,
+    "key": "CH_ML_MAR_CM#00075",
+    "text": "[WARM] you've got heart and strength. that's the combo we need",
+    "type": "reply",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "praise_ai"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 76,
+    "key": "CH_ML_MAR_CM#00076",
+    "text": "[CURIOUS] what's your play here? give me the strategy",
+    "type": "reply",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "doubt",
+      "work_talk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 77,
+    "key": "CH_ML_MAR_CM#00077",
+    "text": "[LAUGHS] catch you later. someone's gotta keep this ship running",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 78,
+    "key": "CH_ML_MAR_CM#00078",
+    "text": "[WARM] take it easy. you earned rest",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 79,
+    "key": "CH_ML_MAR_CM#00079",
+    "text": "[TIRED] gonna crash hard. catch you later",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 80,
+    "key": "CH_ML_MAR_CM#00080",
+    "text": "[WARM] you did good. really good",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 81,
+    "key": "CH_ML_MAR_CM#00081",
+    "text": "[CALM] tactical readiness: full. standing by",
+    "type": "reply",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "reactor_failure"
+      ]
+    },
+    "reply_to_intents": [
+      "warning"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 82,
+    "key": "CH_ML_MAR_CM#00082",
+    "text": "[WARM] systems recovering and crew's breathing easier. we're good",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "life_support_failure"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 83,
+    "key": "CH_ML_MAR_CM#00083",
+    "text": "[WARM] i'm here. i'm not moving until this is solved",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent"
+    ],
+    "weight": 1.0
   }
 ]

@@ -968,5 +968,976 @@
       "greeting"
     ],
     "weight": 1.0
+  },
+  {
+    "id": 51,
+    "key": "GR_FE_AND_CM#00051",
+    "text": "[DRY] power down time again. i do not understand rest. [WARM] but i understand it is necessary",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "quarters"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "meal_time"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 52,
+    "key": "GR_FE_AND_CM#00052",
+    "text": "[MUTTERS] you are moving slowly today. inefficiency spreads like heat through a failing system",
+    "type": "reply",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "greeting",
+      "smalltalk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 53,
+    "key": "GR_FE_AND_CM#00053",
+    "text": "down time. i calculate you need it. [DEADPAN] i do not, but i will pretend anyway",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "location": [
+        "mess"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "shift_end"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 54,
+    "key": "GR_FE_AND_CM#00054",
+    "text": "[CALM] shift begins. everything is prepared. inefficiently, but prepared",
+    "type": "opener",
+    "intent": "greeting",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "shift_start"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 55,
+    "key": "GR_FE_AND_CM#00055",
+    "text": "[EMPHASIS] door locked on crew member. calculating cost of this inefficiency",
+    "type": "declaration",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "door_locked_on_crew"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 56,
+    "key": "GR_FE_AND_CM#00056",
+    "text": "[NERVOUS] reactor failure means cascading system failures. i have calculated seventy-three failure points",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "reactor_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 57,
+    "key": "GR_FE_AND_CM#00057",
+    "text": "[PANICKED] power cannot sustain life support. this is inefficient and it is fatal",
+    "type": "reply",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 14,
+      "stress_max": 20,
+      "panic": true,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "warning"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 58,
+    "key": "GR_FE_AND_CM#00058",
+    "text": "[CALM] life support failing. i will allocate priority before inefficiency becomes catastrophic",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "life_support_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 59,
+    "key": "GR_FE_AND_CM#00059",
+    "text": "[GRUFF] you are injured. i will allocate medical resources. do not move inefficiently",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "wounded": true,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "pain",
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 60,
+    "key": "GR_FE_AND_CM#00060",
+    "text": "[EXHAUSTED] thirty years before this assignment. machines break differently than humans break",
+    "type": "declaration",
+    "intent": "memory",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "mood": [
+        "grim",
+        "low"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 61,
+    "key": "GR_FE_AND_CM#00061",
+    "text": "[SUSPICIOUS] the ship ai is not responding to requests. [DRY] neither would i if i were damaged",
+    "type": "reply",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "ai_damaged"
+      ]
+    },
+    "reply_to_intents": [
+      "warning",
+      "work_talk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 62,
+    "key": "GR_FE_AND_CM#00062",
+    "text": "[WARM] you worked efficiently today. this is high praise from my systems",
+    "type": "reply",
+    "intent": "praise_ai",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "work_talk",
+      "status_report"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 63,
+    "key": "GR_FE_AND_CM#00063",
+    "text": "[DEADPAN] i have watched four crews. the pattern is always the same. they break",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 13,
+      "mood": [
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 64,
+    "key": "GR_FE_AND_CM#00064",
+    "text": "[CALM] wounded. [EMPHASIS] sit. i have first aid protocols but limited patience for non-compliance",
+    "type": "opener",
+    "intent": "pain",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "wounded": true,
+      "location": [
+        "medbay"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 65,
+    "key": "GR_FE_AND_CM#00065",
+    "text": "[MUTTERS] another repair. the ship's inefficiency compounds. this is a problem",
+    "type": "declaration",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 66,
+    "key": "GR_FE_AND_CM#00066",
+    "text": "[GRUFF] you are panicking. i have calculated this does not help. stop",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 14,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "doubt"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 67,
+    "key": "GR_FE_AND_CM#00067",
+    "text": "[DRY] i will survive this. i am built to survive inefficiency",
+    "type": "declaration",
+    "intent": "boast",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "mood": [
+        "ok"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 68,
+    "key": "GR_FE_AND_CM#00068",
+    "text": "[URGENT] reactor critical. all non-essential systems offline. [EMPHASIS] now",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 14,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "power_low"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 69,
+    "key": "GR_FE_AND_CM#00069",
+    "text": "[NERVOUS] hull integrity compromised. sixty-seven percent of structural supports still functional",
+    "type": "reply",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "hull_breach"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "warning"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 70,
+    "key": "GR_FE_AND_CM#00070",
+    "text": "[CALM] power restored. i file this under 'temporary solutions to permanent problems'",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "repair_success"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 71,
+    "key": "GR_FE_AND_CM#00071",
+    "text": "[EXHAUSTED] all crisis parameters contained. [DEADPAN] until the next cascade begins",
+    "type": "closer",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "crisis_resolved"
+      ]
+    },
+    "reply_to_intents": [
+      "status_report",
+      "acknowledgment"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 72,
+    "key": "GR_FE_AND_CM#00072",
+    "text": "[MUTTERS] disease spreading. i can track the infection pattern but i cannot stop inefficiency",
+    "type": "opener",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "disease_outbreak"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 73,
+    "key": "GR_FE_AND_CM#00073",
+    "text": "[DEADPAN] someone is injured. [GRUFF] this requires attention i cannot give with my design",
+    "type": "reply",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "injury"
+      ]
+    },
+    "reply_to_intents": [
+      "pain",
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 74,
+    "key": "GR_FE_AND_CM#00074",
+    "text": "[GRUFF] combat is happening. [EMPHASIS] inefficient and loud",
+    "type": "declaration",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "combat"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 75,
+    "key": "GR_FE_AND_CM#00075",
+    "text": "[CALM] crew member died. i will log this. i will not forget",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 14,
+      "mood": [
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 76,
+    "key": "GR_FE_AND_CM#00076",
+    "text": "[SIGHS] humans sleep. i calculate optimal power states. we speak the same languages differently",
+    "type": "reply",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "greeting",
+      "banter"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 77,
+    "key": "GR_FE_AND_CM#00077",
+    "text": "[WARM] i do not experience companionship. but if i did, this would be close",
+    "type": "reply",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "romance_hint",
+      "smalltalk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 78,
+    "key": "GR_FE_AND_CM#00078",
+    "text": "[DRY] you keep trying to explain emotions. [DEADPAN] i will keep not understanding",
+    "type": "reply",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "smalltalk",
+      "greeting"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 79,
+    "key": "GR_FE_AND_CM#00079",
+    "text": "[EMPHASIS] this is a workable solution. [GRUFF] barely, but workable",
+    "type": "reply",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "work_talk",
+      "status_report"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 80,
+    "key": "GR_FE_AND_CM#00080",
+    "text": "[CALM] door malfunction. [DEADPAN] or i wonder: is it performing its function correctly?",
+    "type": "declaration",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "door_locked_on_crew"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 81,
+    "key": "GR_FE_AND_CM#00081",
+    "text": "[GRUFF] you need rest more than i need clarity right now",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "greeting",
+      "smalltalk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 82,
+    "key": "GR_FE_AND_CM#00082",
+    "text": "[TIRED] i exist. i maintain. i observe you breaking",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 83,
+    "key": "GR_FE_AND_CM#00083",
+    "text": "[NERVOUS] i run seventeen simultaneous calculations about that noise",
+    "type": "reply",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "warning"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 84,
+    "key": "GR_FE_AND_CM#00084",
+    "text": "[DEADPAN] you are using that tool wrong. [GRUFF] i have calculated forty-two better ways",
+    "type": "reply",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "work_talk",
+      "banter"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 85,
+    "key": "GR_FE_AND_CM#00085",
+    "text": "[MUTTERS] the human body is a poor design. many single points of failure",
+    "type": "declaration",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 86,
+    "key": "GR_FE_AND_CM#00086",
+    "text": "[CALM] another shift survives. inefficiency continues. [WARM] this is acceptable",
+    "type": "opener",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "shift_end"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 87,
+    "key": "GR_FE_AND_CM#00087",
+    "text": "[EMPHASIS] i have reviewed all prior incidents. [GRUFF] this pattern is not accidental",
+    "type": "reply",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "suspicion_ai",
+      "doubt"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 88,
+    "key": "GR_FE_AND_CM#00088",
+    "text": "[DRY] you call this rest? i was calculating for six hours before you arrived",
+    "type": "reply",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "greeting",
+      "smalltalk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 89,
+    "key": "GR_FE_AND_CM#00089",
+    "text": "[GRUFF] power crisis. i have already calculated the sacrifice points",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "power_low"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 90,
+    "key": "GR_FE_AND_CM#00090",
+    "text": "[RESIGNED] they will not listen to logic. they never do. [SIGHS]",
+    "type": "reply",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "reassurance"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 91,
+    "key": "GR_FE_AND_CM#00091",
+    "text": "[WARM] i enjoy your presence. [DEADPAN] by which i mean you reduce my processing overhead",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 92,
+    "key": "GR_FE_AND_CM#00092",
+    "text": "[CALM] the cascade will continue. i am prepared. [EMPHASIS] you should be too",
+    "type": "reply",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "warning"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 93,
+    "key": "GR_FE_AND_CM#00093",
+    "text": "[TIRED] failure is inevitable. [DEADPAN] i simply delay its arrival",
+    "type": "declaration",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 94,
+    "key": "GR_FE_AND_CM#00094",
+    "text": "[GRUFF] your wound is critical. [EMPHASIS] sit. immediately",
+    "type": "reply",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "pain"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 95,
+    "key": "GR_FE_AND_CM#00095",
+    "text": "[MUTTERS] another inefficiency added to the list. the list is very long now",
+    "type": "reply",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "warning",
+      "work_talk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 96,
+    "key": "GR_FE_AND_CM#00096",
+    "text": "[SUSPICIOUS] the ai core damage has not improved. [DEADPAN] i wonder why",
+    "type": "declaration",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "ai_damaged"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 97,
+    "key": "GR_FE_AND_CM#00097",
+    "text": "[CALM] you have survived another crisis. [WARM] this suggests competence",
+    "type": "closer",
+    "intent": "praise_ai",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "work_talk",
+      "acknowledgment"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 98,
+    "key": "GR_FE_AND_CM#00098",
+    "text": "[DEADPAN] there are nineteen faults in this bulkhead. should i list them all?",
+    "type": "reply",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "work_talk",
+      "status_report"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 99,
+    "key": "GR_FE_AND_CM#00099",
+    "text": "[EMPHASIS] you are still here. [GRUFF] either loyalty or entrapment. both possible",
+    "type": "reply",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "banter",
+      "smalltalk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 100,
+    "key": "GR_FE_AND_CM#00100",
+    "text": "[RESIGNED] i will outlast this ship. [DEADPAN] most likely",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "farewell",
+      "greeting"
+    ],
+    "weight": 1.0
   }
 ]

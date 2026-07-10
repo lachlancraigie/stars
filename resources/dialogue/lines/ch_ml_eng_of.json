@@ -846,5 +846,854 @@
     },
     "reply_to_intents": [],
     "weight": 1.0
+  },
+  {
+    "id": 44,
+    "key": "CH_ML_ENG_OF#00044",
+    "text": "[WARM] quiet shift means i get to mentor someone on the finer points of maintenance",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "quiet_shift"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 45,
+    "key": "CH_ML_ENG_OF#00045",
+    "text": "[LAUGHS] finally got that persistent alignment issue sorted. been bugging me for weeks",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 46,
+    "key": "CH_ML_ENG_OF#00046",
+    "text": "[WARM] meal time! perfect moment to grab fuel and think about what's ahead",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "location": [
+        "mess"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "meal_time"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 47,
+    "key": "CH_ML_ENG_OF#00047",
+    "text": "[WARM] morning! let's keep her running smart and safe today",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "shift_start"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 48,
+    "key": "CH_ML_ENG_OF#00048",
+    "text": "[TIRED] long shift but the team did solid work. proud of how we handled it",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 8,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "shift_end"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 49,
+    "key": "CH_ML_ENG_OF#00049",
+    "text": "[WARM] break time. recharging before the next push",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "meal_time"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 50,
+    "key": "CH_ML_ENG_OF#00050",
+    "text": "[NERVOUS] power situation requires strategic choices about what we keep running",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "power_low"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 51,
+    "key": "CH_ML_ENG_OF#00051",
+    "text": "[URGENT] life support's degrading. i need engineering focused on restoration",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "location": [
+        "life_support"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "life_support_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 52,
+    "key": "CH_ML_ENG_OF#00052",
+    "text": "[PANICKED] reactor failure cascading and i'm trying to contain the damage",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 14,
+      "panic": true,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "reactor_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 53,
+    "key": "CH_ML_ENG_OF#00053",
+    "text": "[PAINED] crew locked behind a door and i'm thinking about every call i made that led here",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 14,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "door_locked_on_crew"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 54,
+    "key": "CH_ML_ENG_OF#00054",
+    "text": "[CURIOUS] the computer's having issues but i can work around them",
+    "type": "declaration",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "ai_damaged"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 55,
+    "key": "CH_ML_ENG_OF#00055",
+    "text": "[WARM] the computer's solid. saves lives every day without complaint",
+    "type": "declaration",
+    "intent": "praise_ai",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 56,
+    "key": "CH_ML_ENG_OF#00056",
+    "text": "[FLIRTY] competence is attractive. and you've got plenty of it",
+    "type": "declaration",
+    "intent": "romance_hint",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 7,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 57,
+    "key": "CH_ML_ENG_OF#00057",
+    "text": "[WARM] working together makes me want to be better at my job",
+    "type": "declaration",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 58,
+    "key": "CH_ML_ENG_OF#00058",
+    "text": "[PAINED] lost someone who understood the weight of keeping a ship running",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 10,
+      "stress_max": 15,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 59,
+    "key": "CH_ML_ENG_OF#00059",
+    "text": "[RESIGNED] every decision i make affects whether people come home. today we missed one",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 14,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 60,
+    "key": "CH_ML_ENG_OF#00060",
+    "text": "[PAINED] got burned during emergency cooling procedures but systems are stable",
+    "type": "declaration",
+    "intent": "pain",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "wounded": true,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "injury"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 61,
+    "key": "CH_ML_ENG_OF#00061",
+    "text": "[GRUFF] injury's not the priority here. engineering needs leadership",
+    "type": "declaration",
+    "intent": "pain",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "wounded": true,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 62,
+    "key": "CH_ML_ENG_OF#00062",
+    "text": "[PANICKED] systems cascading and i can't get ahead of it!",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 10,
+      "stress_max": 15,
+      "panic": true,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 63,
+    "key": "CH_ML_ENG_OF#00063",
+    "text": "[TERRIFIED] [EMPHASIS] the reactor won't stabilize and crew safety is at risk!",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 11,
+      "stress_max": 16,
+      "panic": true,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 64,
+    "key": "CH_ML_ENG_OF#00064",
+    "text": "[WARM] been sketching improvements to the engine schematics in downtime",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 65,
+    "key": "CH_ML_ENG_OF#00065",
+    "text": "[CURIOUS] working on efficiency upgrades. old ship's got a lot of untapped potential",
+    "type": "declaration",
+    "intent": "memory",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 66,
+    "key": "CH_ML_ENG_OF#00066",
+    "text": "[WARM] want to talk through a systems problem? your perspective helps me see things",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 67,
+    "key": "CH_ML_ENG_OF#00067",
+    "text": "[CURIOUS] you've got engineering aptitude. ever thought about specializing?",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 68,
+    "key": "CH_ML_ENG_OF#00068",
+    "text": "[WARM] got a minute? i want to talk shop with someone i trust",
+    "type": "opener",
+    "intent": "greeting",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 69,
+    "key": "CH_ML_ENG_OF#00069",
+    "text": "[WHISPERS] systems are showing stress markers. prep team for possible emergency",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "reactor_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 70,
+    "key": "CH_ML_ENG_OF#00070",
+    "text": "[REASSURING] systems stabilized and recovery's on schedule. we got this",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "warning"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 71,
+    "key": "CH_ML_ENG_OF#00071",
+    "text": "[WARM] team executed that perfectly. great work out there",
+    "type": "reply",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "acknowledgment"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 72,
+    "key": "CH_ML_ENG_OF#00072",
+    "text": "[WARM] your solid judgment makes my job easier. thank you for that",
+    "type": "reply",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "acknowledgment",
+      "praise_ai"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 73,
+    "key": "CH_ML_ENG_OF#00073",
+    "text": "[LAUGHS] good timing. mine was worse though",
+    "type": "reply",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "banter"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 74,
+    "key": "CH_ML_ENG_OF#00074",
+    "text": "[WARM] water under the bridge. let's keep moving forward",
+    "type": "reply",
+    "intent": "apology",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "apology"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 75,
+    "key": "CH_ML_ENG_OF#00075",
+    "text": "[EMPHASIS] copy. executing protocols now",
+    "type": "reply",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "work_talk",
+      "warning"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 76,
+    "key": "CH_ML_ENG_OF#00076",
+    "text": "[PAINED] we lost them. that responsibility sits on my shoulders",
+    "type": "reply",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "grief"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 77,
+    "key": "CH_ML_ENG_OF#00077",
+    "text": "[EMBARRASSED] oh — yeah. absolutely. that means a lot to me",
+    "type": "reply",
+    "intent": "romance_accept",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "romance_hint",
+      "romance_advance"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 78,
+    "key": "CH_ML_ENG_OF#00078",
+    "text": "[SUSPICIOUS] i'm seeing the same thing. let's independently verify before acting",
+    "type": "reply",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "suspicion_ai"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 79,
+    "key": "CH_ML_ENG_OF#00079",
+    "text": "[PAINED] shoulder's limiting my mobility but i can still direct",
+    "type": "reply",
+    "intent": "pain",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "wounded": true,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "pain"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 80,
+    "key": "CH_ML_ENG_OF#00080",
+    "text": "[WARM] you've got strong judgment and stronger character",
+    "type": "reply",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "praise_ai"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 81,
+    "key": "CH_ML_ENG_OF#00081",
+    "text": "[CURIOUS] what's your assessment? i trust your thinking",
+    "type": "reply",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "doubt",
+      "work_talk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 82,
+    "key": "CH_ML_ENG_OF#00082",
+    "text": "[WARM] see you next shift. keep the engines honest",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 83,
+    "key": "CH_ML_ENG_OF#00083",
+    "text": "[LAUGHS] back to the engine room. she's waiting",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 84,
+    "key": "CH_ML_ENG_OF#00084",
+    "text": "[TIRED] going to rest. call if engineering needs me",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 85,
+    "key": "CH_ML_ENG_OF#00085",
+    "text": "[WARM] you did solid work today. catch you next time",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 86,
+    "key": "CH_ML_ENG_OF#00086",
+    "text": "[CALM] engineering ready for emergency. standing by",
+    "type": "reply",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "reactor_failure"
+      ]
+    },
+    "reply_to_intents": [
+      "warning"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 87,
+    "key": "CH_ML_ENG_OF#00087",
+    "text": "[WARM] life support's recovering on schedule. crew'll be breathing easier soon",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "life_support_failure"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 88,
+    "key": "CH_ML_ENG_OF#00088",
+    "text": "[WARM] i've got you. not leaving until this is fixed",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent"
+    ],
+    "weight": 1.0
   }
 ]

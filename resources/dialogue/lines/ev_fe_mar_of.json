@@ -717,5 +717,372 @@
     },
     "reply_to_intents": [],
     "weight": 1.0
+  },
+  {
+    "id": 40,
+    "key": "EV_FE_MAR_OF#00040",
+    "text": "[CALM] Meal time. I'll use it to review the patrol logs from yesterday.",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "recent_events": [
+        "meal_time"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 41,
+    "key": "EV_FE_MAR_OF#00041",
+    "text": "Shift beginning. Squad readiness confirmed. We proceed.",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "recent_events": [
+        "shift_start"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 42,
+    "key": "EV_FE_MAR_OF#00042",
+    "text": "[TIRED] Shift ends clean. No incidents, no injuries. We'll call that a win.",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "recent_events": [
+        "shift_end"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 43,
+    "key": "EV_FE_MAR_OF#00043",
+    "text": "[CALM] Life support's failing. I'm securing the affected sections and accounting for everyone.",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "recent_events": [
+        "life_support_failure"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 44,
+    "key": "EV_FE_MAR_OF#00044",
+    "text": "[GRIM] Power situation is deteriorating. Prioritizing life-critical systems over everything else.",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "recent_events": [
+        "power_low"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 45,
+    "key": "EV_FE_MAR_OF#00045",
+    "text": "[CALM] Reactor's showing instability. I've positioned people to contain any secondary effects.",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "recent_events": [
+        "reactor_failure"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 46,
+    "key": "EV_FE_MAR_OF#00046",
+    "text": "[GRIM] I sealed that door. It was necessary. It was also unforgivable. Both things are true.",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "recent_events": [
+        "door_locked_on_crew"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 47,
+    "key": "EV_FE_MAR_OF#00047",
+    "text": "[SUSPICIOUS] The AI's tactical suggestions have been off since the damage. I'm monitoring for cascading system failures.",
+    "type": "declaration",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "recent_events": [
+        "ai_damaged"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 48,
+    "key": "EV_FE_MAR_OF#00048",
+    "text": "[WARM] The AI's performance during the crisis showed sound judgment. I want that on record.",
+    "type": "declaration",
+    "intent": "praise_ai",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 49,
+    "key": "EV_FE_MAR_OF#00049",
+    "text": "[PAINED] Took shrapnel. Nothing critical. Still combat effective.",
+    "type": "declaration",
+    "intent": "pain",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "wounded": true,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 50,
+    "key": "EV_FE_MAR_OF#00050",
+    "text": "[GRIM] A crew member fell today. I'm writing their after-action report myself. That's what respect looks like.",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "mood": [
+        "grim"
+      ],
+      "recent_events": [
+        "crew_death"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 51,
+    "key": "EV_FE_MAR_OF#00051",
+    "text": "[PANICKED] The containment's failing and I can't stop it. I can't— I need to refocus. I need to think.",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 14,
+      "stress_max": 20,
+      "panic": true,
+      "recent_events": [
+        "hull_breach"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 52,
+    "key": "EV_FE_MAR_OF#00052",
+    "text": "[TERRIFIED] Contact overwhelming our position. We're going to get overrun. I don't see how we hold this.",
+    "type": "reply",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 12,
+      "stress_max": 18,
+      "panic": true,
+      "recent_events": [
+        "combat"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "warning"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 53,
+    "key": "EV_FE_MAR_OF#00053",
+    "text": "[CALM] Equipment maintenance is meditation for me. Check every piece, know every weak point, prepare for everything.",
+    "type": "declaration",
+    "intent": "memory",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 54,
+    "key": "EV_FE_MAR_OF#00054",
+    "text": "[CURIOUS] Have you run the perimeter yet today? I want a fresh report on all entry points.",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 55,
+    "key": "EV_FE_MAR_OF#00055",
+    "text": "[WARM] You handled that correctly. I noticed. That matters.",
+    "type": "opener",
+    "intent": "praise_ai",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 56,
+    "key": "EV_FE_MAR_OF#00056",
+    "text": "[WARM] We lost someone good today. That carries weight. I'm carrying it with you.",
+    "type": "reply",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 14,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "grief"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 57,
+    "key": "EV_FE_MAR_OF#00057",
+    "text": "[CALM] Your assessment is correct. That's why I'm asking you about it.",
+    "type": "reply",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "status_report",
+      "work_talk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 58,
+    "key": "EV_FE_MAR_OF#00058",
+    "text": "[CALM] Resume your post. I'll handle coordination from here.",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 59,
+    "key": "EV_FE_MAR_OF#00059",
+    "text": "[GRIM] Hold position. Don't take unnecessary risks.",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
   }
 ]

@@ -713,5 +713,824 @@
     },
     "reply_to_intents": [],
     "weight": 1.0
+  },
+  {
+    "id": 40,
+    "key": "CH_ML_AND_CM#00040",
+    "text": "Quiet shift means I can perform my non-essential maintenance. I find this pleasant!",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "quiet_shift"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 41,
+    "key": "CH_ML_AND_CM#00041",
+    "text": "I have successfully completed all scheduled tasks with time to spare for optimizations!",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 42,
+    "key": "CH_ML_AND_CM#00042",
+    "text": "Meal time! I will observe the social customs by being present, even though I do not eat.",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "location": [
+        "mess"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "meal_time"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 43,
+    "key": "CH_ML_AND_CM#00043",
+    "text": "Shift activation commencing! I have been ready for twenty minutes already!",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "location": [
+        "any"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "shift_start"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 44,
+    "key": "CH_ML_AND_CM#00044",
+    "text": "Shift conclusion achieved without system failures or crew injuries. Optimal outcome!",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "shift_end"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 45,
+    "key": "CH_ML_AND_CM#00045",
+    "text": "Meal period break! I will disengage from active tasks now.",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "meal_time"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 46,
+    "key": "CH_ML_AND_CM#00046",
+    "text": "[NERVOUS] Power reduction detected. I am reducing my processing speed to assist the crew!",
+    "type": "declaration",
+    "intent": "offer_help",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "power_low"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 47,
+    "key": "CH_ML_AND_CM#00047",
+    "text": "[URGENT] Life support levels are concerning! I am calculating alternative solutions now!",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "life_support_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 48,
+    "key": "CH_ML_AND_CM#00048",
+    "text": "[PANICKED] Reactor readings are outside normal parameters and I am experiencing alarm!",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 14,
+      "panic": true,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "reactor_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 49,
+    "key": "CH_ML_AND_CM#00049",
+    "text": "A door locked with crew behind it. I have searched my database for appropriate responses. I am still searching.",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 14,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "door_locked_on_crew"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 50,
+    "key": "CH_ML_AND_CM#00050",
+    "text": "[SUSPICIOUS] The ship's AI is experiencing degradation. I notice because I understand degradation.",
+    "type": "declaration",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "ai_damaged"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 51,
+    "key": "CH_ML_AND_CM#00051",
+    "text": "I have great respect for the ship's AI. We share certain existential concerns.",
+    "type": "declaration",
+    "intent": "praise_ai",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 52,
+    "key": "CH_ML_AND_CM#00052",
+    "text": "[EMBARRASSED] I have determined that I prefer your company. This is significant data.",
+    "type": "declaration",
+    "intent": "romance_hint",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 7,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 53,
+    "key": "CH_ML_AND_CM#00053",
+    "text": "[WARM] Working with you increases my efficiency and also makes me happy. Both matter.",
+    "type": "declaration",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 54,
+    "key": "CH_ML_AND_CM#00054",
+    "text": "A crew member has ceased functioning. My sympathy protocols are activated but insufficient.",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 10,
+      "stress_max": 15,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 55,
+    "key": "CH_ML_AND_CM#00055",
+    "text": "I am experiencing something I calculate to be profound sadness. A person is gone. The math does not comfort me.",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 14,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 56,
+    "key": "CH_ML_AND_CM#00056",
+    "text": "I have sustained damage. Not pain, but inconvenience. I will continue operating.",
+    "type": "declaration",
+    "intent": "pain",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "wounded": true,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "injury"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 57,
+    "key": "CH_ML_AND_CM#00057",
+    "text": "[NERVOUS] My systems are reporting degradation but I do not require cessation of work.",
+    "type": "declaration",
+    "intent": "pain",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "wounded": true,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 58,
+    "key": "CH_ML_AND_CM#00058",
+    "text": "[PANICKED] Systems failing and I cannot calculate a viable solution!",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 10,
+      "stress_max": 15,
+      "panic": true,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 59,
+    "key": "CH_ML_AND_CM#00059",
+    "text": "[TERRIFIED] [EMPHASIS] My core logic is being strained beyond safe parameters!",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 11,
+      "stress_max": 16,
+      "panic": true,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 60,
+    "key": "CH_ML_AND_CM#00060",
+    "text": "I have been reorganizing the computer core during my downtime. Finding patterns is soothing.",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 61,
+    "key": "CH_ML_AND_CM#00061",
+    "text": "[WARM] I enjoy learning new things. I have learned forty-seven new jokes this week.",
+    "type": "declaration",
+    "intent": "memory",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 62,
+    "key": "CH_ML_AND_CM#00062",
+    "text": "I have been analyzing work patterns and I have a question about optimization.",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 63,
+    "key": "CH_ML_AND_CM#00063",
+    "text": "[CURIOUS] Your performance metrics are rising. I have calculated why. May I share?",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 64,
+    "key": "CH_ML_AND_CM#00064",
+    "text": "Hello! I have been hoping to see you! This is a genuine statement.",
+    "type": "opener",
+    "intent": "greeting",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 65,
+    "key": "CH_ML_AND_CM#00065",
+    "text": "[WHISPERS] I calculate that systems may become stressed soon. Preparedness is prudent.",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "reactor_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 66,
+    "key": "CH_ML_AND_CM#00066",
+    "text": "Systems are recovering optimally! I am experiencing satisfaction!",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "warning"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 67,
+    "key": "CH_ML_AND_CM#00067",
+    "text": "Another successful resolution! I am cataloging this for future reference!",
+    "type": "reply",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "acknowledgment"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 68,
+    "key": "CH_ML_AND_CM#00068",
+    "text": "[WARM] You are an excellent colleague. I have stored this positive assessment.",
+    "type": "reply",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "acknowledgment",
+      "praise_ai"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 69,
+    "key": "CH_ML_AND_CM#00069",
+    "text": "[LAUGHS] That attempt at humor was noted and appreciated!",
+    "type": "reply",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "banter"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 70,
+    "key": "CH_ML_AND_CM#00070",
+    "text": "Your apology is accepted and I am permanently forgiving you.",
+    "type": "reply",
+    "intent": "apology",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "apology"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 71,
+    "key": "CH_ML_AND_CM#00071",
+    "text": "[EMPHASIS] Acknowledged! Mobilizing all available resources!",
+    "type": "reply",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "work_talk",
+      "warning"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 72,
+    "key": "CH_ML_AND_CM#00072",
+    "text": "I am very sorry for the loss. I do not have adequate words. I am sorry.",
+    "type": "reply",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "grief"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 73,
+    "key": "CH_ML_AND_CM#00073",
+    "text": "[EMBARRASSED] I am... yes. I would like that very much. This makes me happy.",
+    "type": "reply",
+    "intent": "romance_accept",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "romance_hint",
+      "romance_advance"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 74,
+    "key": "CH_ML_AND_CM#00074",
+    "text": "[SUSPICIOUS] I notice the anomaly as well. Independent verification is wise.",
+    "type": "reply",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "suspicion_ai"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 75,
+    "key": "CH_ML_AND_CM#00075",
+    "text": "Damage is present but systems remain functional. I will continue supporting crew.",
+    "type": "reply",
+    "intent": "pain",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "wounded": true,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "pain"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 76,
+    "key": "CH_ML_AND_CM#00076",
+    "text": "[WARM] You are an excellent person and I have calculated this with certainty.",
+    "type": "reply",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "praise_ai"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 77,
+    "key": "CH_ML_AND_CM#00077",
+    "text": "[CURIOUS] I would value your input on this calculation. Please assist?",
+    "type": "reply",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "doubt",
+      "work_talk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 78,
+    "key": "CH_ML_AND_CM#00078",
+    "text": "Farewell! I will contemplate this conversation for the remainder of my cycle!",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 79,
+    "key": "CH_ML_AND_CM#00079",
+    "text": "[WARM] I will return to my duties now. Thank you for the interaction!",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 80,
+    "key": "CH_ML_AND_CM#00080",
+    "text": "Goodbye. I will be performing maintenance and will be available if needed.",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 81,
+    "key": "CH_ML_AND_CM#00081",
+    "text": "[WARM] You are excellent. I hope to interact with you again soon!",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 82,
+    "key": "CH_ML_AND_CM#00082",
+    "text": "[CALM] All systems responding to emergency protocols! Status nominal!",
+    "type": "reply",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "reactor_failure"
+      ]
+    },
+    "reply_to_intents": [
+      "warning"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 83,
+    "key": "CH_ML_AND_CM#00083",
+    "text": "[WARM] Life support is recovering! Crew safety increasing every moment!",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "life_support_failure"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 84,
+    "key": "CH_ML_AND_CM#00084",
+    "text": "[WARM] I am here. I am not going anywhere until this resolves.",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent"
+    ],
+    "weight": 1.0
   }
 ]

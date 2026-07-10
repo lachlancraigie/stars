@@ -732,5 +732,385 @@
     },
     "reply_to_intents": [],
     "weight": 1.0
+  },
+  {
+    "id": 41,
+    "key": "EV_FE_AND_OF#00041",
+    "text": "[CALM] Meal interval approaching. Crew consumption patterns are remarkably consistent.",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "recent_events": [
+        "meal_time"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 42,
+    "key": "EV_FE_AND_OF#00042",
+    "text": "Shift transition detected. I am processing the handoff protocols.",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "recent_events": [
+        "shift_start"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 43,
+    "key": "EV_FE_AND_OF#00043",
+    "text": "[CALM] Shift cycle concluding. No anomalies in my monitoring. Withdrawing to standby mode.",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "recent_events": [
+        "shift_end"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 44,
+    "key": "EV_FE_AND_OF#00044",
+    "text": "[CALM] Life support degradation confirms the model's predictions. I find this slightly reassuring.",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "recent_events": [
+        "life_support_failure"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 45,
+    "key": "EV_FE_AND_OF#00045",
+    "text": "[NERVOUS] Power is below critical thresholds. The probability of cascading failure is now 0.73. I find myself... concerned by this statistic.",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 10,
+      "stress_max": 15,
+      "recent_events": [
+        "power_low"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 46,
+    "key": "EV_FE_AND_OF#00046",
+    "text": "[CALM] Reactor failure trajectory matches my predictive model. At least something is behaving as anticipated.",
+    "type": "declaration",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "recent_events": [
+        "reactor_failure"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 47,
+    "key": "EV_FE_AND_OF#00047",
+    "text": "A door closure event occurred as predicted. The crew member on the far side is no longer transmitting biometric data.",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 14,
+      "recent_events": [
+        "door_locked_on_crew"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 48,
+    "key": "EV_FE_AND_OF#00048",
+    "text": "[SUSPICIOUS] My own systems show what I interpret as damage. Recursive self-doubt is... novel.",
+    "type": "declaration",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "recent_events": [
+        "ai_damaged"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 49,
+    "key": "EV_FE_AND_OF#00049",
+    "text": "The ship's AI is functioning within acceptable parameters. I consider it reliable, pending comprehensive audit.",
+    "type": "declaration",
+    "intent": "praise_ai",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 50,
+    "key": "EV_FE_AND_OF#00050",
+    "text": "[CALM] Structural damage to my frame. It does not impair my core functions. Continuing.",
+    "type": "declaration",
+    "intent": "pain",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "wounded": true,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 51,
+    "key": "EV_FE_AND_OF#00051",
+    "text": "[DEADPAN] A crew member has ceased biological function. I am attempting to understand if this requires additional processing on my part.",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "mood": [
+        "grim"
+      ],
+      "recent_events": [
+        "crew_death"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 52,
+    "key": "EV_FE_AND_OF#00052",
+    "text": "[PANICKED] The failure cascade is accelerating beyond my predictive margins. I do not have a response prepared. I am preparing one now. This is inefficient.",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 14,
+      "stress_max": 20,
+      "panic": true,
+      "recent_events": [
+        "reactor_failure"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 53,
+    "key": "EV_FE_AND_OF#00053",
+    "text": "[TERRIFIED] Systems cascading. I cannot predict the next failure. This is... I am uncertain how to describe this state.",
+    "type": "reply",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 12,
+      "stress_max": 18,
+      "panic": true,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "status_report"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 54,
+    "key": "EV_FE_AND_OF#00054",
+    "text": "I have been analyzing the ship's historical logs. The redundancy in early design choices is inefficient. I find this intellectually fascinating.",
+    "type": "declaration",
+    "intent": "memory",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 55,
+    "key": "EV_FE_AND_OF#00055",
+    "text": "[CALM] I have calculated optimal power distribution for the next cycle. Recommend implementing at mark zero-zero-30.",
+    "type": "declaration",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 56,
+    "key": "EV_FE_AND_OF#00056",
+    "text": "[CALM] The recent system diagnostics indicate a probability of human error in the maintenance logs. I will require clarification.",
+    "type": "opener",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 57,
+    "key": "EV_FE_AND_OF#00057",
+    "text": "[CURIOUS] I have noted an inconsistency in your behavioral patterns. I am requesting additional context.",
+    "type": "opener",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 58,
+    "key": "EV_FE_AND_OF#00058",
+    "text": "[CALM] I understand this event has emotional significance for you. I am recording it and attempting to extrapolate meaning.",
+    "type": "reply",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 14,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "grief"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 59,
+    "key": "EV_FE_AND_OF#00059",
+    "text": "I have reviewed your reasoning. It is sound. Proceeding with your proposal.",
+    "type": "reply",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "work_talk",
+      "offer_help"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 60,
+    "key": "EV_FE_AND_OF#00060",
+    "text": "[CALM] This concludes optimal conversation duration for this cycle. Returning to monitoring.",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 61,
+    "key": "EV_FE_AND_OF#00061",
+    "text": "Resuming full processing priority to ship systems. I will attend to you again later.",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
   }
 ]

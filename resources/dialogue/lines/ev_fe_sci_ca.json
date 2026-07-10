@@ -791,5 +791,387 @@
     },
     "reply_to_intents": [],
     "weight": 1.0
+  },
+  {
+    "id": 44,
+    "key": "EV_FE_SCI_CA#00044",
+    "text": "[CALM] meal interval. everyone maintains nutritional baseline. that's a captain's order.",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "recent_events": [
+        "meal_time"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 45,
+    "key": "EV_FE_SCI_CA#00045",
+    "text": "shift starting. i'm running the first pass of status checks myself.",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "recent_events": [
+        "shift_start"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 46,
+    "key": "EV_FE_SCI_CA#00046",
+    "text": "[TIRED] shift concluded. crew status nominal. bridge is sealed. i can rest now.",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "recent_events": [
+        "shift_end"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 47,
+    "key": "EV_FE_SCI_CA#00047",
+    "text": "[GRIM] life support system is now a triage problem. i'm prioritizing medbay and bridge first, then life-critical areas.",
+    "type": "declaration",
+    "intent": "request_help",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 14,
+      "recent_events": [
+        "life_support_failure"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 48,
+    "key": "EV_FE_SCI_CA#00048",
+    "text": "[URGENT] power reserves are now a strategic problem. i'm implementing rationing across non-essential systems immediately.",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "recent_events": [
+        "power_low"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 49,
+    "key": "EV_FE_SCI_CA#00049",
+    "text": "[GRIM] reactor status is critical. this is now a survival scenario. all non-essential personnel are moving to the forward sections.",
+    "type": "declaration",
+    "intent": "request_help",
+    "conditions": {
+      "stress_min": 10,
+      "stress_max": 15,
+      "recent_events": [
+        "reactor_failure"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 50,
+    "key": "EV_FE_SCI_CA#00050",
+    "text": "[CALM] all crew report to secondary duty stations. primary bridge is now under lockdown for repairs.",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 51,
+    "key": "EV_FE_SCI_CA#00051",
+    "text": "[GRIM] i'm implementing command protocol seven. communications with the main section are cut. bridge becomes autonomous.",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "recent_events": [
+        "door_locked_on_crew"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 52,
+    "key": "EV_FE_SCI_CA#00052",
+    "text": "[GRIM] i ordered that door sealed. it sealed with someone on the other side. i will account for that decision.",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "recent_events": [
+        "door_locked_on_crew"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 53,
+    "key": "EV_FE_SCI_CA#00053",
+    "text": "[SUSPICIOUS] the AI's command decisions are now under my personal review. i'm reading every log entry.",
+    "type": "declaration",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "recent_events": [
+        "ai_damaged"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 54,
+    "key": "EV_FE_SCI_CA#00054",
+    "text": "[CALM] the ship AI made the right call during the crisis. i'm commending it formally to the log.",
+    "type": "declaration",
+    "intent": "praise_ai",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 55,
+    "key": "EV_FE_SCI_CA#00055",
+    "text": "[GRIM] i'm injured but functional. sending a medic would be wasteful right now. i'll report to medbay after this is resolved.",
+    "type": "declaration",
+    "intent": "pain",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "wounded": true,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 56,
+    "key": "EV_FE_SCI_CA#00056",
+    "text": "[PAINED] a crew member is dead. i signed the medical authorization that put them at risk. i will carry that.",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "mood": [
+        "grim"
+      ],
+      "recent_events": [
+        "crew_death"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 57,
+    "key": "EV_FE_SCI_CA#00057",
+    "text": "[PANICKED] the situation is cascading beyond my predictive models. i can't see the next move. everything's falling apart.",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 14,
+      "stress_max": 20,
+      "panic": true,
+      "recent_events": [
+        "reactor_failure"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 58,
+    "key": "EV_FE_SCI_CA#00058",
+    "text": "[TERRIFIED] i don't have a protocol for this. nothing in my training prepared me for losing this much. i'm losing.",
+    "type": "reply",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 12,
+      "stress_max": 18,
+      "panic": true,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 59,
+    "key": "EV_FE_SCI_CA#00059",
+    "text": "[CALM] i'm consolidating our crew into two tenable positions. everyone else is on emergency protocols.",
+    "type": "opener",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 60,
+    "key": "EV_FE_SCI_CA#00060",
+    "text": "[URGENT] i need a real-time casualty count and a resource assessment. ten minutes.",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 61,
+    "key": "EV_FE_SCI_CA#00061",
+    "text": "[PAINED] they chose this when they put on the uniform. that doesn't make the loss lighter.",
+    "type": "reply",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 14,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "grief"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 62,
+    "key": "EV_FE_SCI_CA#00062",
+    "text": "[CALM] your assessment matches mine. that's why i trust you with this task.",
+    "type": "reply",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "status_report",
+      "work_talk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 63,
+    "key": "EV_FE_SCI_CA#00063",
+    "text": "[CALM] return to your post. report any changes directly to me.",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 64,
+    "key": "EV_FE_SCI_CA#00064",
+    "text": "[GRIM] we're not finished. rest when you can. that's all i'm granting.",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
   }
 ]
