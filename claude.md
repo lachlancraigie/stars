@@ -34,8 +34,10 @@ A spaceship AI simulator. The player is the ship's computer. See `GDD.md` for fu
 3. ElevenLabs voicing — ON HOLD (1,550/2,482 done, quota dead); superseded by the Fish v2 trial below. Rerun cmd in `notes.md` if ElevenLabs returns.
 4. ~~Character animations~~ ✅ integrated w/ Kenney fallback; head consistency SOLVED by head-swap compositing (`d248a27`: canonical head per facing, checksum-identical; tools `crew_head_{geom,swap,qa}.py`) — zoom strips with Lachlan. OPEN: 16 prone/floating poses un-swapped (by design) · 14 pre-existing corrupt slices in walk/melee/carry need a re-slice pass (list in `_test/composite_report.json`)
 5. ~~Crew progression~~ ✅ (`e092bcf`/`30a9d9c`); FTL recruitment still PINNED
-6. **ACTIVE: Fish Audio v2 revoice** (Lachlan wants ElevenLabs replaced; s2.1-pro free through July). Skill: `skills/fishaudio.md` (gitignored — plaintext key; also in `tools/audio_gen/.env` as `FISH_API_KEY`). Lachlan's 26 handpicked voice IDs → `notes.md`. Phases: (A) Sonnet — map voices → 24 archetypes (primary + ranked alternates → `tools/audio_gen/fish_voices.json`), rewrite `docs/dialogue_spec.md` tag section for Fish `[]` syntax, update validator, write resume-safe `tools/audio_gen/fish_batch.py`; (B) Haiku ×4 sequential — per-group tag rewrite of corpus JSON (tags only, text/IDs untouched), validate + commit per file; (C) orchestrator — batch-generate all 2,482 MP3s → `assets/audio/dialogue_v2/` (gitignored) for Lachlan's review.
+6. ~~Fish Audio v2 revoice~~ ✅ COMPLETE (2026-07-11): 2,482/2,482 MP3s in `assets/audio/dialogue_v2/` (195MB, gitignored), 0 failures, ~91min. Voice map `tools/audio_gen/fish_voices.json` (primary + alternates; 4 compromise picks flagged); corpus fully on Fish `[]` tags; batch via `tools/audio_gen/fish_batch.py`. AWAITING LACHLAN'S LISTEN — on approval: point bubble voice playback at dialogue_v2 + retire ElevenLabs path (don't top up credits).
 7. **Sprint close-out**: fast-forward `main`? (last synced `0619ecb` — ask Lachlan) · rotate API keys (ElevenLabs/OpenRouter/Fish all passed through chat)
+
+**Lachlan review gate (everything else is done):** ① Fish v2 audio in `dialogue_v2/` ② head-swap zoom strips ③ 14 corrupt slices re-slice pass (his go) ④ close-out decisions above.
 
 ---
 
