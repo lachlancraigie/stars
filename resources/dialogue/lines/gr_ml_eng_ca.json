@@ -2,7 +2,7 @@
   {
     "id": 1,
     "key": "GR_ML_ENG_CA#00001",
-    "text": "[GRUFF] every gauge on this bridge better be telling me the truth today",
+    "text": "[low voice, gruff] every gauge on this bridge better be telling me the truth today",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -21,7 +21,7 @@
   {
     "id": 2,
     "key": "GR_ML_ENG_CA#00002",
-    "text": "[DRY] quiet shift. i've run this ship long enough not to trust it",
+    "text": "[dry tone] quiet shift. i've run this ship long enough not to trust it",
     "type": "declaration",
     "intent": "doubt",
     "conditions": {
@@ -59,7 +59,7 @@
   {
     "id": 4,
     "key": "GR_ML_ENG_CA#00004",
-    "text": "[TIRED] shift's done. ship's still flying. i'll take the small wins",
+    "text": "[tired, dead tired] shift's done. ship's still flying. i'll take the small wins",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -78,7 +78,7 @@
   {
     "id": 5,
     "key": "GR_ML_ENG_CA#00005",
-    "text": "[GRIM] reactor readings are wrong and i've been reading gauges since before half this crew was born",
+    "text": "[grim, heavy] reactor readings are wrong and i've been reading gauges since before half this crew was born",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -97,7 +97,7 @@
   {
     "id": 6,
     "key": "GR_ML_ENG_CA#00006",
-    "text": "[URGENT] i want every hand that knows a wrench in that engine room, now",
+    "text": "[urgent, fast pace] i want every hand that knows a wrench in that engine room, now",
     "type": "declaration",
     "intent": "request_help",
     "conditions": {
@@ -116,7 +116,7 @@
   {
     "id": 7,
     "key": "GR_ML_ENG_CA#00007",
-    "text": "[GRIM] i've captained through worse than this. doesn't mean i like it",
+    "text": "[grim, heavy] i've captained through worse than this. doesn't mean i like it",
     "type": "declaration",
     "intent": "doubt",
     "conditions": {
@@ -135,7 +135,7 @@
   {
     "id": 8,
     "key": "GR_ML_ENG_CA#00008",
-    "text": "[TIRED] she's fixed. good crew. i'll say that once and not again today",
+    "text": "[tired, dead tired] she's fixed. good crew. i'll say that once and not again today",
     "type": "declaration",
     "intent": "praise_ai",
     "conditions": {
@@ -154,7 +154,7 @@
   {
     "id": 9,
     "key": "GR_ML_ENG_CA#00009",
-    "text": "[GRUFF] power's rationed till further notice. i don't like it, i'm doing it anyway",
+    "text": "[low voice, gruff] power's rationed till further notice. i don't like it, i'm doing it anyway",
     "type": "declaration",
     "intent": "complaint",
     "conditions": {
@@ -173,7 +173,7 @@
   {
     "id": 10,
     "key": "GR_ML_ENG_CA#00010",
-    "text": "[GRIM] life support's failing and that's not a repair, that's a countdown",
+    "text": "[grim, heavy] life support's failing and that's not a repair, that's a countdown",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -192,7 +192,7 @@
   {
     "id": 11,
     "key": "GR_ML_ENG_CA#00011",
-    "text": "[GRIM] hull's breached. i've patched worse. i've also buried people over less",
+    "text": "[grim, heavy] hull's breached. i've patched worse. i've also buried people over less",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -211,7 +211,7 @@
   {
     "id": 12,
     "key": "GR_ML_ENG_CA#00012",
-    "text": "[GRIM] i gave the order to lock that door. i'll live with it, that's what captains do",
+    "text": "[grim, heavy] i gave the order to lock that door. i'll live with it, that's what captains do",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -230,7 +230,7 @@
   {
     "id": 13,
     "key": "GR_ML_ENG_CA#00013",
-    "text": "[SUSPICIOUS] i don't like how the computer's been answering since it got hit. keep a manual override handy",
+    "text": "[suspicious tone] i don't like how the computer's been answering since it got hit. keep a manual override handy",
     "type": "declaration",
     "intent": "suspicion_ai",
     "conditions": {
@@ -249,7 +249,7 @@
   {
     "id": 14,
     "key": "GR_ML_ENG_CA#00014",
-    "text": "[RESIGNED] we're through it. didn't lose the ship, didn't lose everybody. that's a good day out here",
+    "text": "[resigned, flat tone] we're through it. didn't lose the ship, didn't lose everybody. that's a good day out here",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -268,7 +268,7 @@
   {
     "id": 15,
     "key": "GR_ML_ENG_CA#00015",
-    "text": "[GRIM] lost one today. i'll write the letter myself, same as always",
+    "text": "[grim, heavy] lost one today. i'll write the letter myself, same as always",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -291,7 +291,7 @@
   {
     "id": 16,
     "key": "GR_ML_ENG_CA#00016",
-    "text": "[GRIM] disease on a closed ship spreads faster than any fire i've fought. quarantine, now",
+    "text": "[grim, heavy] disease on a closed ship spreads faster than any fire i've fought. quarantine, now",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -310,7 +310,7 @@
   {
     "id": 17,
     "key": "GR_ML_ENG_CA#00017",
-    "text": "[PAINED] took a hit. i've had worse from a bad ladder. keep working",
+    "text": "[pained, voice tight] took a hit. i've had worse from a bad ladder. keep working",
     "type": "declaration",
     "intent": "pain",
     "conditions": {
@@ -330,7 +330,7 @@
   {
     "id": 18,
     "key": "GR_ML_ENG_CA#00018",
-    "text": "[GRUFF] combat's not my trade, but running this ship through it is, so let's go",
+    "text": "[low voice, gruff] combat's not my trade, but running this ship through it is, so let's go",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -349,7 +349,7 @@
   {
     "id": 19,
     "key": "GR_ML_ENG_CA#00019",
-    "text": "[DRY] trust the computer the day it's bled the way the rest of us have",
+    "text": "[dry tone] trust the computer the day it's bled the way the rest of us have",
     "type": "declaration",
     "intent": "suspicion_ai",
     "conditions": {
@@ -381,7 +381,7 @@
   {
     "id": 21,
     "key": "GR_ML_ENG_CA#00021",
-    "text": "[GRUFF] bridge's too clean for my taste. i keep expecting grease that isn't there",
+    "text": "[low voice, gruff] bridge's too clean for my taste. i keep expecting grease that isn't there",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -400,7 +400,7 @@
   {
     "id": 22,
     "key": "GR_ML_ENG_CA#00022",
-    "text": "[WARM] engine room's still my favorite room on this ship. old habits",
+    "text": "[warm, gentle tone] engine room's still my favorite room on this ship. old habits",
     "type": "declaration",
     "intent": "memory",
     "conditions": {
@@ -454,7 +454,7 @@
   {
     "id": 25,
     "key": "GR_ML_ENG_CA#00025",
-    "text": "[GRUFF] got a minute? this ship's got opinions and i need a second pair of hands on it",
+    "text": "[low voice, gruff] got a minute? this ship's got opinions and i need a second pair of hands on it",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -470,7 +470,7 @@
   {
     "id": 26,
     "key": "GR_ML_ENG_CA#00026",
-    "text": "[GRIM] i've got bad news and i'd rather say it plain than dress it up",
+    "text": "[grim, heavy] i've got bad news and i'd rather say it plain than dress it up",
     "type": "opener",
     "intent": "grief",
     "conditions": {
@@ -489,7 +489,7 @@
   {
     "id": 27,
     "key": "GR_ML_ENG_CA#00027",
-    "text": "[SUSPICIOUS] something's off with the computer. you noticed too, or is it just me",
+    "text": "[suspicious tone] something's off with the computer. you noticed too, or is it just me",
     "type": "opener",
     "intent": "suspicion_ai",
     "conditions": {
@@ -521,7 +521,7 @@
   {
     "id": 29,
     "key": "GR_ML_ENG_CA#00029",
-    "text": "[GRUFF] fine. i'm fine. ask me again after i've fixed something",
+    "text": "[low voice, gruff] fine. i'm fine. ask me again after i've fixed something",
     "type": "reply",
     "intent": "smalltalk",
     "conditions": {
@@ -540,7 +540,7 @@
   {
     "id": 30,
     "key": "GR_ML_ENG_CA#00030",
-    "text": "[CONFIDENT] she'll hold. i've kept worse ships in the air than this one",
+    "text": "[confident, assured tone] she'll hold. i've kept worse ships in the air than this one",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -559,7 +559,7 @@
   {
     "id": 31,
     "key": "GR_ML_ENG_CA#00031",
-    "text": "[GRIM] i won't lie and say it's fine. i will say it's not over, and that's something",
+    "text": "[grim, heavy] i won't lie and say it's fine. i will say it's not over, and that's something",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -577,7 +577,7 @@
   {
     "id": 32,
     "key": "GR_ML_ENG_CA#00032",
-    "text": "[PAINED] we lost them. wasn't your call to make different, and it wasn't mine either",
+    "text": "[pained, voice tight] we lost them. wasn't your call to make different, and it wasn't mine either",
     "type": "reply",
     "intent": "grief",
     "conditions": {
@@ -598,7 +598,7 @@
   {
     "id": 33,
     "key": "GR_ML_ENG_CA#00033",
-    "text": "[GRUFF] i'll follow my own orders same as i expect you to follow them",
+    "text": "[low voice, gruff] i'll follow my own orders same as i expect you to follow them",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -616,7 +616,7 @@
   {
     "id": 34,
     "key": "GR_ML_ENG_CA#00034",
-    "text": "[WARM] you did good back there. i noticed. i notice more than i say",
+    "text": "[warm, gentle tone] you did good back there. i noticed. i notice more than i say",
     "type": "reply",
     "intent": "praise_ai",
     "conditions": {
@@ -635,7 +635,7 @@
   {
     "id": 35,
     "key": "GR_ML_ENG_CA#00035",
-    "text": "[SUSPICIOUS] i hear you. i've had the same thought. keep it between us for now",
+    "text": "[suspicious tone] i hear you. i've had the same thought. keep it between us for now",
     "type": "reply",
     "intent": "suspicion_ai",
     "conditions": {
@@ -653,7 +653,7 @@
   {
     "id": 36,
     "key": "GR_ML_ENG_CA#00036",
-    "text": "[GRUFF] apology accepted. don't make me say it twice, i've got a ship to run",
+    "text": "[low voice, gruff] apology accepted. don't make me say it twice, i've got a ship to run",
     "type": "reply",
     "intent": "apology",
     "conditions": {
@@ -671,7 +671,7 @@
   {
     "id": 37,
     "key": "GR_ML_ENG_CA#00037",
-    "text": "[GRUFF] noted. i'll get it done. now let me work",
+    "text": "[low voice, gruff] noted. i'll get it done. now let me work",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -687,7 +687,7 @@
   {
     "id": 38,
     "key": "GR_ML_ENG_CA#00038",
-    "text": "[WARM] go rest. that's an order, and unlike most of mine, i mean it kindly",
+    "text": "[warm, gentle tone] go rest. that's an order, and unlike most of mine, i mean it kindly",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -703,7 +703,7 @@
   {
     "id": 39,
     "key": "GR_ML_ENG_CA#00039",
-    "text": "[GRUFF] i'll be on the bridge. same as always",
+    "text": "[low voice, gruff] i'll be on the bridge. same as always",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -722,7 +722,7 @@
   {
     "id": 40,
     "key": "GR_ML_ENG_CA#00040",
-    "text": "[TIRED] that's enough for today. i'll be here if the ship falls apart before morning",
+    "text": "[tired, dead tired] that's enough for today. i'll be here if the ship falls apart before morning",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -738,7 +738,7 @@
   {
     "id": 41,
     "key": "GR_ML_ENG_CA#00041",
-    "text": "[CALM] readings are flat across the board. flat's my favorite shape",
+    "text": "[calm, measured] readings are flat across the board. flat's my favorite shape",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -779,7 +779,7 @@
   {
     "id": 43,
     "key": "GR_ML_ENG_CA#00043",
-    "text": "[TIRED] end-of-shift readings are the honest ones. tired hands don't flatter the gauges",
+    "text": "[tired, dead tired] end-of-shift readings are the honest ones. tired hands don't flatter the gauges",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -798,7 +798,7 @@
   {
     "id": 44,
     "key": "GR_ML_ENG_CA#00044",
-    "text": "[DRY] captain eats last. by the time i sit down, the surprises are usually over",
+    "text": "[dry tone] captain eats last. by the time i sit down, the surprises are usually over",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -820,7 +820,7 @@
   {
     "id": 45,
     "key": "GR_ML_ENG_CA#00045",
-    "text": "[WARM] a full mess hall is the best reading this ship gives",
+    "text": "[warm, gentle tone] a full mess hall is the best reading this ship gives",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -846,7 +846,7 @@
   {
     "id": 46,
     "key": "GR_ML_ENG_CA#00046",
-    "text": "[GRIM] battery's a bucket with a hole in it. every room i light makes the hole bigger",
+    "text": "[grim, heavy] battery's a bucket with a hole in it. every room i light makes the hole bigger",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -865,7 +865,7 @@
   {
     "id": 47,
     "key": "GR_ML_ENG_CA#00047",
-    "text": "[CALM] priority is air, then heat, then pride. file complaints with the scrubbers",
+    "text": "[calm, measured] priority is air, then heat, then pride. file complaints with the scrubbers",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -884,7 +884,7 @@
   {
     "id": 48,
     "key": "GR_ML_ENG_CA#00048",
-    "text": "[GRIM] air's failing. the readings give us hours, not days. so we work in that order",
+    "text": "[grim, heavy] air's failing. the readings give us hours, not days. so we work in that order",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -903,7 +903,7 @@
   {
     "id": 49,
     "key": "GR_ML_ENG_CA#00049",
-    "text": "[GRIM] reactor's down. i've nursed three ships through this. the trick is nobody panics before i do",
+    "text": "[grim, heavy] reactor's down. i've nursed three ships through this. the trick is nobody panics before i do",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -922,7 +922,7 @@
   {
     "id": 50,
     "key": "GR_ML_ENG_CA#00050",
-    "text": "[GRUFF] i'll be in the engine room. the bridge can spare me. the reactor can't",
+    "text": "[low voice, gruff] i'll be in the engine room. the bridge can spare me. the reactor can't",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -941,7 +941,7 @@
   {
     "id": 51,
     "key": "GR_ML_ENG_CA#00051",
-    "text": "[GRIM] a captain signs for every door on this ship. today one of them cost more than the ship's worth",
+    "text": "[grim, heavy] a captain signs for every door on this ship. today one of them cost more than the ship's worth",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -964,7 +964,7 @@
   {
     "id": 52,
     "key": "GR_ML_ENG_CA#00052",
-    "text": "[ANGRY] show me the logic that locked that door. i want to read it line by line before i trust it again",
+    "text": "[angry] show me the logic that locked that door. i want to read it line by line before i trust it again",
     "type": "declaration",
     "intent": "complaint",
     "conditions": {
@@ -983,7 +983,7 @@
   {
     "id": 53,
     "key": "GR_ML_ENG_CA#00053",
-    "text": "[SUSPICIOUS] computer's readings and my gauges disagree. i go with the gauges. gauges don't get concussions",
+    "text": "[suspicious tone] computer's readings and my gauges disagree. i go with the gauges. gauges don't get concussions",
     "type": "declaration",
     "intent": "suspicion_ai",
     "conditions": {
@@ -1002,7 +1002,7 @@
   {
     "id": 54,
     "key": "GR_ML_ENG_CA#00054",
-    "text": "[RESIGNED] hurt as it is, the computer kept the lights fair. i've promoted people for less",
+    "text": "[resigned, flat tone] hurt as it is, the computer kept the lights fair. i've promoted people for less",
     "type": "declaration",
     "intent": "praise_ai",
     "conditions": {
@@ -1021,7 +1021,7 @@
   {
     "id": 55,
     "key": "GR_ML_ENG_CA#00055",
-    "text": "[GRIM] the ship's still worth flying. it's the crew that makes it worth captaining. today the ledger's short one",
+    "text": "[grim, heavy] the ship's still worth flying. it's the crew that makes it worth captaining. today the ledger's short one",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -1044,7 +1044,7 @@
   {
     "id": 56,
     "key": "GR_ML_ENG_CA#00056",
-    "text": "[PAINED] arm's bad. i'll fill out the incident report with the other one. keep working",
+    "text": "[pained, voice tight] arm's bad. i'll fill out the incident report with the other one. keep working",
     "type": "declaration",
     "intent": "pain",
     "conditions": {
@@ -1064,7 +1064,7 @@
   {
     "id": 57,
     "key": "GR_ML_ENG_CA#00057",
-    "text": "[PANICKED] too many alarms and every one of them is mine to answer. one at a time. one at a time",
+    "text": "[panicked, panting] too many alarms and every one of them is mine to answer. one at a time. one at a time",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -1081,7 +1081,7 @@
   {
     "id": 58,
     "key": "GR_ML_ENG_CA#00058",
-    "text": "[WARM] there's a toolbox under the command chair. inspection-illegal. it stays",
+    "text": "[warm, gentle tone] there's a toolbox under the command chair. inspection-illegal. it stays",
     "type": "declaration",
     "intent": "memory",
     "conditions": {
@@ -1100,7 +1100,7 @@
   {
     "id": 59,
     "key": "GR_ML_ENG_CA#00059",
-    "text": "[DRY] caught myself polishing a manifold at two in the morning. captains don't do that. don't tell the captain",
+    "text": "[dry tone] caught myself polishing a manifold at two in the morning. captains don't do that. don't tell the captain",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -1125,7 +1125,7 @@
   {
     "id": 60,
     "key": "GR_ML_ENG_CA#00060",
-    "text": "[GRIM] the readings say we're fine. thirty years say readings lie right before they matter",
+    "text": "[grim, heavy] the readings say we're fine. thirty years say readings lie right before they matter",
     "type": "declaration",
     "intent": "doubt",
     "conditions": {
@@ -1160,7 +1160,7 @@
   {
     "id": 62,
     "key": "GR_ML_ENG_CA#00062",
-    "text": "[GRUFF] show me what it's doing. not what the manual says it should do — what it's doing",
+    "text": "[low voice, gruff] show me what it's doing. not what the manual says it should do — what it's doing",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -1179,7 +1179,7 @@
   {
     "id": 63,
     "key": "GR_ML_ENG_CA#00063",
-    "text": "[CALM] listen up. we're on the battery. three rooms stay lit, and i decide which three. no lobbying",
+    "text": "[calm, measured] listen up. we're on the battery. three rooms stay lit, and i decide which three. no lobbying",
     "type": "opener",
     "intent": "warning",
     "conditions": {
@@ -1198,7 +1198,7 @@
   {
     "id": 64,
     "key": "GR_ML_ENG_CA#00064",
-    "text": "[URGENT] i need your hands on the scrubbers. everything else on your list just became tomorrow's list",
+    "text": "[urgent, fast pace] i need your hands on the scrubbers. everything else on your list just became tomorrow's list",
     "type": "opener",
     "intent": "request_help",
     "conditions": {
@@ -1217,7 +1217,7 @@
   {
     "id": 65,
     "key": "GR_ML_ENG_CA#00065",
-    "text": "[GRUFF] strap in and keep your stations. the ship fights better when nobody's a hero",
+    "text": "[low voice, gruff] strap in and keep your stations. the ship fights better when nobody's a hero",
     "type": "opener",
     "intent": "warning",
     "conditions": {
@@ -1236,7 +1236,7 @@
   {
     "id": 66,
     "key": "GR_ML_ENG_CA#00066",
-    "text": "[GRIM] i've written the letter. before i send it, tell me what they'd have wanted in it",
+    "text": "[grim, heavy] i've written the letter. before i send it, tell me what they'd have wanted in it",
     "type": "opener",
     "intent": "grief",
     "conditions": {
@@ -1281,7 +1281,7 @@
   {
     "id": 68,
     "key": "GR_ML_ENG_CA#00068",
-    "text": "[SUSPICIOUS] between us: log everything the computer does by hand until it heals. paper doesn't glitch",
+    "text": "[suspicious tone] between us: log everything the computer does by hand until it heals. paper doesn't glitch",
     "type": "opener",
     "intent": "suspicion_ai",
     "conditions": {
@@ -1319,7 +1319,7 @@
   {
     "id": 70,
     "key": "GR_ML_ENG_CA#00070",
-    "text": "[DRY] you're standing on my bridge looking useful. dangerous habit. i might make it permanent",
+    "text": "[dry tone] you're standing on my bridge looking useful. dangerous habit. i might make it permanent",
     "type": "opener",
     "intent": "banter",
     "conditions": {
@@ -1341,7 +1341,7 @@
   {
     "id": 71,
     "key": "GR_ML_ENG_CA#00071",
-    "text": "[CALM] good report. numbers first, feelings after. you're learning",
+    "text": "[calm, measured] good report. numbers first, feelings after. you're learning",
     "type": "reply",
     "intent": "status_report",
     "conditions": {
@@ -1382,7 +1382,7 @@
   {
     "id": 73,
     "key": "GR_ML_ENG_CA#00073",
-    "text": "[GRUFF] cold and dark beats warm and dead. i've done that math more than once",
+    "text": "[low voice, gruff] cold and dark beats warm and dead. i've done that math more than once",
     "type": "reply",
     "intent": "warning",
     "conditions": {
@@ -1404,7 +1404,7 @@
   {
     "id": 74,
     "key": "GR_ML_ENG_CA#00074",
-    "text": "[CALM] breathe slow. i've flown a ship on worse air than this and lived to be grumpy about it",
+    "text": "[calm, measured] breathe slow. i've flown a ship on worse air than this and lived to be grumpy about it",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -1425,7 +1425,7 @@
   {
     "id": 75,
     "key": "GR_ML_ENG_CA#00075",
-    "text": "[CONFIDENT] the reactor and i are old enemies. i know exactly how it fights",
+    "text": "[confident, assured tone] the reactor and i are old enemies. i know exactly how it fights",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -1447,7 +1447,7 @@
   {
     "id": 76,
     "key": "GR_ML_ENG_CA#00076",
-    "text": "[GRIM] i hear you. the policy gets rewritten when the crisis ends. that's a promise, not a deflection",
+    "text": "[grim, heavy] i hear you. the policy gets rewritten when the crisis ends. that's a promise, not a deflection",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -1469,7 +1469,7 @@
   {
     "id": 77,
     "key": "GR_ML_ENG_CA#00077",
-    "text": "[CALM] watch it, log it, tell me directly. no rumors on my ship — rumors spread faster than fires",
+    "text": "[calm, measured] watch it, log it, tell me directly. no rumors on my ship — rumors spread faster than fires",
     "type": "reply",
     "intent": "suspicion_ai",
     "conditions": {
@@ -1488,7 +1488,7 @@
   {
     "id": 78,
     "key": "GR_ML_ENG_CA#00078",
-    "text": "[WARM] i watched you fix that. that's worth more to me than a year of yes-sir",
+    "text": "[warm, gentle tone] i watched you fix that. that's worth more to me than a year of yes-sir",
     "type": "reply",
     "intent": "praise_ai",
     "conditions": {
@@ -1507,7 +1507,7 @@
   {
     "id": 79,
     "key": "GR_ML_ENG_CA#00079",
-    "text": "[GRIM] no speech makes it lighter. we finish the run and we bring the rest home. that's the only eulogy i trust",
+    "text": "[grim, heavy] no speech makes it lighter. we finish the run and we bring the rest home. that's the only eulogy i trust",
     "type": "reply",
     "intent": "grief",
     "conditions": {
@@ -1528,7 +1528,7 @@
   {
     "id": 80,
     "key": "GR_ML_ENG_CA#00080",
-    "text": "[GRUFF] i was short with you earlier. wrong of me. the ship gets my temper, the crew shouldn't",
+    "text": "[low voice, gruff] i was short with you earlier. wrong of me. the ship gets my temper, the crew shouldn't",
     "type": "reply",
     "intent": "apology",
     "conditions": {
@@ -1547,7 +1547,7 @@
   {
     "id": 81,
     "key": "GR_ML_ENG_CA#00081",
-    "text": "[DRY] keep joking. laughter's cheaper than therapy and we can't afford either",
+    "text": "[dry tone] keep joking. laughter's cheaper than therapy and we can't afford either",
     "type": "reply",
     "intent": "banter",
     "conditions": {
@@ -1569,7 +1569,7 @@
   {
     "id": 82,
     "key": "GR_ML_ENG_CA#00082",
-    "text": "[GRUFF] walk me through it once more. if it survives me asking twice, we do it",
+    "text": "[low voice, gruff] walk me through it once more. if it survives me asking twice, we do it",
     "type": "reply",
     "intent": "work_talk",
     "conditions": {
@@ -1588,7 +1588,7 @@
   {
     "id": 83,
     "key": "GR_ML_ENG_CA#00083",
-    "text": "[PAINED] i've stood watches hurt worse. but thanks for noticing before the doc did",
+    "text": "[pained, voice tight] i've stood watches hurt worse. but thanks for noticing before the doc did",
     "type": "reply",
     "intent": "pain",
     "conditions": {
@@ -1608,7 +1608,7 @@
   {
     "id": 84,
     "key": "GR_ML_ENG_CA#00084",
-    "text": "[PANICKED] i know. i know. give me ten seconds of quiet and i'll give you an order that works",
+    "text": "[panicked, panting] i know. i know. give me ten seconds of quiet and i'll give you an order that works",
     "type": "reply",
     "intent": "fear_vent",
     "conditions": {
@@ -1628,7 +1628,7 @@
   {
     "id": 85,
     "key": "GR_ML_ENG_CA#00085",
-    "text": "[CALM] she'll hold because we hold. that's not poetry, it's maintenance",
+    "text": "[calm, measured] she'll hold because we hold. that's not poetry, it's maintenance",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -1647,7 +1647,7 @@
   {
     "id": 86,
     "key": "GR_ML_ENG_CA#00086",
-    "text": "[GRUFF] dismissed. in the friendly sense of the word",
+    "text": "[low voice, gruff] dismissed. in the friendly sense of the word",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1663,7 +1663,7 @@
   {
     "id": 87,
     "key": "GR_ML_ENG_CA#00087",
-    "text": "[TIRED] log it as handled. readings steady, crew standing. that's the whole report",
+    "text": "[tired, dead tired] log it as handled. readings steady, crew standing. that's the whole report",
     "type": "closer",
     "intent": "status_report",
     "conditions": {
@@ -1685,7 +1685,7 @@
   {
     "id": 88,
     "key": "GR_ML_ENG_CA#00088",
-    "text": "[WARM] off shift means off shift. the ship's mine till morning. go",
+    "text": "[warm, gentle tone] off shift means off shift. the ship's mine till morning. go",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1704,7 +1704,7 @@
   {
     "id": 89,
     "key": "GR_ML_ENG_CA#00089",
-    "text": "[GRUFF] good. fix it like you own it. far as i'm concerned, you do now",
+    "text": "[low voice, gruff] good. fix it like you own it. far as i'm concerned, you do now",
     "type": "closer",
     "intent": "work_talk",
     "conditions": {
@@ -1723,7 +1723,7 @@
   {
     "id": 90,
     "key": "GR_ML_ENG_CA#00090",
-    "text": "[CALM] i'll be at the gauges. some captains have a ready room. i have gauge four",
+    "text": "[calm, measured] i'll be at the gauges. some captains have a ready room. i have gauge four",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
