@@ -892,5 +892,784 @@
     },
     "reply_to_intents": [],
     "weight": 1.0
+  },
+  {
+    "id": 49,
+    "key": "PA_FE_MAR_CA#00049",
+    "text": "[CONFIDENT] systems check complete, everything's running within parameters. for now",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 50,
+    "key": "PA_FE_MAR_CA#00050",
+    "text": "[GRUFF] crew's solid. they don't panic when i don't panic. that's leadership",
+    "type": "declaration",
+    "intent": "boast",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 51,
+    "key": "PA_FE_MAR_CA#00051",
+    "text": "[SUSPICIOUS] something's wrong with the navigation data. can't prove it but my gut says wrong",
+    "type": "declaration",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 52,
+    "key": "PA_FE_MAR_CA#00052",
+    "text": "[NERVOUS] i'm not used to silence in the engine room. that usually means something's about to break",
+    "type": "declaration",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 53,
+    "key": "PA_FE_MAR_CA#00053",
+    "text": "[URGENT] somebody update me on the hull breaches, i need numbers, not reassurances",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "hull_breach"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 54,
+    "key": "PA_FE_MAR_CA#00054",
+    "text": "[GRUFF] i've been doing this too long to pretend everything's fine when it's not",
+    "type": "declaration",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 55,
+    "key": "PA_FE_MAR_CA#00055",
+    "text": "[PAINED] took shrapnel protecting a junior officer. worth it, they're still standing",
+    "type": "declaration",
+    "intent": "pain",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "wounded": true,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "injury"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 56,
+    "key": "PA_FE_MAR_CA#00056",
+    "text": "[SARCASTIC] hostiles are closing and i've got tactical options ranging from bad to worse",
+    "type": "declaration",
+    "intent": "gallows_humor",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "combat"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 57,
+    "key": "PA_FE_MAR_CA#00057",
+    "text": "[GRIM] they trusted me to keep them alive and i lost them anyway. that weight doesn't go away",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 10,
+      "stress_max": 16,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 58,
+    "key": "PA_FE_MAR_CA#00058",
+    "text": "[TERRIFIED] life support's down and we're breathing bottled air with no filter line and i'm doing the math and i hate the math",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 12,
+      "stress_max": 20,
+      "panic": true,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "life_support_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 59,
+    "key": "PA_FE_MAR_CA#00059",
+    "text": "[URGENT] i'm recommending we hit the distress beacon. command's gotta know what we're facing",
+    "type": "opener",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "OF"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 60,
+    "key": "PA_FE_MAR_CA#00060",
+    "text": "[URGENT] combat readiness check. get your people armed and positioned now",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "MAR"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 61,
+    "key": "PA_FE_MAR_CA#00061",
+    "text": "[GRUFF] the ship's performing better than expected. remind me to praise the engineers twice",
+    "type": "declaration",
+    "intent": "praise_ai",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 62,
+    "key": "PA_FE_MAR_CA#00062",
+    "text": "[FLIRTY] somebody once told me i was too intense for romance. they weren't wrong but i'm worse in a crisis",
+    "type": "declaration",
+    "intent": "romance_hint",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 63,
+    "key": "PA_FE_MAR_CA#00063",
+    "text": "[WARM] you make the hard calls easier just by being here, that might be the best compliment i can give",
+    "type": "opener",
+    "intent": "romance_advance",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 64,
+    "key": "PA_FE_MAR_CA#00064",
+    "text": "[EMBARRASSED] i want to ask if you'd want to stay close when things get bad and i don't mean just tactically",
+    "type": "reply",
+    "intent": "romance_advance",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "romance_hint",
+      "romance_advance"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 65,
+    "key": "PA_FE_MAR_CA#00065",
+    "text": "[DEADPAN] romantic feelings complicate mission focus. noted. proceeding anyway",
+    "type": "declaration",
+    "intent": "romance_hint",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 66,
+    "key": "PA_FE_MAR_CA#00066",
+    "text": "[WARM] you're good for this crew. more importantly, you're good for me",
+    "type": "reply",
+    "intent": "romance_accept",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "romance_hint",
+      "romance_advance"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 67,
+    "key": "PA_FE_MAR_CA#00067",
+    "text": "[DRY] i respect you but i'm not great at the vulnerability thing, especially right now",
+    "type": "reply",
+    "intent": "romance_reject",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "romance_hint",
+      "romance_advance"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 68,
+    "key": "PA_FE_MAR_CA#00068",
+    "text": "[NERVOUS] this crew's falling apart and i can't hold them together by force alone, i need to be honest about the odds",
+    "type": "reply",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 10,
+      "stress_max": 15,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 69,
+    "key": "PA_FE_MAR_CA#00069",
+    "text": "[CONFIDENT] you're right. i'm right. the plan's solid. let's move",
+    "type": "reply",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "boast",
+      "work_talk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 70,
+    "key": "PA_FE_MAR_CA#00070",
+    "text": "[WARM] i've got a crew depending on me. that's what keeps me together when nothing else can",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "doubt"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 71,
+    "key": "PA_FE_MAR_CA#00071",
+    "text": "[URGENT] get that person medical attention, i don't care if they're half-dead, they're MY crew",
+    "type": "reply",
+    "intent": "offer_help",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "wounded": true,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "pain",
+      "status_report"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 72,
+    "key": "PA_FE_MAR_CA#00072",
+    "text": "[GRUFF] i trust you with my life because you've earned it, that's not common for me",
+    "type": "reply",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "praise_ai",
+      "work_talk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 73,
+    "key": "PA_FE_MAR_CA#00073",
+    "text": "[WARM] i appreciate the apology but i appreciate your competence more right now",
+    "type": "reply",
+    "intent": "apology",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "apology"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 74,
+    "key": "PA_FE_MAR_CA#00074",
+    "text": "[RESIGNED] i'm staying focused on the mission because that's all that matters right now",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 75,
+    "key": "PA_FE_MAR_CA#00075",
+    "text": "[GRIM] one more shift and we're either okay or we're not. no middle ground",
+    "type": "closer",
+    "intent": "gallows_humor",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 76,
+    "key": "PA_FE_MAR_CA#00076",
+    "text": "[CONFIDENT] i'm taking watch. get some sleep. that's an order from your captain, not a suggestion",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 77,
+    "key": "PA_FE_MAR_CA#00077",
+    "text": "[SHOUTS] sealed the compartment, nobody's getting through that way, we're locked down tight",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 14,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "hull_breach"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 78,
+    "key": "PA_FE_MAR_CA#00078",
+    "text": "[NERVOUS] the reactor's stable but i've got a bad feeling about the next hour",
+    "type": "declaration",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "repair_success"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 79,
+    "key": "PA_FE_MAR_CA#00079",
+    "text": "[TIRED] disease spreading through the crew faster than we can isolate it. containment's failing",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "disease_outbreak"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 80,
+    "key": "PA_FE_MAR_CA#00080",
+    "text": "[CONFIDENT] i'm recommending an emergency course adjustment. trust my calls or fight me, pick one",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 81,
+    "key": "PA_FE_MAR_CA#00081",
+    "text": "[GRUFF] you're getting better at this job. didn't expect that from your first week",
+    "type": "reply",
+    "intent": "praise_ai",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "CM"
+      ]
+    },
+    "reply_to_intents": [
+      "status_report",
+      "work_talk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 82,
+    "key": "PA_FE_MAR_CA#00082",
+    "text": "[SUSPICIOUS] i'm watching the computer. not because i don't trust it but because i DO trust it too much",
+    "type": "reply",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "suspicion_ai"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 83,
+    "key": "PA_FE_MAR_CA#00083",
+    "text": "[CALM] i'm not panicking. this is me, focused and ready",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 84,
+    "key": "PA_FE_MAR_CA#00084",
+    "text": "[LAUGHS] took the wrong corridor and ended up in the galley. worst mistake i've made all week",
+    "type": "declaration",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 85,
+    "key": "PA_FE_MAR_CA#00085",
+    "text": "[CONFIDENT] this is what i do. this is who i am. i don't break under pressure",
+    "type": "declaration",
+    "intent": "boast",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 86,
+    "key": "PA_FE_MAR_CA#00086",
+    "text": "[GRUFF] fleet didn't have ships like this when i enlisted but i would've flown one anyway",
+    "type": "declaration",
+    "intent": "memory",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 87,
+    "key": "PA_FE_MAR_CA#00087",
+    "text": "[TIRED] low power and hull compromised and my crew's stretched too thin. that's three problems at once",
+    "type": "declaration",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "power_low",
+        "hull_breach"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 88,
+    "key": "PA_FE_MAR_CA#00088",
+    "text": "[URGENT] we need to vote on the evacuation protocol. nobody's gonna like the answer i've already calculated",
+    "type": "opener",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 10,
+      "stress_max": 15,
+      "target": [
+        "OF"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 89,
+    "key": "PA_FE_MAR_CA#00089",
+    "text": "[WARM] this crew's the best i've flown with. tell them that when i'm not around to say it",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 90,
+    "key": "PA_FE_MAR_CA#00090",
+    "text": "[GRIM] i'm keeping watch until the next shift. someone's gotta make sure nothing catches us sleeping",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
   }
 ]
