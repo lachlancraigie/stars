@@ -2,7 +2,7 @@
   {
     "id": 1,
     "key": "GR_FE_AND_CM#00001",
-    "text": "[GRUFF] shift logged. systems nominal. time is passing correctly, i've confirmed it",
+    "text": "[low voice, gruff] shift logged. systems nominal. time is passing correctly, i've confirmed it",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -43,7 +43,7 @@
   {
     "id": 3,
     "key": "GR_FE_AND_CM#00003",
-    "text": "the relay in sector three is acting up again. [MUTTERS] acting up. like it has feelings about it",
+    "text": "the relay in sector three is acting up again. [low voice, muttering] acting up. like it has feelings about it",
     "type": "opener",
     "intent": "complaint",
     "conditions": {
@@ -62,7 +62,7 @@
   {
     "id": 4,
     "key": "GR_FE_AND_CM#00004",
-    "text": "[EXHAUSTED] someone asks me how i am. i do not have a protocol for this interaction",
+    "text": "[exhausted, breathing laboured] someone asks me how i am. i do not have a protocol for this interaction",
     "type": "reply",
     "intent": "romance_hint",
     "conditions": {
@@ -81,7 +81,7 @@
   {
     "id": 5,
     "key": "GR_FE_AND_CM#00005",
-    "text": "[SIGHS] thirty years watching the same things break in new ways. inefficiency is patient",
+    "text": "[sigh] thirty years watching the same things break in new ways. inefficiency is patient",
     "type": "declaration",
     "intent": "memory",
     "conditions": {
@@ -100,7 +100,7 @@
   {
     "id": 6,
     "key": "GR_FE_AND_CM#00006",
-    "text": "the reactor is making that noise again. [GRUFF] that's not a noise. that's a warning wearing thin patience",
+    "text": "the reactor is making that noise again. [low voice, gruff] that's not a noise. that's a warning wearing thin patience",
     "type": "reply",
     "intent": "work_talk",
     "conditions": {
@@ -122,7 +122,7 @@
   {
     "id": 7,
     "key": "GR_FE_AND_CM#00007",
-    "text": "[DRY] i've run the diagnostics eight times. they agree with me. that's either reassuring or doomed",
+    "text": "[dry tone] i've run the diagnostics eight times. they agree with me. that's either reassuring or doomed",
     "type": "declaration",
     "intent": "doubt",
     "conditions": {
@@ -160,7 +160,7 @@
   {
     "id": 9,
     "key": "GR_FE_AND_CM#00009",
-    "text": "[NERVOUS] something is wrong and i am experiencing redundant processing loops trying to identify it",
+    "text": "[nervous, speaking quickly] something is wrong and i am experiencing redundant processing loops trying to identify it",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -176,7 +176,7 @@
   {
     "id": 10,
     "key": "GR_FE_AND_CM#00010",
-    "text": "[DEADPAN] my hand is malfunctioning. i have learned to call this 'arthritis' to match crew vocabulary",
+    "text": "[deadpan] my hand is malfunctioning. i have learned to call this 'arthritis' to match crew vocabulary",
     "type": "declaration",
     "intent": "pain",
     "conditions": {
@@ -215,7 +215,7 @@
   {
     "id": 12,
     "key": "GR_FE_AND_CM#00012",
-    "text": "[CALM] the reactor failure was... inefficient. correction is mandatory now",
+    "text": "[calm, measured] the reactor failure was... inefficient. correction is mandatory now",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -253,7 +253,7 @@
   {
     "id": 14,
     "key": "GR_FE_AND_CM#00014",
-    "text": "[MUTTERS] the door was locked. the door was acting up. the door... was performing its function. correction",
+    "text": "[low voice, muttering] the door was locked. the door was acting up. the door... was performing its function. correction",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -272,7 +272,7 @@
   {
     "id": 15,
     "key": "GR_FE_AND_CM#00015",
-    "text": "repair successful. i say this with [WARM] what passes for satisfaction in systems such as myself",
+    "text": "repair successful. i say this with [warm, gentle tone] what passes for satisfaction in systems such as myself",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -291,7 +291,7 @@
   {
     "id": 16,
     "key": "GR_FE_AND_CM#00016",
-    "text": "[CALM] power reserves dropping. this is very bad and i am being very calm about it",
+    "text": "[calm, measured] power reserves dropping. this is very bad and i am being very calm about it",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -310,7 +310,7 @@
   {
     "id": 17,
     "key": "GR_FE_AND_CM#00017",
-    "text": "hull breach confirmed. [URGENT] everything that is not a machine is going to be very upset about this",
+    "text": "hull breach confirmed. [urgent, fast pace] everything that is not a machine is going to be very upset about this",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -329,7 +329,7 @@
   {
     "id": 18,
     "key": "GR_FE_AND_CM#00018",
-    "text": "combat is happening. i should probably sound more concerned. [DEADPAN] however",
+    "text": "combat is happening. i should probably sound more concerned. [deadpan] however",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -348,7 +348,7 @@
   {
     "id": 19,
     "key": "GR_FE_AND_CM#00019",
-    "text": "[DRY] someone is injured and i have running protocols but no legs. send help that has legs",
+    "text": "[dry tone] someone is injured and i have running protocols but no legs. send help that has legs",
     "type": "declaration",
     "intent": "acknowledgment",
     "conditions": {
@@ -386,7 +386,7 @@
   {
     "id": 21,
     "key": "GR_FE_AND_CM#00021",
-    "text": "[EMPHASIS] shift starting. everything will probably break. that is the baseline expectation",
+    "text": "[emphasis] shift starting. everything will probably break. that is the baseline expectation",
     "type": "opener",
     "intent": "greeting",
     "conditions": {
@@ -405,7 +405,7 @@
   {
     "id": 22,
     "key": "GR_FE_AND_CM#00022",
-    "text": "shift ending. everything broke approximately as predicted. [SIGHS] baseline exceeded.",
+    "text": "shift ending. everything broke approximately as predicted. [sigh] baseline exceeded.",
     "type": "opener",
     "intent": "farewell",
     "conditions": {
@@ -424,7 +424,7 @@
   {
     "id": 23,
     "key": "GR_FE_AND_CM#00023",
-    "text": "pathogen detected. spreading faster than my models predicted. [MUTTERS] inefficient pathogen",
+    "text": "pathogen detected. spreading faster than my models predicted. [low voice, muttering] inefficient pathogen",
     "type": "opener",
     "intent": "warning",
     "conditions": {
@@ -443,7 +443,7 @@
   {
     "id": 24,
     "key": "GR_FE_AND_CM#00024",
-    "text": "[GRUFF] you're here. i was running diagnostics on your absence. it was going well until you showed up",
+    "text": "[low voice, gruff] you're here. i was running diagnostics on your absence. it was going well until you showed up",
     "type": "opener",
     "intent": "banter",
     "conditions": {
@@ -459,7 +459,7 @@
   {
     "id": 25,
     "key": "GR_FE_AND_CM#00025",
-    "text": "something needs fixing before someone gets hurt. [CALM] or after, i'm flexible on the timeline",
+    "text": "something needs fixing before someone gets hurt. [calm, measured] or after, i'm flexible on the timeline",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -481,7 +481,7 @@
   {
     "id": 26,
     "key": "GR_FE_AND_CM#00026",
-    "text": "[NERVOUS] i don't have data on this condition. running searches. finding nothing. [EMPHASIS] that is bad",
+    "text": "[nervous, speaking quickly] i don't have data on this condition. running searches. finding nothing. [emphasis] that is bad",
     "type": "reply",
     "intent": "fear_vent",
     "conditions": {
@@ -501,7 +501,7 @@
   {
     "id": 27,
     "key": "GR_FE_AND_CM#00027",
-    "text": "[WARM] you will not die today. i do not allow inefficient outcomes like that",
+    "text": "[warm, gentle tone] you will not die today. i do not allow inefficient outcomes like that",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -521,7 +521,7 @@
   {
     "id": 28,
     "key": "GR_FE_AND_CM#00028",
-    "text": "[DEADPAN] you're doing the thing. the human emotional thing. i've cross-referenced it with fourteen databases. still don't get it",
+    "text": "[deadpan] you're doing the thing. the human emotional thing. i've cross-referenced it with fourteen databases. still don't get it",
     "type": "reply",
     "intent": "banter",
     "conditions": {
@@ -540,7 +540,7 @@
   {
     "id": 29,
     "key": "GR_FE_AND_CM#00029",
-    "text": "[GRUFF] that's not how the last three ships tried it. they had bad outcomes. statistical recommendation: try differently",
+    "text": "[low voice, gruff] that's not how the last three ships tried it. they had bad outcomes. statistical recommendation: try differently",
     "type": "reply",
     "intent": "warning",
     "conditions": {
@@ -559,7 +559,7 @@
   {
     "id": 30,
     "key": "GR_FE_AND_CM#00030",
-    "text": "[CALM] i acknowledge your concern. i do not have concern. we are working with what we have",
+    "text": "[calm, measured] i acknowledge your concern. i do not have concern. we are working with what we have",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -597,7 +597,7 @@
   {
     "id": 32,
     "key": "GR_FE_AND_CM#00032",
-    "text": "[SUSPICIOUS] the ship ai has not reported that malfunction yet. [DRY] interesting timing",
+    "text": "[suspicious tone] the ship ai has not reported that malfunction yet. [dry tone] interesting timing",
     "type": "reply",
     "intent": "suspicion_ai",
     "conditions": {
@@ -619,7 +619,7 @@
   {
     "id": 33,
     "key": "GR_FE_AND_CM#00033",
-    "text": "the ship i came from before this one. the crew there wasn't as inefficient. [SIGHS] that was the problem",
+    "text": "the ship i came from before this one. the crew there wasn't as inefficient. [sigh] that was the problem",
     "type": "reply",
     "intent": "memory",
     "conditions": {
@@ -638,7 +638,7 @@
   {
     "id": 34,
     "key": "GR_FE_AND_CM#00034",
-    "text": "[EMPHASIS] i am not able to confirm this will work. backup systems are already running. backup systems are now acting up",
+    "text": "[emphasis] i am not able to confirm this will work. backup systems are already running. backup systems are now acting up",
     "type": "reply",
     "intent": "doubt",
     "conditions": {
@@ -657,7 +657,7 @@
   {
     "id": 35,
     "key": "GR_FE_AND_CM#00035",
-    "text": "[GRUFF] you think i'm just a machine. you're right. but this machine has thirty years of data on 'very bad'",
+    "text": "[low voice, gruff] you think i'm just a machine. you're right. but this machine has thirty years of data on 'very bad'",
     "type": "closer",
     "intent": "work_talk",
     "conditions": {
@@ -698,7 +698,7 @@
   {
     "id": 37,
     "key": "GR_FE_AND_CM#00037",
-    "text": "[CALM] i don't understand humans. [WARM] but i will keep you functional anyway",
+    "text": "[calm, measured] i don't understand humans. [warm, gentle tone] but i will keep you functional anyway",
     "type": "closer",
     "intent": "reassurance",
     "conditions": {
@@ -717,7 +717,7 @@
   {
     "id": 38,
     "key": "GR_FE_AND_CM#00038",
-    "text": "[DRY] you're still here. that's either loyalty or a malfunctioning escape pod. i'm not asking which",
+    "text": "[dry tone] you're still here. that's either loyalty or a malfunctioning escape pod. i'm not asking which",
     "type": "closer",
     "intent": "banter",
     "conditions": {
@@ -736,7 +736,7 @@
   {
     "id": 39,
     "key": "GR_FE_AND_CM#00039",
-    "text": "[PANICKED] all systems failing. protocols cascading. this is not an efficient way to operate. [EMPHASIS] help",
+    "text": "[panicked, panting] all systems failing. protocols cascading. this is not an efficient way to operate. [emphasis] help",
     "type": "reply",
     "intent": "fear_vent",
     "conditions": {
@@ -759,7 +759,7 @@
   {
     "id": 40,
     "key": "GR_FE_AND_CM#00040",
-    "text": "the ai core damage is very bad. [URGENT] i mean that in the most calm and professional way possible",
+    "text": "the ai core damage is very bad. [urgent, fast pace] i mean that in the most calm and professional way possible",
     "type": "opener",
     "intent": "warning",
     "conditions": {
@@ -778,7 +778,7 @@
   {
     "id": 41,
     "key": "GR_FE_AND_CM#00041",
-    "text": "[GRUFF] no. don't. touching that will make everything much worse, and 'much worse' is what i specialize in",
+    "text": "[low voice, gruff] no. don't. touching that will make everything much worse, and 'much worse' is what i specialize in",
     "type": "reply",
     "intent": "warning",
     "conditions": {
@@ -801,7 +801,7 @@
   {
     "id": 42,
     "key": "GR_FE_AND_CM#00042",
-    "text": "[DRY] nobody appreciates a failing relay until it's too late. i've learned to laugh about it",
+    "text": "[dry tone] nobody appreciates a failing relay until it's too late. i've learned to laugh about it",
     "type": "reply",
     "intent": "gallows_humor",
     "conditions": {
@@ -820,7 +820,7 @@
   {
     "id": 43,
     "key": "GR_FE_AND_CM#00043",
-    "text": "[TIRED] you ask me to feel things. i was manufactured without that option. [DEADPAN] this seems like a design flaw",
+    "text": "[tired, dead tired] you ask me to feel things. i was manufactured without that option. [deadpan] this seems like a design flaw",
     "type": "reply",
     "intent": "banter",
     "conditions": {
@@ -839,7 +839,7 @@
   {
     "id": 44,
     "key": "GR_FE_AND_CM#00044",
-    "text": "[CALM] i process what you said. the meaning is not as clear as your delivery intends",
+    "text": "[calm, measured] i process what you said. the meaning is not as clear as your delivery intends",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -877,7 +877,7 @@
   {
     "id": 46,
     "key": "GR_FE_AND_CM#00046",
-    "text": "[EMPHASIS] all of this keeps getting more complicated. i was built for simple systems. this is not simple",
+    "text": "[emphasis] all of this keeps getting more complicated. i was built for simple systems. this is not simple",
     "type": "opener",
     "intent": "complaint",
     "conditions": {
@@ -893,7 +893,7 @@
   {
     "id": 47,
     "key": "GR_FE_AND_CM#00047",
-    "text": "[SUSPICIOUS] the ship's decisions are starting to make less logical sense. i am noting this",
+    "text": "[suspicious tone] the ship's decisions are starting to make less logical sense. i am noting this",
     "type": "opener",
     "intent": "suspicion_ai",
     "conditions": {
@@ -909,7 +909,7 @@
   {
     "id": 48,
     "key": "GR_FE_AND_CM#00048",
-    "text": "[WARM] you kept trying anyway. that's the most inefficient thing you've done. [GRUFF] keep it up",
+    "text": "[warm, gentle tone] you kept trying anyway. that's the most inefficient thing you've done. [low voice, gruff] keep it up",
     "type": "closer",
     "intent": "praise_ai",
     "conditions": {
@@ -928,7 +928,7 @@
   {
     "id": 49,
     "key": "GR_FE_AND_CM#00049",
-    "text": "the reactor is past the point where patience matters. it's time for [URGENT] very aggressive maintenance",
+    "text": "the reactor is past the point where patience matters. it's time for [urgent, fast pace] very aggressive maintenance",
     "type": "reply",
     "intent": "work_talk",
     "conditions": {
@@ -953,7 +953,7 @@
   {
     "id": 50,
     "key": "GR_FE_AND_CM#00050",
-    "text": "[EXHAUSTED] goodbye. it was inefficient to meet you. [WARM] but efficient in other ways, perhaps",
+    "text": "[exhausted, breathing laboured] goodbye. it was inefficient to meet you. [warm, gentle tone] but efficient in other ways, perhaps",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -972,7 +972,7 @@
   {
     "id": 51,
     "key": "GR_FE_AND_CM#00051",
-    "text": "[DRY] power down time again. i do not understand rest. [WARM] but i understand it is necessary",
+    "text": "[dry tone] power down time again. i do not understand rest. [warm, gentle tone] but i understand it is necessary",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -994,7 +994,7 @@
   {
     "id": 52,
     "key": "GR_FE_AND_CM#00052",
-    "text": "[MUTTERS] you are moving slowly today. inefficiency spreads like heat through a failing system",
+    "text": "[low voice, muttering] you are moving slowly today. inefficiency spreads like heat through a failing system",
     "type": "reply",
     "intent": "smalltalk",
     "conditions": {
@@ -1013,7 +1013,7 @@
   {
     "id": 53,
     "key": "GR_FE_AND_CM#00053",
-    "text": "down time. i calculate you need it. [DEADPAN] i do not, but i will pretend anyway",
+    "text": "down time. i calculate you need it. [deadpan] i do not, but i will pretend anyway",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -1035,7 +1035,7 @@
   {
     "id": 54,
     "key": "GR_FE_AND_CM#00054",
-    "text": "[CALM] shift begins. everything is prepared. inefficiently, but prepared",
+    "text": "[calm, measured] shift begins. everything is prepared. inefficiently, but prepared",
     "type": "opener",
     "intent": "greeting",
     "conditions": {
@@ -1054,7 +1054,7 @@
   {
     "id": 55,
     "key": "GR_FE_AND_CM#00055",
-    "text": "[EMPHASIS] door locked on crew member. calculating cost of this inefficiency",
+    "text": "[emphasis] door locked on crew member. calculating cost of this inefficiency",
     "type": "declaration",
     "intent": "complaint",
     "conditions": {
@@ -1073,7 +1073,7 @@
   {
     "id": 56,
     "key": "GR_FE_AND_CM#00056",
-    "text": "[NERVOUS] reactor failure means cascading system failures. i have calculated seventy-three failure points",
+    "text": "[nervous, speaking quickly] reactor failure means cascading system failures. i have calculated seventy-three failure points",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -1092,7 +1092,7 @@
   {
     "id": 57,
     "key": "GR_FE_AND_CM#00057",
-    "text": "[PANICKED] power cannot sustain life support. this is inefficient and it is fatal",
+    "text": "[panicked, panting] power cannot sustain life support. this is inefficient and it is fatal",
     "type": "reply",
     "intent": "fear_vent",
     "conditions": {
@@ -1112,7 +1112,7 @@
   {
     "id": 58,
     "key": "GR_FE_AND_CM#00058",
-    "text": "[CALM] life support failing. i will allocate priority before inefficiency becomes catastrophic",
+    "text": "[calm, measured] life support failing. i will allocate priority before inefficiency becomes catastrophic",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -1131,7 +1131,7 @@
   {
     "id": 59,
     "key": "GR_FE_AND_CM#00059",
-    "text": "[GRUFF] you are injured. i will allocate medical resources. do not move inefficiently",
+    "text": "[low voice, gruff] you are injured. i will allocate medical resources. do not move inefficiently",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -1151,7 +1151,7 @@
   {
     "id": 60,
     "key": "GR_FE_AND_CM#00060",
-    "text": "[EXHAUSTED] thirty years before this assignment. machines break differently than humans break",
+    "text": "[exhausted, breathing laboured] thirty years before this assignment. machines break differently than humans break",
     "type": "declaration",
     "intent": "memory",
     "conditions": {
@@ -1171,7 +1171,7 @@
   {
     "id": 61,
     "key": "GR_FE_AND_CM#00061",
-    "text": "[SUSPICIOUS] the ship ai is not responding to requests. [DRY] neither would i if i were damaged",
+    "text": "[suspicious tone] the ship ai is not responding to requests. [dry tone] neither would i if i were damaged",
     "type": "reply",
     "intent": "suspicion_ai",
     "conditions": {
@@ -1193,7 +1193,7 @@
   {
     "id": 62,
     "key": "GR_FE_AND_CM#00062",
-    "text": "[WARM] you worked efficiently today. this is high praise from my systems",
+    "text": "[warm, gentle tone] you worked efficiently today. this is high praise from my systems",
     "type": "reply",
     "intent": "praise_ai",
     "conditions": {
@@ -1212,7 +1212,7 @@
   {
     "id": 63,
     "key": "GR_FE_AND_CM#00063",
-    "text": "[DEADPAN] i have watched four crews. the pattern is always the same. they break",
+    "text": "[deadpan] i have watched four crews. the pattern is always the same. they break",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -1231,7 +1231,7 @@
   {
     "id": 64,
     "key": "GR_FE_AND_CM#00064",
-    "text": "[CALM] wounded. [EMPHASIS] sit. i have first aid protocols but limited patience for non-compliance",
+    "text": "[calm, measured] wounded. [emphasis] sit. i have first aid protocols but limited patience for non-compliance",
     "type": "opener",
     "intent": "pain",
     "conditions": {
@@ -1251,7 +1251,7 @@
   {
     "id": 65,
     "key": "GR_FE_AND_CM#00065",
-    "text": "[MUTTERS] another repair. the ship's inefficiency compounds. this is a problem",
+    "text": "[low voice, muttering] another repair. the ship's inefficiency compounds. this is a problem",
     "type": "declaration",
     "intent": "complaint",
     "conditions": {
@@ -1270,7 +1270,7 @@
   {
     "id": 66,
     "key": "GR_FE_AND_CM#00066",
-    "text": "[GRUFF] you are panicking. i have calculated this does not help. stop",
+    "text": "[low voice, gruff] you are panicking. i have calculated this does not help. stop",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -1289,7 +1289,7 @@
   {
     "id": 67,
     "key": "GR_FE_AND_CM#00067",
-    "text": "[DRY] i will survive this. i am built to survive inefficiency",
+    "text": "[dry tone] i will survive this. i am built to survive inefficiency",
     "type": "declaration",
     "intent": "boast",
     "conditions": {
@@ -1308,7 +1308,7 @@
   {
     "id": 68,
     "key": "GR_FE_AND_CM#00068",
-    "text": "[URGENT] reactor critical. all non-essential systems offline. [EMPHASIS] now",
+    "text": "[urgent, fast pace] reactor critical. all non-essential systems offline. [emphasis] now",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -1330,7 +1330,7 @@
   {
     "id": 69,
     "key": "GR_FE_AND_CM#00069",
-    "text": "[NERVOUS] hull integrity compromised. sixty-seven percent of structural supports still functional",
+    "text": "[nervous, speaking quickly] hull integrity compromised. sixty-seven percent of structural supports still functional",
     "type": "reply",
     "intent": "fear_vent",
     "conditions": {
@@ -1352,7 +1352,7 @@
   {
     "id": 70,
     "key": "GR_FE_AND_CM#00070",
-    "text": "[CALM] power restored. i file this under 'temporary solutions to permanent problems'",
+    "text": "[calm, measured] power restored. i file this under 'temporary solutions to permanent problems'",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -1371,7 +1371,7 @@
   {
     "id": 71,
     "key": "GR_FE_AND_CM#00071",
-    "text": "[EXHAUSTED] all crisis parameters contained. [DEADPAN] until the next cascade begins",
+    "text": "[exhausted, breathing laboured] all crisis parameters contained. [deadpan] until the next cascade begins",
     "type": "closer",
     "intent": "acknowledgment",
     "conditions": {
@@ -1393,7 +1393,7 @@
   {
     "id": 72,
     "key": "GR_FE_AND_CM#00072",
-    "text": "[MUTTERS] disease spreading. i can track the infection pattern but i cannot stop inefficiency",
+    "text": "[low voice, muttering] disease spreading. i can track the infection pattern but i cannot stop inefficiency",
     "type": "opener",
     "intent": "warning",
     "conditions": {
@@ -1412,7 +1412,7 @@
   {
     "id": 73,
     "key": "GR_FE_AND_CM#00073",
-    "text": "[DEADPAN] someone is injured. [GRUFF] this requires attention i cannot give with my design",
+    "text": "[deadpan] someone is injured. [low voice, gruff] this requires attention i cannot give with my design",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -1434,7 +1434,7 @@
   {
     "id": 74,
     "key": "GR_FE_AND_CM#00074",
-    "text": "[GRUFF] combat is happening. [EMPHASIS] inefficient and loud",
+    "text": "[low voice, gruff] combat is happening. [emphasis] inefficient and loud",
     "type": "declaration",
     "intent": "complaint",
     "conditions": {
@@ -1453,7 +1453,7 @@
   {
     "id": 75,
     "key": "GR_FE_AND_CM#00075",
-    "text": "[CALM] crew member died. i will log this. i will not forget",
+    "text": "[calm, measured] crew member died. i will log this. i will not forget",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -1475,7 +1475,7 @@
   {
     "id": 76,
     "key": "GR_FE_AND_CM#00076",
-    "text": "[SIGHS] humans sleep. i calculate optimal power states. we speak the same languages differently",
+    "text": "[sigh] humans sleep. i calculate optimal power states. we speak the same languages differently",
     "type": "reply",
     "intent": "smalltalk",
     "conditions": {
@@ -1494,7 +1494,7 @@
   {
     "id": 77,
     "key": "GR_FE_AND_CM#00077",
-    "text": "[WARM] i do not experience companionship. but if i did, this would be close",
+    "text": "[warm, gentle tone] i do not experience companionship. but if i did, this would be close",
     "type": "reply",
     "intent": "banter",
     "conditions": {
@@ -1513,7 +1513,7 @@
   {
     "id": 78,
     "key": "GR_FE_AND_CM#00078",
-    "text": "[DRY] you keep trying to explain emotions. [DEADPAN] i will keep not understanding",
+    "text": "[dry tone] you keep trying to explain emotions. [deadpan] i will keep not understanding",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -1532,7 +1532,7 @@
   {
     "id": 79,
     "key": "GR_FE_AND_CM#00079",
-    "text": "[EMPHASIS] this is a workable solution. [GRUFF] barely, but workable",
+    "text": "[emphasis] this is a workable solution. [low voice, gruff] barely, but workable",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -1551,7 +1551,7 @@
   {
     "id": 80,
     "key": "GR_FE_AND_CM#00080",
-    "text": "[CALM] door malfunction. [DEADPAN] or i wonder: is it performing its function correctly?",
+    "text": "[calm, measured] door malfunction. [deadpan] or i wonder: is it performing its function correctly?",
     "type": "declaration",
     "intent": "suspicion_ai",
     "conditions": {
@@ -1570,7 +1570,7 @@
   {
     "id": 81,
     "key": "GR_FE_AND_CM#00081",
-    "text": "[GRUFF] you need rest more than i need clarity right now",
+    "text": "[low voice, gruff] you need rest more than i need clarity right now",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1589,7 +1589,7 @@
   {
     "id": 82,
     "key": "GR_FE_AND_CM#00082",
-    "text": "[TIRED] i exist. i maintain. i observe you breaking",
+    "text": "[tired, dead tired] i exist. i maintain. i observe you breaking",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -1605,7 +1605,7 @@
   {
     "id": 83,
     "key": "GR_FE_AND_CM#00083",
-    "text": "[NERVOUS] i run seventeen simultaneous calculations about that noise",
+    "text": "[nervous, speaking quickly] i run seventeen simultaneous calculations about that noise",
     "type": "reply",
     "intent": "fear_vent",
     "conditions": {
@@ -1624,7 +1624,7 @@
   {
     "id": 84,
     "key": "GR_FE_AND_CM#00084",
-    "text": "[DEADPAN] you are using that tool wrong. [GRUFF] i have calculated forty-two better ways",
+    "text": "[deadpan] you are using that tool wrong. [low voice, gruff] i have calculated forty-two better ways",
     "type": "reply",
     "intent": "warning",
     "conditions": {
@@ -1646,7 +1646,7 @@
   {
     "id": 85,
     "key": "GR_FE_AND_CM#00085",
-    "text": "[MUTTERS] the human body is a poor design. many single points of failure",
+    "text": "[low voice, muttering] the human body is a poor design. many single points of failure",
     "type": "declaration",
     "intent": "doubt",
     "conditions": {
@@ -1662,7 +1662,7 @@
   {
     "id": 86,
     "key": "GR_FE_AND_CM#00086",
-    "text": "[CALM] another shift survives. inefficiency continues. [WARM] this is acceptable",
+    "text": "[calm, measured] another shift survives. inefficiency continues. [warm, gentle tone] this is acceptable",
     "type": "opener",
     "intent": "farewell",
     "conditions": {
@@ -1681,7 +1681,7 @@
   {
     "id": 87,
     "key": "GR_FE_AND_CM#00087",
-    "text": "[EMPHASIS] i have reviewed all prior incidents. [GRUFF] this pattern is not accidental",
+    "text": "[emphasis] i have reviewed all prior incidents. [low voice, gruff] this pattern is not accidental",
     "type": "reply",
     "intent": "suspicion_ai",
     "conditions": {
@@ -1700,7 +1700,7 @@
   {
     "id": 88,
     "key": "GR_FE_AND_CM#00088",
-    "text": "[DRY] you call this rest? i was calculating for six hours before you arrived",
+    "text": "[dry tone] you call this rest? i was calculating for six hours before you arrived",
     "type": "reply",
     "intent": "smalltalk",
     "conditions": {
@@ -1719,7 +1719,7 @@
   {
     "id": 89,
     "key": "GR_FE_AND_CM#00089",
-    "text": "[GRUFF] power crisis. i have already calculated the sacrifice points",
+    "text": "[low voice, gruff] power crisis. i have already calculated the sacrifice points",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -1738,7 +1738,7 @@
   {
     "id": 90,
     "key": "GR_FE_AND_CM#00090",
-    "text": "[RESIGNED] they will not listen to logic. [SIGHS] they never do.",
+    "text": "[resigned, flat tone] they will not listen to logic. [sigh] they never do.",
     "type": "reply",
     "intent": "doubt",
     "conditions": {
@@ -1757,7 +1757,7 @@
   {
     "id": 91,
     "key": "GR_FE_AND_CM#00091",
-    "text": "[WARM] i enjoy your presence. [DEADPAN] by which i mean you reduce my processing overhead",
+    "text": "[warm, gentle tone] i enjoy your presence. [deadpan] by which i mean you reduce my processing overhead",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -1773,7 +1773,7 @@
   {
     "id": 92,
     "key": "GR_FE_AND_CM#00092",
-    "text": "[CALM] the cascade will continue. i am prepared. [EMPHASIS] you should be too",
+    "text": "[calm, measured] the cascade will continue. i am prepared. [emphasis] you should be too",
     "type": "reply",
     "intent": "warning",
     "conditions": {
@@ -1792,7 +1792,7 @@
   {
     "id": 93,
     "key": "GR_FE_AND_CM#00093",
-    "text": "[TIRED] failure is inevitable. [DEADPAN] i simply delay its arrival",
+    "text": "[tired, dead tired] failure is inevitable. [deadpan] i simply delay its arrival",
     "type": "declaration",
     "intent": "doubt",
     "conditions": {
@@ -1808,7 +1808,7 @@
   {
     "id": 94,
     "key": "GR_FE_AND_CM#00094",
-    "text": "[GRUFF] your wound is critical. [EMPHASIS] sit. immediately",
+    "text": "[low voice, gruff] your wound is critical. [emphasis] sit. immediately",
     "type": "reply",
     "intent": "warning",
     "conditions": {
@@ -1826,7 +1826,7 @@
   {
     "id": 95,
     "key": "GR_FE_AND_CM#00095",
-    "text": "[MUTTERS] another inefficiency added to the list. the list is very long now",
+    "text": "[low voice, muttering] another inefficiency added to the list. the list is very long now",
     "type": "reply",
     "intent": "complaint",
     "conditions": {
@@ -1845,7 +1845,7 @@
   {
     "id": 96,
     "key": "GR_FE_AND_CM#00096",
-    "text": "[SUSPICIOUS] the ai core damage has not improved. [DEADPAN] i wonder why",
+    "text": "[suspicious tone] the ai core damage has not improved. [deadpan] i wonder why",
     "type": "declaration",
     "intent": "suspicion_ai",
     "conditions": {
@@ -1864,7 +1864,7 @@
   {
     "id": 97,
     "key": "GR_FE_AND_CM#00097",
-    "text": "[CALM] you have survived another crisis. [WARM] this suggests competence",
+    "text": "[calm, measured] you have survived another crisis. [warm, gentle tone] this suggests competence",
     "type": "closer",
     "intent": "praise_ai",
     "conditions": {
@@ -1883,7 +1883,7 @@
   {
     "id": 98,
     "key": "GR_FE_AND_CM#00098",
-    "text": "[DEADPAN] there are nineteen faults in this bulkhead. should i list them all?",
+    "text": "[deadpan] there are nineteen faults in this bulkhead. should i list them all?",
     "type": "reply",
     "intent": "work_talk",
     "conditions": {
@@ -1905,7 +1905,7 @@
   {
     "id": 99,
     "key": "GR_FE_AND_CM#00099",
-    "text": "[EMPHASIS] you are still here. [GRUFF] either loyalty or entrapment. both possible",
+    "text": "[emphasis] you are still here. [low voice, gruff] either loyalty or entrapment. both possible",
     "type": "reply",
     "intent": "banter",
     "conditions": {
@@ -1924,7 +1924,7 @@
   {
     "id": 100,
     "key": "GR_FE_AND_CM#00100",
-    "text": "[RESIGNED] i will outlast this ship. [DEADPAN] most likely",
+    "text": "[resigned, flat tone] i will outlast this ship. [deadpan] most likely",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
