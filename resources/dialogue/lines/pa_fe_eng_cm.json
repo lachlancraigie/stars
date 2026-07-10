@@ -960,5 +960,747 @@
     },
     "reply_to_intents": [],
     "weight": 1.0
+  },
+  {
+    "id": 51,
+    "key": "PA_FE_ENG_CM#00051",
+    "text": "[NERVOUS] someone's gonna ask me if i checked the coolant pressure and yes i did, twice, it's fine, probably",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 7,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 52,
+    "key": "PA_FE_ENG_CM#00052",
+    "text": "[EXHAUSTED] been down here too long checking things, everything's fine but i can't convince myself to stop checking",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "shift_end"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 53,
+    "key": "PA_FE_ENG_CM#00053",
+    "text": "[TERRIFIED] the reactor readings don't make sense and i'm checking my instruments and they're fine and that's worse because maybe it's not the instruments",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 11,
+      "stress_max": 16,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "reactor_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 54,
+    "key": "PA_FE_ENG_CM#00054",
+    "text": "[WARM] thank you for coming down here and letting me talk about this even though i'm probably being paranoid",
+    "type": "opener",
+    "intent": "greeting",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 55,
+    "key": "PA_FE_ENG_CM#00055",
+    "text": "[NERVOUS] the secondary cooling loop is making a noise and it might be fine but i can't sleep when it's making that noise",
+    "type": "opener",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 56,
+    "key": "PA_FE_ENG_CM#00056",
+    "text": "[PAINED] i got banged up pretty bad trying to reroute the power conduits, it was stupid but we needed it done",
+    "type": "declaration",
+    "intent": "pain",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "wounded": true,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 57,
+    "key": "PA_FE_ENG_CM#00057",
+    "text": "[SARCASTIC] yeah the engines are fine, everything's fine, we're all gonna be fine, and if we're not it won't be because i didn't try",
+    "type": "declaration",
+    "intent": "gallows_humor",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 58,
+    "key": "PA_FE_ENG_CM#00058",
+    "text": "[URGENT] the captain needs something, probably wants the engines to do something impossible, but i'll try anyway",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "CA"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 59,
+    "key": "PA_FE_ENG_CM#00059",
+    "text": "[NERVOUS] i heard about that repair you tried and it didn't work and i'm wondering if i would've done it different",
+    "type": "opener",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "ENG"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 60,
+    "key": "PA_FE_ENG_CM#00060",
+    "text": "[CURIOUS] wait, you're complimenting my work, that's not something that happens very often",
+    "type": "reply",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "praise_ai"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 61,
+    "key": "PA_FE_ENG_CM#00061",
+    "text": "[SARCASTIC] your plan is so bad it might actually be genius, i can't tell the difference anymore",
+    "type": "reply",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "boast",
+      "work_talk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 62,
+    "key": "PA_FE_ENG_CM#00062",
+    "text": "[DEADPAN] i have romantic feelings and i'm not equipped to process them while also maintaining critical systems",
+    "type": "declaration",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 63,
+    "key": "PA_FE_ENG_CM#00063",
+    "text": "[EMBARRASSED] i want to ask you something but asking feels scarier than any reactor problem i've faced",
+    "type": "opener",
+    "intent": "romance_advance",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 64,
+    "key": "PA_FE_ENG_CM#00064",
+    "text": "[WARM] i think i want you to stay nearby, not for work stuff, just because it helps me worry less",
+    "type": "declaration",
+    "intent": "romance_hint",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 65,
+    "key": "PA_FE_ENG_CM#00065",
+    "text": "[NERVOUS] you said something nice and now i'm blushing which is distracting me from checking pressure gauges",
+    "type": "reply",
+    "intent": "romance_accept",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "romance_hint",
+      "romance_advance"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 66,
+    "key": "PA_FE_ENG_CM#00066",
+    "text": "[DRY] i'm not great at the romance thing, i prefer my relationships like i prefer my engines: well-maintained and predictable",
+    "type": "reply",
+    "intent": "romance_reject",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "romance_hint",
+      "romance_advance"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 67,
+    "key": "PA_FE_ENG_CM#00067",
+    "text": "[NERVOUS] the bridge isn't responding and i don't know what's happening up there and it's making me panic down here",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 68,
+    "key": "PA_FE_ENG_CM#00068",
+    "text": "[URGENT] that wasn't your fault, you did everything right, i'm just paranoid about everything",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "doubt"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 69,
+    "key": "PA_FE_ENG_CM#00069",
+    "text": "[SHOUTS] i can get you more power but you gotta ask and then i gotta reroute from somewhere else and something's gonna get sacrificed",
+    "type": "reply",
+    "intent": "offer_help",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "request_help"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 70,
+    "key": "PA_FE_ENG_CM#00070",
+    "text": "[PANICKED] i'm not panicking, i'm just checking things really carefully which only looks like panicking to most people",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 12,
+      "stress_max": 20,
+      "panic": true,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 71,
+    "key": "PA_FE_ENG_CM#00071",
+    "text": "[CALM] did you know the first ship i worked on had so many problems that i thought they were normal, now i'm broken",
+    "type": "declaration",
+    "intent": "memory",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 72,
+    "key": "PA_FE_ENG_CM#00072",
+    "text": "[SIGHS] yeah i know i check things too much but it's the only way i can sleep at night which is not much",
+    "type": "reply",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "work_talk",
+      "complaint"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 73,
+    "key": "PA_FE_ENG_CM#00073",
+    "text": "[NERVOUS] you're making bad choices and i hate watching it happen and i'm too junior to stop you",
+    "type": "opener",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "OF"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 74,
+    "key": "PA_FE_ENG_CM#00074",
+    "text": "[TERRIFIED] somebody's screaming somewhere and i can't help because i'm locked in the engine room",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 10,
+      "stress_max": 16,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "combat"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 75,
+    "key": "PA_FE_ENG_CM#00075",
+    "text": "[NERVOUS] apology accepted, i guess, even though i'm apologizing for my own paranoia which is weird",
+    "type": "reply",
+    "intent": "apology",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "apology"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 76,
+    "key": "PA_FE_ENG_CM#00076",
+    "text": "[NERVOUS] i watched the disease outbreak and i'm thinking about how it could spread through the ventilation system",
+    "type": "reply",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 77,
+    "key": "PA_FE_ENG_CM#00077",
+    "text": "i'm okay but also i'm not okay, that's my baseline these days",
+    "type": "reply",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "greeting"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 78,
+    "key": "PA_FE_ENG_CM#00078",
+    "text": "[URGENT] the power system's more fragile than you'd think and i've been keeping it together with worry and duct tape",
+    "type": "opener",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 79,
+    "key": "PA_FE_ENG_CM#00079",
+    "text": "[CURIOUS] wait, you actually listened to my concerns and took them seriously, that never happens",
+    "type": "reply",
+    "intent": "praise_ai",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "status_report",
+      "work_talk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 80,
+    "key": "PA_FE_ENG_CM#00080",
+    "text": "[NERVOUS] i've watched you make that same mistake three times and i've been trying to figure out how to tell you",
+    "type": "reply",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "boast",
+      "work_talk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 81,
+    "key": "PA_FE_ENG_CM#00081",
+    "text": "[RESIGNED] back to the engine room and back to checking things, it never gets easier",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 82,
+    "key": "PA_FE_ENG_CM#00082",
+    "text": "[CONFIDENT] i'll fix whatever needs fixing, i always do, even if it scares me",
+    "type": "closer",
+    "intent": "offer_help",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 83,
+    "key": "PA_FE_ENG_CM#00083",
+    "text": "[WARM] and hey, thanks for asking how i was doing, not everyone remembers to do that",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 84,
+    "key": "PA_FE_ENG_CM#00084",
+    "text": "[NERVOUS] something's different about the power signature and i can't explain it but i know it's different",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 85,
+    "key": "PA_FE_ENG_CM#00085",
+    "text": "[GRIM] we survived another day which means tomorrow i'll find something new to worry about instead",
+    "type": "closer",
+    "intent": "gallows_humor",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 86,
+    "key": "PA_FE_ENG_CM#00086",
+    "text": "[EXHAUSTED] i'm coming up to the mess but honestly i'd rather stay in the engine room where i understand the problems",
+    "type": "declaration",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "meal_time"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 87,
+    "key": "PA_FE_ENG_CM#00087",
+    "text": "[SUSPICIOUS] i heard there's a rumor that i check things too many times and yeah that's completely accurate",
+    "type": "declaration",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 88,
+    "key": "PA_FE_ENG_CM#00088",
+    "text": "[NERVOUS] the repair went better than i expected which is somehow more terrifying because now something else might fail",
+    "type": "declaration",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "repair_success"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 89,
+    "key": "PA_FE_ENG_CM#00089",
+    "text": "[HOPEFUL] maybe this time nothing catastrophic will happen, probably not, but maybe",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "quiet_shift"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 90,
+    "key": "PA_FE_ENG_CM#00090",
+    "text": "[WARM] i'm not great at asking for help so thank you for helping anyway",
+    "type": "closer",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
   }
 ]
