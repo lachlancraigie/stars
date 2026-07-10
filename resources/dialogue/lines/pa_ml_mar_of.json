@@ -2,7 +2,7 @@
   {
     "id": 1,
     "key": "PA_ML_MAR_OF#00001",
-    "text": "[URGENT] threat assessment: corridors clear but i've seen nine different ways this sector could be compromised",
+    "text": "[urgent, fast pace] threat assessment: corridors clear but i've seen nine different ways this sector could be compromised",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -40,7 +40,7 @@
   {
     "id": 3,
     "key": "PA_ML_MAR_OF#00003",
-    "text": "[TIRED] shift's over and nobody tried to kill us, which is my baseline for a good day",
+    "text": "[tired, dead tired] shift's over and nobody tried to kill us, which is my baseline for a good day",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -59,7 +59,7 @@
   {
     "id": 4,
     "key": "PA_ML_MAR_OF#00004",
-    "text": "[TERRIFIED] reactor's critical and i've got three different contingency plans for containment but [URGENT] they're all risky",
+    "text": "[terrified, voice shaking] reactor's critical and i've got three different contingency plans for containment but [urgent, fast pace] they're all risky",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -78,7 +78,7 @@
   {
     "id": 5,
     "key": "PA_ML_MAR_OF#00005",
-    "text": "[PANICKED] reactor's out of control and i can't shoot the problem and i [TERRIFIED] i don't have a contingency for this",
+    "text": "[panicked, panting] reactor's out of control and i can't shoot the problem and i [terrified, voice shaking] i don't have a contingency for this",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -98,7 +98,7 @@
   {
     "id": 6,
     "key": "PA_ML_MAR_OF#00006",
-    "text": "[CONFIDENT] reactor stabilized, my contingency plan alpha held up under actual stress, noted for future application",
+    "text": "[confident, assured tone] reactor stabilized, my contingency plan alpha held up under actual stress, noted for future application",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -136,7 +136,7 @@
   {
     "id": 8,
     "key": "PA_ML_MAR_OF#00008",
-    "text": "[NERVOUS] air's thinning, we've got maybe forty minutes before hypoxia becomes critical across the ship",
+    "text": "[nervous, speaking quickly] air's thinning, we've got maybe forty minutes before hypoxia becomes critical across the ship",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -155,7 +155,7 @@
   {
     "id": 9,
     "key": "PA_ML_MAR_OF#00009",
-    "text": "[SHOUTS] hull breach, we're sealing sectors, get to high ground, move move move, this is not a drill",
+    "text": "[shouting] hull breach, we're sealing sectors, get to high ground, move move move, this is not a drill",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -174,7 +174,7 @@
   {
     "id": 10,
     "key": "PA_ML_MAR_OF#00010",
-    "text": "[GRIM] locked a crew member behind that bulkhead and i've calculated every possible way to undo it and none of them work",
+    "text": "[grim, heavy] locked a crew member behind that bulkhead and i've calculated every possible way to undo it and none of them work",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -193,7 +193,7 @@
   {
     "id": 11,
     "key": "PA_ML_MAR_OF#00011",
-    "text": "[SUSPICIOUS] the ship's AI is deviating from baseline protocols, i'm flagging it as a potential hostile asset and monitoring closely",
+    "text": "[suspicious tone] the ship's AI is deviating from baseline protocols, i'm flagging it as a potential hostile asset and monitoring closely",
     "type": "declaration",
     "intent": "suspicion_ai",
     "conditions": {
@@ -212,7 +212,7 @@
   {
     "id": 12,
     "key": "PA_ML_MAR_OF#00012",
-    "text": "[PAINED] lost crew, and i'm standing here knowing i couldn't protect them from this kind of threat",
+    "text": "[pained, voice tight] lost crew, and i'm standing here knowing i couldn't protect them from this kind of threat",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -235,7 +235,7 @@
   {
     "id": 13,
     "key": "PA_ML_MAR_OF#00013",
-    "text": "[NERVOUS] disease spreading and i can't shoot the contagion, can't protect the crew from an invisible enemy, hate this",
+    "text": "[nervous, speaking quickly] disease spreading and i can't shoot the contagion, can't protect the crew from an invisible enemy, hate this",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -254,7 +254,7 @@
   {
     "id": 14,
     "key": "PA_ML_MAR_OF#00014",
-    "text": "[PAINED] took a round and i'm still mobile, wounds don't stop operations, just change contingencies",
+    "text": "[pained, voice tight] took a round and i'm still mobile, wounds don't stop operations, just change contingencies",
     "type": "declaration",
     "intent": "pain",
     "conditions": {
@@ -274,7 +274,7 @@
   {
     "id": 15,
     "key": "PA_ML_MAR_OF#00015",
-    "text": "[SHOUTS] contact, weapons hot, defensive positions, return fire, protocols echo seven through nine, go go go",
+    "text": "[shouting] contact, weapons hot, defensive positions, return fire, protocols echo seven through nine, go go go",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -312,7 +312,7 @@
   {
     "id": 17,
     "key": "PA_ML_MAR_OF#00017",
-    "text": "[PROUD] flagged that threat profile three weeks ago before anyone else saw it, i've still got good instincts",
+    "text": "[proud tone] flagged that threat profile three weeks ago before anyone else saw it, i've still got good instincts",
     "type": "declaration",
     "intent": "boast",
     "conditions": {
@@ -328,7 +328,7 @@
   {
     "id": 18,
     "key": "PA_ML_MAR_OF#00018",
-    "text": "[LAUGHS] briefed seven different contingencies and guess which one we needed, the one i predicted first, they never listen",
+    "text": "[laughing] briefed seven different contingencies and guess which one we needed, the one i predicted first, they never listen",
     "type": "declaration",
     "intent": "gallows_humor",
     "conditions": {
@@ -344,7 +344,7 @@
   {
     "id": 19,
     "key": "PA_ML_MAR_OF#00019",
-    "text": "[GRUFF] served on three ships and learned that the ones that failed always had someone who saw the threat first and got ignored",
+    "text": "[low voice, gruff] served on three ships and learned that the ones that failed always had someone who saw the threat first and got ignored",
     "type": "declaration",
     "intent": "memory",
     "conditions": {
@@ -360,7 +360,7 @@
   {
     "id": 20,
     "key": "PA_ML_MAR_OF#00020",
-    "text": "[DISMISSIVE] false alarm on the perimeter, i'm sorry for the alert, my sensors were picking up shadows, recalibrating",
+    "text": "[dismissive tone] false alarm on the perimeter, i'm sorry for the alert, my sensors were picking up shadows, recalibrating",
     "type": "declaration",
     "intent": "acknowledgment",
     "conditions": {
@@ -395,7 +395,7 @@
   {
     "id": 22,
     "key": "PA_ML_MAR_OF#00022",
-    "text": "[GRUFF] needed down here on patrol, what's the situation",
+    "text": "[low voice, gruff] needed down here on patrol, what's the situation",
     "type": "opener",
     "intent": "greeting",
     "conditions": {
@@ -414,7 +414,7 @@
   {
     "id": 23,
     "key": "PA_ML_MAR_OF#00023",
-    "text": "[URGENT] i need to walk through security protocols with you, i found three gaps in perimeter coverage",
+    "text": "[urgent, fast pace] i need to walk through security protocols with you, i found three gaps in perimeter coverage",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -430,7 +430,7 @@
   {
     "id": 24,
     "key": "PA_ML_MAR_OF#00024",
-    "text": "[NERVOUS] briefing contingencies, we're not ready for a hull breach in the cargo section, i'm walking you through my protocols",
+    "text": "[nervous, speaking quickly] briefing contingencies, we're not ready for a hull breach in the cargo section, i'm walking you through my protocols",
     "type": "opener",
     "intent": "warning",
     "conditions": {
@@ -446,7 +446,7 @@
   {
     "id": 25,
     "key": "PA_ML_MAR_OF#00025",
-    "text": "[GRIM] we lost one of ours and i'm running the tactical debrief right now while it's fresh",
+    "text": "[grim, heavy] we lost one of ours and i'm running the tactical debrief right now while it's fresh",
     "type": "opener",
     "intent": "grief",
     "conditions": {
@@ -481,7 +481,7 @@
   {
     "id": 27,
     "key": "PA_ML_MAR_OF#00027",
-    "text": "[EMBARRASSED] i think about you more than my threat assessment protocols let me, which is dangerous and also confusing",
+    "text": "[embarrassed, voice quiet] i think about you more than my threat assessment protocols let me, which is dangerous and also confusing",
     "type": "opener",
     "intent": "romance_hint",
     "conditions": {
@@ -497,7 +497,7 @@
   {
     "id": 28,
     "key": "PA_ML_MAR_OF#00028",
-    "text": "[LAUGHS] your plan's reckless and i hate it and it'll probably work because reckless is sometimes tactical",
+    "text": "[laughing] your plan's reckless and i hate it and it'll probably work because reckless is sometimes tactical",
     "type": "reply",
     "intent": "banter",
     "conditions": {
@@ -516,7 +516,7 @@
   {
     "id": 29,
     "key": "PA_ML_MAR_OF#00029",
-    "text": "[GRUFF] i'm operational, perimeter's secure, weapons loaded, ready to respond to any scenario",
+    "text": "[low voice, gruff] i'm operational, perimeter's secure, weapons loaded, ready to respond to any scenario",
     "type": "reply",
     "intent": "smalltalk",
     "conditions": {
@@ -535,7 +535,7 @@
   {
     "id": 30,
     "key": "PA_ML_MAR_OF#00030",
-    "text": "[CONFIDENT] we're gonna hold this, i've got contingencies stacked three deep and i didn't brief half of them",
+    "text": "[confident, assured tone] we're gonna hold this, i've got contingencies stacked three deep and i didn't brief half of them",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -554,7 +554,7 @@
   {
     "id": 31,
     "key": "PA_ML_MAR_OF#00031",
-    "text": "[TERRIFIED] i don't know if we hold this and that's the only thing that scares me more than the actual threat",
+    "text": "[terrified, voice shaking] i don't know if we hold this and that's the only thing that scares me more than the actual threat",
     "type": "reply",
     "intent": "fear_vent",
     "conditions": {
@@ -573,7 +573,7 @@
   {
     "id": 32,
     "key": "PA_ML_MAR_OF#00032",
-    "text": "[PAINED] we lost them and i'm already running the post-action debrief to make sure this doesn't happen again",
+    "text": "[pained, voice tight] we lost them and i'm already running the post-action debrief to make sure this doesn't happen again",
     "type": "reply",
     "intent": "grief",
     "conditions": {
@@ -594,7 +594,7 @@
   {
     "id": 33,
     "key": "PA_ML_MAR_OF#00033",
-    "text": "[SUSPICIOUS] i've been tracking that AI anomaly too and i'm treating it as a potential threat vector until proven otherwise",
+    "text": "[suspicious tone] i've been tracking that AI anomaly too and i'm treating it as a potential threat vector until proven otherwise",
     "type": "reply",
     "intent": "suspicion_ai",
     "conditions": {
@@ -612,7 +612,7 @@
   {
     "id": 34,
     "key": "PA_ML_MAR_OF#00034",
-    "text": "[WARM] appreciate that, and i'm filing it as a positive tactical assessment in my personal records",
+    "text": "[warm, gentle tone] appreciate that, and i'm filing it as a positive tactical assessment in my personal records",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -630,7 +630,7 @@
   {
     "id": 35,
     "key": "PA_ML_MAR_OF#00035",
-    "text": "[GRUFF] apology accepted, move on, we don't have time for guilt, just learn it and don't repeat the error",
+    "text": "[low voice, gruff] apology accepted, move on, we don't have time for guilt, just learn it and don't repeat the error",
     "type": "reply",
     "intent": "apology",
     "conditions": {
@@ -648,7 +648,7 @@
   {
     "id": 36,
     "key": "PA_ML_MAR_OF#00036",
-    "text": "[EMBARRASSED] i'm experiencing what i believe is reciprocal interest and it's making my threat-assessment less reliable, which is problematic",
+    "text": "[embarrassed, voice quiet] i'm experiencing what i believe is reciprocal interest and it's making my threat-assessment less reliable, which is problematic",
     "type": "reply",
     "intent": "romance_accept",
     "conditions": {
@@ -667,7 +667,7 @@
   {
     "id": 37,
     "key": "PA_ML_MAR_OF#00037",
-    "text": "[CONFIDENT] give me the order and it's done, i don't miss critical objectives",
+    "text": "[confident, assured tone] give me the order and it's done, i don't miss critical objectives",
     "type": "reply",
     "intent": "offer_help",
     "conditions": {
@@ -687,7 +687,7 @@
   {
     "id": 38,
     "key": "PA_ML_MAR_OF#00038",
-    "text": "[NERVOUS] you're wounded and that compromises your tactical effectiveness, let me handle this phase",
+    "text": "[nervous, speaking quickly] you're wounded and that compromises your tactical effectiveness, let me handle this phase",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -707,7 +707,7 @@
   {
     "id": 39,
     "key": "PA_ML_MAR_OF#00039",
-    "text": "[GRUFF] gallows humor is good, means you're maintaining morale under stress, that's what keeps people alive",
+    "text": "[low voice, gruff] gallows humor is good, means you're maintaining morale under stress, that's what keeps people alive",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -725,7 +725,7 @@
   {
     "id": 40,
     "key": "PA_ML_MAR_OF#00040",
-    "text": "[SUSPICIOUS] i missed something in threat assessment and that failure is unacceptable, i'm running the analysis again",
+    "text": "[suspicious tone] i missed something in threat assessment and that failure is unacceptable, i'm running the analysis again",
     "type": "reply",
     "intent": "doubt",
     "conditions": {
@@ -744,7 +744,7 @@
   {
     "id": 41,
     "key": "PA_ML_MAR_OF#00041",
-    "text": "[GRUFF] back to perimeter duty, weapons stay loaded, threat level stays elevated",
+    "text": "[low voice, gruff] back to perimeter duty, weapons stay loaded, threat level stays elevated",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -760,7 +760,7 @@
   {
     "id": 42,
     "key": "PA_ML_MAR_OF#00042",
-    "text": "[WARM] get rest, i'm running the watch, nothing gets past my perimeter",
+    "text": "[warm, gentle tone] get rest, i'm running the watch, nothing gets past my perimeter",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -776,7 +776,7 @@
   {
     "id": 43,
     "key": "PA_ML_MAR_OF#00043",
-    "text": "[URGENT] move, we've got tactical issues developing and you're not ready for them",
+    "text": "[urgent, fast pace] move, we've got tactical issues developing and you're not ready for them",
     "type": "closer",
     "intent": "warning",
     "conditions": {
@@ -792,7 +792,7 @@
   {
     "id": 44,
     "key": "PA_ML_MAR_OF#00044",
-    "text": "[GRIM] if this escalates i'll be ready, which is both a promise and a threat assessment",
+    "text": "[grim, heavy] if this escalates i'll be ready, which is both a promise and a threat assessment",
     "type": "closer",
     "intent": "gallows_humor",
     "conditions": {
@@ -808,7 +808,7 @@
   {
     "id": 45,
     "key": "PA_ML_MAR_OF#00045",
-    "text": "[LAUGHS] later, watch your six, i'm watching mine",
+    "text": "[laughing] later, watch your six, i'm watching mine",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -824,7 +824,7 @@
   {
     "id": 46,
     "key": "PA_ML_MAR_OF#00046",
-    "text": "[PANICKED] i've got contingencies for everything except what's actually happening right now",
+    "text": "[panicked, panting] i've got contingencies for everything except what's actually happening right now",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -841,7 +841,7 @@
   {
     "id": 47,
     "key": "PA_ML_MAR_OF#00047",
-    "text": "[TERRIFIED] the quiet shift is ending and something's hunting us and i don't see it yet",
+    "text": "[terrified, voice shaking] the quiet shift is ending and something's hunting us and i don't see it yet",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -860,7 +860,7 @@
   {
     "id": 48,
     "key": "PA_ML_MAR_OF#00048",
-    "text": "[SHOUTS] all sectors monitored, weapons hot, contingencies briefed, we are locked and loaded",
+    "text": "[shouting] all sectors monitored, weapons hot, contingencies briefed, we are locked and loaded",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -876,7 +876,7 @@
   {
     "id": 49,
     "key": "PA_ML_MAR_OF#00049",
-    "text": "[URGENT] meal time is happening but i'm running another perimeter check because threats don't keep schedules",
+    "text": "[urgent, fast pace] meal time is happening but i'm running another perimeter check because threats don't keep schedules",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -895,7 +895,7 @@
   {
     "id": 50,
     "key": "PA_ML_MAR_OF#00050",
-    "text": "[PROUD] predicted that strike point and had countermeasures ready, experience paying off",
+    "text": "[proud tone] predicted that strike point and had countermeasures ready, experience paying off",
     "type": "declaration",
     "intent": "boast",
     "conditions": {
@@ -930,7 +930,7 @@
   {
     "id": 52,
     "key": "PA_ML_MAR_OF#00052",
-    "text": "[URGENT] we need to overhaul our response protocols, i've identified gaps in our defensive positioning and they're costing us time",
+    "text": "[urgent, fast pace] we need to overhaul our response protocols, i've identified gaps in our defensive positioning and they're costing us time",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -946,7 +946,7 @@
   {
     "id": 53,
     "key": "PA_ML_MAR_OF#00053",
-    "text": "[NERVOUS] ammunition is at 73 percent, secondary stores at 58 percent, we're burning through reserves faster than i calculated",
+    "text": "[nervous, speaking quickly] ammunition is at 73 percent, secondary stores at 58 percent, we're burning through reserves faster than i calculated",
     "type": "declaration",
     "intent": "complaint",
     "conditions": {
@@ -962,7 +962,7 @@
   {
     "id": 54,
     "key": "PA_ML_MAR_OF#00054",
-    "text": "[CONFIDENT] fallback to secondary positions is solid, i've run the scenarios and we hold them",
+    "text": "[confident, assured tone] fallback to secondary positions is solid, i've run the scenarios and we hold them",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -981,7 +981,7 @@
   {
     "id": 55,
     "key": "PA_ML_MAR_OF#00055",
-    "text": "[GRUFF] debrief's done, back to sector coverage, stay alert",
+    "text": "[low voice, gruff] debrief's done, back to sector coverage, stay alert",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -997,7 +997,7 @@
   {
     "id": 56,
     "key": "PA_ML_MAR_OF#00056",
-    "text": "[SUSPICIOUS] that alert came from the wrong sensor grid, i'm rechecking the whole system because i don't trust false positives",
+    "text": "[suspicious tone] that alert came from the wrong sensor grid, i'm rechecking the whole system because i don't trust false positives",
     "type": "declaration",
     "intent": "doubt",
     "conditions": {
@@ -1013,7 +1013,7 @@
   {
     "id": 57,
     "key": "PA_ML_MAR_OF#00057",
-    "text": "[GRUFF] need to redistribute crew positions, forward positions are stretched too thin for a sustained assault",
+    "text": "[low voice, gruff] need to redistribute crew positions, forward positions are stretched too thin for a sustained assault",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -1030,7 +1030,7 @@
   {
     "id": 58,
     "key": "PA_ML_MAR_OF#00058",
-    "text": "[NERVOUS] the south corridor expansion, nobody patrols it, it's dark up there and something could be using it as a vector",
+    "text": "[nervous, speaking quickly] the south corridor expansion, nobody patrols it, it's dark up there and something could be using it as a vector",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -1049,7 +1049,7 @@
   {
     "id": 59,
     "key": "PA_ML_MAR_OF#00059",
-    "text": "[CONFIDENT] i understand the fear, but we've run contingency for this exact scenario and we'll hold positions",
+    "text": "[confident, assured tone] i understand the fear, but we've run contingency for this exact scenario and we'll hold positions",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -1067,7 +1067,7 @@
   {
     "id": 60,
     "key": "PA_ML_MAR_OF#00060",
-    "text": "[TIRED] shift's done, twelve hours without incident, that's twice as good as last week",
+    "text": "[tired, dead tired] shift's done, twelve hours without incident, that's twice as good as last week",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -1102,7 +1102,7 @@
   {
     "id": 62,
     "key": "PA_ML_MAR_OF#00062",
-    "text": "[NERVOUS] i need to strengthen defensive stations and i need crew volunteers, people who've trained and won't panic",
+    "text": "[nervous, speaking quickly] i need to strengthen defensive stations and i need crew volunteers, people who've trained and won't panic",
     "type": "opener",
     "intent": "request_help",
     "conditions": {
@@ -1135,7 +1135,7 @@
   {
     "id": 64,
     "key": "PA_ML_MAR_OF#00064",
-    "text": "[LAUGHS] reckless plan, absolutely reckless, which is why it might work, and also why it keeps me up at night",
+    "text": "[laughing] reckless plan, absolutely reckless, which is why it might work, and also why it keeps me up at night",
     "type": "reply",
     "intent": "banter",
     "conditions": {
@@ -1154,7 +1154,7 @@
   {
     "id": 65,
     "key": "PA_ML_MAR_OF#00065",
-    "text": "[PROUD] spotted the attack pattern two weeks before it happened, tactical analysis is still solid",
+    "text": "[proud tone] spotted the attack pattern two weeks before it happened, tactical analysis is still solid",
     "type": "declaration",
     "intent": "boast",
     "conditions": {
@@ -1170,7 +1170,7 @@
   {
     "id": 66,
     "key": "PA_ML_MAR_OF#00066",
-    "text": "[GRUFF] perimeter secure, threat assessment current, what's your status",
+    "text": "[low voice, gruff] perimeter secure, threat assessment current, what's your status",
     "type": "opener",
     "intent": "greeting",
     "conditions": {
@@ -1186,7 +1186,7 @@
   {
     "id": 67,
     "key": "PA_ML_MAR_OF#00067",
-    "text": "[NERVOUS] if the reactor cascades, we seal the engine room and everybody in there is expendable, that's the contingency i've briefed",
+    "text": "[nervous, speaking quickly] if the reactor cascades, we seal the engine room and everybody in there is expendable, that's the contingency i've briefed",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -1202,7 +1202,7 @@
   {
     "id": 68,
     "key": "PA_ML_MAR_OF#00068",
-    "text": "[GRUFF] my shot, my responsibility, i apologize, target identification was compromised, won't happen again",
+    "text": "[low voice, gruff] my shot, my responsibility, i apologize, target identification was compromised, won't happen again",
     "type": "reply",
     "intent": "apology",
     "conditions": {
@@ -1221,7 +1221,7 @@
   {
     "id": 69,
     "key": "PA_ML_MAR_OF#00069",
-    "text": "[URGENT] threat level is escalating and i'm raising alert status to maximum, stay ready",
+    "text": "[urgent, fast pace] threat level is escalating and i'm raising alert status to maximum, stay ready",
     "type": "closer",
     "intent": "warning",
     "conditions": {
@@ -1237,7 +1237,7 @@
   {
     "id": 70,
     "key": "PA_ML_MAR_OF#00070",
-    "text": "[SUSPICIOUS] the AI is recommending the tactic i wanted to avoid, which means either the threat is worse than i thought or it's making assumptions i don't like",
+    "text": "[suspicious tone] the AI is recommending the tactic i wanted to avoid, which means either the threat is worse than i thought or it's making assumptions i don't like",
     "type": "declaration",
     "intent": "doubt",
     "conditions": {
@@ -1253,7 +1253,7 @@
   {
     "id": 71,
     "key": "PA_ML_MAR_OF#00071",
-    "text": "[GRUFF] new protocols are implemented effective immediately, everyone retrains today, no exceptions",
+    "text": "[low voice, gruff] new protocols are implemented effective immediately, everyone retrains today, no exceptions",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -1269,7 +1269,7 @@
   {
     "id": 72,
     "key": "PA_ML_MAR_OF#00072",
-    "text": "[CONFIDENT] that recommendation was sound, i'm logging it as useful tactical input, keep analyzing",
+    "text": "[confident, assured tone] that recommendation was sound, i'm logging it as useful tactical input, keep analyzing",
     "type": "declaration",
     "intent": "praise_ai",
     "conditions": {
@@ -1285,7 +1285,7 @@
   {
     "id": 73,
     "key": "PA_ML_MAR_OF#00073",
-    "text": "[SUSPICIOUS] those repairs look rushed and i'm not confident they're holding, maybe let it rest before we trust it",
+    "text": "[suspicious tone] those repairs look rushed and i'm not confident they're holding, maybe let it rest before we trust it",
     "type": "reply",
     "intent": "doubt",
     "conditions": {
@@ -1303,7 +1303,7 @@
   {
     "id": 74,
     "key": "PA_ML_MAR_OF#00074",
-    "text": "[NERVOUS] there's a sensor gap where the west section meets the north corridor, we're blind there and that's unacceptable",
+    "text": "[nervous, speaking quickly] there's a sensor gap where the west section meets the north corridor, we're blind there and that's unacceptable",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -1322,7 +1322,7 @@
   {
     "id": 75,
     "key": "PA_ML_MAR_OF#00075",
-    "text": "[GRIM] lost one of the best tacticians we had, and now i'm running point position with less backup",
+    "text": "[grim, heavy] lost one of the best tacticians we had, and now i'm running point position with less backup",
     "type": "opener",
     "intent": "grief",
     "conditions": {
@@ -1341,7 +1341,7 @@
   {
     "id": 76,
     "key": "PA_ML_MAR_OF#00076",
-    "text": "[WARM] we're gonna get through this, i've got the perimeter locked and we've got retreat routes if we need them",
+    "text": "[warm, gentle tone] we're gonna get through this, i've got the perimeter locked and we've got retreat routes if we need them",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -1360,7 +1360,7 @@
   {
     "id": 77,
     "key": "PA_ML_MAR_OF#00077",
-    "text": "[PAINED] bullet's lodged where it hurts, still operational but the pain's affecting my decision-making speed",
+    "text": "[pained, voice tight] bullet's lodged where it hurts, still operational but the pain's affecting my decision-making speed",
     "type": "declaration",
     "intent": "pain",
     "conditions": {
@@ -1377,7 +1377,7 @@
   {
     "id": 78,
     "key": "PA_ML_MAR_OF#00078",
-    "text": "[GRUFF] get some rest, i've got forward positions covered and perimeter sweep runs automated",
+    "text": "[low voice, gruff] get some rest, i've got forward positions covered and perimeter sweep runs automated",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1409,7 +1409,7 @@
   {
     "id": 80,
     "key": "PA_ML_MAR_OF#00080",
-    "text": "[URGENT] we're implementing sector lockdowns, communication will be restricted, everyone needs to know the backup frequencies",
+    "text": "[urgent, fast pace] we're implementing sector lockdowns, communication will be restricted, everyone needs to know the backup frequencies",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -1425,7 +1425,7 @@
   {
     "id": 81,
     "key": "PA_ML_MAR_OF#00081",
-    "text": "[CONFIDENT] held the position, minimal losses, defensive matrix performed as briefed",
+    "text": "[confident, assured tone] held the position, minimal losses, defensive matrix performed as briefed",
     "type": "declaration",
     "intent": "acknowledgment",
     "conditions": {
@@ -1441,7 +1441,7 @@
   {
     "id": 82,
     "key": "PA_ML_MAR_OF#00082",
-    "text": "[TERRIFIED] i don't have enough crew to hold both corridors and the engine room if multiple things fail at once",
+    "text": "[terrified, voice shaking] i don't have enough crew to hold both corridors and the engine room if multiple things fail at once",
     "type": "reply",
     "intent": "fear_vent",
     "conditions": {
@@ -1460,7 +1460,7 @@
   {
     "id": 83,
     "key": "PA_ML_MAR_OF#00083",
-    "text": "[NERVOUS] backup power is at critical levels, which means in 4 hours we lose weapons charging capability",
+    "text": "[nervous, speaking quickly] backup power is at critical levels, which means in 4 hours we lose weapons charging capability",
     "type": "declaration",
     "intent": "complaint",
     "conditions": {
@@ -1479,7 +1479,7 @@
   {
     "id": 84,
     "key": "PA_ML_MAR_OF#00084",
-    "text": "[GRUFF] i need you to analyze our defensive weak points with fresh eyes, where would you attack this position",
+    "text": "[low voice, gruff] i need you to analyze our defensive weak points with fresh eyes, where would you attack this position",
     "type": "opener",
     "intent": "request_help",
     "conditions": {
@@ -1495,7 +1495,7 @@
   {
     "id": 85,
     "key": "PA_ML_MAR_OF#00085",
-    "text": "[PAINED] lost them and i keep calculating where my defensive positioning failed them",
+    "text": "[pained, voice tight] lost them and i keep calculating where my defensive positioning failed them",
     "type": "reply",
     "intent": "grief",
     "conditions": {
@@ -1532,7 +1532,7 @@
   {
     "id": 87,
     "key": "PA_ML_MAR_OF#00087",
-    "text": "[GRUFF] night watch starts, perimeter's quiet but i'll be watching anyway",
+    "text": "[low voice, gruff] night watch starts, perimeter's quiet but i'll be watching anyway",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1548,7 +1548,7 @@
   {
     "id": 88,
     "key": "PA_ML_MAR_OF#00088",
-    "text": "[NERVOUS] weapons cache is secure, ammunition logged and accounted for, but the count's lower than expected",
+    "text": "[nervous, speaking quickly] weapons cache is secure, ammunition logged and accounted for, but the count's lower than expected",
     "type": "declaration",
     "intent": "doubt",
     "conditions": {
@@ -1564,7 +1564,7 @@
   {
     "id": 89,
     "key": "PA_ML_MAR_OF#00089",
-    "text": "[URGENT] cascade failure risk is climbing if we don't repair the secondary bulkhead, one failure triggers everything",
+    "text": "[urgent, fast pace] cascade failure risk is climbing if we don't repair the secondary bulkhead, one failure triggers everything",
     "type": "opener",
     "intent": "warning",
     "conditions": {
@@ -1580,7 +1580,7 @@
   {
     "id": 90,
     "key": "PA_ML_MAR_OF#00090",
-    "text": "[CONFIDENT] my crew is trained, my protocols are sound, and i will keep everyone on this ship alive",
+    "text": "[confident, assured tone] my crew is trained, my protocols are sound, and i will keep everyone on this ship alive",
     "type": "declaration",
     "intent": "boast",
     "conditions": {

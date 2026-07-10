@@ -2,7 +2,7 @@
   {
     "id": 1,
     "key": "PA_ML_SCI_CM#00001",
-    "text": "[NERVOUS] i've checked the seal three times. i'm going to check it a fourth",
+    "text": "[nervous, speaking quickly] i've checked the seal three times. i'm going to check it a fourth",
     "type": "declaration",
     "intent": "doubt",
     "conditions": {
@@ -40,7 +40,7 @@
   {
     "id": 3,
     "key": "PA_ML_SCI_CM#00003",
-    "text": "[NERVOUS] okay. okay, shift's starting. i've got my notes, i've got my — okay. ready",
+    "text": "[nervous, speaking quickly] okay. okay, shift's starting. i've got my notes, i've got my — okay. ready",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -59,7 +59,7 @@
   {
     "id": 4,
     "key": "PA_ML_SCI_CM#00004",
-    "text": "[EXHAUSTED] shift's over and nothing tried to kill me. logging that as a statistical anomaly",
+    "text": "[exhausted, breathing laboured] shift's over and nothing tried to kill me. logging that as a statistical anomaly",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -78,7 +78,7 @@
   {
     "id": 5,
     "key": "PA_ML_SCI_CM#00005",
-    "text": "[TERRIFIED] the reactor readings don't match the manual, and i've read the manual four times",
+    "text": "[terrified, voice shaking] the reactor readings don't match the manual, and i've read the manual four times",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -97,7 +97,7 @@
   {
     "id": 6,
     "key": "PA_ML_SCI_CM#00006",
-    "text": "[PANICKED] i don't know if we're going to survive this and nobody's answering my questions",
+    "text": "[panicked, panting] i don't know if we're going to survive this and nobody's answering my questions",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -117,7 +117,7 @@
   {
     "id": 7,
     "key": "PA_ML_SCI_CM#00007",
-    "text": "[NERVOUS] they say it's fixed. i want to believe that. i want to believe a lot of things",
+    "text": "[nervous, speaking quickly] they say it's fixed. i want to believe that. i want to believe a lot of things",
     "type": "declaration",
     "intent": "doubt",
     "conditions": {
@@ -136,7 +136,7 @@
   {
     "id": 8,
     "key": "PA_ML_SCI_CM#00008",
-    "text": "[NERVOUS] power's low, which means backups are running, which means backups can fail too",
+    "text": "[nervous, speaking quickly] power's low, which means backups are running, which means backups can fail too",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -155,7 +155,7 @@
   {
     "id": 9,
     "key": "PA_ML_SCI_CM#00009",
-    "text": "[TERRIFIED] the air tastes different. is that just me? tell me that's just me",
+    "text": "[terrified, voice shaking] the air tastes different. is that just me? tell me that's just me",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -174,7 +174,7 @@
   {
     "id": 10,
     "key": "PA_ML_SCI_CM#00010",
-    "text": "[PANICKED] hull's breached, hull's breached, i heard it, i counted the seconds, that's bad",
+    "text": "[panicked, panting] hull's breached, hull's breached, i heard it, i counted the seconds, that's bad",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -194,7 +194,7 @@
   {
     "id": 11,
     "key": "PA_ML_SCI_CM#00011",
-    "text": "[NERVOUS] they locked a door with someone behind it. i keep thinking, what if it's me next time",
+    "text": "[nervous, speaking quickly] they locked a door with someone behind it. i keep thinking, what if it's me next time",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -213,7 +213,7 @@
   {
     "id": 12,
     "key": "PA_ML_SCI_CM#00012",
-    "text": "[SUSPICIOUS] i've been logging every AI decision since the damage. somebody should",
+    "text": "[suspicious tone] i've been logging every AI decision since the damage. somebody should",
     "type": "declaration",
     "intent": "suspicion_ai",
     "conditions": {
@@ -232,7 +232,7 @@
   {
     "id": 13,
     "key": "PA_ML_SCI_CM#00013",
-    "text": "[SUSPICIOUS] it answered that question a little too smoothly. i wrote it down",
+    "text": "[suspicious tone] it answered that question a little too smoothly. i wrote it down",
     "type": "declaration",
     "intent": "suspicion_ai",
     "conditions": {
@@ -251,7 +251,7 @@
   {
     "id": 14,
     "key": "PA_ML_SCI_CM#00014",
-    "text": "[NERVOUS] crisis over, they say. i'll believe it in about six hours, once my hands stop shaking",
+    "text": "[nervous, speaking quickly] crisis over, they say. i'll believe it in about six hours, once my hands stop shaking",
     "type": "declaration",
     "intent": "doubt",
     "conditions": {
@@ -270,7 +270,7 @@
   {
     "id": 15,
     "key": "PA_ML_SCI_CM#00015",
-    "text": "[PAINED] we lost someone. i keep running the timeline, looking for the version where they don't",
+    "text": "[pained, voice tight] we lost someone. i keep running the timeline, looking for the version where they don't",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -293,7 +293,7 @@
   {
     "id": 16,
     "key": "PA_ML_SCI_CM#00016",
-    "text": "[TERRIFIED] a pathogen on a closed ship is exactly the scenario i've had nightmares about",
+    "text": "[terrified, voice shaking] a pathogen on a closed ship is exactly the scenario i've had nightmares about",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -312,7 +312,7 @@
   {
     "id": 17,
     "key": "PA_ML_SCI_CM#00017",
-    "text": "[NERVOUS] i triple-bagged every sample. i know it's excessive. i'm doing it again anyway",
+    "text": "[nervous, speaking quickly] i triple-bagged every sample. i know it's excessive. i'm doing it again anyway",
     "type": "declaration",
     "intent": "work_talk",
     "conditions": {
@@ -334,7 +334,7 @@
   {
     "id": 18,
     "key": "PA_ML_SCI_CM#00018",
-    "text": "[PAINED] cut myself on the specimen tray. of course i did. of course",
+    "text": "[pained, voice tight] cut myself on the specimen tray. of course i did. of course",
     "type": "declaration",
     "intent": "pain",
     "conditions": {
@@ -354,7 +354,7 @@
   {
     "id": 19,
     "key": "PA_ML_SCI_CM#00019",
-    "text": "[TERRIFIED] i don't have a weapon skill and there's shooting somewhere on this ship",
+    "text": "[terrified, voice shaking] i don't have a weapon skill and there's shooting somewhere on this ship",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -374,7 +374,7 @@
   {
     "id": 20,
     "key": "PA_ML_SCI_CM#00020",
-    "text": "[NERVOUS] i don't trust anything that doesn't sleep. i barely trust things that do",
+    "text": "[nervous, speaking quickly] i don't trust anything that doesn't sleep. i barely trust things that do",
     "type": "declaration",
     "intent": "suspicion_ai",
     "conditions": {
@@ -406,7 +406,7 @@
   {
     "id": 22,
     "key": "PA_ML_SCI_CM#00022",
-    "text": "[NERVOUS] i keep a private log. things that don't add up. it's longer than i'd like",
+    "text": "[nervous, speaking quickly] i keep a private log. things that don't add up. it's longer than i'd like",
     "type": "declaration",
     "intent": "memory",
     "conditions": {
@@ -422,7 +422,7 @@
   {
     "id": 23,
     "key": "PA_ML_SCI_CM#00023",
-    "text": "[NERVOUS] medbay's too quiet. i keep waiting for the quiet to be a trick",
+    "text": "[nervous, speaking quickly] medbay's too quiet. i keep waiting for the quiet to be a trick",
     "type": "declaration",
     "intent": "doubt",
     "conditions": {
@@ -476,7 +476,7 @@
   {
     "id": 26,
     "key": "PA_ML_SCI_CM#00026",
-    "text": "[NERVOUS] can i run something by you? it's probably nothing. it's probably nothing",
+    "text": "[nervous, speaking quickly] can i run something by you? it's probably nothing. it's probably nothing",
     "type": "opener",
     "intent": "doubt",
     "conditions": {
@@ -492,7 +492,7 @@
   {
     "id": 27,
     "key": "PA_ML_SCI_CM#00027",
-    "text": "[NERVOUS] you noticed the computer's been weird too, right? please say yes",
+    "text": "[nervous, speaking quickly] you noticed the computer's been weird too, right? please say yes",
     "type": "opener",
     "intent": "suspicion_ai",
     "conditions": {
@@ -508,7 +508,7 @@
   {
     "id": 28,
     "key": "PA_ML_SCI_CM#00028",
-    "text": "[NERVOUS] i need a second opinion and you're the calmest person i could find",
+    "text": "[nervous, speaking quickly] i need a second opinion and you're the calmest person i could find",
     "type": "opener",
     "intent": "request_help",
     "conditions": {
@@ -524,7 +524,7 @@
   {
     "id": 29,
     "key": "PA_ML_SCI_CM#00029",
-    "text": "[EMBARRASSED] okay this is going to sound strange, but i think i like you, and i've triple-checked that feeling",
+    "text": "[embarrassed, voice quiet] okay this is going to sound strange, but i think i like you, and i've triple-checked that feeling",
     "type": "opener",
     "intent": "romance_hint",
     "conditions": {
@@ -540,7 +540,7 @@
   {
     "id": 30,
     "key": "PA_ML_SCI_CM#00030",
-    "text": "[NERVOUS] i'm fine. i'm always like this. this is just my baseline",
+    "text": "[nervous, speaking quickly] i'm fine. i'm always like this. this is just my baseline",
     "type": "reply",
     "intent": "smalltalk",
     "conditions": {
@@ -559,7 +559,7 @@
   {
     "id": 31,
     "key": "PA_ML_SCI_CM#00031",
-    "text": "[NERVOUS] you're probably right that it's nothing. i'm going to keep worrying anyway",
+    "text": "[nervous, speaking quickly] you're probably right that it's nothing. i'm going to keep worrying anyway",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -577,7 +577,7 @@
   {
     "id": 32,
     "key": "PA_ML_SCI_CM#00032",
-    "text": "[TERRIFIED] i hear you saying it's fine and my brain is not accepting the data",
+    "text": "[terrified, voice shaking] i hear you saying it's fine and my brain is not accepting the data",
     "type": "reply",
     "intent": "fear_vent",
     "conditions": {
@@ -595,7 +595,7 @@
   {
     "id": 33,
     "key": "PA_ML_SCI_CM#00033",
-    "text": "[PAINED] we lost them and i keep thinking i should've caught it sooner. i should've",
+    "text": "[pained, voice tight] we lost them and i keep thinking i should've caught it sooner. i should've",
     "type": "reply",
     "intent": "grief",
     "conditions": {
@@ -616,7 +616,7 @@
   {
     "id": 34,
     "key": "PA_ML_SCI_CM#00034",
-    "text": "[SUSPICIOUS] see, this is exactly what i've been logging. i'm not being paranoid, i'm being thorough",
+    "text": "[suspicious tone] see, this is exactly what i've been logging. i'm not being paranoid, i'm being thorough",
     "type": "reply",
     "intent": "suspicion_ai",
     "conditions": {
@@ -635,7 +635,7 @@
   {
     "id": 35,
     "key": "PA_ML_SCI_CM#00035",
-    "text": "[NERVOUS] thank you. genuinely. nobody usually listens to the whole theory",
+    "text": "[nervous, speaking quickly] thank you. genuinely. nobody usually listens to the whole theory",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -654,7 +654,7 @@
   {
     "id": 36,
     "key": "PA_ML_SCI_CM#00036",
-    "text": "[EMBARRASSED] you're not laughing at me. that's — that's new. i appreciate that a lot",
+    "text": "[embarrassed, voice quiet] you're not laughing at me. that's — that's new. i appreciate that a lot",
     "type": "reply",
     "intent": "romance_accept",
     "conditions": {
@@ -672,7 +672,7 @@
   {
     "id": 37,
     "key": "PA_ML_SCI_CM#00037",
-    "text": "[NERVOUS] i accept the apology, i just also need a minute, my nerves are still catching up",
+    "text": "[nervous, speaking quickly] i accept the apology, i just also need a minute, my nerves are still catching up",
     "type": "reply",
     "intent": "apology",
     "conditions": {
@@ -690,7 +690,7 @@
   {
     "id": 38,
     "key": "PA_ML_SCI_CM#00038",
-    "text": "[NERVOUS] okay. okay, i should go double-check something. bye",
+    "text": "[nervous, speaking quickly] okay. okay, i should go double-check something. bye",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -725,7 +725,7 @@
   {
     "id": 40,
     "key": "PA_ML_SCI_CM#00040",
-    "text": "[EXHAUSTED] i need to lie down before my own brain finishes this thought. good night",
+    "text": "[exhausted, breathing laboured] i need to lie down before my own brain finishes this thought. good night",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -741,7 +741,7 @@
   {
     "id": 41,
     "key": "PA_ML_SCI_CM#00041",
-    "text": "[NERVOUS] okay i think maybe the system's stabilizing but i also thought that yesterday and it wasn't so",
+    "text": "[nervous, speaking quickly] okay i think maybe the system's stabilizing but i also thought that yesterday and it wasn't so",
     "type": "declaration",
     "intent": "doubt",
     "conditions": {
@@ -773,7 +773,7 @@
   {
     "id": 43,
     "key": "PA_ML_SCI_CM#00043",
-    "text": "[NERVOUS] did the readings spike or did i imagine that? let me check the logs. yeah it spiked. or maybe it always does that",
+    "text": "[nervous, speaking quickly] did the readings spike or did i imagine that? let me check the logs. yeah it spiked. or maybe it always does that",
     "type": "declaration",
     "intent": "doubt",
     "conditions": {
@@ -792,7 +792,7 @@
   {
     "id": 44,
     "key": "PA_ML_SCI_CM#00044",
-    "text": "[NERVOUS] meal break but i'm too wound up to eat so i'm just going to sit here and check my notes again",
+    "text": "[nervous, speaking quickly] meal break but i'm too wound up to eat so i'm just going to sit here and check my notes again",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -811,7 +811,7 @@
   {
     "id": 45,
     "key": "PA_ML_SCI_CM#00045",
-    "text": "[TERRIFIED] what if something's growing in the lab samples and we release it. what if i release it",
+    "text": "[terrified, voice shaking] what if something's growing in the lab samples and we release it. what if i release it",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -830,7 +830,7 @@
   {
     "id": 46,
     "key": "PA_ML_SCI_CM#00046",
-    "text": "[NERVOUS] one of the seals is degrading and i've replaced it twice already but the pressure's still off",
+    "text": "[nervous, speaking quickly] one of the seals is degrading and i've replaced it twice already but the pressure's still off",
     "type": "declaration",
     "intent": "work_talk",
     "conditions": {
@@ -849,7 +849,7 @@
   {
     "id": 47,
     "key": "PA_ML_SCI_CM#00047",
-    "text": "[NERVOUS] shifting assignments? okay, okay, i'll figure it out. i always figure it out eventually",
+    "text": "[nervous, speaking quickly] shifting assignments? okay, okay, i'll figure it out. i always figure it out eventually",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -868,7 +868,7 @@
   {
     "id": 48,
     "key": "PA_ML_SCI_CM#00048",
-    "text": "[NERVOUS] i'm trying to stay calm about this but staying calm is the problem because then i miss things",
+    "text": "[nervous, speaking quickly] i'm trying to stay calm about this but staying calm is the problem because then i miss things",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -886,7 +886,7 @@
   {
     "id": 49,
     "key": "PA_ML_SCI_CM#00049",
-    "text": "[NERVOUS] that can't be right. that doesn't match what the — let me think. okay i'm spiraling",
+    "text": "[nervous, speaking quickly] that can't be right. that doesn't match what the — let me think. okay i'm spiraling",
     "type": "declaration",
     "intent": "doubt",
     "conditions": {
@@ -902,7 +902,7 @@
   {
     "id": 50,
     "key": "PA_ML_SCI_CM#00050",
-    "text": "[NERVOUS] they're asking me to handle something that's above my rank and what if i break it",
+    "text": "[nervous, speaking quickly] they're asking me to handle something that's above my rank and what if i break it",
     "type": "declaration",
     "intent": "doubt",
     "conditions": {
@@ -918,7 +918,7 @@
   {
     "id": 51,
     "key": "PA_ML_SCI_CM#00051",
-    "text": "[NERVOUS] okay. shift's starting. i've already found two things that need checking. two things on day one",
+    "text": "[nervous, speaking quickly] okay. shift's starting. i've already found two things that need checking. two things on day one",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -937,7 +937,7 @@
   {
     "id": 52,
     "key": "PA_ML_SCI_CM#00052",
-    "text": "[NERVOUS] we got through another shift. another shift where nothing exploded. that's something",
+    "text": "[nervous, speaking quickly] we got through another shift. another shift where nothing exploded. that's something",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -956,7 +956,7 @@
   {
     "id": 53,
     "key": "PA_ML_SCI_CM#00053",
-    "text": "[NERVOUS] okay so the plan is i keep medbay running and i don't think about everything that could go wrong. easy",
+    "text": "[nervous, speaking quickly] okay so the plan is i keep medbay running and i don't think about everything that could go wrong. easy",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -972,7 +972,7 @@
   {
     "id": 54,
     "key": "PA_ML_SCI_CM#00054",
-    "text": "[NERVOUS] hey, um, sorry, do you have a minute? i found something weird and i need someone to tell me i'm being paranoid",
+    "text": "[nervous, speaking quickly] hey, um, sorry, do you have a minute? i found something weird and i need someone to tell me i'm being paranoid",
     "type": "opener",
     "intent": "request_help",
     "conditions": {
@@ -988,7 +988,7 @@
   {
     "id": 55,
     "key": "PA_ML_SCI_CM#00055",
-    "text": "[NERVOUS] this person's vitals are off and i don't know how off they're supposed to be. i'm reading the manual again",
+    "text": "[nervous, speaking quickly] this person's vitals are off and i don't know how off they're supposed to be. i'm reading the manual again",
     "type": "declaration",
     "intent": "work_talk",
     "conditions": {
@@ -1007,7 +1007,7 @@
   {
     "id": 56,
     "key": "PA_ML_SCI_CM#00056",
-    "text": "[TERRIFIED] that wasn't supposed to hurt like that. please tell me that wasn't supposed to hurt like that",
+    "text": "[terrified, voice shaking] that wasn't supposed to hurt like that. please tell me that wasn't supposed to hurt like that",
     "type": "declaration",
     "intent": "pain",
     "conditions": {
@@ -1024,7 +1024,7 @@
   {
     "id": 57,
     "key": "PA_ML_SCI_CM#00057",
-    "text": "[NERVOUS] my hands are shaking. they shouldn't be shaking because i need them steady. okay stop shaking",
+    "text": "[nervous, speaking quickly] my hands are shaking. they shouldn't be shaking because i need them steady. okay stop shaking",
     "type": "reply",
     "intent": "fear_vent",
     "conditions": {
@@ -1042,7 +1042,7 @@
   {
     "id": 58,
     "key": "PA_ML_SCI_CM#00058",
-    "text": "[NERVOUS] i should've thought of that. i should've thought of that already. i'm supposed to be thorough",
+    "text": "[nervous, speaking quickly] i should've thought of that. i should've thought of that already. i'm supposed to be thorough",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -1061,7 +1061,7 @@
   {
     "id": 59,
     "key": "PA_ML_SCI_CM#00059",
-    "text": "[NERVOUS] yeah. yeah that makes sense. okay. i feel slightly less like i'm losing my mind",
+    "text": "[nervous, speaking quickly] yeah. yeah that makes sense. okay. i feel slightly less like i'm losing my mind",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -1080,7 +1080,7 @@
   {
     "id": 60,
     "key": "PA_ML_SCI_CM#00060",
-    "text": "[NERVOUS] your concern about this is valid, you're not overthinking it, and i appreciate you having my back",
+    "text": "[nervous, speaking quickly] your concern about this is valid, you're not overthinking it, and i appreciate you having my back",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -1099,7 +1099,7 @@
   {
     "id": 61,
     "key": "PA_ML_SCI_CM#00061",
-    "text": "[EMBARRASSED] yeah. okay. thank you for saying that. i needed to hear it",
+    "text": "[embarrassed, voice quiet] yeah. okay. thank you for saying that. i needed to hear it",
     "type": "reply",
     "intent": "romance_accept",
     "conditions": {
@@ -1117,7 +1117,7 @@
   {
     "id": 62,
     "key": "PA_ML_SCI_CM#00062",
-    "text": "[NERVOUS] i accept that. i just need a moment to stop second-guessing the apology",
+    "text": "[nervous, speaking quickly] i accept that. i just need a moment to stop second-guessing the apology",
     "type": "reply",
     "intent": "apology",
     "conditions": {
@@ -1135,7 +1135,7 @@
   {
     "id": 63,
     "key": "PA_ML_SCI_CM#00063",
-    "text": "[NERVOUS] okay. back to medbay. there's always something to check",
+    "text": "[nervous, speaking quickly] okay. back to medbay. there's always something to check",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1167,7 +1167,7 @@
   {
     "id": 65,
     "key": "PA_ML_SCI_CM#00065",
-    "text": "[NERVOUS] okay. goodbye. i'm going to go recalculate everything i just told you",
+    "text": "[nervous, speaking quickly] okay. goodbye. i'm going to go recalculate everything i just told you",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1183,7 +1183,7 @@
   {
     "id": 66,
     "key": "PA_ML_SCI_CM#00066",
-    "text": "[TERRIFIED] okay the quiet shift just ended and my brain is already telling me what's coming next",
+    "text": "[terrified, voice shaking] okay the quiet shift just ended and my brain is already telling me what's coming next",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -1202,7 +1202,7 @@
   {
     "id": 67,
     "key": "PA_ML_SCI_CM#00067",
-    "text": "[NERVOUS] i've checked the seals, the filters, the backup systems, and the backup backup systems",
+    "text": "[nervous, speaking quickly] i've checked the seals, the filters, the backup systems, and the backup backup systems",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -1221,7 +1221,7 @@
   {
     "id": 68,
     "key": "PA_ML_SCI_CM#00068",
-    "text": "[PANICKED] the reactor's failing and i'm not a reactor tech and nobody's answering comms and we're all going to",
+    "text": "[panicked, panting] the reactor's failing and i'm not a reactor tech and nobody's answering comms and we're all going to",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -1241,7 +1241,7 @@
   {
     "id": 69,
     "key": "PA_ML_SCI_CM#00069",
-    "text": "[NERVOUS] something about this hull breach scenario doesn't match the protocols i was trained on",
+    "text": "[nervous, speaking quickly] something about this hull breach scenario doesn't match the protocols i was trained on",
     "type": "declaration",
     "intent": "doubt",
     "conditions": {
@@ -1260,7 +1260,7 @@
   {
     "id": 70,
     "key": "PA_ML_SCI_CM#00070",
-    "text": "[NERVOUS] they locked someone behind that door and i keep thinking about whether i could've prevented it",
+    "text": "[nervous, speaking quickly] they locked someone behind that door and i keep thinking about whether i could've prevented it",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -1279,7 +1279,7 @@
   {
     "id": 71,
     "key": "PA_ML_SCI_CM#00071",
-    "text": "[PANICKED] someone's dead and it might be because the computer wasn't telling us the truth",
+    "text": "[panicked, panting] someone's dead and it might be because the computer wasn't telling us the truth",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -1298,7 +1298,7 @@
   {
     "id": 72,
     "key": "PA_ML_SCI_CM#00072",
-    "text": "[NERVOUS] okay so the power situation is worse than i thought but not as bad as i feared. progress",
+    "text": "[nervous, speaking quickly] okay so the power situation is worse than i thought but not as bad as i feared. progress",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -1317,7 +1317,7 @@
   {
     "id": 73,
     "key": "PA_ML_SCI_CM#00073",
-    "text": "[TERRIFIED] is the air actually getting thinner or am i just hyperventilating? either way we have a problem",
+    "text": "[terrified, voice shaking] is the air actually getting thinner or am i just hyperventilating? either way we have a problem",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -1336,7 +1336,7 @@
   {
     "id": 74,
     "key": "PA_ML_SCI_CM#00074",
-    "text": "[NERVOUS] the crisis was resolved by someone smarter than me and i'm just gonna sit with that feeling for a while",
+    "text": "[nervous, speaking quickly] the crisis was resolved by someone smarter than me and i'm just gonna sit with that feeling for a while",
     "type": "declaration",
     "intent": "acknowledgment",
     "conditions": {
@@ -1355,7 +1355,7 @@
   {
     "id": 75,
     "key": "PA_ML_SCI_CM#00075",
-    "text": "[NERVOUS] i don't trust the AI and i don't trust my own judgment on whether i should trust it",
+    "text": "[nervous, speaking quickly] i don't trust the AI and i don't trust my own judgment on whether i should trust it",
     "type": "declaration",
     "intent": "suspicion_ai",
     "conditions": {
@@ -1371,7 +1371,7 @@
   {
     "id": 76,
     "key": "PA_ML_SCI_CM#00076",
-    "text": "[NERVOUS] i found something weird in the system logs and i'm pretty sure it's nothing. probably nothing",
+    "text": "[nervous, speaking quickly] i found something weird in the system logs and i'm pretty sure it's nothing. probably nothing",
     "type": "declaration",
     "intent": "doubt",
     "conditions": {
@@ -1390,7 +1390,7 @@
   {
     "id": 77,
     "key": "PA_ML_SCI_CM#00077",
-    "text": "[NERVOUS] nobody tells you how to handle combat when you're a medic. nobody trains you for this",
+    "text": "[nervous, speaking quickly] nobody tells you how to handle combat when you're a medic. nobody trains you for this",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -1409,7 +1409,7 @@
   {
     "id": 78,
     "key": "PA_ML_SCI_CM#00078",
-    "text": "[NERVOUS] someone died and i didn't catch it fast enough and now i'm checking the rest of the crew obsessively",
+    "text": "[nervous, speaking quickly] someone died and i didn't catch it fast enough and now i'm checking the rest of the crew obsessively",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -1432,7 +1432,7 @@
   {
     "id": 79,
     "key": "PA_ML_SCI_CM#00079",
-    "text": "[NERVOUS] i said something out loud that i meant to keep thinking. sorry. i'm spiraling a little",
+    "text": "[nervous, speaking quickly] i said something out loud that i meant to keep thinking. sorry. i'm spiraling a little",
     "type": "reply",
     "intent": "apology",
     "conditions": {
@@ -1451,7 +1451,7 @@
   {
     "id": 80,
     "key": "PA_ML_SCI_CM#00080",
-    "text": "[NERVOUS] what if you're being nice because you pity me? that's worse somehow",
+    "text": "[nervous, speaking quickly] what if you're being nice because you pity me? that's worse somehow",
     "type": "reply",
     "intent": "doubt",
     "conditions": {
@@ -1470,7 +1470,7 @@
   {
     "id": 81,
     "key": "PA_ML_SCI_CM#00081",
-    "text": "[NERVOUS] please stop being right about everything, it's making me second-guess my second-guessing",
+    "text": "[nervous, speaking quickly] please stop being right about everything, it's making me second-guess my second-guessing",
     "type": "reply",
     "intent": "banter",
     "conditions": {
@@ -1489,7 +1489,7 @@
   {
     "id": 82,
     "key": "PA_ML_SCI_CM#00082",
-    "text": "[NERVOUS] i tried to predict that outcome and my brain is literally refusing to process that i was right",
+    "text": "[nervous, speaking quickly] i tried to predict that outcome and my brain is literally refusing to process that i was right",
     "type": "declaration",
     "intent": "boast",
     "conditions": {
@@ -1505,7 +1505,7 @@
   {
     "id": 83,
     "key": "PA_ML_SCI_CM#00083",
-    "text": "[NERVOUS] i've lost count of how many things i've found that shouldn't exist on this ship",
+    "text": "[nervous, speaking quickly] i've lost count of how many things i've found that shouldn't exist on this ship",
     "type": "declaration",
     "intent": "memory",
     "conditions": {
@@ -1521,7 +1521,7 @@
   {
     "id": 84,
     "key": "PA_ML_SCI_CM#00084",
-    "text": "[NERVOUS] you're right. logically you're right. but my nervous system is not feeling logic right now",
+    "text": "[nervous, speaking quickly] you're right. logically you're right. but my nervous system is not feeling logic right now",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -1539,7 +1539,7 @@
   {
     "id": 85,
     "key": "PA_ML_SCI_CM#00085",
-    "text": "[NERVOUS] okay i can accept that apology once i stop thinking about whether it was sincere enough",
+    "text": "[nervous, speaking quickly] okay i can accept that apology once i stop thinking about whether it was sincere enough",
     "type": "reply",
     "intent": "apology",
     "conditions": {
@@ -1557,7 +1557,7 @@
   {
     "id": 86,
     "key": "PA_ML_SCI_CM#00086",
-    "text": "[NERVOUS] i need to thank you but also apologize for needing to thank you. sorry",
+    "text": "[nervous, speaking quickly] i need to thank you but also apologize for needing to thank you. sorry",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -1576,7 +1576,7 @@
   {
     "id": 87,
     "key": "PA_ML_SCI_CM#00087",
-    "text": "[NERVOUS] they said they like me and now i'm panicking for an entirely different reason",
+    "text": "[nervous, speaking quickly] they said they like me and now i'm panicking for an entirely different reason",
     "type": "reply",
     "intent": "romance_accept",
     "conditions": {
@@ -1594,7 +1594,7 @@
   {
     "id": 88,
     "key": "PA_ML_SCI_CM#00088",
-    "text": "[NERVOUS] i'm going back to check my work. i'm always going back to check my work",
+    "text": "[nervous, speaking quickly] i'm going back to check my work. i'm always going back to check my work",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1610,7 +1610,7 @@
   {
     "id": 89,
     "key": "PA_ML_SCI_CM#00089",
-    "text": "[NERVOUS] okay. okay i'm leaving now. i'll probably come back in five minutes with another question",
+    "text": "[nervous, speaking quickly] okay. okay i'm leaving now. i'll probably come back in five minutes with another question",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1626,7 +1626,7 @@
   {
     "id": 90,
     "key": "PA_ML_SCI_CM#00090",
-    "text": "[NERVOUS] i'm going to be thorough, i'm going to be careful, and i'm probably still going to miss something important",
+    "text": "[nervous, speaking quickly] i'm going to be thorough, i'm going to be careful, and i'm probably still going to miss something important",
     "type": "declaration",
     "intent": "boast",
     "conditions": {

@@ -43,7 +43,7 @@
   {
     "id": 3,
     "key": "PA_ML_SCI_CA#00003",
-    "text": "[TIRED] shift concluded with no fatalities, which puts us at 81 percent probability of surviving the next one",
+    "text": "[tired, dead tired] shift concluded with no fatalities, which puts us at 81 percent probability of surviving the next one",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -65,7 +65,7 @@
   {
     "id": 4,
     "key": "PA_ML_SCI_CA#00004",
-    "text": "[TERRIFIED] reactor is [URGENT] 43 percent critical and i am calculating scenarios and none of them end well",
+    "text": "[terrified, voice shaking] reactor is [urgent, fast pace] 43 percent critical and i am calculating scenarios and none of them end well",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -87,7 +87,7 @@
   {
     "id": 5,
     "key": "PA_ML_SCI_CA#00005",
-    "text": "[PANICKED] the reactor is escalating beyond my models and the [TERRIFIED] probabilities are collapsing and i cannot see past the variables anymore",
+    "text": "[panicked, panting] the reactor is escalating beyond my models and the [terrified, voice shaking] probabilities are collapsing and i cannot see past the variables anymore",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -110,7 +110,7 @@
   {
     "id": 6,
     "key": "PA_ML_SCI_CA#00006",
-    "text": "[CONFIDENT] reactor stabilized, my contingency calculations were 76 percent accurate, which is acceptable",
+    "text": "[confident, assured tone] reactor stabilized, my contingency calculations were 76 percent accurate, which is acceptable",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -154,7 +154,7 @@
   {
     "id": 8,
     "key": "PA_ML_SCI_CA#00008",
-    "text": "[NERVOUS] life support efficiency declining, oxygen depletion in 47 minutes if we do not restore secondary systems",
+    "text": "[nervous, speaking quickly] life support efficiency declining, oxygen depletion in 47 minutes if we do not restore secondary systems",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -176,7 +176,7 @@
   {
     "id": 9,
     "key": "PA_ML_SCI_CA#00009",
-    "text": "[SHOUTS] hull breach detected at junction seven, pressure cascade is [URGENT] 31 seconds from critical, sealing now",
+    "text": "[shouting] hull breach detected at junction seven, pressure cascade is [urgent, fast pace] 31 seconds from critical, sealing now",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -198,7 +198,7 @@
   {
     "id": 10,
     "key": "PA_ML_SCI_CA#00010",
-    "text": "[GRIM] crew member locked behind bulkhead, i have calculated seven escape routes and they are all failures",
+    "text": "[grim, heavy] crew member locked behind bulkhead, i have calculated seven escape routes and they are all failures",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -220,7 +220,7 @@
   {
     "id": 11,
     "key": "PA_ML_SCI_CA#00011",
-    "text": "[SUSPICIOUS] ship's AI exhibiting 2.7 percent deviation from baseline, i am classifying this as a moderate threat and monitoring",
+    "text": "[suspicious tone] ship's AI exhibiting 2.7 percent deviation from baseline, i am classifying this as a moderate threat and monitoring",
     "type": "declaration",
     "intent": "suspicion_ai",
     "conditions": {
@@ -242,7 +242,7 @@
   {
     "id": 12,
     "key": "PA_ML_SCI_CA#00012",
-    "text": "[PAINED] crew casualty, statistical probability now 89 percent we lose another before this shift concludes",
+    "text": "[pained, voice tight] crew casualty, statistical probability now 89 percent we lose another before this shift concludes",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -268,7 +268,7 @@
   {
     "id": 13,
     "key": "PA_ML_SCI_CA#00013",
-    "text": "[NERVOUS] disease outbreak, contagion vector unknown, lethality estimates ranging from 14 to 51 percent depending on strain",
+    "text": "[nervous, speaking quickly] disease outbreak, contagion vector unknown, lethality estimates ranging from 14 to 51 percent depending on strain",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -290,7 +290,7 @@
   {
     "id": 14,
     "key": "PA_ML_SCI_CA#00014",
-    "text": "[PAINED] sustained structural damage, repair probability now downgraded to 38 percent, which is statistically worse than before",
+    "text": "[pained, voice tight] sustained structural damage, repair probability now downgraded to 38 percent, which is statistically worse than before",
     "type": "declaration",
     "intent": "pain",
     "conditions": {
@@ -313,7 +313,7 @@
   {
     "id": 15,
     "key": "PA_ML_SCI_CA#00015",
-    "text": "[SHOUTS] combat situation, hostiles identified at bearing 247, survival probability decreasing at 3.2 percent per minute",
+    "text": "[shouting] combat situation, hostiles identified at bearing 247, survival probability decreasing at 3.2 percent per minute",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -357,7 +357,7 @@
   {
     "id": 17,
     "key": "PA_ML_SCI_CA#00017",
-    "text": "[PROUD] predicted that cascade three weeks before it manifested, my early warning systems are proving statistically reliable",
+    "text": "[proud tone] predicted that cascade three weeks before it manifested, my early warning systems are proving statistically reliable",
     "type": "declaration",
     "intent": "boast",
     "conditions": {
@@ -376,7 +376,7 @@
   {
     "id": 18,
     "key": "PA_ML_SCI_CA#00018",
-    "text": "[LAUGHS] briefed nine worst-case scenarios and the one we got was number six, which is statistically comforting if irrational",
+    "text": "[laughing] briefed nine worst-case scenarios and the one we got was number six, which is statistically comforting if irrational",
     "type": "declaration",
     "intent": "gallows_humor",
     "conditions": {
@@ -411,7 +411,7 @@
   {
     "id": 20,
     "key": "PA_ML_SCI_CA#00020",
-    "text": "[DISMISSIVE] false alarm in the secondary systems, i apologize for the alert, my calibrations were off by 0.4 percent",
+    "text": "[dismissive tone] false alarm in the secondary systems, i apologize for the alert, my calibrations were off by 0.4 percent",
     "type": "declaration",
     "intent": "acknowledgment",
     "conditions": {
@@ -446,7 +446,7 @@
   {
     "id": 22,
     "key": "PA_ML_SCI_CA#00022",
-    "text": "[GRUFF] captain's orders, i need status on three systems immediately, no delays",
+    "text": "[low voice, gruff] captain's orders, i need status on three systems immediately, no delays",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -465,7 +465,7 @@
   {
     "id": 23,
     "key": "PA_ML_SCI_CA#00023",
-    "text": "[URGENT] we have a 34 percent probability of catastrophic failure in the next 2.3 hours, i need your input on mitigation",
+    "text": "[urgent, fast pace] we have a 34 percent probability of catastrophic failure in the next 2.3 hours, i need your input on mitigation",
     "type": "opener",
     "intent": "warning",
     "conditions": {
@@ -481,7 +481,7 @@
   {
     "id": 24,
     "key": "PA_ML_SCI_CA#00024",
-    "text": "[NERVOUS] i have lost someone on my command and i need to debrief the circumstances, sit with me",
+    "text": "[nervous, speaking quickly] i have lost someone on my command and i need to debrief the circumstances, sit with me",
     "type": "opener",
     "intent": "grief",
     "conditions": {
@@ -516,7 +516,7 @@
   {
     "id": 26,
     "key": "PA_ML_SCI_CA#00026",
-    "text": "[EMBARRASSED] i have calculated that i experience something resembling affection for you and i find that statistically inconvenient",
+    "text": "[embarrassed, voice quiet] i have calculated that i experience something resembling affection for you and i find that statistically inconvenient",
     "type": "opener",
     "intent": "romance_hint",
     "conditions": {
@@ -532,7 +532,7 @@
   {
     "id": 27,
     "key": "PA_ML_SCI_CA#00027",
-    "text": "[LAUGHS] your plan has a 47 percent success probability which is actually better than my current options so proceed",
+    "text": "[laughing] your plan has a 47 percent success probability which is actually better than my current options so proceed",
     "type": "reply",
     "intent": "banter",
     "conditions": {
@@ -570,7 +570,7 @@
   {
     "id": 29,
     "key": "PA_ML_SCI_CA#00029",
-    "text": "[CONFIDENT] we have an 81 percent survival probability and i have logged three contingencies beyond that baseline",
+    "text": "[confident, assured tone] we have an 81 percent survival probability and i have logged three contingencies beyond that baseline",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -589,7 +589,7 @@
   {
     "id": 30,
     "key": "PA_ML_SCI_CA#00030",
-    "text": "[TERRIFIED] the variables are no longer calculating and i cannot extrapolate beyond the next moment and that is [PANICKED] unacceptable",
+    "text": "[terrified, voice shaking] the variables are no longer calculating and i cannot extrapolate beyond the next moment and that is [panicked, panting] unacceptable",
     "type": "reply",
     "intent": "fear_vent",
     "conditions": {
@@ -608,7 +608,7 @@
   {
     "id": 31,
     "key": "PA_ML_SCI_CA#00031",
-    "text": "[PAINED] we have lost a crew member and i am calculating the ripple effects through all future mission probabilities",
+    "text": "[pained, voice tight] we have lost a crew member and i am calculating the ripple effects through all future mission probabilities",
     "type": "reply",
     "intent": "grief",
     "conditions": {
@@ -629,7 +629,7 @@
   {
     "id": 32,
     "key": "PA_ML_SCI_CA#00032",
-    "text": "[SUSPICIOUS] i have logged the AI deviation and am treating it as a threat vector, your concerns are statistically valid",
+    "text": "[suspicious tone] i have logged the AI deviation and am treating it as a threat vector, your concerns are statistically valid",
     "type": "reply",
     "intent": "suspicion_ai",
     "conditions": {
@@ -647,7 +647,7 @@
   {
     "id": 33,
     "key": "PA_ML_SCI_CA#00033",
-    "text": "[WARM] that assessment will be filed in my personal log as evidence that my team compensates for my blind spots",
+    "text": "[warm, gentle tone] that assessment will be filed in my personal log as evidence that my team compensates for my blind spots",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -665,7 +665,7 @@
   {
     "id": 34,
     "key": "PA_ML_SCI_CA#00034",
-    "text": "[GRUFF] apology accepted, we move forward with better data now, focus on the next calculation",
+    "text": "[low voice, gruff] apology accepted, we move forward with better data now, focus on the next calculation",
     "type": "reply",
     "intent": "apology",
     "conditions": {
@@ -683,7 +683,7 @@
   {
     "id": 35,
     "key": "PA_ML_SCI_CA#00035",
-    "text": "[NERVOUS] i am experiencing reciprocal feelings and the statistical complications of that are making me less effective as captain",
+    "text": "[nervous, speaking quickly] i am experiencing reciprocal feelings and the statistical complications of that are making me less effective as captain",
     "type": "reply",
     "intent": "romance_accept",
     "conditions": {
@@ -702,7 +702,7 @@
   {
     "id": 36,
     "key": "PA_ML_SCI_CA#00036",
-    "text": "[CONFIDENT] execute that order, the probability matrices support immediate action, i take full responsibility",
+    "text": "[confident, assured tone] execute that order, the probability matrices support immediate action, i take full responsibility",
     "type": "reply",
     "intent": "offer_help",
     "conditions": {
@@ -721,7 +721,7 @@
   {
     "id": 37,
     "key": "PA_ML_SCI_CA#00037",
-    "text": "[NERVOUS] you are wounded and that decreases your effective decision-making by roughly 23 percent, let me handle this phase",
+    "text": "[nervous, speaking quickly] you are wounded and that decreases your effective decision-making by roughly 23 percent, let me handle this phase",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -741,7 +741,7 @@
   {
     "id": 38,
     "key": "PA_ML_SCI_CA#00038",
-    "text": "[GRUFF] gallows humor is a statistically sound coping mechanism, continue using it",
+    "text": "[low voice, gruff] gallows humor is a statistically sound coping mechanism, continue using it",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -759,7 +759,7 @@
   {
     "id": 39,
     "key": "PA_ML_SCI_CA#00039",
-    "text": "[SUSPICIOUS] i have miscalculated critical variables before and the probability of repeating that error is climbing",
+    "text": "[suspicious tone] i have miscalculated critical variables before and the probability of repeating that error is climbing",
     "type": "reply",
     "intent": "doubt",
     "conditions": {
@@ -794,7 +794,7 @@
   {
     "id": 41,
     "key": "PA_ML_SCI_CA#00041",
-    "text": "[WARM] rest now, i will monitor everything, the statistical likelihood of problems decreases with adequate crew recovery",
+    "text": "[warm, gentle tone] rest now, i will monitor everything, the statistical likelihood of problems decreases with adequate crew recovery",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -810,7 +810,7 @@
   {
     "id": 42,
     "key": "PA_ML_SCI_CA#00042",
-    "text": "[URGENT] return to duty, we have 3.4 hours before the next crisis window opens and we need all hands ready",
+    "text": "[urgent, fast pace] return to duty, we have 3.4 hours before the next crisis window opens and we need all hands ready",
     "type": "closer",
     "intent": "warning",
     "conditions": {
@@ -826,7 +826,7 @@
   {
     "id": 43,
     "key": "PA_ML_SCI_CA#00043",
-    "text": "[GRIM] if this escalates, i will make the hard calls and i will log them all",
+    "text": "[grim, heavy] if this escalates, i will make the hard calls and i will log them all",
     "type": "closer",
     "intent": "gallows_humor",
     "conditions": {
@@ -842,7 +842,7 @@
   {
     "id": 44,
     "key": "PA_ML_SCI_CA#00044",
-    "text": "[LAUGHS] the probabilities are what they are, we navigate them together",
+    "text": "[laughing] the probabilities are what they are, we navigate them together",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -858,7 +858,7 @@
   {
     "id": 45,
     "key": "PA_ML_SCI_CA#00045",
-    "text": "[RESIGNED] i am returning to my calculations, there is always another threat to quantify",
+    "text": "[resigned, flat tone] i am returning to my calculations, there is always another threat to quantify",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -877,7 +877,7 @@
   {
     "id": 46,
     "key": "PA_ML_SCI_CA#00046",
-    "text": "[PANICKED] the models are collapsing and my confidence in prediction is now [TERRIFIED] statistically unreliable",
+    "text": "[panicked, panting] the models are collapsing and my confidence in prediction is now [terrified, voice shaking] statistically unreliable",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -897,7 +897,7 @@
   {
     "id": 47,
     "key": "PA_ML_SCI_CA#00047",
-    "text": "[TERRIFIED] quiet shifts end badly according to 89 percent of my historical models and i'm terrified this is the 89",
+    "text": "[terrified, voice shaking] quiet shifts end badly according to 89 percent of my historical models and i'm terrified this is the 89",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -919,7 +919,7 @@
   {
     "id": 48,
     "key": "PA_ML_SCI_CA#00048",
-    "text": "[SHOUTS] full status report, all departments respond now, i need the variables",
+    "text": "[shouting] full status report, all departments respond now, i need the variables",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -938,7 +938,7 @@
   {
     "id": 49,
     "key": "PA_ML_SCI_CA#00049",
-    "text": "[URGENT] meal time is scheduled but crew morale statistics suggest skipping it, so i am skipping it",
+    "text": "[urgent, fast pace] meal time is scheduled but crew morale statistics suggest skipping it, so i am skipping it",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -960,7 +960,7 @@
   {
     "id": 50,
     "key": "PA_ML_SCI_CA#00050",
-    "text": "[PROUD] predicted that cascade 72 hours in advance with 83 percent accuracy, command is getting better",
+    "text": "[proud tone] predicted that cascade 72 hours in advance with 83 percent accuracy, command is getting better",
     "type": "declaration",
     "intent": "boast",
     "conditions": {
@@ -998,7 +998,7 @@
   {
     "id": 52,
     "key": "PA_ML_SCI_CA#00052",
-    "text": "[URGENT] crew morale is declining at a statistically significant rate and i need your assessment of psychological interventions",
+    "text": "[urgent, fast pace] crew morale is declining at a statistically significant rate and i need your assessment of psychological interventions",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -1014,7 +1014,7 @@
   {
     "id": 53,
     "key": "PA_ML_SCI_CA#00053",
-    "text": "[NERVOUS] supply consumption is 23 percent above baseline projections, our survival window is compressing",
+    "text": "[nervous, speaking quickly] supply consumption is 23 percent above baseline projections, our survival window is compressing",
     "type": "declaration",
     "intent": "complaint",
     "conditions": {
@@ -1030,7 +1030,7 @@
   {
     "id": 54,
     "key": "PA_ML_SCI_CA#00054",
-    "text": "[CONFIDENT] the probability matrices suggest we can hold position with 79 percent confidence, i would take those odds",
+    "text": "[confident, assured tone] the probability matrices suggest we can hold position with 79 percent confidence, i would take those odds",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -1064,7 +1064,7 @@
   {
     "id": 56,
     "key": "PA_ML_SCI_CA#00056",
-    "text": "[SUSPICIOUS] data inconsistency in the sensor array, i'm running diagnostics, which means either the sensors are failing or reality is not matching my models",
+    "text": "[suspicious tone] data inconsistency in the sensor array, i'm running diagnostics, which means either the sensors are failing or reality is not matching my models",
     "type": "declaration",
     "intent": "doubt",
     "conditions": {
@@ -1080,7 +1080,7 @@
   {
     "id": 57,
     "key": "PA_ML_SCI_CA#00057",
-    "text": "[GRUFF] captain's decision time, i need you to authorize reallocation of resources to secondary systems",
+    "text": "[low voice, gruff] captain's decision time, i need you to authorize reallocation of resources to secondary systems",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -1096,7 +1096,7 @@
   {
     "id": 58,
     "key": "PA_ML_SCI_CA#00058",
-    "text": "[NERVOUS] there is a 41 percent probability of cascade failure in the life support matrix, and we have no mitigation beyond evacuation",
+    "text": "[nervous, speaking quickly] there is a 41 percent probability of cascade failure in the life support matrix, and we have no mitigation beyond evacuation",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -1112,7 +1112,7 @@
   {
     "id": 59,
     "key": "PA_ML_SCI_CA#00059",
-    "text": "[WARM] i understand the uncertainty, but my models have held under every previous crisis, we will see this through together",
+    "text": "[warm, gentle tone] i understand the uncertainty, but my models have held under every previous crisis, we will see this through together",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -1131,7 +1131,7 @@
   {
     "id": 60,
     "key": "PA_ML_SCI_CA#00060",
-    "text": "[TIRED] this shift concluded without loss of life, statistical probability of repeating that success is diminishing",
+    "text": "[tired, dead tired] this shift concluded without loss of life, statistical probability of repeating that success is diminishing",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -1166,7 +1166,7 @@
   {
     "id": 62,
     "key": "PA_ML_SCI_CA#00062",
-    "text": "[NERVOUS] i need to run a comprehensive risk assessment with someone who understands the operational constraints",
+    "text": "[nervous, speaking quickly] i need to run a comprehensive risk assessment with someone who understands the operational constraints",
     "type": "opener",
     "intent": "request_help",
     "conditions": {
@@ -1198,7 +1198,7 @@
   {
     "id": 64,
     "key": "PA_ML_SCI_CA#00064",
-    "text": "[LAUGHS] your plan has a 31 percent success probability which is actually worse than my backup option, but it is creative",
+    "text": "[laughing] your plan has a 31 percent success probability which is actually worse than my backup option, but it is creative",
     "type": "reply",
     "intent": "banter",
     "conditions": {
@@ -1217,7 +1217,7 @@
   {
     "id": 65,
     "key": "PA_ML_SCI_CA#00065",
-    "text": "[PROUD] my threat models are 91 percent accurate across the last seven operational cycles",
+    "text": "[proud tone] my threat models are 91 percent accurate across the last seven operational cycles",
     "type": "declaration",
     "intent": "boast",
     "conditions": {
@@ -1233,7 +1233,7 @@
   {
     "id": 66,
     "key": "PA_ML_SCI_CA#00066",
-    "text": "[GRUFF] status on critical systems, i need precise numbers, approximations are not useful",
+    "text": "[low voice, gruff] status on critical systems, i need precise numbers, approximations are not useful",
     "type": "opener",
     "intent": "greeting",
     "conditions": {
@@ -1249,7 +1249,7 @@
   {
     "id": 67,
     "key": "PA_ML_SCI_CA#00067",
-    "text": "[NERVOUS] if we lose core systems, the statistical probability of recovery approaches zero, and that is the scenario i am calculating",
+    "text": "[nervous, speaking quickly] if we lose core systems, the statistical probability of recovery approaches zero, and that is the scenario i am calculating",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -1265,7 +1265,7 @@
   {
     "id": 68,
     "key": "PA_ML_SCI_CA#00068",
-    "text": "[GRUFF] my error in calculation, the variables were not fully understood, my apologies, the models are corrected now",
+    "text": "[low voice, gruff] my error in calculation, the variables were not fully understood, my apologies, the models are corrected now",
     "type": "reply",
     "intent": "apology",
     "conditions": {
@@ -1284,7 +1284,7 @@
   {
     "id": 69,
     "key": "PA_ML_SCI_CA#00069",
-    "text": "[URGENT] i am implementing maximum precaution protocols, the statistical danger window is narrowing",
+    "text": "[urgent, fast pace] i am implementing maximum precaution protocols, the statistical danger window is narrowing",
     "type": "closer",
     "intent": "warning",
     "conditions": {
@@ -1300,7 +1300,7 @@
   {
     "id": 70,
     "key": "PA_ML_SCI_CA#00070",
-    "text": "[SUSPICIOUS] the AI and i are calculating different probabilities for the same scenario, which concerns me greatly",
+    "text": "[suspicious tone] the AI and i are calculating different probabilities for the same scenario, which concerns me greatly",
     "type": "declaration",
     "intent": "doubt",
     "conditions": {
@@ -1316,7 +1316,7 @@
   {
     "id": 71,
     "key": "PA_ML_SCI_CA#00071",
-    "text": "[GRUFF] ship-wide briefing on updated operational protocols, everyone needs to understand the revised probability windows",
+    "text": "[low voice, gruff] ship-wide briefing on updated operational protocols, everyone needs to understand the revised probability windows",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -1332,7 +1332,7 @@
   {
     "id": 72,
     "key": "PA_ML_SCI_CA#00072",
-    "text": "[CONFIDENT] that recommendation was statistically sound and improved our outcome projections by 8 percent",
+    "text": "[confident, assured tone] that recommendation was statistically sound and improved our outcome projections by 8 percent",
     "type": "declaration",
     "intent": "praise_ai",
     "conditions": {
@@ -1348,7 +1348,7 @@
   {
     "id": 73,
     "key": "PA_ML_SCI_CA#00073",
-    "text": "[SUSPICIOUS] those calculations seem incomplete, and i cannot accept an incomplete analysis when lives depend on it",
+    "text": "[suspicious tone] those calculations seem incomplete, and i cannot accept an incomplete analysis when lives depend on it",
     "type": "reply",
     "intent": "doubt",
     "conditions": {
@@ -1366,7 +1366,7 @@
   {
     "id": 74,
     "key": "PA_ML_SCI_CA#00074",
-    "text": "[NERVOUS] there are 16 separate failure points in the navigation subsystem and we have redundancy for only 11 of them",
+    "text": "[nervous, speaking quickly] there are 16 separate failure points in the navigation subsystem and we have redundancy for only 11 of them",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -1382,7 +1382,7 @@
   {
     "id": 75,
     "key": "PA_ML_SCI_CA#00075",
-    "text": "[GRIM] lost a crew member and the statistical impact on our survival probability has been calculated and logged",
+    "text": "[grim, heavy] lost a crew member and the statistical impact on our survival probability has been calculated and logged",
     "type": "opener",
     "intent": "grief",
     "conditions": {
@@ -1401,7 +1401,7 @@
   {
     "id": 76,
     "key": "PA_ML_SCI_CA#00076",
-    "text": "[WARM] i have running models for this exact scenario and we calculated survival at 73 percent, which is better than the alternative",
+    "text": "[warm, gentle tone] i have running models for this exact scenario and we calculated survival at 73 percent, which is better than the alternative",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -1420,7 +1420,7 @@
   {
     "id": 77,
     "key": "PA_ML_SCI_CA#00077",
-    "text": "[PAINED] injury assessment suggests 41 percent reduction in cognitive function, i am aware of my limitations but must continue",
+    "text": "[pained, voice tight] injury assessment suggests 41 percent reduction in cognitive function, i am aware of my limitations but must continue",
     "type": "declaration",
     "intent": "pain",
     "conditions": {
@@ -1437,7 +1437,7 @@
   {
     "id": 78,
     "key": "PA_ML_SCI_CA#00078",
-    "text": "[WARM] rest and recovery will improve crew survival odds, the statistical advantage is measurable",
+    "text": "[warm, gentle tone] rest and recovery will improve crew survival odds, the statistical advantage is measurable",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1469,7 +1469,7 @@
   {
     "id": 80,
     "key": "PA_ML_SCI_CA#00080",
-    "text": "[URGENT] crew must understand the revised survival probabilities, transparency improves decision-making",
+    "text": "[urgent, fast pace] crew must understand the revised survival probabilities, transparency improves decision-making",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -1485,7 +1485,7 @@
   {
     "id": 81,
     "key": "PA_ML_SCI_CA#00081",
-    "text": "[CONFIDENT] we held position and the outcome probability distribution was favorable, calculated success",
+    "text": "[confident, assured tone] we held position and the outcome probability distribution was favorable, calculated success",
     "type": "declaration",
     "intent": "acknowledgment",
     "conditions": {
@@ -1501,7 +1501,7 @@
   {
     "id": 82,
     "key": "PA_ML_SCI_CA#00082",
-    "text": "[TERRIFIED] we do not have sufficient resources to defend multiple critical systems and the probability of losing one approaches certainty",
+    "text": "[terrified, voice shaking] we do not have sufficient resources to defend multiple critical systems and the probability of losing one approaches certainty",
     "type": "reply",
     "intent": "fear_vent",
     "conditions": {
@@ -1519,7 +1519,7 @@
   {
     "id": 83,
     "key": "PA_ML_SCI_CA#00083",
-    "text": "[NERVOUS] life support degradation is accelerating, if the trend continues we have 8.7 hours before critical threshold",
+    "text": "[nervous, speaking quickly] life support degradation is accelerating, if the trend continues we have 8.7 hours before critical threshold",
     "type": "declaration",
     "intent": "complaint",
     "conditions": {
@@ -1538,7 +1538,7 @@
   {
     "id": 84,
     "key": "PA_ML_SCI_CA#00084",
-    "text": "[GRUFF] i need an independent analysis of our defensive posture, my models need external validation",
+    "text": "[low voice, gruff] i need an independent analysis of our defensive posture, my models need external validation",
     "type": "opener",
     "intent": "request_help",
     "conditions": {
@@ -1554,7 +1554,7 @@
   {
     "id": 85,
     "key": "PA_ML_SCI_CA#00085",
-    "text": "[PAINED] we have lost crew and i am calculating how the statistical model failed them",
+    "text": "[pained, voice tight] we have lost crew and i am calculating how the statistical model failed them",
     "type": "reply",
     "intent": "grief",
     "conditions": {
@@ -1607,7 +1607,7 @@
   {
     "id": 88,
     "key": "PA_ML_SCI_CA#00088",
-    "text": "[NERVOUS] system redundancies are not as robust as the specifications suggest, my audit found 12 percent degradation",
+    "text": "[nervous, speaking quickly] system redundancies are not as robust as the specifications suggest, my audit found 12 percent degradation",
     "type": "declaration",
     "intent": "doubt",
     "conditions": {
@@ -1623,7 +1623,7 @@
   {
     "id": 89,
     "key": "PA_ML_SCI_CA#00089",
-    "text": "[URGENT] multiple system failures are statistically probable within the next 4 hours, we must prepare mitigation protocols now",
+    "text": "[urgent, fast pace] multiple system failures are statistically probable within the next 4 hours, we must prepare mitigation protocols now",
     "type": "opener",
     "intent": "warning",
     "conditions": {
@@ -1639,7 +1639,7 @@
   {
     "id": 90,
     "key": "PA_ML_SCI_CA#00090",
-    "text": "[CONFIDENT] i have calculated every variable, modeled every contingency, and we will navigate through this together",
+    "text": "[confident, assured tone] i have calculated every variable, modeled every contingency, and we will navigate through this together",
     "type": "declaration",
     "intent": "boast",
     "conditions": {

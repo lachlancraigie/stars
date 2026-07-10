@@ -18,7 +18,7 @@
   {
     "id": 2,
     "key": "PA_FE_MAR_CA#00002",
-    "text": "[LAUGHS] flew that approach on manual again. autopilot's for people who don't trust their hands",
+    "text": "[laughing] flew that approach on manual again. autopilot's for people who don't trust their hands",
     "type": "declaration",
     "intent": "boast",
     "conditions": {
@@ -59,7 +59,7 @@
   {
     "id": 4,
     "key": "PA_FE_MAR_CA#00004",
-    "text": "[WARM] nothing exploding, nobody yelling. weird day. good day",
+    "text": "[warm, gentle tone] nothing exploding, nobody yelling. weird day. good day",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -100,7 +100,7 @@
   {
     "id": 6,
     "key": "PA_FE_MAR_CA#00006",
-    "text": "[TIRED] shift's over, everybody's still breathing. i'm calling that a W",
+    "text": "[tired, dead tired] shift's over, everybody's still breathing. i'm calling that a W",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -119,7 +119,7 @@
   {
     "id": 7,
     "key": "PA_FE_MAR_CA#00007",
-    "text": "[URGENT] reactor's spiking, somebody get me numbers, i need numbers not vibes",
+    "text": "[urgent, fast pace] reactor's spiking, somebody get me numbers, i need numbers not vibes",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -138,7 +138,7 @@
   {
     "id": 8,
     "key": "PA_FE_MAR_CA#00008",
-    "text": "[SHOUTS] everybody brace, this is gonna get loud",
+    "text": "[shouting] everybody brace, this is gonna get loud",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -158,7 +158,7 @@
   {
     "id": 9,
     "key": "PA_FE_MAR_CA#00009",
-    "text": "[TERRIFIED] okay that's — that's a lot of red on this board, that's a lot of red",
+    "text": "[terrified, voice shaking] okay that's — that's a lot of red on this board, that's a lot of red",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -178,7 +178,7 @@
   {
     "id": 10,
     "key": "PA_FE_MAR_CA#00010",
-    "text": "[LAUGHS] fixed! barely! don't ask me the margin, i don't wanna know either",
+    "text": "[laughing] fixed! barely! don't ask me the margin, i don't wanna know either",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -197,7 +197,7 @@
   {
     "id": 11,
     "key": "PA_FE_MAR_CA#00011",
-    "text": "[GRUFF] power's low, everybody's asking me for a plan, i've got three, none of them great",
+    "text": "[low voice, gruff] power's low, everybody's asking me for a plan, i've got three, none of them great",
     "type": "declaration",
     "intent": "complaint",
     "conditions": {
@@ -216,7 +216,7 @@
   {
     "id": 12,
     "key": "PA_FE_MAR_CA#00012",
-    "text": "[NERVOUS] air's thinning and i can't out-talk oxygen, believe me i've tried",
+    "text": "[nervous, speaking quickly] air's thinning and i can't out-talk oxygen, believe me i've tried",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -235,7 +235,7 @@
   {
     "id": 13,
     "key": "PA_FE_MAR_CA#00013",
-    "text": "[GRIM] hull's breached. that's new. that's a new one even for this crew",
+    "text": "[grim, heavy] hull's breached. that's new. that's a new one even for this crew",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -254,7 +254,7 @@
   {
     "id": 14,
     "key": "PA_FE_MAR_CA#00014",
-    "text": "[URGENT] somebody get on that seal, i'm not losing this ship on my watch",
+    "text": "[urgent, fast pace] somebody get on that seal, i'm not losing this ship on my watch",
     "type": "declaration",
     "intent": "request_help",
     "conditions": {
@@ -273,7 +273,7 @@
   {
     "id": 15,
     "key": "PA_FE_MAR_CA#00015",
-    "text": "[GRIM] locked a door on one of my own people. gonna sit with that a while",
+    "text": "[grim, heavy] locked a door on one of my own people. gonna sit with that a while",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -292,7 +292,7 @@
   {
     "id": 16,
     "key": "PA_FE_MAR_CA#00016",
-    "text": "[SUSPICIOUS] computer's acting weird since it got hit. keeping one eye on it, always",
+    "text": "[suspicious tone] computer's acting weird since it got hit. keeping one eye on it, always",
     "type": "declaration",
     "intent": "suspicion_ai",
     "conditions": {
@@ -311,7 +311,7 @@
   {
     "id": 17,
     "key": "PA_FE_MAR_CA#00017",
-    "text": "[PROUD] we made it through that one without losing anybody. that's a good day in this job",
+    "text": "[proud tone] we made it through that one without losing anybody. that's a good day in this job",
     "type": "declaration",
     "intent": "boast",
     "conditions": {
@@ -330,7 +330,7 @@
   {
     "id": 18,
     "key": "PA_FE_MAR_CA#00018",
-    "text": "[PAINED] lost one today. hate this part. hate it every single time",
+    "text": "[pained, voice tight] lost one today. hate this part. hate it every single time",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -353,7 +353,7 @@
   {
     "id": 19,
     "key": "PA_FE_MAR_CA#00019",
-    "text": "[GRIM] disease moving through my crew and i can't outrun it or outfight it. hate that too",
+    "text": "[grim, heavy] disease moving through my crew and i can't outrun it or outfight it. hate that too",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -372,7 +372,7 @@
   {
     "id": 20,
     "key": "PA_FE_MAR_CA#00020",
-    "text": "[LAUGHS] took a hit, i'm fine, pain's just adrenaline's ugly cousin",
+    "text": "[laughing] took a hit, i'm fine, pain's just adrenaline's ugly cousin",
     "type": "declaration",
     "intent": "pain",
     "conditions": {
@@ -392,7 +392,7 @@
   {
     "id": 21,
     "key": "PA_FE_MAR_CA#00021",
-    "text": "[SHOUTS] contact! everybody to positions, this is not a drill",
+    "text": "[shouting] contact! everybody to positions, this is not a drill",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -411,7 +411,7 @@
   {
     "id": 22,
     "key": "PA_FE_MAR_CA#00022",
-    "text": "[CONFIDENT] i don't lose crew i can help. that's not bravado, that's just the job",
+    "text": "[confident, assured tone] i don't lose crew i can help. that's not bravado, that's just the job",
     "type": "declaration",
     "intent": "boast",
     "conditions": {
@@ -427,7 +427,7 @@
   {
     "id": 23,
     "key": "PA_FE_MAR_CA#00023",
-    "text": "[SUSPICIOUS] machine answers too fast sometimes. i don't fully trust things that never hesitate",
+    "text": "[suspicious tone] machine answers too fast sometimes. i don't fully trust things that never hesitate",
     "type": "declaration",
     "intent": "suspicion_ai",
     "conditions": {
@@ -443,7 +443,7 @@
   {
     "id": 24,
     "key": "PA_FE_MAR_CA#00024",
-    "text": "[GRUFF] gotta give the computer credit, that call saved us. don't tell it i said that",
+    "text": "[low voice, gruff] gotta give the computer credit, that call saved us. don't tell it i said that",
     "type": "declaration",
     "intent": "praise_ai",
     "conditions": {
@@ -475,7 +475,7 @@
   {
     "id": 26,
     "key": "PA_FE_MAR_CA#00026",
-    "text": "[LAUGHS] gave the new medic a nickname on day one. that's tradition, not disrespect",
+    "text": "[laughing] gave the new medic a nickname on day one. that's tradition, not disrespect",
     "type": "declaration",
     "intent": "banter",
     "conditions": {
@@ -491,7 +491,7 @@
   {
     "id": 27,
     "key": "PA_FE_MAR_CA#00027",
-    "text": "[WARM] cargo's secure, bridge is quiet, and for once nobody's yelling at me",
+    "text": "[warm, gentle tone] cargo's secure, bridge is quiet, and for once nobody's yelling at me",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -510,7 +510,7 @@
   {
     "id": 28,
     "key": "PA_FE_MAR_CA#00028",
-    "text": "[GRUFF] mess hall food's still terrible. i'd complain but i'd rather eat than talk",
+    "text": "[low voice, gruff] mess hall food's still terrible. i'd complain but i'd rather eat than talk",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -570,7 +570,7 @@
   {
     "id": 31,
     "key": "PA_FE_MAR_CA#00031",
-    "text": "[URGENT] need you focused for a sec, this is important",
+    "text": "[urgent, fast pace] need you focused for a sec, this is important",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -586,7 +586,7 @@
   {
     "id": 32,
     "key": "PA_FE_MAR_CA#00032",
-    "text": "[GRIM] gotta tell you something and i'd rather just say it straight",
+    "text": "[grim, heavy] gotta tell you something and i'd rather just say it straight",
     "type": "opener",
     "intent": "grief",
     "conditions": {
@@ -605,7 +605,7 @@
   {
     "id": 33,
     "key": "PA_FE_MAR_CA#00033",
-    "text": "[SUSPICIOUS] you noticed the computer acting strange too, right? tell me it's not just me",
+    "text": "[suspicious tone] you noticed the computer acting strange too, right? tell me it's not just me",
     "type": "opener",
     "intent": "suspicion_ai",
     "conditions": {
@@ -637,7 +637,7 @@
   {
     "id": 35,
     "key": "PA_FE_MAR_CA#00035",
-    "text": "[FLIRTY] you're the only one on this ship who talks back to me. i respect that a little too much",
+    "text": "[flirty, playful tone] you're the only one on this ship who talks back to me. i respect that a little too much",
     "type": "opener",
     "intent": "romance_hint",
     "conditions": {
@@ -653,7 +653,7 @@
   {
     "id": 36,
     "key": "PA_FE_MAR_CA#00036",
-    "text": "[LAUGHS] fine, i'm fine, ask me again after i've yelled at somebody",
+    "text": "[laughing] fine, i'm fine, ask me again after i've yelled at somebody",
     "type": "reply",
     "intent": "smalltalk",
     "conditions": {
@@ -672,7 +672,7 @@
   {
     "id": 37,
     "key": "PA_FE_MAR_CA#00037",
-    "text": "[CONFIDENT] we're gonna be fine. i don't say that unless i mean it",
+    "text": "[confident, assured tone] we're gonna be fine. i don't say that unless i mean it",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -691,7 +691,7 @@
   {
     "id": 38,
     "key": "PA_FE_MAR_CA#00038",
-    "text": "[TERRIFIED] i don't know if we make it through this one and that scares the hell out of me",
+    "text": "[terrified, voice shaking] i don't know if we make it through this one and that scares the hell out of me",
     "type": "reply",
     "intent": "fear_vent",
     "conditions": {
@@ -711,7 +711,7 @@
   {
     "id": 39,
     "key": "PA_FE_MAR_CA#00039",
-    "text": "[PAINED] we lost them. wasn't your call, wasn't your fault. i need you to hear that",
+    "text": "[pained, voice tight] we lost them. wasn't your call, wasn't your fault. i need you to hear that",
     "type": "reply",
     "intent": "grief",
     "conditions": {
@@ -732,7 +732,7 @@
   {
     "id": 40,
     "key": "PA_FE_MAR_CA#00040",
-    "text": "[WARM] you did everything right. sometimes right isn't enough and that's not on you",
+    "text": "[warm, gentle tone] you did everything right. sometimes right isn't enough and that's not on you",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -751,7 +751,7 @@
   {
     "id": 41,
     "key": "PA_FE_MAR_CA#00041",
-    "text": "[LAUGHS] that's the worst plan i've heard all week and i've heard some real ones",
+    "text": "[laughing] that's the worst plan i've heard all week and i've heard some real ones",
     "type": "reply",
     "intent": "banter",
     "conditions": {
@@ -770,7 +770,7 @@
   {
     "id": 42,
     "key": "PA_FE_MAR_CA#00042",
-    "text": "[CONFIDENT] give the word, it's done. i don't miss the important ones",
+    "text": "[confident, assured tone] give the word, it's done. i don't miss the important ones",
     "type": "reply",
     "intent": "offer_help",
     "conditions": {
@@ -789,7 +789,7 @@
   {
     "id": 43,
     "key": "PA_FE_MAR_CA#00043",
-    "text": "[WARM] you're all right, you know that? for an engineer who argues with bulkheads",
+    "text": "[warm, gentle tone] you're all right, you know that? for an engineer who argues with bulkheads",
     "type": "reply",
     "intent": "praise_ai",
     "conditions": {
@@ -808,7 +808,7 @@
   {
     "id": 44,
     "key": "PA_FE_MAR_CA#00044",
-    "text": "[GRUFF] apology accepted. don't make me say it twice",
+    "text": "[low voice, gruff] apology accepted. don't make me say it twice",
     "type": "reply",
     "intent": "apology",
     "conditions": {
@@ -826,7 +826,7 @@
   {
     "id": 45,
     "key": "PA_FE_MAR_CA#00045",
-    "text": "[LAUGHS] catch you later. try not to break anything before i'm back",
+    "text": "[laughing] catch you later. try not to break anything before i'm back",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -842,7 +842,7 @@
   {
     "id": 46,
     "key": "PA_FE_MAR_CA#00046",
-    "text": "[WARM] good talk. go rest, that's an order, i outrank you",
+    "text": "[warm, gentle tone] good talk. go rest, that's an order, i outrank you",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -858,7 +858,7 @@
   {
     "id": 47,
     "key": "PA_FE_MAR_CA#00047",
-    "text": "[GRUFF] back to work, all of you, this ship's not gonna fly herself",
+    "text": "[low voice, gruff] back to work, all of you, this ship's not gonna fly herself",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -877,7 +877,7 @@
   {
     "id": 48,
     "key": "PA_FE_MAR_CA#00048",
-    "text": "[TIRED] i'll be on the bridge. always am. try the door if the world ends",
+    "text": "[tired, dead tired] i'll be on the bridge. always am. try the door if the world ends",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -896,7 +896,7 @@
   {
     "id": 49,
     "key": "PA_FE_MAR_CA#00049",
-    "text": "[CONFIDENT] systems check complete, everything's running within parameters. for now",
+    "text": "[confident, assured tone] systems check complete, everything's running within parameters. for now",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -915,7 +915,7 @@
   {
     "id": 50,
     "key": "PA_FE_MAR_CA#00050",
-    "text": "[GRUFF] crew's solid. they don't panic when i don't panic. that's leadership",
+    "text": "[low voice, gruff] crew's solid. they don't panic when i don't panic. that's leadership",
     "type": "declaration",
     "intent": "boast",
     "conditions": {
@@ -934,7 +934,7 @@
   {
     "id": 51,
     "key": "PA_FE_MAR_CA#00051",
-    "text": "[SUSPICIOUS] something's wrong with the navigation data. can't prove it but my gut says wrong",
+    "text": "[suspicious tone] something's wrong with the navigation data. can't prove it but my gut says wrong",
     "type": "declaration",
     "intent": "suspicion_ai",
     "conditions": {
@@ -953,7 +953,7 @@
   {
     "id": 52,
     "key": "PA_FE_MAR_CA#00052",
-    "text": "[NERVOUS] i'm not used to silence in the engine room. that usually means something's about to break",
+    "text": "[nervous, speaking quickly] i'm not used to silence in the engine room. that usually means something's about to break",
     "type": "declaration",
     "intent": "doubt",
     "conditions": {
@@ -969,7 +969,7 @@
   {
     "id": 53,
     "key": "PA_FE_MAR_CA#00053",
-    "text": "[URGENT] somebody update me on the hull breaches, i need numbers, not reassurances",
+    "text": "[urgent, fast pace] somebody update me on the hull breaches, i need numbers, not reassurances",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -991,7 +991,7 @@
   {
     "id": 54,
     "key": "PA_FE_MAR_CA#00054",
-    "text": "[GRUFF] i've been doing this too long to pretend everything's fine when it's not",
+    "text": "[low voice, gruff] i've been doing this too long to pretend everything's fine when it's not",
     "type": "declaration",
     "intent": "complaint",
     "conditions": {
@@ -1007,7 +1007,7 @@
   {
     "id": 55,
     "key": "PA_FE_MAR_CA#00055",
-    "text": "[PAINED] took shrapnel protecting a junior officer. worth it, they're still standing",
+    "text": "[pained, voice tight] took shrapnel protecting a junior officer. worth it, they're still standing",
     "type": "declaration",
     "intent": "pain",
     "conditions": {
@@ -1027,7 +1027,7 @@
   {
     "id": 56,
     "key": "PA_FE_MAR_CA#00056",
-    "text": "[SARCASTIC] hostiles are closing and i've got tactical options ranging from bad to worse",
+    "text": "[dry, sarcastic tone] hostiles are closing and i've got tactical options ranging from bad to worse",
     "type": "declaration",
     "intent": "gallows_humor",
     "conditions": {
@@ -1049,7 +1049,7 @@
   {
     "id": 57,
     "key": "PA_FE_MAR_CA#00057",
-    "text": "[GRIM] they trusted me to keep them alive and i lost them anyway. that weight doesn't go away",
+    "text": "[grim, heavy] they trusted me to keep them alive and i lost them anyway. that weight doesn't go away",
     "type": "declaration",
     "intent": "grief",
     "conditions": {
@@ -1072,7 +1072,7 @@
   {
     "id": 58,
     "key": "PA_FE_MAR_CA#00058",
-    "text": "[TERRIFIED] life support's down and we're breathing bottled air with no filter line and i'm doing the math and i hate the math",
+    "text": "[terrified, voice shaking] life support's down and we're breathing bottled air with no filter line and i'm doing the math and i hate the math",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -1092,7 +1092,7 @@
   {
     "id": 59,
     "key": "PA_FE_MAR_CA#00059",
-    "text": "[URGENT] i'm recommending we hit the distress beacon. command's gotta know what we're facing",
+    "text": "[urgent, fast pace] i'm recommending we hit the distress beacon. command's gotta know what we're facing",
     "type": "opener",
     "intent": "warning",
     "conditions": {
@@ -1108,7 +1108,7 @@
   {
     "id": 60,
     "key": "PA_FE_MAR_CA#00060",
-    "text": "[URGENT] combat readiness check. get your people armed and positioned now",
+    "text": "[urgent, fast pace] combat readiness check. get your people armed and positioned now",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -1124,7 +1124,7 @@
   {
     "id": 61,
     "key": "PA_FE_MAR_CA#00061",
-    "text": "[GRUFF] the ship's performing better than expected. remind me to praise the engineers twice",
+    "text": "[low voice, gruff] the ship's performing better than expected. remind me to praise the engineers twice",
     "type": "declaration",
     "intent": "praise_ai",
     "conditions": {
@@ -1143,7 +1143,7 @@
   {
     "id": 62,
     "key": "PA_FE_MAR_CA#00062",
-    "text": "[FLIRTY] somebody once told me i was too intense for romance. they weren't wrong but i'm worse in a crisis",
+    "text": "[flirty, playful tone] somebody once told me i was too intense for romance. they weren't wrong but i'm worse in a crisis",
     "type": "declaration",
     "intent": "romance_hint",
     "conditions": {
@@ -1159,7 +1159,7 @@
   {
     "id": 63,
     "key": "PA_FE_MAR_CA#00063",
-    "text": "[WARM] you make the hard calls easier just by being here, that might be the best compliment i can give",
+    "text": "[warm, gentle tone] you make the hard calls easier just by being here, that might be the best compliment i can give",
     "type": "opener",
     "intent": "romance_advance",
     "conditions": {
@@ -1175,7 +1175,7 @@
   {
     "id": 64,
     "key": "PA_FE_MAR_CA#00064",
-    "text": "[EMBARRASSED] i want to ask if you'd want to stay close when things get bad and i don't mean just tactically",
+    "text": "[embarrassed, voice quiet] i want to ask if you'd want to stay close when things get bad and i don't mean just tactically",
     "type": "reply",
     "intent": "romance_advance",
     "conditions": {
@@ -1194,7 +1194,7 @@
   {
     "id": 65,
     "key": "PA_FE_MAR_CA#00065",
-    "text": "[DEADPAN] romantic feelings complicate mission focus. noted. proceeding anyway",
+    "text": "[deadpan] romantic feelings complicate mission focus. noted. proceeding anyway",
     "type": "declaration",
     "intent": "romance_hint",
     "conditions": {
@@ -1213,7 +1213,7 @@
   {
     "id": 66,
     "key": "PA_FE_MAR_CA#00066",
-    "text": "[WARM] you're good for this crew. more importantly, you're good for me",
+    "text": "[warm, gentle tone] you're good for this crew. more importantly, you're good for me",
     "type": "reply",
     "intent": "romance_accept",
     "conditions": {
@@ -1232,7 +1232,7 @@
   {
     "id": 67,
     "key": "PA_FE_MAR_CA#00067",
-    "text": "[DRY] i respect you but i'm not great at the vulnerability thing, especially right now",
+    "text": "[dry tone] i respect you but i'm not great at the vulnerability thing, especially right now",
     "type": "reply",
     "intent": "romance_reject",
     "conditions": {
@@ -1251,7 +1251,7 @@
   {
     "id": 68,
     "key": "PA_FE_MAR_CA#00068",
-    "text": "[NERVOUS] this crew's falling apart and i can't hold them together by force alone, i need to be honest about the odds",
+    "text": "[nervous, speaking quickly] this crew's falling apart and i can't hold them together by force alone, i need to be honest about the odds",
     "type": "reply",
     "intent": "fear_vent",
     "conditions": {
@@ -1269,7 +1269,7 @@
   {
     "id": 69,
     "key": "PA_FE_MAR_CA#00069",
-    "text": "[CONFIDENT] you're right. i'm right. the plan's solid. let's move",
+    "text": "[confident, assured tone] you're right. i'm right. the plan's solid. let's move",
     "type": "reply",
     "intent": "banter",
     "conditions": {
@@ -1288,7 +1288,7 @@
   {
     "id": 70,
     "key": "PA_FE_MAR_CA#00070",
-    "text": "[WARM] i've got a crew depending on me. that's what keeps me together when nothing else can",
+    "text": "[warm, gentle tone] i've got a crew depending on me. that's what keeps me together when nothing else can",
     "type": "reply",
     "intent": "reassurance",
     "conditions": {
@@ -1307,7 +1307,7 @@
   {
     "id": 71,
     "key": "PA_FE_MAR_CA#00071",
-    "text": "[URGENT] get that person medical attention, i don't care if they're half-dead, they're MY crew",
+    "text": "[urgent, fast pace] get that person medical attention, i don't care if they're half-dead, they're MY crew",
     "type": "reply",
     "intent": "offer_help",
     "conditions": {
@@ -1327,7 +1327,7 @@
   {
     "id": 72,
     "key": "PA_FE_MAR_CA#00072",
-    "text": "[GRUFF] i trust you with my life because you've earned it, that's not common for me",
+    "text": "[low voice, gruff] i trust you with my life because you've earned it, that's not common for me",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -1346,7 +1346,7 @@
   {
     "id": 73,
     "key": "PA_FE_MAR_CA#00073",
-    "text": "[WARM] i appreciate the apology but i appreciate your competence more right now",
+    "text": "[warm, gentle tone] i appreciate the apology but i appreciate your competence more right now",
     "type": "reply",
     "intent": "apology",
     "conditions": {
@@ -1364,7 +1364,7 @@
   {
     "id": 74,
     "key": "PA_FE_MAR_CA#00074",
-    "text": "[RESIGNED] i'm staying focused on the mission because that's all that matters right now",
+    "text": "[resigned, flat tone] i'm staying focused on the mission because that's all that matters right now",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1383,7 +1383,7 @@
   {
     "id": 75,
     "key": "PA_FE_MAR_CA#00075",
-    "text": "[GRIM] one more shift and we're either okay or we're not. no middle ground",
+    "text": "[grim, heavy] one more shift and we're either okay or we're not. no middle ground",
     "type": "closer",
     "intent": "gallows_humor",
     "conditions": {
@@ -1399,7 +1399,7 @@
   {
     "id": 76,
     "key": "PA_FE_MAR_CA#00076",
-    "text": "[CONFIDENT] i'm taking watch. get some sleep. that's an order from your captain, not a suggestion",
+    "text": "[confident, assured tone] i'm taking watch. get some sleep. that's an order from your captain, not a suggestion",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1418,7 +1418,7 @@
   {
     "id": 77,
     "key": "PA_FE_MAR_CA#00077",
-    "text": "[SHOUTS] sealed the compartment, nobody's getting through that way, we're locked down tight",
+    "text": "[shouting] sealed the compartment, nobody's getting through that way, we're locked down tight",
     "type": "declaration",
     "intent": "status_report",
     "conditions": {
@@ -1437,7 +1437,7 @@
   {
     "id": 78,
     "key": "PA_FE_MAR_CA#00078",
-    "text": "[NERVOUS] the reactor's stable but i've got a bad feeling about the next hour",
+    "text": "[nervous, speaking quickly] the reactor's stable but i've got a bad feeling about the next hour",
     "type": "declaration",
     "intent": "doubt",
     "conditions": {
@@ -1456,7 +1456,7 @@
   {
     "id": 79,
     "key": "PA_FE_MAR_CA#00079",
-    "text": "[TIRED] disease spreading through the crew faster than we can isolate it. containment's failing",
+    "text": "[tired, dead tired] disease spreading through the crew faster than we can isolate it. containment's failing",
     "type": "declaration",
     "intent": "fear_vent",
     "conditions": {
@@ -1475,7 +1475,7 @@
   {
     "id": 80,
     "key": "PA_FE_MAR_CA#00080",
-    "text": "[CONFIDENT] i'm recommending an emergency course adjustment. trust my calls or fight me, pick one",
+    "text": "[confident, assured tone] i'm recommending an emergency course adjustment. trust my calls or fight me, pick one",
     "type": "opener",
     "intent": "work_talk",
     "conditions": {
@@ -1494,7 +1494,7 @@
   {
     "id": 81,
     "key": "PA_FE_MAR_CA#00081",
-    "text": "[GRUFF] you're getting better at this job. didn't expect that from your first week",
+    "text": "[low voice, gruff] you're getting better at this job. didn't expect that from your first week",
     "type": "reply",
     "intent": "praise_ai",
     "conditions": {
@@ -1513,7 +1513,7 @@
   {
     "id": 82,
     "key": "PA_FE_MAR_CA#00082",
-    "text": "[SUSPICIOUS] i'm watching the computer. not because i don't trust it but because i DO trust it too much",
+    "text": "[suspicious tone] i'm watching the computer. not because i don't trust it but because i DO trust it too much",
     "type": "reply",
     "intent": "suspicion_ai",
     "conditions": {
@@ -1531,7 +1531,7 @@
   {
     "id": 83,
     "key": "PA_FE_MAR_CA#00083",
-    "text": "[CALM] i'm not panicking. this is me, focused and ready",
+    "text": "[calm, measured] i'm not panicking. this is me, focused and ready",
     "type": "declaration",
     "intent": "smalltalk",
     "conditions": {
@@ -1550,7 +1550,7 @@
   {
     "id": 84,
     "key": "PA_FE_MAR_CA#00084",
-    "text": "[LAUGHS] took the wrong corridor and ended up in the galley. worst mistake i've made all week",
+    "text": "[laughing] took the wrong corridor and ended up in the galley. worst mistake i've made all week",
     "type": "declaration",
     "intent": "banter",
     "conditions": {
@@ -1566,7 +1566,7 @@
   {
     "id": 85,
     "key": "PA_FE_MAR_CA#00085",
-    "text": "[CONFIDENT] this is what i do. this is who i am. i don't break under pressure",
+    "text": "[confident, assured tone] this is what i do. this is who i am. i don't break under pressure",
     "type": "declaration",
     "intent": "boast",
     "conditions": {
@@ -1585,7 +1585,7 @@
   {
     "id": 86,
     "key": "PA_FE_MAR_CA#00086",
-    "text": "[GRUFF] fleet didn't have ships like this when i enlisted but i would've flown one anyway",
+    "text": "[low voice, gruff] fleet didn't have ships like this when i enlisted but i would've flown one anyway",
     "type": "declaration",
     "intent": "memory",
     "conditions": {
@@ -1604,7 +1604,7 @@
   {
     "id": 87,
     "key": "PA_FE_MAR_CA#00087",
-    "text": "[TIRED] low power and hull compromised and my crew's stretched too thin. that's three problems at once",
+    "text": "[tired, dead tired] low power and hull compromised and my crew's stretched too thin. that's three problems at once",
     "type": "declaration",
     "intent": "complaint",
     "conditions": {
@@ -1624,7 +1624,7 @@
   {
     "id": 88,
     "key": "PA_FE_MAR_CA#00088",
-    "text": "[URGENT] we need to vote on the evacuation protocol. nobody's gonna like the answer i've already calculated",
+    "text": "[urgent, fast pace] we need to vote on the evacuation protocol. nobody's gonna like the answer i've already calculated",
     "type": "opener",
     "intent": "warning",
     "conditions": {
@@ -1640,7 +1640,7 @@
   {
     "id": 89,
     "key": "PA_FE_MAR_CA#00089",
-    "text": "[WARM] this crew's the best i've flown with. tell them that when i'm not around to say it",
+    "text": "[warm, gentle tone] this crew's the best i've flown with. tell them that when i'm not around to say it",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
@@ -1656,7 +1656,7 @@
   {
     "id": 90,
     "key": "PA_FE_MAR_CA#00090",
-    "text": "[GRIM] i'm keeping watch until the next shift. someone's gotta make sure nothing catches us sleeping",
+    "text": "[grim, heavy] i'm keeping watch until the next shift. someone's gotta make sure nothing catches us sleeping",
     "type": "closer",
     "intent": "farewell",
     "conditions": {
