@@ -29,3 +29,7 @@ tools/asset_gen/staging/
 
 # Generated audio (large; regenerate via tools/audio_gen)
 assets/audio/dialogue/
+
+# Python cache / tool logs
+__pycache__/
+tools/**/*.log

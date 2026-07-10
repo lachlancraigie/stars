@@ -18,40 +18,88 @@ A spaceship AI simulator. The player is the ship's computer. See `GDD.md` for fu
 
 > Update this section at the start/end of every session.
 
-**Goal**: Polish the vertical slice (camera, doors as real obstacles, more scenario content).
+**Goal**: The 2026-07-10/11 Max-plan sprint — full overhaul on branch `overhaul/mothership-rewrite`.
+Orchestration pattern: main session directs, Sonnet subagents implement (Haiku for bulk dialogue),
+ONE agent at a time (parallel fleets kept dying together at session limits), incremental commits
+with explicit paths always. Durable orchestration preferences/memory live in the orchestrator's
+memory dir (`~/.claude/projects/d--code/memory/`).
 
-**Art direction**: RE-LOCKED 2026-07-09 — **Kenney Space Kit isometric** (`assets/sprites/legacy/`).
-The Reve Flat Vector set was retired for style/perspective inconsistency; Reve pipeline
-(`tools/asset_gen/`, token via `REVE_API_TOKEN` env) kept for portraits/UI art only.
-Deck composition lives in `scripts/ship/iso_kit.gd` + `scripts/ship/deck_plan.gd`.
+**Art direction**: gen2 cel-shaded set (docs/style-bible-v2.md) is LIVE for the environment —
+`IsoKit.KIT_DIR` → `assets/sprites/gen2/` (65 assets, full manifest). CREW still render from the
+legacy Kenney kit (`CrewMemberNode.KIT_DIR`) because generated characters failed cross-facing
+color consistency; the animation workstream below is the fix path. Pipeline: `tools/image_gen/`
+(OpenRouter images API, key in gitignored `tools/image_gen/.env`, credits topped up ~$10+).
 
-**Next tasks**:
-1. Crew walk-cycle feel (kit has single frames per facing; current bob is serviceable)
-2. DirectiveMenu: add a "lock/unlock door" directive type (Door.ai_unlock/lock exist; no UI surfaces them yet) — now that locked doors actually block crew pathing and drive the bypass minigame, this is worth exposing to the player
-3. Campaign handoff after scenario end (currently ends on the banner)
-4. Visual hookup for room power/air state (EventBus.room_power_changed/room_air_changed/ai_core_status_changed already emit; no dimming/particle response in RoomBase yet — see 2026-07-10 session 3 note)
-5. Combat resolver — CrewMember.apply_damage()/WoundTable are fully implemented but nothing in the live game calls apply_damage() yet (no weapons fire); dormant, ready to wire up
-6. Bubble visuals are only statically/behaviourally verified (no Godot GUI available this session — see 2026-07-10 session 5 note); worth an eyeballing pass in the editor for spacing/legibility
-7. Crew portraits/avatars for the archetype voices now exist under `tools/audio_gen/`/`tools/image_gen/` (parallel work, not this session's) — could surface in the HUD/bubbles later
+---
 
-Done this session (Agent 4, camera + collision — see 2026-07-10 session note addendum below): Camera2D pan/zoom
-(deck no longer statically fitted — DeckCamera auto-fits DeckPlan.deck_bounds() as the default zoom, then
-supports wheel-zoom-to-cursor, drag/WASD/edge-scroll pan, clamped so the deck can't be lost off-screen) and
-crew soft-collision/standing-point claiming (CrewMemberNode).
+### ⚡ SESSION HANDOFF (2026-07-10, written mid-sprint before a credits break)
 
-Done this session (Agent 2/"crew simulation", see 2026-07-10 session 5 note): the crew shift-cycle schedule,
-crew relationships/romance, the full emergent dialogue runtime, and speech/thought bubbles — the item 6 above
-is now DONE, not a next task.
+**Shipped this sprint** (all committed, all runtime-verified): procgen freighter + starfield/hull/
+walls (S2 note) · Mothership 1e rules + situational power/air + AI core (S3) · camera/collision
+(S4) · crew sim: schedules, relationships/romance, emergent dialogue runtime, bubbles (S5) ·
+voice playback on bubbles (`7cad9fe`) · The Narrow Passage scenario (S6) · THE OVERSEER director
+AI (S7) · gen2 environment art live in-game (`40e6afa`) · dialogue corpus 1,376 lines fully
+voiced (1,376 MP3s, `56c9f17`) · specs: `docs/director-spec.md`, `docs/crew-progression-spec.md`,
+`docs/scenario-bible.md`, `docs/audio-direction.md`, `docs/dialogue_spec.md`.
 
-Done this session (THE OVERSEER — director AI, see 2026-07-10 session 7 note): ScenarioDirector grew a full
-Layer-1 director on top of its existing tension/tone drift (heat + rolling performance window, a single
-`modifiers` knob surface, per-leg escalation floor); ScenarioRunner became multi-instance (`active_scenarios`)
-with per-scenario win + morph-edge handoffs + heat-gated overlap scheduling (cap 2). Item 3 above ("campaign
-handoff after scenario end") is now partially addressed for same-voyage leg transitions (morph/overlap start
-a new scenario without returning to a menu) — a real CampaignManager for between-run structure is still open.
+**RESUME QUEUE — work these in order, one agent at a time:**
 
-**Blocked on**: nothing hard. SaveManager still stubbed by design (checkpoints resolved, unimplemented) —
-ScenarioRunner's leg-boundary hook now calls `SaveManager.save_checkpoint()`, still a no-op by design.
+1. **Finish dialogue expansion to ~2,500 lines** (state at handoff: 2,038 lines; CH + EV groups
+   COMPLETE at +45-55/archetype; GR group: gr_fe_and_cm done, gr_fe_eng_of possibly partial
+   (a Haiku agent was mid-file at handoff — validate first), gr_fe_mar_cm / gr_ml_eng_ca /
+   gr_ml_eng_cm / gr_ml_sci_of remaining; PA group: pa_fe_and_of +2 only, all six PA files need
+   expansion). Method: ONE Haiku agent per personality group, sequentially. Non-negotiable rules
+   learned the hard way: append-only, IDs continue from the file's CURRENT max, lines are
+   HAND-WRITTEN in character (no nested agents, no "generation scripts" — that path produces
+   slop), closed vocabularies from docs/dialogue_spec.md only, `reply_to_intents` holds INTENTS
+   only (never event names), validate per file with `python tools/dialogue/validate_dialogue.py
+   resources/dialogue/lines/*.json`.
+2. **Corpus finalization** (orchestrator, not an agent): run the validator; fix stragglers; run
+   `python tools/dialogue/normalize_and_export.py` (normalizes tags AND regenerates every
+   ElevenLabs CSV from the lines JSON — the JSON is canonical); commit.
+3. **Voice the expansion** — ElevenLabs quota was RE-ADDED by Lachlan; run
+   `python tools/audio_gen/elevenlabs_batch.py` (resume-safe: skips the 1,376 existing MP3s;
+   `voices.json` complete: 10 permanent SHIPAI custom voices + 14 stock; recipes in
+   `voice_designs.json`; key in gitignored `tools/audio_gen/.env`). eleven_v3 for TTS.
+4. **CHARACTER ANIMATIONS** (Lachlan's stated priority; agent died before committing anything —
+   restart fresh): states wanted "tons": walk, sleeping, fighting, holding/carrying, dead,
+   injured, floating zero-g, + extras. Consistency strategy (unproven, test first, hard-stop
+   ~$2.50 if it fails): (a) SHEET-based generation — frames inside one generated image can't
+   drift, use strict grid prompts + PIL slicing; (b) palette-snap post-pass — quantize character
+   pixels to a fixed palette to kill cross-sheet drift; (c) reference-anchor sheets on the
+   approved base. Naming `assets/sprites/gen2/crew/crew_{state}_{facing}_{frame}.png` + a
+   manifest.json (state→facings→frames/fps/loop). Integration into `crew_member_node.gd`
+   (recently edited: bubbles + voice playback — read current state) with per-frame texture swap
+   and LEGACY FALLBACK for anything missing. Budget ~$10, report spend, verify both autodemos.
+5. **Crew progression implementation** — per `docs/crew-progression-spec.md` build order §7
+   (X-COM veterancy: traits registry, earn triggers, leg-boundary Rest Saves, memorial, roster
+   biography panel). PINNED for later, do NOT build: FTL-style replacement crew recruitment.
+6. **Sprint close-out**: consider fast-forwarding `main` (last synced at `0619ecb` — ask
+   Lachlan), CLAUDE.md consolidation, rotate the two API keys (they passed through chat).
+
+**Operational facts a fresh session needs:**
+- Godot 4.7: `& "$env:LOCALAPPDATA\Programs\Godot\Godot.exe"` (NOT on PATH). After any new
+  `class_name`: `--path "D:\code\stars" --headless --import` FIRST, then verify with
+  `--headless --quit-after 600 res://scenes/Main.tscn` and grep for `SCRIPT ERROR`.
+- Env hooks: `SHIPAI_SCENARIO=narrow_passage|quarantine` · `SHIPAI_AUTODEMO=1` (scripted win
+  runs, both scenarios) · `SHIPAI_SEED` · `SHIPAI_FORCE_HEAT` / `SHIPAI_FORCE_FLAG` /
+  `SHIPAI_DIRECTOR_DEBUG=1` (Overseer dev hooks).
+- Secrets: `tools/audio_gen/.env` (ElevenLabs), `tools/image_gen/.env` (OpenRouter) — gitignored,
+  never commit/print. `assets/audio/dialogue/` is gitignored generated audio (1,376 MP3s on disk).
+- Commit style: explicit paths only (never `git add -A`), end messages with the Claude
+  Co-Authored-By line, retry once on index.lock.
+
+**Next tasks (gameplay backlog, unchanged):**
+1. DirectiveMenu "lock/unlock door" directive type (mechanics exist, no UI surfaces them)
+2. Visual hookup for room power/air state (signals emit; no RoomBase dimming yet)
+3. Combat resolver (WoundTable/apply_damage implemented, nothing calls it — Bad Cargo scenario
+   in the bible is the natural vehicle)
+4. Editor eyeball pass on bubbles (fixed 260px width looks oversized on short lines)
+5. CampaignManager for between-run structure (Overseer handles within-voyage legs)
+6. Crew portraits in HUD/bubbles (voice + trait identity now exists to hang them on)
+
+**Blocked on**: nothing hard. SaveManager still stubbed by design —
+ScenarioRunner's leg-boundary hook calls `SaveManager.save_checkpoint()`, still a no-op.
 
 ---
 
