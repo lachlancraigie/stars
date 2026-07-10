@@ -5832,5 +5832,1037 @@
     },
     "reply_to_intents": [],
     "weight": 1.0
+  },
+  {
+    "id": 314,
+    "key": "GR_ML_ENG_CM#00314",
+    "text": "[WARM] quiet enough to hear the hull tick as she cools. that's her talking in her sleep",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "mood": [
+        "ok",
+        "high"
+      ],
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "quiet_shift"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 315,
+    "key": "GR_ML_ENG_CM#00315",
+    "text": "first hour of a shift is for listening. she talks most right after she wakes",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "shift_start"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 316,
+    "key": "GR_ML_ENG_CM#00316",
+    "text": "[TIRED] scrubbing the grease off my hands is the only paperwork i've ever liked",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "shift_end"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 317,
+    "key": "GR_ML_ENG_CM#00317",
+    "text": "i eat facing the engine room door. it's not superstition, it's seating",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "location": [
+        "mess"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "meal_time"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 318,
+    "key": "GR_ML_ENG_CM#00318",
+    "text": "[SIGHS] mess printer does a version of Marguerite's stew. wrong in every way that matters. i order it anyway",
+    "type": "declaration",
+    "intent": "memory",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 7,
+      "mood": [
+        "low",
+        "ok"
+      ],
+      "location": [
+        "mess"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "meal_time"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 319,
+    "key": "GR_ML_ENG_CM#00319",
+    "text": "[DRY] coffee in my cup's sitting flat and still. that's a smoother ride than any gauge can prove",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "quiet_shift"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 320,
+    "key": "GR_ML_ENG_CM#00320",
+    "text": "[GRIM] batteries hate the cold, and cold's all we've got left to give them. we're shortening our own rope",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "power_low"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 321,
+    "key": "GR_ML_ENG_CM#00321",
+    "text": "[MUTTERS] took my workshop off the power list myself. fair's fair. doesn't mean i'm happy",
+    "type": "declaration",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "power_low"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 322,
+    "key": "GR_ML_ENG_CM#00322",
+    "text": "taped a ribbon to that vent years ago. it's barely moving now. cheap gauge, never lies",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "location": [
+        "life_support"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "life_support_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 323,
+    "key": "GR_ML_ENG_CM#00323",
+    "text": "[NERVOUS] she went down without a cough or a warning. engines don't do that. that's what's eating me",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "reactor_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 324,
+    "key": "GR_ML_ENG_CM#00324",
+    "text": "[GRIM] a computer locked that door in a millisecond. a man would've at least hesitated. i don't know which is worse",
+    "type": "declaration",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "door_locked_on_crew"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 325,
+    "key": "GR_ML_ENG_CM#00325",
+    "text": "i shut the engines down a full minute for them today. whole ship went quiet. that's an engineer's salute",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 14,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 326,
+    "key": "GR_ML_ENG_CM#00326",
+    "text": "[MUTTERS] i'll machine a plaque for them out of hull steel. steel remembers better than people do",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 13,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 327,
+    "key": "GR_ML_ENG_CM#00327",
+    "text": "[GRUFF] a burnt logic board splices same as a burnt power bus. the patient just complains in a different language",
+    "type": "declaration",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "ai_damaged"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 328,
+    "key": "GR_ML_ENG_CM#00328",
+    "text": "[RESIGNED] called it tin ears for ten years. after today it's earned a real name. haven't picked one yet",
+    "type": "declaration",
+    "intent": "praise_ai",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "crisis_resolved"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 329,
+    "key": "GR_ML_ENG_CM#00329",
+    "text": "[PAINED] it's the hands that worry me. hands are the tools. everything else is packaging",
+    "type": "declaration",
+    "intent": "pain",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "wounded": true,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "injury"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 330,
+    "key": "GR_ML_ENG_CM#00330",
+    "text": "doc says i need glasses. i say they print the gauges smaller every year. we've agreed to disagree",
+    "type": "declaration",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 331,
+    "key": "GR_ML_ENG_CM#00331",
+    "text": "[WARM] been rebuilding a wristwatch out of the Kestrel's old nav console. tiny screws. steadies me",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "quarters"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 332,
+    "key": "GR_ML_ENG_CM#00332",
+    "text": "the fern in the corner's outlived two scrubber failures and a hull breach. toughest crewman aboard",
+    "type": "declaration",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "mood": [
+        "ok",
+        "high"
+      ],
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 333,
+    "key": "GR_ML_ENG_CM#00333",
+    "text": "[WARM] Roz labeled my tool drawer while i slept. i hate it. i'm keeping it",
+    "type": "declaration",
+    "intent": "romance_hint",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 334,
+    "key": "GR_ML_ENG_CM#00334",
+    "text": "you're on with me today. good. bring your ears, the ship does half the teaching",
+    "type": "opener",
+    "intent": "greeting",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "shift_start"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 335,
+    "key": "GR_ML_ENG_CM#00335",
+    "text": "[DRY] sit down, kid. watching you hover is worse for my heart than the coffee",
+    "type": "opener",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "mess"
+      ],
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "meal_time"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 336,
+    "key": "GR_ML_ENG_CM#00336",
+    "text": "watch my hands, not my mouth. the hands have done this longer",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 337,
+    "key": "GR_ML_ENG_CM#00337",
+    "text": "[GRUFF] you. tin person. you count faster than me, so count. i'll turn the wrench",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "AND"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 338,
+    "key": "GR_ML_ENG_CM#00338",
+    "text": "[GRIM] captain, keep the mess warm if you can. cold food on a dark ship breaks a crew faster than fear does",
+    "type": "opener",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "CA"
+      ],
+      "recent_events": [
+        "power_low"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 339,
+    "key": "GR_ML_ENG_CM#00339",
+    "text": "[SUSPICIOUS] pulled the computer's logs myself. there's a gap. forty seconds, nothing recorded. you tell me",
+    "type": "opener",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "ENG"
+      ],
+      "recent_events": [
+        "ai_damaged"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 340,
+    "key": "GR_ML_ENG_CM#00340",
+    "text": "[GRUFF] i'm going up to look at the core myself. machines and me get along better when they're broken",
+    "type": "opener",
+    "intent": "offer_help",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "ai_damaged"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 341,
+    "key": "GR_ML_ENG_CM#00341",
+    "text": "[GRIM] i've bypassed every door on this boat at least once. except the one that mattered. come sit with me",
+    "type": "opener",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 14,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "door_locked_on_crew"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 342,
+    "key": "GR_ML_ENG_CM#00342",
+    "text": "[WARM] made you a thing. it's a bracket. it's also a bracelet, if you squint. don't laugh",
+    "type": "opener",
+    "intent": "romance_hint",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "GR_FE_ENG_OF"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 343,
+    "key": "GR_ML_ENG_CM#00343",
+    "text": "[DRY] your batch under the coolant tank's ready. i tested it. purely for safety reasons",
+    "type": "opener",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "GR_FE_ENG_OF"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 344,
+    "key": "GR_ML_ENG_CM#00344",
+    "text": "[DRY] knees say it's tuesday. knees are usually right",
+    "type": "reply",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "greeting",
+      "smalltalk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 345,
+    "key": "GR_ML_ENG_CM#00345",
+    "text": "[WARM] enjoy it. quiet's the sound of everything doing its job at once",
+    "type": "reply",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 5,
+      "mood": [
+        "ok",
+        "high"
+      ],
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "quiet_shift"
+      ]
+    },
+    "reply_to_intents": [
+      "smalltalk",
+      "greeting"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 346,
+    "key": "GR_ML_ENG_CM#00346",
+    "text": "[MUTTERS] flavor's optional. warm's the part that matters. learned that on the Kestrel",
+    "type": "reply",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "mess"
+      ],
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "meal_time"
+      ]
+    },
+    "reply_to_intents": [
+      "smalltalk",
+      "complaint"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 347,
+    "key": "GR_ML_ENG_CM#00347",
+    "text": "smell that? ozone and burnt sugar. that's a relay about to quit. nose knows before the board does",
+    "type": "reply",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "work_talk",
+      "status_report"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 348,
+    "key": "GR_ML_ENG_CM#00348",
+    "text": "[GRIM] i can give you one more room of power or one more hour of battery. not both. pick",
+    "type": "reply",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "power_low"
+      ]
+    },
+    "reply_to_intents": [
+      "request_help",
+      "warning"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 349,
+    "key": "GR_ML_ENG_CM#00349",
+    "text": "[CALM] air's thin, not gone. sit still, breathe slow, let me do the moving for both of us",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "life_support_failure"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 350,
+    "key": "GR_ML_ENG_CM#00350",
+    "text": "[MUTTERS] hand me the long spanner and don't talk for a minute. she and i are negotiating",
+    "type": "reply",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "reactor_failure"
+      ]
+    },
+    "reply_to_intents": [
+      "work_talk",
+      "request_help"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 351,
+    "key": "GR_ML_ENG_CM#00351",
+    "text": "[SUSPICIOUS] it apologized to me this morning. the computer. apologized. i don't know where to put that",
+    "type": "reply",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "ai_damaged"
+      ]
+    },
+    "reply_to_intents": [
+      "suspicion_ai",
+      "warning"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 352,
+    "key": "GR_ML_ENG_CM#00352",
+    "text": "[GRUFF] fine. it flies the ship better hurt than most fly it whole. i said it, don't repeat it",
+    "type": "reply",
+    "intent": "praise_ai",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "ai_damaged"
+      ]
+    },
+    "reply_to_intents": [
+      "praise_ai",
+      "suspicion_ai"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 353,
+    "key": "GR_ML_ENG_CM#00353",
+    "text": "[SIGHS] their spanner's still on my bench. i can't bring myself to rack it. so it stays",
+    "type": "reply",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 14,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [
+      "grief",
+      "memory"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 354,
+    "key": "GR_ML_ENG_CM#00354",
+    "text": "[PAINED] wrap it tight and point me at the panel. i heal same speed working as sitting",
+    "type": "reply",
+    "intent": "pain",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "wounded": true,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "offer_help",
+      "reassurance"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 355,
+    "key": "GR_ML_ENG_CM#00355",
+    "text": "[DEADPAN] you torque like an optimist. i'll come behind you with the truth in about an hour",
+    "type": "reply",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "GR_FE_ENG_OF"
+      ]
+    },
+    "reply_to_intents": [
+      "banter",
+      "boast"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 356,
+    "key": "GR_ML_ENG_CM#00356",
+    "text": "[TERRIFIED] where's Roz. don't tell me later, tell me now — where is she",
+    "type": "reply",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 14,
+      "stress_max": 20,
+      "panic": true,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "warning"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 357,
+    "key": "GR_ML_ENG_CM#00357",
+    "text": "[WHISPERS] too many bells. i just need one second where nothing's ringing. one second",
+    "type": "reply",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 13,
+      "stress_max": 19,
+      "panic": true,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "warning",
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 358,
+    "key": "GR_ML_ENG_CM#00358",
+    "text": "[GRUFF] we're square, kid. machines break, tempers break. both get fixed the same way — patience",
+    "type": "reply",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "apology"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 359,
+    "key": "GR_ML_ENG_CM#00359",
+    "text": "[TIRED] that's my whistle. the watch and the fern will keep till morning",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "shift_end"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 360,
+    "key": "GR_ML_ENG_CM#00360",
+    "text": "[WARM] thanks for the company. beats eating with the reactor, and the reactor's a good listener",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "location": [
+        "mess"
+      ],
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "meal_time"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 361,
+    "key": "GR_ML_ENG_CM#00361",
+    "text": "[GRUFF] leave it exactly like that till i'm back. exactly. i've got a photograph in my head",
+    "type": "closer",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "location": [
+        "engine_room"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "work_talk",
+      "status_report"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 362,
+    "key": "GR_ML_ENG_CM#00362",
+    "text": "[WARM] night, Roz. you're still the best thing i never planned for",
+    "type": "closer",
+    "intent": "romance_hint",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "GR_FE_ENG_OF"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 363,
+    "key": "GR_ML_ENG_CM#00363",
+    "text": "[CALM] she held. you held. that's the whole story worth telling. go sleep",
+    "type": "closer",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "crisis_resolved"
+      ]
+    },
+    "reply_to_intents": [
+      "status_report",
+      "acknowledgment"
+    ],
+    "weight": 1.0
   }
 ]
