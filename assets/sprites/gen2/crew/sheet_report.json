@@ -386,19 +386,19 @@
         2
       ],
       "contract": "stand",
-      "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, no helmet, simplified featureless face, short dark hair or a fitted dark cap. A 4-frame walk cycle, small flat contact shadow under the forward foot each frame, no floor tile, no platform. Arrange the sheet as EXACTLY 4 equal columns by 2 equal rows in a strict uniform grid -- EXACTLY 8 cells total, no more and no fewer, EXACTLY 4 characters per row (count them: one, two, three, four), EXACTLY 2 rows (reading order left-to-right then top-to-bottom). Do NOT add an extra in-between pose anywhere -- there are only 8 poses listed below and the sheet must contain precisely those 8, nothing added. Each cell contains exactly ONE full-body pose of the SAME character -- identical jumpsuit color and trim, identical hair/cap, identical body proportions, identical cel-shading and outline weight in every cell, only the pose/facing changes as listed below. Leave a wide clear empty transparent gap of at least one head-width between adjacent cells in every row so no cell's subject overlaps or touches a neighboring cell's subject. Do not draw grid lines, cell borders, or dividers -- only empty transparent space separates the cells. Cells, in reading order:\n  Cell (row 1, col 1): walking mid-stride, left leg forward, right arm forward, facing the camera (south/front view).\n  Cell (row 1, col 2): walking with legs passing together (contact pose), weight centered, facing the camera (south/front view).\n  Cell (row 1, col 3): walking mid-stride, right leg forward, left arm forward, facing the camera (south/front view).\n  Cell (row 1, col 4): walking with legs passing together (contact pose), weight centered, mirrored arm swing from the previous pose, facing the camera (south/front view).\n  Cell (row 2, col 1): walking mid-stride, left leg forward, right arm forward, facing toward lower-right (southeast, three-quarter front).\n  Cell (row 2, col 2): walking with legs passing together (contact pose), weight centered, facing toward lower-right (southeast, three-quarter front).\n  Cell (row 2, col 3): walking mid-stride, right leg forward, left arm forward, facing toward lower-right (southeast, three-quarter front).\n  Cell (row 2, col 4): walking with legs passing together (contact pose), weight centered, mirrored arm swing from the previous pose, facing toward lower-right (southeast, three-quarter front). Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+      "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, simplified featureless face, short dark cropped hair -- bare-headed in every single cell of the sheet, exactly the same haircut each time. Never wearing any cap, hat, hood, helmet, or other headwear in any cell, even from behind or from a three-quarter-back angle -- headwear choice must not vary from pose to pose. CHIBI PROPORTIONS, locked: the head is a single large round shape equal to almost exactly one-third (1/3) of the character's total standing height, in EVERY cell of every sheet -- the same big head size and same short, stocky, chunky body proportions every single time, never a smaller head, never a narrower/longer neck, never a taller or more adult-proportioned body in any cell. Keep facial detail minimal and identical in every cell: two simple flat dot eyes on a flat single-tone skin shape, no individually contoured jaw or cheekbones, no eyebrows, no beard or stubble, no skin-tone shading gradient. The warm accent color (amber/orange) must NEVER appear anywhere on this character -- no belt, no belt buckle, no collar clasp, no chest zipper-pull, no ear device or earpiece, no trim of any kind in amber/orange; the suit and character use only off-white, steel-gray, and skin tones. A 4-frame walk cycle, small flat contact shadow under the forward foot each frame, no floor tile, no platform. Arrange the sheet as EXACTLY 4 equal columns by 2 equal rows in a strict uniform grid -- EXACTLY 8 cells total, no more and no fewer, EXACTLY 4 characters per row (count them: one, two, three, four), EXACTLY 2 rows (reading order left-to-right then top-to-bottom). Do NOT add an extra in-between pose anywhere -- there are only 8 poses listed below and the sheet must contain precisely those 8, nothing added. Each cell contains exactly ONE full-body pose of the SAME character -- identical jumpsuit color and trim, identical hair/cap, identical body proportions, identical cel-shading and outline weight in every cell, only the pose/facing changes as listed below. Leave a wide clear empty transparent gap of at least one head-width between adjacent cells in every row so no cell's subject overlaps or touches a neighboring cell's subject. Do not draw grid lines, cell borders, or dividers -- only empty transparent space separates the cells. Cells, in reading order:\n  Cell (row 1, col 1): walking mid-stride, left leg forward, right arm forward, facing the camera (south/front view).\n  Cell (row 1, col 2): walking with legs passing together (contact pose), weight centered, facing the camera (south/front view).\n  Cell (row 1, col 3): walking mid-stride, right leg forward, left arm forward, facing the camera (south/front view).\n  Cell (row 1, col 4): walking with legs passing together (contact pose), weight centered, mirrored arm swing from the previous pose, facing the camera (south/front view).\n  Cell (row 2, col 1): walking mid-stride, left leg forward, right arm forward, facing toward lower-right (southeast, three-quarter front).\n  Cell (row 2, col 2): walking with legs passing together (contact pose), weight centered, facing toward lower-right (southeast, three-quarter front).\n  Cell (row 2, col 3): walking mid-stride, right leg forward, left arm forward, facing toward lower-right (southeast, three-quarter front).\n  Cell (row 2, col 4): walking with legs passing together (contact pose), weight centered, mirrored arm swing from the previous pose, facing toward lower-right (southeast, three-quarter front). Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
       "usage": {
-        "prompt_tokens": 954,
+        "prompt_tokens": 1209,
         "completion_tokens": 6208,
-        "total_tokens": 7162,
-        "cost": 0.052049,
+        "total_tokens": 7417,
+        "cost": 0.0526865,
         "is_byok": false,
         "prompt_tokens_details": {
           "cached_tokens": 0
         },
         "cost_details": {
-          "upstream_inference_cost": 0.052049,
-          "upstream_inference_prompt_cost": 0.002385,
+          "upstream_inference_cost": 0.0526865,
+          "upstream_inference_prompt_cost": 0.0030225,
           "upstream_inference_completions_cost": 0.049664
         },
         "completion_tokens_details": {
@@ -414,21 +414,21 @@
             "source_bbox": [
               0,
               0,
-              212,
-              419
+              221,
+              423
             ],
             "source_size": [
-              212,
-              419
+              221,
+              423
             ],
             "scale": [
-              0.16706443914081145,
-              0.16706443914081145
+              0.16548463356973994,
+              0.16548463356973994
             ],
             "target_bbox": [
               238,
               250,
-              273,
+              275,
               320
             ]
           },
@@ -439,7 +439,7 @@
             "bbox": [
               238,
               250,
-              273,
+              275,
               320
             ],
             "anchored_ok": true,
@@ -457,21 +457,21 @@
             "source_bbox": [
               0,
               0,
-              201,
-              418
+              344,
+              423
             ],
             "source_size": [
-              201,
-              418
+              344,
+              423
             ],
             "scale": [
-              0.1674641148325359,
-              0.1674641148325359
+              0.16548463356973994,
+              0.16548463356973994
             ],
             "target_bbox": [
-              239,
+              228,
               250,
-              273,
+              285,
               320
             ]
           },
@@ -480,13 +480,13 @@
             "canvas_ok": true,
             "has_alpha": true,
             "bbox": [
-              239,
+              228,
               250,
-              273,
+              285,
               320
             ],
             "anchored_ok": true,
-            "interior_hole_pct": 0.43,
+            "interior_hole_pct": 0.06,
             "solid_ok": true,
             "pass": true
           },
@@ -500,21 +500,21 @@
             "source_bbox": [
               0,
               0,
-              164,
-              418
+              345,
+              423
             ],
             "source_size": [
-              164,
-              418
+              345,
+              423
             ],
             "scale": [
-              0.1674641148325359,
-              0.1674641148325359
+              0.16548463356973994,
+              0.16548463356973994
             ],
             "target_bbox": [
-              242,
+              228,
               250,
-              269,
+              285,
               320
             ]
           },
@@ -523,13 +523,13 @@
             "canvas_ok": true,
             "has_alpha": true,
             "bbox": [
-              242,
+              228,
               250,
-              269,
+              285,
               320
             ],
             "anchored_ok": true,
-            "interior_hole_pct": 0.15,
+            "interior_hole_pct": 0.0,
             "solid_ok": true,
             "pass": true
           },
@@ -543,21 +543,21 @@
             "source_bbox": [
               0,
               0,
-              171,
-              418
+              93,
+              423
             ],
             "source_size": [
-              171,
-              418
+              93,
+              423
             ],
             "scale": [
-              0.1674641148325359,
-              0.1674641148325359
+              0.16548463356973994,
+              0.16548463356973994
             ],
             "target_bbox": [
-              242,
+              248,
               250,
-              271,
+              263,
               320
             ]
           },
@@ -566,13 +566,13 @@
             "canvas_ok": true,
             "has_alpha": true,
             "bbox": [
-              242,
+              248,
               250,
-              271,
+              263,
               320
             ],
             "anchored_ok": true,
-            "interior_hole_pct": 0.4,
+            "interior_hole_pct": 0.0,
             "solid_ok": true,
             "pass": true
           },
@@ -586,21 +586,21 @@
             "source_bbox": [
               0,
               0,
-              210,
-              419
+              225,
+              425
             ],
             "source_size": [
-              210,
-              419
+              225,
+              425
             ],
             "scale": [
-              0.16706443914081145,
-              0.16706443914081145
+              0.16470588235294117,
+              0.16470588235294117
             ],
             "target_bbox": [
               238,
               250,
-              273,
+              275,
               320
             ]
           },
@@ -611,7 +611,7 @@
             "bbox": [
               238,
               250,
-              273,
+              275,
               320
             ],
             "anchored_ok": true,
@@ -630,18 +630,18 @@
               0,
               0,
               345,
-              419
+              425
             ],
             "source_size": [
               345,
-              419
+              425
             ],
             "scale": [
-              0.16706443914081145,
-              0.16706443914081145
+              0.16470588235294117,
+              0.16470588235294117
             ],
             "target_bbox": [
-              227,
+              228,
               250,
               285,
               320
@@ -652,13 +652,13 @@
             "canvas_ok": true,
             "has_alpha": true,
             "bbox": [
-              227,
+              228,
               250,
               285,
               320
             ],
             "anchored_ok": true,
-            "interior_hole_pct": 0.81,
+            "interior_hole_pct": 0.22,
             "solid_ok": true,
             "pass": true
           },
@@ -672,21 +672,21 @@
             "source_bbox": [
               0,
               0,
-              149,
-              419
+              345,
+              426
             ],
             "source_size": [
-              149,
-              419
+              345,
+              426
             ],
             "scale": [
-              0.16706443914081145,
-              0.16706443914081145
+              0.1643192488262911,
+              0.1643192488262911
             ],
             "target_bbox": [
-              244,
+              228,
               250,
-              269,
+              285,
               320
             ]
           },
@@ -695,13 +695,13 @@
             "canvas_ok": true,
             "has_alpha": true,
             "bbox": [
-              244,
+              228,
               250,
-              269,
+              285,
               320
             ],
             "anchored_ok": true,
-            "interior_hole_pct": 0.38,
+            "interior_hole_pct": 0.0,
             "solid_ok": true,
             "pass": true
           },
@@ -715,21 +715,21 @@
             "source_bbox": [
               0,
               0,
-              170,
-              419
+              99,
+              420
             ],
             "source_size": [
-              170,
-              419
+              99,
+              420
             ],
             "scale": [
-              0.16706443914081145,
-              0.16706443914081145
+              0.16666666666666666,
+              0.16666666666666666
             ],
             "target_bbox": [
-              242,
+              248,
               250,
-              270,
+              264,
               320
             ]
           },
@@ -738,13 +738,13 @@
             "canvas_ok": true,
             "has_alpha": true,
             "bbox": [
-              242,
+              248,
               250,
-              270,
+              264,
               320
             ],
             "anchored_ok": true,
-            "interior_hole_pct": 2.35,
+            "interior_hole_pct": 0.0,
             "solid_ok": true,
             "pass": true
           },
@@ -1001,19 +1001,19 @@
         1
       ],
       "contract": "stand",
-      "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, no helmet, simplified featureless face, short dark hair or a fitted dark cap. Standing idle pose, arms relaxed at sides, feet shoulder-width apart, small flat contact shadow directly under the feet, no floor tile, no platform. Arrange the sheet as EXACTLY 2 equal columns by 1 equal rows in a strict uniform grid -- EXACTLY 2 cells total, no more and no fewer, EXACTLY 2 characters per row (count them: one, two), EXACTLY 1 rows (reading order left-to-right then top-to-bottom). Do NOT add an extra in-between pose anywhere -- there are only 2 poses listed below and the sheet must contain precisely those 2, nothing added. Each cell contains exactly ONE full-body pose of the SAME character -- identical jumpsuit color and trim, identical hair/cap, identical body proportions, identical cel-shading and outline weight in every cell, only the pose/facing changes as listed below. Leave a wide clear empty transparent gap of at least one head-width between adjacent cells in every row so no cell's subject overlaps or touches a neighboring cell's subject. Do not draw grid lines, cell borders, or dividers -- only empty transparent space separates the cells. Cells, in reading order:\n  Cell (row 1, col 1): standing idle, arms relaxed at sides, feet shoulder-width apart, facing away from the camera (north/back view).\n  Cell (row 1, col 2): standing idle, arms relaxed at sides, feet shoulder-width apart, facing toward upper-left (northwest, three-quarter back). Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+      "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, simplified featureless face, short dark cropped hair -- bare-headed in every single cell of the sheet, exactly the same haircut each time. Never wearing any cap, hat, hood, helmet, or other headwear in any cell, even from behind or from a three-quarter-back angle -- headwear choice must not vary from pose to pose. CHIBI PROPORTIONS, locked: the head is a single large round shape equal to almost exactly one-third (1/3) of the character's total standing height, in EVERY cell of every sheet -- the same big head size and same short, stocky, chunky body proportions every single time, never a smaller head, never a narrower/longer neck, never a taller or more adult-proportioned body in any cell. Keep facial detail minimal and identical in every cell: two simple flat dot eyes on a flat single-tone skin shape, no individually contoured jaw or cheekbones, no eyebrows, no beard or stubble, no skin-tone shading gradient. The warm accent color (amber/orange) must NEVER appear anywhere on this character -- no belt, no belt buckle, no collar clasp, no chest zipper-pull, no ear device or earpiece, no trim of any kind in amber/orange; the suit and character use only off-white, steel-gray, and skin tones. Standing idle pose, arms relaxed at sides, feet shoulder-width apart, small flat contact shadow directly under the feet, no floor tile, no platform. Arrange the sheet as EXACTLY 2 equal columns by 1 equal rows in a strict uniform grid -- EXACTLY 2 cells total, no more and no fewer, EXACTLY 2 characters per row (count them: one, two), EXACTLY 1 rows (reading order left-to-right then top-to-bottom). Do NOT add an extra in-between pose anywhere -- there are only 2 poses listed below and the sheet must contain precisely those 2, nothing added. Each cell contains exactly ONE full-body pose of the SAME character -- identical jumpsuit color and trim, identical hair/cap, identical body proportions, identical cel-shading and outline weight in every cell, only the pose/facing changes as listed below. Leave a wide clear empty transparent gap of at least one head-width between adjacent cells in every row so no cell's subject overlaps or touches a neighboring cell's subject. Do not draw grid lines, cell borders, or dividers -- only empty transparent space separates the cells. Cells, in reading order:\n  Cell (row 1, col 1): standing idle, arms relaxed at sides, feet shoulder-width apart, facing away from the camera (north/back view).\n  Cell (row 1, col 2): standing idle, arms relaxed at sides, feet shoulder-width apart, facing toward upper-left (northwest, three-quarter back). Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
       "usage": {
-        "prompt_tokens": 737,
+        "prompt_tokens": 992,
         "completion_tokens": 6208,
-        "total_tokens": 6945,
-        "cost": 0.0515065,
+        "total_tokens": 7200,
+        "cost": 0.052144,
         "is_byok": false,
         "prompt_tokens_details": {
           "cached_tokens": 0
         },
         "cost_details": {
-          "upstream_inference_cost": 0.0515065,
-          "upstream_inference_prompt_cost": 0.0018425,
+          "upstream_inference_cost": 0.052144,
+          "upstream_inference_prompt_cost": 0.00248,
           "upstream_inference_completions_cost": 0.049664
         },
         "completion_tokens_details": {
@@ -1029,21 +1029,21 @@
             "source_bbox": [
               0,
               0,
-              337,
-              892
+              379,
+              868
             ],
             "source_size": [
-              337,
-              892
+              379,
+              868
             ],
             "scale": [
-              0.07847533632286996,
-              0.07847533632286996
+              0.08064516129032258,
+              0.08064516129032258
             ],
             "target_bbox": [
-              243,
+              240,
               250,
-              269,
+              271,
               320
             ]
           },
@@ -1052,13 +1052,13 @@
             "canvas_ok": true,
             "has_alpha": true,
             "bbox": [
-              243,
+              240,
               250,
-              269,
+              271,
               320
             ],
             "anchored_ok": true,
-            "interior_hole_pct": 0.47,
+            "interior_hole_pct": 0.82,
             "solid_ok": true,
             "pass": true
           },
@@ -1072,16 +1072,16 @@
             "source_bbox": [
               0,
               0,
-              372,
-              894
+              358,
+              873
             ],
             "source_size": [
-              372,
-              894
+              358,
+              873
             ],
             "scale": [
-              0.07829977628635347,
-              0.07829977628635347
+              0.08018327605956473,
+              0.08018327605956473
             ],
             "target_bbox": [
               242,
@@ -1101,7 +1101,7 @@
               320
             ],
             "anchored_ok": true,
-            "interior_hole_pct": 0.88,
+            "interior_hole_pct": 0.07,
             "solid_ok": true,
             "pass": true
           },
@@ -1120,19 +1120,19 @@
         1
       ],
       "contract": "stand",
-      "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, simplified featureless face, short dark cropped hair -- bare-headed in every single cell of the sheet, exactly the same haircut each time. Never wearing any cap, hat, hood, helmet, or other headwear in any cell, even from behind or from a three-quarter-back angle -- headwear choice must not vary from pose to pose. Standing idle pose, arms relaxed at sides, feet shoulder-width apart, small flat contact shadow directly under the feet, no floor tile, no platform. Arrange the sheet as EXACTLY 2 equal columns by 1 equal rows in a strict uniform grid -- EXACTLY 2 cells total, no more and no fewer, EXACTLY 2 characters per row (count them: one, two), EXACTLY 1 rows (reading order left-to-right then top-to-bottom). Do NOT add an extra in-between pose anywhere -- there are only 2 poses listed below and the sheet must contain precisely those 2, nothing added. Each cell contains exactly ONE full-body pose of the SAME character -- identical jumpsuit color and trim, identical hair/cap, identical body proportions, identical cel-shading and outline weight in every cell, only the pose/facing changes as listed below. Leave a wide clear empty transparent gap of at least one head-width between adjacent cells in every row so no cell's subject overlaps or touches a neighboring cell's subject. Do not draw grid lines, cell borders, or dividers -- only empty transparent space separates the cells. Cells, in reading order:\n  Cell (row 1, col 1): standing idle, arms relaxed at sides, feet shoulder-width apart, facing left (west), full side profile.\n  Cell (row 1, col 2): standing idle, arms relaxed at sides, feet shoulder-width apart, facing toward lower-left (southwest, three-quarter front). Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+      "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, simplified featureless face, short dark cropped hair -- bare-headed in every single cell of the sheet, exactly the same haircut each time. Never wearing any cap, hat, hood, helmet, or other headwear in any cell, even from behind or from a three-quarter-back angle -- headwear choice must not vary from pose to pose. CHIBI PROPORTIONS, locked: the head is a single large round shape equal to almost exactly one-third (1/3) of the character's total standing height, in EVERY cell of every sheet -- the same big head size and same short, stocky, chunky body proportions every single time, never a smaller head, never a narrower/longer neck, never a taller or more adult-proportioned body in any cell. Keep facial detail minimal and identical in every cell: two simple flat dot eyes on a flat single-tone skin shape, no individually contoured jaw or cheekbones, no eyebrows, no beard or stubble, no skin-tone shading gradient. The warm accent color (amber/orange) must NEVER appear anywhere on this character -- no belt, no belt buckle, no collar clasp, no chest zipper-pull, no ear device or earpiece, no trim of any kind in amber/orange; the suit and character use only off-white, steel-gray, and skin tones. Standing idle pose, arms relaxed at sides, feet shoulder-width apart, small flat contact shadow directly under the feet, no floor tile, no platform. Arrange the sheet as EXACTLY 2 equal columns by 1 equal rows in a strict uniform grid -- EXACTLY 2 cells total, no more and no fewer, EXACTLY 2 characters per row (count them: one, two), EXACTLY 1 rows (reading order left-to-right then top-to-bottom). Do NOT add an extra in-between pose anywhere -- there are only 2 poses listed below and the sheet must contain precisely those 2, nothing added. Each cell contains exactly ONE full-body pose of the SAME character -- identical jumpsuit color and trim, identical hair/cap, identical body proportions, identical cel-shading and outline weight in every cell, only the pose/facing changes as listed below. Leave a wide clear empty transparent gap of at least one head-width between adjacent cells in every row so no cell's subject overlaps or touches a neighboring cell's subject. Do not draw grid lines, cell borders, or dividers -- only empty transparent space separates the cells. Cells, in reading order:\n  Cell (row 1, col 1): standing idle, arms relaxed at sides, feet shoulder-width apart, facing left (west), full side profile.\n  Cell (row 1, col 2): standing idle, arms relaxed at sides, feet shoulder-width apart, facing toward lower-left (southwest, three-quarter front). Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent. This must be EXACTLY the same character as the reference image: identical jumpsuit color and trim, identical body proportions, identical head/hair, identical outline weight, identical cel shading style -- only the pose/facing changes.",
       "usage": {
-        "prompt_tokens": 787,
+        "prompt_tokens": 1246,
         "completion_tokens": 6208,
-        "total_tokens": 6995,
-        "cost": 0.0516315,
+        "total_tokens": 7454,
+        "cost": 0.052779,
         "is_byok": false,
         "prompt_tokens_details": {
           "cached_tokens": 0
         },
         "cost_details": {
-          "upstream_inference_cost": 0.0516315,
-          "upstream_inference_prompt_cost": 0.0019675,
+          "upstream_inference_cost": 0.052779,
+          "upstream_inference_prompt_cost": 0.003115,
           "upstream_inference_completions_cost": 0.049664
         },
         "completion_tokens_details": {
@@ -1148,21 +1148,21 @@
             "source_bbox": [
               0,
               0,
-              296,
-              849
+              291,
+              785
             ],
             "source_size": [
-              296,
-              849
+              291,
+              785
             ],
             "scale": [
-              0.08244994110718493,
-              0.08244994110718493
+              0.08917197452229299,
+              0.08917197452229299
             ],
             "target_bbox": [
-              244,
+              243,
               250,
-              268,
+              269,
               320
             ]
           },
@@ -1171,13 +1171,13 @@
             "canvas_ok": true,
             "has_alpha": true,
             "bbox": [
-              245,
+              243,
               250,
-              267,
+              269,
               320
             ],
             "anchored_ok": true,
-            "interior_hole_pct": 0.09,
+            "interior_hole_pct": 0.0,
             "solid_ok": true,
             "pass": true
           },
@@ -1191,21 +1191,21 @@
             "source_bbox": [
               0,
               0,
-              363,
-              857
+              311,
+              785
             ],
             "source_size": [
-              363,
-              857
+              311,
+              785
             ],
             "scale": [
-              0.08168028004667445,
-              0.08168028004667445
+              0.08917197452229299,
+              0.08917197452229299
             ],
             "target_bbox": [
-              241,
+              242,
               250,
-              271,
+              270,
               320
             ]
           },
@@ -1214,13 +1214,13 @@
             "canvas_ok": true,
             "has_alpha": true,
             "bbox": [
-              241,
+              242,
               250,
               270,
-              319
+              320
             ],
             "anchored_ok": true,
-            "interior_hole_pct": 0.0,
+            "interior_hole_pct": 0.13,
             "solid_ok": true,
             "pass": true
           },
@@ -1239,19 +1239,19 @@
         2
       ],
       "contract": "stand",
-      "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, simplified featureless face, short dark cropped hair -- bare-headed in every single cell of the sheet, exactly the same haircut each time. Never wearing any cap, hat, hood, helmet, or other headwear in any cell, even from behind or from a three-quarter-back angle -- headwear choice must not vary from pose to pose. A 4-frame walk cycle, small flat contact shadow under the forward foot each frame, no floor tile, no platform. Arrange the sheet as EXACTLY 4 equal columns by 2 equal rows in a strict uniform grid -- EXACTLY 8 cells total, no more and no fewer, EXACTLY 4 characters per row (count them: one, two, three, four), EXACTLY 2 rows (reading order left-to-right then top-to-bottom). Do NOT add an extra in-between pose anywhere -- there are only 8 poses listed below and the sheet must contain precisely those 8, nothing added. Each cell contains exactly ONE full-body pose of the SAME character -- identical jumpsuit color and trim, identical hair/cap, identical body proportions, identical cel-shading and outline weight in every cell, only the pose/facing changes as listed below. Leave a wide clear empty transparent gap of at least one head-width between adjacent cells in every row so no cell's subject overlaps or touches a neighboring cell's subject. Do not draw grid lines, cell borders, or dividers -- only empty transparent space separates the cells. Cells, in reading order:\n  Cell (row 1, col 1): walking mid-stride, left leg forward, right arm forward, facing right (east), full side profile.\n  Cell (row 1, col 2): walking with legs passing together (contact pose), weight centered, facing right (east), full side profile.\n  Cell (row 1, col 3): walking mid-stride, right leg forward, left arm forward, facing right (east), full side profile.\n  Cell (row 1, col 4): walking with legs passing together (contact pose), weight centered, mirrored arm swing from the previous pose, facing right (east), full side profile.\n  Cell (row 2, col 1): walking mid-stride, left leg forward, right arm forward, facing toward upper-right (northeast, three-quarter back).\n  Cell (row 2, col 2): walking with legs passing together (contact pose), weight centered, facing toward upper-right (northeast, three-quarter back).\n  Cell (row 2, col 3): walking mid-stride, right leg forward, left arm forward, facing toward upper-right (northeast, three-quarter back).\n  Cell (row 2, col 4): walking with legs passing together (contact pose), weight centered, mirrored arm swing from the previous pose, facing toward upper-right (northeast, three-quarter back). Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+      "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, simplified featureless face, short dark cropped hair -- bare-headed in every single cell of the sheet, exactly the same haircut each time. Never wearing any cap, hat, hood, helmet, or other headwear in any cell, even from behind or from a three-quarter-back angle -- headwear choice must not vary from pose to pose. CHIBI PROPORTIONS, locked: the head is a single large round shape equal to almost exactly one-third (1/3) of the character's total standing height, in EVERY cell of every sheet -- the same big head size and same short, stocky, chunky body proportions every single time, never a smaller head, never a narrower/longer neck, never a taller or more adult-proportioned body in any cell. Keep facial detail minimal and identical in every cell: two simple flat dot eyes on a flat single-tone skin shape, no individually contoured jaw or cheekbones, no eyebrows, no beard or stubble, no skin-tone shading gradient. The warm accent color (amber/orange) must NEVER appear anywhere on this character -- no belt, no belt buckle, no collar clasp, no chest zipper-pull, no ear device or earpiece, no trim of any kind in amber/orange; the suit and character use only off-white, steel-gray, and skin tones. A 4-frame walk cycle, small flat contact shadow under the forward foot each frame, no floor tile, no platform. Arrange the sheet as EXACTLY 4 equal columns by 2 equal rows in a strict uniform grid -- EXACTLY 8 cells total, no more and no fewer, EXACTLY 4 characters per row (count them: one, two, three, four), EXACTLY 2 rows (reading order left-to-right then top-to-bottom). Do NOT add an extra in-between pose anywhere -- there are only 8 poses listed below and the sheet must contain precisely those 8, nothing added. Each cell contains exactly ONE full-body pose of the SAME character -- identical jumpsuit color and trim, identical hair/cap, identical body proportions, identical cel-shading and outline weight in every cell, only the pose/facing changes as listed below. Leave a wide clear empty transparent gap of at least one head-width between adjacent cells in every row so no cell's subject overlaps or touches a neighboring cell's subject. Do not draw grid lines, cell borders, or dividers -- only empty transparent space separates the cells. Cells, in reading order:\n  Cell (row 1, col 1): walking mid-stride, left leg forward, right arm forward, facing right (east), full side profile.\n  Cell (row 1, col 2): walking with legs passing together (contact pose), weight centered, facing right (east), full side profile.\n  Cell (row 1, col 3): walking mid-stride, right leg forward, left arm forward, facing right (east), full side profile.\n  Cell (row 1, col 4): walking with legs passing together (contact pose), weight centered, mirrored arm swing from the previous pose, facing right (east), full side profile.\n  Cell (row 2, col 1): walking mid-stride, left leg forward, right arm forward, facing toward upper-right (northeast, three-quarter back).\n  Cell (row 2, col 2): walking with legs passing together (contact pose), weight centered, facing toward upper-right (northeast, three-quarter back).\n  Cell (row 2, col 3): walking mid-stride, right leg forward, left arm forward, facing toward upper-right (northeast, three-quarter back).\n  Cell (row 2, col 4): walking with legs passing together (contact pose), weight centered, mirrored arm swing from the previous pose, facing toward upper-right (northeast, three-quarter back). Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent. This must be EXACTLY the same character as the reference image: identical jumpsuit color and trim, identical body proportions, identical head/hair, identical outline weight, identical cel shading style -- only the pose/facing changes.",
       "usage": {
-        "prompt_tokens": 1219,
+        "prompt_tokens": 1468,
         "completion_tokens": 6208,
-        "total_tokens": 7427,
-        "cost": 0.0527115,
+        "total_tokens": 7676,
+        "cost": 0.053334,
         "is_byok": false,
         "prompt_tokens_details": {
           "cached_tokens": 0
         },
         "cost_details": {
-          "upstream_inference_cost": 0.0527115,
-          "upstream_inference_prompt_cost": 0.0030475,
+          "upstream_inference_cost": 0.053334,
+          "upstream_inference_prompt_cost": 0.00367,
           "upstream_inference_completions_cost": 0.049664
         },
         "completion_tokens_details": {
@@ -1260,28 +1260,28 @@
         }
       },
       "raw_path": "assets\\sprites\\gen2\\crew\\_raw_walk_e_ne.png",
-      "sliced_with_auto_detection": false,
+      "sliced_with_auto_detection": "manual_override_narrow_row_gap",
       "cells": [
         {
           "normalize": {
             "source_bbox": [
               0,
               0,
-              230,
-              413
+              217,
+              423
             ],
             "source_size": [
-              230,
-              413
+              217,
+              423
             ],
             "scale": [
-              0.1694915254237288,
-              0.1694915254237288
+              0.16548463356973994,
+              0.16548463356973994
             ],
             "target_bbox": [
-              236,
+              238,
               250,
-              275,
+              274,
               320
             ]
           },
@@ -1290,13 +1290,13 @@
             "canvas_ok": true,
             "has_alpha": true,
             "bbox": [
-              236,
+              238,
               250,
-              275,
+              274,
               320
             ],
             "anchored_ok": true,
-            "interior_hole_pct": 0.0,
+            "interior_hole_pct": 0.12,
             "solid_ok": true,
             "pass": true
           },
@@ -1310,16 +1310,16 @@
             "source_bbox": [
               0,
               0,
-              217,
-              413
+              221,
+              423
             ],
             "source_size": [
-              217,
-              413
+              221,
+              423
             ],
             "scale": [
-              0.1694915254237288,
-              0.1694915254237288
+              0.16548463356973994,
+              0.16548463356973994
             ],
             "target_bbox": [
               238,
@@ -1339,7 +1339,7 @@
               320
             ],
             "anchored_ok": true,
-            "interior_hole_pct": 0.0,
+            "interior_hole_pct": 0.06,
             "solid_ok": true,
             "pass": true
           },
@@ -1353,21 +1353,21 @@
             "source_bbox": [
               0,
               0,
-              345,
-              413
+              223,
+              424
             ],
             "source_size": [
-              345,
-              413
+              223,
+              424
             ],
             "scale": [
-              0.1694915254237288,
-              0.1694915254237288
+              0.1650943396226415,
+              0.1650943396226415
             ],
             "target_bbox": [
-              227,
+              238,
               250,
-              285,
+              275,
               320
             ]
           },
@@ -1376,13 +1376,13 @@
             "canvas_ok": true,
             "has_alpha": true,
             "bbox": [
-              227,
+              238,
               250,
-              285,
+              275,
               320
             ],
             "anchored_ok": true,
-            "interior_hole_pct": 0.0,
+            "interior_hole_pct": 0.06,
             "solid_ok": true,
             "pass": true
           },
@@ -1396,21 +1396,21 @@
             "source_bbox": [
               0,
               0,
-              150,
-              413
+              213,
+              424
             ],
             "source_size": [
-              150,
-              413
+              213,
+              424
             ],
             "scale": [
-              0.1694915254237288,
-              0.1694915254237288
+              0.1650943396226415,
+              0.1650943396226415
             ],
             "target_bbox": [
-              244,
+              238,
               250,
-              269,
+              273,
               320
             ]
           },
@@ -1419,13 +1419,13 @@
             "canvas_ok": true,
             "has_alpha": true,
             "bbox": [
-              244,
+              238,
               250,
-              269,
+              273,
               320
             ],
             "anchored_ok": true,
-            "interior_hole_pct": 0.0,
+            "interior_hole_pct": 0.25,
             "solid_ok": true,
             "pass": true
           },
@@ -1439,21 +1439,21 @@
             "source_bbox": [
               0,
               0,
-              195,
-              410
+              217,
+              414
             ],
             "source_size": [
-              195,
-              410
+              217,
+              414
             ],
             "scale": [
-              0.17073170731707318,
-              0.17073170731707318
+              0.16908212560386474,
+              0.16908212560386474
             ],
             "target_bbox": [
-              240,
+              238,
               250,
-              273,
+              275,
               320
             ]
           },
@@ -1462,13 +1462,13 @@
             "canvas_ok": true,
             "has_alpha": true,
             "bbox": [
-              240,
+              238,
               250,
-              273,
+              275,
               320
             ],
             "anchored_ok": true,
-            "interior_hole_pct": 0.0,
+            "interior_hole_pct": 0.18,
             "solid_ok": true,
             "pass": true
           },
@@ -1482,21 +1482,21 @@
             "source_bbox": [
               0,
               0,
-              195,
-              411
+              217,
+              414
             ],
             "source_size": [
-              195,
-              411
+              217,
+              414
             ],
             "scale": [
-              0.170316301703163,
-              0.170316301703163
+              0.16908212560386474,
+              0.16908212560386474
             ],
             "target_bbox": [
-              240,
+              238,
               250,
-              273,
+              275,
               320
             ]
           },
@@ -1505,13 +1505,13 @@
             "canvas_ok": true,
             "has_alpha": true,
             "bbox": [
-              240,
+              238,
               250,
-              273,
+              275,
               320
             ],
             "anchored_ok": true,
-            "interior_hole_pct": 0.0,
+            "interior_hole_pct": 0.18,
             "solid_ok": true,
             "pass": true
           },
@@ -1525,21 +1525,21 @@
             "source_bbox": [
               0,
               0,
-              345,
-              411
+              223,
+              415
             ],
             "source_size": [
-              345,
-              411
+              223,
+              415
             ],
             "scale": [
-              0.170316301703163,
-              0.170316301703163
+              0.1686746987951807,
+              0.1686746987951807
             ],
             "target_bbox": [
-              226,
+              237,
               250,
-              285,
+              275,
               320
             ]
           },
@@ -1548,13 +1548,13 @@
             "canvas_ok": true,
             "has_alpha": true,
             "bbox": [
-              226,
+              237,
               250,
-              285,
+              275,
               320
             ],
             "anchored_ok": true,
-            "interior_hole_pct": 0.0,
+            "interior_hole_pct": 0.18,
             "solid_ok": true,
             "pass": true
           },
@@ -1568,21 +1568,21 @@
             "source_bbox": [
               0,
               0,
-              138,
-              411
+              216,
+              416
             ],
             "source_size": [
-              138,
-              411
+              216,
+              416
             ],
             "scale": [
-              0.170316301703163,
-              0.170316301703163
+              0.16826923076923078,
+              0.16826923076923078
             ],
             "target_bbox": [
-              244,
+              238,
               250,
-              268,
+              274,
               320
             ]
           },
@@ -1591,13 +1591,13 @@
             "canvas_ok": true,
             "has_alpha": true,
             "bbox": [
-              244,
+              238,
               250,
-              268,
+              274,
               320
             ],
             "anchored_ok": true,
-            "interior_hole_pct": 0.0,
+            "interior_hole_pct": 0.19,
             "solid_ok": true,
             "pass": true
           },
@@ -2491,19 +2491,19 @@
         1
       ],
       "contract": "prone",
-      "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, simplified featureless face, short dark cropped hair -- bare-headed in every single cell of the sheet, exactly the same haircut each time. Never wearing any cap, hat, hood, helmet, or other headwear in any cell, even from behind or from a three-quarter-back angle -- headwear choice must not vary from pose to pose. A collapsed, motionless body on the ground, two distinct death poses, small flat contact shadow, no floor tile, no platform. Arrange the sheet as EXACTLY 2 equal columns by 1 equal rows in a strict uniform grid -- EXACTLY 2 cells total, no more and no fewer, EXACTLY 2 characters per row (count them: one, two), EXACTLY 1 rows (reading order left-to-right then top-to-bottom). Do NOT add an extra in-between pose anywhere -- there are only 2 poses listed below and the sheet must contain precisely those 2, nothing added. Each cell contains exactly ONE full-body pose of the SAME character -- identical jumpsuit color and trim, identical hair/cap, identical body proportions, identical cel-shading and outline weight in every cell, only the pose/facing changes as listed below. Leave a wide clear empty transparent gap of at least one head-width between adjacent cells in every row so no cell's subject overlaps or touches a neighboring cell's subject. Do not draw grid lines, cell borders, or dividers -- only empty transparent space separates the cells. Cells, in reading order:\n  Cell (row 1, col 1): sprawled face-up, limbs splayed outward, motionless, facing the camera (south/front view).\n  Cell (row 1, col 2): slumped face-down, one arm tucked under the body, motionless, side view, facing the camera (south/front view). Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+      "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, simplified featureless face, short dark cropped hair -- bare-headed in every single cell of the sheet, exactly the same haircut each time. Never wearing any cap, hat, hood, helmet, or other headwear in any cell, even from behind or from a three-quarter-back angle -- headwear choice must not vary from pose to pose. CHIBI PROPORTIONS, locked: the head is a single large round shape equal to almost exactly one-third (1/3) of the character's total standing height, in EVERY cell of every sheet -- the same big head size and same short, stocky, chunky body proportions every single time, never a smaller head, never a narrower/longer neck, never a taller or more adult-proportioned body in any cell. Keep facial detail minimal and identical in every cell: two simple flat dot eyes on a flat single-tone skin shape, no individually contoured jaw or cheekbones, no eyebrows, no beard or stubble, no skin-tone shading gradient. The warm accent color (amber/orange) must NEVER appear anywhere on this character -- no belt, no belt buckle, no collar clasp, no chest zipper-pull, no ear device or earpiece, no trim of any kind in amber/orange; the suit and character use only off-white, steel-gray, and skin tones. A collapsed, motionless body on the ground, two distinct death poses, small flat contact shadow, no floor tile, no platform. Arrange the sheet as EXACTLY 2 equal columns by 1 equal rows in a strict uniform grid -- EXACTLY 2 cells total, no more and no fewer, EXACTLY 2 characters per row (count them: one, two), EXACTLY 1 rows (reading order left-to-right then top-to-bottom). Do NOT add an extra in-between pose anywhere -- there are only 2 poses listed below and the sheet must contain precisely those 2, nothing added. Each cell contains exactly ONE full-body pose of the SAME character -- identical jumpsuit color and trim, identical hair/cap, identical body proportions, identical cel-shading and outline weight in every cell, only the pose/facing changes as listed below. Leave a wide clear empty transparent gap of at least one head-width between adjacent cells in every row so no cell's subject overlaps or touches a neighboring cell's subject. Do not draw grid lines, cell borders, or dividers -- only empty transparent space separates the cells. Cells, in reading order:\n  Cell (row 1, col 1): sprawled face-up, limbs splayed outward, motionless, facing the camera (south/front view).\n  Cell (row 1, col 2): slumped face-down, one arm tucked under the body, motionless, side view, facing the camera (south/front view). Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent. This must be EXACTLY the same character as the reference image: identical jumpsuit color and trim, identical body proportions, identical head/hair, identical outline weight, identical cel shading style -- only the pose/facing changes.",
       "usage": {
-        "prompt_tokens": 994,
+        "prompt_tokens": 1243,
         "completion_tokens": 6208,
-        "total_tokens": 7202,
-        "cost": 0.052149,
+        "total_tokens": 7451,
+        "cost": 0.0527715,
         "is_byok": false,
         "prompt_tokens_details": {
           "cached_tokens": 0
         },
         "cost_details": {
-          "upstream_inference_cost": 0.052149,
-          "upstream_inference_prompt_cost": 0.002485,
+          "upstream_inference_cost": 0.0527715,
+          "upstream_inference_prompt_cost": 0.0031075,
           "upstream_inference_completions_cost": 0.049664
         },
         "completion_tokens_details": {
@@ -2519,21 +2519,21 @@
             "source_bbox": [
               0,
               0,
-              695,
-              414
+              541,
+              483
             ],
             "source_size": [
-              695,
-              414
+              541,
+              483
             ],
             "scale": [
-              0.22946859903381642,
-              0.22946859903381642
+              0.19668737060041408,
+              0.19668737060041408
             ],
             "target_bbox": [
-              176,
+              203,
               225,
-              335,
+              309,
               320
             ]
           },
@@ -2542,13 +2542,13 @@
             "canvas_ok": true,
             "has_alpha": true,
             "bbox": [
-              176,
+              203,
               225,
-              335,
+              309,
               320
             ],
             "anchored_ok": true,
-            "interior_hole_pct": 0.0,
+            "interior_hole_pct": 0.02,
             "solid_ok": true,
             "pass": true
           },
@@ -2562,21 +2562,21 @@
             "source_bbox": [
               0,
               0,
-              558,
-              312
+              606,
+              372
             ],
             "source_size": [
-              558,
-              312
+              606,
+              372
             ],
             "scale": [
-              0.2867383512544803,
-              0.2867383512544803
+              0.2553763440860215,
+              0.2553763440860215
             ],
             "target_bbox": [
-              176,
-              231,
-              336,
+              178,
+              225,
+              333,
               320
             ]
           },
@@ -2585,9 +2585,9 @@
             "canvas_ok": true,
             "has_alpha": true,
             "bbox": [
-              176,
-              231,
-              336,
+              178,
+              225,
+              333,
               320
             ],
             "anchored_ok": true,
@@ -3364,19 +3364,19 @@
         1
       ],
       "contract": "stand",
-      "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, simplified featureless face, short dark cropped hair -- bare-headed in every single cell of the sheet, exactly the same haircut each time. Never wearing any cap, hat, hood, helmet, or other headwear in any cell, even from behind or from a three-quarter-back angle -- headwear choice must not vary from pose to pose. Standing hunched, clutching their side/ribs with one hand as if wounded, small flat contact shadow under the feet, no floor tile, no platform. Arrange the sheet as EXACTLY 4 equal columns by 1 equal rows in a strict uniform grid -- EXACTLY 4 cells total, no more and no fewer, EXACTLY 4 characters per row (count them: one, two, three, four), EXACTLY 1 rows (reading order left-to-right then top-to-bottom). Do NOT add an extra in-between pose anywhere -- there are only 4 poses listed below and the sheet must contain precisely those 4, nothing added. Each cell contains exactly ONE full-body pose of the SAME character -- identical jumpsuit color and trim, identical hair/cap, identical body proportions, identical cel-shading and outline weight in every cell, only the pose/facing changes as listed below. Leave a wide clear empty transparent gap of at least one head-width between adjacent cells in every row so no cell's subject overlaps or touches a neighboring cell's subject. Do not draw grid lines, cell borders, or dividers -- only empty transparent space separates the cells. Cells, in reading order:\n  Cell (row 1, col 1): standing hunched, clutching side, facing the camera (south/front view).\n  Cell (row 1, col 2): standing hunched, clutching side, facing right (east), full side profile.\n  Cell (row 1, col 3): standing hunched, clutching side, facing away from the camera (north/back view).\n  Cell (row 1, col 4): standing hunched, clutching side, facing left (west), full side profile. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+      "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, simplified featureless face, short dark cropped hair -- bare-headed in every single cell of the sheet, exactly the same haircut each time. Never wearing any cap, hat, hood, helmet, or other headwear in any cell, even from behind or from a three-quarter-back angle -- headwear choice must not vary from pose to pose. CHIBI PROPORTIONS, locked: the head is a single large round shape equal to almost exactly one-third (1/3) of the character's total standing height, in EVERY cell of every sheet -- the same big head size and same short, stocky, chunky body proportions every single time, never a smaller head, never a narrower/longer neck, never a taller or more adult-proportioned body in any cell. Keep facial detail minimal and identical in every cell: two simple flat dot eyes on a flat single-tone skin shape, no individually contoured jaw or cheekbones, no eyebrows, no beard or stubble, no skin-tone shading gradient. The warm accent color (amber/orange) must NEVER appear anywhere on this character -- no belt, no belt buckle, no collar clasp, no chest zipper-pull, no ear device or earpiece, no trim of any kind in amber/orange; the suit and character use only off-white, steel-gray, and skin tones. Standing hunched, clutching their side/ribs with one hand as if wounded, small flat contact shadow under the feet, no floor tile, no platform. Arrange the sheet as EXACTLY 4 equal columns by 1 equal rows in a strict uniform grid -- EXACTLY 4 cells total, no more and no fewer, EXACTLY 4 characters per row (count them: one, two, three, four), EXACTLY 1 rows (reading order left-to-right then top-to-bottom). Do NOT add an extra in-between pose anywhere -- there are only 4 poses listed below and the sheet must contain precisely those 4, nothing added. Each cell contains exactly ONE full-body pose of the SAME character -- identical jumpsuit color and trim, identical hair/cap, identical body proportions, identical cel-shading and outline weight in every cell, only the pose/facing changes as listed below. Leave a wide clear empty transparent gap of at least one head-width between adjacent cells in every row so no cell's subject overlaps or touches a neighboring cell's subject. Do not draw grid lines, cell borders, or dividers -- only empty transparent space separates the cells. Cells, in reading order:\n  Cell (row 1, col 1): standing hunched, clutching side, facing the camera (south/front view).\n  Cell (row 1, col 2): standing hunched, clutching side, facing right (east), full side profile.\n  Cell (row 1, col 3): standing hunched, clutching side, facing away from the camera (north/back view).\n  Cell (row 1, col 4): standing hunched, clutching side, facing left (west), full side profile. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent. This must be EXACTLY the same character as the reference image: identical jumpsuit color and trim, identical body proportions, identical head/hair, identical outline weight, identical cel shading style -- only the pose/facing changes.",
       "usage": {
-        "prompt_tokens": 1046,
+        "prompt_tokens": 1295,
         "completion_tokens": 6208,
-        "total_tokens": 7254,
-        "cost": 0.052279,
+        "total_tokens": 7503,
+        "cost": 0.0529015,
         "is_byok": false,
         "prompt_tokens_details": {
           "cached_tokens": 0
         },
         "cost_details": {
-          "upstream_inference_cost": 0.052279,
-          "upstream_inference_prompt_cost": 0.002615,
+          "upstream_inference_cost": 0.0529015,
+          "upstream_inference_prompt_cost": 0.0032375,
           "upstream_inference_completions_cost": 0.049664
         },
         "completion_tokens_details": {
@@ -3392,21 +3392,21 @@
             "source_bbox": [
               0,
               0,
-              262,
-              651
+              243,
+              591
             ],
             "source_size": [
-              262,
-              651
+              243,
+              591
             ],
             "scale": [
-              0.10752688172043011,
-              0.10752688172043011
+              0.11844331641285956,
+              0.11844331641285956
             ],
             "target_bbox": [
               242,
               250,
-              270,
+              271,
               320
             ]
           },
@@ -3417,11 +3417,11 @@
             "bbox": [
               242,
               250,
-              270,
+              271,
               320
             ],
             "anchored_ok": true,
-            "interior_hole_pct": 1.03,
+            "interior_hole_pct": 0.13,
             "solid_ok": true,
             "pass": true
           },
@@ -3435,21 +3435,21 @@
             "source_bbox": [
               0,
               0,
-              188,
-              650
+              230,
+              600
             ],
             "source_size": [
-              188,
-              650
+              230,
+              600
             ],
             "scale": [
-              0.1076923076923077,
-              0.1076923076923077
+              0.11666666666666667,
+              0.11666666666666667
             ],
             "target_bbox": [
-              246,
+              242,
               250,
-              266,
+              269,
               320
             ]
           },
@@ -3458,9 +3458,9 @@
             "canvas_ok": true,
             "has_alpha": true,
             "bbox": [
-              246,
+              242,
               250,
-              266,
+              269,
               320
             ],
             "anchored_ok": true,
@@ -3478,21 +3478,21 @@
             "source_bbox": [
               0,
               0,
-              262,
-              651
+              253,
+              601
             ],
             "source_size": [
-              262,
-              651
+              253,
+              601
             ],
             "scale": [
-              0.10752688172043011,
-              0.10752688172043011
+              0.11647254575707154,
+              0.11647254575707154
             ],
             "target_bbox": [
               242,
               250,
-              270,
+              271,
               320
             ]
           },
@@ -3503,11 +3503,11 @@
             "bbox": [
               242,
               250,
-              270,
+              271,
               320
             ],
             "anchored_ok": true,
-            "interior_hole_pct": 0.63,
+            "interior_hole_pct": 0.72,
             "solid_ok": true,
             "pass": true
           },
@@ -3521,21 +3521,21 @@
             "source_bbox": [
               0,
               0,
-              226,
-              657
+              247,
+              598
             ],
             "source_size": [
-              226,
-              657
+              247,
+              598
             ],
             "scale": [
-              0.106544901065449,
-              0.106544901065449
+              0.11705685618729098,
+              0.11705685618729098
             ],
             "target_bbox": [
-              244,
+              242,
               250,
-              268,
+              271,
               320
             ]
           },
@@ -3544,9 +3544,9 @@
             "canvas_ok": true,
             "has_alpha": true,
             "bbox": [
-              244,
+              242,
               250,
-              268,
+              271,
               320
             ],
             "anchored_ok": true,
@@ -3872,19 +3872,19 @@
         2
       ],
       "contract": "prone",
-      "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, simplified featureless face, short dark cropped hair -- bare-headed in every single cell of the sheet, exactly the same haircut each time. Never wearing any cap, hat, hood, helmet, or other headwear in any cell, even from behind or from a three-quarter-back angle -- headwear choice must not vary from pose to pose. A 3-frame zero-gravity drift loop, no contact shadow at all (fully weightless), no floor tile, no platform. Arrange the sheet as EXACTLY 3 equal columns by 2 equal rows in a strict uniform grid -- EXACTLY 6 cells total, no more and no fewer, EXACTLY 3 characters per row (count them: one, two, three), EXACTLY 2 rows (reading order left-to-right then top-to-bottom). Do NOT add an extra in-between pose anywhere -- there are only 6 poses listed below and the sheet must contain precisely those 6, nothing added. Each cell contains exactly ONE full-body pose of the SAME character -- identical jumpsuit color and trim, identical hair/cap, identical body proportions, identical cel-shading and outline weight in every cell, only the pose/facing changes as listed below. Leave a wide clear empty transparent gap of at least one head-width between adjacent cells in every row so no cell's subject overlaps or touches a neighboring cell's subject. Do not draw grid lines, cell borders, or dividers -- only empty transparent space separates the cells. Cells, in reading order:\n  Cell (row 1, col 1): zero-gravity floating drift, loose relaxed limbs, body tilted slightly, no ground contact, no contact shadow, facing away from the camera (north/back view).\n  Cell (row 1, col 2): zero-gravity floating drift, limbs drifted to a different loose angle, body tilted the other way, no ground contact, no contact shadow, facing away from the camera (north/back view).\n  Cell (row 1, col 3): zero-gravity floating drift, limbs drifted to a third loose angle, slight body rotation, no ground contact, no contact shadow, facing away from the camera (north/back view).\n  Cell (row 2, col 1): zero-gravity floating drift, loose relaxed limbs, body tilted slightly, no ground contact, no contact shadow, facing left (west), full side profile.\n  Cell (row 2, col 2): zero-gravity floating drift, limbs drifted to a different loose angle, body tilted the other way, no ground contact, no contact shadow, facing left (west), full side profile.\n  Cell (row 2, col 3): zero-gravity floating drift, limbs drifted to a third loose angle, slight body rotation, no ground contact, no contact shadow, facing left (west), full side profile. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+      "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, simplified featureless face, short dark cropped hair -- bare-headed in every single cell of the sheet, exactly the same haircut each time. Never wearing any cap, hat, hood, helmet, or other headwear in any cell, even from behind or from a three-quarter-back angle -- headwear choice must not vary from pose to pose. CHIBI PROPORTIONS, locked: the head is a single large round shape equal to almost exactly one-third (1/3) of the character's total standing height, in EVERY cell of every sheet -- the same big head size and same short, stocky, chunky body proportions every single time, never a smaller head, never a narrower/longer neck, never a taller or more adult-proportioned body in any cell. Keep facial detail minimal and identical in every cell: two simple flat dot eyes on a flat single-tone skin shape, no individually contoured jaw or cheekbones, no eyebrows, no beard or stubble, no skin-tone shading gradient. The warm accent color (amber/orange) must NEVER appear anywhere on this character -- no belt, no belt buckle, no collar clasp, no chest zipper-pull, no ear device or earpiece, no trim of any kind in amber/orange; the suit and character use only off-white, steel-gray, and skin tones. A 3-frame zero-gravity drift loop, no contact shadow at all (fully weightless), no floor tile, no platform. Arrange the sheet as EXACTLY 3 equal columns by 2 equal rows in a strict uniform grid -- EXACTLY 6 cells total, no more and no fewer, EXACTLY 3 characters per row (count them: one, two, three), EXACTLY 2 rows (reading order left-to-right then top-to-bottom). Do NOT add an extra in-between pose anywhere -- there are only 6 poses listed below and the sheet must contain precisely those 6, nothing added. Each cell contains exactly ONE full-body pose of the SAME character -- identical jumpsuit color and trim, identical hair/cap, identical body proportions, identical cel-shading and outline weight in every cell, only the pose/facing changes as listed below. Leave a wide clear empty transparent gap of at least one head-width between adjacent cells in every row so no cell's subject overlaps or touches a neighboring cell's subject. Do not draw grid lines, cell borders, or dividers -- only empty transparent space separates the cells. Cells, in reading order:\n  Cell (row 1, col 1): zero-gravity floating drift, loose relaxed limbs, body tilted slightly, no ground contact, no contact shadow, facing away from the camera (north/back view).\n  Cell (row 1, col 2): zero-gravity floating drift, limbs drifted to a different loose angle, body tilted the other way, no ground contact, no contact shadow, facing away from the camera (north/back view).\n  Cell (row 1, col 3): zero-gravity floating drift, limbs drifted to a third loose angle, slight body rotation, no ground contact, no contact shadow, facing away from the camera (north/back view).\n  Cell (row 2, col 1): zero-gravity floating drift, loose relaxed limbs, body tilted slightly, no ground contact, no contact shadow, facing left (west), full side profile.\n  Cell (row 2, col 2): zero-gravity floating drift, limbs drifted to a different loose angle, body tilted the other way, no ground contact, no contact shadow, facing left (west), full side profile.\n  Cell (row 2, col 3): zero-gravity floating drift, limbs drifted to a third loose angle, slight body rotation, no ground contact, no contact shadow, facing left (west), full side profile. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent. This must be EXACTLY the same character as the reference image: identical jumpsuit color and trim, identical body proportions, identical head/hair, identical outline weight, identical cel shading style -- only the pose/facing changes.",
       "usage": {
-        "prompt_tokens": 1206,
+        "prompt_tokens": 1455,
         "completion_tokens": 4160,
-        "total_tokens": 5366,
-        "cost": 0.036295,
+        "total_tokens": 5615,
+        "cost": 0.0369175,
         "is_byok": false,
         "prompt_tokens_details": {
           "cached_tokens": 0
         },
         "cost_details": {
-          "upstream_inference_cost": 0.036295,
-          "upstream_inference_prompt_cost": 0.003015,
+          "upstream_inference_cost": 0.0369175,
+          "upstream_inference_prompt_cost": 0.0036375,
           "upstream_inference_completions_cost": 0.03328
         },
         "completion_tokens_details": {
@@ -3900,16 +3900,59 @@
             "source_bbox": [
               0,
               0,
-              307,
-              429
+              249,
+              424
             ],
             "source_size": [
-              307,
-              429
+              249,
+              424
             ],
             "scale": [
-              0.22144522144522144,
-              0.22144522144522144
+              0.2240566037735849,
+              0.2240566037735849
+            ],
+            "target_bbox": [
+              228,
+              225,
+              284,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              228,
+              225,
+              284,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.73,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_floating_n_0.png",
+          "facing": "n",
+          "frame": "0",
+          "pose": "zero-gravity floating drift, loose relaxed limbs, body tilted slightly, no ground contact, no contact shadow"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              302,
+              425
+            ],
+            "source_size": [
+              302,
+              425
+            ],
+            "scale": [
+              0.2235294117647059,
+              0.2235294117647059
             ],
             "target_bbox": [
               222,
@@ -3933,49 +3976,6 @@
             "solid_ok": true,
             "pass": true
           },
-          "file": "crew_floating_n_0.png",
-          "facing": "n",
-          "frame": "0",
-          "pose": "zero-gravity floating drift, loose relaxed limbs, body tilted slightly, no ground contact, no contact shadow"
-        },
-        {
-          "normalize": {
-            "source_bbox": [
-              0,
-              0,
-              299,
-              428
-            ],
-            "source_size": [
-              299,
-              428
-            ],
-            "scale": [
-              0.2219626168224299,
-              0.2219626168224299
-            ],
-            "target_bbox": [
-              223,
-              225,
-              289,
-              320
-            ]
-          },
-          "qa": {
-            "notes": [],
-            "canvas_ok": true,
-            "has_alpha": true,
-            "bbox": [
-              223,
-              225,
-              289,
-              320
-            ],
-            "anchored_ok": true,
-            "interior_hole_pct": 0.04,
-            "solid_ok": true,
-            "pass": true
-          },
           "file": "crew_floating_n_1.png",
           "facing": "n",
           "frame": "1",
@@ -3986,21 +3986,21 @@
             "source_bbox": [
               0,
               0,
-              293,
-              429
+              281,
+              426
             ],
             "source_size": [
-              293,
-              429
+              281,
+              426
             ],
             "scale": [
-              0.22144522144522144,
-              0.22144522144522144
+              0.22300469483568075,
+              0.22300469483568075
             ],
             "target_bbox": [
               224,
               225,
-              289,
+              287,
               320
             ]
           },
@@ -4011,7 +4011,7 @@
             "bbox": [
               224,
               225,
-              289,
+              287,
               320
             ],
             "anchored_ok": true,
@@ -4029,21 +4029,21 @@
             "source_bbox": [
               0,
               0,
-              278,
-              439
+              210,
+              418
             ],
             "source_size": [
-              278,
-              439
+              210,
+              418
             ],
             "scale": [
-              0.2164009111617312,
-              0.2164009111617312
+              0.22727272727272727,
+              0.22727272727272727
             ],
             "target_bbox": [
-              226,
+              232,
               225,
-              286,
+              280,
               320
             ]
           },
@@ -4052,9 +4052,9 @@
             "canvas_ok": true,
             "has_alpha": true,
             "bbox": [
-              226,
+              232,
               225,
-              286,
+              280,
               320
             ],
             "anchored_ok": true,
@@ -4072,21 +4072,21 @@
             "source_bbox": [
               0,
               0,
-              296,
-              436
+              246,
+              427
             ],
             "source_size": [
-              296,
-              436
+              246,
+              427
             ],
             "scale": [
-              0.21788990825688073,
-              0.21788990825688073
+              0.2224824355971897,
+              0.2224824355971897
             ],
             "target_bbox": [
-              224,
+              228,
               225,
-              288,
+              283,
               320
             ]
           },
@@ -4095,13 +4095,13 @@
             "canvas_ok": true,
             "has_alpha": true,
             "bbox": [
-              224,
+              228,
               225,
-              288,
+              283,
               320
             ],
             "anchored_ok": true,
-            "interior_hole_pct": 0.0,
+            "interior_hole_pct": 0.03,
             "solid_ok": true,
             "pass": true
           },
@@ -4115,21 +4115,21 @@
             "source_bbox": [
               0,
               0,
-              301,
-              435
+              208,
+              430
             ],
             "source_size": [
-              301,
-              435
+              208,
+              430
             ],
             "scale": [
-              0.21839080459770116,
-              0.21839080459770116
+              0.22093023255813954,
+              0.22093023255813954
             ],
             "target_bbox": [
-              223,
+              233,
               225,
-              289,
+              279,
               320
             ]
           },
@@ -4138,9 +4138,9 @@
             "canvas_ok": true,
             "has_alpha": true,
             "bbox": [
-              223,
+              233,
               225,
-              289,
+              279,
               320
             ],
             "anchored_ok": true,

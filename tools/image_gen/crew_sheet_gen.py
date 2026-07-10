@@ -106,7 +106,20 @@ CHARACTER_SUBJECT = (
     "bare-headed in every single cell of the sheet, exactly the same haircut "
     "each time. Never wearing any cap, hat, hood, helmet, or other headwear in "
     "any cell, even from behind or from a three-quarter-back angle -- headwear "
-    "choice must not vary from pose to pose."
+    "choice must not vary from pose to pose. "
+    "CHIBI PROPORTIONS, locked: the head is a single large round shape equal "
+    "to almost exactly one-third (1/3) of the character's total standing "
+    "height, in EVERY cell of every sheet -- the same big head size and same "
+    "short, stocky, chunky body proportions every single time, never a "
+    "smaller head, never a narrower/longer neck, never a taller or more "
+    "adult-proportioned body in any cell. Keep facial detail minimal and "
+    "identical in every cell: two simple flat dot eyes on a flat single-tone "
+    "skin shape, no individually contoured jaw or cheekbones, no eyebrows, "
+    "no beard or stubble, no skin-tone shading gradient. The warm accent "
+    "color (amber/orange) must NEVER appear anywhere on this character -- no "
+    "belt, no belt buckle, no collar clasp, no chest zipper-pull, no "
+    "ear device or earpiece, no trim of any kind in amber/orange; the suit "
+    "and character use only off-white, steel-gray, and skin tones."
 )
 
 GRID_CLAUSE_TMPL = (
@@ -134,7 +147,7 @@ REF_CLAUSE = (
 _NUM_WORDS = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six", 7: "seven", 8: "eight"}
 
 
-def compose_sheet_prompt(job: dict[str, Any]) -> str:
+def compose_sheet_prompt(job: dict[str, Any], *, use_reference: bool = False) -> str:
     cols, rows = job["grid"]
     n = cols * rows
     lines = []
@@ -146,7 +159,14 @@ def compose_sheet_prompt(job: dict[str, Any]) -> str:
     grid_clause = GRID_CLAUSE_TMPL.format(cols=cols, rows=rows, n=n, col_count_words=col_count_words) + "\n".join(lines)
     parts = [pb.STYLE_LOCK, CHARACTER_SUBJECT, job["pose_common"], grid_clause, pb.NEGATIVE]
     prompt = " ".join(parts)
-    if job.get("reference"):
+    # NOTE: this used to check job.get("reference"), which no JOBS entry ever
+    # sets -- REF_CLAUSE was dead code even when callers passed --reference
+    # (the reference IMAGE reached the model via generate_sheet's
+    # `references` arg, but the prompt TEXT never mentioned it). Fixed to
+    # take the actual reference-usage decision as a parameter instead, wired
+    # through from run_job's --reference flag (the thing that actually
+    # decides whether a reference image is attached to this call).
+    if use_reference:
         prompt += REF_CLAUSE
     return prompt
 
@@ -271,7 +291,7 @@ def slice_cells_auto(im: Image.Image, cols: int, rows: int, margin_px: int = 6,
 
 def generate_sheet(job: dict[str, Any], api_key: str, *, quality: str = "high",
                     references: list[Path] | None = None) -> dict[str, Any]:
-    prompt = compose_sheet_prompt(job)
+    prompt = compose_sheet_prompt(job, use_reference=bool(references))
     result = gen.generate_image(
         prompt, model=MODEL, background="transparent", quality=quality,
         input_references=references, api_key=api_key,
@@ -304,8 +324,8 @@ def run_job(job: dict[str, Any], api_key: str, *, quality: str = "high",
     if len(job["cells"]) != n_expected:
         raise SystemExit(f"job {job['id']}: {len(job['cells'])} cells declared but grid is {cols}x{rows}={n_expected}")
 
-    prompt = compose_sheet_prompt(job)
     if dry_run:
+        prompt = compose_sheet_prompt(job, use_reference=reference)
         print(f"--- {job['id']} ({cols}x{rows} = {n_expected} cells) ---")
         print(prompt)
         print()
