@@ -972,5 +972,990 @@
       "greeting"
     ],
     "weight": 1.0
+  },
+  {
+    "id": 51,
+    "key": "GR_ML_SCI_OF#00051",
+    "text": "[DEADPAN] you're looking for reassurance. [GRUFF] the honest kind or the useful kind",
+    "type": "opener",
+    "intent": "greeting",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 52,
+    "key": "GR_ML_SCI_OF#00052",
+    "text": "[CALM] pressure seals failing. [GRUFF] slowly. which is the worst kind of failure",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "location": [
+        "cargo"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 53,
+    "key": "GR_ML_SCI_OF#00053",
+    "text": "[TIRED] another day where nobody asks how i'm holding up. [GRUFF] probably better that way",
+    "type": "declaration",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "mood": [
+        "low"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 54,
+    "key": "GR_ML_SCI_OF#00054",
+    "text": "[GRUFF] i've kept people alive with less. [CALM] not better. just less",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "complaint"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 55,
+    "key": "GR_ML_SCI_OF#00055",
+    "text": "[NERVOUS] temperature rising in life support. [EMPHASIS] we need to find the heat source before it cascades",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "location": [
+        "life_support"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "life_support_failure"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 56,
+    "key": "GR_ML_SCI_OF#00056",
+    "text": "[DRY] the good news is you're not dying today. [DEADPAN] the bad news is tomorrow's still open",
+    "type": "reply",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "greeting",
+      "smalltalk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 57,
+    "key": "GR_ML_SCI_OF#00057",
+    "text": "[GRUFF] request help. [CALM] that means you're finally thinking straight",
+    "type": "reply",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "SCI",
+        "ENG"
+      ]
+    },
+    "reply_to_intents": [
+      "request_help",
+      "work_talk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 58,
+    "key": "GR_ML_SCI_OF#00058",
+    "text": "[GRIM] Valdez was supposed to be here. [SIGHS] instead i'm saying his name into the void",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 14,
+      "mood": [
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 59,
+    "key": "GR_ML_SCI_OF#00059",
+    "text": "[CALM] the medbay's ready for casualties. [GRUFF] i hope i don't have to use it",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "location": [
+        "medbay"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "combat"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 60,
+    "key": "GR_ML_SCI_OF#00060",
+    "text": "[EMPHASIS] something's not adding up. [SUSPICIOUS] the AI's readings don't match what i'm seeing",
+    "type": "opener",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "location": [
+        "medbay"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 61,
+    "key": "GR_ML_SCI_OF#00061",
+    "text": "[TIRED] i used to believe in recovery. [DEADPAN] now i settle for survival",
+    "type": "reply",
+    "intent": "memory",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "mood": [
+        "low"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "smalltalk",
+      "banter"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 62,
+    "key": "GR_ML_SCI_OF#00062",
+    "text": "[GRUFF] blood work doesn't lie. [CALM] people do. all the time",
+    "type": "reply",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "reassurance",
+      "banter"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 63,
+    "key": "GR_ML_SCI_OF#00063",
+    "text": "[NERVOUS] the infection's spreading faster than containment. [EMPHASIS] we're losing this one",
+    "type": "reply",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 14,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "disease_outbreak"
+      ]
+    },
+    "reply_to_intents": [
+      "warning",
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 64,
+    "key": "GR_ML_SCI_OF#00064",
+    "text": "[CALM] offer help. [DEADPAN] that usually means you want something worse than what's already happening",
+    "type": "reply",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "offer_help",
+      "work_talk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 65,
+    "key": "GR_ML_SCI_OF#00065",
+    "text": "[RESIGNED] this injury's going to slow you down. [GRUFF] not as much as death would",
+    "type": "opener",
+    "intent": "pain",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "location": [
+        "medbay"
+      ],
+      "target": [
+        "any"
+      ],
+      "wounded": true
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 66,
+    "key": "GR_ML_SCI_OF#00066",
+    "text": "[GRUFF] everyone panics. [CALM] the ones who survive are the ones who panic quietly",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "doubt"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 67,
+    "key": "GR_ML_SCI_OF#00067",
+    "text": "[CALM] systems holding. [DEADPAN] for now. everything's temporary on a failing ship",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 68,
+    "key": "GR_ML_SCI_OF#00068",
+    "text": "[DRY] you're asking about the captain. [GRUFF] the captain's making decisions i wouldn't make",
+    "type": "reply",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "smalltalk",
+      "banter"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 69,
+    "key": "GR_ML_SCI_OF#00069",
+    "text": "[EMPHASIS] multiple failures converging. [NERVOUS] this is the moment where it all unravels",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 10,
+      "stress_max": 15,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 70,
+    "key": "GR_ML_SCI_OF#00070",
+    "text": "[CALM] the AI's suggestion has merit. [GRUFF] doesn't mean i like relying on it",
+    "type": "reply",
+    "intent": "praise_ai",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "work_talk",
+      "status_report"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 71,
+    "key": "GR_ML_SCI_OF#00071",
+    "text": "[GRUFF] you want my opinion. [DRY] that's your first mistake",
+    "type": "opener",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 72,
+    "key": "GR_ML_SCI_OF#00072",
+    "text": "[TIRED] another shift. [DEADPAN] last shift felt longer. maybe i'm getting numb to it",
+    "type": "declaration",
+    "intent": "complaint",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "mood": [
+        "low"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "shift_start"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 73,
+    "key": "GR_ML_SCI_OF#00073",
+    "text": "[CALM] structural integrity failing. [URGENT] the walls aren't going to hold much longer",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "location": [
+        "corridor"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "hull_breach"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 74,
+    "key": "GR_ML_SCI_OF#00074",
+    "text": "[DEADPAN] you're making a joke. [GRUFF] the fact that you can still joke means you'll probably survive",
+    "type": "reply",
+    "intent": "gallows_humor",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "banter",
+      "gallows_humor"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 75,
+    "key": "GR_ML_SCI_OF#00075",
+    "text": "[GRUFF] you've got questions. [CALM] i've got answers. most of them are bad",
+    "type": "opener",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "location": [
+        "bridge"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 76,
+    "key": "GR_ML_SCI_OF#00076",
+    "text": "[GRIM] loss of consciousness coming. [EMPHASIS] whoever this is, i know what's happening next",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 10,
+      "stress_max": 15,
+      "mood": [
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "injury"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 77,
+    "key": "GR_ML_SCI_OF#00077",
+    "text": "[CALM] something wrong with the readings. [SUSPICIOUS] the AI should have caught that",
+    "type": "reply",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "status_report",
+      "work_talk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 78,
+    "key": "GR_ML_SCI_OF#00078",
+    "text": "[DEADPAN] the disease is winning. [CALM] which means we have maybe six hours before it spreads beyond containment",
+    "type": "declaration",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 14,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "disease_outbreak"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 79,
+    "key": "GR_ML_SCI_OF#00079",
+    "text": "[GRUFF] you survived. [CALM] that makes you statistically interesting",
+    "type": "closer",
+    "intent": "praise_ai",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "work_talk",
+      "acknowledgment"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 80,
+    "key": "GR_ML_SCI_OF#00080",
+    "text": "[NERVOUS] i'm at the edge of what i can do. [EMPHASIS] the rest is luck",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 14,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 81,
+    "key": "GR_ML_SCI_OF#00081",
+    "text": "[DRY] you want reassurance. [GRUFF] the honest kind is: i don't know if you'll make it",
+    "type": "reply",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "pain"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 82,
+    "key": "GR_ML_SCI_OF#00082",
+    "text": "[CALM] door seals locked down. [DEADPAN] whatever's on the far side of that door isn't coming back",
+    "type": "declaration",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "door_locked_on_crew"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 83,
+    "key": "GR_ML_SCI_OF#00083",
+    "text": "[GRUFF] you want to know if it hurts. [CALM] yes. but the alternative hurts worse",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "wounded": true,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "pain",
+      "complaint"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 84,
+    "key": "GR_ML_SCI_OF#00084",
+    "text": "[TIRED] another name. [SIGHS] i'll find space in the list",
+    "type": "reply",
+    "intent": "memory",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "mood": [
+        "grim"
+      ],
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "crew_death"
+      ]
+    },
+    "reply_to_intents": [
+      "grief",
+      "memory"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 85,
+    "key": "GR_ML_SCI_OF#00085",
+    "text": "[EMPHASIS] nobody gets out of this unscathed. [CALM] the best we do is limp through",
+    "type": "opener",
+    "intent": "warning",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 86,
+    "key": "GR_ML_SCI_OF#00086",
+    "text": "[DEADPAN] you're asking about the android. [GRUFF] can't infect something that doesn't breathe",
+    "type": "reply",
+    "intent": "work_talk",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "AND",
+        "SCI"
+      ]
+    },
+    "reply_to_intents": [
+      "smalltalk",
+      "work_talk"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 87,
+    "key": "GR_ML_SCI_OF#00087",
+    "text": "[CALM] i've triage'd worse than this. [GRUFF] that ship didn't make it either",
+    "type": "reply",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 12,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "warning"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 88,
+    "key": "GR_ML_SCI_OF#00088",
+    "text": "[GRUFF] you want honesty. [DEADPAN] you're stable. that's as good as it gets right now",
+    "type": "closer",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ],
+      "wounded": true
+    },
+    "reply_to_intents": [
+      "pain",
+      "fear_vent"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 89,
+    "key": "GR_ML_SCI_OF#00089",
+    "text": "[NERVOUS] cascading failures. [EMPHASIS] this is the moment everything stops pretending it's going to hold",
+    "type": "declaration",
+    "intent": "fear_vent",
+    "conditions": {
+      "stress_min": 11,
+      "stress_max": 16,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 90,
+    "key": "GR_ML_SCI_OF#00090",
+    "text": "[CALM] repair's holding. [DEADPAN] until it doesn't. which could be hours. could be minutes",
+    "type": "declaration",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "repair_success"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 91,
+    "key": "GR_ML_SCI_OF#00091",
+    "text": "[DRY] you want to be useful. [CALM] sit still. not getting worse is useful",
+    "type": "reply",
+    "intent": "banter",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "location": [
+        "medbay"
+      ],
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "offer_help",
+      "banter"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 92,
+    "key": "GR_ML_SCI_OF#00092",
+    "text": "[GRUFF] you're asking about hope. [DEADPAN] hope is what gets people killed. i prefer pragmatism",
+    "type": "reply",
+    "intent": "doubt",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "reassurance",
+      "banter"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 93,
+    "key": "GR_ML_SCI_OF#00093",
+    "text": "[CALM] crisis is over. [DEADPAN] the cost is being tallied. i can feel it",
+    "type": "closer",
+    "intent": "status_report",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "crisis_resolved"
+      ]
+    },
+    "reply_to_intents": [
+      "status_report",
+      "acknowledgment"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 94,
+    "key": "GR_ML_SCI_OF#00094",
+    "text": "[GRUFF] you want to discuss the meal. [CALM] it's either better than yesterday or i'm losing my taste",
+    "type": "reply",
+    "intent": "smalltalk",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "location": [
+        "mess"
+      ],
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "meal_time"
+      ]
+    },
+    "reply_to_intents": [
+      "smalltalk",
+      "greeting"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 95,
+    "key": "GR_ML_SCI_OF#00095",
+    "text": "[DEADPAN] the shift's done. [CALM] everyone's still breathing. [GRUFF] that's enough for today",
+    "type": "closer",
+    "intent": "farewell",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "shift_end"
+      ]
+    },
+    "reply_to_intents": [
+      "farewell",
+      "greeting"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 96,
+    "key": "GR_ML_SCI_OF#00096",
+    "text": "[EMPHASIS] quiet shifts are the ones before the bad ones. [GRUFF] i never trust quiet",
+    "type": "reply",
+    "intent": "suspicion_ai",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "any"
+      ],
+      "recent_events": [
+        "quiet_shift"
+      ]
+    },
+    "reply_to_intents": [
+      "smalltalk",
+      "greeting"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 97,
+    "key": "GR_ML_SCI_OF#00097",
+    "text": "[CALM] everyone's injuries documented. [DEADPAN] everyone's in my records. permanently",
+    "type": "declaration",
+    "intent": "acknowledgment",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "location": [
+        "medbay"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "injury"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 98,
+    "key": "GR_ML_SCI_OF#00098",
+    "text": "[GRUFF] you're trying to survive. [CALM] that's smarter than most people. stick with that",
+    "type": "reply",
+    "intent": "praise_ai",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 10,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "work_talk",
+      "status_report"
+    ],
+    "weight": 1.0
+  },
+  {
+    "id": 99,
+    "key": "GR_ML_SCI_OF#00099",
+    "text": "[RESIGNED] the list gets longer. [SIGHS] it always does. i just keep adding names",
+    "type": "declaration",
+    "intent": "grief",
+    "conditions": {
+      "stress_min": 8,
+      "stress_max": 13,
+      "mood": [
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 100,
+    "key": "GR_ML_SCI_OF#00100",
+    "text": "[CALM] i'm still here. [GRUFF] that's the only promise i can make anymore",
+    "type": "closer",
+    "intent": "reassurance",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "any"
+      ]
+    },
+    "reply_to_intents": [
+      "fear_vent",
+      "doubt"
+    ],
+    "weight": 1.0
   }
 ]
