@@ -1230,6 +1230,4860 @@
           "pose": "standing idle, arms relaxed at sides, feet shoulder-width apart"
         }
       ]
+    },
+    "walk_e_ne": {
+      "id": "walk_e_ne",
+      "state": "walk",
+      "grid": [
+        4,
+        2
+      ],
+      "contract": "stand",
+      "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, simplified featureless face, short dark cropped hair -- bare-headed in every single cell of the sheet, exactly the same haircut each time. Never wearing any cap, hat, hood, helmet, or other headwear in any cell, even from behind or from a three-quarter-back angle -- headwear choice must not vary from pose to pose. A 4-frame walk cycle, small flat contact shadow under the forward foot each frame, no floor tile, no platform. Arrange the sheet as EXACTLY 4 equal columns by 2 equal rows in a strict uniform grid -- EXACTLY 8 cells total, no more and no fewer, EXACTLY 4 characters per row (count them: one, two, three, four), EXACTLY 2 rows (reading order left-to-right then top-to-bottom). Do NOT add an extra in-between pose anywhere -- there are only 8 poses listed below and the sheet must contain precisely those 8, nothing added. Each cell contains exactly ONE full-body pose of the SAME character -- identical jumpsuit color and trim, identical hair/cap, identical body proportions, identical cel-shading and outline weight in every cell, only the pose/facing changes as listed below. Leave a wide clear empty transparent gap of at least one head-width between adjacent cells in every row so no cell's subject overlaps or touches a neighboring cell's subject. Do not draw grid lines, cell borders, or dividers -- only empty transparent space separates the cells. Cells, in reading order:\n  Cell (row 1, col 1): walking mid-stride, left leg forward, right arm forward, facing right (east), full side profile.\n  Cell (row 1, col 2): walking with legs passing together (contact pose), weight centered, facing right (east), full side profile.\n  Cell (row 1, col 3): walking mid-stride, right leg forward, left arm forward, facing right (east), full side profile.\n  Cell (row 1, col 4): walking with legs passing together (contact pose), weight centered, mirrored arm swing from the previous pose, facing right (east), full side profile.\n  Cell (row 2, col 1): walking mid-stride, left leg forward, right arm forward, facing toward upper-right (northeast, three-quarter back).\n  Cell (row 2, col 2): walking with legs passing together (contact pose), weight centered, facing toward upper-right (northeast, three-quarter back).\n  Cell (row 2, col 3): walking mid-stride, right leg forward, left arm forward, facing toward upper-right (northeast, three-quarter back).\n  Cell (row 2, col 4): walking with legs passing together (contact pose), weight centered, mirrored arm swing from the previous pose, facing toward upper-right (northeast, three-quarter back). Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+      "usage": {
+        "prompt_tokens": 1219,
+        "completion_tokens": 6208,
+        "total_tokens": 7427,
+        "cost": 0.0527115,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.0527115,
+          "upstream_inference_prompt_cost": 0.0030475,
+          "upstream_inference_completions_cost": 0.049664
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 6208
+        }
+      },
+      "raw_path": "assets\\sprites\\gen2\\crew\\_raw_walk_e_ne.png",
+      "sliced_with_auto_detection": false,
+      "cells": [
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              230,
+              413
+            ],
+            "source_size": [
+              230,
+              413
+            ],
+            "scale": [
+              0.1694915254237288,
+              0.1694915254237288
+            ],
+            "target_bbox": [
+              236,
+              250,
+              275,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              236,
+              250,
+              275,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_walk_e_0.png",
+          "facing": "e",
+          "frame": "0",
+          "pose": "walking mid-stride, left leg forward, right arm forward"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              217,
+              413
+            ],
+            "source_size": [
+              217,
+              413
+            ],
+            "scale": [
+              0.1694915254237288,
+              0.1694915254237288
+            ],
+            "target_bbox": [
+              238,
+              250,
+              275,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              238,
+              250,
+              275,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_walk_e_1.png",
+          "facing": "e",
+          "frame": "1",
+          "pose": "walking with legs passing together (contact pose), weight centered"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              345,
+              413
+            ],
+            "source_size": [
+              345,
+              413
+            ],
+            "scale": [
+              0.1694915254237288,
+              0.1694915254237288
+            ],
+            "target_bbox": [
+              227,
+              250,
+              285,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              227,
+              250,
+              285,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_walk_e_2.png",
+          "facing": "e",
+          "frame": "2",
+          "pose": "walking mid-stride, right leg forward, left arm forward"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              150,
+              413
+            ],
+            "source_size": [
+              150,
+              413
+            ],
+            "scale": [
+              0.1694915254237288,
+              0.1694915254237288
+            ],
+            "target_bbox": [
+              244,
+              250,
+              269,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              244,
+              250,
+              269,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_walk_e_3.png",
+          "facing": "e",
+          "frame": "3",
+          "pose": "walking with legs passing together (contact pose), weight centered, mirrored arm swing from the previous pose"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              195,
+              410
+            ],
+            "source_size": [
+              195,
+              410
+            ],
+            "scale": [
+              0.17073170731707318,
+              0.17073170731707318
+            ],
+            "target_bbox": [
+              240,
+              250,
+              273,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              240,
+              250,
+              273,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_walk_ne_0.png",
+          "facing": "ne",
+          "frame": "0",
+          "pose": "walking mid-stride, left leg forward, right arm forward"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              195,
+              411
+            ],
+            "source_size": [
+              195,
+              411
+            ],
+            "scale": [
+              0.170316301703163,
+              0.170316301703163
+            ],
+            "target_bbox": [
+              240,
+              250,
+              273,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              240,
+              250,
+              273,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_walk_ne_1.png",
+          "facing": "ne",
+          "frame": "1",
+          "pose": "walking with legs passing together (contact pose), weight centered"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              345,
+              411
+            ],
+            "source_size": [
+              345,
+              411
+            ],
+            "scale": [
+              0.170316301703163,
+              0.170316301703163
+            ],
+            "target_bbox": [
+              226,
+              250,
+              285,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              226,
+              250,
+              285,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_walk_ne_2.png",
+          "facing": "ne",
+          "frame": "2",
+          "pose": "walking mid-stride, right leg forward, left arm forward"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              138,
+              411
+            ],
+            "source_size": [
+              138,
+              411
+            ],
+            "scale": [
+              0.170316301703163,
+              0.170316301703163
+            ],
+            "target_bbox": [
+              244,
+              250,
+              268,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              244,
+              250,
+              268,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_walk_ne_3.png",
+          "facing": "ne",
+          "frame": "3",
+          "pose": "walking with legs passing together (contact pose), weight centered, mirrored arm swing from the previous pose"
+        }
+      ]
+    },
+    "walk_n_nw": {
+      "id": "walk_n_nw",
+      "state": "walk",
+      "grid": [
+        4,
+        2
+      ],
+      "contract": "stand",
+      "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, simplified featureless face, short dark cropped hair -- bare-headed in every single cell of the sheet, exactly the same haircut each time. Never wearing any cap, hat, hood, helmet, or other headwear in any cell, even from behind or from a three-quarter-back angle -- headwear choice must not vary from pose to pose. A 4-frame walk cycle, small flat contact shadow under the forward foot each frame, no floor tile, no platform. Arrange the sheet as EXACTLY 4 equal columns by 2 equal rows in a strict uniform grid -- EXACTLY 8 cells total, no more and no fewer, EXACTLY 4 characters per row (count them: one, two, three, four), EXACTLY 2 rows (reading order left-to-right then top-to-bottom). Do NOT add an extra in-between pose anywhere -- there are only 8 poses listed below and the sheet must contain precisely those 8, nothing added. Each cell contains exactly ONE full-body pose of the SAME character -- identical jumpsuit color and trim, identical hair/cap, identical body proportions, identical cel-shading and outline weight in every cell, only the pose/facing changes as listed below. Leave a wide clear empty transparent gap of at least one head-width between adjacent cells in every row so no cell's subject overlaps or touches a neighboring cell's subject. Do not draw grid lines, cell borders, or dividers -- only empty transparent space separates the cells. Cells, in reading order:\n  Cell (row 1, col 1): walking mid-stride, left leg forward, right arm forward, facing away from the camera (north/back view).\n  Cell (row 1, col 2): walking with legs passing together (contact pose), weight centered, facing away from the camera (north/back view).\n  Cell (row 1, col 3): walking mid-stride, right leg forward, left arm forward, facing away from the camera (north/back view).\n  Cell (row 1, col 4): walking with legs passing together (contact pose), weight centered, mirrored arm swing from the previous pose, facing away from the camera (north/back view).\n  Cell (row 2, col 1): walking mid-stride, left leg forward, right arm forward, facing toward upper-left (northwest, three-quarter back).\n  Cell (row 2, col 2): walking with legs passing together (contact pose), weight centered, facing toward upper-left (northwest, three-quarter back).\n  Cell (row 2, col 3): walking mid-stride, right leg forward, left arm forward, facing toward upper-left (northwest, three-quarter back).\n  Cell (row 2, col 4): walking with legs passing together (contact pose), weight centered, mirrored arm swing from the previous pose, facing toward upper-left (northwest, three-quarter back). Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+      "usage": {
+        "prompt_tokens": 1219,
+        "completion_tokens": 6208,
+        "total_tokens": 7427,
+        "cost": 0.0527115,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.0527115,
+          "upstream_inference_prompt_cost": 0.0030475,
+          "upstream_inference_completions_cost": 0.049664
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 6208
+        }
+      },
+      "raw_path": "assets\\sprites\\gen2\\crew\\_raw_walk_n_nw.png",
+      "sliced_with_auto_detection": false,
+      "cells": [
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              148,
+              384
+            ],
+            "source_size": [
+              148,
+              384
+            ],
+            "scale": [
+              0.18229166666666666,
+              0.18229166666666666
+            ],
+            "target_bbox": [
+              242,
+              250,
+              269,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              242,
+              250,
+              269,
+              319
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_walk_n_0.png",
+          "facing": "n",
+          "frame": "0",
+          "pose": "walking mid-stride, left leg forward, right arm forward"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              149,
+              384
+            ],
+            "source_size": [
+              149,
+              384
+            ],
+            "scale": [
+              0.18229166666666666,
+              0.18229166666666666
+            ],
+            "target_bbox": [
+              242,
+              250,
+              269,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              242,
+              250,
+              269,
+              319
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_walk_n_1.png",
+          "facing": "n",
+          "frame": "1",
+          "pose": "walking with legs passing together (contact pose), weight centered"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              345,
+              384
+            ],
+            "source_size": [
+              345,
+              384
+            ],
+            "scale": [
+              0.18229166666666666,
+              0.18229166666666666
+            ],
+            "target_bbox": [
+              224,
+              250,
+              287,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              224,
+              250,
+              287,
+              319
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_walk_n_2.png",
+          "facing": "n",
+          "frame": "2",
+          "pose": "walking mid-stride, right leg forward, left arm forward"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              77,
+              384
+            ],
+            "source_size": [
+              77,
+              384
+            ],
+            "scale": [
+              0.18229166666666666,
+              0.18229166666666666
+            ],
+            "target_bbox": [
+              249,
+              250,
+              263,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              249,
+              250,
+              263,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_walk_n_3.png",
+          "facing": "n",
+          "frame": "3",
+          "pose": "walking with legs passing together (contact pose), weight centered, mirrored arm swing from the previous pose"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              157,
+              386
+            ],
+            "source_size": [
+              157,
+              386
+            ],
+            "scale": [
+              0.18134715025906736,
+              0.18134715025906736
+            ],
+            "target_bbox": [
+              242,
+              250,
+              270,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              242,
+              250,
+              270,
+              319
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_walk_nw_0.png",
+          "facing": "nw",
+          "frame": "0",
+          "pose": "walking mid-stride, left leg forward, right arm forward"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              168,
+              384
+            ],
+            "source_size": [
+              168,
+              384
+            ],
+            "scale": [
+              0.18229166666666666,
+              0.18229166666666666
+            ],
+            "target_bbox": [
+              240,
+              250,
+              271,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              240,
+              250,
+              271,
+              318
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_walk_nw_1.png",
+          "facing": "nw",
+          "frame": "1",
+          "pose": "walking with legs passing together (contact pose), weight centered"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              345,
+              385
+            ],
+            "source_size": [
+              345,
+              385
+            ],
+            "scale": [
+              0.18181818181818182,
+              0.18181818181818182
+            ],
+            "target_bbox": [
+              224,
+              250,
+              287,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              224,
+              250,
+              287,
+              319
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_walk_nw_2.png",
+          "facing": "nw",
+          "frame": "2",
+          "pose": "walking mid-stride, right leg forward, left arm forward"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              88,
+              386
+            ],
+            "source_size": [
+              88,
+              386
+            ],
+            "scale": [
+              0.18134715025906736,
+              0.18134715025906736
+            ],
+            "target_bbox": [
+              248,
+              250,
+              264,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [
+              "bbox (248, 250, 264, 316) != normalization target [248, 250, 264, 320] (+-2)"
+            ],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              248,
+              250,
+              264,
+              316
+            ],
+            "anchored_ok": false,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": false
+          },
+          "file": "crew_walk_nw_3.png",
+          "facing": "nw",
+          "frame": "3",
+          "pose": "walking with legs passing together (contact pose), weight centered, mirrored arm swing from the previous pose"
+        }
+      ]
+    },
+    "walk_w_sw": {
+      "id": "walk_w_sw",
+      "state": "walk",
+      "grid": [
+        4,
+        2
+      ],
+      "contract": "stand",
+      "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, simplified featureless face, short dark cropped hair -- bare-headed in every single cell of the sheet, exactly the same haircut each time. Never wearing any cap, hat, hood, helmet, or other headwear in any cell, even from behind or from a three-quarter-back angle -- headwear choice must not vary from pose to pose. A 4-frame walk cycle, small flat contact shadow under the forward foot each frame, no floor tile, no platform. Arrange the sheet as EXACTLY 4 equal columns by 2 equal rows in a strict uniform grid -- EXACTLY 8 cells total, no more and no fewer, EXACTLY 4 characters per row (count them: one, two, three, four), EXACTLY 2 rows (reading order left-to-right then top-to-bottom). Do NOT add an extra in-between pose anywhere -- there are only 8 poses listed below and the sheet must contain precisely those 8, nothing added. Each cell contains exactly ONE full-body pose of the SAME character -- identical jumpsuit color and trim, identical hair/cap, identical body proportions, identical cel-shading and outline weight in every cell, only the pose/facing changes as listed below. Leave a wide clear empty transparent gap of at least one head-width between adjacent cells in every row so no cell's subject overlaps or touches a neighboring cell's subject. Do not draw grid lines, cell borders, or dividers -- only empty transparent space separates the cells. Cells, in reading order:\n  Cell (row 1, col 1): walking mid-stride, left leg forward, right arm forward, facing left (west), full side profile.\n  Cell (row 1, col 2): walking with legs passing together (contact pose), weight centered, facing left (west), full side profile.\n  Cell (row 1, col 3): walking mid-stride, right leg forward, left arm forward, facing left (west), full side profile.\n  Cell (row 1, col 4): walking with legs passing together (contact pose), weight centered, mirrored arm swing from the previous pose, facing left (west), full side profile.\n  Cell (row 2, col 1): walking mid-stride, left leg forward, right arm forward, facing toward lower-left (southwest, three-quarter front).\n  Cell (row 2, col 2): walking with legs passing together (contact pose), weight centered, facing toward lower-left (southwest, three-quarter front).\n  Cell (row 2, col 3): walking mid-stride, right leg forward, left arm forward, facing toward lower-left (southwest, three-quarter front).\n  Cell (row 2, col 4): walking with legs passing together (contact pose), weight centered, mirrored arm swing from the previous pose, facing toward lower-left (southwest, three-quarter front). Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+      "usage": {
+        "prompt_tokens": 1215,
+        "completion_tokens": 6208,
+        "total_tokens": 7423,
+        "cost": 0.0527015,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.0527015,
+          "upstream_inference_prompt_cost": 0.0030375,
+          "upstream_inference_completions_cost": 0.049664
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 6208
+        }
+      },
+      "raw_path": "assets\\sprites\\gen2\\crew\\_raw_walk_w_sw.png",
+      "sliced_with_auto_detection": false,
+      "cells": [
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              210,
+              419
+            ],
+            "source_size": [
+              210,
+              419
+            ],
+            "scale": [
+              0.16706443914081145,
+              0.16706443914081145
+            ],
+            "target_bbox": [
+              238,
+              250,
+              273,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              238,
+              250,
+              273,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 3.35,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_walk_w_0.png",
+          "facing": "w",
+          "frame": "0",
+          "pose": "walking mid-stride, left leg forward, right arm forward"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              190,
+              419
+            ],
+            "source_size": [
+              190,
+              419
+            ],
+            "scale": [
+              0.16706443914081145,
+              0.16706443914081145
+            ],
+            "target_bbox": [
+              240,
+              250,
+              272,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              240,
+              250,
+              272,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.7,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_walk_w_1.png",
+          "facing": "w",
+          "frame": "1",
+          "pose": "walking with legs passing together (contact pose), weight centered"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              345,
+              419
+            ],
+            "source_size": [
+              345,
+              419
+            ],
+            "scale": [
+              0.16706443914081145,
+              0.16706443914081145
+            ],
+            "target_bbox": [
+              227,
+              250,
+              285,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              227,
+              250,
+              285,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 1.37,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_walk_w_2.png",
+          "facing": "w",
+          "frame": "2",
+          "pose": "walking mid-stride, right leg forward, left arm forward"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              171,
+              419
+            ],
+            "source_size": [
+              171,
+              419
+            ],
+            "scale": [
+              0.16706443914081145,
+              0.16706443914081145
+            ],
+            "target_bbox": [
+              242,
+              250,
+              271,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              242,
+              250,
+              271,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.87,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_walk_w_3.png",
+          "facing": "w",
+          "frame": "3",
+          "pose": "walking with legs passing together (contact pose), weight centered, mirrored arm swing from the previous pose"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              209,
+              418
+            ],
+            "source_size": [
+              209,
+              418
+            ],
+            "scale": [
+              0.1674641148325359,
+              0.1674641148325359
+            ],
+            "target_bbox": [
+              238,
+              250,
+              273,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              238,
+              250,
+              273,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 2.19,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_walk_sw_0.png",
+          "facing": "sw",
+          "frame": "0",
+          "pose": "walking mid-stride, left leg forward, right arm forward"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              214,
+              419
+            ],
+            "source_size": [
+              214,
+              419
+            ],
+            "scale": [
+              0.16706443914081145,
+              0.16706443914081145
+            ],
+            "target_bbox": [
+              238,
+              250,
+              274,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              238,
+              250,
+              274,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.55,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_walk_sw_1.png",
+          "facing": "sw",
+          "frame": "1",
+          "pose": "walking with legs passing together (contact pose), weight centered"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              202,
+              418
+            ],
+            "source_size": [
+              202,
+              418
+            ],
+            "scale": [
+              0.1674641148325359,
+              0.1674641148325359
+            ],
+            "target_bbox": [
+              239,
+              250,
+              273,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              239,
+              250,
+              273,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 2.35,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_walk_sw_2.png",
+          "facing": "sw",
+          "frame": "2",
+          "pose": "walking mid-stride, right leg forward, left arm forward"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              172,
+              417
+            ],
+            "source_size": [
+              172,
+              417
+            ],
+            "scale": [
+              0.16786570743405277,
+              0.16786570743405277
+            ],
+            "target_bbox": [
+              242,
+              250,
+              271,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              242,
+              250,
+              271,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 3.2,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_walk_sw_3.png",
+          "facing": "sw",
+          "frame": "3",
+          "pose": "walking with legs passing together (contact pose), weight centered, mirrored arm swing from the previous pose"
+        }
+      ]
+    },
+    "sleeping": {
+      "id": "sleeping",
+      "state": "sleeping",
+      "grid": [
+        2,
+        1
+      ],
+      "contract": "prone",
+      "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, simplified featureless face, short dark cropped hair -- bare-headed in every single cell of the sheet, exactly the same haircut each time. Never wearing any cap, hat, hood, helmet, or other headwear in any cell, even from behind or from a three-quarter-back angle -- headwear choice must not vary from pose to pose. Lying flat on their back in a bunk, seen from the side, eyes closed, arms resting at the sides, a 2-frame breathing loop (chest rises and falls slightly between frames), no bunk/bed furniture drawn -- only the character and a small flat contact shadow beneath them, no floor tile, no platform. Arrange the sheet as EXACTLY 2 equal columns by 1 equal rows in a strict uniform grid -- EXACTLY 2 cells total, no more and no fewer, EXACTLY 2 characters per row (count them: one, two), EXACTLY 1 rows (reading order left-to-right then top-to-bottom). Do NOT add an extra in-between pose anywhere -- there are only 2 poses listed below and the sheet must contain precisely those 2, nothing added. Each cell contains exactly ONE full-body pose of the SAME character -- identical jumpsuit color and trim, identical hair/cap, identical body proportions, identical cel-shading and outline weight in every cell, only the pose/facing changes as listed below. Leave a wide clear empty transparent gap of at least one head-width between adjacent cells in every row so no cell's subject overlaps or touches a neighboring cell's subject. Do not draw grid lines, cell borders, or dividers -- only empty transparent space separates the cells. Cells, in reading order:\n  Cell (row 1, col 1): lying down, chest at rest (breathing out), facing right (east), full side profile.\n  Cell (row 1, col 2): lying down, chest slightly raised (breathing in), facing right (east), full side profile. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+      "usage": {
+        "prompt_tokens": 1026,
+        "completion_tokens": 6208,
+        "total_tokens": 7234,
+        "cost": 0.052229,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.052229,
+          "upstream_inference_prompt_cost": 0.002565,
+          "upstream_inference_completions_cost": 0.049664
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 6208
+        }
+      },
+      "raw_path": "assets\\sprites\\gen2\\crew\\_raw_sleeping.png",
+      "sliced_with_auto_detection": false,
+      "cells": [
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              603,
+              466
+            ],
+            "source_size": [
+              603,
+              466
+            ],
+            "scale": [
+              0.20386266094420602,
+              0.20386266094420602
+            ],
+            "target_bbox": [
+              194,
+              225,
+              317,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              194,
+              225,
+              317,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_sleeping_e_0.png",
+          "facing": "e",
+          "frame": "0",
+          "pose": "lying down, chest at rest (breathing out)"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              547,
+              470
+            ],
+            "source_size": [
+              547,
+              470
+            ],
+            "scale": [
+              0.20212765957446807,
+              0.20212765957446807
+            ],
+            "target_bbox": [
+              200,
+              225,
+              311,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              200,
+              225,
+              311,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_sleeping_e_1.png",
+          "facing": "e",
+          "frame": "1",
+          "pose": "lying down, chest slightly raised (breathing in)"
+        }
+      ]
+    },
+    "dead": {
+      "id": "dead",
+      "state": "dead",
+      "grid": [
+        2,
+        1
+      ],
+      "contract": "prone",
+      "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, simplified featureless face, short dark cropped hair -- bare-headed in every single cell of the sheet, exactly the same haircut each time. Never wearing any cap, hat, hood, helmet, or other headwear in any cell, even from behind or from a three-quarter-back angle -- headwear choice must not vary from pose to pose. A collapsed, motionless body on the ground, two distinct death poses, small flat contact shadow, no floor tile, no platform. Arrange the sheet as EXACTLY 2 equal columns by 1 equal rows in a strict uniform grid -- EXACTLY 2 cells total, no more and no fewer, EXACTLY 2 characters per row (count them: one, two), EXACTLY 1 rows (reading order left-to-right then top-to-bottom). Do NOT add an extra in-between pose anywhere -- there are only 2 poses listed below and the sheet must contain precisely those 2, nothing added. Each cell contains exactly ONE full-body pose of the SAME character -- identical jumpsuit color and trim, identical hair/cap, identical body proportions, identical cel-shading and outline weight in every cell, only the pose/facing changes as listed below. Leave a wide clear empty transparent gap of at least one head-width between adjacent cells in every row so no cell's subject overlaps or touches a neighboring cell's subject. Do not draw grid lines, cell borders, or dividers -- only empty transparent space separates the cells. Cells, in reading order:\n  Cell (row 1, col 1): sprawled face-up, limbs splayed outward, motionless, facing the camera (south/front view).\n  Cell (row 1, col 2): slumped face-down, one arm tucked under the body, motionless, side view, facing the camera (south/front view). Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+      "usage": {
+        "prompt_tokens": 994,
+        "completion_tokens": 6208,
+        "total_tokens": 7202,
+        "cost": 0.052149,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.052149,
+          "upstream_inference_prompt_cost": 0.002485,
+          "upstream_inference_completions_cost": 0.049664
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 6208
+        }
+      },
+      "raw_path": "assets\\sprites\\gen2\\crew\\_raw_dead.png",
+      "sliced_with_auto_detection": true,
+      "cells": [
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              695,
+              414
+            ],
+            "source_size": [
+              695,
+              414
+            ],
+            "scale": [
+              0.22946859903381642,
+              0.22946859903381642
+            ],
+            "target_bbox": [
+              176,
+              225,
+              335,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              176,
+              225,
+              335,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_dead_s_0.png",
+          "facing": "s",
+          "frame": "0",
+          "pose": "sprawled face-up, limbs splayed outward, motionless"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              558,
+              312
+            ],
+            "source_size": [
+              558,
+              312
+            ],
+            "scale": [
+              0.2867383512544803,
+              0.2867383512544803
+            ],
+            "target_bbox": [
+              176,
+              231,
+              336,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              176,
+              231,
+              336,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_dead_s_1.png",
+          "facing": "s",
+          "frame": "1",
+          "pose": "slumped face-down, one arm tucked under the body, motionless, side view"
+        }
+      ]
+    },
+    "injured_walk_s_e": {
+      "id": "injured_walk_s_e",
+      "state": "injured_walk",
+      "grid": [
+        4,
+        2
+      ],
+      "contract": "stand",
+      "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, simplified featureless face, short dark cropped hair -- bare-headed in every single cell of the sheet, exactly the same haircut each time. Never wearing any cap, hat, hood, helmet, or other headwear in any cell, even from behind or from a three-quarter-back angle -- headwear choice must not vary from pose to pose. A 4-frame limping walk cycle for an injured crew member, small flat contact shadow under the forward foot each frame, no floor tile, no platform. Arrange the sheet as EXACTLY 4 equal columns by 2 equal rows in a strict uniform grid -- EXACTLY 8 cells total, no more and no fewer, EXACTLY 4 characters per row (count them: one, two, three, four), EXACTLY 2 rows (reading order left-to-right then top-to-bottom). Do NOT add an extra in-between pose anywhere -- there are only 8 poses listed below and the sheet must contain precisely those 8, nothing added. Each cell contains exactly ONE full-body pose of the SAME character -- identical jumpsuit color and trim, identical hair/cap, identical body proportions, identical cel-shading and outline weight in every cell, only the pose/facing changes as listed below. Leave a wide clear empty transparent gap of at least one head-width between adjacent cells in every row so no cell's subject overlaps or touches a neighboring cell's subject. Do not draw grid lines, cell borders, or dividers -- only empty transparent space separates the cells. Cells, in reading order:\n  Cell (row 1, col 1): limping walk, favoring the left leg, hunched forward slightly, one hand clutching the side, facing the camera (south/front view).\n  Cell (row 1, col 2): limping walk, weight on the right leg, hunched forward slightly, one hand clutching the side, facing the camera (south/front view).\n  Cell (row 1, col 3): limping walk, dragging the left leg, hunched forward slightly, one hand clutching the side, facing the camera (south/front view).\n  Cell (row 1, col 4): limping walk, weight recovering on the right leg, hunched forward slightly, one hand clutching the side, facing the camera (south/front view).\n  Cell (row 2, col 1): limping walk, favoring the left leg, hunched forward slightly, one hand clutching the side, facing right (east), full side profile.\n  Cell (row 2, col 2): limping walk, weight on the right leg, hunched forward slightly, one hand clutching the side, facing right (east), full side profile.\n  Cell (row 2, col 3): limping walk, dragging the left leg, hunched forward slightly, one hand clutching the side, facing right (east), full side profile.\n  Cell (row 2, col 4): limping walk, weight recovering on the right leg, hunched forward slightly, one hand clutching the side, facing right (east), full side profile. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+      "usage": {
+        "prompt_tokens": 1266,
+        "completion_tokens": 4160,
+        "total_tokens": 5426,
+        "cost": 0.036445,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.036445,
+          "upstream_inference_prompt_cost": 0.003165,
+          "upstream_inference_completions_cost": 0.03328
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 4160
+        }
+      },
+      "raw_path": "assets\\sprites\\gen2\\crew\\_raw_injured_walk_s_e.png",
+      "sliced_with_auto_detection": false,
+      "cells": [
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              158,
+              408
+            ],
+            "source_size": [
+              158,
+              408
+            ],
+            "scale": [
+              0.1715686274509804,
+              0.1715686274509804
+            ],
+            "target_bbox": [
+              242,
+              250,
+              269,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              242,
+              250,
+              269,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_injured_walk_s_0.png",
+          "facing": "s",
+          "frame": "0",
+          "pose": "limping walk, favoring the left leg, hunched forward slightly, one hand clutching the side"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              178,
+              408
+            ],
+            "source_size": [
+              178,
+              408
+            ],
+            "scale": [
+              0.1715686274509804,
+              0.1715686274509804
+            ],
+            "target_bbox": [
+              240,
+              250,
+              271,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              240,
+              250,
+              271,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.14,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_injured_walk_s_1.png",
+          "facing": "s",
+          "frame": "1",
+          "pose": "limping walk, weight on the right leg, hunched forward slightly, one hand clutching the side"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              231,
+              408
+            ],
+            "source_size": [
+              231,
+              408
+            ],
+            "scale": [
+              0.1715686274509804,
+              0.1715686274509804
+            ],
+            "target_bbox": [
+              236,
+              250,
+              276,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              236,
+              250,
+              276,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.48,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_injured_walk_s_2.png",
+          "facing": "s",
+          "frame": "2",
+          "pose": "limping walk, dragging the left leg, hunched forward slightly, one hand clutching the side"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              181,
+              408
+            ],
+            "source_size": [
+              181,
+              408
+            ],
+            "scale": [
+              0.1715686274509804,
+              0.1715686274509804
+            ],
+            "target_bbox": [
+              240,
+              250,
+              271,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              240,
+              250,
+              271,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_injured_walk_s_3.png",
+          "facing": "s",
+          "frame": "3",
+          "pose": "limping walk, weight recovering on the right leg, hunched forward slightly, one hand clutching the side"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              187,
+              407
+            ],
+            "source_size": [
+              187,
+              407
+            ],
+            "scale": [
+              0.171990171990172,
+              0.171990171990172
+            ],
+            "target_bbox": [
+              240,
+              250,
+              272,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              240,
+              250,
+              272,
+              318
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_injured_walk_e_0.png",
+          "facing": "e",
+          "frame": "0",
+          "pose": "limping walk, favoring the left leg, hunched forward slightly, one hand clutching the side"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              231,
+              406
+            ],
+            "source_size": [
+              231,
+              406
+            ],
+            "scale": [
+              0.1724137931034483,
+              0.1724137931034483
+            ],
+            "target_bbox": [
+              236,
+              250,
+              276,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              236,
+              250,
+              276,
+              318
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_injured_walk_e_1.png",
+          "facing": "e",
+          "frame": "1",
+          "pose": "limping walk, weight on the right leg, hunched forward slightly, one hand clutching the side"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              231,
+              406
+            ],
+            "source_size": [
+              231,
+              406
+            ],
+            "scale": [
+              0.1724137931034483,
+              0.1724137931034483
+            ],
+            "target_bbox": [
+              236,
+              250,
+              276,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              236,
+              250,
+              276,
+              319
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_injured_walk_e_2.png",
+          "facing": "e",
+          "frame": "2",
+          "pose": "limping walk, dragging the left leg, hunched forward slightly, one hand clutching the side"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              157,
+              407
+            ],
+            "source_size": [
+              157,
+              407
+            ],
+            "scale": [
+              0.171990171990172,
+              0.171990171990172
+            ],
+            "target_bbox": [
+              242,
+              250,
+              269,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              242,
+              250,
+              269,
+              319
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_injured_walk_e_3.png",
+          "facing": "e",
+          "frame": "3",
+          "pose": "limping walk, weight recovering on the right leg, hunched forward slightly, one hand clutching the side"
+        }
+      ]
+    },
+    "injured_walk_n_w": {
+      "id": "injured_walk_n_w",
+      "state": "injured_walk",
+      "grid": [
+        4,
+        2
+      ],
+      "contract": "stand",
+      "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, simplified featureless face, short dark cropped hair -- bare-headed in every single cell of the sheet, exactly the same haircut each time. Never wearing any cap, hat, hood, helmet, or other headwear in any cell, even from behind or from a three-quarter-back angle -- headwear choice must not vary from pose to pose. A 4-frame limping walk cycle for an injured crew member, small flat contact shadow under the forward foot each frame, no floor tile, no platform. Arrange the sheet as EXACTLY 4 equal columns by 2 equal rows in a strict uniform grid -- EXACTLY 8 cells total, no more and no fewer, EXACTLY 4 characters per row (count them: one, two, three, four), EXACTLY 2 rows (reading order left-to-right then top-to-bottom). Do NOT add an extra in-between pose anywhere -- there are only 8 poses listed below and the sheet must contain precisely those 8, nothing added. Each cell contains exactly ONE full-body pose of the SAME character -- identical jumpsuit color and trim, identical hair/cap, identical body proportions, identical cel-shading and outline weight in every cell, only the pose/facing changes as listed below. Leave a wide clear empty transparent gap of at least one head-width between adjacent cells in every row so no cell's subject overlaps or touches a neighboring cell's subject. Do not draw grid lines, cell borders, or dividers -- only empty transparent space separates the cells. Cells, in reading order:\n  Cell (row 1, col 1): limping walk, favoring the left leg, hunched forward slightly, one hand clutching the side, facing away from the camera (north/back view).\n  Cell (row 1, col 2): limping walk, weight on the right leg, hunched forward slightly, one hand clutching the side, facing away from the camera (north/back view).\n  Cell (row 1, col 3): limping walk, dragging the left leg, hunched forward slightly, one hand clutching the side, facing away from the camera (north/back view).\n  Cell (row 1, col 4): limping walk, weight recovering on the right leg, hunched forward slightly, one hand clutching the side, facing away from the camera (north/back view).\n  Cell (row 2, col 1): limping walk, favoring the left leg, hunched forward slightly, one hand clutching the side, facing left (west), full side profile.\n  Cell (row 2, col 2): limping walk, weight on the right leg, hunched forward slightly, one hand clutching the side, facing left (west), full side profile.\n  Cell (row 2, col 3): limping walk, dragging the left leg, hunched forward slightly, one hand clutching the side, facing left (west), full side profile.\n  Cell (row 2, col 4): limping walk, weight recovering on the right leg, hunched forward slightly, one hand clutching the side, facing left (west), full side profile. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+      "usage": {
+        "prompt_tokens": 1274,
+        "completion_tokens": 6208,
+        "total_tokens": 7482,
+        "cost": 0.052849,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.052849,
+          "upstream_inference_prompt_cost": 0.003185,
+          "upstream_inference_completions_cost": 0.049664
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 6208
+        }
+      },
+      "raw_path": "assets\\sprites\\gen2\\crew\\_raw_injured_walk_n_w.png",
+      "sliced_with_auto_detection": false,
+      "cells": [
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              223,
+              401
+            ],
+            "source_size": [
+              223,
+              401
+            ],
+            "scale": [
+              0.1745635910224439,
+              0.1745635910224439
+            ],
+            "target_bbox": [
+              236,
+              250,
+              275,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              236,
+              250,
+              275,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_injured_walk_n_0.png",
+          "facing": "n",
+          "frame": "0",
+          "pose": "limping walk, favoring the left leg, hunched forward slightly, one hand clutching the side"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              232,
+              402
+            ],
+            "source_size": [
+              232,
+              402
+            ],
+            "scale": [
+              0.17412935323383086,
+              0.17412935323383086
+            ],
+            "target_bbox": [
+              236,
+              250,
+              276,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              236,
+              250,
+              276,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_injured_walk_n_1.png",
+          "facing": "n",
+          "frame": "1",
+          "pose": "limping walk, weight on the right leg, hunched forward slightly, one hand clutching the side"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              345,
+              401
+            ],
+            "source_size": [
+              345,
+              401
+            ],
+            "scale": [
+              0.1745635910224439,
+              0.1745635910224439
+            ],
+            "target_bbox": [
+              226,
+              250,
+              286,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              226,
+              250,
+              286,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_injured_walk_n_2.png",
+          "facing": "n",
+          "frame": "2",
+          "pose": "limping walk, dragging the left leg, hunched forward slightly, one hand clutching the side"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              153,
+              401
+            ],
+            "source_size": [
+              153,
+              401
+            ],
+            "scale": [
+              0.1745635910224439,
+              0.1745635910224439
+            ],
+            "target_bbox": [
+              242,
+              250,
+              269,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              242,
+              250,
+              269,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_injured_walk_n_3.png",
+          "facing": "n",
+          "frame": "3",
+          "pose": "limping walk, weight recovering on the right leg, hunched forward slightly, one hand clutching the side"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              223,
+              417
+            ],
+            "source_size": [
+              223,
+              417
+            ],
+            "scale": [
+              0.16786570743405277,
+              0.16786570743405277
+            ],
+            "target_bbox": [
+              238,
+              250,
+              275,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              238,
+              250,
+              275,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_injured_walk_w_0.png",
+          "facing": "w",
+          "frame": "0",
+          "pose": "limping walk, favoring the left leg, hunched forward slightly, one hand clutching the side"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              215,
+              412
+            ],
+            "source_size": [
+              215,
+              412
+            ],
+            "scale": [
+              0.16990291262135923,
+              0.16990291262135923
+            ],
+            "target_bbox": [
+              238,
+              250,
+              275,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              238,
+              250,
+              275,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_injured_walk_w_1.png",
+          "facing": "w",
+          "frame": "1",
+          "pose": "limping walk, weight on the right leg, hunched forward slightly, one hand clutching the side"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              345,
+              417
+            ],
+            "source_size": [
+              345,
+              417
+            ],
+            "scale": [
+              0.16786570743405277,
+              0.16786570743405277
+            ],
+            "target_bbox": [
+              227,
+              250,
+              285,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              227,
+              250,
+              285,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_injured_walk_w_2.png",
+          "facing": "w",
+          "frame": "2",
+          "pose": "limping walk, dragging the left leg, hunched forward slightly, one hand clutching the side"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              130,
+              416
+            ],
+            "source_size": [
+              130,
+              416
+            ],
+            "scale": [
+              0.16826923076923078,
+              0.16826923076923078
+            ],
+            "target_bbox": [
+              245,
+              250,
+              267,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              245,
+              250,
+              267,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.18,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_injured_walk_w_3.png",
+          "facing": "w",
+          "frame": "3",
+          "pose": "limping walk, weight recovering on the right leg, hunched forward slightly, one hand clutching the side"
+        }
+      ]
+    },
+    "injured_idle": {
+      "id": "injured_idle",
+      "state": "injured_idle",
+      "grid": [
+        4,
+        1
+      ],
+      "contract": "stand",
+      "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, simplified featureless face, short dark cropped hair -- bare-headed in every single cell of the sheet, exactly the same haircut each time. Never wearing any cap, hat, hood, helmet, or other headwear in any cell, even from behind or from a three-quarter-back angle -- headwear choice must not vary from pose to pose. Standing hunched, clutching their side/ribs with one hand as if wounded, small flat contact shadow under the feet, no floor tile, no platform. Arrange the sheet as EXACTLY 4 equal columns by 1 equal rows in a strict uniform grid -- EXACTLY 4 cells total, no more and no fewer, EXACTLY 4 characters per row (count them: one, two, three, four), EXACTLY 1 rows (reading order left-to-right then top-to-bottom). Do NOT add an extra in-between pose anywhere -- there are only 4 poses listed below and the sheet must contain precisely those 4, nothing added. Each cell contains exactly ONE full-body pose of the SAME character -- identical jumpsuit color and trim, identical hair/cap, identical body proportions, identical cel-shading and outline weight in every cell, only the pose/facing changes as listed below. Leave a wide clear empty transparent gap of at least one head-width between adjacent cells in every row so no cell's subject overlaps or touches a neighboring cell's subject. Do not draw grid lines, cell borders, or dividers -- only empty transparent space separates the cells. Cells, in reading order:\n  Cell (row 1, col 1): standing hunched, clutching side, facing the camera (south/front view).\n  Cell (row 1, col 2): standing hunched, clutching side, facing right (east), full side profile.\n  Cell (row 1, col 3): standing hunched, clutching side, facing away from the camera (north/back view).\n  Cell (row 1, col 4): standing hunched, clutching side, facing left (west), full side profile. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+      "usage": {
+        "prompt_tokens": 1046,
+        "completion_tokens": 6208,
+        "total_tokens": 7254,
+        "cost": 0.052279,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.052279,
+          "upstream_inference_prompt_cost": 0.002615,
+          "upstream_inference_completions_cost": 0.049664
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 6208
+        }
+      },
+      "raw_path": "assets\\sprites\\gen2\\crew\\_raw_injured_idle.png",
+      "sliced_with_auto_detection": true,
+      "cells": [
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              262,
+              651
+            ],
+            "source_size": [
+              262,
+              651
+            ],
+            "scale": [
+              0.10752688172043011,
+              0.10752688172043011
+            ],
+            "target_bbox": [
+              242,
+              250,
+              270,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              242,
+              250,
+              270,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 1.03,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_injured_idle_s_0.png",
+          "facing": "s",
+          "frame": "0",
+          "pose": "standing hunched, clutching side"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              188,
+              650
+            ],
+            "source_size": [
+              188,
+              650
+            ],
+            "scale": [
+              0.1076923076923077,
+              0.1076923076923077
+            ],
+            "target_bbox": [
+              246,
+              250,
+              266,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              246,
+              250,
+              266,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_injured_idle_e_0.png",
+          "facing": "e",
+          "frame": "0",
+          "pose": "standing hunched, clutching side"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              262,
+              651
+            ],
+            "source_size": [
+              262,
+              651
+            ],
+            "scale": [
+              0.10752688172043011,
+              0.10752688172043011
+            ],
+            "target_bbox": [
+              242,
+              250,
+              270,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              242,
+              250,
+              270,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.63,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_injured_idle_n_0.png",
+          "facing": "n",
+          "frame": "0",
+          "pose": "standing hunched, clutching side"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              226,
+              657
+            ],
+            "source_size": [
+              226,
+              657
+            ],
+            "scale": [
+              0.106544901065449,
+              0.106544901065449
+            ],
+            "target_bbox": [
+              244,
+              250,
+              268,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              244,
+              250,
+              268,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_injured_idle_w_0.png",
+          "facing": "w",
+          "frame": "0",
+          "pose": "standing hunched, clutching side"
+        }
+      ]
+    },
+    "float_s_e": {
+      "id": "float_s_e",
+      "state": "floating",
+      "grid": [
+        3,
+        2
+      ],
+      "contract": "prone",
+      "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, simplified featureless face, short dark cropped hair -- bare-headed in every single cell of the sheet, exactly the same haircut each time. Never wearing any cap, hat, hood, helmet, or other headwear in any cell, even from behind or from a three-quarter-back angle -- headwear choice must not vary from pose to pose. A 3-frame zero-gravity drift loop, no contact shadow at all (fully weightless), no floor tile, no platform. Arrange the sheet as EXACTLY 3 equal columns by 2 equal rows in a strict uniform grid -- EXACTLY 6 cells total, no more and no fewer, EXACTLY 3 characters per row (count them: one, two, three), EXACTLY 2 rows (reading order left-to-right then top-to-bottom). Do NOT add an extra in-between pose anywhere -- there are only 6 poses listed below and the sheet must contain precisely those 6, nothing added. Each cell contains exactly ONE full-body pose of the SAME character -- identical jumpsuit color and trim, identical hair/cap, identical body proportions, identical cel-shading and outline weight in every cell, only the pose/facing changes as listed below. Leave a wide clear empty transparent gap of at least one head-width between adjacent cells in every row so no cell's subject overlaps or touches a neighboring cell's subject. Do not draw grid lines, cell borders, or dividers -- only empty transparent space separates the cells. Cells, in reading order:\n  Cell (row 1, col 1): zero-gravity floating drift, loose relaxed limbs, body tilted slightly, no ground contact, no contact shadow, facing the camera (south/front view).\n  Cell (row 1, col 2): zero-gravity floating drift, limbs drifted to a different loose angle, body tilted the other way, no ground contact, no contact shadow, facing the camera (south/front view).\n  Cell (row 1, col 3): zero-gravity floating drift, limbs drifted to a third loose angle, slight body rotation, no ground contact, no contact shadow, facing the camera (south/front view).\n  Cell (row 2, col 1): zero-gravity floating drift, loose relaxed limbs, body tilted slightly, no ground contact, no contact shadow, facing right (east), full side profile.\n  Cell (row 2, col 2): zero-gravity floating drift, limbs drifted to a different loose angle, body tilted the other way, no ground contact, no contact shadow, facing right (east), full side profile.\n  Cell (row 2, col 3): zero-gravity floating drift, limbs drifted to a third loose angle, slight body rotation, no ground contact, no contact shadow, facing right (east), full side profile. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+      "usage": {
+        "prompt_tokens": 1200,
+        "completion_tokens": 6208,
+        "total_tokens": 7408,
+        "cost": 0.052664,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.052664,
+          "upstream_inference_prompt_cost": 0.003,
+          "upstream_inference_completions_cost": 0.049664
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 6208
+        }
+      },
+      "raw_path": "assets\\sprites\\gen2\\crew\\_raw_float_s_e.png",
+      "sliced_with_auto_detection": false,
+      "cells": [
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              327,
+              402
+            ],
+            "source_size": [
+              327,
+              402
+            ],
+            "scale": [
+              0.236318407960199,
+              0.236318407960199
+            ],
+            "target_bbox": [
+              218,
+              225,
+              295,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [
+              "18.5% of the subject is interior transparency (holes) -- the model keyed out interior fills; regenerate with the solidity clause"
+            ],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              218,
+              225,
+              295,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 18.55,
+            "solid_ok": false,
+            "pass": false
+          },
+          "file": "crew_floating_s_0.png",
+          "facing": "s",
+          "frame": "0",
+          "pose": "zero-gravity floating drift, loose relaxed limbs, body tilted slightly, no ground contact, no contact shadow"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              339,
+              409
+            ],
+            "source_size": [
+              339,
+              409
+            ],
+            "scale": [
+              0.23227383863080683,
+              0.23227383863080683
+            ],
+            "target_bbox": [
+              216,
+              225,
+              295,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [
+              "12.9% of the subject is interior transparency (holes) -- the model keyed out interior fills; regenerate with the solidity clause"
+            ],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              216,
+              225,
+              295,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 12.85,
+            "solid_ok": false,
+            "pass": false
+          },
+          "file": "crew_floating_s_1.png",
+          "facing": "s",
+          "frame": "1",
+          "pose": "zero-gravity floating drift, limbs drifted to a different loose angle, body tilted the other way, no ground contact, no contact shadow"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              217,
+              418
+            ],
+            "source_size": [
+              217,
+              418
+            ],
+            "scale": [
+              0.22727272727272727,
+              0.22727272727272727
+            ],
+            "target_bbox": [
+              232,
+              225,
+              281,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [
+              "12.2% of the subject is interior transparency (holes) -- the model keyed out interior fills; regenerate with the solidity clause"
+            ],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              232,
+              225,
+              281,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 12.21,
+            "solid_ok": false,
+            "pass": false
+          },
+          "file": "crew_floating_s_2.png",
+          "facing": "s",
+          "frame": "2",
+          "pose": "zero-gravity floating drift, limbs drifted to a third loose angle, slight body rotation, no ground contact, no contact shadow"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              178,
+              401
+            ],
+            "source_size": [
+              178,
+              401
+            ],
+            "scale": [
+              0.23690773067331672,
+              0.23690773067331672
+            ],
+            "target_bbox": [
+              235,
+              225,
+              277,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [
+              "13.0% of the subject is interior transparency (holes) -- the model keyed out interior fills; regenerate with the solidity clause"
+            ],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              235,
+              225,
+              277,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 12.99,
+            "solid_ok": false,
+            "pass": false
+          },
+          "file": "crew_floating_e_0.png",
+          "facing": "e",
+          "frame": "0",
+          "pose": "zero-gravity floating drift, loose relaxed limbs, body tilted slightly, no ground contact, no contact shadow"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              245,
+              400
+            ],
+            "source_size": [
+              245,
+              400
+            ],
+            "scale": [
+              0.2375,
+              0.2375
+            ],
+            "target_bbox": [
+              227,
+              225,
+              285,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [
+              "12.9% of the subject is interior transparency (holes) -- the model keyed out interior fills; regenerate with the solidity clause"
+            ],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              227,
+              225,
+              285,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 12.94,
+            "solid_ok": false,
+            "pass": false
+          },
+          "file": "crew_floating_e_1.png",
+          "facing": "e",
+          "frame": "1",
+          "pose": "zero-gravity floating drift, limbs drifted to a different loose angle, body tilted the other way, no ground contact, no contact shadow"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              240,
+              397
+            ],
+            "source_size": [
+              240,
+              397
+            ],
+            "scale": [
+              0.23929471032745592,
+              0.23929471032745592
+            ],
+            "target_bbox": [
+              228,
+              225,
+              285,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [
+              "20.0% of the subject is interior transparency (holes) -- the model keyed out interior fills; regenerate with the solidity clause"
+            ],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              228,
+              225,
+              285,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 19.97,
+            "solid_ok": false,
+            "pass": false
+          },
+          "file": "crew_floating_e_2.png",
+          "facing": "e",
+          "frame": "2",
+          "pose": "zero-gravity floating drift, limbs drifted to a third loose angle, slight body rotation, no ground contact, no contact shadow"
+        }
+      ]
+    },
+    "float_n_w": {
+      "id": "float_n_w",
+      "state": "floating",
+      "grid": [
+        3,
+        2
+      ],
+      "contract": "prone",
+      "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, simplified featureless face, short dark cropped hair -- bare-headed in every single cell of the sheet, exactly the same haircut each time. Never wearing any cap, hat, hood, helmet, or other headwear in any cell, even from behind or from a three-quarter-back angle -- headwear choice must not vary from pose to pose. A 3-frame zero-gravity drift loop, no contact shadow at all (fully weightless), no floor tile, no platform. Arrange the sheet as EXACTLY 3 equal columns by 2 equal rows in a strict uniform grid -- EXACTLY 6 cells total, no more and no fewer, EXACTLY 3 characters per row (count them: one, two, three), EXACTLY 2 rows (reading order left-to-right then top-to-bottom). Do NOT add an extra in-between pose anywhere -- there are only 6 poses listed below and the sheet must contain precisely those 6, nothing added. Each cell contains exactly ONE full-body pose of the SAME character -- identical jumpsuit color and trim, identical hair/cap, identical body proportions, identical cel-shading and outline weight in every cell, only the pose/facing changes as listed below. Leave a wide clear empty transparent gap of at least one head-width between adjacent cells in every row so no cell's subject overlaps or touches a neighboring cell's subject. Do not draw grid lines, cell borders, or dividers -- only empty transparent space separates the cells. Cells, in reading order:\n  Cell (row 1, col 1): zero-gravity floating drift, loose relaxed limbs, body tilted slightly, no ground contact, no contact shadow, facing away from the camera (north/back view).\n  Cell (row 1, col 2): zero-gravity floating drift, limbs drifted to a different loose angle, body tilted the other way, no ground contact, no contact shadow, facing away from the camera (north/back view).\n  Cell (row 1, col 3): zero-gravity floating drift, limbs drifted to a third loose angle, slight body rotation, no ground contact, no contact shadow, facing away from the camera (north/back view).\n  Cell (row 2, col 1): zero-gravity floating drift, loose relaxed limbs, body tilted slightly, no ground contact, no contact shadow, facing left (west), full side profile.\n  Cell (row 2, col 2): zero-gravity floating drift, limbs drifted to a different loose angle, body tilted the other way, no ground contact, no contact shadow, facing left (west), full side profile.\n  Cell (row 2, col 3): zero-gravity floating drift, limbs drifted to a third loose angle, slight body rotation, no ground contact, no contact shadow, facing left (west), full side profile. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+      "usage": {
+        "prompt_tokens": 1206,
+        "completion_tokens": 4160,
+        "total_tokens": 5366,
+        "cost": 0.036295,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.036295,
+          "upstream_inference_prompt_cost": 0.003015,
+          "upstream_inference_completions_cost": 0.03328
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 4160
+        }
+      },
+      "raw_path": "assets\\sprites\\gen2\\crew\\_raw_float_n_w.png",
+      "sliced_with_auto_detection": false,
+      "cells": [
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              307,
+              429
+            ],
+            "source_size": [
+              307,
+              429
+            ],
+            "scale": [
+              0.22144522144522144,
+              0.22144522144522144
+            ],
+            "target_bbox": [
+              222,
+              225,
+              290,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              222,
+              225,
+              290,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_floating_n_0.png",
+          "facing": "n",
+          "frame": "0",
+          "pose": "zero-gravity floating drift, loose relaxed limbs, body tilted slightly, no ground contact, no contact shadow"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              299,
+              428
+            ],
+            "source_size": [
+              299,
+              428
+            ],
+            "scale": [
+              0.2219626168224299,
+              0.2219626168224299
+            ],
+            "target_bbox": [
+              223,
+              225,
+              289,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              223,
+              225,
+              289,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.04,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_floating_n_1.png",
+          "facing": "n",
+          "frame": "1",
+          "pose": "zero-gravity floating drift, limbs drifted to a different loose angle, body tilted the other way, no ground contact, no contact shadow"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              293,
+              429
+            ],
+            "source_size": [
+              293,
+              429
+            ],
+            "scale": [
+              0.22144522144522144,
+              0.22144522144522144
+            ],
+            "target_bbox": [
+              224,
+              225,
+              289,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              224,
+              225,
+              289,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_floating_n_2.png",
+          "facing": "n",
+          "frame": "2",
+          "pose": "zero-gravity floating drift, limbs drifted to a third loose angle, slight body rotation, no ground contact, no contact shadow"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              278,
+              439
+            ],
+            "source_size": [
+              278,
+              439
+            ],
+            "scale": [
+              0.2164009111617312,
+              0.2164009111617312
+            ],
+            "target_bbox": [
+              226,
+              225,
+              286,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              226,
+              225,
+              286,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_floating_w_0.png",
+          "facing": "w",
+          "frame": "0",
+          "pose": "zero-gravity floating drift, loose relaxed limbs, body tilted slightly, no ground contact, no contact shadow"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              296,
+              436
+            ],
+            "source_size": [
+              296,
+              436
+            ],
+            "scale": [
+              0.21788990825688073,
+              0.21788990825688073
+            ],
+            "target_bbox": [
+              224,
+              225,
+              288,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              224,
+              225,
+              288,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_floating_w_1.png",
+          "facing": "w",
+          "frame": "1",
+          "pose": "zero-gravity floating drift, limbs drifted to a different loose angle, body tilted the other way, no ground contact, no contact shadow"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              301,
+              435
+            ],
+            "source_size": [
+              301,
+              435
+            ],
+            "scale": [
+              0.21839080459770116,
+              0.21839080459770116
+            ],
+            "target_bbox": [
+              223,
+              225,
+              289,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              223,
+              225,
+              289,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_floating_w_2.png",
+          "facing": "w",
+          "frame": "2",
+          "pose": "zero-gravity floating drift, limbs drifted to a third loose angle, slight body rotation, no ground contact, no contact shadow"
+        }
+      ]
+    },
+    "fight_melee_s_e": {
+      "id": "fight_melee_s_e",
+      "state": "fight_melee",
+      "grid": [
+        3,
+        2
+      ],
+      "contract": "stand",
+      "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, simplified featureless face, short dark cropped hair -- bare-headed in every single cell of the sheet, exactly the same haircut each time. Never wearing any cap, hat, hood, helmet, or other headwear in any cell, even from behind or from a three-quarter-back angle -- headwear choice must not vary from pose to pose. A 3-frame melee combat swing, small flat contact shadow under the feet, no floor tile, no platform, no weapon prop (bare-handed strike). Arrange the sheet as EXACTLY 3 equal columns by 2 equal rows in a strict uniform grid -- EXACTLY 6 cells total, no more and no fewer, EXACTLY 3 characters per row (count them: one, two, three), EXACTLY 2 rows (reading order left-to-right then top-to-bottom). Do NOT add an extra in-between pose anywhere -- there are only 6 poses listed below and the sheet must contain precisely those 6, nothing added. Each cell contains exactly ONE full-body pose of the SAME character -- identical jumpsuit color and trim, identical hair/cap, identical body proportions, identical cel-shading and outline weight in every cell, only the pose/facing changes as listed below. Leave a wide clear empty transparent gap of at least one head-width between adjacent cells in every row so no cell's subject overlaps or touches a neighboring cell's subject. Do not draw grid lines, cell borders, or dividers -- only empty transparent space separates the cells. Cells, in reading order:\n  Cell (row 1, col 1): melee combat stance, winding up a punch/strike, weight on the back leg, facing the camera (south/front view).\n  Cell (row 1, col 2): melee combat mid-swing, arm extended forward at full reach, facing the camera (south/front view).\n  Cell (row 1, col 3): melee combat follow-through, arm across the body after the strike, facing the camera (south/front view).\n  Cell (row 2, col 1): melee combat stance, winding up a punch/strike, weight on the back leg, facing right (east), full side profile.\n  Cell (row 2, col 2): melee combat mid-swing, arm extended forward at full reach, facing right (east), full side profile.\n  Cell (row 2, col 3): melee combat follow-through, arm across the body after the strike, facing right (east), full side profile. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+      "usage": {
+        "prompt_tokens": 1134,
+        "completion_tokens": 6208,
+        "total_tokens": 7342,
+        "cost": 0.052499,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.052499,
+          "upstream_inference_prompt_cost": 0.002835,
+          "upstream_inference_completions_cost": 0.049664
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 6208
+        }
+      },
+      "raw_path": "assets\\sprites\\gen2\\crew\\_raw_fight_melee_s_e.png",
+      "sliced_with_auto_detection": false,
+      "cells": [
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              461,
+              382
+            ],
+            "source_size": [
+              461,
+              382
+            ],
+            "scale": [
+              0.18324607329842932,
+              0.18324607329842932
+            ],
+            "target_bbox": [
+              214,
+              250,
+              298,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              214,
+              250,
+              298,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_fight_melee_s_0.png",
+          "facing": "s",
+          "frame": "0",
+          "pose": "melee combat stance, winding up a punch/strike, weight on the back leg"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              379,
+              382
+            ],
+            "source_size": [
+              379,
+              382
+            ],
+            "scale": [
+              0.18324607329842932,
+              0.18324607329842932
+            ],
+            "target_bbox": [
+              222,
+              250,
+              291,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              222,
+              250,
+              291,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_fight_melee_s_1.png",
+          "facing": "s",
+          "frame": "1",
+          "pose": "melee combat mid-swing, arm extended forward at full reach"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              188,
+              382
+            ],
+            "source_size": [
+              188,
+              382
+            ],
+            "scale": [
+              0.18324607329842932,
+              0.18324607329842932
+            ],
+            "target_bbox": [
+              239,
+              250,
+              273,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              239,
+              250,
+              273,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_fight_melee_s_2.png",
+          "facing": "s",
+          "frame": "2",
+          "pose": "melee combat follow-through, arm across the body after the strike"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              461,
+              387
+            ],
+            "source_size": [
+              461,
+              387
+            ],
+            "scale": [
+              0.18087855297157623,
+              0.18087855297157623
+            ],
+            "target_bbox": [
+              214,
+              250,
+              297,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              214,
+              250,
+              297,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.04,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_fight_melee_e_0.png",
+          "facing": "e",
+          "frame": "0",
+          "pose": "melee combat stance, winding up a punch/strike, weight on the back leg"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              302,
+              386
+            ],
+            "source_size": [
+              302,
+              386
+            ],
+            "scale": [
+              0.18134715025906736,
+              0.18134715025906736
+            ],
+            "target_bbox": [
+              228,
+              250,
+              283,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              228,
+              250,
+              283,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_fight_melee_e_1.png",
+          "facing": "e",
+          "frame": "1",
+          "pose": "melee combat mid-swing, arm extended forward at full reach"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              200,
+              388
+            ],
+            "source_size": [
+              200,
+              388
+            ],
+            "scale": [
+              0.18041237113402062,
+              0.18041237113402062
+            ],
+            "target_bbox": [
+              238,
+              250,
+              274,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              238,
+              250,
+              274,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_fight_melee_e_2.png",
+          "facing": "e",
+          "frame": "2",
+          "pose": "melee combat follow-through, arm across the body after the strike"
+        }
+      ]
+    },
+    "fight_melee_n_w": {
+      "id": "fight_melee_n_w",
+      "state": "fight_melee",
+      "grid": [
+        3,
+        2
+      ],
+      "contract": "stand",
+      "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, simplified featureless face, short dark cropped hair -- bare-headed in every single cell of the sheet, exactly the same haircut each time. Never wearing any cap, hat, hood, helmet, or other headwear in any cell, even from behind or from a three-quarter-back angle -- headwear choice must not vary from pose to pose. A 3-frame melee combat swing, small flat contact shadow under the feet, no floor tile, no platform, no weapon prop (bare-handed strike). Arrange the sheet as EXACTLY 3 equal columns by 2 equal rows in a strict uniform grid -- EXACTLY 6 cells total, no more and no fewer, EXACTLY 3 characters per row (count them: one, two, three), EXACTLY 2 rows (reading order left-to-right then top-to-bottom). Do NOT add an extra in-between pose anywhere -- there are only 6 poses listed below and the sheet must contain precisely those 6, nothing added. Each cell contains exactly ONE full-body pose of the SAME character -- identical jumpsuit color and trim, identical hair/cap, identical body proportions, identical cel-shading and outline weight in every cell, only the pose/facing changes as listed below. Leave a wide clear empty transparent gap of at least one head-width between adjacent cells in every row so no cell's subject overlaps or touches a neighboring cell's subject. Do not draw grid lines, cell borders, or dividers -- only empty transparent space separates the cells. Cells, in reading order:\n  Cell (row 1, col 1): melee combat stance, winding up a punch/strike, weight on the back leg, facing away from the camera (north/back view).\n  Cell (row 1, col 2): melee combat mid-swing, arm extended forward at full reach, facing away from the camera (north/back view).\n  Cell (row 1, col 3): melee combat follow-through, arm across the body after the strike, facing away from the camera (north/back view).\n  Cell (row 2, col 1): melee combat stance, winding up a punch/strike, weight on the back leg, facing left (west), full side profile.\n  Cell (row 2, col 2): melee combat mid-swing, arm extended forward at full reach, facing left (west), full side profile.\n  Cell (row 2, col 3): melee combat follow-through, arm across the body after the strike, facing left (west), full side profile. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+      "usage": {
+        "prompt_tokens": 1140,
+        "completion_tokens": 6208,
+        "total_tokens": 7348,
+        "cost": 0.052514,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.052514,
+          "upstream_inference_prompt_cost": 0.00285,
+          "upstream_inference_completions_cost": 0.049664
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 6208
+        }
+      },
+      "raw_path": "assets\\sprites\\gen2\\crew\\_raw_fight_melee_n_w.png",
+      "sliced_with_auto_detection": false,
+      "cells": [
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              231,
+              413
+            ],
+            "source_size": [
+              231,
+              413
+            ],
+            "scale": [
+              0.1694915254237288,
+              0.1694915254237288
+            ],
+            "target_bbox": [
+              236,
+              250,
+              275,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [
+              "32.2% of the subject is interior transparency (holes) -- the model keyed out interior fills; regenerate with the solidity clause"
+            ],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              236,
+              250,
+              275,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 32.21,
+            "solid_ok": false,
+            "pass": false
+          },
+          "file": "crew_fight_melee_n_0.png",
+          "facing": "n",
+          "frame": "0",
+          "pose": "melee combat stance, winding up a punch/strike, weight on the back leg"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              349,
+              407
+            ],
+            "source_size": [
+              349,
+              407
+            ],
+            "scale": [
+              0.171990171990172,
+              0.171990171990172
+            ],
+            "target_bbox": [
+              226,
+              250,
+              286,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [
+              "29.0% of the subject is interior transparency (holes) -- the model keyed out interior fills; regenerate with the solidity clause"
+            ],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              226,
+              250,
+              286,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 28.98,
+            "solid_ok": false,
+            "pass": false
+          },
+          "file": "crew_fight_melee_n_1.png",
+          "facing": "n",
+          "frame": "1",
+          "pose": "melee combat mid-swing, arm extended forward at full reach"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              228,
+              406
+            ],
+            "source_size": [
+              228,
+              406
+            ],
+            "scale": [
+              0.1724137931034483,
+              0.1724137931034483
+            ],
+            "target_bbox": [
+              236,
+              250,
+              275,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [
+              "21.9% of the subject is interior transparency (holes) -- the model keyed out interior fills; regenerate with the solidity clause"
+            ],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              236,
+              250,
+              275,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 21.95,
+            "solid_ok": false,
+            "pass": false
+          },
+          "file": "crew_fight_melee_n_2.png",
+          "facing": "n",
+          "frame": "2",
+          "pose": "melee combat follow-through, arm across the body after the strike"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              217,
+              408
+            ],
+            "source_size": [
+              217,
+              408
+            ],
+            "scale": [
+              0.1715686274509804,
+              0.1715686274509804
+            ],
+            "target_bbox": [
+              238,
+              250,
+              275,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [
+              "18.4% of the subject is interior transparency (holes) -- the model keyed out interior fills; regenerate with the solidity clause"
+            ],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              238,
+              250,
+              275,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 18.36,
+            "solid_ok": false,
+            "pass": false
+          },
+          "file": "crew_fight_melee_w_0.png",
+          "facing": "w",
+          "frame": "0",
+          "pose": "melee combat stance, winding up a punch/strike, weight on the back leg"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              343,
+              400
+            ],
+            "source_size": [
+              343,
+              400
+            ],
+            "scale": [
+              0.175,
+              0.175
+            ],
+            "target_bbox": [
+              226,
+              250,
+              286,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [
+              "17.0% of the subject is interior transparency (holes) -- the model keyed out interior fills; regenerate with the solidity clause"
+            ],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              226,
+              250,
+              286,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 16.98,
+            "solid_ok": false,
+            "pass": false
+          },
+          "file": "crew_fight_melee_w_1.png",
+          "facing": "w",
+          "frame": "1",
+          "pose": "melee combat mid-swing, arm extended forward at full reach"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              247,
+              408
+            ],
+            "source_size": [
+              247,
+              408
+            ],
+            "scale": [
+              0.1715686274509804,
+              0.1715686274509804
+            ],
+            "target_bbox": [
+              235,
+              250,
+              277,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [
+              "17.2% of the subject is interior transparency (holes) -- the model keyed out interior fills; regenerate with the solidity clause"
+            ],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              235,
+              250,
+              277,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 17.23,
+            "solid_ok": false,
+            "pass": false
+          },
+          "file": "crew_fight_melee_w_2.png",
+          "facing": "w",
+          "frame": "2",
+          "pose": "melee combat follow-through, arm across the body after the strike"
+        }
+      ]
+    },
+    "fight_ranged": {
+      "id": "fight_ranged",
+      "state": "fight_ranged",
+      "grid": [
+        4,
+        2
+      ],
+      "contract": "stand",
+      "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, simplified featureless face, short dark cropped hair -- bare-headed in every single cell of the sheet, exactly the same haircut each time. Never wearing any cap, hat, hood, helmet, or other headwear in any cell, even from behind or from a three-quarter-back angle -- headwear choice must not vary from pose to pose. A 2-frame ranged-aim pose, both hands raised holding a small sidearm aimed forward, small flat contact shadow under the feet, no floor tile, no platform. Arrange the sheet as EXACTLY 4 equal columns by 2 equal rows in a strict uniform grid -- EXACTLY 8 cells total, no more and no fewer, EXACTLY 4 characters per row (count them: one, two, three, four), EXACTLY 2 rows (reading order left-to-right then top-to-bottom). Do NOT add an extra in-between pose anywhere -- there are only 8 poses listed below and the sheet must contain precisely those 8, nothing added. Each cell contains exactly ONE full-body pose of the SAME character -- identical jumpsuit color and trim, identical hair/cap, identical body proportions, identical cel-shading and outline weight in every cell, only the pose/facing changes as listed below. Leave a wide clear empty transparent gap of at least one head-width between adjacent cells in every row so no cell's subject overlaps or touches a neighboring cell's subject. Do not draw grid lines, cell borders, or dividers -- only empty transparent space separates the cells. Cells, in reading order:\n  Cell (row 1, col 1): aiming a sidearm forward, steady stance, facing the camera (south/front view).\n  Cell (row 1, col 2): aiming a sidearm forward, steady stance, facing right (east), full side profile.\n  Cell (row 1, col 3): aiming a sidearm forward, steady stance, facing away from the camera (north/back view).\n  Cell (row 1, col 4): aiming a sidearm forward, steady stance, facing left (west), full side profile.\n  Cell (row 2, col 1): aiming a sidearm forward, slight recoil/muzzle-flash moment, facing the camera (south/front view).\n  Cell (row 2, col 2): aiming a sidearm forward, slight recoil/muzzle-flash moment, facing right (east), full side profile.\n  Cell (row 2, col 3): aiming a sidearm forward, slight recoil/muzzle-flash moment, facing away from the camera (north/back view).\n  Cell (row 2, col 4): aiming a sidearm forward, slight recoil/muzzle-flash moment, facing left (west), full side profile. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+      "usage": {
+        "prompt_tokens": 1189,
+        "completion_tokens": 6208,
+        "total_tokens": 7397,
+        "cost": 0.0526365,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.0526365,
+          "upstream_inference_prompt_cost": 0.0029725,
+          "upstream_inference_completions_cost": 0.049664
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 6208
+        }
+      },
+      "raw_path": "assets\\sprites\\gen2\\crew\\_raw_fight_ranged.png",
+      "sliced_with_auto_detection": false,
+      "cells": [
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              171,
+              384
+            ],
+            "source_size": [
+              171,
+              384
+            ],
+            "scale": [
+              0.18229166666666666,
+              0.18229166666666666
+            ],
+            "target_bbox": [
+              240,
+              250,
+              271,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              240,
+              250,
+              271,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_fight_ranged_s_0.png",
+          "facing": "s",
+          "frame": "0",
+          "pose": "aiming a sidearm forward, steady stance"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              285,
+              376
+            ],
+            "source_size": [
+              285,
+              376
+            ],
+            "scale": [
+              0.18617021276595744,
+              0.18617021276595744
+            ],
+            "target_bbox": [
+              230,
+              250,
+              283,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              230,
+              250,
+              283,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.06,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_fight_ranged_e_0.png",
+          "facing": "e",
+          "frame": "0",
+          "pose": "aiming a sidearm forward, steady stance"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              264,
+              385
+            ],
+            "source_size": [
+              264,
+              385
+            ],
+            "scale": [
+              0.18181818181818182,
+              0.18181818181818182
+            ],
+            "target_bbox": [
+              232,
+              250,
+              280,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              232,
+              250,
+              280,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_fight_ranged_n_0.png",
+          "facing": "n",
+          "frame": "0",
+          "pose": "aiming a sidearm forward, steady stance"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              156,
+              383
+            ],
+            "source_size": [
+              156,
+              383
+            ],
+            "scale": [
+              0.18276762402088773,
+              0.18276762402088773
+            ],
+            "target_bbox": [
+              242,
+              250,
+              271,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              242,
+              250,
+              271,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.06,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_fight_ranged_w_0.png",
+          "facing": "w",
+          "frame": "0",
+          "pose": "aiming a sidearm forward, steady stance"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              173,
+              385
+            ],
+            "source_size": [
+              173,
+              385
+            ],
+            "scale": [
+              0.18181818181818182,
+              0.18181818181818182
+            ],
+            "target_bbox": [
+              240,
+              250,
+              271,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              240,
+              250,
+              271,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_fight_ranged_s_1.png",
+          "facing": "s",
+          "frame": "1",
+          "pose": "aiming a sidearm forward, slight recoil/muzzle-flash moment"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              285,
+              380
+            ],
+            "source_size": [
+              285,
+              380
+            ],
+            "scale": [
+              0.18421052631578946,
+              0.18421052631578946
+            ],
+            "target_bbox": [
+              230,
+              250,
+              282,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              230,
+              250,
+              282,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.56,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_fight_ranged_e_1.png",
+          "facing": "e",
+          "frame": "1",
+          "pose": "aiming a sidearm forward, slight recoil/muzzle-flash moment"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              274,
+              385
+            ],
+            "source_size": [
+              274,
+              385
+            ],
+            "scale": [
+              0.18181818181818182,
+              0.18181818181818182
+            ],
+            "target_bbox": [
+              231,
+              250,
+              281,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              231,
+              250,
+              281,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_fight_ranged_n_1.png",
+          "facing": "n",
+          "frame": "1",
+          "pose": "aiming a sidearm forward, slight recoil/muzzle-flash moment"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              157,
+              385
+            ],
+            "source_size": [
+              157,
+              385
+            ],
+            "scale": [
+              0.18181818181818182,
+              0.18181818181818182
+            ],
+            "target_bbox": [
+              242,
+              250,
+              271,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              242,
+              250,
+              271,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_fight_ranged_w_1.png",
+          "facing": "w",
+          "frame": "1",
+          "pose": "aiming a sidearm forward, slight recoil/muzzle-flash moment"
+        }
+      ]
+    },
+    "carry_walk_s_e": {
+      "id": "carry_walk_s_e",
+      "state": "carry_walk",
+      "grid": [
+        4,
+        2
+      ],
+      "contract": "stand",
+      "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, simplified featureless face, short dark cropped hair -- bare-headed in every single cell of the sheet, exactly the same haircut each time. Never wearing any cap, hat, hood, helmet, or other headwear in any cell, even from behind or from a three-quarter-back angle -- headwear choice must not vary from pose to pose. A 4-frame walk cycle carrying a small cargo crate, small flat contact shadow under the forward foot each frame, no floor tile, no platform. Arrange the sheet as EXACTLY 4 equal columns by 2 equal rows in a strict uniform grid -- EXACTLY 8 cells total, no more and no fewer, EXACTLY 4 characters per row (count them: one, two, three, four), EXACTLY 2 rows (reading order left-to-right then top-to-bottom). Do NOT add an extra in-between pose anywhere -- there are only 8 poses listed below and the sheet must contain precisely those 8, nothing added. Each cell contains exactly ONE full-body pose of the SAME character -- identical jumpsuit color and trim, identical hair/cap, identical body proportions, identical cel-shading and outline weight in every cell, only the pose/facing changes as listed below. Leave a wide clear empty transparent gap of at least one head-width between adjacent cells in every row so no cell's subject overlaps or touches a neighboring cell's subject. Do not draw grid lines, cell borders, or dividers -- only empty transparent space separates the cells. Cells, in reading order:\n  Cell (row 1, col 1): walking while carrying a small cargo crate held against the chest with both arms, left leg forward, facing the camera (south/front view).\n  Cell (row 1, col 2): walking while carrying a small cargo crate held against the chest with both arms, legs passing together, facing the camera (south/front view).\n  Cell (row 1, col 3): walking while carrying a small cargo crate held against the chest with both arms, right leg forward, facing the camera (south/front view).\n  Cell (row 1, col 4): walking while carrying a small cargo crate held against the chest with both arms, legs passing together, mirrored, facing the camera (south/front view).\n  Cell (row 2, col 1): walking while carrying a small cargo crate held against the chest with both arms, left leg forward, facing right (east), full side profile.\n  Cell (row 2, col 2): walking while carrying a small cargo crate held against the chest with both arms, legs passing together, facing right (east), full side profile.\n  Cell (row 2, col 3): walking while carrying a small cargo crate held against the chest with both arms, right leg forward, facing right (east), full side profile.\n  Cell (row 2, col 4): walking while carrying a small cargo crate held against the chest with both arms, legs passing together, mirrored, facing right (east), full side profile. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+      "usage": {
+        "prompt_tokens": 1244,
+        "completion_tokens": 6208,
+        "total_tokens": 7452,
+        "cost": 0.052774,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.052774,
+          "upstream_inference_prompt_cost": 0.00311,
+          "upstream_inference_completions_cost": 0.049664
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 6208
+        }
+      },
+      "raw_path": "assets\\sprites\\gen2\\crew\\_raw_carry_walk_s_e.png",
+      "sliced_with_auto_detection": false,
+      "cells": [
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              312,
+              411
+            ],
+            "source_size": [
+              312,
+              411
+            ],
+            "scale": [
+              0.170316301703163,
+              0.170316301703163
+            ],
+            "target_bbox": [
+              230,
+              250,
+              283,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              230,
+              250,
+              283,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 5.52,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_carry_walk_s_0.png",
+          "facing": "s",
+          "frame": "0",
+          "pose": "walking while carrying a small cargo crate held against the chest with both arms, left leg forward"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              345,
+              411
+            ],
+            "source_size": [
+              345,
+              411
+            ],
+            "scale": [
+              0.170316301703163,
+              0.170316301703163
+            ],
+            "target_bbox": [
+              226,
+              250,
+              285,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              226,
+              250,
+              285,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 3.09,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_carry_walk_s_1.png",
+          "facing": "s",
+          "frame": "1",
+          "pose": "walking while carrying a small cargo crate held against the chest with both arms, legs passing together"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              284,
+              413
+            ],
+            "source_size": [
+              284,
+              413
+            ],
+            "scale": [
+              0.1694915254237288,
+              0.1694915254237288
+            ],
+            "target_bbox": [
+              232,
+              250,
+              280,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              232,
+              250,
+              280,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 5.52,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_carry_walk_s_2.png",
+          "facing": "s",
+          "frame": "2",
+          "pose": "walking while carrying a small cargo crate held against the chest with both arms, right leg forward"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              221,
+              411
+            ],
+            "source_size": [
+              221,
+              411
+            ],
+            "scale": [
+              0.170316301703163,
+              0.170316301703163
+            ],
+            "target_bbox": [
+              237,
+              250,
+              275,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              237,
+              250,
+              275,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_carry_walk_s_3.png",
+          "facing": "s",
+          "frame": "3",
+          "pose": "walking while carrying a small cargo crate held against the chest with both arms, legs passing together, mirrored"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              334,
+              411
+            ],
+            "source_size": [
+              334,
+              411
+            ],
+            "scale": [
+              0.170316301703163,
+              0.170316301703163
+            ],
+            "target_bbox": [
+              228,
+              250,
+              285,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              228,
+              250,
+              285,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 2.96,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_carry_walk_e_0.png",
+          "facing": "e",
+          "frame": "0",
+          "pose": "walking while carrying a small cargo crate held against the chest with both arms, left leg forward"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              345,
+              410
+            ],
+            "source_size": [
+              345,
+              410
+            ],
+            "scale": [
+              0.17073170731707318,
+              0.17073170731707318
+            ],
+            "target_bbox": [
+              226,
+              250,
+              285,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              226,
+              250,
+              285,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_carry_walk_e_1.png",
+          "facing": "e",
+          "frame": "1",
+          "pose": "walking while carrying a small cargo crate held against the chest with both arms, legs passing together"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              332,
+              410
+            ],
+            "source_size": [
+              332,
+              410
+            ],
+            "scale": [
+              0.17073170731707318,
+              0.17073170731707318
+            ],
+            "target_bbox": [
+              228,
+              250,
+              285,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              228,
+              250,
+              285,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.0,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_carry_walk_e_2.png",
+          "facing": "e",
+          "frame": "2",
+          "pose": "walking while carrying a small cargo crate held against the chest with both arms, right leg forward"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              221,
+              410
+            ],
+            "source_size": [
+              221,
+              410
+            ],
+            "scale": [
+              0.17073170731707318,
+              0.17073170731707318
+            ],
+            "target_bbox": [
+              237,
+              250,
+              275,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              237,
+              250,
+              275,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.69,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_carry_walk_e_3.png",
+          "facing": "e",
+          "frame": "3",
+          "pose": "walking while carrying a small cargo crate held against the chest with both arms, legs passing together, mirrored"
+        }
+      ]
+    },
+    "carry_walk_n_w": {
+      "id": "carry_walk_n_w",
+      "state": "carry_walk",
+      "grid": [
+        4,
+        2
+      ],
+      "contract": "stand",
+      "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, simplified featureless face, short dark cropped hair -- bare-headed in every single cell of the sheet, exactly the same haircut each time. Never wearing any cap, hat, hood, helmet, or other headwear in any cell, even from behind or from a three-quarter-back angle -- headwear choice must not vary from pose to pose. A 4-frame walk cycle carrying a small cargo crate, small flat contact shadow under the forward foot each frame, no floor tile, no platform. Arrange the sheet as EXACTLY 4 equal columns by 2 equal rows in a strict uniform grid -- EXACTLY 8 cells total, no more and no fewer, EXACTLY 4 characters per row (count them: one, two, three, four), EXACTLY 2 rows (reading order left-to-right then top-to-bottom). Do NOT add an extra in-between pose anywhere -- there are only 8 poses listed below and the sheet must contain precisely those 8, nothing added. Each cell contains exactly ONE full-body pose of the SAME character -- identical jumpsuit color and trim, identical hair/cap, identical body proportions, identical cel-shading and outline weight in every cell, only the pose/facing changes as listed below. Leave a wide clear empty transparent gap of at least one head-width between adjacent cells in every row so no cell's subject overlaps or touches a neighboring cell's subject. Do not draw grid lines, cell borders, or dividers -- only empty transparent space separates the cells. Cells, in reading order:\n  Cell (row 1, col 1): walking while carrying a small cargo crate held against the chest with both arms, left leg forward, facing away from the camera (north/back view).\n  Cell (row 1, col 2): walking while carrying a small cargo crate held against the chest with both arms, legs passing together, facing away from the camera (north/back view).\n  Cell (row 1, col 3): walking while carrying a small cargo crate held against the chest with both arms, right leg forward, facing away from the camera (north/back view).\n  Cell (row 1, col 4): walking while carrying a small cargo crate held against the chest with both arms, legs passing together, mirrored, facing away from the camera (north/back view).\n  Cell (row 2, col 1): walking while carrying a small cargo crate held against the chest with both arms, left leg forward, facing left (west), full side profile.\n  Cell (row 2, col 2): walking while carrying a small cargo crate held against the chest with both arms, legs passing together, facing left (west), full side profile.\n  Cell (row 2, col 3): walking while carrying a small cargo crate held against the chest with both arms, right leg forward, facing left (west), full side profile.\n  Cell (row 2, col 4): walking while carrying a small cargo crate held against the chest with both arms, legs passing together, mirrored, facing left (west), full side profile. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+      "usage": {
+        "prompt_tokens": 1252,
+        "completion_tokens": 6208,
+        "total_tokens": 7460,
+        "cost": 0.052794,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.052794,
+          "upstream_inference_prompt_cost": 0.00313,
+          "upstream_inference_completions_cost": 0.049664
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 6208
+        }
+      },
+      "raw_path": "assets\\sprites\\gen2\\crew\\_raw_carry_walk_n_w.png",
+      "sliced_with_auto_detection": false,
+      "cells": [
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              181,
+              390
+            ],
+            "source_size": [
+              181,
+              390
+            ],
+            "scale": [
+              0.1794871794871795,
+              0.1794871794871795
+            ],
+            "target_bbox": [
+              240,
+              250,
+              272,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              240,
+              250,
+              272,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 4.72,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_carry_walk_n_0.png",
+          "facing": "n",
+          "frame": "0",
+          "pose": "walking while carrying a small cargo crate held against the chest with both arms, left leg forward"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              184,
+              391
+            ],
+            "source_size": [
+              184,
+              391
+            ],
+            "scale": [
+              0.17902813299232737,
+              0.17902813299232737
+            ],
+            "target_bbox": [
+              240,
+              250,
+              273,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              240,
+              250,
+              273,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 3.85,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_carry_walk_n_1.png",
+          "facing": "n",
+          "frame": "1",
+          "pose": "walking while carrying a small cargo crate held against the chest with both arms, legs passing together"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              161,
+              393
+            ],
+            "source_size": [
+              161,
+              393
+            ],
+            "scale": [
+              0.178117048346056,
+              0.178117048346056
+            ],
+            "target_bbox": [
+              242,
+              250,
+              271,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              242,
+              250,
+              271,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.78,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_carry_walk_n_2.png",
+          "facing": "n",
+          "frame": "2",
+          "pose": "walking while carrying a small cargo crate held against the chest with both arms, right leg forward"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              161,
+              393
+            ],
+            "source_size": [
+              161,
+              393
+            ],
+            "scale": [
+              0.178117048346056,
+              0.178117048346056
+            ],
+            "target_bbox": [
+              242,
+              250,
+              271,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              242,
+              250,
+              271,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 4.1,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_carry_walk_n_3.png",
+          "facing": "n",
+          "frame": "3",
+          "pose": "walking while carrying a small cargo crate held against the chest with both arms, legs passing together, mirrored"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              173,
+              384
+            ],
+            "source_size": [
+              173,
+              384
+            ],
+            "scale": [
+              0.18229166666666666,
+              0.18229166666666666
+            ],
+            "target_bbox": [
+              240,
+              250,
+              272,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              240,
+              250,
+              272,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 1.87,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_carry_walk_w_0.png",
+          "facing": "w",
+          "frame": "0",
+          "pose": "walking while carrying a small cargo crate held against the chest with both arms, left leg forward"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              194,
+              383
+            ],
+            "source_size": [
+              194,
+              383
+            ],
+            "scale": [
+              0.18276762402088773,
+              0.18276762402088773
+            ],
+            "target_bbox": [
+              238,
+              250,
+              273,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              238,
+              250,
+              273,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 4.51,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_carry_walk_w_1.png",
+          "facing": "w",
+          "frame": "1",
+          "pose": "walking while carrying a small cargo crate held against the chest with both arms, legs passing together"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              201,
+              383
+            ],
+            "source_size": [
+              201,
+              383
+            ],
+            "scale": [
+              0.18276762402088773,
+              0.18276762402088773
+            ],
+            "target_bbox": [
+              238,
+              250,
+              275,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              238,
+              250,
+              275,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 7.88,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_carry_walk_w_2.png",
+          "facing": "w",
+          "frame": "2",
+          "pose": "walking while carrying a small cargo crate held against the chest with both arms, right leg forward"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              184,
+              383
+            ],
+            "source_size": [
+              184,
+              383
+            ],
+            "scale": [
+              0.18276762402088773,
+              0.18276762402088773
+            ],
+            "target_bbox": [
+              239,
+              250,
+              273,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              239,
+              250,
+              273,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 5.26,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_carry_walk_w_3.png",
+          "facing": "w",
+          "frame": "3",
+          "pose": "walking while carrying a small cargo crate held against the chest with both arms, legs passing together, mirrored"
+        }
+      ]
+    },
+    "carry_idle": {
+      "id": "carry_idle",
+      "state": "carry_idle",
+      "grid": [
+        4,
+        1
+      ],
+      "contract": "stand",
+      "prompt": "Clean cel-shaded game sprite drawn locked to a 2:1 isometric pixel-art grid: the ground plane is a grid of flat diamonds exactly twice as wide as they are tall, the object's footprint and every horizontal edge align to those diamond diagonals, vertical edges stay strictly vertical, and the camera is never steeper than 27 degrees above the horizon. Flat frontal key light from the upper-left only. Two to three flat color tones per surface with hard edges between them, absolutely no gradients, no soft shading, no ambient occlusion blur, no texture noise, no painterly brushwork, no photographic detail. Thin uniform-weight dark outline (#14171C) around the silhouette and between color facets, constant thickness. Restrict all colors strictly to this palette: outline #14171C; structure grays #C7CED6 / #8B95A1 / #4E5661 / #2A2F36; off-white #EDEFF2; warm accent #FFC857 / #C9822A; cool accent #6FE3E0 / #2C9A98. Do not introduce any other hues. Chunky simple readable silhouette, no fine detail smaller than necessary to read at small size. A ship crew member in a simple utilitarian jumpsuit, off-white body with steel-gray trim, simplified featureless face, short dark cropped hair -- bare-headed in every single cell of the sheet, exactly the same haircut each time. Never wearing any cap, hat, hood, helmet, or other headwear in any cell, even from behind or from a three-quarter-back angle -- headwear choice must not vary from pose to pose. Standing still, holding a small cargo crate against the chest with both arms, small flat contact shadow under the feet, no floor tile, no platform. Arrange the sheet as EXACTLY 4 equal columns by 1 equal rows in a strict uniform grid -- EXACTLY 4 cells total, no more and no fewer, EXACTLY 4 characters per row (count them: one, two, three, four), EXACTLY 1 rows (reading order left-to-right then top-to-bottom). Do NOT add an extra in-between pose anywhere -- there are only 4 poses listed below and the sheet must contain precisely those 4, nothing added. Each cell contains exactly ONE full-body pose of the SAME character -- identical jumpsuit color and trim, identical hair/cap, identical body proportions, identical cel-shading and outline weight in every cell, only the pose/facing changes as listed below. Leave a wide clear empty transparent gap of at least one head-width between adjacent cells in every row so no cell's subject overlaps or touches a neighboring cell's subject. Do not draw grid lines, cell borders, or dividers -- only empty transparent space separates the cells. Cells, in reading order:\n  Cell (row 1, col 1): standing, holding a crate, facing the camera (south/front view).\n  Cell (row 1, col 2): standing, holding a crate, facing right (east), full side profile.\n  Cell (row 1, col 3): standing, holding a crate, facing away from the camera (north/back view).\n  Cell (row 1, col 4): standing, holding a crate, facing left (west), full side profile. Avoid: gradients, soft shadows, blur, glow/bloom haze, film grain, painterly texture, realistic/photographic rendering, top-down 90-degree flat view, any camera angle other than the specified 2:1 dimetric, fisheye or perspective distortion, multiple copies of the subject, collage or grid layout, background scenery beyond the subject and its immediate contact shadow, text, watermark, logo, signature, frame/border. Transparent background. Single subject only. The subject itself must be completely solid and fully opaque everywhere -- no see-through parts, no transparent windows or glass, no cut-out holes; only the area OUTSIDE the subject's silhouette is transparent.",
+      "usage": {
+        "prompt_tokens": 1036,
+        "completion_tokens": 6208,
+        "total_tokens": 7244,
+        "cost": 0.052254,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.052254,
+          "upstream_inference_prompt_cost": 0.00259,
+          "upstream_inference_completions_cost": 0.049664
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 6208
+        }
+      },
+      "raw_path": "assets\\sprites\\gen2\\crew\\_raw_carry_idle.png",
+      "sliced_with_auto_detection": true,
+      "cells": [
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              266,
+              659
+            ],
+            "source_size": [
+              266,
+              659
+            ],
+            "scale": [
+              0.1062215477996965,
+              0.1062215477996965
+            ],
+            "target_bbox": [
+              242,
+              250,
+              270,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              242,
+              250,
+              270,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 8.24,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_carry_idle_s_0.png",
+          "facing": "s",
+          "frame": "0",
+          "pose": "standing, holding a crate"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              256,
+              656
+            ],
+            "source_size": [
+              256,
+              656
+            ],
+            "scale": [
+              0.10670731707317073,
+              0.10670731707317073
+            ],
+            "target_bbox": [
+              242,
+              250,
+              269,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              242,
+              250,
+              269,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 1.23,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_carry_idle_e_0.png",
+          "facing": "e",
+          "frame": "0",
+          "pose": "standing, holding a crate"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              268,
+              658
+            ],
+            "source_size": [
+              268,
+              658
+            ],
+            "scale": [
+              0.10638297872340426,
+              0.10638297872340426
+            ],
+            "target_bbox": [
+              242,
+              250,
+              271,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              242,
+              250,
+              271,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 2.34,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_carry_idle_n_0.png",
+          "facing": "n",
+          "frame": "0",
+          "pose": "standing, holding a crate"
+        },
+        {
+          "normalize": {
+            "source_bbox": [
+              0,
+              0,
+              260,
+              657
+            ],
+            "source_size": [
+              260,
+              657
+            ],
+            "scale": [
+              0.106544901065449,
+              0.106544901065449
+            ],
+            "target_bbox": [
+              242,
+              250,
+              270,
+              320
+            ]
+          },
+          "qa": {
+            "notes": [],
+            "canvas_ok": true,
+            "has_alpha": true,
+            "bbox": [
+              242,
+              250,
+              270,
+              320
+            ],
+            "anchored_ok": true,
+            "interior_hole_pct": 0.93,
+            "solid_ok": true,
+            "pass": true
+          },
+          "file": "crew_carry_idle_w_0.png",
+          "facing": "w",
+          "frame": "0",
+          "pose": "standing, holding a crate"
+        }
+      ]
     }
   }
 }

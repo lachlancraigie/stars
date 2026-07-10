@@ -156,25 +156,24 @@ def compose_sheet_prompt(job: dict[str, Any]) -> str:
 # ---------------------------------------------------------------------------
 
 
-def pad_to_square(im: Image.Image) -> Image.Image:
-    im = im.convert("RGBA")
-    if im.width == im.height:
-        return im
-    side = max(im.size)
-    padded = Image.new("RGBA", (side, side), (0, 0, 0, 0))
-    padded.paste(im, ((side - im.width) // 2, (side - im.height) // 2))
-    return padded
-
-
 def slice_cells(im: Image.Image, cols: int, rows: int, margin_frac: float = 0.05) -> list[Image.Image]:
     """Even grid division (PIL owns geometry, not the model -- style-bible
     pipeline note #3) with a small inset margin per cell to avoid bleed from
     a neighbor's outline, returned in row-major reading order.
 
+    Divides the image's OWN actual width/height -- earlier versions padded to
+    a square canvas first, which seemed harmless but silently shifted every
+    column/row boundary sideways whenever a sheet came back in a non-square
+    aspect (assets/sprites/gen2/crew/_raw_injured_walk_s_e.png came back
+    1024x1536 instead of the usual 1536x1024; the padding offset sliced two
+    of the eight poses down to a sliver). No downstream step needs a square
+    input -- process_cell trims to its own alpha bbox and normalizes onto a
+    fixed 512x512 canvas regardless of the slice's input aspect ratio.
+
     Kept as the fallback strategy for slice_cells_auto() below -- correct only
     when the model actually rendered exactly cols*rows evenly-spaced poses.
     """
-    im = pad_to_square(im)
+    im = im.convert("RGBA")
     w, h = im.size
     cw, ch = w / cols, h / rows
     mx, my = cw * margin_frac, ch * margin_frac
@@ -254,7 +253,7 @@ def slice_cells_auto(im: Image.Image, cols: int, rows: int, margin_px: int = 6,
     still carry per-cell QA that catches a bad slice's mangled proportions).
     Returns (cells_in_reading_order, used_auto_detection).
     """
-    im = pad_to_square(im)
+    im = im.convert("RGBA")
     col_runs, row_runs, matched = detect_grid_bounds(im, cols, rows)
     if not matched:
         return slice_cells(im, cols, rows), False
@@ -478,15 +477,20 @@ JOBS: dict[str, dict[str, Any]] = {
     },
 
     # --- 4. DEAD (S + E, mirror the rest) --------------------------------
+    # A 2x2 (2 poses x 2 facings) attempt produced a badly-sliced garbage cell
+    # (the 4 poses didn't land in a clean grid -- see assets/sprites/gen2/
+    # crew/_test/ for the abandoned attempt). Simplified to 2 pose VARIANTS
+    # under one shared facing each -- a corpse doesn't need facing-accurate
+    # art the way a walking crew member does, so this trades facing coverage
+    # for the small-grid shape that's actually proven reliable. Rendered as
+    # "static_variant" in the manifest (pick one per corpse, don't animate).
     "dead": {
-        "id": "dead", "state": "dead", "grid": (2, 2), "contract": "prone",
-        "pose_common": "A collapsed, motionless body on the ground, two distinct poses (rows) each shown "
-                        "from two facings (columns), small flat contact shadow, no floor tile, no platform.",
+        "id": "dead", "state": "dead", "grid": (2, 1), "contract": "prone",
+        "pose_common": "A collapsed, motionless body on the ground, two distinct death poses, small flat "
+                        "contact shadow, no floor tile, no platform.",
         "cells": [
             {"facing": "s", "frame": "0", "pose": "sprawled face-up, limbs splayed outward, motionless"},
-            {"facing": "e", "frame": "0", "pose": "sprawled face-up, limbs splayed outward, motionless, side view"},
-            {"facing": "s", "frame": "1", "pose": "slumped face-down, one arm tucked under the body, motionless"},
-            {"facing": "e", "frame": "1", "pose": "slumped face-down, one arm tucked under the body, motionless, side view"},
+            {"facing": "s", "frame": "1", "pose": "slumped face-down, one arm tucked under the body, motionless, side view"},
         ],
     },
 
@@ -503,8 +507,13 @@ JOBS: dict[str, dict[str, Any]] = {
                         "under the forward foot each frame, no floor tile, no platform.",
         "cells": _walk_cells(["n", "w"], INJURED_WALK_POSES),
     },
+    # grid was (2,2) originally -- the model drew all 4 facings in a single row instead of
+    # a real 2x2, and even-division fallback sliced quadrants that split heads from legs
+    # (see assets/sprites/gen2/crew/_test/ for the same failure mode on "dead"). (4,1)
+    # matches what the model actually wants to draw for "N facings, 1 frame" (same shape
+    # the idle_{pair} jobs already proved reliable, just wider).
     "injured_idle": {
-        "id": "injured_idle", "state": "injured_idle", "grid": (2, 2), "contract": "stand",
+        "id": "injured_idle", "state": "injured_idle", "grid": (4, 1), "contract": "stand",
         "pose_common": "Standing hunched, clutching their side/ribs with one hand as if wounded, small flat "
                         "contact shadow under the feet, no floor tile, no platform.",
         "cells": [{"facing": f, "frame": "0", "pose": "standing hunched, clutching side"} for f in
@@ -563,8 +572,9 @@ JOBS: dict[str, dict[str, Any]] = {
                         "the forward foot each frame, no floor tile, no platform.",
         "cells": _walk_cells(["n", "w"], CARRY_WALK_POSES),
     },
+    # See injured_idle's comment -- same (2,2) -> (4,1) fix for the same failure mode.
     "carry_idle": {
-        "id": "carry_idle", "state": "carry_idle", "grid": (2, 2), "contract": "stand",
+        "id": "carry_idle", "state": "carry_idle", "grid": (4, 1), "contract": "stand",
         "pose_common": "Standing still, holding a small cargo crate against the chest with both arms, small "
                         "flat contact shadow under the feet, no floor tile, no platform.",
         "cells": [{"facing": f, "frame": "0", "pose": "standing, holding a crate"} for f in
@@ -608,6 +618,98 @@ JOB_ORDER = list(JOBS.keys())
 
 
 # ---------------------------------------------------------------------------
+# Manifest: scans CREW_DIR for actual crew_{state}_{facing}_{frame}.png files
+# (rather than hand-listing them, which would drift from what's really on
+# disk) and writes assets/sprites/gen2/crew/manifest.json for
+# scripts/crew/crew_member_node.gd to load at runtime. ANIMATION_META
+# supplies the per-state playback info that can't be inferred from filenames
+# alone (loop fps, or "static_variant" for poses that are alternate corpse
+# variants rather than a cycle -- see the "dead" job comment above).
+# ---------------------------------------------------------------------------
+
+_KNOWN_FACINGS = set(FACING_DESC.keys())  # {"s","se","e","ne","n","nw","w","sw"}
+
+# state -> {"mode": "cycle" | "static_variant", "fps": float}. "cycle" states
+# advance their frame over time (walk, breathing, drifting, swinging);
+# "static_variant" states pick ONE frame per crew member (deterministic on
+# crew_id) and hold it -- a corpse shouldn't visibly flip pose every second.
+ANIMATION_META: dict[str, dict[str, Any]] = {
+    "idle":          {"mode": "cycle", "fps": 0.0},   # single frame; fps unused
+    "walk":          {"mode": "cycle", "fps": 8.0},
+    "sleeping":      {"mode": "cycle", "fps": 1.5},
+    "dead":          {"mode": "static_variant", "fps": 0.0},
+    "injured_walk":  {"mode": "cycle", "fps": 6.0},   # limping — slower than a normal walk
+    "injured_idle":  {"mode": "cycle", "fps": 0.0},
+    "floating":      {"mode": "cycle", "fps": 4.0},
+    "fight_melee":   {"mode": "cycle", "fps": 6.0},
+    "fight_ranged":  {"mode": "cycle", "fps": 4.0},
+    "carry_walk":    {"mode": "cycle", "fps": 8.0},
+    "carry_idle":    {"mode": "cycle", "fps": 0.0},
+}
+DEFAULT_ANIMATION_META = {"mode": "cycle", "fps": 6.0}  # fallback for any future state left undeclared above
+
+
+def _parse_crew_filename(stem: str) -> tuple[str, str, int] | None:
+    """'crew_{state}_{facing}_{frame}' -> (state, facing, frame). State names
+    themselves can contain underscores (e.g. "injured_walk"), so parse from
+    the right: the last token is always a numeric frame, the second-to-last
+    is always one of the 8 known facing codes -- everything before that is
+    the state name, however many underscores it has."""
+    if not stem.startswith("crew_"):
+        return None
+    parts = stem[len("crew_"):].split("_")
+    if len(parts) < 3:
+        return None
+    frame_str, facing = parts[-1], parts[-2]
+    if not frame_str.isdigit() or facing not in _KNOWN_FACINGS:
+        return None
+    state = "_".join(parts[:-2])
+    if not state:
+        return None
+    return state, facing, int(frame_str)
+
+
+def build_manifest() -> dict[str, Any]:
+    states: dict[str, dict[str, Any]] = {}
+    for path in sorted(CREW_DIR.glob("crew_*.png")):
+        parsed = _parse_crew_filename(path.stem)
+        if parsed is None:
+            continue
+        state, facing, frame = parsed
+        entry = states.setdefault(state, {"facings": {}, "meta": ANIMATION_META.get(state, DEFAULT_ANIMATION_META)})
+        entry["facings"].setdefault(facing, set()).add(frame)
+
+    manifest_states: dict[str, Any] = {}
+    for state, entry in sorted(states.items()):
+        facings = entry["facings"]
+        # frame_count is the count of the facing with the MOST frames (each facing normally
+        # covers the same count -- the fallback resolver in CrewMemberNode clamps if a
+        # substituted facing happens to have fewer, per its own docstring).
+        frame_count = max((len(v) for v in facings.values()), default=0)
+        manifest_states[state] = {
+            "facings": sorted(facings.keys()),
+            "frame_count": frame_count,
+            "animation_mode": entry["meta"]["mode"],
+            "fps": entry["meta"]["fps"],
+        }
+
+    return {
+        "version": 1,
+        "generated_by": "tools/image_gen/crew_sheet_gen.py --manifest",
+        "base_dir": "res://assets/sprites/gen2/crew/",
+        "file_pattern": "crew_{state}_{facing}_{frame}.png",
+        "states": manifest_states,
+    }
+
+
+def write_manifest() -> Path:
+    manifest = build_manifest()
+    out_path = CREW_DIR / "manifest.json"
+    out_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+    return out_path
+
+
+# ---------------------------------------------------------------------------
 # Budget tracking
 # ---------------------------------------------------------------------------
 
@@ -617,7 +719,11 @@ def _sum_report_cost(path: Path) -> float:
         return 0.0
     report = json.loads(path.read_text(encoding="utf-8"))
     total = 0.0
-    for rec in report.get("results", {}).values():
+    # MAIN_REPORT (env kit) uses {"results": {...}}; SHEET_REPORT (crew) uses {"jobs": {...}}
+    # -- report.get("results", {}) alone silently summed to 0 for every crew job, since
+    # sheet_report.json has no "results" key at all. Check both.
+    records = report.get("results") or report.get("jobs") or {}
+    for rec in records.values():
         for a in rec.get("attempts", []):
             total += (a.get("usage") or {}).get("cost") or 0.0
         if isinstance(rec.get("usage"), dict):  # sheet_report shape

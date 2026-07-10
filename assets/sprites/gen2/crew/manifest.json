@@ -1,0 +1,131 @@
+{
+  "version": 1,
+  "generated_by": "tools/image_gen/crew_sheet_gen.py --manifest",
+  "base_dir": "res://assets/sprites/gen2/crew/",
+  "file_pattern": "crew_{state}_{facing}_{frame}.png",
+  "states": {
+    "carry_idle": {
+      "facings": [
+        "e",
+        "n",
+        "s",
+        "w"
+      ],
+      "frame_count": 1,
+      "animation_mode": "cycle",
+      "fps": 0.0
+    },
+    "carry_walk": {
+      "facings": [
+        "e",
+        "n",
+        "s",
+        "w"
+      ],
+      "frame_count": 4,
+      "animation_mode": "cycle",
+      "fps": 8.0
+    },
+    "dead": {
+      "facings": [
+        "s"
+      ],
+      "frame_count": 2,
+      "animation_mode": "static_variant",
+      "fps": 0.0
+    },
+    "fight_melee": {
+      "facings": [
+        "e",
+        "n",
+        "s",
+        "w"
+      ],
+      "frame_count": 3,
+      "animation_mode": "cycle",
+      "fps": 6.0
+    },
+    "fight_ranged": {
+      "facings": [
+        "e",
+        "n",
+        "s",
+        "w"
+      ],
+      "frame_count": 2,
+      "animation_mode": "cycle",
+      "fps": 4.0
+    },
+    "floating": {
+      "facings": [
+        "e",
+        "n",
+        "s",
+        "w"
+      ],
+      "frame_count": 3,
+      "animation_mode": "cycle",
+      "fps": 4.0
+    },
+    "idle": {
+      "facings": [
+        "e",
+        "n",
+        "ne",
+        "nw",
+        "s",
+        "se",
+        "sw",
+        "w"
+      ],
+      "frame_count": 1,
+      "animation_mode": "cycle",
+      "fps": 0.0
+    },
+    "injured_idle": {
+      "facings": [
+        "e",
+        "n",
+        "s",
+        "w"
+      ],
+      "frame_count": 1,
+      "animation_mode": "cycle",
+      "fps": 0.0
+    },
+    "injured_walk": {
+      "facings": [
+        "e",
+        "n",
+        "s",
+        "w"
+      ],
+      "frame_count": 4,
+      "animation_mode": "cycle",
+      "fps": 6.0
+    },
+    "sleeping": {
+      "facings": [
+        "e"
+      ],
+      "frame_count": 2,
+      "animation_mode": "cycle",
+      "fps": 1.5
+    },
+    "walk": {
+      "facings": [
+        "e",
+        "n",
+        "ne",
+        "nw",
+        "s",
+        "se",
+        "sw",
+        "w"
+      ],
+      "frame_count": 4,
+      "animation_mode": "cycle",
+      "fps": 8.0
+    }
+  }
+}
