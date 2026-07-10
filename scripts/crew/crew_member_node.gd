@@ -110,6 +110,12 @@ var _bubble_tail: Polygon2D
 var _bubble_tween: Tween
 var _bubble_gen: int = 0  # invalidates a stale hide-callback if a newer line pre-empts it
 
+# Voice line playback (tools/audio_gen pipeline): line key "TAG#00042" maps to
+# assets/audio/dialogue/TAG_00042.mp3. The directory is gitignored (generated audio),
+# so streams are built from raw bytes at runtime rather than relying on Godot imports.
+const VOICE_DIR: String = "res://assets/audio/dialogue/"
+var _voice_player: AudioStreamPlayer2D
+
 # Locked-door bypass in progress (see Door.attempt_crew_bypass): while non-empty, this
 # crew member is standing put attempting to force a locked door rather than walking.
 var _bypassing_door_id: String = ""
@@ -138,6 +144,11 @@ func _ready() -> void:
 	add_child(_status_dot)
 
 	_build_bubble()
+
+	_voice_player = AudioStreamPlayer2D.new()
+	_voice_player.max_distance = 2200.0
+	_voice_player.volume_db = -4.0
+	add_child(_voice_player)
 
 	position = _claim_standing_point(crew_data.location) if DeckPlan.has_room(crew_data.location) \
 		else Vector2.ZERO
@@ -521,10 +532,32 @@ func _bbcode_safe(text: String) -> String:
 	return text.replace("[", "(").replace("]", ")")
 
 
-func _on_line_spoken(crew_id: String, _line_key: String, text: String, line_type: String) -> void:
+func _on_line_spoken(crew_id: String, line_key: String, text: String, line_type: String) -> void:
 	if crew_id != crew_data.crew_id or text == "":
 		return
-	_show_bubble(text, line_type == "declaration")
+	var is_thought: bool = line_type == "declaration"
+	_show_bubble(text, is_thought)
+	# Thoughts are silent by spec (docs/dialogue_spec.md "Display"); speech plays its
+	# generated voice line when the audio exists (the corpus is only partially voiced
+	# until the ElevenLabs quota resets — missing files just mean a silent bubble).
+	if not is_thought:
+		_play_voice_line(line_key)
+
+
+func _play_voice_line(line_key: String) -> void:
+	if _voice_player == null or line_key == "":
+		return
+	var path: String = VOICE_DIR + line_key.replace("#", "_") + ".mp3"
+	if not FileAccess.file_exists(path):
+		return
+	var bytes: PackedByteArray = FileAccess.get_file_as_bytes(path)
+	if bytes.is_empty():
+		return
+	var stream: AudioStreamMP3 = AudioStreamMP3.new()
+	stream.data = bytes
+	_voice_player.stop()
+	_voice_player.stream = stream
+	_voice_player.play()
 
 
 func _show_bubble(text: String, is_thought: bool) -> void:
