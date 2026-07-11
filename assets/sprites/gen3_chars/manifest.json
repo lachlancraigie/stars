@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "total_spend": 3.358
+    "total_spend": 5.899
   },
   "characters": {
     "ch_fe_eng_cm": {
@@ -57,35 +57,35 @@
       "tag": "CH_FE_SCI_CM",
       "description": "a woman, a messy short crop in dark brown hair, rich dark skin, wearing a pale off-white lab tunic over a dark fitted under-layer, clipped instrument pouches on the chest, soft-soled shoes, a warm coral-orange accent (piping, patches), no rank trim or insignia",
       "palette": [
-        "#e0d8d0",
+        "#f0e8d8",
+        "#585858",
         "#000000",
-        "#e8e0e0",
-        "#909090"
+        "#a0a0a0"
       ],
       "qa": {
         "idle": {
-          "mean_iou": 0.831,
-          "min_iou": 0.542,
-          "drift": 38.5,
-          "pass": false
+          "mean_iou": 0.833,
+          "min_iou": 0.758,
+          "drift": 19.8,
+          "pass": true
         },
         "walk": {
-          "mean_iou": 0.782,
-          "min_iou": 0.593,
-          "drift": 33.5,
+          "mean_iou": 0.779,
+          "min_iou": 0.592,
+          "drift": 32.7,
           "pass": true
         },
         "run": {
-          "mean_iou": 0.866,
-          "min_iou": 0.809,
-          "drift": 36.1,
-          "pass": false
+          "mean_iou": 0.854,
+          "min_iou": 0.792,
+          "drift": 31.5,
+          "pass": true
         },
         "punch": {
-          "mean_iou": 0.672,
-          "min_iou": 0.39,
-          "drift": 23.7,
-          "pass": false
+          "mean_iou": 0.842,
+          "min_iou": 0.472,
+          "drift": 26.1,
+          "pass": true
         }
       },
       "model_used": {
@@ -94,13 +94,9 @@
         "run": "google/gemini-3-pro-image",
         "punch": "google/gemini-3-pro-image"
       },
-      "spend": 0.731,
-      "needs_regeneration": [
-        "run",
-        "punch",
-        "idle"
-      ],
-      "status": "partial"
+      "spend": 0.434,
+      "needs_regeneration": [],
+      "status": "complete"
     },
     "ch_ml_and_cm": {
       "id": "ch_ml_and_cm",
@@ -179,10 +175,10 @@
           "pass": true
         },
         "punch": {
-          "mean_iou": 0.437,
-          "min_iou": 0.206,
-          "drift": 9.6,
-          "pass": false
+          "mean_iou": 0.863,
+          "min_iou": 0.491,
+          "drift": 6.2,
+          "pass": true
         }
       },
       "model_used": {
@@ -191,11 +187,9 @@
         "run": "google/gemini-3-pro-image",
         "punch": "google/gemini-3-pro-image"
       },
-      "spend": 0.514,
-      "needs_regeneration": [
-        "punch"
-      ],
-      "status": "partial"
+      "spend": 0.217,
+      "needs_regeneration": [],
+      "status": "complete"
     },
     "ch_ml_mar_cm": {
       "id": "ch_ml_mar_cm",
@@ -204,9 +198,9 @@
       "tag": "CH_ML_MAR_CM",
       "description": "a man, a cropped pixie cut in sandy blonde hair, golden-tan skin, wearing an armored tactical vest over combat fatigues, knee and elbow padding, load-bearing webbing gear, heavy combat boots, a warm marigold-yellow accent (piping, patches), no rank trim or insignia",
       "palette": [
-        "#000000",
         "#383818",
-        "#282828"
+        "#282828",
+        "#000000"
       ],
       "qa": {
         "idle": {
@@ -228,10 +222,108 @@
           "pass": true
         },
         "punch": {
-          "mean_iou": 0.545,
-          "min_iou": 0.321,
-          "drift": 2.6,
+          "mean_iou": 0.662,
+          "min_iou": 0.409,
+          "drift": 20.3,
+          "pass": true
+        }
+      },
+      "model_used": {
+        "idle": "google/gemini-2.5-flash-image",
+        "walk": "google/gemini-2.5-flash-image",
+        "run": "google/gemini-3-pro-image",
+        "punch": "google/gemini-2.5-flash-image"
+      },
+      "spend": 0.08,
+      "needs_regeneration": [],
+      "status": "complete"
+    },
+    "ch_ml_sci_of": {
+      "id": "ch_ml_sci_of",
+      "kind": "crew",
+      "name": "Teodor Fassbinder",
+      "tag": "CH_ML_SCI_OF",
+      "description": "a man, a short practical crop in platinum blonde hair, pale freckled skin, wearing a pale off-white lab tunic over a dark fitted under-layer, clipped instrument pouches on the chest, soft-soled shoes, a warm coral-orange accent (piping, patches), silver shoulder trim / rank bars",
+      "palette": [
+        "#f0e0d0",
+        "#b8b8b8",
+        "#000000",
+        "#f0e8e0"
+      ],
+      "qa": {
+        "idle": {
+          "mean_iou": 0.664,
+          "min_iou": 0.498,
+          "drift": 13.7,
+          "pass": true
+        },
+        "walk": {
+          "mean_iou": 0.799,
+          "min_iou": 0.606,
+          "drift": 30.5,
+          "pass": true
+        },
+        "run": {
+          "mean_iou": 0.891,
+          "min_iou": 0.837,
+          "drift": 38.4,
           "pass": false
+        },
+        "punch": {
+          "mean_iou": 0.882,
+          "min_iou": 0.497,
+          "drift": 26.8,
+          "pass": true
+        }
+      },
+      "model_used": {
+        "idle": "google/gemini-2.5-flash-image",
+        "walk": "google/gemini-3-pro-image",
+        "run": "google/gemini-3-pro-image",
+        "punch": "google/gemini-3-pro-image"
+      },
+      "spend": 0.531,
+      "needs_regeneration": [
+        "run"
+      ],
+      "status": "partial"
+    },
+    "ev_fe_and_of": {
+      "id": "ev_fe_and_of",
+      "kind": "crew",
+      "name": "Iris Kepler",
+      "tag": "EV_FE_AND_OF",
+      "description": "a woman, a long single braid in salt-and-pepper grey hair, pale synthetic skin with a faint grey undertone, wearing a graphite-grey synthetic bodysuit with visible seam-panel lines and smooth matte plating at the shoulders and forearms, pale synthetic skin with a faint grey undertone, a muted slate-blue accent (piping, patches), silver shoulder trim / rank bars",
+      "palette": [
+        "#787880",
+        "#000000",
+        "#686870",
+        "#f8f8f8"
+      ],
+      "qa": {
+        "idle": {
+          "mean_iou": 0.943,
+          "min_iou": 0.846,
+          "drift": 32.2,
+          "pass": true
+        },
+        "walk": {
+          "mean_iou": 0.733,
+          "min_iou": 0.464,
+          "drift": 19.1,
+          "pass": true
+        },
+        "run": {
+          "mean_iou": 0.879,
+          "min_iou": 0.805,
+          "drift": 5.2,
+          "pass": true
+        },
+        "punch": {
+          "mean_iou": 0.872,
+          "min_iou": 0.5,
+          "drift": 6.3,
+          "pass": true
         }
       },
       "model_used": {
@@ -240,11 +332,107 @@
         "run": "google/gemini-3-pro-image",
         "punch": "google/gemini-3-pro-image"
       },
-      "spend": 0.514,
-      "needs_regeneration": [
-        "punch"
+      "spend": 0.354,
+      "needs_regeneration": [],
+      "status": "complete"
+    },
+    "ev_fe_mar_of": {
+      "id": "ev_fe_mar_of",
+      "kind": "crew",
+      "name": "Farah Okonkwo",
+      "tag": "EV_FE_MAR_OF",
+      "description": "a woman, a high tight bun in silver-white hair, sun-weathered tan skin, wearing an armored tactical vest over combat fatigues, knee and elbow padding, load-bearing webbing gear, heavy combat boots, a muted grey-blue accent (piping, patches), silver shoulder trim / rank bars",
+      "palette": [
+        "#000000",
+        "#707050",
+        "#484838",
+        "#101010"
       ],
-      "status": "partial"
+      "qa": {
+        "idle": {
+          "mean_iou": 0.877,
+          "min_iou": 0.693,
+          "drift": 7.7,
+          "pass": true
+        },
+        "walk": {
+          "mean_iou": 0.661,
+          "min_iou": 0.474,
+          "drift": 10.0,
+          "pass": true
+        },
+        "run": {
+          "mean_iou": 0.898,
+          "min_iou": 0.848,
+          "drift": 3.3,
+          "pass": true
+        },
+        "punch": {
+          "mean_iou": 0.874,
+          "min_iou": 0.499,
+          "drift": 6.7,
+          "pass": true
+        }
+      },
+      "model_used": {
+        "idle": "google/gemini-2.5-flash-image",
+        "walk": "google/gemini-2.5-flash-image",
+        "run": "google/gemini-3-pro-image",
+        "punch": "google/gemini-3-pro-image"
+      },
+      "spend": 0.354,
+      "needs_regeneration": [],
+      "status": "complete"
+    },
+    "ev_fe_sci_ca": {
+      "id": "ev_fe_sci_ca",
+      "kind": "crew",
+      "name": "Elena Marsh",
+      "tag": "EV_FE_SCI_CA",
+      "description": "a woman, shaved sides with a top knot in deep burgundy red hair, pale skin, wearing a pale off-white lab tunic over a dark fitted under-layer, clipped instrument pouches on the chest, soft-soled shoes, a muted slate-blue accent (piping, patches), gold shoulder trim / epaulettes marking command rank",
+      "palette": [
+        "#e8e0d8",
+        "#683040",
+        "#909098",
+        "#404040",
+        "#505058",
+        "#686870"
+      ],
+      "qa": {
+        "idle": {
+          "mean_iou": 0.789,
+          "min_iou": 0.595,
+          "drift": 11.8,
+          "pass": true
+        },
+        "walk": {
+          "mean_iou": 0.782,
+          "min_iou": 0.587,
+          "drift": 28.7,
+          "pass": true
+        },
+        "run": {
+          "mean_iou": 0.898,
+          "min_iou": 0.822,
+          "drift": 31.8,
+          "pass": true
+        },
+        "punch": {
+          "mean_iou": 0.846,
+          "min_iou": 0.5,
+          "drift": 18.9,
+          "pass": true
+        }
+      },
+      "model_used": {
+        "idle": "google/gemini-2.5-flash-image",
+        "walk": "google/gemini-3-pro-image",
+        "run": "google/gemini-3-pro-image",
+        "punch": "google/gemini-3-pro-image"
+      },
+      "spend": 0.571,
+      "needs_regeneration": [],
+      "status": "complete"
     }
   }
 }

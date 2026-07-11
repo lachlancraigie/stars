@@ -329,7 +329,10 @@ def call_openrouter_images(model: str, prompt: str, aspect_ratio: str, ref_png: 
                 time.sleep(wait)
                 continue
             raise RuntimeError(f"HTTP {e.code}: {body_txt[:500]}")
-        except urllib.error.URLError as e:
+        except (urllib.error.URLError, OSError) as e:
+            # OSError covers ConnectionResetError/TimeoutError escaping raw from
+            # the SSL layer mid-response (seen live: WinError 10054 during a pro
+            # call) -- URLError alone does not catch those.
             if attempt < MAX_RETRIES:
                 attempt += 1
                 wait = RETRY_BASE_SECONDS * (2 ** (attempt - 1))
@@ -546,10 +549,18 @@ def generate_one_sheet(character_id: str, description: str, sheet: str, key: str
         if crop_frac < 1.0 else ""
     )
 
-    attempts = [
-        (MODEL_FLASH, PROMPT_TEMPLATE),
-        (MODEL_FLASH, PROMPT_TEMPLATE_EMPHASIZED),
-    ]
+    # Empirical ladder (first 5 characters, 2026-07-11): flash passed 0/8 run
+    # attempts and 1/6 punch attempts (post-padding), while idle/walk pass
+    # flash ~half the time. Flash-first on run/punch therefore only burned
+    # $0.08/sheet before the inevitable pro escalation -- those two go straight
+    # to the single pro attempt; idle/walk keep the cheap flash-first ladder.
+    if sheet in ("run", "punch"):
+        attempts = []
+    else:
+        attempts = [
+            (MODEL_FLASH, PROMPT_TEMPLATE),
+            (MODEL_FLASH, PROMPT_TEMPLATE_EMPHASIZED),
+        ]
 
     last_qa, last_img, last_model, total_cost = None, None, None, 0.0
     for i, (model, template) in enumerate(attempts):
@@ -572,9 +583,13 @@ def generate_one_sheet(character_id: str, description: str, sheet: str, key: str
         if qa["pass"]:
             return rgba, qa, model, total_cost
 
-    # escalate to pro if we still have headroom
+    # Pro attempt. As an ESCALATION (idle/walk after two flash fails) it needs
+    # the $3 headroom guard from the brief; as the PRIMARY for run/punch it
+    # only needs the global stop threshold -- otherwise every late-budget model
+    # would be born partial.
+    pro_floor = PRO_ESCALATION_THRESHOLD if attempts else STOP_THRESHOLD
     remaining = get_remaining_credits(key)
-    if remaining > PRO_ESCALATION_THRESHOLD:
+    if remaining > pro_floor:
         print(f"    [{sheet}] escalating to {MODEL_PRO} (credits remaining ${remaining:.2f})", flush=True)
         prompt = PROMPT_TEMPLATE_EMPHASIZED.format(rows=rows, cols=cols, character=description) + margin_clause
         try:
