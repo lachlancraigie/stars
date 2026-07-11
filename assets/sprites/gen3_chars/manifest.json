@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "total_spend": 7.258
+    "total_spend": 9.776
   },
   "characters": {
     "ch_fe_eng_cm": {
@@ -568,6 +568,317 @@
         "punch": "google/gemini-3-pro-image"
       },
       "spend": 0.434,
+      "needs_regeneration": [],
+      "status": "complete"
+    },
+    "ev_ml_mar_cm": {
+      "id": "ev_ml_mar_cm",
+      "kind": "crew",
+      "name": "Aldric Voss",
+      "tag": "EV_ML_MAR_CM",
+      "description": "a man, short hair slicked back in charcoal black hair, rich dark skin, wearing an armored tactical vest over combat fatigues, knee and elbow padding, load-bearing webbing gear, heavy combat boots, a muted grey-blue accent (piping, patches), no rank trim or insignia",
+      "palette": [
+        "#000000",
+        "#101010",
+        "#202020",
+        "#303830"
+      ],
+      "qa": {
+        "idle": {
+          "mean_iou": 0.974,
+          "min_iou": 0.958,
+          "drift": 4.1,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "walk": {
+          "mean_iou": 0.8,
+          "min_iou": 0.607,
+          "drift": 7.3,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "run": {
+          "mean_iou": 0.922,
+          "min_iou": 0.866,
+          "drift": 4.6,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "punch": {
+          "mean_iou": 0.894,
+          "min_iou": 0.503,
+          "drift": 5.7,
+          "white_dev": 0.0,
+          "pass": true
+        }
+      },
+      "model_used": {
+        "idle": "google/gemini-3-pro-image",
+        "walk": "google/gemini-3-pro-image",
+        "run": "google/gemini-3-pro-image",
+        "punch": "google/gemini-3-pro-image"
+      },
+      "spend": 0.708,
+      "needs_regeneration": [],
+      "status": "complete"
+    },
+    "gr_fe_and_cm": {
+      "id": "gr_fe_and_cm",
+      "kind": "crew",
+      "name": "Rook Halvorsen",
+      "tag": "GR_FE_AND_CM",
+      "description": "a woman, a close buzzcut in jet-black hair, wearing a graphite-grey synthetic bodysuit with visible seam-panel lines and smooth matte plating at the shoulders and forearms, pale synthetic skin with a faint grey undertone, a heavy desaturated ochre accent, faded and worn, no rank trim or insignia",
+      "palette": [
+        "#000000",
+        "#707070",
+        "#989898",
+        "#888890"
+      ],
+      "qa": {
+        "idle": {
+          "mean_iou": 0.76,
+          "min_iou": 0.478,
+          "drift": 10.6,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "walk": {
+          "mean_iou": 0.66,
+          "min_iou": 0.432,
+          "drift": 18.4,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "run": {
+          "mean_iou": 0.916,
+          "min_iou": 0.861,
+          "drift": 7.8,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "punch": {
+          "mean_iou": 0.895,
+          "min_iou": 0.502,
+          "drift": 8.4,
+          "white_dev": 0.0,
+          "pass": true
+        }
+      },
+      "model_used": {
+        "idle": "google/gemini-2.5-flash-image",
+        "walk": "google/gemini-2.5-flash-image",
+        "run": "google/gemini-3-pro-image",
+        "punch": "google/gemini-3-pro-image"
+      },
+      "spend": 0.394,
+      "needs_regeneration": [],
+      "status": "complete"
+    },
+    "gr_fe_eng_of": {
+      "id": "gr_fe_eng_of",
+      "kind": "crew",
+      "name": "Roz Kessler",
+      "tag": "GR_FE_ENG_OF",
+      "description": "a woman, a messy short crop in dark brown hair, medium brown skin, wearing olive-drab and rust-orange coveralls with rolled sleeves, a canvas tool rig/belt hung with visible tools, heavy grey work boots, a heavy desaturated moss-green accent, faded and worn, silver shoulder trim / rank bars",
+      "palette": [
+        "#000000",
+        "#686838",
+        "#984820"
+      ],
+      "qa": {
+        "idle": {
+          "mean_iou": 0.918,
+          "min_iou": 0.763,
+          "drift": 13.5,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "walk": {
+          "mean_iou": 0.682,
+          "min_iou": 0.463,
+          "drift": 13.0,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "run": {
+          "mean_iou": 0.882,
+          "min_iou": 0.822,
+          "drift": 8.3,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "punch": {
+          "mean_iou": 0.846,
+          "min_iou": 0.468,
+          "drift": 5.1,
+          "white_dev": 0.0,
+          "pass": true
+        }
+      },
+      "model_used": {
+        "idle": "google/gemini-2.5-flash-image",
+        "walk": "google/gemini-2.5-flash-image",
+        "run": "google/gemini-3-pro-image",
+        "punch": "google/gemini-3-pro-image"
+      },
+      "spend": 0.354,
+      "needs_regeneration": [],
+      "status": "complete"
+    },
+    "gr_fe_mar_cm": {
+      "id": "gr_fe_mar_cm",
+      "kind": "crew",
+      "name": "Reyes Ibarra",
+      "tag": "GR_FE_MAR_CM",
+      "description": "a woman, loose shoulder-length waves in chestnut brown hair, golden-tan skin, wearing an armored tactical vest over combat fatigues, knee and elbow padding, load-bearing webbing gear, heavy combat boots, a heavy desaturated ochre accent, faded and worn, no rank trim or insignia",
+      "palette": [
+        "#606848",
+        "#000000",
+        "#687058",
+        "#201810",
+        "#101008"
+      ],
+      "qa": {
+        "idle": {
+          "mean_iou": 0.748,
+          "min_iou": 0.616,
+          "drift": 4.7,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "walk": {
+          "mean_iou": 0.666,
+          "min_iou": 0.504,
+          "drift": 6.6,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "run": {
+          "mean_iou": 0.888,
+          "min_iou": 0.832,
+          "drift": 6.1,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "punch": {
+          "mean_iou": 0.87,
+          "min_iou": 0.491,
+          "drift": 7.8,
+          "white_dev": 0.0,
+          "pass": true
+        }
+      },
+      "model_used": {
+        "idle": "google/gemini-2.5-flash-image",
+        "walk": "google/gemini-2.5-flash-image",
+        "run": "google/gemini-3-pro-image",
+        "punch": "google/gemini-3-pro-image"
+      },
+      "spend": 0.354,
+      "needs_regeneration": [],
+      "status": "complete"
+    },
+    "gr_ml_eng_ca": {
+      "id": "gr_ml_eng_ca",
+      "kind": "crew",
+      "name": "Silas Kreuger",
+      "tag": "GR_ML_ENG_CA",
+      "description": "a man, a tight undercut in auburn red hair, pale freckled skin, wearing olive-drab and rust-orange coveralls with rolled sleeves, a canvas tool rig/belt hung with visible tools, heavy grey work boots, a heavy desaturated moss-green accent, faded and worn, gold shoulder trim / epaulettes marking command rank",
+      "palette": [
+        "#687040",
+        "#000000",
+        "#586038",
+        "#905820"
+      ],
+      "qa": {
+        "idle": {
+          "mean_iou": 0.858,
+          "min_iou": 0.64,
+          "drift": 8.9,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "walk": {
+          "mean_iou": 0.702,
+          "min_iou": 0.499,
+          "drift": 7.0,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "run": {
+          "mean_iou": 0.91,
+          "min_iou": 0.851,
+          "drift": 5.6,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "punch": {
+          "mean_iou": 0.882,
+          "min_iou": 0.493,
+          "drift": 8.1,
+          "white_dev": 0.0,
+          "pass": true
+        }
+      },
+      "model_used": {
+        "idle": "google/gemini-2.5-flash-image",
+        "walk": "google/gemini-2.5-flash-image",
+        "run": "google/gemini-3-pro-image",
+        "punch": "google/gemini-3-pro-image"
+      },
+      "spend": 0.354,
+      "needs_regeneration": [],
+      "status": "complete"
+    },
+    "gr_ml_eng_cm": {
+      "id": "gr_ml_eng_cm",
+      "kind": "crew",
+      "name": "Gus Hollis",
+      "tag": "GR_ML_ENG_CM",
+      "description": "a man, a cropped pixie cut in sandy blonde hair, olive-tan skin, wearing olive-drab and rust-orange coveralls with rolled sleeves, a canvas tool rig/belt hung with visible tools, heavy grey work boots, a heavy desaturated ochre accent, faded and worn, no rank trim or insignia",
+      "palette": [
+        "#686030",
+        "#000000",
+        "#101010"
+      ],
+      "qa": {
+        "idle": {
+          "mean_iou": 0.945,
+          "min_iou": 0.756,
+          "drift": 4.7,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "walk": {
+          "mean_iou": 0.709,
+          "min_iou": 0.459,
+          "drift": 5.0,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "run": {
+          "mean_iou": 0.906,
+          "min_iou": 0.841,
+          "drift": 7.4,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "punch": {
+          "mean_iou": 0.885,
+          "min_iou": 0.49,
+          "drift": 7.3,
+          "white_dev": 0.0,
+          "pass": true
+        }
+      },
+      "model_used": {
+        "idle": "google/gemini-2.5-flash-image",
+        "walk": "google/gemini-2.5-flash-image",
+        "run": "google/gemini-3-pro-image",
+        "punch": "google/gemini-3-pro-image"
+      },
+      "spend": 0.354,
       "needs_regeneration": [],
       "status": "complete"
     }

@@ -617,7 +617,7 @@ def generate_one_sheet(character_id: str, description: str, sheet: str, key: str
         total_cost += EST_COST[model]
         rgba = _receive(png)
         qa = _qa_candidate(rgba)
-        print(f"    [{sheet}] {model}: mean_iou={qa['mean_iou']} min_iou={qa['min_iou']} drift(post-snap)={qa['drift']} pass={qa['pass']}", flush=True)
+        print(f"    [{sheet}] {model}: mean_iou={qa['mean_iou']} min_iou={qa['min_iou']} drift(post-snap)={qa['drift']} white_dev={qa['white_dev']} pass={qa['pass']}", flush=True)
         last_qa, last_img, last_model = qa, rgba, model
         if qa["pass"]:
             return rgba, qa, model, total_cost
@@ -636,7 +636,7 @@ def generate_one_sheet(character_id: str, description: str, sheet: str, key: str
             total_cost += EST_COST[MODEL_PRO]
             rgba = _receive(png)
             qa = _qa_candidate(rgba)
-            print(f"    [{sheet}] {MODEL_PRO}: mean_iou={qa['mean_iou']} min_iou={qa['min_iou']} drift(post-snap)={qa['drift']} pass={qa['pass']}", flush=True)
+            print(f"    [{sheet}] {MODEL_PRO}: mean_iou={qa['mean_iou']} min_iou={qa['min_iou']} drift(post-snap)={qa['drift']} white_dev={qa['white_dev']} pass={qa['pass']}", flush=True)
             return rgba, qa, MODEL_PRO, total_cost
         except RuntimeError as e:
             print(f"    [{sheet}] pro generation FAILED: {e}")
