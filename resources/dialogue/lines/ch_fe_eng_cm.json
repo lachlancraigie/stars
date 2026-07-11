@@ -520,7 +520,7 @@
   {
     "id": 27,
     "key": "CH_FE_ENG_CM#00027",
-    "text": "[embarrassed, voice quiet] oh — didn't expect that. makes working on engines more interesting",
+    "text": "[embarrassed, voice quiet] oh \u00e2\u20ac\u201d didn't expect that. makes working on engines more interesting",
     "type": "reply",
     "intent": "romance_accept",
     "conditions": {
@@ -1479,7 +1479,7 @@
   {
     "id": 77,
     "key": "CH_FE_ENG_CM#00077",
-    "text": "[embarrassed, voice quiet] oh! i — yes. absolutely yes. that makes me really happy",
+    "text": "[embarrassed, voice quiet] oh! i \u00e2\u20ac\u201d yes. absolutely yes. that makes me really happy",
     "type": "reply",
     "intent": "romance_accept",
     "conditions": {
@@ -1691,6 +1691,570 @@
     "reply_to_intents": [
       "fear_vent"
     ],
+    "weight": 1.0
+  },
+  {
+    "id": 89,
+    "key": "CH_FE_ENG_CM#00089",
+    "text": "[warm, gentle tone] triple-checked everything. time to go solve a puzzle on the surface!",
+    "type": "declaration",
+    "intent": "away_depart_surface",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ],
+      "mood": [
+        "ok",
+        "low"
+      ],
+      "location": [
+        "shuttlebay"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 90,
+    "key": "CH_FE_ENG_CM#00090",
+    "text": "[nervous, speaking quickly] dead ship's gonna have dead systems. this is gonna be a weird puzzle",
+    "type": "declaration",
+    "intent": "away_depart_derelict",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ],
+      "mood": [
+        "ok",
+        "low"
+      ],
+      "location": [
+        "airlock"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 91,
+    "key": "CH_FE_ENG_CM#00091",
+    "text": "[laughing] okay, their systems, our problem. love a good new puzzle",
+    "type": "declaration",
+    "intent": "away_depart_station",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ],
+      "mood": [
+        "ok",
+        "low"
+      ],
+      "location": [
+        "airlock"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 92,
+    "key": "CH_FE_ENG_CM#00092",
+    "text": "[calm, measured] boarding their ship. bet their engines are a mess. can't wait to see what they did",
+    "type": "declaration",
+    "intent": "away_depart_other_ship",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ],
+      "mood": [
+        "ok",
+        "low"
+      ],
+      "location": [
+        "airlock"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 93,
+    "key": "CH_FE_ENG_CM#00093",
+    "text": "[calm, measured] readings are good out here. this puzzle's taking shape nicely",
+    "type": "declaration",
+    "intent": "away_radio_calm",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 94,
+    "key": "CH_FE_ENG_CM#00094",
+    "text": "everything's running smooth. systems cooperating and everything. love it when that happens",
+    "type": "declaration",
+    "intent": "away_radio_calm",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 95,
+    "key": "CH_FE_ENG_CM#00095",
+    "text": "[nervous, speaking quickly] okay, something's not matching up with what it should be. digging deeper",
+    "type": "declaration",
+    "intent": "away_radio_tense",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 96,
+    "key": "CH_FE_ENG_CM#00096",
+    "text": "[voice shaking] found something wrong with the equipment. gonna try to work around it",
+    "type": "declaration",
+    "intent": "away_radio_tense",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 97,
+    "key": "CH_FE_ENG_CM#00097",
+    "text": "[panicked, panting] system just failed and i don't have a backup plan i like. i'm improvising",
+    "type": "declaration",
+    "intent": "away_radio_bad",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 98,
+    "key": "CH_FE_ENG_CM#00098",
+    "text": "[terrified, voice shaking] hurt. i'm hurt and the puzzle just got a lot more complicated",
+    "type": "declaration",
+    "intent": "away_radio_bad",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 99,
+    "key": "CH_FE_ENG_CM#00099",
+    "text": "[laughing] back in one piece and all systems holding. got some good data too. that was fun",
+    "type": "declaration",
+    "intent": "away_return_fine",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "open_air"
+      ],
+      "mood": [
+        "ok"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 100,
+    "key": "CH_FE_ENG_CM#00100",
+    "text": "puzzle solved and nobody broke anything. honestly, perfect op",
+    "type": "declaration",
+    "intent": "away_return_fine",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "target": [
+        "open_air"
+      ],
+      "mood": [
+        "ok"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 101,
+    "key": "CH_FE_ENG_CM#00101",
+    "text": "[voice quiet] saw some things out there i'm still processing. gonna need a minute",
+    "type": "declaration",
+    "intent": "away_return_shaken",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 12,
+      "target": [
+        "open_air"
+      ],
+      "mood": [
+        "low",
+        "grim"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 102,
+    "key": "CH_FE_ENG_CM#00102",
+    "text": "[exhale] we made it back. just... give me a second before debriefing. please",
+    "type": "declaration",
+    "intent": "away_return_shaken",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 12,
+      "target": [
+        "open_air"
+      ],
+      "mood": [
+        "low",
+        "grim"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 103,
+    "key": "CH_FE_ENG_CM#00103",
+    "text": "[pained, voice tight] came back with a gash but the mission went clean. trade-off i can live with",
+    "type": "declaration",
+    "intent": "away_return_injured",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 13,
+      "target": [
+        "open_air"
+      ],
+      "wounded": true
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 104,
+    "key": "CH_FE_ENG_CM#00104",
+    "text": "[voice shaking] hurt my hand and i need someone to look at it. nothing major but it stings",
+    "type": "declaration",
+    "intent": "away_return_injured",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 13,
+      "target": [
+        "open_air"
+      ],
+      "wounded": true,
+      "recent_events": [
+        "injury"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 105,
+    "key": "CH_FE_ENG_CM#00105",
+    "text": "routine mission sounds good. we got this. let's go solve it",
+    "type": "declaration",
+    "intent": "briefing_ack_routine",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 106,
+    "key": "CH_FE_ENG_CM#00106",
+    "text": "[nervous, speaking quickly] okay, riskier than i'd like but i like puzzles so bring it on",
+    "type": "declaration",
+    "intent": "briefing_ack_risky",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "target": [
+        "open_air"
+      ],
+      "mood": [
+        "ok",
+        "low"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 107,
+    "key": "CH_FE_ENG_CM#00107",
+    "text": "[voice quiet] that's a gnarly puzzle you're handing me. but i can figure this out. i have to",
+    "type": "declaration",
+    "intent": "briefing_ack_grim",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 13,
+      "target": [
+        "open_air"
+      ],
+      "mood": [
+        "low",
+        "grim"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 108,
+    "key": "CH_FE_ENG_CM#00108",
+    "text": "[calm, measured] contact inbound. checking our docking systems, everything's ready",
+    "type": "declaration",
+    "intent": "docking_approach",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 109,
+    "key": "CH_FE_ENG_CM#00109",
+    "text": "[warm, gentle tone] clamps secured! another ship, another successful dock. i love it",
+    "type": "declaration",
+    "intent": "docking_clamped",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 110,
+    "key": "CH_FE_ENG_CM#00110",
+    "text": "[exhale] we're clear. undocking complete and smooth. another one for the record",
+    "type": "declaration",
+    "intent": "docking_undock",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 111,
+    "key": "CH_FE_ENG_CM#00111",
+    "text": "[whistling] doing the pre-flight checks now. everyone stays safe, that's the puzzle",
+    "type": "declaration",
+    "intent": "shuttle_ops_prep",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 7,
+      "target": [
+        "open_air"
+      ],
+      "location": [
+        "shuttlebay"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 112,
+    "key": "CH_FE_ENG_CM#00112",
+    "text": "[calm, measured] shuttle's away and steady. all systems green. let's keep it that way",
+    "type": "declaration",
+    "intent": "shuttle_ops_launch",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 7,
+      "target": [
+        "open_air"
+      ],
+      "location": [
+        "shuttlebay"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 113,
+    "key": "CH_FE_ENG_CM#00113",
+    "text": "[laughing] touchdown! another landing that didn't wreck anything. getting better at this",
+    "type": "declaration",
+    "intent": "shuttle_ops_land",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ],
+      "location": [
+        "shuttlebay"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 114,
+    "key": "CH_FE_ENG_CM#00114",
+    "text": "[nervous, speaking quickly] something in the biology of this situation is wrong and i can't quite puzzle it out",
+    "type": "declaration",
+    "intent": "scenario_axis_bio",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ],
+      "mood": [
+        "low",
+        "grim"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 115,
+    "key": "CH_FE_ENG_CM#00115",
+    "text": "[voice shaking] the ship's systems aren't making sense. they're lying and i don't know why",
+    "type": "declaration",
+    "intent": "scenario_axis_systems",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ],
+      "mood": [
+        "low",
+        "grim"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 116,
+    "key": "CH_FE_ENG_CM#00116",
+    "text": "[suspicious tone] the crew's acting strange and the ship's picking up on it. this puzzle's got too many pieces",
+    "type": "declaration",
+    "intent": "scenario_axis_social",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ],
+      "mood": [
+        "low",
+        "grim"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 117,
+    "key": "CH_FE_ENG_CM#00117",
+    "text": "[urgent, fast pace] combat's not a puzzle i solve with tools. this one scares me",
+    "type": "declaration",
+    "intent": "scenario_axis_combat",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ],
+      "mood": [
+        "low",
+        "grim"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 118,
+    "key": "CH_FE_ENG_CM#00118",
+    "text": "[confused tone] nothing adds up and there's no solution i can see. this is the kind of puzzle that keeps me awake",
+    "type": "declaration",
+    "intent": "scenario_axis_mystery",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ],
+      "mood": [
+        "low",
+        "grim"
+      ]
+    },
+    "reply_to_intents": [],
     "weight": 1.0
   }
 ]

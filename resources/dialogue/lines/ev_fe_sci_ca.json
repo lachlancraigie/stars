@@ -1705,5 +1705,566 @@
     },
     "reply_to_intents": [],
     "weight": 1.0
+  },
+  {
+    "id": 94,
+    "key": "ev_fe_sci_ca#00094",
+    "text": "[calm, measured] suit seals verified. proceeding to surface mission.",
+    "type": "declaration",
+    "intent": "away_depart_surface",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "mood": [
+        "ok",
+        "low"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "location": [
+        "shuttlebay"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 95,
+    "key": "ev_fe_sci_ca#00095",
+    "text": "derelict vessel secured. boarding and conducting systems analysis.",
+    "type": "declaration",
+    "intent": "away_depart_derelict",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "mood": [
+        "ok",
+        "low"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "location": [
+        "airlock"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 96,
+    "key": "ev_fe_sci_ca#00096",
+    "text": "docking procedures complete. preparing for station interface.",
+    "type": "declaration",
+    "intent": "away_depart_station",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "mood": [
+        "ok",
+        "low"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "location": [
+        "airlock"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 97,
+    "key": "ev_fe_sci_ca#00097",
+    "text": "transferring to target vessel. commencing docking sequence.",
+    "type": "declaration",
+    "intent": "away_depart_other_ship",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "mood": [
+        "ok",
+        "low"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "location": [
+        "airlock"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 98,
+    "key": "ev_fe_sci_ca#00098",
+    "text": "[calm, measured] status: nominal. continuing with mission parameters.",
+    "type": "declaration",
+    "intent": "away_radio_calm",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 99,
+    "key": "ev_fe_sci_ca#00099",
+    "text": "all systems green. proceeding as planned.",
+    "type": "declaration",
+    "intent": "away_radio_calm",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 100,
+    "key": "ev_fe_sci_ca#00100",
+    "text": "[nervous, speaking quickly] anomaly detected. running full diagnostics.",
+    "type": "declaration",
+    "intent": "away_radio_tense",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 101,
+    "key": "ev_fe_sci_ca#00101",
+    "text": "deviation from baseline. investigating cause.",
+    "type": "declaration",
+    "intent": "away_radio_tense",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 102,
+    "key": "ev_fe_sci_ca#00102",
+    "text": "[panicked, panting] critical system failure. initiating emergency protocols.",
+    "type": "declaration",
+    "intent": "away_radio_bad",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 103,
+    "key": "ev_fe_sci_ca#00103",
+    "text": "casualty sustained. requiring immediate extraction.",
+    "type": "declaration",
+    "intent": "away_radio_bad",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 104,
+    "key": "ev_fe_sci_ca#00104",
+    "text": "[calm, measured] mission objective achieved. team intact.",
+    "type": "declaration",
+    "intent": "away_return_fine",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "mood": [
+        "ok"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 105,
+    "key": "ev_fe_sci_ca#00105",
+    "text": "return successful. no casualties reported.",
+    "type": "declaration",
+    "intent": "away_return_fine",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "mood": [
+        "ok"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 106,
+    "key": "ev_fe_sci_ca#00106",
+    "text": "[voice quiet] mission accomplished. debriefing can wait.",
+    "type": "declaration",
+    "intent": "away_return_shaken",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 12,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 107,
+    "key": "ev_fe_sci_ca#00107",
+    "text": "team is secure. requesting temporary stand-down.",
+    "type": "declaration",
+    "intent": "away_return_shaken",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 12,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 108,
+    "key": "ev_fe_sci_ca#00108",
+    "text": "[calm, measured] casualty status: non-critical. medical assessment requested.",
+    "type": "declaration",
+    "intent": "away_return_injured",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 13,
+      "wounded": true,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 109,
+    "key": "ev_fe_sci_ca#00109",
+    "text": "minor injury sustained. functionality unimpaired.",
+    "type": "declaration",
+    "intent": "away_return_injured",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 13,
+      "wounded": true,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 110,
+    "key": "ev_fe_sci_ca#00110",
+    "text": "[calm, measured] briefing received. standing by for deployment.",
+    "type": "declaration",
+    "intent": "briefing_ack_routine",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 111,
+    "key": "ev_fe_sci_ca#00111",
+    "text": "[nervous, speaking quickly] risk assessment acknowledged. proceeding with caution.",
+    "type": "declaration",
+    "intent": "briefing_ack_risky",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "mood": [
+        "ok",
+        "low"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 112,
+    "key": "ev_fe_sci_ca#00112",
+    "text": "[voice quiet] extreme risk parameters noted. proceeding regardless.",
+    "type": "declaration",
+    "intent": "briefing_ack_grim",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 13,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 113,
+    "key": "ev_fe_sci_ca#00113",
+    "text": "[calm, measured] vessel approaching. docking systems standing by.",
+    "type": "declaration",
+    "intent": "docking_approach",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 114,
+    "key": "ev_fe_sci_ca#00114",
+    "text": "[calm, measured] docking clamps secured. contact established.",
+    "type": "declaration",
+    "intent": "docking_clamped",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 115,
+    "key": "ev_fe_sci_ca#00115",
+    "text": "[calm, measured] undocking complete. proceeding to new vector.",
+    "type": "declaration",
+    "intent": "docking_undock",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 116,
+    "key": "ev_fe_sci_ca#00116",
+    "text": "[calm, measured] shuttle pre-flight sequence initiated. all systems nominal.",
+    "type": "declaration",
+    "intent": "shuttle_ops_prep",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 7,
+      "location": [
+        "shuttlebay"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 117,
+    "key": "ev_fe_sci_ca#00117",
+    "text": "shuttle launch successful. trajectory nominal.",
+    "type": "declaration",
+    "intent": "shuttle_ops_launch",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 7,
+      "location": [
+        "shuttlebay"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 118,
+    "key": "ev_fe_sci_ca#00118",
+    "text": "shuttle touchdown complete. systems status green.",
+    "type": "declaration",
+    "intent": "shuttle_ops_land",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "location": [
+        "shuttlebay"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 119,
+    "key": "ev_fe_sci_ca#00119",
+    "text": "[calm, measured] biological anomaly detected. parameters outside known range.",
+    "type": "declaration",
+    "intent": "scenario_axis_bio",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 11,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 120,
+    "key": "ev_fe_sci_ca#00120",
+    "text": "[calm, measured] system readings inconsistent with expected parameters.",
+    "type": "declaration",
+    "intent": "scenario_axis_systems",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 11,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 121,
+    "key": "ev_fe_sci_ca#00121",
+    "text": "[calm, measured] crew behavioral patterns deviating from baseline.",
+    "type": "declaration",
+    "intent": "scenario_axis_social",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 11,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 122,
+    "key": "ev_fe_sci_ca#00122",
+    "text": "[urgent, fast pace] hostile contact confirmed. initiating defensive protocols.",
+    "type": "declaration",
+    "intent": "scenario_axis_combat",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 11,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 123,
+    "key": "ev_fe_sci_ca#00123",
+    "text": "[calm, measured] incident classification unknown. analysis ongoing.",
+    "type": "declaration",
+    "intent": "scenario_axis_mystery",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 11,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
   }
 ]

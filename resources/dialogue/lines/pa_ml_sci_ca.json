@@ -1651,5 +1651,566 @@
     },
     "reply_to_intents": [],
     "weight": 1.0
+  },
+  {
+    "id": 91,
+    "key": "pa_ml_sci_ca#00091",
+    "text": "[nervous, speaking quickly] triple-checked the seals. hopefully they hold out there",
+    "type": "declaration",
+    "intent": "away_depart_surface",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "mood": [
+        "ok",
+        "low"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "location": [
+        "shuttlebay"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 92,
+    "key": "pa_ml_sci_ca#00092",
+    "text": "[nervous, speaking quickly] dead ship is dead for a reason. hope it's not contagious",
+    "type": "declaration",
+    "intent": "away_depart_derelict",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "mood": [
+        "ok",
+        "low"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "location": [
+        "airlock"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 93,
+    "key": "pa_ml_sci_ca#00093",
+    "text": "[nervous, speaking quickly] station's probably got the same systems failures as everywhere else. let's be careful",
+    "type": "declaration",
+    "intent": "away_depart_station",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "mood": [
+        "ok",
+        "low"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "location": [
+        "airlock"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 94,
+    "key": "pa_ml_sci_ca#00094",
+    "text": "[nervous, speaking quickly] other ships are unpredictable. who knows what we're walking into",
+    "type": "declaration",
+    "intent": "away_depart_other_ship",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "mood": [
+        "ok",
+        "low"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "location": [
+        "airlock"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 95,
+    "key": "pa_ml_sci_ca#00095",
+    "text": "[nervous, speaking quickly] readings look okay. probably too good to be true",
+    "type": "declaration",
+    "intent": "away_radio_calm",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 96,
+    "key": "pa_ml_sci_ca#00096",
+    "text": "nothing happening yet. but something will. it always does",
+    "type": "declaration",
+    "intent": "away_radio_calm",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 97,
+    "key": "pa_ml_sci_ca#00097",
+    "text": "[nervous, speaking quickly] okay, i'm seeing something wrong. what do you see",
+    "type": "declaration",
+    "intent": "away_radio_tense",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 98,
+    "key": "pa_ml_sci_ca#00098",
+    "text": "[terrified, voice shaking] readings don't match the baseline. this is bad",
+    "type": "declaration",
+    "intent": "away_radio_tense",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 99,
+    "key": "pa_ml_sci_ca#00099",
+    "text": "[panicked, panting] i told you something bad would happen. it's happening",
+    "type": "declaration",
+    "intent": "away_radio_bad",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 100,
+    "key": "pa_ml_sci_ca#00100",
+    "text": "[terrified, voice shaking] i'm hurt and the situation just got worse",
+    "type": "declaration",
+    "intent": "away_radio_bad",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 101,
+    "key": "pa_ml_sci_ca#00101",
+    "text": "[voice quiet] we got back. no injuries. i'm calling that a win",
+    "type": "declaration",
+    "intent": "away_return_fine",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "mood": [
+        "ok"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 102,
+    "key": "pa_ml_sci_ca#00102",
+    "text": "back aboard and accounted for. thankfully nothing went wrong",
+    "type": "declaration",
+    "intent": "away_return_fine",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "mood": [
+        "ok"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 103,
+    "key": "pa_ml_sci_ca#00103",
+    "text": "[voice quiet] back aboard but i'm still processing what happened",
+    "type": "declaration",
+    "intent": "away_return_shaken",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 12,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 104,
+    "key": "pa_ml_sci_ca#00104",
+    "text": "[nervous, speaking quickly] we made it but things out there... they're wrong",
+    "type": "declaration",
+    "intent": "away_return_shaken",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 12,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 105,
+    "key": "pa_ml_sci_ca#00105",
+    "text": "[voice quiet] i'm hurt. no idea if it's infected with anything",
+    "type": "declaration",
+    "intent": "away_return_injured",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 13,
+      "wounded": true,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 106,
+    "key": "pa_ml_sci_ca#00106",
+    "text": "[nervous, speaking quickly] got cut and now i'm panicking about infection",
+    "type": "declaration",
+    "intent": "away_return_injured",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 13,
+      "wounded": true,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 107,
+    "key": "pa_ml_sci_ca#00107",
+    "text": "[nervous, speaking quickly] routine mission sounds fine. probably won't be routine",
+    "type": "declaration",
+    "intent": "briefing_ack_routine",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 108,
+    "key": "pa_ml_sci_ca#00108",
+    "text": "[nervous, speaking quickly] risky. yeah. probably shouldn't do this",
+    "type": "declaration",
+    "intent": "briefing_ack_risky",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "mood": [
+        "ok",
+        "low"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 109,
+    "key": "pa_ml_sci_ca#00109",
+    "text": "[voice quiet] that is absolutely terrifying and we're doing it anyway",
+    "type": "declaration",
+    "intent": "briefing_ack_grim",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 13,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 110,
+    "key": "pa_ml_sci_ca#00110",
+    "text": "[nervous, speaking quickly] something's approaching. hope it's friendly",
+    "type": "declaration",
+    "intent": "docking_approach",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 111,
+    "key": "pa_ml_sci_ca#00111",
+    "text": "[nervous, speaking quickly] they're locked on. we're committed now",
+    "type": "declaration",
+    "intent": "docking_clamped",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 112,
+    "key": "pa_ml_sci_ca#00112",
+    "text": "[voice quiet] we're clear. finally away from them",
+    "type": "declaration",
+    "intent": "docking_undock",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 113,
+    "key": "pa_ml_sci_ca#00113",
+    "text": "[nervous, speaking quickly] checking everything twice because once isn't enough",
+    "type": "declaration",
+    "intent": "shuttle_ops_prep",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 7,
+      "location": [
+        "shuttlebay"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 114,
+    "key": "pa_ml_sci_ca#00114",
+    "text": "[nervous, speaking quickly] launch successful so far. let's hope it stays that way",
+    "type": "declaration",
+    "intent": "shuttle_ops_launch",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 7,
+      "location": [
+        "shuttlebay"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 115,
+    "key": "pa_ml_sci_ca#00115",
+    "text": "[voice quiet] she landed. nothing exploded. counting that as a win",
+    "type": "declaration",
+    "intent": "shuttle_ops_land",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "location": [
+        "shuttlebay"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 116,
+    "key": "pa_ml_sci_ca#00116",
+    "text": "[nervous, speaking quickly] something biological is spreading and we're doomed",
+    "type": "declaration",
+    "intent": "scenario_axis_bio",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 11,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 117,
+    "key": "pa_ml_sci_ca#00117",
+    "text": "[nervous, speaking quickly] the ship is lying to us about its systems",
+    "type": "declaration",
+    "intent": "scenario_axis_systems",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 11,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 118,
+    "key": "pa_ml_sci_ca#00118",
+    "text": "[nervous, speaking quickly] people are acting strange and it's freaking me out",
+    "type": "declaration",
+    "intent": "scenario_axis_social",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 11,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 119,
+    "key": "pa_ml_sci_ca#00119",
+    "text": "[panicked, panting] we're going to die in combat. i know it",
+    "type": "declaration",
+    "intent": "scenario_axis_combat",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 11,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 120,
+    "key": "pa_ml_sci_ca#00120",
+    "text": "[nervous, speaking quickly] nothing makes sense and that means we're in danger",
+    "type": "declaration",
+    "intent": "scenario_axis_mystery",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 11,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
   }
 ]

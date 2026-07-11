@@ -21,7 +21,7 @@
   {
     "id": 2,
     "key": "GR_FE_ENG_OF#00002",
-    "text": "[low voice, muttering] okay, okay, i hear you, just — there. that's better",
+    "text": "[low voice, muttering] okay, okay, i hear you, just \u00e2\u20ac\u201d there. that's better",
     "type": "declaration",
     "intent": "work_talk",
     "conditions": {
@@ -682,7 +682,7 @@
   {
     "id": 36,
     "key": "GR_FE_ENG_OF#00036",
-    "text": "[warm, gentle tone] captain, before you ask — yes, it's handled, no, i won't explain how",
+    "text": "[warm, gentle tone] captain, before you ask \u00e2\u20ac\u201d yes, it's handled, no, i won't explain how",
     "type": "opener",
     "intent": "status_report",
     "conditions": {
@@ -888,7 +888,7 @@
   {
     "id": 47,
     "key": "GR_FE_ENG_OF#00047",
-    "text": "[embarrassed, voice quiet] i, uh — yeah. i was hoping you'd say something like that",
+    "text": "[embarrassed, voice quiet] i, uh \u00e2\u20ac\u201d yeah. i was hoping you'd say something like that",
     "type": "reply",
     "intent": "romance_accept",
     "conditions": {
@@ -1133,7 +1133,7 @@
   {
     "id": 59,
     "key": "GR_FE_ENG_OF#00059",
-    "text": "[grim, heavy] power's down to scraps. heat the people or light the halls — she can't haul both, so pick",
+    "text": "[grim, heavy] power's down to scraps. heat the people or light the halls \u00e2\u20ac\u201d she can't haul both, so pick",
     "type": "declaration",
     "intent": "warning",
     "conditions": {
@@ -1894,7 +1894,7 @@
   {
     "id": 97,
     "key": "GR_FE_ENG_OF#00097",
-    "text": "[panicked, panting] i hear it, i hear it — everybody out of the compartment, argue with me after",
+    "text": "[panicked, panting] i hear it, i hear it \u00e2\u20ac\u201d everybody out of the compartment, argue with me after",
     "type": "reply",
     "intent": "fear_vent",
     "conditions": {
@@ -2007,6 +2007,567 @@
       "status_report",
       "smalltalk"
     ],
+    "weight": 1.0
+  },
+  {
+    "id": 103,
+    "key": "gr_fe_eng_of#00103",
+    "text": "suit's sealed. let's see what this rock has for us",
+    "type": "declaration",
+    "intent": "away_depart_surface",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "mood": [
+        "ok",
+        "low"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "location": [
+        "shuttlebay"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 104,
+    "key": "gr_fe_eng_of#00104",
+    "text": "[low voice, gruff] walking into a graveyard. another day at work",
+    "type": "declaration",
+    "intent": "away_depart_derelict",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "mood": [
+        "ok",
+        "low"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "location": [
+        "airlock"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 105,
+    "key": "gr_fe_eng_of#00105",
+    "text": "station's got our docking bay. let's not waste time",
+    "type": "declaration",
+    "intent": "away_depart_station",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "mood": [
+        "ok",
+        "low"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "location": [
+        "airlock"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 106,
+    "key": "gr_fe_eng_of#00106",
+    "text": "[low voice, gruff] their systems are probably worse than ours. always are",
+    "type": "declaration",
+    "intent": "away_depart_other_ship",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "mood": [
+        "ok",
+        "low"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "location": [
+        "airlock"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 107,
+    "key": "gr_fe_eng_of#00107",
+    "text": "nothing yet. probably too good to last",
+    "type": "declaration",
+    "intent": "away_radio_calm",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 108,
+    "key": "gr_fe_eng_of#00108",
+    "text": "so far so good. waiting for the other shoe to drop",
+    "type": "declaration",
+    "intent": "away_radio_calm",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 109,
+    "key": "gr_fe_eng_of#00109",
+    "text": "[urgent, fast pace] things just got complicated out here",
+    "type": "declaration",
+    "intent": "away_radio_tense",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 110,
+    "key": "gr_fe_eng_of#00110",
+    "text": "[nervous, speaking quickly] got a reading i don't like",
+    "type": "declaration",
+    "intent": "away_radio_tense",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 111,
+    "key": "gr_fe_eng_of#00111",
+    "text": "[panicked, panting] everything's going to hell. get backup here now",
+    "type": "declaration",
+    "intent": "away_radio_bad",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 112,
+    "key": "gr_fe_eng_of#00112",
+    "text": "[terrified, voice shaking] took damage. not dead yet though",
+    "type": "declaration",
+    "intent": "away_radio_bad",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 113,
+    "key": "gr_fe_eng_of#00113",
+    "text": "[low voice, gruff] back in one piece. that's what matters",
+    "type": "declaration",
+    "intent": "away_return_fine",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "mood": [
+        "ok"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 114,
+    "key": "gr_fe_eng_of#00114",
+    "text": "we made it. could've gone worse",
+    "type": "declaration",
+    "intent": "away_return_fine",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "mood": [
+        "ok"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 115,
+    "key": "gr_fe_eng_of#00115",
+    "text": "[resigned, flat tone] saw some things out there. don't ask about them yet",
+    "type": "declaration",
+    "intent": "away_return_shaken",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 12,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 116,
+    "key": "gr_fe_eng_of#00116",
+    "text": "[resigned, flat tone] we're back. just leave me alone for now",
+    "type": "declaration",
+    "intent": "away_return_shaken",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 12,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 117,
+    "key": "gr_fe_eng_of#00117",
+    "text": "[low voice, gruff] got banged up but it's nothing fatal",
+    "type": "declaration",
+    "intent": "away_return_injured",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 13,
+      "wounded": true,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 118,
+    "key": "gr_fe_eng_of#00118",
+    "text": "[resigned, flat tone] took a hit. just need doc to patch it",
+    "type": "declaration",
+    "intent": "away_return_injured",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 13,
+      "wounded": true,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 119,
+    "key": "gr_fe_eng_of#00119",
+    "text": "[low voice, gruff] routine. i've done this a thousand times",
+    "type": "declaration",
+    "intent": "briefing_ack_routine",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 120,
+    "key": "gr_fe_eng_of#00120",
+    "text": "[low voice, gruff] risky is just another word for interesting",
+    "type": "declaration",
+    "intent": "briefing_ack_risky",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "mood": [
+        "ok",
+        "low"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 121,
+    "key": "gr_fe_eng_of#00121",
+    "text": "[resigned, flat tone] grim doesn't begin to cover it. but we'll go anyway",
+    "type": "declaration",
+    "intent": "briefing_ack_grim",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 13,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 122,
+    "key": "gr_fe_eng_of#00122",
+    "text": "[low voice, gruff] they're coming in. stay sharp",
+    "type": "declaration",
+    "intent": "docking_approach",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 123,
+    "key": "gr_fe_eng_of#00123",
+    "text": "clamps hold. we're good",
+    "type": "declaration",
+    "intent": "docking_clamped",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 124,
+    "key": "gr_fe_eng_of#00124",
+    "text": "we're loose. heading out",
+    "type": "declaration",
+    "intent": "docking_undock",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 125,
+    "key": "gr_fe_eng_of#00125",
+    "text": "running the preflight. same checks as always",
+    "type": "declaration",
+    "intent": "shuttle_ops_prep",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 7,
+      "location": [
+        "shuttlebay"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 126,
+    "key": "gr_fe_eng_of#00126",
+    "text": "[low voice, gruff] she's away clean. keeping an eye on it",
+    "type": "declaration",
+    "intent": "shuttle_ops_launch",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 7,
+      "location": [
+        "shuttlebay"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 127,
+    "key": "gr_fe_eng_of#00127",
+    "text": "[low voice, gruff] she's down safe. another one in the books",
+    "type": "declaration",
+    "intent": "shuttle_ops_land",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "location": [
+        "shuttlebay"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 128,
+    "key": "gr_fe_eng_of#00128",
+    "text": "[low voice, gruff] something about the environment doesn't add up",
+    "type": "declaration",
+    "intent": "scenario_axis_bio",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 11,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 129,
+    "key": "gr_fe_eng_of#00129",
+    "text": "[low voice, gruff] ship's being weird and i don't know why",
+    "type": "declaration",
+    "intent": "scenario_axis_systems",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 11,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 130,
+    "key": "gr_fe_eng_of#00130",
+    "text": "[low voice, gruff] crew's acting off. makes me uneasy",
+    "type": "declaration",
+    "intent": "scenario_axis_social",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 11,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 131,
+    "key": "gr_fe_eng_of#00131",
+    "text": "[urgent, fast pace] we're under fire. this is not what i signed up for",
+    "type": "declaration",
+    "intent": "scenario_axis_combat",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 11,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 132,
+    "key": "gr_fe_eng_of#00132",
+    "text": "[low voice, gruff] none of this makes any sense to me",
+    "type": "declaration",
+    "intent": "scenario_axis_mystery",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 11,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
     "weight": 1.0
   }
 ]

@@ -615,7 +615,7 @@
   {
     "id": 34,
     "key": "CH_ML_MAR_CM#00034",
-    "text": "[embarrassed, voice quiet] wait, really? i was half joking, but — yeah. yeah, i'd like that",
+    "text": "[embarrassed, voice quiet] wait, really? i was half joking, but \u00e2\u20ac\u201d yeah. yeah, i'd like that",
     "type": "reply",
     "intent": "romance_accept",
     "conditions": {
@@ -1511,6 +1511,567 @@
     "reply_to_intents": [
       "fear_vent"
     ],
+    "weight": 1.0
+  },
+  {
+    "id": 84,
+    "key": "ch_ml_mar_cm#00084",
+    "text": "[warm, gentle tone] all set. heading to the surface to get some answers",
+    "type": "declaration",
+    "intent": "away_depart_surface",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "mood": [
+        "ok",
+        "low"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "location": [
+        "shuttlebay"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 85,
+    "key": "ch_ml_mar_cm#00085",
+    "text": "[warm, gentle tone] dead ship means old mysteries. can't wait to dig in",
+    "type": "declaration",
+    "intent": "away_depart_derelict",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "mood": [
+        "ok",
+        "low"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "location": [
+        "airlock"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 86,
+    "key": "ch_ml_mar_cm#00086",
+    "text": "heading to the station. always something interesting there",
+    "type": "declaration",
+    "intent": "away_depart_station",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "mood": [
+        "ok",
+        "low"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "location": [
+        "airlock"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 87,
+    "key": "ch_ml_mar_cm#00087",
+    "text": "[warm, gentle tone] their ship, our problem. love it a boarding challenge",
+    "type": "declaration",
+    "intent": "away_depart_other_ship",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "mood": [
+        "ok",
+        "low"
+      ],
+      "target": [
+        "open_air"
+      ],
+      "location": [
+        "airlock"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 88,
+    "key": "ch_ml_mar_cm#00088",
+    "text": "[warm, gentle tone] all clear out here. this is going well",
+    "type": "declaration",
+    "intent": "away_radio_calm",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 89,
+    "key": "ch_ml_mar_cm#00089",
+    "text": "readings are nominal. smooth operation so far",
+    "type": "declaration",
+    "intent": "away_radio_calm",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 90,
+    "key": "ch_ml_mar_cm#00090",
+    "text": "[nervous, speaking quickly] okay, something's off. parameters shifting",
+    "type": "declaration",
+    "intent": "away_radio_tense",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 91,
+    "key": "ch_ml_mar_cm#00091",
+    "text": "[voice shaking] detected something unexpected. analyzing now",
+    "type": "declaration",
+    "intent": "away_radio_tense",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 92,
+    "key": "ch_ml_mar_cm#00092",
+    "text": "[panicked, panting] systems failing fast. i'm working on it",
+    "type": "declaration",
+    "intent": "away_radio_bad",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 93,
+    "key": "ch_ml_mar_cm#00093",
+    "text": "[voice shaking] i'm hurt. still mobile but need backup",
+    "type": "declaration",
+    "intent": "away_radio_bad",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 94,
+    "key": "ch_ml_mar_cm#00094",
+    "text": "[warm, gentle tone] back safe and sound. op went clean",
+    "type": "declaration",
+    "intent": "away_return_fine",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "mood": [
+        "ok"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 95,
+    "key": "ch_ml_mar_cm#00095",
+    "text": "mission complete. nobody hurt and everything's functional",
+    "type": "declaration",
+    "intent": "away_return_fine",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "mood": [
+        "ok"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 96,
+    "key": "ch_ml_mar_cm#00096",
+    "text": "[voice quiet] made it back but i need a minute to process",
+    "type": "declaration",
+    "intent": "away_return_shaken",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 12,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 97,
+    "key": "ch_ml_mar_cm#00097",
+    "text": "we're okay. just... need to sit for a bit",
+    "type": "declaration",
+    "intent": "away_return_shaken",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 12,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 98,
+    "key": "ch_ml_mar_cm#00098",
+    "text": "[warm, gentle tone] got a wound but nothing mission-critical. i can work through it",
+    "type": "declaration",
+    "intent": "away_return_injured",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 13,
+      "wounded": true,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 99,
+    "key": "ch_ml_mar_cm#00099",
+    "text": "[voice shaking] hurt myself but the op went fine so it's worth it",
+    "type": "declaration",
+    "intent": "away_return_injured",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 13,
+      "wounded": true,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 100,
+    "key": "ch_ml_mar_cm#00100",
+    "text": "routine ops sound good. ready when you are",
+    "type": "declaration",
+    "intent": "briefing_ack_routine",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 101,
+    "key": "ch_ml_mar_cm#00101",
+    "text": "[nervous, speaking quickly] risky but doable. let's go get it done",
+    "type": "declaration",
+    "intent": "briefing_ack_risky",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "mood": [
+        "ok",
+        "low"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 102,
+    "key": "ch_ml_mar_cm#00102",
+    "text": "[voice quiet] that's heavy. but we can handle it",
+    "type": "declaration",
+    "intent": "briefing_ack_grim",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 13,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 103,
+    "key": "ch_ml_mar_cm#00103",
+    "text": "[warm, gentle tone] contact inbound. running docking protocols",
+    "type": "declaration",
+    "intent": "docking_approach",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 104,
+    "key": "ch_ml_mar_cm#00104",
+    "text": "[warm, gentle tone] we're locked in. another successful dock",
+    "type": "declaration",
+    "intent": "docking_clamped",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 105,
+    "key": "ch_ml_mar_cm#00105",
+    "text": "[warm, gentle tone] we're clear and away. smooth operation",
+    "type": "declaration",
+    "intent": "docking_undock",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 106,
+    "key": "ch_ml_mar_cm#00106",
+    "text": "doing pre-flight checks. making sure everything's solid",
+    "type": "declaration",
+    "intent": "shuttle_ops_prep",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 7,
+      "location": [
+        "shuttlebay"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 107,
+    "key": "ch_ml_mar_cm#00107",
+    "text": "[warm, gentle tone] shuttle away! all systems holding steady",
+    "type": "declaration",
+    "intent": "shuttle_ops_launch",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 7,
+      "location": [
+        "shuttlebay"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 108,
+    "key": "ch_ml_mar_cm#00108",
+    "text": "[warm, gentle tone] beautiful landing! shuttle intact and accounted for",
+    "type": "declaration",
+    "intent": "shuttle_ops_land",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "location": [
+        "shuttlebay"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 109,
+    "key": "ch_ml_mar_cm#00109",
+    "text": "[nervous, speaking quickly] something biological is happening here and i don't have answers",
+    "type": "declaration",
+    "intent": "scenario_axis_bio",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 11,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 110,
+    "key": "ch_ml_mar_cm#00110",
+    "text": "[voice shaking] the ship's systems aren't behaving like they should",
+    "type": "declaration",
+    "intent": "scenario_axis_systems",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 11,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 111,
+    "key": "ch_ml_mar_cm#00111",
+    "text": "[voice quiet] something's wrong with the crew and i can't quite figure out what",
+    "type": "declaration",
+    "intent": "scenario_axis_social",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 11,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 112,
+    "key": "ch_ml_mar_cm#00112",
+    "text": "[laughing] there's hostile contact and we're not equipped for this",
+    "type": "declaration",
+    "intent": "scenario_axis_combat",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 11,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 113,
+    "key": "ch_ml_mar_cm#00113",
+    "text": "[nervous, speaking quickly] nothing makes sense and that's the scariest part",
+    "type": "declaration",
+    "intent": "scenario_axis_mystery",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 11,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
     "weight": 1.0
   }
 ]
