@@ -14,36 +14,37 @@ A spaceship AI simulator. The player is the ship's computer. See `GDD.md` for fu
 
 ## Current Sprint
 
-**Branch**: `overhaul/mothership-rewrite`  
-**Orchestration**: Main session directs, Sonnet subagents implement (Haiku for bulk dialogue). ONE agent at a time. Incremental commits with explicit paths always. Memory dir: `~/.claude/projects/d--code/memory/`
+**Branch**: `feature/mission-system` (off main tip `ee47299`)  
+**Orchestration**: Main session directs; Opus for story content, Sonnet for code, Haiku for bulk. Max 2 agents concurrent. Incremental commits with explicit paths always. Memory dir: `~/.claude/projects/d--code/memory/`. **Agents must verify in FOREGROUND** — background-wait parking killed four agents this sprint (see memory `subagent-background-wait-stall`).
 
-**Art**: gen2 cel-shaded (`assets/sprites/gen2/`, 65 assets via `IsoKit.KIT_DIR`). CREW still use legacy Kenney kit (`CrewMemberNode.KIT_DIR`) — cross-facing color consistency failed, animation workstream below is the fix. Image pipeline: `tools/image_gen/` (OpenRouter, key in gitignored `.env`, ~$10+ credits).
-
----
-
-## SESSION HANDOFF (2026-07-10, mid-sprint)
-
-**Shipped this sprint** (all committed, runtime-verified): procgen freighter + starfield/hull/walls · Mothership 1e rules + situational power/air + AI core · camera/collision · crew sim: schedules, relationships/romance, emergent dialogue, bubbles · voice playback on bubbles · The Narrow Passage scenario · THE OVERSEER director AI · gen2 environment art live · dialogue corpus 1,376 lines fully voiced (1,376 MP3s). Specs: `docs/director-spec.md`, `docs/crew-progression-spec.md`, `docs/scenario-bible.md`, `docs/audio-direction.md`, `docs/dialogue_spec.md`.
+**Art**: gen2 cel-shaded environments (`assets/sprites/gen2/`) · **gen3 character models** (`assets/sprites/gen3_chars/`, 24/24 crew archetypes, mannequin-reskin pipeline `tools/image_gen/reskin_batch.py` — gemini via OpenRouter; NOT yet wired into CrewMemberNode). Image pipeline: `tools/image_gen/` (OpenRouter, gitignored `.env`).
 
 ---
 
-## RESUME QUEUE (work in order, one agent at a time — session detail in `notes.md`)
+## SESSION HANDOFF (2026-07-11, mission-system sprint COMPLETE)
 
-1. ~~Dialogue expansion~~ ✅ 2,482 lines / 24 files, validator clean
-2. ~~Corpus finalization~~ ✅ ElevenLabs CSVs regenerated (`ab32eac`)
-3. ElevenLabs voicing — ON HOLD (1,550/2,482 done, quota dead); superseded by the Fish v2 trial below. Rerun cmd in `notes.md` if ElevenLabs returns.
-4. ~~Character animations~~ ✅ integrated w/ Kenney fallback; head consistency SOLVED by head-swap compositing (`d248a27`: canonical head per facing, checksum-identical; tools `crew_head_{geom,swap,qa}.py`) — zoom strips with Lachlan. OPEN: 16 prone/floating poses un-swapped (by design) · 14 pre-existing corrupt slices in walk/melee/carry need a re-slice pass (list in `_test/composite_report.json`)
-5. ~~Crew progression~~ ✅ (`e092bcf`/`30a9d9c`); FTL recruitment still PINNED
-6. ~~Fish Audio v2 revoice~~ ✅ COMPLETE (2026-07-11): 2,482/2,482 MP3s in `assets/audio/dialogue_v2/` (195MB, gitignored). Voice map `tools/audio_gen/fish_voices.json`; CH_ML_ENG_OF re-voiced with Lachlan's dedicated pick (double-duty resolved; 3 other flagged compromises unreviewed). STILL TODO on approval: point bubble voice playback at dialogue_v2, retire ElevenLabs path.
-7. ~~Sprint close-out~~: `main` fast-forwarded to sprint tip (2026-07-11). OUTSTANDING: rotate API keys (ElevenLabs/OpenRouter/Fish — all passed through chat) · head-swap strips verdict · 14 corrupt slices re-slice pass (Lachlan's go).
+**Shipped** (all committed + Godot-verified on `feature/mission-system`): **the mission system** — spec `docs/mission-system-spec.md` · 45 missions (`resources/missions/`) + 42 scenarios (`resources/scenarios/`), validator `tools/missions/validate_content.py` 0 errors · Engine A–E: data loaders/ScenarioCatalog (`f982386`), MissionManager spine + mission HUD + ApproachVisual planet grow-in (`1e21949`), away ops: shuttlebay/shuttle/AwayResolver/hidden status flags/radio barks (`b1a8ff5`), OutcomeApplier + GenericScenarioMonitor + IntruderSystem (`25c941a4`), Overseer refinement: heat-scaled hooks, trigger_status delayed payoffs, away-beat injection (`5516c776`) · dialogue +750 mission-system lines all voiced (Fish v2, 3,232 MP3s total) · Lyria 3 soundtrack pipeline (`tools/audio_gen/lyria_batch.py`, 19/78 tracks generated) · gen3 crew sprite roster 24/24.
+
+---
+
+## RESUME QUEUE (session detail in `notes.md`)
+
+1. **Credit-blocked** (~$10 top-up covers all): 6 NPC + 3 robot sprite models (~$4, `reskin_batch.py` descriptions in notes) · 59 remaining soundtrack tracks (~$5, `lyria_batch.py` is resume-safe, $2 floor guard)
+2. Wire gen3 crew models into `CrewMemberNode` (replace Kenney kit) — needs Lachlan's style verdict on `assets/sprites/gen3_chars/*/preview_walk.gif` first
+3. Merge `feature/mission-system` → `main` after Lachlan plays a campaign
+4. Dialogue_v2 playback swap + retire ElevenLabs path (carried; on audio approval)
+5. Rotate API keys — ElevenLabs/OpenRouter/Fish (carried from last sprint, still outstanding)
+6. Delete spent `ClaudeSprintRevive` scheduled task (self-delete was access-denied)
 
 ---
 
 ## Operational Facts
 
 - **Godot 4.7**: `& "$env:LOCALAPPDATA\Programs\Godot\Godot.exe"` (NOT on PATH). After any new `class_name`: `--path "D:\code\stars" --headless --import` first, then verify with `--headless --quit-after 600 res://scenes/Main.tscn` and grep for `SCRIPT ERROR`.
-- **Env hooks**: `SHIPAI_SCENARIO=narrow_passage|quarantine` · `SHIPAI_AUTODEMO=1` · `SHIPAI_SEED` · `SHIPAI_FORCE_HEAT` / `SHIPAI_FORCE_FLAG` / `SHIPAI_FORCE_KILL=<archetype>` / `SHIPAI_DIRECTOR_DEBUG=1`
-- **Secrets**: `tools/audio_gen/.env` (ElevenLabs), `tools/image_gen/.env` (OpenRouter) — gitignored, never commit/print. `assets/audio/dialogue/` gitignored (1,376 MP3s on disk).
+- **Env hooks**: mission mode is the DEFAULT boot; `SHIPAI_SCENARIO=<id>` forces legacy scenario-only boot (any catalog id or narrow_passage/quarantine) · `SHIPAI_MISSION=<id>` forces first mission · `SHIPAI_AWAY_FAST=1` (10× away ops) · `SHIPAI_AWAY_AUTOTEST=1` (auto-launch away teams, soak hook) · `SHIPAI_AUTODEMO=1` · `SHIPAI_SEED` · `SHIPAI_FORCE_HEAT` / `SHIPAI_FORCE_FLAG` / `SHIPAI_FORCE_KILL=<archetype>` / `SHIPAI_DIRECTOR_DEBUG=1`
+- **Godot gotchas**: `--quit-after` counts FRAMES not seconds (~110–125 fps headless) · `-s` scripts can't see autoloads — verify with real-scene runs + output capture.
+- **Secrets**: `tools/audio_gen/.env` (ElevenLabs + Fish), `tools/image_gen/.env` (OpenRouter) — gitignored, never commit/print. Gitignored asset trees: `assets/audio/dialogue/` (1,376 v1 MP3s), `assets/audio/dialogue_v2/` (3,232 Fish MP3s), `assets/music/` (Lyria soundtrack).
+- **Content validation**: `python tools/missions/validate_content.py --root D:\code\stars` after ANY mission/scenario JSON change — closed vocabularies, must be 0 errors.
 - **Commit style**: explicit paths only (never `git add -A`), end messages with Claude Co-Authored-By line, retry once on index.lock.
 
 ---
@@ -52,10 +53,12 @@ A spaceship AI simulator. The player is the ship's computer. See `GDD.md` for fu
 
 1. ~~Door lock/unlock UI~~ ✅ + full click-interaction overhaul (2026-07-10, `9dd37f6`/`bc18d59`/`7706f53`): crew menu w/ Move-to submenu + Inspect page (equipment/monologue/jobs), top-right info card w/ portrait, door Open/Close+Lock/Unlock (decoupled axes), Repair→designate-crew directive flow
 2. Visual hookup for room power/air state (signals emit; no RoomBase dimming yet)
-3. Combat resolver (WoundTable/apply_damage implemented; nothing calls it — Bad Cargo scenario is the vehicle)
+3. ~~Combat resolver~~ ✅ IntruderSystem is now WoundTable's caller (intruder combat rounds, 2026-07-11)
 4. Bubble editor pass (fixed 260px width looks oversized on short lines)
-5. CampaignManager for between-run structure
+5. ~~CampaignManager~~ ✅ superseded — MissionManager owns campaign flow (deck, follow-ons, legs); between-RUN meta-structure still open
 6. Crew portraits in bubbles (info-card portrait shipped; bubbles still plain)
+7. Intruder sprites (sensor blips ship today; stalker/nest/mimic art in `docs/asset-backlog.md`)
+8. Real planet/ship art for ApproachVisual (procedural placeholders live; hooks named per mission `destination.art`)
 
 **Blocked on**: nothing hard. SaveManager stub by design — `ScenarioRunner`'s leg-boundary hook calls `SaveManager.save_checkpoint()`, still a no-op.
 
@@ -156,6 +159,15 @@ A spaceship AI simulator. The player is the ship's computer. See `GDD.md` for fu
 | RoomBase | `scripts/ship/room_base.gd` | done |
 | AccessLevel | `scripts/ai/access_level.gd` | done |
 | SideProjects | `scripts/crew/side_projects.gd` | done |
+| MissionManager | `scripts/missions/mission_manager.gd` | done (autoload) |
+| MissionDef / MissionDeck | `scripts/missions/mission_def.gd` / `mission_deck.gd` | done |
+| ShuttleSystem | `scripts/missions/shuttle_system.gd` | done |
+| AwayResolver | `scripts/missions/away_resolver.gd` | done |
+| ApproachVisual | `scripts/missions/approach_visual.gd` | done (placeholder art) |
+| ScenarioCatalog | `scripts/scenarios/scenario_catalog.gd` | done |
+| OutcomeApplier | `scripts/scenarios/outcome_applier.gd` | done |
+| GenericScenarioMonitor | `scripts/scenarios/generic_monitor.gd` | done |
+| IntruderSystem | `scripts/ship/intruder_system.gd` | done (autoload, sensor-level) |
 | PersonalityCore | `scripts/crew/personality_core.gd` | not started |
 | ShipSystem | `scripts/ship/ship_system.gd` | not started |
 | DamageModel | `scripts/ship/damage_model.gd` | not started |
