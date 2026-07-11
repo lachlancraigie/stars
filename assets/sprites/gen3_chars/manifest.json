@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "total_spend": 13.339
+    "total_spend": 16.114
   },
   "characters": {
     "ch_fe_eng_cm": {
@@ -1248,6 +1248,310 @@
         "punch": "google/gemini-3-pro-image"
       },
       "spend": 0.571,
+      "needs_regeneration": [],
+      "status": "complete"
+    },
+    "dockhand": {
+      "id": "dockhand",
+      "kind": "npc",
+      "name": "Dockhand",
+      "tag": null,
+      "description": "a man, short practical brown hair, sun-weathered tan skin, wearing a hi-vis orange/yellow vest over dark coveralls with faint mechanical exo-frame struts visible along the arms and legs, scuffed heavy boots",
+      "palette": [
+        "#405068",
+        "#000000"
+      ],
+      "qa": {
+        "idle": {
+          "mean_iou": 0.871,
+          "min_iou": 0.763,
+          "drift": 3.5,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "walk": {
+          "mean_iou": 0.674,
+          "min_iou": 0.458,
+          "drift": 7.0,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "run": {
+          "mean_iou": 0.918,
+          "min_iou": 0.863,
+          "drift": 7.3,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "punch": {
+          "mean_iou": 0.896,
+          "min_iou": 0.501,
+          "drift": 7.9,
+          "white_dev": 0.0,
+          "pass": true
+        }
+      },
+      "model_used": {
+        "idle": "google/gemini-2.5-flash-image",
+        "walk": "google/gemini-2.5-flash-image",
+        "run": "google/gemini-3-pro-image",
+        "punch": "google/gemini-3-pro-image"
+      },
+      "spend": 0.394,
+      "needs_regeneration": [],
+      "status": "complete"
+    },
+    "corporate_rep": {
+      "id": "corporate_rep",
+      "kind": "npc",
+      "name": "Corporate Representative",
+      "tag": null,
+      "description": "a woman, neat short black hair, light tan skin, wearing a sharp dark charcoal business suit, crisp white shirt, polished black shoes, no visible weapon or equipment",
+      "palette": [
+        "#384048",
+        "#484858"
+      ],
+      "qa": {
+        "idle": {
+          "mean_iou": 0.818,
+          "min_iou": 0.691,
+          "drift": 2.9,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "walk": {
+          "mean_iou": 0.66,
+          "min_iou": 0.405,
+          "drift": 6.5,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "run": {
+          "mean_iou": 0.891,
+          "min_iou": 0.845,
+          "drift": 4.4,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "punch": {
+          "mean_iou": 0.866,
+          "min_iou": 0.477,
+          "drift": 3.5,
+          "white_dev": 0.0,
+          "pass": true
+        }
+      },
+      "model_used": {
+        "idle": "google/gemini-2.5-flash-image",
+        "walk": "google/gemini-2.5-flash-image",
+        "run": "google/gemini-3-pro-image",
+        "punch": "google/gemini-3-pro-image"
+      },
+      "spend": 0.354,
+      "needs_regeneration": [],
+      "status": "complete"
+    },
+    "salvager": {
+      "id": "salvager",
+      "kind": "npc",
+      "name": "Salvager",
+      "tag": null,
+      "description": "a man, shaggy grey-brown hair, olive-tan weathered skin, wearing a bulky patched vacuum suit with mismatched repair patches in different faded colors, scavenged parts and pouches strapped on, a worn dark visor pushed up off the face",
+      "palette": [
+        "#000000",
+        "#c8a880",
+        "#686868"
+      ],
+      "qa": {
+        "idle": {
+          "mean_iou": 0.799,
+          "min_iou": 0.499,
+          "drift": 16.2,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "walk": {
+          "mean_iou": 0.788,
+          "min_iou": 0.582,
+          "drift": 15.3,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "run": {
+          "mean_iou": 0.898,
+          "min_iou": 0.843,
+          "drift": 10.2,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "punch": {
+          "mean_iou": 0.876,
+          "min_iou": 0.492,
+          "drift": 10.5,
+          "white_dev": 0.0,
+          "pass": true
+        }
+      },
+      "model_used": {
+        "idle": "google/gemini-2.5-flash-image",
+        "walk": "google/gemini-3-pro-image",
+        "run": "google/gemini-3-pro-image",
+        "punch": "google/gemini-3-pro-image"
+      },
+      "spend": 0.571,
+      "needs_regeneration": [],
+      "status": "complete"
+    },
+    "pirate_raider": {
+      "id": "pirate_raider",
+      "kind": "npc",
+      "name": "Pirate Raider (Sixfold Line)",
+      "tag": null,
+      "description": "a woman, shaved-sides undercut in dark red hair, pale scarred skin, wearing dark matte armor plating with aggressive red accent stripes and a stenciled Sixfold Line insignia, tactical rig, menacing bearing",
+      "palette": [
+        "#404048",
+        "#303038",
+        "#000000"
+      ],
+      "qa": {
+        "idle": {
+          "mean_iou": 0.739,
+          "min_iou": 0.5,
+          "drift": 4.4,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "walk": {
+          "mean_iou": 0.742,
+          "min_iou": 0.497,
+          "drift": 9.7,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "run": {
+          "mean_iou": 0.918,
+          "min_iou": 0.868,
+          "drift": 5.2,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "punch": {
+          "mean_iou": 0.875,
+          "min_iou": 0.493,
+          "drift": 5.0,
+          "white_dev": 0.0,
+          "pass": true
+        }
+      },
+      "model_used": {
+        "idle": "google/gemini-2.5-flash-image",
+        "walk": "google/gemini-2.5-flash-image",
+        "run": "google/gemini-3-pro-image",
+        "punch": "google/gemini-3-pro-image"
+      },
+      "spend": 0.354,
+      "needs_regeneration": [],
+      "status": "complete"
+    },
+    "cult_prophet": {
+      "id": "cult_prophet",
+      "kind": "npc",
+      "name": "Cult Prophet",
+      "tag": null,
+      "description": "a man, long unkempt silver-white hair, gaunt pale skin, wearing heavy hooded dark robes over a flightsuit, strange pale symbols stitched into the fabric, an unsettling gaunt presence",
+      "palette": [
+        "#000000",
+        "#181818",
+        "#404848"
+      ],
+      "qa": {
+        "idle": {
+          "mean_iou": 0.872,
+          "min_iou": 0.841,
+          "drift": 10.5,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "walk": {
+          "mean_iou": 0.725,
+          "min_iou": 0.588,
+          "drift": 9.9,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "run": {
+          "mean_iou": 0.811,
+          "min_iou": 0.726,
+          "drift": 9.4,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "punch": {
+          "mean_iou": 0.821,
+          "min_iou": 0.459,
+          "drift": 4.8,
+          "white_dev": 0.0,
+          "pass": true
+        }
+      },
+      "model_used": {
+        "idle": "google/gemini-3-pro-image",
+        "walk": "google/gemini-3-pro-image",
+        "run": "google/gemini-3-pro-image",
+        "punch": "google/gemini-3-pro-image"
+      },
+      "spend": 0.708,
+      "needs_regeneration": [],
+      "status": "complete"
+    },
+    "colonist_survivor": {
+      "id": "colonist_survivor",
+      "kind": "npc",
+      "name": "Colonist Survivor",
+      "tag": null,
+      "description": "a woman, messy dirty-blonde hair, pale exhausted skin, wearing worn dirty plain civilian clothes layered for warmth, a haggard exhausted look",
+      "palette": [
+        "#000000",
+        "#504038",
+        "#604840"
+      ],
+      "qa": {
+        "idle": {
+          "mean_iou": 0.737,
+          "min_iou": 0.559,
+          "drift": 5.1,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "walk": {
+          "mean_iou": 0.656,
+          "min_iou": 0.472,
+          "drift": 6.4,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "run": {
+          "mean_iou": 0.865,
+          "min_iou": 0.804,
+          "drift": 4.6,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "punch": {
+          "mean_iou": 0.838,
+          "min_iou": 0.478,
+          "drift": 6.8,
+          "white_dev": 0.0,
+          "pass": true
+        }
+      },
+      "model_used": {
+        "idle": "google/gemini-2.5-flash-image",
+        "walk": "google/gemini-2.5-flash-image",
+        "run": "google/gemini-3-pro-image",
+        "punch": "google/gemini-3-pro-image"
+      },
+      "spend": 0.394,
       "needs_regeneration": [],
       "status": "complete"
     }
