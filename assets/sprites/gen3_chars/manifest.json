@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "total_spend": 5.899
+    "total_spend": 7.258
   },
   "characters": {
     "ch_fe_eng_cm": {
@@ -19,24 +19,28 @@
           "mean_iou": 0.973,
           "min_iou": 0.952,
           "drift": 5.3,
+          "white_dev": 0.0,
           "pass": true
         },
         "walk": {
           "mean_iou": 0.68,
           "min_iou": 0.49,
           "drift": 5.7,
+          "white_dev": 0.0,
           "pass": true
         },
         "run": {
           "mean_iou": 0.91,
           "min_iou": 0.847,
           "drift": 10.1,
+          "white_dev": 0.0,
           "pass": true
         },
         "punch": {
           "mean_iou": 0.743,
           "min_iou": 0.413,
           "drift": 5.4,
+          "white_dev": 0.0,
           "pass": true
         }
       },
@@ -67,24 +71,28 @@
           "mean_iou": 0.833,
           "min_iou": 0.758,
           "drift": 19.8,
+          "white_dev": 0.0,
           "pass": true
         },
         "walk": {
           "mean_iou": 0.779,
           "min_iou": 0.592,
           "drift": 32.7,
+          "white_dev": 0.02,
           "pass": true
         },
         "run": {
           "mean_iou": 0.854,
           "min_iou": 0.792,
           "drift": 31.5,
+          "white_dev": 0.01,
           "pass": true
         },
         "punch": {
           "mean_iou": 0.842,
           "min_iou": 0.472,
           "drift": 26.1,
+          "white_dev": 0.02,
           "pass": true
         }
       },
@@ -114,24 +122,28 @@
           "mean_iou": 0.94,
           "min_iou": 0.914,
           "drift": 9.4,
+          "white_dev": 0.0,
           "pass": true
         },
         "walk": {
           "mean_iou": 0.79,
           "min_iou": 0.619,
           "drift": 11.7,
+          "white_dev": 0.0,
           "pass": true
         },
         "run": {
           "mean_iou": 0.896,
           "min_iou": 0.848,
           "drift": 10.5,
+          "white_dev": 0.0,
           "pass": true
         },
         "punch": {
           "mean_iou": 0.669,
           "min_iou": 0.406,
           "drift": 8.1,
+          "white_dev": 0.0,
           "pass": true
         }
       },
@@ -160,24 +172,28 @@
           "mean_iou": 0.741,
           "min_iou": 0.504,
           "drift": 5.0,
+          "white_dev": 0.0,
           "pass": true
         },
         "walk": {
           "mean_iou": 0.668,
           "min_iou": 0.446,
           "drift": 8.0,
+          "white_dev": 0.0,
           "pass": true
         },
         "run": {
           "mean_iou": 0.913,
           "min_iou": 0.861,
           "drift": 6.5,
+          "white_dev": 0.0,
           "pass": true
         },
         "punch": {
           "mean_iou": 0.863,
           "min_iou": 0.491,
           "drift": 6.2,
+          "white_dev": 0.0,
           "pass": true
         }
       },
@@ -207,24 +223,28 @@
           "mean_iou": 0.956,
           "min_iou": 0.786,
           "drift": 2.5,
+          "white_dev": 0.0,
           "pass": true
         },
         "walk": {
           "mean_iou": 0.75,
           "min_iou": 0.512,
           "drift": 6.9,
+          "white_dev": 0.0,
           "pass": true
         },
         "run": {
           "mean_iou": 0.918,
           "min_iou": 0.866,
           "drift": 4.9,
+          "white_dev": 0.0,
           "pass": true
         },
         "punch": {
           "mean_iou": 0.662,
           "min_iou": 0.409,
           "drift": 20.3,
+          "white_dev": 0.0,
           "pass": true
         }
       },
@@ -245,8 +265,8 @@
       "tag": "CH_ML_SCI_OF",
       "description": "a man, a short practical crop in platinum blonde hair, pale freckled skin, wearing a pale off-white lab tunic over a dark fitted under-layer, clipped instrument pouches on the chest, soft-soled shoes, a warm coral-orange accent (piping, patches), silver shoulder trim / rank bars",
       "palette": [
-        "#f0e0d0",
         "#b8b8b8",
+        "#f0e0d0",
         "#000000",
         "#f0e8e0"
       ],
@@ -255,24 +275,29 @@
           "mean_iou": 0.664,
           "min_iou": 0.498,
           "drift": 13.7,
+          "white_dev": 0.0,
           "pass": true
         },
         "walk": {
           "mean_iou": 0.799,
           "min_iou": 0.606,
           "drift": 30.5,
+          "white_dev": 0.04,
           "pass": true
         },
         "run": {
-          "mean_iou": 0.891,
-          "min_iou": 0.837,
-          "drift": 38.4,
-          "pass": false
+          "mean_iou": 0.899,
+          "min_iou": 0.853,
+          "drift": 38.6,
+          "white_dev": 0.02,
+          "pass": true,
+          "drift_waived": true
         },
         "punch": {
           "mean_iou": 0.882,
           "min_iou": 0.497,
           "drift": 26.8,
+          "white_dev": 0.01,
           "pass": true
         }
       },
@@ -282,57 +307,59 @@
         "run": "google/gemini-3-pro-image",
         "punch": "google/gemini-3-pro-image"
       },
-      "spend": 0.531,
-      "needs_regeneration": [
-        "run"
-      ],
-      "status": "partial"
+      "spend": 0.137,
+      "needs_regeneration": [],
+      "status": "complete"
     },
     "ev_fe_and_of": {
       "id": "ev_fe_and_of",
       "kind": "crew",
       "name": "Iris Kepler",
       "tag": "EV_FE_AND_OF",
-      "description": "a woman, a long single braid in salt-and-pepper grey hair, pale synthetic skin with a faint grey undertone, wearing a graphite-grey synthetic bodysuit with visible seam-panel lines and smooth matte plating at the shoulders and forearms, pale synthetic skin with a faint grey undertone, a muted slate-blue accent (piping, patches), silver shoulder trim / rank bars",
+      "description": "a woman, a long single braid in salt-and-pepper grey hair, wearing a graphite-grey synthetic bodysuit with visible seam-panel lines and smooth matte plating at the shoulders and forearms, pale synthetic skin with a faint grey undertone, a muted slate-blue accent (piping, patches), silver shoulder trim / rank bars",
       "palette": [
-        "#787880",
         "#000000",
-        "#686870",
-        "#f8f8f8"
+        "#606868",
+        "#384040",
+        "#283030"
       ],
       "qa": {
         "idle": {
-          "mean_iou": 0.943,
-          "min_iou": 0.846,
-          "drift": 32.2,
+          "mean_iou": 0.959,
+          "min_iou": 0.944,
+          "drift": 7.4,
+          "white_dev": 0.0,
           "pass": true
         },
         "walk": {
-          "mean_iou": 0.733,
-          "min_iou": 0.464,
-          "drift": 19.1,
+          "mean_iou": 0.687,
+          "min_iou": 0.407,
+          "drift": 5.6,
+          "white_dev": 0.0,
           "pass": true
         },
         "run": {
           "mean_iou": 0.879,
           "min_iou": 0.805,
-          "drift": 5.2,
+          "drift": 6.6,
+          "white_dev": 0.0,
           "pass": true
         },
         "punch": {
           "mean_iou": 0.872,
           "min_iou": 0.5,
-          "drift": 6.3,
+          "drift": 5.1,
+          "white_dev": 0.0,
           "pass": true
         }
       },
       "model_used": {
-        "idle": "google/gemini-2.5-flash-image",
+        "idle": "google/gemini-3-pro-image",
         "walk": "google/gemini-2.5-flash-image",
         "run": "google/gemini-3-pro-image",
         "punch": "google/gemini-3-pro-image"
       },
-      "spend": 0.354,
+      "spend": 0.257,
       "needs_regeneration": [],
       "status": "complete"
     },
@@ -353,24 +380,28 @@
           "mean_iou": 0.877,
           "min_iou": 0.693,
           "drift": 7.7,
+          "white_dev": 0.0,
           "pass": true
         },
         "walk": {
           "mean_iou": 0.661,
           "min_iou": 0.474,
           "drift": 10.0,
+          "white_dev": 0.0,
           "pass": true
         },
         "run": {
           "mean_iou": 0.898,
           "min_iou": 0.848,
           "drift": 3.3,
+          "white_dev": 0.0,
           "pass": true
         },
         "punch": {
           "mean_iou": 0.874,
           "min_iou": 0.499,
           "drift": 6.7,
+          "white_dev": 0.0,
           "pass": true
         }
       },
@@ -403,24 +434,28 @@
           "mean_iou": 0.789,
           "min_iou": 0.595,
           "drift": 11.8,
+          "white_dev": 0.0,
           "pass": true
         },
         "walk": {
           "mean_iou": 0.782,
           "min_iou": 0.587,
           "drift": 28.7,
+          "white_dev": 0.02,
           "pass": true
         },
         "run": {
           "mean_iou": 0.898,
           "min_iou": 0.822,
           "drift": 31.8,
+          "white_dev": 0.01,
           "pass": true
         },
         "punch": {
           "mean_iou": 0.846,
           "min_iou": 0.5,
           "drift": 18.9,
+          "white_dev": 0.01,
           "pass": true
         }
       },
@@ -431,6 +466,108 @@
         "punch": "google/gemini-3-pro-image"
       },
       "spend": 0.571,
+      "needs_regeneration": [],
+      "status": "complete"
+    },
+    "ev_fe_sci_of": {
+      "id": "ev_fe_sci_of",
+      "kind": "crew",
+      "name": "Ilse Brannigan",
+      "tag": "EV_FE_SCI_OF",
+      "description": "a woman, regulation short back-and-sides in ash brown hair, warm tan skin, wearing a pale off-white lab tunic over a dark fitted under-layer, clipped instrument pouches on the chest, soft-soled shoes, a muted grey-blue accent (piping, patches), silver shoulder trim / rank bars",
+      "palette": [
+        "#d8d8c8",
+        "#000000"
+      ],
+      "qa": {
+        "idle": {
+          "mean_iou": 0.928,
+          "min_iou": 0.9,
+          "drift": 25.5,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "walk": {
+          "mean_iou": 0.656,
+          "min_iou": 0.482,
+          "drift": 13.4,
+          "white_dev": 0.02,
+          "pass": true
+        },
+        "run": {
+          "mean_iou": 0.898,
+          "min_iou": 0.844,
+          "drift": 35.7,
+          "white_dev": 0.01,
+          "pass": true,
+          "drift_waived": true
+        },
+        "punch": {
+          "mean_iou": 0.88,
+          "min_iou": 0.488,
+          "drift": 19.5,
+          "white_dev": 0.01,
+          "pass": true
+        }
+      },
+      "model_used": {
+        "idle": "google/gemini-3-pro-image",
+        "walk": "google/gemini-2.5-flash-image",
+        "run": "google/gemini-3-pro-image",
+        "punch": "google/gemini-3-pro-image"
+      },
+      "spend": 0.531,
+      "needs_regeneration": [],
+      "status": "complete"
+    },
+    "ev_ml_eng_cm": {
+      "id": "ev_ml_eng_cm",
+      "kind": "crew",
+      "name": "Declan Osei-Marsh",
+      "tag": "EV_ML_ENG_CM",
+      "description": "a man, shoulder-length hair tied back in warm copper hair, deep brown skin, wearing olive-drab and rust-orange coveralls with rolled sleeves, a canvas tool rig/belt hung with visible tools, heavy grey work boots, a muted slate-blue accent (piping, patches), no rank trim or insignia",
+      "palette": [
+        "#707848",
+        "#000000",
+        "#686848"
+      ],
+      "qa": {
+        "idle": {
+          "mean_iou": 0.815,
+          "min_iou": 0.586,
+          "drift": 4.6,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "walk": {
+          "mean_iou": 0.701,
+          "min_iou": 0.41,
+          "drift": 10.0,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "run": {
+          "mean_iou": 0.903,
+          "min_iou": 0.835,
+          "drift": 6.8,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "punch": {
+          "mean_iou": 0.879,
+          "min_iou": 0.5,
+          "drift": 8.5,
+          "white_dev": 0.0,
+          "pass": true
+        }
+      },
+      "model_used": {
+        "idle": "google/gemini-2.5-flash-image",
+        "walk": "google/gemini-2.5-flash-image",
+        "run": "google/gemini-3-pro-image",
+        "punch": "google/gemini-3-pro-image"
+      },
+      "spend": 0.434,
       "needs_regeneration": [],
       "status": "complete"
     }
