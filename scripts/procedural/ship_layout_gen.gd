@@ -56,7 +56,7 @@ const AFT_BLOCK_LEN: float = 2.2  # cells the hull extends aft past the engine r
 const HULL_MARGIN: float = 1.3    # cells the hull is inflated past each room row
 const HULL_AFT_MARGIN: float = 2.4
 
-const DOORED_TYPES: Array[String] = ["bridge", "engine_room", "cargo", "ai_core", "airlock"]
+const DOORED_TYPES: Array[String] = ["bridge", "engine_room", "cargo", "ai_core", "airlock", "shuttlebay"]
 
 const ROOM_SIZE_RANGES: Dictionary = {
 	"bridge":       {"w": [4, 6], "h": [3, 4]},
@@ -68,6 +68,9 @@ const ROOM_SIZE_RANGES: Dictionary = {
 	"cargo":        {"w": [4, 5], "h": [3, 4]},
 	"life_support": {"w": [3, 4], "h": [3, 3]},
 	"airlock":      {"w": [2, 3], "h": [2, 3]},
+	# docs/mission-system-spec.md §7: "sized ~5x4" — the shuttle itself + boarding-team
+	# muster space, so it's kept fixed-size rather than randomised like the other flanks.
+	"shuttlebay":   {"w": [5, 5], "h": [4, 4]},
 }
 
 const FLOOR_TINTS_BY_TYPE: Dictionary = {
@@ -81,6 +84,7 @@ const FLOOR_TINTS_BY_TYPE: Dictionary = {
 	"mess":         Color(1.00, 0.94, 0.80),
 	"ai_core":      Color(0.80, 0.92, 1.00),
 	"airlock":      Color(0.75, 0.80, 0.85),
+	"shuttlebay":   Color(0.78, 0.84, 0.90),
 }
 
 const FLOOR_TILE_BY_TYPE: Dictionary = {
@@ -94,6 +98,11 @@ const FLOOR_TILE_BY_TYPE: Dictionary = {
 	"ai_core":      "tile_ai_core",
 	"engine_room":  "tile_engine_room",
 	"airlock":      "tile_airlock",
+	# No shuttlebay art commissioned yet — "tile_shuttlebay" is a forward-declared hook
+	# (docs/mission-system-spec.md §7) that DeckPlan.floor_tile_for() resolves with a
+	# ResourceLoader.exists() check, falling back to the cargo tile until real art lands
+	# (same mandatory-fallback idiom as CrewMemberNode's gen2->legacy sprite fallback).
+	"shuttlebay":   "tile_shuttlebay",
 }
 
 # Per-type prop pools (Kenney Space Kit isometric has no literal "table" or "bunk"
@@ -118,6 +127,10 @@ const PROP_POOLS: Dictionary = {
 		"machine_wirelessCable_SE", "pipe_ring_SE"],
 	"airlock":      ["pipe_entrance_SE", "structure_closed_SE"],
 	"corridor":     [],
+	# No dedicated shuttle/hangar prop art yet — cargo-flavoured dressing (crates/barrels
+	# along the walls) reads plausibly as bay equipment until a real parked-shuttle
+	# placeholder sprite lands (docs/mission-system-spec.md §7).
+	"shuttlebay":   ["barrels_SE", "barrel_SE", "machine_barrelLarge_SW", "structure_closed_SE"],
 }
 # "Most computer-looking" prop per type — placed first, at a prominent back-wall cell.
 const CENTERPIECE_BY_TYPE: Dictionary = {
@@ -163,6 +176,7 @@ static func generate(seed_value: int, ship_class_id: String = "freighter") -> Sh
 	# build: {"rooms": {id -> {"type","rect"}}, "connections": [...], "row_meta": [...],
 	#         "connect_edges": {id -> [edges]}, "gap_midpoints": {id -> {"row_y","mid_y"}}}
 
+	_verify_airlock_present(build["rooms"])
 	_add_maintenance_tubes(build)
 
 	var plan: Dictionary = _build_deck_plan(rng, build)
@@ -194,6 +208,9 @@ static func _fill_order(rng: RandomNumberGenerator, type_totals: Dictionary) -> 
 
 	for i in n_airlock:
 		order.append("airlock")
+	# Shuttlebay (docs/mission-system-spec.md §7): unique, outermost flank row alongside
+	# the airlock(s) — both are hull-egress points, so they read sensibly clustered.
+	order.append("shuttlebay")
 	return order
 
 
@@ -321,6 +338,19 @@ static func _next_id(counters: Dictionary, type: String, total: int) -> String:
 		return type
 	counters[type] = counters.get(type, 0) + 1
 	return "%s_%d" % [type, counters[type]]
+
+
+# docs/mission-system-spec.md §7: "guarantee >=1 airlock per generated layout" —
+# structurally already true (_fill_order rolls n_airlock in [1, 2], never 0), but boarding
+# ops (AwayResolver's derelict/station/other_ship sites) hard-depend on one existing, so
+# this asserts it explicitly rather than trusting the invariant silently. A future ruleset
+# change that broke it would still produce a layout (never a hard failure — every other
+# generator error path in this file degrades the same way), just loudly.
+static func _verify_airlock_present(rooms: Dictionary) -> void:
+	for room_id in rooms:
+		if rooms[room_id]["type"] == "airlock":
+			return
+	push_warning("ShipLayoutGen: generated layout has NO airlock room — boarding-site away ops will have nowhere to muster.")
 
 
 static func _add_maintenance_tubes(build: Dictionary) -> void:

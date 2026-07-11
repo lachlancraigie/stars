@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 # Click-on-environment contextual menu — the door/equipment counterpart to DirectiveMenu's
-# click-on-crew menu. Two independent world-click targets share this one CanvasLayer:
+# click-on-crew menu. Independent world-click targets share this one CanvasLayer:
 #   a. Doors: Open/Close (cosmetic leaf state) + Lock/Unlock (the AI operating the door
 #      directly — NOT a crew directive; see door.gd).
 #   b. Damaged ship systems (reactor/life_support/ai_core): "Repair" opens a submenu to
@@ -10,6 +10,13 @@ extends CanvasLayer
 #      _issue_repair_directive() / DirectiveActionHandler for where acceptance actually
 #      starts the repair job (Architecture Rule 1: this UI never calls
 #      GameState.start_repair_job itself).
+#   c. The shuttlebay/airlock room, while a mission has an open away_team objective:
+#      "Send Away Team" — this is the player-invoked trigger for
+#      docs/mission-system-spec.md §6's away-op flow. It does NOT move or hide any crew
+#      itself; it only calls ShuttleSystem.request_away_op(), which issues one away_op
+#      AIDirective per candidate crew member through the normal directive/obedience flow
+#      (same "the crew may refuse" contract as Repair above) and only acts once a quorum
+#      of THEM accept.
 #
 # Hit-testing mirrors DirectiveMenu exactly (world-space, CanvasLayer canvas-transform
 # inversion) and explicitly checks crew FIRST via the shared CrewMemberNode.crew_at_world_point
@@ -66,6 +73,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		_open_repair_menu(target_id)
 		return
 
+	var away_room: String = _away_op_room_at(world_point)
+	if away_room != "":
+		_open_away_op_menu(away_room)
+		return
+
 	_close_menu()
 
 
@@ -119,6 +131,26 @@ func _repairable_at(world_point: Vector2) -> String:
 		var d: float = room.global_position.distance_to(world_point)
 		if d <= best_dist:
 			best_id = target_id
+			best_dist = d
+	return best_id
+
+
+# The shuttlebay/airlock room nearest the click, if MissionManager.shuttle_system reports
+# an away op could plausibly launch from it right now (docs/mission-system-spec.md §6/§7).
+# Deliberately checks BOTH room types every click (not just whichever the current
+# objective's site wants) so the menu can also explain WHY it's disabled — e.g. clicking
+# the airlock while the open objective is a surface survey.
+func _away_op_room_at(world_point: Vector2) -> String:
+	var best_id: String = ""
+	var best_dist: float = SYSTEM_CLICK_RADIUS
+	for room_type: String in ["shuttlebay", "airlock"]:
+		var room_id: String = GameState.get_room_of_type(room_type)
+		var room: RoomBase = GameState.rooms.get(room_id) as RoomBase
+		if room == null:
+			continue
+		var d: float = room.global_position.distance_to(world_point)
+		if d <= best_dist:
+			best_id = room_id
 			best_dist = d
 	return best_id
 
@@ -315,6 +347,58 @@ func _issue_repair_directive(target_id: String, crew_id: String) -> void:
 	d.confidence = 0.8
 	d.priority = 3
 	AISystem.issue_directive(d)
+	_close_menu()
+
+
+# --- Away op menu (docs/mission-system-spec.md §6/§7): "Send Away Team" ---
+# Always shows what the click landed on (shuttlebay or airlock) plus WHY it's disabled
+# when it is — ShuttleSystem.can_launch_info() is the single source of truth for both the
+# gate and the reason text, so this menu can never disagree with what request_away_op()
+# itself would say.
+
+func _open_away_op_menu(room_id: String) -> void:
+	_close_menu()
+	_menu = _make_panel()
+
+	var vbox := VBoxContainer.new()
+	vbox.add_theme_constant_override("separation", 4)
+	_menu.add_child(vbox)
+
+	var room: RoomBase = GameState.rooms.get(room_id) as RoomBase
+	var room_type: String = room.room_function if room != null else ""
+	var header := Label.new()
+	header.text = "%s" % _room_display_name(room_id)
+	header.add_theme_color_override("font_color", ACCENT)
+	vbox.add_child(header)
+
+	var info: Dictionary = MissionManager.shuttle_system.can_launch_info() if MissionManager.shuttle_system != null else {"ok": false, "reason": "Away ops unavailable.", "objective": {}}
+	var info_site: String = String(info.get("site", ""))
+	var info_room_type: String = "shuttlebay" if info_site == "surface" else "airlock"
+	var applies_here: bool = bool(info.get("ok", false)) and info_room_type == room_type
+
+	if bool(info.get("ok", false)) and not applies_here:
+		_add_info_label(vbox, "The open away-team objective needs the %s." % info_room_type.capitalize())
+	elif not bool(info.get("ok", false)):
+		_add_info_label(vbox, String(info.get("reason", "Not available.")))
+	else:
+		var objective: Dictionary = info.get("objective", {})
+		var params: Dictionary = objective.get("params", {})
+		_add_info_label(vbox, String(objective.get("text", "Away-team objective")))
+		_add_info_label(vbox, "Needs at least %d crew." % int(params.get("min_crew", 1)))
+		var send_btn := Button.new()
+		send_btn.text = "Send Away Team"
+		send_btn.pressed.connect(_on_send_away_team)
+		vbox.add_child(send_btn)
+
+	add_child(_menu)
+	_position_panel(_menu, _screen_pos(room.global_position) + MENU_OFFSET if room else get_viewport().get_mouse_position())
+
+
+func _on_send_away_team() -> void:
+	if MissionManager.shuttle_system != null:
+		var result: Dictionary = MissionManager.shuttle_system.request_away_op()
+		if not bool(result.get("ok", false)):
+			print("[AWAY] request refused: %s" % String(result.get("reason", "")))
 	_close_menu()
 
 

@@ -39,6 +39,16 @@ enum TargetType {
 # e.g. "danger", "sacrifice", "abandon", "deceive" — matched against crew fears/values.
 @export var content_tags: Array[String] = []
 
+# Away-op directive (docs/mission-system-spec.md §6 step 1). Empty = not an away-op
+# directive. `away_op_site` mirrors the mission's away_team objective params
+# ("surface" | "derelict" | "station" | "other_ship"). `away_op_request_id` ties every
+# candidate's individual directive back to the single ShuttleSystem muster request that
+# issued them, so ShuttleSystem can tell one quorum's responses apart from another's
+# (e.g. a scrubbed op immediately retried) purely by listening to the normal
+# EventBus.directive_accepted/directive_rejected signals — no new signal needed.
+@export var away_op_site: String = ""
+@export var away_op_request_id: String = ""
+
 # Internal fields — crew cannot observe these directly.
 var actual_intent: String = ""   # what the AI is really trying to achieve
 var is_deceptive: bool = false   # AI is misrepresenting its intent

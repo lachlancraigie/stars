@@ -128,6 +128,14 @@ var door_lockout_counts: Dictionary = {}   # door_id -> int
 @export_group("Status")
 @export var status_flags: Dictionary = {}
 
+# Away ops (docs/mission-system-spec.md §6). True while this crew member has departed the
+# ship (shuttle to a surface, or through the airlock to board something) and is being
+# resolved off-screen by AwayResolver. They stay in GameState.crew the whole time (never
+# removed from the roster) — only their CrewMemberNode visual is hidden/detached
+# (CrewMemberNode.set_off_ship) and the on-ship simulation (CrewSystem/CrewBehavior/
+# DialogueSystem) skips them, same spirit as the is_alive checks those systems already do.
+@export var off_ship: bool = false
+
 
 func set_status_flag(flag: String, value: bool) -> void:
 	if bool(status_flags.get(flag, false)) == value:

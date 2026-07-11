@@ -455,6 +455,40 @@ func _addressee_ctx(base_ctx: Dictionary, addressee: CrewMember) -> Dictionary:
 	return ctx
 
 
+# --- Engine-triggered selection (docs/dialogue_spec.md "Mission-system line categories") ---
+# Unlike ambient declarations (picked purely by the weighted scoring net), callers here
+# already know WHAT KIND of line they need — a mission beat, a departure, a return — and ask
+# by `intent` NAME. Hard-filters the speaker's declaration pool to that intent (every
+# mission-system intent is a `declaration`-type bark per the spec's validator rule), then
+# reuses the exact same scoring/hard-filter net every other selection path uses, and speaks
+# it through the same _speak() (line_spoken + voice + repetition/declaration-timer upkeep).
+# Returns the stripped display text (for callers — e.g. AwayResolver's radio_bark — that
+# also need the words themselves, not just the side effect), or "" if nothing matched
+# (silent no-op; the corpus is allowed zero/partial coverage of these keys per the spec).
+func speak_intent(crew_id: String, intent: String) -> String:
+	var crew: CrewMember = GameState.crew.get(crew_id) as CrewMember
+	if crew == null or not crew.is_alive:
+		return ""
+	var pool: Array = _pool_for(crew, "declaration")
+	if pool.is_empty():
+		return ""
+	var matches: Array = []
+	for line: Dictionary in pool:
+		if String(line.get("intent", "")) == intent:
+			matches.append(line)
+	if matches.is_empty():
+		return ""
+	var ctx: Dictionary = {
+		"room_type": _room_type_of(crew.location), "mood": _mood_for(crew),
+		"has_addressee": false, "prior_intent": "",
+	}
+	var line: Dictionary = _pick_line(crew, matches, ctx)
+	if line.is_empty():
+		return ""
+	_speak(crew, line, "")
+	return _strip_tags(String(line.get("text", "")))
+
+
 func _pick_declaration(crew: CrewMember) -> Dictionary:
 	var pool: Array = _pool_for(crew, "declaration")
 	if pool.is_empty():
@@ -552,7 +586,7 @@ func _next_declaration_interval(crew: CrewMember) -> float:
 func _tick_declarations(delta: float) -> void:
 	for crew_id: String in GameState.crew:
 		var crew: CrewMember = GameState.crew[crew_id] as CrewMember
-		if crew == null or not crew.is_alive:
+		if crew == null or not crew.is_alive or crew.off_ship:
 			continue
 		if crew_id in _crew_in_conversation:
 			continue
@@ -572,7 +606,7 @@ func _tick_declarations(delta: float) -> void:
 # --- Conversation triggering ---
 
 func _eligible_for_conversation(crew: CrewMember) -> bool:
-	if crew == null or not crew.is_alive:
+	if crew == null or not crew.is_alive or crew.off_ship:
 		return false
 	if crew.crew_id in _crew_in_conversation:
 		return false

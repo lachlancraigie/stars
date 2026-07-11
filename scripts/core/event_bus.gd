@@ -113,6 +113,12 @@ signal intruder_moved(intruder_id: String, from_room: String, to_room: String)
 signal intruder_killed(intruder_id: String, room_id: String)
 signal crew_status_flag_changed(crew_id: String, flag: String, value: bool)  # internal — HUD must NOT surface hidden flags
 
+# Away-op radio chatter (docs/mission-system-spec.md §6 step 2 / dialogue_spec.md
+# "away_radio_{calm|tense|bad}"): the away team is off-ship, so there's no CrewMemberNode
+# to hang a speech bubble on — this is the "live window" text surfaced straight to the HUD
+# event feed instead (see hud.gd's radio_bark listener). `tone` is "calm"|"tense"|"bad".
+signal radio_bark(text: String, tone: String)
+
 
 # Mothership rewrite (2026-07-09): several signals above forward into `recent_event` — a
 # single generic channel the dialogue selector (scripts/crew/, owned by a parallel agent)

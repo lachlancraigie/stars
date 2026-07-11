@@ -16,6 +16,12 @@ func _on_tick(_elapsed: float, delta: float) -> void:
 		var crew: CrewMember = GameState.crew[crew_id]
 		if not crew.is_alive:
 			continue
+		# Away teams (docs/mission-system-spec.md §6) are resolved off-screen by
+		# AwayResolver's own checks — the on-ship needs/suffocation/state simulation
+		# pauses for them (needs stop decaying, no room-air suffocation on a room they're
+		# not physically standing in) while off_ship, and resumes untouched on return.
+		if crew.off_ship:
+			continue
 		NeedsModel.tick(crew)
 		SuffocationModel.tick(crew, delta)
 		WoundTable.tick_death_clock(crew)

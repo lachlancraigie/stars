@@ -360,6 +360,39 @@ func wander_within_room() -> void:
 	_moving = true
 
 
+# --- Away ops (docs/mission-system-spec.md §6): hide/detach without destroying the node ---
+# Mirrors how death is handled elsewhere in this codebase (CrewLifecycle.kill never
+# queue_frees a node — it just flips state and lets the sprite/status-dot machinery react):
+# an off-ship crew member stays a real node in the tree (registry entries, standing-point
+# claims etc. all keep working for whoever queries them) but renders nothing and stops
+# taking up a room slot, so ship-side systems that iterate "who's actually here" (occupancy,
+# collision, wandering) don't trip over a crew member who is, narratively, nowhere on this
+# deck at all.
+func set_off_ship(active: bool) -> void:
+	if crew_data == null:
+		return
+	if active:
+		_moving = false
+		_route.clear()
+		_leg_points.clear()
+		_bypassing_door_id = ""
+		var room: RoomBase = GameState.rooms.get(crew_data.location) as RoomBase
+		if room:
+			room.remove_occupant(crew_data.crew_id)
+		_release_claim()
+		visible = false
+	else:
+		visible = true
+		position = _claim_standing_point(crew_data.location) if DeckPlan.has_room(crew_data.location) \
+			else Vector2.ZERO
+		z_index = IsoKit.z_for(position.y)
+		var room: RoomBase = GameState.rooms.get(crew_data.location) as RoomBase
+		if room:
+			room.add_occupant(crew_data.crew_id)
+		_apply_sprite()
+		_apply_status_dot()
+
+
 func is_headed_to(room_id: String) -> bool:
 	return _pending_room == room_id or room_id in _route
 

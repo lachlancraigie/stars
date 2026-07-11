@@ -70,6 +70,7 @@ func _ready() -> void:
 		_setup_force_kill()
 	else:
 		_start_mission_mode()
+		_setup_away_autotest()
 
 
 # --- Setup ---
@@ -286,6 +287,62 @@ func _start_mission_mode() -> void:
 		GameState.reactor_online, GameState.battery_charge, GameState.life_support_online,
 		GameState.ai_core_integrity, GameState.ai_core_status])
 	print("[MAIN] SPACE=pause  D=directive  R=status")
+
+
+# --- SHIPAI_AWAY_AUTOTEST=1: away-op soak test (docs/mission-system-spec.md §6, engine
+# task C's own verification hook) — a permanent, documented debug branch, not a one-off
+# throwaway: KEPT for future soak-testing of the away-op pipeline exactly like
+# SHIPAI_AUTODEMO is kept for the legacy scenario win paths. Programmatically calls
+# ShuttleSystem.request_away_op() (the exact same entry point EnvironmentMenu's "Send Away
+# Team" button calls — no bespoke test-only code path) the moment the current mission has
+# an open away_team objective AND the shuttle/airlock is actually ready, then lets the
+# normal directive/obedience/muster/AwayResolver/return pipeline play out untouched. Quits
+# automatically once the mission resolves (or after a generous timeout), so it doubles as a
+# CI-style acceptance run: `SHIPAI_MISSION=greenhouse SHIPAI_AWAY_FAST=1 SHIPAI_SEED=42
+# SHIPAI_AWAY_AUTOTEST=1`.
+
+const AWAY_AUTOTEST_TIMEOUT: float = 1200.0
+const AWAY_AUTOTEST_RETRY_COOLDOWN: float = 8.0   # real seconds between request attempts
+
+var _away_autotest_returned_once: bool = false
+var _away_autotest_cooldown: float = 0.0
+
+func _setup_away_autotest() -> void:
+	if OS.get_environment("SHIPAI_AWAY_AUTOTEST") != "1":
+		return
+	print("[AWAY-AUTOTEST] armed — will launch the away team the moment an objective + muster point are ready")
+	EventBus.time_ticked.connect(_away_autotest_tick)
+	EventBus.shuttle_returned.connect(func(report: Dictionary):
+		_away_autotest_returned_once = true
+		print("[AWAY-AUTOTEST] shuttle_returned observed — report=%s" % report))
+	EventBus.mission_completed.connect(func(mission_id: String, outcome: String):
+		print("[AWAY-AUTOTEST] mission '%s' resolved -> %s" % [mission_id, outcome])
+		get_tree().create_timer(2.0).timeout.connect(func(): get_tree().quit()))
+	get_tree().create_timer(AWAY_AUTOTEST_TIMEOUT).timeout.connect(func():
+		print("[AWAY-AUTOTEST] TIMED OUT without a mission resolution")
+		get_tree().quit())
+
+
+# Retries on a cooldown rather than firing once (spec: attempts a real directive issue
+# whenever the ship is eligible) — a scrubbed/refused op (not enough volunteers, a muster
+# timeout) should be retried, same as a player would just try again, not strand the soak
+# test forever. Stops re-issuing once we've observed at least one shuttle_returned; the
+# mission may still open a second away_team objective later (multi-objective missions) —
+# _away_autotest_returned_once only suppresses spamming a request while one is genuinely
+# unnecessary, checked fresh via can_launch_info() every attempt regardless.
+func _away_autotest_tick(_elapsed: float, delta: float) -> void:
+	if MissionManager.shuttle_system == null:
+		return
+	_away_autotest_cooldown -= delta
+	if _away_autotest_cooldown > 0.0:
+		return
+	var info: Dictionary = MissionManager.shuttle_system.can_launch_info()
+	if not bool(info.get("ok", false)):
+		return
+	_away_autotest_cooldown = AWAY_AUTOTEST_RETRY_COOLDOWN
+	print("[AWAY-AUTOTEST] launching away team — objective=%s" % String((info.get("objective", {}) as Dictionary).get("id", "")))
+	var result: Dictionary = MissionManager.shuttle_system.request_away_op()
+	print("[AWAY-AUTOTEST] request_away_op() -> %s" % result)
 
 
 # --- Debug signals → Output panel ---

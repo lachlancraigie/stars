@@ -107,6 +107,10 @@ func _ready() -> void:
 		func(cid, tid): _push_feed("★ %s: %s" % [_crew_name(cid), Traits.display_name(tid)]))
 	EventBus.crew_skill_tier_up.connect(
 		func(cid, skill, tier): _push_feed("★ %s: %s is now %s." % [_crew_name(cid), skill, tier]))
+	# Away-op radio chatter (docs/mission-system-spec.md §6 step 2) — the away team is
+	# off-ship, so this feed line IS the bubble for them (see event_bus.gd's radio_bark doc).
+	EventBus.radio_bark.connect(
+		func(text, _tone): _push_feed("📻 %s" % text))
 	EventBus.scenario_ended.connect(_on_scenario_ended)
 
 	EventBus.power_mode_changed.connect(func(_online): _refresh_power_panel())

@@ -41,6 +41,11 @@ func _on_tick(_elapsed: float, delta: float) -> void:
 		var crew: CrewMember = GameState.crew[crew_id] as CrewMember
 		if crew == null or not crew.is_alive:
 			continue
+		# Away teams (docs/mission-system-spec.md §6) don't self-direct on the ship's deck
+		# while off_ship — ShuttleSystem/AwayResolver own their movement (or lack thereof)
+		# for the duration of the op.
+		if crew.off_ship:
+			continue
 		_timers[crew_id] = _timers.get(crew_id, randf_range(0.2, DECISION_MAX)) - delta
 		if _timers[crew_id] > 0.0:
 			continue

@@ -22,6 +22,9 @@ const REPAIR_SKILLS: Dictionary = {
 	"reactor":      ["Engineering", "Mechanical Repair", "Jury-Rigging", "Industrial Equipment"],
 	"life_support":  ["Engineering", "Mechanical Repair", "Jury-Rigging", "Industrial Equipment"],
 	"ai_core":      ["Artificial Intelligence", "Engineering", "Robotics", "Cybernetics", "Mechanical Repair"],
+	# Shuttle (docs/mission-system-spec.md §7): hull damage from away-op strain beats,
+	# repaired with the same mechanical skill family as the reactor/life-support.
+	"shuttle":      ["Engineering", "Mechanical Repair", "Jury-Rigging", "Industrial Equipment"],
 }
 
 
@@ -38,6 +41,11 @@ static func is_damaged(target_id: String) -> bool:
 			return not GameState.life_support_online
 		"ai_core":
 			return GameState.ai_core_status != "online"
+		"shuttle":
+			# ShuttleSystem is a Node MissionManager creates unconditionally in its own
+			# _ready() (regardless of mission_mode), so this is always safe to read — see
+			# shuttle_system.gd's class doc.
+			return MissionManager.shuttle_system != null and MissionManager.shuttle_system.shuttle_hull < 100.0
 		_:
 			return false
 
@@ -99,4 +107,7 @@ static func _complete(target_id: String, crew: CrewMember) -> void:
 		"ai_core":
 			GameState.restart_ai_core_manual()
 			GameState.repair_ai_core(100.0)
+		"shuttle":
+			if MissionManager.shuttle_system != null:
+				MissionManager.shuttle_system.repair_hull(100.0)
 	EventBus.repair_success.emit(target_id, crew.crew_id)

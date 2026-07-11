@@ -41,6 +41,12 @@ var mission_history: Array[Dictionary] = []   # [{id, outcome, leg}] — complet
 var deck: MissionDeck = null
 var rng: RandomNumberGenerator = null
 
+# Away ops (docs/mission-system-spec.md §6/§7, engine task C). Created unconditionally
+# below in _ready() — NOT gated on mission_mode — so RepairModel/EnvironmentMenu/etc. can
+# always safely read MissionManager.shuttle_system regardless of whether a campaign is
+# currently running (mirrors how AICoreSystem/every other always-on subsystem node works).
+var shuttle_system: ShuttleSystem = null
+
 var _objective_states: Dictionary = {}        # objective_id -> "active" | "complete" | "failed"
 var _scenario_flags_seen: Dictionary = {}      # flag -> last value seen via EventBus.scenario_flag_set (this mission's lifetime)
 var _once_per_run_scenario_ids: Array[String] = []   # once_per_run scenario ids already used this campaign
@@ -65,8 +71,14 @@ func _ready() -> void:
 	_debug = OS.get_environment("SHIPAI_MISSION_DEBUG") == "1"
 	EventBus.time_ticked.connect(_on_time_ticked)
 	EventBus.shuttle_returned.connect(_on_shuttle_returned)
+	EventBus.docking_started.connect(_on_docking_started)
 	EventBus.docking_completed.connect(_on_docking_completed)
+	EventBus.undocked.connect(_on_undocked)
 	EventBus.scenario_flag_set.connect(_on_scenario_flag_set)
+
+	shuttle_system = ShuttleSystem.new()
+	shuttle_system.name = "ShuttleSystem"
+	add_child(shuttle_system)
 
 
 # --- Campaign start (spec §12) ---
@@ -148,6 +160,7 @@ func _start_mission(mission: MissionDef) -> void:
 		mission.id, mission.title, mission.giver, ScenarioDirector.current_leg])
 	EventBus.mission_started.emit(mission.id)
 	EventBus.objective_changed.emit(_oneline_briefing(mission))
+	_speak_bridge_intent(_briefing_ack_intent(mission))
 	_enter_phase("transit_out", true)
 
 
@@ -388,10 +401,19 @@ func _on_shuttle_returned(_report: Dictionary) -> void:
 	_try_attach_scenario("away_return")
 
 
+func _on_docking_started(_contact_name: String) -> void:
+	_speak_bridge_intent("docking_approach")
+
+
 func _on_docking_completed(_contact_name: String) -> void:
+	_speak_bridge_intent("docking_clamped")
 	if current_mission == null or mission_phase == "resolution":
 		return
 	_complete_objectives_of_kind("dock_with_ship")
+
+
+func _on_undocked(_contact_name: String) -> void:
+	_speak_bridge_intent("docking_undock")
 
 
 func _on_scenario_flag_set(flag: String, value: bool) -> void:
@@ -636,6 +658,75 @@ func _active_scenario_axes() -> Array[String]:
 		if axis != "" and axis not in axes:
 			axes.append(axis)
 	return axes
+
+
+# --- Away ops (docs/mission-system-spec.md §6, engine task C) — small read-only surface
+# ShuttleSystem/EnvironmentMenu query rather than reaching into private state directly. ---
+
+# The current mission's incomplete away_team objective dict ({id, text, kind, params}), or
+# {} if there isn't one (no mission running, or its away_team objective is already
+# complete/failed — a mission is only ever authored with one at a time per the catalog).
+func active_away_team_objective() -> Dictionary:
+	if current_mission == null or mission_phase == "" or mission_phase == "resolution":
+		return {}
+	for obj: Dictionary in current_mission.objectives:
+		if String(obj.get("kind", "")) != "away_team":
+			continue
+		var oid: String = String(obj.get("id", ""))
+		if _objective_states.get(oid, "active") == "active":
+			return obj
+	return {}
+
+
+func objective_state(oid: String) -> String:
+	return String(_objective_states.get(oid, ""))
+
+
+# True only once the on_station docking sequence has fully landed (docking_completed fired,
+# not yet undocked) — the gate boarding-site away ops need (spec §7: "Boarding ops only
+# while docked").
+func is_docked() -> bool:
+	return _docking_active and _docking_completed_flag
+
+
+# --- Engine-triggered dialogue bridge (docs/dialogue_spec.md "Mission-system line
+# categories") — briefing_ack_* (on mission_started) and docking_* (on the docking
+# signals) both land on "whoever's on the bridge", so both funnel through this one helper.
+# Silent no-op if there's no captain/bridge crew or the corpus has no matching line —
+# same "degrades to silence" contract every other DialogueSystem call site relies on.
+
+func _speak_bridge_intent(intent: String) -> void:
+	if intent == "":
+		return
+	var crew_id: String = GameState.get_crew_of_role("captain")
+	if crew_id == "":
+		for cid: String in GameState.crew:
+			var c: CrewMember = GameState.crew[cid] as CrewMember
+			if c != null and c.is_alive and not c.off_ship:
+				crew_id = cid
+				break
+	if crew_id == "":
+		return
+	DialogueSystem.speak_intent(crew_id, intent)
+
+
+# Tier -> briefing_ack sub-key (dialogue_spec.md "briefing_ack_{routine|risky|grim}").
+# Prefers the mission's own away_risk.tier when it has an away component; otherwise infers
+# from type/tags exactly per the spec's mapping.
+func _briefing_ack_intent(mission: MissionDef) -> String:
+	var tier: String = String(mission.away_risk.get("tier", ""))
+	match tier:
+		"low", "moderate":
+			return "briefing_ack_routine"
+		"high":
+			return "briefing_ack_risky"
+		"extreme":
+			return "briefing_ack_grim"
+	if mission.mission_type in ["distress", "evacuation", "quarantine_run"] or "high_stakes" in mission.tags:
+		return "briefing_ack_risky"
+	if "opener" in mission.tags or mission.mission_type == "homecoming" or "low_stakes" in mission.tags:
+		return "briefing_ack_routine"
+	return "briefing_ack_routine"
 
 
 # --- Abort (spec §5 — OutcomeApplier lands in task D; this is the hook it'll call) ---

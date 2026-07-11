@@ -64,7 +64,17 @@ static func load_plan(plan: Dictionary) -> void:
 
 
 static func floor_tile_for(room_type: String) -> String:
-	return FLOOR_TILE_BY_TYPE.get(room_type, FLOOR_TILE)
+	var tile: String = FLOOR_TILE_BY_TYPE.get(room_type, FLOOR_TILE)
+	if ResourceLoader.exists(IsoKit.KIT_DIR + tile + ".png"):
+		return tile
+	# Mandatory fallback (docs/mission-system-spec.md §7 — "tile_shuttlebay ... falling back
+	# to cargo tiles"), same idiom as CrewMemberNode's gen2->legacy sprite fallback: a
+	# forward-declared tile hook with no art commissioned yet degrades gracefully instead of
+	# rendering blank floor. Generalised past just "shuttlebay" so any future room type gets
+	# the same free fallback the day its own FLOOR_TILE_BY_TYPE entry is added ahead of art.
+	if ResourceLoader.exists(IsoKit.KIT_DIR + "tile_cargo.png"):
+		return "tile_cargo"
+	return FLOOR_TILE
 
 
 # Deck-pixel waypoints for walking from one room to an adjacent one.
