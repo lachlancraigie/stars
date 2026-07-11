@@ -1,0 +1,54 @@
+{
+  "_meta": {
+    "total_spend": 0.731
+  },
+  "characters": {
+    "ch_fe_eng_cm": {
+      "id": "ch_fe_eng_cm",
+      "kind": "crew",
+      "name": "Josie Alvarenga",
+      "tag": "CH_FE_ENG_CM",
+      "description": "a woman, a close buzzcut in jet-black hair, deep brown skin, wearing olive-drab and rust-orange coveralls with rolled sleeves, a canvas tool rig/belt hung with visible tools, heavy grey work boots, a warm marigold-yellow accent (piping, patches), no rank trim or insignia",
+      "palette": [
+        "#706848",
+        "#202020",
+        "#100800"
+      ],
+      "qa": {
+        "idle": {
+          "mean_iou": 0.973,
+          "min_iou": 0.952,
+          "drift": 5.3,
+          "pass": true
+        },
+        "walk": {
+          "mean_iou": 0.68,
+          "min_iou": 0.49,
+          "drift": 5.7,
+          "pass": true
+        },
+        "run": {
+          "mean_iou": 0.91,
+          "min_iou": 0.847,
+          "drift": 10.1,
+          "pass": true
+        },
+        "punch": {
+          "mean_iou": 0.743,
+          "min_iou": 0.413,
+          "drift": 5.4,
+          "pass": true
+        }
+      },
+      "model_used": {
+        "idle": "google/gemini-3-pro-image",
+        "walk": "google/gemini-2.5-flash-image",
+        "run": "google/gemini-3-pro-image",
+        "punch": "google/gemini-3-pro-image"
+      },
+      "spend": 0.217,
+      "needs_regeneration": [],
+      "status": "complete"
+    }
+  }
+}
