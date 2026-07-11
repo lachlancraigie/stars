@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "total_spend": 9.776
+    "total_spend": 10.701
   },
   "characters": {
     "ch_fe_eng_cm": {
@@ -879,6 +879,113 @@
         "punch": "google/gemini-3-pro-image"
       },
       "spend": 0.354,
+      "needs_regeneration": [],
+      "status": "complete"
+    },
+    "gr_ml_sci_of": {
+      "id": "gr_ml_sci_of",
+      "kind": "crew",
+      "name": "Warrick Doyle",
+      "tag": "GR_ML_SCI_OF",
+      "description": "a man, a short practical crop in platinum blonde hair, sun-weathered tan skin, wearing a pale off-white lab tunic over a dark fitted under-layer, clipped instrument pouches on the chest, soft-soled shoes, a heavy desaturated moss-green accent, faded and worn, silver shoulder trim / rank bars",
+      "palette": [
+        "#000000",
+        "#181810",
+        "#282820",
+        "#505848",
+        "#d8d0b8"
+      ],
+      "qa": {
+        "idle": {
+          "mean_iou": 0.975,
+          "min_iou": 0.945,
+          "drift": 27.5,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "walk": {
+          "mean_iou": 0.694,
+          "min_iou": 0.483,
+          "drift": 33.9,
+          "white_dev": 0.01,
+          "pass": true
+        },
+        "run": {
+          "mean_iou": 0.924,
+          "min_iou": 0.869,
+          "drift": 35.6,
+          "white_dev": 0.01,
+          "pass": true,
+          "drift_waived": true
+        },
+        "punch": {
+          "mean_iou": 0.891,
+          "min_iou": 0.511,
+          "drift": 25.7,
+          "white_dev": 0.01,
+          "pass": true
+        }
+      },
+      "model_used": {
+        "idle": "google/gemini-3-pro-image",
+        "walk": "google/gemini-2.5-flash-image",
+        "run": "google/gemini-3-pro-image",
+        "punch": "google/gemini-3-pro-image"
+      },
+      "spend": 0.531,
+      "needs_regeneration": [],
+      "status": "complete"
+    },
+    "pa_fe_and_of": {
+      "id": "pa_fe_and_of",
+      "kind": "crew",
+      "name": "Iskra Volkov",
+      "tag": "PA_FE_AND_OF",
+      "description": "a woman, a long single braid in salt-and-pepper grey hair, wearing a graphite-grey synthetic bodysuit with visible seam-panel lines and smooth matte plating at the shoulders and forearms, pale synthetic skin with a faint grey undertone, a cold teal-violet accent, asymmetric patch placement, silver shoulder trim / rank bars",
+      "palette": [
+        "#000000",
+        "#788090",
+        "#a0a8b0",
+        "#707080",
+        "#889098"
+      ],
+      "qa": {
+        "idle": {
+          "mean_iou": 0.859,
+          "min_iou": 0.698,
+          "drift": 25.9,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "walk": {
+          "mean_iou": 0.653,
+          "min_iou": 0.462,
+          "drift": 15.0,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "run": {
+          "mean_iou": 0.901,
+          "min_iou": 0.81,
+          "drift": 12.2,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "punch": {
+          "mean_iou": 0.88,
+          "min_iou": 0.501,
+          "drift": 9.6,
+          "white_dev": 0.0,
+          "pass": true
+        }
+      },
+      "model_used": {
+        "idle": "google/gemini-2.5-flash-image",
+        "walk": "google/gemini-2.5-flash-image",
+        "run": "google/gemini-3-pro-image",
+        "punch": "google/gemini-3-pro-image"
+      },
+      "spend": 0.394,
       "needs_regeneration": [],
       "status": "complete"
     }
