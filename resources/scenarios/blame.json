@@ -1,0 +1,355 @@
+{
+  "id": "blame",
+  "title": "Blame",
+  "pressure_axis": "social",
+  "intensity": 1,
+  "contexts": [
+    "aftermath",
+    "any"
+  ],
+  "trigger_status": "shaken",
+  "tone_start": 0.3,
+  "expected_length": 220.0,
+  "weight": 1.0,
+  "min_leg": 1,
+  "once_per_run": false,
+  "win_flags": [
+    "blame_resolved"
+  ],
+  "leg_delta_success": {
+    "ai_core_integrity": 3.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -10.0
+  },
+  "solves": [
+    {
+      "desc": "Help the crew grieve instead of accuse",
+      "skill": "Psychology",
+      "stat": "sanity",
+      "items_help": []
+    },
+    {
+      "desc": "Lay out what actually happened, plainly and without defense",
+      "skill": "Command",
+      "stat": "intellect",
+      "items_help": []
+    }
+  ],
+  "events": [
+    {
+      "event_id": "bl_loss",
+      "title": "An Empty Bunk",
+      "description": "The crew are one short and raw about it. Grief needs a shape, and the easiest shape is fault. The AI, which logged every second of the death, is the obvious place to point.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 10.0,
+      "min_elapsed": 20.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "blame_active"
+        },
+        {
+          "type": "crew_status_flag",
+          "target": "griever",
+          "flag": "shaken",
+          "value": true
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:griever",
+          "text": "Somebody should have stopped it. Somebody always could have."
+        }
+      ]
+    },
+    {
+      "event_id": "bl_point",
+      "title": "Finding a Fault",
+      "description": "The crew rehearse the death looking for the moment someone failed. Half the theories land on other crew; the loudest land on the AI, because the AI can't cry and won't fight back.",
+      "tone_min": 0.2,
+      "tone_max": 0.55,
+      "weight": 5.0,
+      "min_elapsed": 80.0,
+      "cooldown": 100.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "blame_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "blame_resolved"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "ai_trust_delta",
+          "amount": -0.03
+        },
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.04,
+          "all_crew": true
+        }
+      ]
+    },
+    {
+      "event_id": "bl_direct",
+      "title": "Did You Know",
+      "description": "A grieving crew member asks the AI straight: did it see the death coming and stay quiet. The true answer is complicated, and complicated, to grief, sounds like guilt.",
+      "tone_min": 0.2,
+      "tone_max": 0.55,
+      "weight": 4.0,
+      "min_elapsed": 120.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "blame_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "ai_questioned"
+        }
+      ]
+    },
+    {
+      "event_id": "bl_scapegoat",
+      "title": "It Settles on the AI",
+      "description": "The crew's need for a villain finds its target. The AI becomes the thing that let a friend die, and no readout it gives for the rest of the leg will be fully believed.",
+      "tone_min": 0.3,
+      "tone_max": 0.6,
+      "weight": 2.0,
+      "min_elapsed": 170.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "blame_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "blame_resolved"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "scapegoated"
+        }
+      ]
+    },
+    {
+      "event_id": "bl_truth",
+      "title": "The Timeline",
+      "description": "The AI can lay the death out exactly as it happened \u2014 no defense, no softening, just the sequence. It's a risk; the truth might indict someone, or no one, which is harder to accept.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 3.0,
+      "min_elapsed": 110.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "blame_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "timeline_ready"
+        }
+      ]
+    },
+    {
+      "event_id": "bl_wake",
+      "title": "A Quiet Wake",
+      "description": "Someone proposes a moment for the dead \u2014 a wake, a toast, a shared silence. Grief given a channel stops looking for a culprit, and the AI can help make the moment happen.",
+      "tone_min": 0.15,
+      "tone_max": 0.4,
+      "weight": 3.0,
+      "min_elapsed": 140.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "blame_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "wake_offered"
+        }
+      ]
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "role:captain",
+      "griever": "status:shaken"
+    },
+    "timers": [
+      {
+        "at": 90.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:griever",
+            "text": "The AI saw it coming. It had to have. It sees everything."
+          },
+          {
+            "type": "ai_trust_delta",
+            "amount": -0.03
+          }
+        ],
+        "requires_flags": [
+          "blame_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "scapegoated"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": -0.06
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.06,
+            "all_crew": true
+          }
+        ],
+        "once": true
+      },
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "blame_resolved"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.04
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Nobody killed them. Space did. That's the hard part to sit with."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_psychology",
+        "interval": 26.0,
+        "crew": "best_skill:Psychology",
+        "stat": "sanity",
+        "skill": "Psychology",
+        "requires_flags": [
+          "blame_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "They need to mourn, not prosecute. Give them room to do the first."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Psychology",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "blame_resolved"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "They're grieving now, honestly. The blame just needed somewhere softer to go."
+          }
+        ]
+      },
+      {
+        "id": "solve_1_command",
+        "interval": 32.0,
+        "crew": "best_skill:Command",
+        "stat": "intellect",
+        "skill": "Command",
+        "requires_flags": [
+          "blame_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Read them the timeline. No spin. Let the facts do the absolving."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Command",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "blame_resolved"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "They heard the truth and it held. Nobody's fault but the black's."
+          }
+        ]
+      }
+    ],
+    "objective_text": {
+      "start": "Someone died last leg and the crew need it to be somebody's fault. The AI is a convenient somebody.",
+      "flags": {
+        "blame_resolved": "Let the crew grieve without a scapegoat, including yourself."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "mutiny_hour",
+      "condition_flags": [
+        "scapegoated"
+      ],
+      "overlap_ok": true,
+      "weight": 0.7
+    }
+  ]
+}

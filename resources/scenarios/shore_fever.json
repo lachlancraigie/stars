@@ -1,0 +1,330 @@
+{
+  "id": "shore_fever",
+  "title": "Shore Fever",
+  "pressure_axis": "social",
+  "intensity": 1,
+  "contexts": [
+    "station",
+    "arrival"
+  ],
+  "trigger_status": "",
+  "tone_start": 0.2,
+  "expected_length": 200.0,
+  "weight": 1.0,
+  "min_leg": 1,
+  "once_per_run": false,
+  "win_flags": [
+    "morale_held"
+  ],
+  "leg_delta_success": {
+    "ai_core_integrity": 3.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -10.0
+  },
+  "solves": [
+    {
+      "desc": "Give the crew a real reason to hold on",
+      "skill": "Psychology",
+      "stat": "sanity",
+      "items_help": []
+    },
+    {
+      "desc": "Organize a substitute for the leave they're missing",
+      "skill": "Command",
+      "stat": "intellect",
+      "items_help": []
+    }
+  ],
+  "events": [
+    {
+      "event_id": "sf_lights",
+      "title": "Station Lights",
+      "description": "The station fills the forward port, warm and close and full of everything the ship isn't. The crew's eyes keep drifting to it, and the AI already knows the layover was cancelled.",
+      "tone_min": 0.1,
+      "tone_max": 0.3,
+      "weight": 10.0,
+      "min_elapsed": 15.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "shore_fever_active"
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:lead",
+          "text": "Tell me we're stopping. Please tell me we're stopping."
+        }
+      ]
+    },
+    {
+      "event_id": "sf_denied",
+      "title": "No Leave This Port",
+      "description": "The schedule says burn through: no dock, no leave, no rest. The AI has to be the voice that says it, and the crew have to hear it from the one aboard that never gets tired.",
+      "tone_min": 0.1,
+      "tone_max": 0.4,
+      "weight": 5.0,
+      "min_elapsed": 70.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "shore_fever_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "leave_denied"
+        },
+        {
+          "type": "crew_stress",
+          "target": "random",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "event_id": "sf_grumble",
+      "title": "Sour Mood",
+      "description": "Denied the port, the crew's mood curdles. Small frictions get sharp edges, the mess goes quiet, and the AI watches morale readings sag toward the range where mistakes live.",
+      "tone_min": 0.15,
+      "tone_max": 0.45,
+      "weight": 4.0,
+      "min_elapsed": 110.0,
+      "cooldown": 90.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "leave_denied"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "morale_held"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.04,
+          "all_crew": true
+        },
+        {
+          "type": "crew_stress",
+          "target": "random",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "event_id": "sf_ask",
+      "title": "Just This Once",
+      "description": "A crew member asks the AI to fudge the log \u2014 a few hours dockside, off the record, who'd know. It's a small lie with a warm payoff and a cold risk if it's ever pulled up.",
+      "tone_min": 0.1,
+      "tone_max": 0.4,
+      "weight": 3.0,
+      "min_elapsed": 100.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "leave_denied"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "bend_the_rules"
+        }
+      ]
+    },
+    {
+      "event_id": "sf_substitute",
+      "title": "A Stand-Down Instead",
+      "description": "The AI backs a captain's stand-down: lights low, shifts light, the good coffee unlocked. Not shore leave, but a signal that someone noticed the crew are people.",
+      "tone_min": 0.1,
+      "tone_max": 0.35,
+      "weight": 3.0,
+      "min_elapsed": 90.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "shore_fever_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "stand_down_called"
+        }
+      ]
+    },
+    {
+      "event_id": "sf_depart",
+      "title": "Pulling Away",
+      "description": "The station recedes off the stern and the crew watch it go. The worst of the fever passes with it \u2014 if the AI spent the layover buying goodwill instead of just enforcing the schedule.",
+      "tone_min": 0.1,
+      "tone_max": 0.3,
+      "weight": 2.0,
+      "min_elapsed": 130.0,
+      "cooldown": 100.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "shore_fever_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "morale_held"
+        }
+      ],
+      "outcomes": []
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "role:captain"
+    },
+    "timers": [
+      {
+        "at": 80.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "We can see the bar from here and we're not allowed off. Cruel."
+          },
+          {
+            "type": "crew_stress",
+            "target": "random",
+            "amount": 1
+          }
+        ],
+        "requires_flags": [
+          "shore_fever_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "morale_held"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.04
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Alright. Next port, first round's on the company. Deal."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_psychology",
+        "interval": 26.0,
+        "crew": "best_skill:Psychology",
+        "stat": "sanity",
+        "skill": "Psychology",
+        "requires_flags": [
+          "shore_fever_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Promise them the next port and mean it. They'll take that."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Psychology",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "morale_held"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "They're grumbling but grounded. Morale's holding."
+          }
+        ]
+      },
+      {
+        "id": "solve_1_command",
+        "interval": 32.0,
+        "crew": "best_skill:Command",
+        "stat": "intellect",
+        "skill": "Command",
+        "requires_flags": [
+          "shore_fever_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "No dock, fine. I'll declare a stand-down and break out the good rations."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Command",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "morale_held"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Off-duty rotation and real food. It's not shore, but it's something."
+          }
+        ]
+      }
+    ],
+    "objective_text": {
+      "start": "The crew can see the station lights and want off the ship. Denied, that want turns sour.",
+      "flags": {
+        "morale_held": "Keep the crew steady when shore leave slips away."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "close_quarters",
+      "condition_flags": [
+        "bend_the_rules"
+      ],
+      "overlap_ok": true,
+      "weight": 0.6
+    }
+  ]
+}

@@ -1,0 +1,430 @@
+{
+  "id": "the_ward",
+  "title": "The Ward",
+  "pressure_axis": "bio",
+  "intensity": 2,
+  "contexts": [
+    "derelict",
+    "docked"
+  ],
+  "trigger_status": "",
+  "tone_start": 0.45,
+  "expected_length": 320.0,
+  "weight": 1.0,
+  "min_leg": 2,
+  "once_per_run": true,
+  "win_flags": [
+    "ward_cleared"
+  ],
+  "leg_delta_success": {
+    "ai_core_integrity": 6.0,
+    "credits": 120.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -10.0
+  },
+  "solves": [
+    {
+      "desc": "Perform the field autopsy that explains the ward",
+      "skill": "Surgery",
+      "stat": "intellect",
+      "items_help": [
+        "scalpel"
+      ]
+    },
+    {
+      "desc": "Stabilize any survivor worth saving",
+      "skill": "Field Medicine",
+      "stat": "intellect",
+      "items_help": [
+        "med_kit"
+      ]
+    },
+    {
+      "desc": "Cover the team if the patients aren't as dead as they look",
+      "skill": "Firearms",
+      "stat": "combat",
+      "items_help": [
+        "revolver"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "wd_dock",
+      "title": "Sealed From Inside",
+      "description": "The boarding team reaches the derelict's medbay and finds it welded shut from within. Through the port, a dozen berths, a dozen still shapes, and a faint fog of exhaled breath.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 10.0,
+      "min_elapsed": 20.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "the_ward_active"
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:boarders",
+          "text": "Whole crew's in the ward. Nobody's at the helm."
+        }
+      ]
+    },
+    {
+      "event_id": "wd_charts",
+      "title": "Reading the Charts",
+      "description": "Suit cams pan across bedside logs. The last entries are all the same handwriting \u2014 the ship's medic, treating everyone, including, eventually, themselves.",
+      "tone_min": 0.3,
+      "tone_max": 0.6,
+      "weight": 5.0,
+      "min_elapsed": 90.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_ward_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "ward_understood"
+        },
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.06,
+          "all_crew": true
+        }
+      ]
+    },
+    {
+      "event_id": "wd_twitch",
+      "title": "One of Them Moves",
+      "description": "A berthed body's hand closes. Cold-preserved reflex, or something still running on whatever the crew were trying to sleep off. The team's guns come up.",
+      "tone_min": 0.5,
+      "tone_max": 0.85,
+      "weight": 3.0,
+      "min_elapsed": 160.0,
+      "cooldown": 140.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_ward_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "ward_cleared"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.12,
+          "all_crew": true
+        }
+      ]
+    },
+    {
+      "event_id": "wd_rise",
+      "title": "The Ward Wakes",
+      "description": "Whatever kept them down lets go. Several of the patients are upright now, and none of them are answering hails in a language the team recognizes.",
+      "tone_min": 0.6,
+      "tone_max": 1.0,
+      "weight": 2.0,
+      "min_elapsed": 230.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_ward_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "ward_understood"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "patients_active"
+        },
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.25,
+          "all_crew": true
+        }
+      ]
+    },
+    {
+      "event_id": "wd_sample",
+      "title": "The Company Wants a Sample",
+      "description": "The AI holds standing orders to recover biological samples from any derelict. The medic wants out now. One tissue draw is worth a fortune and costs thirty exposed seconds.",
+      "tone_min": 0.3,
+      "tone_max": 0.7,
+      "weight": 3.0,
+      "min_elapsed": 140.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "ward_understood"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "sample_offered"
+        }
+      ]
+    },
+    {
+      "event_id": "wd_recall",
+      "title": "Recall the Team",
+      "description": "The AI can call the boarding party back to the airlock at any time. Early means no sample and a live crew; late means answers, and maybe not.",
+      "tone_min": 0.3,
+      "tone_max": 0.7,
+      "weight": 3.0,
+      "min_elapsed": 110.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_ward_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "recall_available"
+        }
+      ]
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "best_skill:Surgery",
+      "boarders": "away_team"
+    },
+    "timers": [
+      {
+        "at": 120.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:boarders",
+            "text": "The seal's from the inside. They locked themselves in here."
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.1,
+            "all_crew": true
+          }
+        ],
+        "requires_flags": [
+          "the_ward_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "patients_active"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "spawn_intruder",
+            "intruder_type": "stalker",
+            "room": "medbay"
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.2,
+            "all_crew": true
+          }
+        ],
+        "once": true
+      },
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "ward_cleared"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.05
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Team's back and the airlock's shut. Never again."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_surgery",
+        "interval": 26.0,
+        "crew": "best_skill:Surgery",
+        "stat": "intellect",
+        "skill": "Surgery",
+        "requires_flags": [
+          "the_ward_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Their marrow's crystallized. Whatever this was, it's finished with them."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Surgery",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "ward_cleared"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Cause of death logged. It isn't catching. We're clear."
+          }
+        ],
+        "item_tag": "medical_bonus",
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_1_field_medicine",
+        "interval": 32.0,
+        "crew": "best_skill:Field Medicine",
+        "stat": "intellect",
+        "skill": "Field Medicine",
+        "requires_flags": [
+          "the_ward_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "This one's alive under the frost. Barely. I can move them."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Field Medicine",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "ward_cleared"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "One survivor, wrapped and warm. The rest we log."
+          }
+        ],
+        "item_tag": "medical_bonus",
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_2_firearms",
+        "interval": 38.0,
+        "crew": "best_skill:Firearms",
+        "stat": "combat",
+        "skill": "Firearms",
+        "requires_flags": [
+          "the_ward_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "That one sat up. I've got the door. Get the sample and go."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Firearms",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "ward_cleared"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Threat's down, team's at the airlock. Undocking."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      }
+    ],
+    "objective_text": {
+      "start": "The docked ship's medbay is sealed from inside. The patients in it are still moving.",
+      "flags": {
+        "ward_understood": "Learn what put the whole crew in that medbay.",
+        "ward_cleared": "Get the boarding team out clean, sample or no sample."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "dead_ship_hostiles",
+      "condition_flags": [
+        "patients_active"
+      ],
+      "overlap_ok": false,
+      "weight": 1.1
+    }
+  ]
+}

@@ -1,0 +1,414 @@
+{
+  "id": "the_derelict_light",
+  "title": "The Derelict Light",
+  "pressure_axis": "mystery",
+  "intensity": 2,
+  "contexts": [
+    "derelict",
+    "docked"
+  ],
+  "trigger_status": "",
+  "tone_start": 0.4,
+  "expected_length": 330.0,
+  "weight": 1.0,
+  "min_leg": 2,
+  "once_per_run": true,
+  "win_flags": [
+    "derelict_read"
+  ],
+  "leg_delta_success": {
+    "ai_core_integrity": 5.0,
+    "credits": 120.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -10.0
+  },
+  "solves": [
+    {
+      "desc": "Recover and decrypt the ship's log",
+      "skill": "Computers",
+      "stat": "intellect",
+      "items_help": []
+    },
+    {
+      "desc": "Read the wreck like a site",
+      "skill": "Archaeology",
+      "stat": "intellect",
+      "items_help": []
+    },
+    {
+      "desc": "Translate the warnings its crew left behind",
+      "skill": "Linguistics",
+      "stat": "intellect",
+      "items_help": []
+    }
+  ],
+  "events": [
+    {
+      "event_id": "dl_light",
+      "title": "One Light Burning",
+      "description": "The derelict is cold and dark but for a single light on the bridge, patient and steady where nothing should have power. The AI logs the anomaly and knows the crew are already halfway to a story about it.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 10.0,
+      "min_elapsed": 15.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "the_derelict_light_active"
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:boarders",
+          "text": "Whole ship's dead and there's a light on. Explain that one."
+        }
+      ]
+    },
+    {
+      "event_id": "dl_explore",
+      "title": "Reading the Wreck",
+      "description": "Suit cams pan across a ship that died in stages \u2014 sealed doors, moved supplies, a crew that clearly knew something was coming. The AI catalogs the clues and starts assembling the shape of the ending.",
+      "tone_min": 0.3,
+      "tone_max": 0.6,
+      "weight": 5.0,
+      "min_elapsed": 90.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_derelict_light_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "clues_gathered"
+        }
+      ]
+    },
+    {
+      "event_id": "dl_log",
+      "title": "The Log Drive",
+      "description": "The derelict's log survived its crew. Recovering it means reaching the bridge \u2014 where the light is \u2014 and plugging into a dead ship's memory to hear, in its own words, how it died.",
+      "tone_min": 0.3,
+      "tone_max": 0.65,
+      "weight": 4.0,
+      "min_elapsed": 140.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "clues_gathered"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "log_recovered"
+        }
+      ]
+    },
+    {
+      "event_id": "dl_notalone",
+      "title": "The Light Moves",
+      "description": "The bridge light shifts, just once, as if something crossed in front of it. Maybe a swinging fixture on a dead ship. Maybe the reason the ship is dead, still aboard, still keeping one light on.",
+      "tone_min": 0.5,
+      "tone_max": 0.9,
+      "weight": 2.0,
+      "min_elapsed": 210.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_derelict_light_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "derelict_read"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "not_alone"
+        }
+      ]
+    },
+    {
+      "event_id": "dl_salvage",
+      "title": "Rich Pickings",
+      "description": "The derelict is intact enough to be worth a fortune in parts and cargo. The AI weighs standing salvage orders against a growing unease it can't yet justify to a crew who can see the credits.",
+      "tone_min": 0.3,
+      "tone_max": 0.6,
+      "weight": 3.0,
+      "min_elapsed": 170.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_derelict_light_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "salvage_call"
+        }
+      ]
+    },
+    {
+      "event_id": "dl_quiet",
+      "title": "Just a Wreck",
+      "description": "For long minutes the derelict is exactly what it looks like: a grave, cold and sad and safe. The light is a stuck relay. The AI files the unease and keeps one channel watching the bridge anyway.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 3.0,
+      "min_elapsed": 150.0,
+      "cooldown": 120.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_derelict_light_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "derelict_read"
+        }
+      ],
+      "outcomes": []
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "best_skill:Computers",
+      "boarders": "away_team"
+    },
+    "timers": [
+      {
+        "at": 110.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:boarders",
+            "text": "The light's coming from the bridge. Something in there's still drawing power."
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": true
+          }
+        ],
+        "requires_flags": [
+          "the_derelict_light_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "not_alone"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "spawn_intruder",
+            "intruder_type": "mimic",
+            "room": "bridge"
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.2,
+            "all_crew": true
+          }
+        ],
+        "once": true
+      },
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "derelict_read"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.05
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "We know what this is now. Salvage it clean or leave it. Our call, eyes open."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_computers",
+        "interval": 26.0,
+        "crew": "best_skill:Computers",
+        "stat": "intellect",
+        "skill": "Computers",
+        "requires_flags": [
+          "the_derelict_light_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Their core's dead but the log drive's intact. I can pull it."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Computers",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "derelict_read"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Log's recovered. Now we know exactly what we're standing in."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_1_archaeology",
+        "interval": 32.0,
+        "crew": "best_skill:Archaeology",
+        "stat": "intellect",
+        "skill": "Archaeology",
+        "requires_flags": [
+          "the_derelict_light_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "The damage tells a story. Let me read the room before we trust it."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Archaeology",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "derelict_read"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Read the whole story off the walls. No surprises left aboard."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_2_linguistics",
+        "interval": 38.0,
+        "crew": "best_skill:Linguistics",
+        "stat": "intellect",
+        "skill": "Linguistics",
+        "requires_flags": [
+          "the_derelict_light_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "They scrawled something before the end. Give me a minute with it."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Linguistics",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "derelict_read"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Translated the warning. Heeded it. We leave with our skins."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      }
+    ],
+    "objective_text": {
+      "start": "A dead ship shows one light burning. Reading what happened to it decides whether it's a grave or a trap.",
+      "flags": {
+        "log_recovered": "Recover the derelict's log and learn its fate.",
+        "derelict_read": "Decide what the derelict is before the crew commit to it."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "dead_ship_hostiles",
+      "condition_flags": [
+        "not_alone"
+      ],
+      "overlap_ok": false,
+      "weight": 1.1
+    },
+    {
+      "to": "the_ward",
+      "condition_flags": [
+        "log_recovered"
+      ],
+      "overlap_ok": true,
+      "weight": 0.5
+    }
+  ]
+}

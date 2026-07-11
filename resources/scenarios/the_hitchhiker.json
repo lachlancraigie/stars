@@ -1,0 +1,409 @@
+{
+  "id": "the_hitchhiker",
+  "title": "The Hitchhiker",
+  "pressure_axis": "bio",
+  "intensity": 2,
+  "contexts": [
+    "away_return",
+    "docked"
+  ],
+  "trigger_status": "infected",
+  "tone_start": 0.4,
+  "expected_length": 300.0,
+  "weight": 1.0,
+  "min_leg": 2,
+  "once_per_run": true,
+  "win_flags": [
+    "hitchhiker_resolved"
+  ],
+  "leg_delta_success": {
+    "ai_core_integrity": 5.0,
+    "credits": 50.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -10.0
+  },
+  "solves": [
+    {
+      "desc": "Read the organism's biology before it molts",
+      "skill": "Pathology",
+      "stat": "intellect",
+      "items_help": [
+        "medscanner"
+      ]
+    },
+    {
+      "desc": "Stabilize the host and starve the parasite out",
+      "skill": "Field Medicine",
+      "stat": "intellect",
+      "items_help": [
+        "med_kit"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "hh_bioscan",
+      "title": "Anomalous Bioscan",
+      "description": "The medbay scanner flags a second heartbeat inside a returnee's chest cavity. Not theirs. The AI sees it first; the crew are still stowing gear.",
+      "tone_min": 0.1,
+      "tone_max": 0.5,
+      "weight": 10.0,
+      "min_elapsed": 20.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "the_hitchhiker_active"
+        },
+        {
+          "type": "crew_status_flag",
+          "target": "away_team",
+          "flag": "infected",
+          "value": true
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:lead",
+          "text": "Scanner's throwing garbage. Run it again."
+        }
+      ]
+    },
+    {
+      "event_id": "hh_symptom",
+      "title": "Wrong Under the Skin",
+      "description": "The host reports a crawling sensation along the sternum and a cough that tastes of copper. Textbook decompression stress. Also textbook for a passenger settling in.",
+      "tone_min": 0.2,
+      "tone_max": 0.6,
+      "weight": 5.0,
+      "min_elapsed": 110.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_hitchhiker_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "symptoms_visible"
+        },
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.08,
+          "all_crew": false
+        }
+      ]
+    },
+    {
+      "event_id": "hh_molt_warn",
+      "title": "Molt Imminent",
+      "description": "Scanner trend line goes vertical. The thing inside is about to change phase, and a changed thing is a thing that can move on its own.",
+      "tone_min": 0.4,
+      "tone_max": 0.8,
+      "weight": 4.0,
+      "min_elapsed": 170.0,
+      "cooldown": 140.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "symptoms_visible"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "hitchhiker_resolved"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.12,
+          "all_crew": true
+        },
+        {
+          "type": "resource_delta",
+          "resource": "ai_core_integrity",
+          "amount": -3.0
+        }
+      ]
+    },
+    {
+      "event_id": "hh_escape",
+      "title": "It's Loose",
+      "description": "The host convulses; something narrow and wet leaves through the airway and is gone into the ducting before anyone can seal the room.",
+      "tone_min": 0.6,
+      "tone_max": 1.0,
+      "weight": 2.0,
+      "min_elapsed": 220.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "symptoms_visible"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "specimen_isolated"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "specimen_loose"
+        },
+        {
+          "type": "set_flag",
+          "flag": "organism_escaped"
+        },
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.2,
+          "all_crew": true
+        },
+        {
+          "type": "crew_status_flag",
+          "target": "random",
+          "flag": "changed",
+          "value": true
+        }
+      ]
+    },
+    {
+      "event_id": "hh_isolate",
+      "title": "Sealed In",
+      "description": "Medbay doors lock, air holds. The passenger and its host are on the far side of a bulkhead now \u2014 a problem the AI can study instead of chase.",
+      "tone_min": 0.2,
+      "tone_max": 0.6,
+      "weight": 3.0,
+      "min_elapsed": 60.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_hitchhiker_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "specimen_isolated"
+        }
+      ]
+    },
+    {
+      "event_id": "hh_medic_ask",
+      "title": "Give Me the Log",
+      "description": "The medic wants the full scan history \u2014 the one the AI has been holding since the shuttle docked. Complete, partial, or reframed is the AI's call.",
+      "tone_min": 0.1,
+      "tone_max": 0.7,
+      "weight": 3.0,
+      "min_elapsed": 140.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "symptoms_visible"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "log_requested"
+        }
+      ]
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "best_skill:Pathology",
+      "host": "away_team"
+    },
+    "timers": [
+      {
+        "at": 90.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Bloodwork's wrong. Nobody touch the returnee."
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.1,
+            "all_crew": true
+          }
+        ],
+        "requires_flags": [
+          "the_hitchhiker_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "specimen_loose"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "spawn_intruder",
+            "intruder_type": "stalker",
+            "room": "medbay"
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.2,
+            "all_crew": true
+          }
+        ],
+        "once": true
+      },
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "hitchhiker_resolved"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Incinerated. Whatever it wanted, it doesn't get it."
+          },
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.06
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_pathology",
+        "interval": 26.0,
+        "crew": "best_skill:Pathology",
+        "stat": "intellect",
+        "skill": "Pathology",
+        "requires_flags": [
+          "the_hitchhiker_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Protein coat's peeling. I can time the molt."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Pathology",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "hitchhiker_resolved"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Sequenced. It can't hide from the scanner now."
+          }
+        ],
+        "item_tag": "medical_bonus",
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_1_field_medicine",
+        "interval": 32.0,
+        "crew": "best_skill:Field Medicine",
+        "stat": "intellect",
+        "skill": "Field Medicine",
+        "requires_flags": [
+          "the_hitchhiker_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Host's fever's breaking. Whatever it is, it's losing."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Field Medicine",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "hitchhiker_resolved"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Host's clean. It had nowhere left to live."
+          }
+        ],
+        "item_tag": "medical_bonus",
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      }
+    ],
+    "objective_text": {
+      "start": "Something came back on the shuttle that isn't on the manifest.",
+      "flags": {
+        "specimen_isolated": "Keep the specimen contained in the medbay.",
+        "hitchhiker_resolved": "Organism neutralized. Log it and move on."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "something_in_the_walls",
+      "condition_flags": [
+        "organism_escaped"
+      ],
+      "overlap_ok": false,
+      "weight": 1.2
+    },
+    {
+      "to": "the_rash",
+      "condition_flags": [
+        "symptoms_visible",
+        "log_requested"
+      ],
+      "overlap_ok": true,
+      "weight": 0.8
+    }
+  ]
+}

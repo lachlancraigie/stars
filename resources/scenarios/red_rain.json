@@ -1,0 +1,334 @@
+{
+  "id": "red_rain",
+  "title": "Red Rain",
+  "pressure_axis": "bio",
+  "intensity": 1,
+  "contexts": [
+    "planet_orbit",
+    "transit"
+  ],
+  "trigger_status": "",
+  "tone_start": 0.25,
+  "expected_length": 200.0,
+  "weight": 1.0,
+  "min_leg": 1,
+  "once_per_run": false,
+  "win_flags": [
+    "red_rain_cleared"
+  ],
+  "leg_delta_success": {
+    "hull_integrity": 4.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -10.0
+  },
+  "solves": [
+    {
+      "desc": "Neutralize the acid chemically",
+      "skill": "Chemistry",
+      "stat": "intellect",
+      "items_help": []
+    },
+    {
+      "desc": "Scrape and reseal the affected plating",
+      "skill": "Mechanical Repair",
+      "stat": "intellect",
+      "items_help": [
+        "engineers_toolkit"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "rr_spot",
+      "title": "Rust That Wasn't There",
+      "description": "Exterior cams catch a rusty bloom on the dorsal plating. Except the ship doesn't rust \u2014 it's ceramic-clad \u2014 and the bloom is spreading in a pattern that looks almost deliberate.",
+      "tone_min": 0.1,
+      "tone_max": 0.3,
+      "weight": 10.0,
+      "min_elapsed": 15.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "red_rain_active"
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:lead",
+          "text": "What in the black is growing on my hull?"
+        }
+      ]
+    },
+    {
+      "event_id": "rr_pit",
+      "title": "Micro-Pitting",
+      "description": "Thickness sensors report the affected panels are measurably thinner. Slow, but the math runs the wrong way, and it runs the wrong way faster the longer it's ignored.",
+      "tone_min": 0.15,
+      "tone_max": 0.5,
+      "weight": 5.0,
+      "min_elapsed": 70.0,
+      "cooldown": 100.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "red_rain_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "red_rain_cleared"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "hull_damage",
+          "amount": 2.0
+        },
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.03,
+          "all_crew": true
+        }
+      ]
+    },
+    {
+      "event_id": "rr_breach_risk",
+      "title": "One Bad Panel",
+      "description": "A single plate reaches minimum safe thickness. If the film reaches a seam before it's dealt with, ordinary flight stress could open a slow leak.",
+      "tone_min": 0.2,
+      "tone_max": 0.55,
+      "weight": 3.0,
+      "min_elapsed": 140.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "red_rain_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "red_rain_cleared"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "thin_panel"
+        },
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.06,
+          "all_crew": true
+        }
+      ]
+    },
+    {
+      "event_id": "rr_sample",
+      "title": "Bottle It",
+      "description": "The AI can direct a crew member to scrape a sample for the science log \u2014 a small exposure risk for a small payoff, and one more chore in a busy shift.",
+      "tone_min": 0.1,
+      "tone_max": 0.4,
+      "weight": 3.0,
+      "min_elapsed": 90.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "red_rain_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "sample_taken"
+        }
+      ]
+    },
+    {
+      "event_id": "rr_wash",
+      "title": "Base Wash",
+      "description": "A crew member in a hazard suit walks the dorsal line with a neutralizing spray. Where it lands, the red goes grey and flakes away in the airstream.",
+      "tone_min": 0.1,
+      "tone_max": 0.35,
+      "weight": 3.0,
+      "min_elapsed": 60.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "red_rain_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "wash_started"
+        }
+      ]
+    },
+    {
+      "event_id": "rr_false_calm",
+      "title": "Quiet Panels",
+      "description": "For a while the spread stalls on its own, and the temptation is to call it done. The sensors say otherwise, but only just.",
+      "tone_min": 0.1,
+      "tone_max": 0.3,
+      "weight": 2.0,
+      "min_elapsed": 110.0,
+      "cooldown": 90.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "red_rain_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "red_rain_cleared"
+        }
+      ],
+      "outcomes": []
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "best_skill:Chemistry"
+    },
+    "timers": [
+      {
+        "at": 80.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Plating's pitting. That's not weathering, that's appetite."
+          },
+          {
+            "type": "hull_damage",
+            "amount": 3.0
+          }
+        ],
+        "requires_flags": [
+          "red_rain_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "red_rain_cleared"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "hull_repair",
+            "amount": 4.0
+          },
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.03
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_chemistry",
+        "interval": 26.0,
+        "crew": "best_skill:Chemistry",
+        "stat": "intellect",
+        "skill": "Chemistry",
+        "requires_flags": [
+          "red_rain_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "It's an organic acid. A base wash kills it cold."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Chemistry",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "red_rain_cleared"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Neutralized. Hull's ugly but sound."
+          }
+        ]
+      },
+      {
+        "id": "solve_1_mechanical_repair",
+        "interval": 32.0,
+        "crew": "best_skill:Mechanical Repair",
+        "stat": "intellect",
+        "skill": "Mechanical Repair",
+        "requires_flags": [
+          "red_rain_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "I'll grind it back to bare metal and reseal."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Mechanical Repair",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "red_rain_cleared"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Resealed. Good as it was, near enough."
+          }
+        ],
+        "item_tag": "repair_bonus"
+      }
+    ],
+    "objective_text": {
+      "start": "A film of red condensate is eating the hull plating faster than it should.",
+      "flags": {
+        "red_rain_cleared": "Neutralize the corrosive film before it thins the hull."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "the_long_crack",
+      "condition_flags": [
+        "thin_panel"
+      ],
+      "overlap_ok": false,
+      "weight": 0.9
+    }
+  ]
+}

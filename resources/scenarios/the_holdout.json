@@ -1,0 +1,371 @@
+{
+  "id": "the_holdout",
+  "title": "The Holdout",
+  "pressure_axis": "social",
+  "intensity": 2,
+  "contexts": [
+    "aftermath",
+    "docked"
+  ],
+  "trigger_status": "",
+  "tone_start": 0.35,
+  "expected_length": 300.0,
+  "weight": 1.0,
+  "min_leg": 2,
+  "once_per_run": true,
+  "win_flags": [
+    "standoff_resolved"
+  ],
+  "leg_delta_success": {
+    "ai_core_integrity": 4.0,
+    "credits": 40.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -10.0
+  },
+  "solves": [
+    {
+      "desc": "Negotiate a fair claim they'll accept",
+      "skill": "Command",
+      "stat": "intellect",
+      "items_help": []
+    },
+    {
+      "desc": "Read what they're really afraid to lose",
+      "skill": "Psychology",
+      "stat": "sanity",
+      "items_help": []
+    }
+  ],
+  "events": [
+    {
+      "event_id": "ho_dig",
+      "title": "Digging In",
+      "description": "The salvage came in short and someone decided their cut wasn't optional. They've parked themselves and their claim in a room they won't leave, and the AI holds the door controls.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 10.0,
+      "min_elapsed": 20.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "the_holdout_active"
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:holdout",
+          "text": "This is what I'm owed. Nobody's touching it."
+        }
+      ]
+    },
+    {
+      "event_id": "ho_pressure",
+      "title": "The Crew Wants It Settled",
+      "description": "Others need the room, the cargo, or just the drama over. Pressure builds on the AI to force the issue, and forcing it means the doors, which means making an enemy for a chore.",
+      "tone_min": 0.2,
+      "tone_max": 0.55,
+      "weight": 5.0,
+      "min_elapsed": 90.0,
+      "cooldown": 110.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_holdout_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "standoff_resolved"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.05,
+          "all_crew": true
+        },
+        {
+          "type": "ai_trust_delta",
+          "amount": -0.02
+        }
+      ]
+    },
+    {
+      "event_id": "ho_why",
+      "title": "What It Really Is",
+      "description": "The AI cross-references the holdout's pay records and finds a debt, a family, a reason. The cargo isn't greed; it's the only lever a cornered person has left.",
+      "tone_min": 0.2,
+      "tone_max": 0.55,
+      "weight": 4.0,
+      "min_elapsed": 140.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_holdout_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "holdout_heard"
+        }
+      ]
+    },
+    {
+      "event_id": "ho_blows",
+      "title": "It Comes to Blows",
+      "description": "Someone tries to take the cargo by force and the holdout swings first. The AI can lock the room, but locking two angry people in together is its own kind of mistake.",
+      "tone_min": 0.4,
+      "tone_max": 0.8,
+      "weight": 2.0,
+      "min_elapsed": 210.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_holdout_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "standoff_resolved"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "standoff_unresolved"
+        },
+        {
+          "type": "crew_injury",
+          "target": "random",
+          "severity": "light"
+        }
+      ]
+    },
+    {
+      "event_id": "ho_captain",
+      "title": "Command Weighs In",
+      "description": "The captain leans on the AI to end it their way \u2014 by the book, which means the holdout loses. Comply and make an enemy, or quietly broker something the book doesn't allow.",
+      "tone_min": 0.2,
+      "tone_max": 0.55,
+      "weight": 3.0,
+      "min_elapsed": 160.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_holdout_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "captain_pressure"
+        }
+      ]
+    },
+    {
+      "event_id": "ho_offer",
+      "title": "A Way Out",
+      "description": "The AI can surface a compromise nobody else thought of \u2014 a partial claim, a logged IOU, a face-saving exit. It costs the AI nothing but the effort to have listened.",
+      "tone_min": 0.1,
+      "tone_max": 0.4,
+      "weight": 3.0,
+      "min_elapsed": 180.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "holdout_heard"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "compromise_ready"
+        }
+      ]
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "role:captain",
+      "holdout": "role:general"
+    },
+    "timers": [
+      {
+        "at": 100.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:holdout",
+            "text": "I earned this. I'm not leaving without it. Try me."
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.06,
+            "all_crew": true
+          }
+        ],
+        "requires_flags": [
+          "the_holdout_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "standoff_unresolved"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.12,
+            "all_crew": true
+          },
+          {
+            "type": "set_flag",
+            "flag": "came_to_blows"
+          }
+        ],
+        "once": true
+      },
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "standoff_resolved"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.05
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Sorted without anyone throwing a punch. Small miracle."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_command",
+        "interval": 26.0,
+        "crew": "best_skill:Command",
+        "stat": "intellect",
+        "skill": "Command",
+        "requires_flags": [
+          "the_holdout_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Cut them a real share and they'll walk. It's about respect."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Command",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "standoff_resolved"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "They took the deal and the door. Everyone keeps their dignity."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_1_psychology",
+        "interval": 32.0,
+        "crew": "best_skill:Psychology",
+        "stat": "sanity",
+        "skill": "Psychology",
+        "requires_flags": [
+          "the_holdout_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "It's not the cargo. It's what the cargo means. Let me reach that."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Psychology",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "standoff_resolved"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "They let go. Turns out they just needed to be seen."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      }
+    ],
+    "objective_text": {
+      "start": "A crew member won't give up salvage they're owed, and they're standing in the wrong room to keep it.",
+      "flags": {
+        "holdout_heard": "Understand why the holdout won't move.",
+        "standoff_resolved": "End the standoff before it ends someone."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "mutiny_hour",
+      "condition_flags": [
+        "standoff_unresolved"
+      ],
+      "overlap_ok": true,
+      "weight": 0.8
+    }
+  ]
+}

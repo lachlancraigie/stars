@@ -1,0 +1,415 @@
+{
+  "id": "the_prophet",
+  "title": "The Prophet",
+  "pressure_axis": "social",
+  "intensity": 2,
+  "contexts": [
+    "transit",
+    "aftermath"
+  ],
+  "trigger_status": "",
+  "tone_start": 0.35,
+  "expected_length": 330.0,
+  "weight": 1.0,
+  "min_leg": 2,
+  "once_per_run": true,
+  "win_flags": [
+    "doctrine_defused"
+  ],
+  "leg_delta_success": {
+    "ai_core_integrity": 5.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -8.0
+  },
+  "solves": [
+    {
+      "desc": "Address the fear the doctrine is really about",
+      "skill": "Theology",
+      "stat": "intellect",
+      "items_help": []
+    },
+    {
+      "desc": "Read the group and pick the moment to gently correct",
+      "skill": "Psychology",
+      "stat": "sanity",
+      "items_help": []
+    },
+    {
+      "desc": "Trace the ritual's real origin and share it plainly",
+      "skill": "Sophontology",
+      "stat": "intellect",
+      "items_help": []
+    }
+  ],
+  "events": [
+    {
+      "event_id": "pr_ritual",
+      "title": "The Ritual Hardens",
+      "description": "A maintenance checklist has grown flourishes \u2014 an order of operations no manual requires, spoken aloud, done just so. The AI notices because the AI wrote the original procedure and this is not it.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 10.0,
+      "min_elapsed": 20.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "the_prophet_active"
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:prophet",
+          "text": "We do it in the right order or we don't do it at all."
+        }
+      ]
+    },
+    {
+      "event_id": "pr_flock",
+      "title": "A Following",
+      "description": "The prophet gathers believers, and the ritual gathers weight. It's harmless while it stays about the pump. The AI watches to see whether it stays about the pump.",
+      "tone_min": 0.2,
+      "tone_max": 0.55,
+      "weight": 5.0,
+      "min_elapsed": 90.0,
+      "cooldown": 120.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_prophet_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "doctrine_defused"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.04,
+          "all_crew": true
+        }
+      ]
+    },
+    {
+      "event_id": "pr_taboo",
+      "title": "Questions Become Heresy",
+      "description": "Asking why is no longer welcome. When a crew member queries the ritual and gets frozen out for it, the AI realizes doctrine has crossed from comfort into control.",
+      "tone_min": 0.3,
+      "tone_max": 0.6,
+      "weight": 4.0,
+      "min_elapsed": 150.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_prophet_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "doctrine_understood"
+        },
+        {
+          "type": "crew_stress",
+          "target": "random",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "event_id": "pr_heretic",
+      "title": "The AI Is the Unbeliever",
+      "description": "The AI's plain corrections mark it, to the faithful, as the thing outside the circle that doesn't understand. Trust in the AI's word becomes, for some, a test of loyalty to fail.",
+      "tone_min": 0.3,
+      "tone_max": 0.65,
+      "weight": 2.0,
+      "min_elapsed": 210.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "doctrine_understood"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "doctrine_defused"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "ai_is_heretic"
+        }
+      ]
+    },
+    {
+      "event_id": "pr_safety",
+      "title": "When Doctrine Meets a Deadline",
+      "description": "A real task needs doing out of ritual order, now. The prophet resists; the AI must decide whether to force the correct procedure and be the heretic, or let belief delay a safety-critical job.",
+      "tone_min": 0.3,
+      "tone_max": 0.65,
+      "weight": 3.0,
+      "min_elapsed": 180.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_prophet_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "doctrine_vs_safety"
+        }
+      ]
+    },
+    {
+      "event_id": "pr_origin",
+      "title": "Why It Started",
+      "description": "The AI can surface the ritual's actual origin \u2014 a genuine near-miss, years ago, that a careful order of operations once prevented. The truth is smaller than the myth and, told right, kinder.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 3.0,
+      "min_elapsed": 160.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "doctrine_understood"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "origin_ready"
+        }
+      ]
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "role:captain",
+      "prophet": "random"
+    },
+    "timers": [
+      {
+        "at": 120.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:prophet",
+            "text": "The machine hears us when we do it right. That's not superstition. That's respect."
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.04,
+            "all_crew": true
+          }
+        ],
+        "requires_flags": [
+          "the_prophet_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "ai_is_heretic"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": -0.08
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": true
+          }
+        ],
+        "once": true
+      },
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "doctrine_defused"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.06
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Crew's whole and the pump still gets maintained. Call it a draw."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_theology",
+        "interval": 26.0,
+        "crew": "best_skill:Theology",
+        "stat": "intellect",
+        "skill": "Theology",
+        "requires_flags": [
+          "the_prophet_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "They're not praying to a pump. They're praying at the dark. I get that."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Theology",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "doctrine_defused"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Gave the fear a better home than the ritual. The doctrine loosens."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_1_psychology",
+        "interval": 32.0,
+        "crew": "best_skill:Psychology",
+        "stat": "sanity",
+        "skill": "Psychology",
+        "requires_flags": [
+          "the_prophet_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Don't fight the prophet. Give the flock an off-ramp with dignity."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Psychology",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "doctrine_defused"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "They found their own way back. Nobody had to be wrong out loud."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_2_sophontology",
+        "interval": 38.0,
+        "crew": "best_skill:Sophontology",
+        "stat": "intellect",
+        "skill": "Sophontology",
+        "requires_flags": [
+          "the_prophet_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "The ritual meant something once. I can show them the real reason."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Sophontology",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "doctrine_defused"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Shown the true history, the myth just becomes a nice old story."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      }
+    ],
+    "objective_text": {
+      "start": "A charismatic crew member is turning a maintenance ritual into scripture, and questioning it into heresy.",
+      "flags": {
+        "doctrine_understood": "Understand what need the new doctrine is feeding.",
+        "doctrine_defused": "Keep the crew whole without becoming the outsider they unite against."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "mutiny_hour",
+      "condition_flags": [
+        "ai_is_heretic"
+      ],
+      "overlap_ok": true,
+      "weight": 0.8
+    }
+  ]
+}

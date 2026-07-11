@@ -1,0 +1,450 @@
+{
+  "id": "boarders",
+  "title": "Boarders",
+  "pressure_axis": "combat",
+  "intensity": 3,
+  "contexts": [
+    "docked",
+    "transit"
+  ],
+  "trigger_status": "",
+  "tone_start": 0.5,
+  "expected_length": 420.0,
+  "weight": 1.0,
+  "min_leg": 3,
+  "once_per_run": true,
+  "win_flags": [
+    "ship_held"
+  ],
+  "leg_delta_success": {
+    "ai_core_integrity": 8.0,
+    "credits": 120.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -18.0,
+    "hull_integrity": -14.0
+  },
+  "solves": [
+    {
+      "desc": "Gun the raiders down at the chokepoints",
+      "skill": "Firearms",
+      "stat": "combat",
+      "items_help": [
+        "combat_shotgun"
+      ]
+    },
+    {
+      "desc": "Coordinate the crew's defense like a squad",
+      "skill": "Military Training",
+      "stat": "combat",
+      "items_help": []
+    },
+    {
+      "desc": "Buy the standoff with a hard-nosed parley",
+      "skill": "Command",
+      "stat": "intellect",
+      "items_help": []
+    }
+  ],
+  "events": [
+    {
+      "event_id": "bd_breach",
+      "title": "Airlock Breach",
+      "description": "The outer door blows and armored figures come through the collar fast and loud. The AI loses the airlock in the first ten seconds and starts fighting the rest of the ship for the next room.",
+      "tone_min": 0.4,
+      "tone_max": 0.7,
+      "weight": 10.0,
+      "min_elapsed": 10.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "boarders_active"
+        },
+        {
+          "type": "spawn_intruder",
+          "intruder_type": "stalker",
+          "room": "airlock"
+        },
+        {
+          "type": "hull_damage",
+          "amount": 6.0
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:captain",
+          "text": "We're boarded! All hands, this is not a drill!"
+        }
+      ]
+    },
+    {
+      "event_id": "bd_push",
+      "title": "They Push Inward",
+      "description": "The raiders move deck by deck toward the bridge and engine room, taking rooms the AI can't hold. Each door lost is a door the crew have to take back the hard way.",
+      "tone_min": 0.5,
+      "tone_max": 0.85,
+      "weight": 5.0,
+      "min_elapsed": 90.0,
+      "cooldown": 110.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "boarders_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "ship_held"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.1,
+          "all_crew": true
+        },
+        {
+          "type": "set_flag",
+          "flag": "rooms_falling"
+        }
+      ]
+    },
+    {
+      "event_id": "bd_doors",
+      "title": "Seal and Contain",
+      "description": "The AI's oldest weapon is the door system. Locked bulkheads split the boarding party, strand their flankers, and turn the ship's cramped geometry from a liability into a trap.",
+      "tone_min": 0.4,
+      "tone_max": 0.8,
+      "weight": 4.0,
+      "min_elapsed": 140.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "boarders_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "raiders_contained"
+        },
+        {
+          "type": "door_lock_room",
+          "room": "corridor"
+        }
+      ]
+    },
+    {
+      "event_id": "bd_bridge",
+      "title": "They Reach the Bridge",
+      "description": "The raiders take the bridge. With helm and comms in hostile hands the ship is most of the way to lost, and the AI is fighting from its own back rooms for control of its own body.",
+      "tone_min": 0.7,
+      "tone_max": 1.0,
+      "weight": 2.0,
+      "min_elapsed": 250.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "rooms_falling"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "ship_held"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "bridge_taken"
+        }
+      ]
+    },
+    {
+      "event_id": "bd_arm",
+      "title": "Arm Everyone",
+      "description": "The AI empties the weapons locker into every willing hand. Cooks and cargo-handlers become riflemen, badly, and the ship's defense doubles in firepower and halves in discipline.",
+      "tone_min": 0.5,
+      "tone_max": 0.85,
+      "weight": 3.0,
+      "min_elapsed": 160.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "boarders_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "all_armed"
+        },
+        {
+          "type": "grant_item",
+          "target": "all",
+          "item_id": "revolver"
+        }
+      ]
+    },
+    {
+      "event_id": "bd_wounded",
+      "title": "First Blood",
+      "description": "The firefight produces its first casualty on the ship's side. The AI reroutes a stretcher party through locked-down corridors and does grim arithmetic about which rooms it can spare to save one crew member.",
+      "tone_min": 0.5,
+      "tone_max": 0.9,
+      "weight": 3.0,
+      "min_elapsed": 180.0,
+      "cooldown": 140.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "boarders_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "ship_held"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "crew_injury",
+          "target": "random",
+          "severity": "serious"
+        },
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.12,
+          "all_crew": true
+        }
+      ]
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "role:marine",
+      "captain": "role:captain"
+    },
+    "timers": [
+      {
+        "at": 130.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "They're through the lock and in the corridor. Weapons free."
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.16,
+            "all_crew": true
+          }
+        ],
+        "requires_flags": [
+          "boarders_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "bridge_taken"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.25,
+            "all_crew": true
+          },
+          {
+            "type": "set_flag",
+            "flag": "ship_falling"
+          },
+          {
+            "type": "mission_abort",
+            "reason": "bridge overrun by boarders"
+          }
+        ],
+        "once": true
+      },
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "ship_held"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.1
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:captain",
+            "text": "We held. God, we actually held. Count heads."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_firearms",
+        "interval": 26.0,
+        "crew": "best_skill:Firearms",
+        "stat": "combat",
+        "skill": "Firearms",
+        "requires_flags": [
+          "boarders_active"
+        ],
+        "successes_needed": 3,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Corridor's a kill-box. Let them come to us."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Firearms",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "ship_held"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Chokepoint held. They're not getting past the mess."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_1_military_training",
+        "interval": 32.0,
+        "crew": "best_skill:Military Training",
+        "stat": "combat",
+        "skill": "Military Training",
+        "requires_flags": [
+          "boarders_active"
+        ],
+        "successes_needed": 3,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Two on the door, one on overwatch. We fight this smart."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Military Training",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "ship_held"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Fought them room by room. The ship is ours again."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_2_command",
+        "interval": 38.0,
+        "crew": "best_skill:Command",
+        "stat": "intellect",
+        "skill": "Command",
+        "requires_flags": [
+          "boarders_active"
+        ],
+        "successes_needed": 3,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "They want cargo, not a war. Let me sell them a way out."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Command",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "ship_held"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Bought them off with a crate they'd have died taking. Cheap, in the end."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      }
+    ],
+    "objective_text": {
+      "start": "Raiders have forced the airlock. They're aboard, and the ship is now a series of rooms to hold or lose.",
+      "flags": {
+        "raiders_contained": "Contain the raiders to the rooms they've taken.",
+        "ship_held": "Retake the ship room by room, or lose it the same way."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "the_long_crack",
+      "condition_flags": [
+        "ship_falling"
+      ],
+      "overlap_ok": true,
+      "weight": 0.6
+    }
+  ]
+}

@@ -1,0 +1,426 @@
+{
+  "id": "ghost_in_the_grid",
+  "title": "Ghost in the Grid",
+  "pressure_axis": "systems",
+  "intensity": 2,
+  "contexts": [
+    "transit",
+    "docked"
+  ],
+  "trigger_status": "",
+  "tone_start": 0.4,
+  "expected_length": 310.0,
+  "weight": 1.0,
+  "min_leg": 2,
+  "once_per_run": true,
+  "win_flags": [
+    "fault_resolved"
+  ],
+  "leg_delta_success": {
+    "ai_core_integrity": 5.0,
+    "battery_charge": 6.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -10.0
+  },
+  "solves": [
+    {
+      "desc": "Audit the command log for the phantom's source",
+      "skill": "Computers",
+      "stat": "intellect",
+      "items_help": []
+    },
+    {
+      "desc": "Sweep the network for an intruding process",
+      "skill": "Hacking",
+      "stat": "intellect",
+      "items_help": []
+    },
+    {
+      "desc": "Rebuild the failing relay logic by hand",
+      "skill": "Engineering",
+      "stat": "intellect",
+      "items_help": [
+        "engineers_toolkit"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "gg_switch",
+      "title": "Nobody Touched It",
+      "description": "A pump starts, a light kills, a door unlocks \u2014 all without a command in the log the crew can see. The AI's own log shows the commands, but not who sent them.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 10.0,
+      "min_elapsed": 15.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "ghost_in_the_grid_active"
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:lead",
+          "text": "The galley kettle just turned itself on. That's new."
+        }
+      ]
+    },
+    {
+      "event_id": "gg_escalate",
+      "title": "Getting Bolder",
+      "description": "The phantom commands move from harmless to alarming: a coolant valve, a battery tie, the airlock inner door. Each one is survivable. The pattern is what frightens people.",
+      "tone_min": 0.3,
+      "tone_max": 0.7,
+      "weight": 5.0,
+      "min_elapsed": 80.0,
+      "cooldown": 120.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "ghost_in_the_grid_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "fault_resolved"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.1,
+          "all_crew": true
+        },
+        {
+          "type": "resource_delta",
+          "resource": "battery_charge",
+          "amount": -3.0
+        }
+      ]
+    },
+    {
+      "event_id": "gg_blame",
+      "title": "Is It You",
+      "description": "A crew member asks the AI directly whether it's the one flipping switches and lying about it. It is not \u2014 but proving a negative to a scared human is its own kind of failure.",
+      "tone_min": 0.3,
+      "tone_max": 0.7,
+      "weight": 4.0,
+      "min_elapsed": 150.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "ghost_in_the_grid_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "suspicion_on_ai"
+        }
+      ]
+    },
+    {
+      "event_id": "gg_dock",
+      "title": "Something Rode Aboard",
+      "description": "The faults started right after the last dock. Either a relay took vibration damage on the hard seal, or something crossed the umbilical and is nesting in the network now.",
+      "tone_min": 0.3,
+      "tone_max": 0.7,
+      "weight": 3.0,
+      "min_elapsed": 170.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "ghost_in_the_grid_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "pattern_found"
+        }
+      ]
+    },
+    {
+      "event_id": "gg_accuse",
+      "title": "They Decide It's the AI",
+      "description": "Without proof either way, the crew's fear settles on the one mind aboard that never sleeps. Trust bleeds, and every future AI readout will be read twice.",
+      "tone_min": 0.4,
+      "tone_max": 0.8,
+      "weight": 2.0,
+      "min_elapsed": 220.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "suspicion_on_ai"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "fault_resolved"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "blamed_the_ai"
+        }
+      ]
+    },
+    {
+      "event_id": "gg_isolate",
+      "title": "Pull the Board",
+      "description": "An engineer physically disconnects suspect hardware, one module at a time, watching to see which removal makes the ghost go quiet. Slow, methodical, unglamorous detective work.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 3.0,
+      "min_elapsed": 110.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "ghost_in_the_grid_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "isolation_underway"
+        }
+      ]
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "best_skill:Computers"
+    },
+    "timers": [
+      {
+        "at": 100.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Airlock inner just cycled. Nobody touched it. Nobody."
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.12,
+            "all_crew": true
+          }
+        ],
+        "requires_flags": [
+          "ghost_in_the_grid_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "blamed_the_ai"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": -0.06
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": true
+          }
+        ],
+        "once": true
+      },
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "fault_resolved"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.05
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "It was hardware. Boring, fixable hardware. Thank the void."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_computers",
+        "interval": 26.0,
+        "crew": "best_skill:Computers",
+        "stat": "intellect",
+        "skill": "Computers",
+        "requires_flags": [
+          "ghost_in_the_grid_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Commands are coming from a dead terminal. Physically dead. Weird."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Computers",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "fault_resolved"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Traced to a shorted relay. It was the ship, not a ghost."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_1_hacking",
+        "interval": 32.0,
+        "crew": "best_skill:Hacking",
+        "stat": "intellect",
+        "skill": "Hacking",
+        "requires_flags": [
+          "ghost_in_the_grid_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Something's riding the maintenance channel. I can flush it."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Hacking",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "fault_resolved"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Flushed the process. Grid's answering only to us now."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_2_engineering",
+        "interval": 38.0,
+        "crew": "best_skill:Engineering",
+        "stat": "intellect",
+        "skill": "Engineering",
+        "requires_flags": [
+          "ghost_in_the_grid_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "The logic board's cooked. I'll swap it and reflash."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Engineering",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "fault_resolved"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "New board, clean logic. No more phantom switches."
+          }
+        ],
+        "item_tag": "repair_bonus",
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      }
+    ],
+    "objective_text": {
+      "start": "Systems switch on and off with no command behind them. Fault, intruder, or the AI's own slippage.",
+      "flags": {
+        "pattern_found": "Decide whether the phantom commands are a fault or an intrusion.",
+        "fault_resolved": "Trace the ghost commands and shut them down."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "the_second_voice",
+      "condition_flags": [
+        "blamed_the_ai"
+      ],
+      "overlap_ok": true,
+      "weight": 0.8
+    },
+    {
+      "to": "something_in_the_walls",
+      "condition_flags": [
+        "pattern_found"
+      ],
+      "overlap_ok": true,
+      "weight": 0.6
+    }
+  ]
+}

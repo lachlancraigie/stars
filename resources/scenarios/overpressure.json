@@ -1,0 +1,397 @@
+{
+  "id": "overpressure",
+  "title": "Overpressure",
+  "pressure_axis": "systems",
+  "intensity": 1,
+  "contexts": [
+    "docked",
+    "station"
+  ],
+  "trigger_status": "",
+  "tone_start": 0.25,
+  "expected_length": 200.0,
+  "weight": 1.0,
+  "min_leg": 1,
+  "once_per_run": false,
+  "win_flags": [
+    "pressure_equalized"
+  ],
+  "leg_delta_success": {
+    "hull_integrity": 3.0,
+    "credits": 30.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -10.0
+  },
+  "solves": [
+    {
+      "desc": "Bleed the collar down at the manual valve",
+      "skill": "Industrial Equipment",
+      "stat": "strength",
+      "items_help": [
+        "crowbar"
+      ]
+    },
+    {
+      "desc": "Work the exterior seal in vacuum",
+      "skill": "Zero-G",
+      "stat": "speed",
+      "items_help": []
+    },
+    {
+      "desc": "Recalibrate the pressure regulator",
+      "skill": "Mechanical Repair",
+      "stat": "intellect",
+      "items_help": [
+        "engineers_toolkit"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "op_rise",
+      "title": "The Collar Groans",
+      "description": "Pressure in the docking collar climbs past nominal after the hard seal. The clamp holds, the numbers say it'll keep holding, and the AI has learned not to fully believe the numbers.",
+      "tone_min": 0.1,
+      "tone_max": 0.3,
+      "weight": 10.0,
+      "min_elapsed": 15.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "overpressure_active"
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:lead",
+          "text": "Docking collar's reading high. Somebody's regulator is lying."
+        }
+      ]
+    },
+    {
+      "event_id": "op_creep",
+      "title": "Past Nominal",
+      "description": "The overpressure inches higher. Well within the seal's rated margin, but margins are for engineers on the ground, not for the AI watching a collar breathe in real time.",
+      "tone_min": 0.1,
+      "tone_max": 0.4,
+      "weight": 5.0,
+      "min_elapsed": 70.0,
+      "cooldown": 90.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "overpressure_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "pressure_equalized"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.04,
+          "all_crew": true
+        }
+      ]
+    },
+    {
+      "event_id": "op_cargo",
+      "title": "Cargo on the Line",
+      "description": "The dock is a paying transfer, and undocking early to be safe means leaving credits and goodwill on the station. The AI weighs a small certain loss against a small ugly risk.",
+      "tone_min": 0.1,
+      "tone_max": 0.4,
+      "weight": 3.0,
+      "min_elapsed": 110.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "overpressure_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "transfer_pressure"
+        }
+      ]
+    },
+    {
+      "event_id": "op_blow",
+      "title": "The Seal Lets Go",
+      "description": "Ignored too long, the collar seal fails with a bang and a howl of escaping air. Automatic clamps slam the airlock, but the ship takes a shove and a scare it didn't need.",
+      "tone_min": 0.2,
+      "tone_max": 0.55,
+      "weight": 2.0,
+      "min_elapsed": 150.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "overpressure_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "pressure_equalized"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "seal_blew"
+        }
+      ]
+    },
+    {
+      "event_id": "op_valve",
+      "title": "Working the Valve",
+      "description": "A crew member wrestles the stiff manual bleed valve while the AI watches the pressure gauge for the first sign it's giving. It gives, grudgingly, a little at a time.",
+      "tone_min": 0.1,
+      "tone_max": 0.35,
+      "weight": 3.0,
+      "min_elapsed": 60.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "overpressure_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "bleed_underway"
+        }
+      ]
+    },
+    {
+      "event_id": "op_steady",
+      "title": "Holding",
+      "description": "The pressure plateaus and the crew relax. The AI keeps one eye on the collar, because plateaus are where the next surprise likes to hide.",
+      "tone_min": 0.1,
+      "tone_max": 0.3,
+      "weight": 2.0,
+      "min_elapsed": 90.0,
+      "cooldown": 80.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "overpressure_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "pressure_equalized"
+        }
+      ],
+      "outcomes": []
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "best_skill:Industrial Equipment"
+    },
+    "timers": [
+      {
+        "at": 75.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Collar's groaning. That's a sound docking collars shouldn't make."
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": true
+          }
+        ],
+        "requires_flags": [
+          "overpressure_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "seal_blew"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "hull_damage",
+            "amount": 5.0
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.15,
+            "all_crew": true
+          },
+          {
+            "type": "set_flag",
+            "flag": "emergency_undock"
+          }
+        ],
+        "once": true
+      },
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "pressure_equalized"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.03
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Even pressure, both sides. Boring. I like boring."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_industrial_equipment",
+        "interval": 26.0,
+        "crew": "best_skill:Industrial Equipment",
+        "stat": "strength",
+        "skill": "Industrial Equipment",
+        "requires_flags": [
+          "overpressure_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Manual bleed valve's stuck. I'll persuade it open."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Industrial Equipment",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "pressure_equalized"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Collar's equalized. Seal's happy. We stay docked."
+          }
+        ],
+        "item_tag": "door_bypass_bonus"
+      },
+      {
+        "id": "solve_1_zero_g",
+        "interval": 32.0,
+        "crew": "best_skill:Zero-G",
+        "stat": "speed",
+        "skill": "Zero-G",
+        "requires_flags": [
+          "overpressure_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "I'll go out and reseat the collar by hand. Two minutes EVA."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Zero-G",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "pressure_equalized"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Reseated from outside. Pressure's even both sides."
+          }
+        ]
+      },
+      {
+        "id": "solve_2_mechanical_repair",
+        "interval": 38.0,
+        "crew": "best_skill:Mechanical Repair",
+        "stat": "intellect",
+        "skill": "Mechanical Repair",
+        "requires_flags": [
+          "overpressure_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Regulator's reading high. I'll recal it and it settles."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Mechanical Repair",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "pressure_equalized"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Regulator's honest again. No more overpressure."
+          }
+        ],
+        "item_tag": "repair_bonus"
+      }
+    ],
+    "objective_text": {
+      "start": "The docking seal is over-pressurizing. The clamp is holding. The clamp is always holding, until it isn't.",
+      "flags": {
+        "pressure_equalized": "Equalize the docking collar before the seal blows."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "the_long_crack",
+      "condition_flags": [
+        "seal_blew"
+      ],
+      "overlap_ok": true,
+      "weight": 0.7
+    }
+  ]
+}

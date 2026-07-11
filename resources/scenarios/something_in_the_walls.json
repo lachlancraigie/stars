@@ -1,0 +1,441 @@
+{
+  "id": "something_in_the_walls",
+  "title": "Something in the Walls",
+  "pressure_axis": "combat",
+  "intensity": 2,
+  "contexts": [
+    "derelict",
+    "aftermath"
+  ],
+  "trigger_status": "changed",
+  "tone_start": 0.5,
+  "expected_length": 360.0,
+  "weight": 1.0,
+  "min_leg": 2,
+  "once_per_run": true,
+  "win_flags": [
+    "creature_dealt_with"
+  ],
+  "leg_delta_success": {
+    "ai_core_integrity": 6.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -14.0
+  },
+  "solves": [
+    {
+      "desc": "Put it down when it breaks cover",
+      "skill": "Firearms",
+      "stat": "combat",
+      "items_help": [
+        "combat_shotgun"
+      ]
+    },
+    {
+      "desc": "Predict its den and its patterns",
+      "skill": "Zoology",
+      "stat": "intellect",
+      "items_help": []
+    },
+    {
+      "desc": "Flush it out of the tubes with a shaped charge",
+      "skill": "Explosives",
+      "stat": "intellect",
+      "items_help": []
+    }
+  ],
+  "events": [
+    {
+      "event_id": "sw_gone",
+      "title": "Empty Restraints",
+      "description": "A specimen crate in cargo is open and empty, its contents small enough to fit the maintenance tubes and fast enough that no camera caught it leave. The AI marks a hole in its own coverage and starts listening.",
+      "tone_min": 0.3,
+      "tone_max": 0.6,
+      "weight": 10.0,
+      "min_elapsed": 15.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "something_in_the_walls_active"
+        },
+        {
+          "type": "spawn_intruder",
+          "intruder_type": "stalker",
+          "room": "cargo"
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:lead",
+          "text": "The crate's open. Whatever was in it isn't in it anymore."
+        }
+      ]
+    },
+    {
+      "event_id": "sw_territory",
+      "title": "It Marks Its Range",
+      "description": "Chewed cabling, a fouled filter, a smear the medic won't identify. The creature is establishing territory in the parts of the ship the crew never go, and the damage is getting bolder.",
+      "tone_min": 0.4,
+      "tone_max": 0.75,
+      "weight": 5.0,
+      "min_elapsed": 90.0,
+      "cooldown": 120.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "something_in_the_walls_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "creature_dealt_with"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.08,
+          "all_crew": true
+        },
+        {
+          "type": "resource_delta",
+          "resource": "battery_charge",
+          "amount": -3.0
+        }
+      ]
+    },
+    {
+      "event_id": "sw_missing",
+      "title": "Someone's Not at Their Post",
+      "description": "A crew member who took a shortcut through a tube-adjacent room doesn't check in. They turn up shaken, bleeding, and changed by the encounter in a way that isn't only physical.",
+      "tone_min": 0.5,
+      "tone_max": 0.85,
+      "weight": 4.0,
+      "min_elapsed": 150.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "something_in_the_walls_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "crew_injury",
+          "target": "cast:tracker",
+          "severity": "light"
+        },
+        {
+          "type": "crew_status_flag",
+          "target": "cast:tracker",
+          "flag": "changed",
+          "value": true
+        },
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.1,
+          "all_crew": true
+        }
+      ]
+    },
+    {
+      "event_id": "sw_fed",
+      "title": "It's Grown",
+      "description": "Left to hunt, the thing has eaten well and doubled its confidence. What was a nuisance in the walls is now a predator that comes out to meet the hunting party instead of fleeing it.",
+      "tone_min": 0.6,
+      "tone_max": 1.0,
+      "weight": 2.0,
+      "min_elapsed": 230.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "something_in_the_walls_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "creature_dealt_with"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "creature_fed"
+        }
+      ]
+    },
+    {
+      "event_id": "sw_seal",
+      "title": "Cut the Network",
+      "description": "The AI can seal tube-adjacent rooms to pen the creature \u2014 at the cost of every crawlway shortcut the crew rely on, slowing repair and movement across the whole ship.",
+      "tone_min": 0.3,
+      "tone_max": 0.7,
+      "weight": 3.0,
+      "min_elapsed": 170.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "something_in_the_walls_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "tubes_sealed"
+        }
+      ]
+    },
+    {
+      "event_id": "sw_lure",
+      "title": "Bait the Trap",
+      "description": "The tracker rigs a lure \u2014 warmth, food-smell, a dead-end room with a door the AI controls. Now it's a waiting game, and whoever's patience breaks first loses.",
+      "tone_min": 0.4,
+      "tone_max": 0.75,
+      "weight": 3.0,
+      "min_elapsed": 190.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "something_in_the_walls_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "creature_cornered"
+        }
+      ]
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "best_skill:Firearms",
+      "tracker": "best_skill:Zoology"
+    },
+    "timers": [
+      {
+        "at": 110.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Heard it move behind the panel. It's tracking us as much as we're tracking it."
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.12,
+            "all_crew": true
+          }
+        ],
+        "requires_flags": [
+          "something_in_the_walls_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "creature_fed"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "spawn_intruder",
+            "intruder_type": "nest",
+            "room": "cargo"
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.2,
+            "all_crew": true
+          },
+          {
+            "type": "crew_status_flag",
+            "target": "random",
+            "flag": "changed",
+            "value": true
+          }
+        ],
+        "once": true
+      },
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "creature_dealt_with"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.06
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "It's dead. Check the tubes twice anyway. Then a third time."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_firearms",
+        "interval": 26.0,
+        "crew": "best_skill:Firearms",
+        "stat": "combat",
+        "skill": "Firearms",
+        "requires_flags": [
+          "something_in_the_walls_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "It'll bolt when I flush it. One shot. Make it count."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Firearms",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "creature_dealt_with"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Down and confirmed dead. Nothing moving in the tubes now."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_1_zoology",
+        "interval": 32.0,
+        "crew": "best_skill:Zoology",
+        "stat": "intellect",
+        "skill": "Zoology",
+        "requires_flags": [
+          "something_in_the_walls_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "It nests warm and hunts alone. I know where it sleeps."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Zoology",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "creature_dealt_with"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Found the den, sealed it in, cycled the lock. Gone to the black."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_2_explosives",
+        "interval": 38.0,
+        "crew": "best_skill:Explosives",
+        "stat": "intellect",
+        "skill": "Explosives",
+        "requires_flags": [
+          "something_in_the_walls_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "One charge in the right junction and it's got nowhere to hide."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Explosives",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "creature_dealt_with"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Blew it out of the walls and into the open. Then out the lock."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      }
+    ],
+    "objective_text": {
+      "start": "Something small and fast rode cargo aboard and vanished into the maintenance tubes.",
+      "flags": {
+        "creature_cornered": "Corner the thing where it can't slip a bulkhead.",
+        "creature_dealt_with": "Kill it, cage it, or blow it out an airlock."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "the_nest",
+      "condition_flags": [
+        "creature_fed"
+      ],
+      "overlap_ok": false,
+      "weight": 1.3
+    }
+  ]
+}

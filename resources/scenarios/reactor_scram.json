@@ -1,0 +1,449 @@
+{
+  "id": "reactor_scram",
+  "title": "Reactor Scram",
+  "pressure_axis": "systems",
+  "intensity": 3,
+  "contexts": [
+    "transit",
+    "arrival"
+  ],
+  "trigger_status": "",
+  "tone_start": 0.45,
+  "expected_length": 380.0,
+  "weight": 1.0,
+  "min_leg": 3,
+  "once_per_run": true,
+  "win_flags": [
+    "reactor_relit"
+  ],
+  "leg_delta_success": {
+    "ai_core_integrity": 8.0,
+    "battery_charge": 15.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -16.0,
+    "battery_charge": -16.0
+  },
+  "solves": [
+    {
+      "desc": "Diagnose and clear the scram fault",
+      "skill": "Engineering",
+      "stat": "intellect",
+      "items_help": [
+        "engineers_toolkit"
+      ]
+    },
+    {
+      "desc": "Recalculate the ignition sequence by hand",
+      "skill": "Physics",
+      "stat": "intellect",
+      "items_help": []
+    },
+    {
+      "desc": "Jury-rig the failed starter circuit",
+      "skill": "Jury-Rigging",
+      "stat": "intellect",
+      "items_help": [
+        "jury_rig_kit"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "rs_scram",
+      "title": "Emergency Scram",
+      "description": "Reactor protection slams the core down over a fault the crew can't see and the AI can't yet name. The ship drops onto battery, and battery is a countdown, not a power source.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 10.0,
+      "min_elapsed": 10.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "reactor_scram_active"
+        },
+        {
+          "type": "reactor_failure",
+          "source": "protection_trip"
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:lead",
+          "text": "She scrammed herself. I didn't do that. She just quit."
+        }
+      ]
+    },
+    {
+      "event_id": "rs_budget",
+      "title": "Everything Is Hungry",
+      "description": "On battery, the AI can power only three rooms and the crew want all of them. The relight needs the engine room lit; life support wants a slot; the bridge wants to steer.",
+      "tone_min": 0.3,
+      "tone_max": 0.7,
+      "weight": 5.0,
+      "min_elapsed": 80.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "reactor_scram_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "power_triage"
+        },
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.1,
+          "all_crew": true
+        }
+      ]
+    },
+    {
+      "event_id": "rs_falsestart",
+      "title": "It Won't Catch",
+      "description": "The first relight attempt fails, and the second, each one spending battery the ship can't spare. The AI watches the charge curve and does the arithmetic nobody else will say aloud.",
+      "tone_min": 0.4,
+      "tone_max": 0.8,
+      "weight": 4.0,
+      "min_elapsed": 160.0,
+      "cooldown": 120.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "reactor_scram_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "reactor_relit"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "resource_delta",
+          "resource": "battery_charge",
+          "amount": -6.0
+        },
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.12,
+          "all_crew": true
+        }
+      ]
+    },
+    {
+      "event_id": "rs_dark",
+      "title": "Going Dark",
+      "description": "Battery approaches empty. Rooms drop off the grid one by one on the AI's priority list, and the crew in the dark ones learn exactly how far down the list they were.",
+      "tone_min": 0.6,
+      "tone_max": 1.0,
+      "weight": 2.0,
+      "min_elapsed": 250.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "power_triage"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "reactor_relit"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "going_dark"
+        },
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.2,
+          "all_crew": true
+        }
+      ]
+    },
+    {
+      "event_id": "rs_diagnose",
+      "title": "Reading the Fault",
+      "description": "An engineer traces the scram to its root while the AI feeds them the sensor history. The cause is stupid and small, the way most real disasters are.",
+      "tone_min": 0.3,
+      "tone_max": 0.6,
+      "weight": 3.0,
+      "min_elapsed": 110.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "reactor_scram_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "cause_found"
+        }
+      ]
+    },
+    {
+      "event_id": "rs_order",
+      "title": "Command Wants Speed",
+      "description": "The captain, closing on the destination, orders the fastest relight regardless of margin. The AI can comply, quietly hedge for safety, or spend a breath arguing the math.",
+      "tone_min": 0.3,
+      "tone_max": 0.65,
+      "weight": 3.0,
+      "min_elapsed": 140.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "reactor_scram_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "speed_order"
+        }
+      ]
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "best_skill:Engineering"
+    },
+    "timers": [
+      {
+        "at": 120.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Battery's at half and everything's still hungry. Move faster."
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.14,
+            "all_crew": true
+          }
+        ],
+        "requires_flags": [
+          "reactor_scram_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "resource_below",
+            "resource": "battery_charge",
+            "value": 12.0
+          },
+          {
+            "type": "flag_unset",
+            "flag": "reactor_relit"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.22,
+            "all_crew": true
+          },
+          {
+            "type": "set_flag",
+            "flag": "going_dark"
+          }
+        ],
+        "once": true
+      },
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "reactor_relit"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.08
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "We have a reactor. We have a ship. Good work, all."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_engineering",
+        "interval": 26.0,
+        "crew": "best_skill:Engineering",
+        "stat": "intellect",
+        "skill": "Engineering",
+        "requires_flags": [
+          "reactor_scram_active"
+        ],
+        "successes_needed": 3,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Protection tripped on a bad sensor. Bypass it and she'll light."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Engineering",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "reactor_relit"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Reactor's turning over. Grid's coming back up."
+          }
+        ],
+        "item_tag": "repair_bonus",
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_1_physics",
+        "interval": 32.0,
+        "crew": "best_skill:Physics",
+        "stat": "intellect",
+        "skill": "Physics",
+        "requires_flags": [
+          "reactor_scram_active"
+        ],
+        "successes_needed": 3,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Auto-start won't work. I can hand-time the ignition. Once."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Physics",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "reactor_relit"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Manual light. It caught. It actually caught."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_2_jury_rigging",
+        "interval": 38.0,
+        "crew": "best_skill:Jury-Rigging",
+        "stat": "intellect",
+        "skill": "Jury-Rigging",
+        "requires_flags": [
+          "reactor_scram_active"
+        ],
+        "successes_needed": 3,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Starter's fried. I'll bridge it with what's in the locker."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Jury-Rigging",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "reactor_relit"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Bridged the starter. She lit on the first try."
+          }
+        ],
+        "item_tag": "repair_bonus",
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      }
+    ],
+    "objective_text": {
+      "start": "The reactor scrammed itself and won't relight. On battery, the clock is short and cruel.",
+      "flags": {
+        "cause_found": "Diagnose why the reactor tripped and won't restart.",
+        "reactor_relit": "Relight the reactor before the battery runs dry."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "dead_air",
+      "condition_flags": [
+        "going_dark"
+      ],
+      "overlap_ok": true,
+      "weight": 0.9
+    },
+    {
+      "to": "mutiny_hour",
+      "condition_flags": [
+        "going_dark"
+      ],
+      "overlap_ok": true,
+      "weight": 0.6
+    }
+  ]
+}

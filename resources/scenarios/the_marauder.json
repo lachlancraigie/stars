@@ -1,0 +1,367 @@
+{
+  "id": "the_marauder",
+  "title": "The Marauder",
+  "pressure_axis": "combat",
+  "intensity": 2,
+  "contexts": [
+    "transit",
+    "arrival"
+  ],
+  "trigger_status": "",
+  "tone_start": 0.4,
+  "expected_length": 300.0,
+  "weight": 1.0,
+  "min_leg": 2,
+  "once_per_run": true,
+  "win_flags": [
+    "marauder_deterred"
+  ],
+  "leg_delta_success": {
+    "ai_core_integrity": 5.0,
+    "credits": 40.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -10.0
+  },
+  "solves": [
+    {
+      "desc": "Bluff strength over the comms",
+      "skill": "Command",
+      "stat": "intellect",
+      "items_help": []
+    },
+    {
+      "desc": "Out-fly them into a position they won't chase",
+      "skill": "Piloting",
+      "stat": "speed",
+      "items_help": []
+    }
+  ],
+  "events": [
+    {
+      "event_id": "ma_shadow",
+      "title": "A Shadow on Sensors",
+      "description": "A contact holds station at the edge of range, unhurried, matching course. It hasn't hailed and hasn't closed. The AI runs the transponder and gets a name the crew mutter when they hear it.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 10.0,
+      "min_elapsed": 15.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "the_marauder_active"
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:lead",
+          "text": "That's a marauder's silhouette. And it's not going away."
+        }
+      ]
+    },
+    {
+      "event_id": "ma_close",
+      "title": "Closing the Gap",
+      "description": "The marauder narrows the distance in increments small enough to deny. The AI charts the approach and knows that patience like this is a decision being made, not a coincidence.",
+      "tone_min": 0.3,
+      "tone_max": 0.6,
+      "weight": 5.0,
+      "min_elapsed": 80.0,
+      "cooldown": 100.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_marauder_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "marauder_deterred"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.06,
+          "all_crew": true
+        }
+      ]
+    },
+    {
+      "event_id": "ma_hail",
+      "title": "They Hail",
+      "description": "The marauder finally opens a channel \u2014 friendly, probing, asking about cargo and crew in the way a wolf asks after the health of the flock. What the AI says, and doesn't, sets the next hour.",
+      "tone_min": 0.3,
+      "tone_max": 0.6,
+      "weight": 4.0,
+      "min_elapsed": 130.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_marauder_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "intent_read"
+        }
+      ]
+    },
+    {
+      "event_id": "ma_commit",
+      "title": "They Commit",
+      "description": "Reading weakness, the marauder burns to intercept. The idle shadow becomes a boarding threat, and the AI's window for making itself unappetizing just slammed most of the way shut.",
+      "tone_min": 0.5,
+      "tone_max": 0.9,
+      "weight": 2.0,
+      "min_elapsed": 200.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_marauder_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "marauder_deterred"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "they_committed"
+        }
+      ]
+    },
+    {
+      "event_id": "ma_posture",
+      "title": "Show of Force",
+      "description": "The AI can light up every emitter, run out the ship's few teeth, and broadcast a readiness the ship doesn't quite have. A convincing bluff sends predators looking elsewhere; a weak one invites them in.",
+      "tone_min": 0.3,
+      "tone_max": 0.65,
+      "weight": 3.0,
+      "min_elapsed": 150.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_marauder_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "posturing"
+        }
+      ]
+    },
+    {
+      "event_id": "ma_run",
+      "title": "Make for Cover",
+      "description": "There's a debris field, a gravity well, a lane of bad navigation ahead. The AI can run for it \u2014 risky flying that a heavier, greedier ship might decline to match.",
+      "tone_min": 0.3,
+      "tone_max": 0.65,
+      "weight": 3.0,
+      "min_elapsed": 170.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_marauder_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "running_for_cover"
+        }
+      ]
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "role:captain",
+      "pilot": "best_skill:Piloting"
+    },
+    "timers": [
+      {
+        "at": 100.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "They've closed a thousand klicks since I last looked. That's not idle curiosity."
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": true
+          }
+        ],
+        "requires_flags": [
+          "the_marauder_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "they_committed"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "spawn_intruder",
+            "intruder_type": "stalker",
+            "room": "airlock"
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.18,
+            "all_crew": true
+          },
+          {
+            "type": "set_flag",
+            "flag": "boarding_imminent"
+          }
+        ],
+        "once": true
+      },
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "marauder_deterred"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.05
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "They're gone. Everyone can start breathing through their nose again."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_command",
+        "interval": 26.0,
+        "crew": "best_skill:Command",
+        "stat": "intellect",
+        "skill": "Command",
+        "requires_flags": [
+          "the_marauder_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Open a channel. I'll make us sound like more than we are."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Command",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "marauder_deterred"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "They bought it. Peeled off looking for softer prey."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_1_piloting",
+        "interval": 32.0,
+        "crew": "best_skill:Piloting",
+        "stat": "speed",
+        "skill": "Piloting",
+        "requires_flags": [
+          "the_marauder_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "I can put us in the debris field. They won't follow us into that."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Piloting",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "marauder_deterred"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Lost them in the rocks. Good riddance to bad company."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      }
+    ],
+    "objective_text": {
+      "start": "A ship with a bad reputation is shadowing at the edge of sensor range, matching every move.",
+      "flags": {
+        "intent_read": "Read whether the marauder means to talk, take, or test.",
+        "marauder_deterred": "Make boarding a worse idea than leaving."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "boarders",
+      "condition_flags": [
+        "boarding_imminent"
+      ],
+      "overlap_ok": false,
+      "weight": 1.2
+    }
+  ]
+}

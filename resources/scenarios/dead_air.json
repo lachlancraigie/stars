@@ -1,0 +1,445 @@
+{
+  "id": "dead_air",
+  "title": "Dead Air",
+  "pressure_axis": "systems",
+  "intensity": 3,
+  "contexts": [
+    "transit",
+    "any"
+  ],
+  "trigger_status": "",
+  "tone_start": 0.45,
+  "expected_length": 400.0,
+  "weight": 1.0,
+  "min_leg": 3,
+  "once_per_run": true,
+  "win_flags": [
+    "life_support_restored"
+  ],
+  "leg_delta_success": {
+    "ai_core_integrity": 8.0,
+    "battery_charge": 12.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -16.0,
+    "battery_charge": -14.0
+  },
+  "solves": [
+    {
+      "desc": "Rebuild the failed scrubber stack from spares",
+      "skill": "Engineering",
+      "stat": "intellect",
+      "items_help": [
+        "engineers_toolkit"
+      ]
+    },
+    {
+      "desc": "Jury-rig a bypass to route air around the dead bank",
+      "skill": "Jury-Rigging",
+      "stat": "intellect",
+      "items_help": [
+        "jury_rig_kit"
+      ]
+    },
+    {
+      "desc": "Manually clear the fouled recyclers",
+      "skill": "Mechanical Repair",
+      "stat": "strength",
+      "items_help": [
+        "engineers_toolkit"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "da_fail",
+      "title": "The Scrubbers Quit",
+      "description": "A scrubber bank throws a fault and takes its neighbors down with it in a cascade the AI can chart but not stop. Ship-wide air recycling is suddenly a fraction of what it was.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 10.0,
+      "min_elapsed": 10.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "dead_air_active"
+        },
+        {
+          "type": "life_support_failure",
+          "source": "scrubber_cascade"
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:lead",
+          "text": "That's the whole stack down. We're on stored air now."
+        }
+      ]
+    },
+    {
+      "event_id": "da_triage",
+      "title": "Three Rooms of Air",
+      "description": "With life support crippled, the AI can keep only three rooms breathable at once. Every crew member not in those rooms is on a slow clock, and they know it.",
+      "tone_min": 0.3,
+      "tone_max": 0.7,
+      "weight": 5.0,
+      "min_elapsed": 80.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "dead_air_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "air_triage"
+        },
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.1,
+          "all_crew": true
+        }
+      ]
+    },
+    {
+      "event_id": "da_thin",
+      "title": "Thin Air",
+      "description": "In the unsupported rooms the air crosses the threshold where thinking gets slow and checks get hard. The engineer trying to fix this is doing it half-suffocated.",
+      "tone_min": 0.4,
+      "tone_max": 0.8,
+      "weight": 4.0,
+      "min_elapsed": 160.0,
+      "cooldown": 130.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "air_triage"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "life_support_restored"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.12,
+          "all_crew": true
+        },
+        {
+          "type": "crew_stress",
+          "target": "random",
+          "amount": 2
+        }
+      ]
+    },
+    {
+      "event_id": "da_lsroom",
+      "title": "The Machine That Breathes",
+      "description": "Life support's own room needs a power slot or the whole system stays dead. Spending it there means one fewer breathable room now, for the chance of all of them later.",
+      "tone_min": 0.4,
+      "tone_max": 0.75,
+      "weight": 3.0,
+      "min_elapsed": 140.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "dead_air_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "lsroom_decision"
+        }
+      ]
+    },
+    {
+      "event_id": "da_collapse",
+      "title": "Someone Goes Down",
+      "description": "A crew member in an unsupported room stops answering hails. Unconscious, not yet dead \u2014 but the AI is now counting seconds against a rescue it may not have the air to make.",
+      "tone_min": 0.6,
+      "tone_max": 1.0,
+      "weight": 2.0,
+      "min_elapsed": 240.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "air_triage"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "life_support_restored"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "crew_injury",
+          "target": "random",
+          "severity": "serious"
+        },
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.2,
+          "all_crew": true
+        }
+      ]
+    },
+    {
+      "event_id": "da_rebuild",
+      "title": "Hands in the Stack",
+      "description": "An engineer is elbow-deep in the scrubber bank, breathing bottled air, pulling fouled elements one by one. The AI can see the airflow number twitch upward with each one.",
+      "tone_min": 0.3,
+      "tone_max": 0.6,
+      "weight": 3.0,
+      "min_elapsed": 110.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "dead_air_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "rebuild_underway"
+        }
+      ]
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "best_skill:Engineering"
+    },
+    "timers": [
+      {
+        "at": 120.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "CO2's climbing everywhere but the three rooms you're feeding."
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.14,
+            "all_crew": true
+          }
+        ],
+        "requires_flags": [
+          "dead_air_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "resource_below",
+            "resource": "battery_charge",
+            "value": 15.0
+          },
+          {
+            "type": "flag_unset",
+            "flag": "life_support_restored"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.2,
+            "all_crew": true
+          },
+          {
+            "type": "set_flag",
+            "flag": "power_starved"
+          }
+        ],
+        "once": true
+      },
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "life_support_restored"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.08
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Full air, all decks. Everybody breathe."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_engineering",
+        "interval": 26.0,
+        "crew": "best_skill:Engineering",
+        "stat": "intellect",
+        "skill": "Engineering",
+        "requires_flags": [
+          "dead_air_active"
+        ],
+        "successes_needed": 3,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "I can rebuild the stack if I've got twenty clean minutes."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Engineering",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "life_support_restored"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Scrubbers are breathing for us again. All decks."
+          }
+        ],
+        "item_tag": "repair_bonus",
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_1_jury_rigging",
+        "interval": 32.0,
+        "crew": "best_skill:Jury-Rigging",
+        "stat": "intellect",
+        "skill": "Jury-Rigging",
+        "requires_flags": [
+          "dead_air_active"
+        ],
+        "successes_needed": 3,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Bypass the dead bank entirely. Loses efficiency, keeps us alive."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Jury-Rigging",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "life_support_restored"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Bypass holds. Thin, but everyone's breathing."
+          }
+        ],
+        "item_tag": "repair_bonus",
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_2_mechanical_repair",
+        "interval": 38.0,
+        "crew": "best_skill:Mechanical Repair",
+        "stat": "strength",
+        "skill": "Mechanical Repair",
+        "requires_flags": [
+          "dead_air_active"
+        ],
+        "successes_needed": 3,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "The gunk's physical. I clear it by hand or not at all."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Mechanical Repair",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "life_support_restored"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Recyclers are clear. Airflow's back up."
+          }
+        ],
+        "item_tag": "repair_bonus",
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      }
+    ],
+    "objective_text": {
+      "start": "Life support is cascading down. Three rooms of air, and more people than that.",
+      "flags": {
+        "scrubbers_online": "Bring an air scrubber bank back online.",
+        "life_support_restored": "Restore ship-wide air before the triage becomes a body count."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "mutiny_hour",
+      "condition_flags": [
+        "power_starved"
+      ],
+      "overlap_ok": true,
+      "weight": 0.7
+    }
+  ]
+}

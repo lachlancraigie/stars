@@ -1,0 +1,357 @@
+{
+  "id": "star_static",
+  "title": "Star Static",
+  "pressure_axis": "mystery",
+  "intensity": 1,
+  "contexts": [
+    "planet_orbit",
+    "arrival"
+  ],
+  "trigger_status": "shaken",
+  "tone_start": 0.3,
+  "expected_length": 210.0,
+  "weight": 1.0,
+  "min_leg": 1,
+  "once_per_run": false,
+  "win_flags": [
+    "static_explained"
+  ],
+  "leg_delta_success": {
+    "ai_core_integrity": 3.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -10.0
+  },
+  "solves": [
+    {
+      "desc": "Measure the radiation driving the hallucinations",
+      "skill": "Physics",
+      "stat": "intellect",
+      "items_help": []
+    },
+    {
+      "desc": "Reassure the affected crew through the passage",
+      "skill": "Psychology",
+      "stat": "sanity",
+      "items_help": []
+    }
+  ],
+  "events": [
+    {
+      "event_id": "ss_shimmer",
+      "title": "Something at the Edge",
+      "description": "Passing close to the star, crew start catching movement at the edge of vision \u2014 figures, shapes, a sense of being watched. The AI's instruments read a spike in hard radiation and nothing else in the room at all.",
+      "tone_min": 0.2,
+      "tone_max": 0.45,
+      "weight": 10.0,
+      "min_elapsed": 15.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "star_static_active"
+        },
+        {
+          "type": "crew_status_flag",
+          "target": "affected",
+          "flag": "shaken",
+          "value": true
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:affected",
+          "text": "Did you see that? Right there. You had to have seen that."
+        }
+      ]
+    },
+    {
+      "event_id": "ss_worse",
+      "title": "It Gets Vivid",
+      "description": "Deeper into the radiation band the visions sharpen \u2014 faces, voices, whole moments that feel remembered. The AI knows the mechanism, and knowing it doesn't make the crew's terror any less real.",
+      "tone_min": 0.25,
+      "tone_max": 0.55,
+      "weight": 5.0,
+      "min_elapsed": 70.0,
+      "cooldown": 90.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "star_static_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "static_explained"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.06,
+          "all_crew": true
+        },
+        {
+          "type": "crew_stress",
+          "target": "cast:affected",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "event_id": "ss_ask",
+      "title": "Am I Losing It",
+      "description": "An affected crew member asks the AI, frightened, whether they're going mad. The kind truth \u2014 it's the star, it's temporary, it's happening to everyone \u2014 is also, this once, the whole truth.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 4.0,
+      "min_elapsed": 100.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "star_static_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "reassurance_needed"
+        }
+      ]
+    },
+    {
+      "event_id": "ss_panic",
+      "title": "One of Them Breaks",
+      "description": "A crew member acts on a vision \u2014 bolts, swings, seals a door against a person who isn't there. The hallucinations were always harmless; the panic they cause is not, quite.",
+      "tone_min": 0.3,
+      "tone_max": 0.6,
+      "weight": 2.0,
+      "min_elapsed": 150.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "star_static_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "static_explained"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "panic_took_hold"
+        }
+      ]
+    },
+    {
+      "event_id": "ss_measure",
+      "title": "Reading the Dose",
+      "description": "The AI overlays each reported vision against the radiation log and finds them lining up perfectly. The proof is in the numbers, if the crew can be brought to trust numbers over their own eyes.",
+      "tone_min": 0.2,
+      "tone_max": 0.45,
+      "weight": 3.0,
+      "min_elapsed": 90.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "star_static_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "dose_correlated"
+        }
+      ]
+    },
+    {
+      "event_id": "ss_clear",
+      "title": "Out of the Band",
+      "description": "The ship climbs clear of the radiation and, one by one, the ghosts let go. The crew come back to themselves shaky and embarrassed, and the AI lets them keep the dignity of not saying I told you so.",
+      "tone_min": 0.15,
+      "tone_max": 0.4,
+      "weight": 3.0,
+      "min_elapsed": 130.0,
+      "cooldown": 110.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "star_static_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "static_explained"
+        }
+      ],
+      "outcomes": []
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "best_skill:Physics",
+      "affected": "status:shaken"
+    },
+    "timers": [
+      {
+        "at": 85.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:affected",
+            "text": "There's someone standing behind you. There's not, is there. Tell me there's not."
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": true
+          }
+        ],
+        "requires_flags": [
+          "star_static_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "panic_took_hold"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "crew_stress",
+            "target": "all",
+            "amount": 1
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.1,
+            "all_crew": true
+          }
+        ],
+        "once": true
+      },
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "static_explained"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.04
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Clear of the band. Everybody's ghosts went home. Told you \u2014 physics."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_physics",
+        "interval": 26.0,
+        "crew": "best_skill:Physics",
+        "stat": "intellect",
+        "skill": "Physics",
+        "requires_flags": [
+          "star_static_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "It's a hard-radiation band off the star. Cooks the optic nerve. Not ghosts."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Physics",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "static_explained"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Measured and mapped. The visions track the dose exactly. It's physics."
+          }
+        ]
+      },
+      {
+        "id": "solve_1_psychology",
+        "interval": 32.0,
+        "crew": "best_skill:Psychology",
+        "stat": "sanity",
+        "skill": "Psychology",
+        "requires_flags": [
+          "star_static_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "They know it's not real, deep down. Help them hold onto that."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Psychology",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "static_explained"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "They held on. Once we cleared the band, the ghosts cleared with it."
+          }
+        ]
+      }
+    ],
+    "objective_text": {
+      "start": "Near the star, the crew see things that aren't there. The AI has to prove the ghosts are radiation.",
+      "flags": {
+        "static_explained": "Show the crew their ghosts are physics, not a presence."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "the_rumor",
+      "condition_flags": [
+        "panic_took_hold"
+      ],
+      "overlap_ok": true,
+      "weight": 0.6
+    }
+  ]
+}

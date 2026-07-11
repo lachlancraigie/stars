@@ -1,0 +1,333 @@
+{
+  "id": "gut_flora",
+  "title": "Gut Flora",
+  "pressure_axis": "bio",
+  "intensity": 1,
+  "contexts": [
+    "aftermath",
+    "any"
+  ],
+  "trigger_status": "",
+  "tone_start": 0.3,
+  "expected_length": 220.0,
+  "weight": 1.0,
+  "min_leg": 1,
+  "once_per_run": false,
+  "win_flags": [
+    "outbreak_treated"
+  ],
+  "leg_delta_success": {
+    "ai_core_integrity": 3.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -10.0
+  },
+  "solves": [
+    {
+      "desc": "Treat the symptoms and rehydrate the crew",
+      "skill": "Field Medicine",
+      "stat": "intellect",
+      "items_help": [
+        "med_kit"
+      ]
+    },
+    {
+      "desc": "Identify the toxin and pull the bad stores",
+      "skill": "Pharmacology",
+      "stat": "intellect",
+      "items_help": []
+    }
+  ],
+  "events": [
+    {
+      "event_id": "gf_first",
+      "title": "First to Fall",
+      "description": "A crew member doubles over in the corridor, sweating and grey. The AI cross-checks the galley log and finds the protein reclaimer ran warm for six hours yesterday.",
+      "tone_min": 0.1,
+      "tone_max": 0.35,
+      "weight": 10.0,
+      "min_elapsed": 15.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "gut_flora_active"
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:lead",
+          "text": "I feel like I ate a bilge filter. Ugh."
+        }
+      ]
+    },
+    {
+      "event_id": "gf_spread",
+      "title": "Down the Roster",
+      "description": "The sick list grows one name at a time, all of them shift-B, all of them at the same table. It isn't contagious \u2014 it's a bad batch working through everyone who ate it.",
+      "tone_min": 0.15,
+      "tone_max": 0.45,
+      "weight": 5.0,
+      "min_elapsed": 70.0,
+      "cooldown": 90.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "gut_flora_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "outbreak_treated"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.05,
+          "all_crew": true
+        },
+        {
+          "type": "crew_stress",
+          "target": "random",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "event_id": "gf_shorthanded",
+      "title": "Short-Handed",
+      "description": "With a third of the crew in their bunks, routine tasks slip. Nothing's on fire yet, but the ship is running on the people who happened to skip lunch.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 4.0,
+      "min_elapsed": 130.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "gut_flora_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "outbreak_treated"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "understaffed"
+        },
+        {
+          "type": "resource_delta",
+          "resource": "ai_core_integrity",
+          "amount": -1.0
+        }
+      ]
+    },
+    {
+      "event_id": "gf_worry",
+      "title": "Is It More Than That",
+      "description": "One of the sick asks the AI, quietly, whether this is really just the food \u2014 because they were on the last away team, and they've been reading the manifest.",
+      "tone_min": 0.2,
+      "tone_max": 0.55,
+      "weight": 3.0,
+      "min_elapsed": 100.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "gut_flora_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "fear_of_worse"
+        }
+      ]
+    },
+    {
+      "event_id": "gf_purge",
+      "title": "Dump the Batch",
+      "description": "On the AI's flag, the galley crew pull every tray from the suspect lot and cycle it out the waste lock. Whatever grew in there is gone with it.",
+      "tone_min": 0.1,
+      "tone_max": 0.35,
+      "weight": 3.0,
+      "min_elapsed": 60.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "gut_flora_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "batch_pulled"
+        }
+      ]
+    },
+    {
+      "event_id": "gf_recover",
+      "title": "On the Mend",
+      "description": "The first patients are sitting up and complaining, which the medic calls the best possible sign. The reclaimer's been scrubbed and re-certified.",
+      "tone_min": 0.1,
+      "tone_max": 0.3,
+      "weight": 2.0,
+      "min_elapsed": 150.0,
+      "cooldown": 120.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "batch_pulled"
+        }
+      ],
+      "outcomes": []
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "best_skill:Field Medicine"
+    },
+    "timers": [
+      {
+        "at": 90.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "That's four down now. Same symptoms. Same mess tray."
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.06,
+            "all_crew": true
+          }
+        ],
+        "requires_flags": [
+          "gut_flora_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "outbreak_treated"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.04
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Rough night. Nobody died of a sandwich, though."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_field_medicine",
+        "interval": 26.0,
+        "crew": "best_skill:Field Medicine",
+        "stat": "intellect",
+        "skill": "Field Medicine",
+        "requires_flags": [
+          "gut_flora_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Fluids and rest. It's food poisoning, not the plague."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Field Medicine",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "outbreak_treated"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Everyone's keeping water down. Crisis over."
+          }
+        ],
+        "item_tag": "medical_bonus"
+      },
+      {
+        "id": "solve_1_pharmacology",
+        "interval": 32.0,
+        "crew": "best_skill:Pharmacology",
+        "stat": "intellect",
+        "skill": "Pharmacology",
+        "requires_flags": [
+          "gut_flora_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "It's a mold toxin. Dump lot seven and we're clear."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Pharmacology",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "outbreak_treated"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Bad stores are out the airlock. No second wave."
+          }
+        ]
+      }
+    ],
+    "objective_text": {
+      "start": "Half the crew are sick from the same meal. The AI logged the bad batch first.",
+      "flags": {
+        "outbreak_treated": "Treat the outbreak and pull the contaminated stores."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "the_rumor",
+      "condition_flags": [
+        "fear_of_worse"
+      ],
+      "overlap_ok": true,
+      "weight": 0.8
+    }
+  ]
+}

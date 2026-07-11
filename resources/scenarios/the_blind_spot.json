@@ -1,0 +1,436 @@
+{
+  "id": "the_blind_spot",
+  "title": "The Blind Spot",
+  "pressure_axis": "mystery",
+  "intensity": 2,
+  "contexts": [
+    "transit",
+    "any"
+  ],
+  "trigger_status": "",
+  "tone_start": 0.4,
+  "expected_length": 330.0,
+  "weight": 1.0,
+  "min_leg": 2,
+  "once_per_run": true,
+  "win_flags": [
+    "blind_spot_resolved"
+  ],
+  "leg_delta_success": {
+    "ai_core_integrity": 6.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -12.0
+  },
+  "solves": [
+    {
+      "desc": "Repair the AI core to close the sensor gap",
+      "skill": "Mechanical Repair",
+      "stat": "intellect",
+      "items_help": [
+        "engineers_toolkit"
+      ]
+    },
+    {
+      "desc": "Rebuild the sensor coverage in software",
+      "skill": "Computers",
+      "stat": "intellect",
+      "items_help": []
+    },
+    {
+      "desc": "Steady the frightened crew through the dark stretch",
+      "skill": "Psychology",
+      "stat": "sanity",
+      "items_help": []
+    }
+  ],
+  "events": [
+    {
+      "event_id": "bs_strain",
+      "title": "Core Strain",
+      "description": "An impact jolts the AI core into degraded mode, and a rotating pair of rooms drops out of sensor coverage entirely. For the first time, there are places aboard the ship the AI genuinely cannot see.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 10.0,
+      "min_elapsed": 15.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "the_blind_spot_active"
+        },
+        {
+          "type": "ai_core_damage",
+          "amount": 45.0,
+          "source": "impact"
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:lead",
+          "text": "The AI just went half-blind. It says so itself. That's new."
+        }
+      ]
+    },
+    {
+      "event_id": "bs_sighting",
+      "title": "Alone in the Dark Room",
+      "description": "Whoever was in the blind room when it went dark comes out changed \u2014 sure that something shared the space with them for the four minutes the AI wasn't watching. Nobody can prove them wrong. That's the horror of it.",
+      "tone_min": 0.3,
+      "tone_max": 0.7,
+      "weight": 5.0,
+      "min_elapsed": 90.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_blind_spot_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "sighting_reported"
+        },
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.08,
+          "all_crew": true
+        }
+      ]
+    },
+    {
+      "event_id": "bs_spread",
+      "title": "The Story Travels",
+      "description": "The sighting becomes a warning becomes a rule: don't go in the dark room alone. The AI can neither confirm nor deny, and its silence, honest as it is, feeds the exact fear it can't dispel.",
+      "tone_min": 0.4,
+      "tone_max": 0.8,
+      "weight": 4.0,
+      "min_elapsed": 150.0,
+      "cooldown": 130.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "sighting_reported"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "blind_spot_resolved"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.1,
+          "all_crew": true
+        }
+      ]
+    },
+    {
+      "event_id": "bs_neglect",
+      "title": "A Real Hazard in the Folklore",
+      "description": "Because nobody watches the blind room, nobody noticed it quietly dropped off the life-support allocation. The ghost story and a genuine air problem are now hiding in the same four minutes.",
+      "tone_min": 0.4,
+      "tone_max": 0.85,
+      "weight": 2.0,
+      "min_elapsed": 210.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_blind_spot_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "blind_spot_resolved"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "neglected_air"
+        }
+      ]
+    },
+    {
+      "event_id": "bs_ask",
+      "title": "Is Something In There",
+      "description": "A frightened crew member asks the AI directly whether the room is haunted. Full truth explains the mechanism and admits the AI's own frailty; reassurance is easier and hides a real hazard behind a comfortable lie.",
+      "tone_min": 0.3,
+      "tone_max": 0.7,
+      "weight": 3.0,
+      "min_elapsed": 130.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "sighting_reported"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "gap_explained"
+        }
+      ]
+    },
+    {
+      "event_id": "bs_repair",
+      "title": "Reseating the Array",
+      "description": "An engineer in the core, hands in the AI's own guts, works to close the gap. The AI narrates its own returning vision room by room, and the dark places shrink back to nothing.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 3.0,
+      "min_elapsed": 110.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_blind_spot_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "repair_underway"
+        }
+      ]
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "best_skill:Mechanical Repair",
+      "witness": "random"
+    },
+    "timers": [
+      {
+        "at": 110.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:witness",
+            "text": "There was something in there. I know how that sounds. There was."
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.1,
+            "all_crew": true
+          }
+        ],
+        "requires_flags": [
+          "the_blind_spot_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "neglected_air"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "air_vent_room",
+            "room": "quarters",
+            "amount": 30.0
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.12,
+            "all_crew": true
+          }
+        ],
+        "once": true
+      },
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "blind_spot_resolved"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.05
+          },
+          {
+            "type": "ai_core_repair",
+            "amount": 10.0
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Full sensors, every room. The ship can see itself again."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_mechanical_repair",
+        "interval": 26.0,
+        "crew": "best_skill:Mechanical Repair",
+        "stat": "intellect",
+        "skill": "Mechanical Repair",
+        "requires_flags": [
+          "the_blind_spot_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Core's throwing a sensor fault. I can reseat the array."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Mechanical Repair",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "blind_spot_resolved"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Array's back. The blind spot's gone. It was always empty."
+          }
+        ],
+        "item_tag": "repair_bonus",
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_1_computers",
+        "interval": 32.0,
+        "crew": "best_skill:Computers",
+        "stat": "intellect",
+        "skill": "Computers",
+        "requires_flags": [
+          "the_blind_spot_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "I can stitch the neighbor cameras to cover the gap. Ugly, but eyes."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Computers",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "blind_spot_resolved"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Coverage's patched. Nothing there. Never was."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_2_psychology",
+        "interval": 38.0,
+        "crew": "best_skill:Psychology",
+        "stat": "sanity",
+        "skill": "Psychology",
+        "requires_flags": [
+          "the_blind_spot_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "They're not seeing a ghost. They're seeing the AI go quiet. Explain it."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Psychology",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "blind_spot_resolved"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Told them plainly. The fear had nowhere to stand once they understood."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      }
+    ],
+    "objective_text": {
+      "start": "Core damage opened a sensor blind spot. In the dark room, crew swear they aren't alone.",
+      "flags": {
+        "gap_explained": "Decide what to tell the crew about the room you can't see.",
+        "blind_spot_resolved": "Close the sensor gap and keep the ship's nerve."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "something_in_the_walls",
+      "condition_flags": [
+        "neglected_air"
+      ],
+      "overlap_ok": true,
+      "weight": 0.7
+    },
+    {
+      "to": "the_rumor",
+      "condition_flags": [
+        "sighting_reported"
+      ],
+      "overlap_ok": true,
+      "weight": 0.6
+    }
+  ]
+}

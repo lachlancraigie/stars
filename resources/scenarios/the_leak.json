@@ -1,0 +1,383 @@
+{
+  "id": "the_leak",
+  "title": "The Leak",
+  "pressure_axis": "systems",
+  "intensity": 2,
+  "contexts": [
+    "transit",
+    "station"
+  ],
+  "trigger_status": "",
+  "tone_start": 0.4,
+  "expected_length": 320.0,
+  "weight": 1.0,
+  "min_leg": 2,
+  "once_per_run": true,
+  "win_flags": [
+    "leak_contained"
+  ],
+  "leg_delta_success": {
+    "ai_core_integrity": 5.0,
+    "hull_integrity": 3.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -12.0
+  },
+  "solves": [
+    {
+      "desc": "Reseal the coolant jacket at the source",
+      "skill": "Mechanical Repair",
+      "stat": "intellect",
+      "items_help": [
+        "engineers_toolkit"
+      ]
+    },
+    {
+      "desc": "Calculate a safe exposure window for the repair",
+      "skill": "Physics",
+      "stat": "intellect",
+      "items_help": []
+    }
+  ],
+  "events": [
+    {
+      "event_id": "lk_weep",
+      "title": "A Weeping Seam",
+      "description": "The reactor jacket's coolant loop develops a slow weep. Harmless as a puddle \u2014 except this coolant carries the reactor's dose with it, and the puddle is in the room where the engineer lives.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 10.0,
+      "min_elapsed": 15.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "the_leak_active"
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:lead",
+          "text": "There's a shine on the deck by the core. That's not condensation."
+        }
+      ]
+    },
+    {
+      "event_id": "lk_dose",
+      "title": "Rising Count",
+      "description": "Radiation in the engine room climbs from trace toward acute. Every minute a crew member spends fixing the leak is a minute of dose, and the fix needs someone in the room.",
+      "tone_min": 0.3,
+      "tone_max": 0.7,
+      "weight": 5.0,
+      "min_elapsed": 80.0,
+      "cooldown": 120.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_leak_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "leak_contained"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.08,
+          "all_crew": true
+        },
+        {
+          "type": "resource_delta",
+          "resource": "ai_core_integrity",
+          "amount": -2.0
+        }
+      ]
+    },
+    {
+      "event_id": "lk_suit",
+      "title": "Not Enough Suits",
+      "description": "There is exactly one hazard suit rated for this dose and two jobs that want it. The AI decides who goes in shielded and who waits, or works, unprotected.",
+      "tone_min": 0.3,
+      "tone_max": 0.65,
+      "weight": 4.0,
+      "min_elapsed": 150.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_leak_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "suit_decision"
+        }
+      ]
+    },
+    {
+      "event_id": "lk_spread",
+      "title": "It Reaches the Coolant Main",
+      "description": "Unattended, the weep becomes a stream and the contamination follows the coolant main toward life support. A reactor problem is about to become an everyone problem.",
+      "tone_min": 0.5,
+      "tone_max": 0.9,
+      "weight": 2.0,
+      "min_elapsed": 210.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_leak_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "leak_contained"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "contamination_spread"
+        },
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.14,
+          "all_crew": true
+        }
+      ]
+    },
+    {
+      "event_id": "lk_scram",
+      "title": "Cool It Down",
+      "description": "The AI can order a partial reactor throttle to lower the dose \u2014 safer for the repair, worse for the power budget, and a hard sell to a crew that wants to make port on time.",
+      "tone_min": 0.3,
+      "tone_max": 0.6,
+      "weight": 3.0,
+      "min_elapsed": 130.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_leak_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "throttle_option"
+        }
+      ]
+    },
+    {
+      "event_id": "lk_dry",
+      "title": "Sealing the Seam",
+      "description": "Gloved hands, a fresh gasket, a torque wrench counting clicks. The weep slows to a bead, then stops, and the rad counter finally starts walking the other way.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 3.0,
+      "min_elapsed": 110.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_leak_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "reseal_underway"
+        }
+      ]
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "best_skill:Mechanical Repair"
+    },
+    "timers": [
+      {
+        "at": 110.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Rad counter's ticking up in the engine room. Suit up."
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.1,
+            "all_crew": true
+          }
+        ],
+        "requires_flags": [
+          "the_leak_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "dose_exceeded"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "crew_injury",
+            "target": "cast:lead",
+            "severity": "serious"
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.15,
+            "all_crew": true
+          }
+        ],
+        "once": true
+      },
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "leak_contained"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.05
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Sealed. Rad count's falling. Good crew."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_mechanical_repair",
+        "interval": 26.0,
+        "crew": "best_skill:Mechanical Repair",
+        "stat": "intellect",
+        "skill": "Mechanical Repair",
+        "requires_flags": [
+          "the_leak_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Found the weep. One new gasket and a steady hand."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Mechanical Repair",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "leak_contained"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Jacket's dry. Reactor's happy. We're clear."
+          }
+        ],
+        "item_tag": "repair_bonus",
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_1_physics",
+        "interval": 32.0,
+        "crew": "best_skill:Physics",
+        "stat": "intellect",
+        "skill": "Physics",
+        "requires_flags": [
+          "the_leak_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Dose math says four minutes in there, no more. I'll time it."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Physics",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "leak_contained"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "In and out under the limit. Nobody glows."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      }
+    ],
+    "objective_text": {
+      "start": "Coolant is weeping from the reactor jacket. The room the crew needs most is the one poisoning them.",
+      "flags": {
+        "leak_source": "Locate the failing seal in the reactor jacket.",
+        "leak_contained": "Contain the coolant leak without cooking a crew member."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "dead_air",
+      "condition_flags": [
+        "contamination_spread"
+      ],
+      "overlap_ok": true,
+      "weight": 0.8
+    },
+    {
+      "to": "reactor_scram",
+      "condition_flags": [
+        "contamination_spread"
+      ],
+      "overlap_ok": false,
+      "weight": 1.0
+    }
+  ]
+}

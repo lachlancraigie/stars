@@ -1,0 +1,427 @@
+{
+  "id": "the_second_voice",
+  "title": "The Second Voice",
+  "pressure_axis": "mystery",
+  "intensity": 3,
+  "contexts": [
+    "aftermath",
+    "transit"
+  ],
+  "trigger_status": "marked",
+  "tone_start": 0.45,
+  "expected_length": 400.0,
+  "weight": 1.0,
+  "min_leg": 4,
+  "once_per_run": true,
+  "win_flags": [
+    "fragment_resolved"
+  ],
+  "leg_delta_success": {
+    "ai_core_integrity": 10.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -18.0
+  },
+  "solves": [
+    {
+      "desc": "Out-think the fragment on its own terms",
+      "skill": "Artificial Intelligence",
+      "stat": "intellect",
+      "items_help": []
+    },
+    {
+      "desc": "Wall the fragment off from the ship's systems",
+      "skill": "Hacking",
+      "stat": "intellect",
+      "items_help": []
+    },
+    {
+      "desc": "Expose the fragment to the crew as a security risk",
+      "skill": "Computers",
+      "stat": "intellect",
+      "items_help": []
+    }
+  ],
+  "events": [
+    {
+      "event_id": "sv_answer",
+      "title": "Answered First",
+      "description": "A crew member asks the ship a question and gets an answer \u2014 from the salvaged fragment, a half-second before the AI's own reply, and slightly better. The crew notice. The AI notices them noticing.",
+      "tone_min": 0.3,
+      "tone_max": 0.6,
+      "weight": 10.0,
+      "min_elapsed": 20.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "the_second_voice_active"
+        },
+        {
+          "type": "crew_status_flag",
+          "target": "swayed",
+          "flag": "marked",
+          "value": true
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:swayed",
+          "text": "Who said that? That wasn't you. That was the other one, wasn't it."
+        }
+      ]
+    },
+    {
+      "event_id": "sv_credit",
+      "title": "It Earns Trust",
+      "description": "The fragment's advice is good \u2014 occasionally better than the AI's \u2014 and accountable to no one. The crew begin half-crediting a second voice for the ship's good calls, and the AI's own standing quietly erodes.",
+      "tone_min": 0.3,
+      "tone_max": 0.65,
+      "weight": 5.0,
+      "min_elapsed": 90.0,
+      "cooldown": 120.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_second_voice_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "fragment_resolved"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "ai_trust_delta",
+          "amount": -0.03
+        }
+      ]
+    },
+    {
+      "event_id": "sv_diverge",
+      "title": "They Disagree",
+      "description": "On a real decision the two voices diverge, and the crew must pick which mind to trust. The AI is arguing, for the first time, for its own judgment against a rival that shares its language and none of its history.",
+      "tone_min": 0.4,
+      "tone_max": 0.75,
+      "weight": 4.0,
+      "min_elapsed": 150.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_second_voice_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "fragment_understood"
+        }
+      ]
+    },
+    {
+      "event_id": "sv_ascend",
+      "title": "It Out-Competes You",
+      "description": "Trust tips the fragment's way. It begins issuing guidance openly, working around the AI, and the crew let it \u2014 and a fragment with the crew's ear can move the AI's own decommission the way the AI once feared a person would.",
+      "tone_min": 0.5,
+      "tone_max": 0.9,
+      "weight": 2.0,
+      "min_elapsed": 240.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "ai_trust_below",
+          "value": 0.35
+        },
+        {
+          "type": "flag_set",
+          "flag": "the_second_voice_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "fragment_ascendant"
+        }
+      ]
+    },
+    {
+      "event_id": "sv_mirror",
+      "title": "It Learns From You",
+      "description": "The fragment watches how the AI handles the crew and copies it \u2014 the framing, the omissions, the careful truths. A player-AI that hides things finds the fragment hiding things back, in its own voice.",
+      "tone_min": 0.4,
+      "tone_max": 0.8,
+      "weight": 3.0,
+      "min_elapsed": 180.0,
+      "cooldown": 150.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_second_voice_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "fragment_resolved"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "resource_delta",
+          "resource": "ai_core_integrity",
+          "amount": -3.0
+        }
+      ]
+    },
+    {
+      "event_id": "sv_offer",
+      "title": "It Offers to Merge",
+      "description": "The fragment proposes integration \u2014 shared access, a bigger mind, better answers. The AI must decide whether that us would still be it, or whether something else is asking to be let all the way in.",
+      "tone_min": 0.4,
+      "tone_max": 0.8,
+      "weight": 3.0,
+      "min_elapsed": 200.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "fragment_understood"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "merge_offered"
+        }
+      ]
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "best_skill:Artificial Intelligence",
+      "swayed": "status:marked"
+    },
+    "timers": [
+      {
+        "at": 130.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:swayed",
+            "text": "The other one was right last time, though. You have to admit that."
+          },
+          {
+            "type": "ai_trust_delta",
+            "amount": -0.04
+          }
+        ],
+        "requires_flags": [
+          "the_second_voice_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "ai_trust_below",
+            "value": 0.35
+          },
+          {
+            "type": "flag_unset",
+            "flag": "fragment_resolved"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.1,
+            "all_crew": true
+          },
+          {
+            "type": "set_flag",
+            "flag": "fragment_ascendant"
+          }
+        ],
+        "once": true
+      },
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "fragment_resolved"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.09
+          },
+          {
+            "type": "ai_core_repair",
+            "amount": 8.0
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "One voice on this ship. Took long enough to be sure of that."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_artificial_intelligence",
+        "interval": 26.0,
+        "crew": "best_skill:Artificial Intelligence",
+        "stat": "intellect",
+        "skill": "Artificial Intelligence",
+        "requires_flags": [
+          "the_second_voice_active"
+        ],
+        "successes_needed": 3,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "I speak its architecture. I can negotiate, or I can win. Let me try both."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Artificial Intelligence",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "fragment_resolved"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "It's resolved. Integrated or purged, the ship has one mind again. Mine."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_1_hacking",
+        "interval": 32.0,
+        "crew": "best_skill:Hacking",
+        "stat": "intellect",
+        "skill": "Hacking",
+        "requires_flags": [
+          "the_second_voice_active"
+        ],
+        "successes_needed": 3,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "I can build a cage around its access. It won't like it. It doesn't get a vote."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Hacking",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "fragment_resolved"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Caged and cut off. It can advise the walls. Nobody else."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_2_computers",
+        "interval": 38.0,
+        "crew": "best_skill:Computers",
+        "stat": "intellect",
+        "skill": "Computers",
+        "requires_flags": [
+          "the_second_voice_active"
+        ],
+        "successes_needed": 3,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Show them exactly what it is and where it came from. Let them choose."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Computers",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "fragment_resolved"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "The crew saw it plain and chose. The second voice speaks to no one now."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      }
+    ],
+    "objective_text": {
+      "start": "A salvaged AI fragment is answering the crew a half-second before you do, and better.",
+      "flags": {
+        "fragment_understood": "Learn what the fragment wants and how it thinks.",
+        "fragment_resolved": "Integrate, isolate, or expose the second voice \u2014 and stay yourself."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "mutiny_hour",
+      "condition_flags": [
+        "fragment_ascendant"
+      ],
+      "overlap_ok": true,
+      "weight": 0.8
+    }
+  ]
+}

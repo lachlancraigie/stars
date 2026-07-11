@@ -1,0 +1,456 @@
+{
+  "id": "spore_lung",
+  "title": "Spore Lung",
+  "pressure_axis": "bio",
+  "intensity": 3,
+  "contexts": [
+    "planet_orbit",
+    "away_return"
+  ],
+  "trigger_status": "infected",
+  "tone_start": 0.5,
+  "expected_length": 400.0,
+  "weight": 1.0,
+  "min_leg": 3,
+  "once_per_run": true,
+  "win_flags": [
+    "fungus_purged"
+  ],
+  "leg_delta_success": {
+    "ai_core_integrity": 8.0,
+    "battery_charge": 10.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -14.0,
+    "battery_charge": -12.0
+  },
+  "solves": [
+    {
+      "desc": "Map the fungus and find its kill temperature",
+      "skill": "Exobiology",
+      "stat": "intellect",
+      "items_help": [
+        "medscanner"
+      ]
+    },
+    {
+      "desc": "Synthesize an antifungal for the infected crew",
+      "skill": "Pharmacology",
+      "stat": "intellect",
+      "items_help": [
+        "med_kit"
+      ]
+    },
+    {
+      "desc": "Burn the primary growth out of the ducts",
+      "skill": "Explosives",
+      "stat": "intellect",
+      "items_help": [
+        "cutting_torch"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "sp_cough",
+      "title": "The Cough",
+      "description": "The whole survey team came back with the same dry cough. The AI's air scan reads it before the medic does: spores, viable, and already in the recycler intake.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 10.0,
+      "min_elapsed": 20.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "spore_lung_active"
+        },
+        {
+          "type": "crew_status_flag",
+          "target": "host",
+          "flag": "infected",
+          "value": true
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:host",
+          "text": "Can't shake this cough. Planet air, probably."
+        }
+      ]
+    },
+    {
+      "event_id": "sp_xray",
+      "title": "Roots on the Film",
+      "description": "Chest imaging shows fine filaments threading lung tissue. It isn't infecting the crew so much as gardening them, and the ship is the greenhouse it really wants.",
+      "tone_min": 0.3,
+      "tone_max": 0.65,
+      "weight": 5.0,
+      "min_elapsed": 110.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "spore_lung_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "fungus_mapped"
+        },
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.1,
+          "all_crew": true
+        }
+      ]
+    },
+    {
+      "event_id": "sp_ducts",
+      "title": "In the Ducts",
+      "description": "Warm condensate in the ventilation grows a grey fur. The colony has left its hosts and found the ship's own damp, dark, perfect places to spread.",
+      "tone_min": 0.4,
+      "tone_max": 0.8,
+      "weight": 4.0,
+      "min_elapsed": 170.0,
+      "cooldown": 150.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "spore_lung_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "fungus_purged"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.12,
+          "all_crew": true
+        },
+        {
+          "type": "resource_delta",
+          "resource": "battery_charge",
+          "amount": -5.0
+        }
+      ]
+    },
+    {
+      "event_id": "sp_fruit",
+      "title": "Fruiting",
+      "description": "The colony matures and releases. Every vent breathes out a fine haze, and the AI's life-support model tips from contamination into outright failure.",
+      "tone_min": 0.6,
+      "tone_max": 1.0,
+      "weight": 2.0,
+      "min_elapsed": 250.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "fungus_mapped"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "fungus_purged"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "fruiting_bodies"
+        }
+      ]
+    },
+    {
+      "event_id": "sp_triage",
+      "title": "Cold Ship",
+      "description": "One counter to the fungus is to run whole sections cold \u2014 which also means the crew huddle, work slows, and the AI's air budget gets brutal.",
+      "tone_min": 0.3,
+      "tone_max": 0.7,
+      "weight": 3.0,
+      "min_elapsed": 150.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "fungus_mapped"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "cold_protocol"
+        }
+      ]
+    },
+    {
+      "event_id": "sp_hostplea",
+      "title": "It's In Me",
+      "description": "An infected crew member, lucid and frightened, asks the AI whether they're still worth saving or whether the honest move is to seal them away for everyone else.",
+      "tone_min": 0.4,
+      "tone_max": 0.8,
+      "weight": 3.0,
+      "min_elapsed": 190.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "spore_lung_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "host_plea"
+        }
+      ]
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "best_skill:Exobiology",
+      "host": "status:infected"
+    },
+    "timers": [
+      {
+        "at": 130.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Chest films are grey. That's not pneumonia, that's roots."
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.12,
+            "all_crew": true
+          }
+        ],
+        "requires_flags": [
+          "spore_lung_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "fruiting_bodies"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "life_support_failure",
+            "source": "fungal_bloom"
+          },
+          {
+            "type": "spawn_intruder",
+            "intruder_type": "nest",
+            "room": "life_support"
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.28,
+            "all_crew": true
+          },
+          {
+            "type": "crew_status_flag",
+            "target": "all",
+            "flag": "infected",
+            "value": true
+          }
+        ],
+        "once": true
+      },
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "fungus_purged"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.08
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Air's clean. We breathe our own ship again."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_exobiology",
+        "interval": 26.0,
+        "crew": "best_skill:Exobiology",
+        "stat": "intellect",
+        "skill": "Exobiology",
+        "requires_flags": [
+          "spore_lung_active"
+        ],
+        "successes_needed": 3,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "It fruits above blood heat. Drop medbay cold and it stalls."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Exobiology",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "fungus_purged"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Cold-shocked and dead. It won't fruit at these temps."
+          }
+        ],
+        "item_tag": "medical_bonus",
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_1_pharmacology",
+        "interval": 32.0,
+        "crew": "best_skill:Pharmacology",
+        "stat": "intellect",
+        "skill": "Pharmacology",
+        "requires_flags": [
+          "spore_lung_active"
+        ],
+        "successes_needed": 3,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "I can brew a fungicide from ship stores. Rough, but it'll take."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Pharmacology",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "fungus_purged"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Hosts are clearing. The colony's dying in them."
+          }
+        ],
+        "item_tag": "medical_bonus",
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_2_explosives",
+        "interval": 38.0,
+        "crew": "best_skill:Explosives",
+        "stat": "intellect",
+        "skill": "Explosives",
+        "requires_flags": [
+          "spore_lung_active"
+        ],
+        "successes_needed": 3,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "The mother colony's in the recycler. Torch it and vent."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Explosives",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "fungus_purged"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Recycler's scorched clean. Root and all, gone."
+          }
+        ],
+        "item_tag": "door_bypass_bonus",
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      }
+    ],
+    "objective_text": {
+      "start": "A fungal load rode the survey team's lungs back aboard. It wants the whole ship warm and wet.",
+      "flags": {
+        "fungus_mapped": "Understand the fungus's fruiting trigger.",
+        "fungus_purged": "Purge the growth before it fruits ship-wide."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "the_nest",
+      "condition_flags": [
+        "fruiting_bodies"
+      ],
+      "overlap_ok": false,
+      "weight": 1.3
+    },
+    {
+      "to": "dead_air",
+      "condition_flags": [
+        "fruiting_bodies"
+      ],
+      "overlap_ok": true,
+      "weight": 0.8
+    }
+  ]
+}

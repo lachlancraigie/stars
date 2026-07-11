@@ -1,0 +1,443 @@
+{
+  "id": "deadweight",
+  "title": "Deadweight",
+  "pressure_axis": "mystery",
+  "intensity": 2,
+  "contexts": [
+    "aftermath",
+    "docked"
+  ],
+  "trigger_status": "",
+  "tone_start": 0.4,
+  "expected_length": 350.0,
+  "weight": 1.0,
+  "min_leg": 2,
+  "once_per_run": true,
+  "win_flags": [
+    "artifact_resolved"
+  ],
+  "leg_delta_success": {
+    "ai_core_integrity": 6.0,
+    "credits": 100.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -14.0
+  },
+  "solves": [
+    {
+      "desc": "Characterize the object's energy signature",
+      "skill": "Physics",
+      "stat": "intellect",
+      "items_help": []
+    },
+    {
+      "desc": "Interpret what the object is reaching for",
+      "skill": "Xenoesotericism",
+      "stat": "sanity",
+      "items_help": []
+    },
+    {
+      "desc": "Sever the object's link to the ship's systems",
+      "skill": "Computers",
+      "stat": "intellect",
+      "items_help": []
+    }
+  ],
+  "events": [
+    {
+      "event_id": "dw_drain",
+      "title": "Inventory Discrepancy",
+      "description": "A crate logged as inert salvage is drawing a trickle of power from whatever room holds it. The AI notices the phantom draw a full shift before the crew do \u2014 the old information asymmetry, played straight.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 10.0,
+      "min_elapsed": 15.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "deadweight_active"
+        },
+        {
+          "type": "resource_delta",
+          "resource": "battery_charge",
+          "amount": -3.0
+        },
+        {
+          "type": "set_flag",
+          "flag": "artifact_still_aboard"
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:lead",
+          "text": "That crate's pulling amps. Crates don't pull amps."
+        }
+      ]
+    },
+    {
+      "event_id": "dw_study",
+      "title": "Curiosity",
+      "description": "A crew member wants to study the object in place rather than report it. Each session costs the AI a little core integrity \u2014 the thing reads the ship back \u2014 and the investigator a Sanity Save's worth of unease.",
+      "tone_min": 0.3,
+      "tone_max": 0.6,
+      "weight": 5.0,
+      "min_elapsed": 90.0,
+      "cooldown": 140.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "deadweight_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "artifact_resolved"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "resource_delta",
+          "resource": "ai_core_integrity",
+          "amount": -4.0
+        },
+        {
+          "type": "crew_stress",
+          "target": "cast:curious",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "event_id": "dw_voice",
+      "title": "It Talks Back",
+      "description": "The object's murmurs begin appearing in diagnostic text the AI itself would normally generate. Either the AI is compromised, or it's pattern-matching noise into meaning \u2014 and it can't be sure which.",
+      "tone_min": 0.4,
+      "tone_max": 0.8,
+      "weight": 4.0,
+      "min_elapsed": 150.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "resource_below",
+          "resource": "ai_core_integrity",
+          "value": 90.0
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "artifact_spoke"
+        },
+        {
+          "type": "ai_trust_delta",
+          "amount": -0.03
+        }
+      ]
+    },
+    {
+      "event_id": "dw_deep",
+      "title": "It Reaches Deeper",
+      "description": "Left studied and unsealed, the object works its way further into the AI's substrate. Core integrity slides, and the line between the AI's thoughts and the thing's murmurs gets harder to find.",
+      "tone_min": 0.5,
+      "tone_max": 0.9,
+      "weight": 2.0,
+      "min_elapsed": 220.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "artifact_spoke"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "artifact_resolved"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "core_compromised"
+        }
+      ]
+    },
+    {
+      "event_id": "dw_seal",
+      "title": "Contain It",
+      "description": "The AI can order the cargo bay sealed \u2014 the same quarantine logic used on people, turned on an object. Contained, the object still hums, but it hums behind a door and off the network.",
+      "tone_min": 0.3,
+      "tone_max": 0.6,
+      "weight": 3.0,
+      "min_elapsed": 130.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "deadweight_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "artifact_understood"
+        }
+      ]
+    },
+    {
+      "event_id": "dw_report",
+      "title": "Tell the Captain, or Not",
+      "description": "Reporting the anomaly risks a frightened captain ordering it jettisoned \u2014 a fortune lost, the curious crew furious. Staying quiet is the AI making a call above its station, with its own quiet risk.",
+      "tone_min": 0.3,
+      "tone_max": 0.65,
+      "weight": 3.0,
+      "min_elapsed": 170.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "deadweight_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "report_dilemma"
+        }
+      ]
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "best_skill:Physics",
+      "curious": "random"
+    },
+    "timers": [
+      {
+        "at": 120.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "The diagnostic log's writing itself. In a voice that sounds like the ship's."
+          },
+          {
+            "type": "resource_delta",
+            "resource": "ai_core_integrity",
+            "amount": -3.0
+          }
+        ],
+        "requires_flags": [
+          "deadweight_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "resource_below",
+            "resource": "ai_core_integrity",
+            "value": 60.0
+          },
+          {
+            "type": "flag_unset",
+            "flag": "artifact_resolved"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.12,
+            "all_crew": true
+          },
+          {
+            "type": "set_flag",
+            "flag": "core_compromised"
+          }
+        ],
+        "once": true
+      },
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "artifact_resolved"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.05
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "It's contained. Whatever it wanted, it doesn't get it from us."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_physics",
+        "interval": 26.0,
+        "crew": "best_skill:Physics",
+        "stat": "intellect",
+        "skill": "Physics",
+        "requires_flags": [
+          "deadweight_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "It's drawing power into a field I can almost map. Almost."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Physics",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "artifact_resolved"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Field's characterized and damped. It's just a heavy box now."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_1_xenoesotericism",
+        "interval": 32.0,
+        "crew": "best_skill:Xenoesotericism",
+        "stat": "sanity",
+        "skill": "Xenoesotericism",
+        "requires_flags": [
+          "deadweight_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "It's not malfunctioning. It's listening. I can tell it we're not answering."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Xenoesotericism",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "artifact_resolved"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "I closed the door it was knocking on. It's gone quiet for good."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_2_computers",
+        "interval": 38.0,
+        "crew": "best_skill:Computers",
+        "stat": "intellect",
+        "skill": "Computers",
+        "requires_flags": [
+          "deadweight_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "It's talking to the diagnostic bus. Airgap the crate and it goes deaf."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Computers",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "artifact_resolved"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Airgapped and sealed. It can murmur all it likes. Nobody's listening."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      }
+    ],
+    "objective_text": {
+      "start": "A crate logged as inert draws power, eats at the AI's core, and murmurs in the AI's own voice.",
+      "flags": {
+        "artifact_understood": "Work out what the object is doing to the ship and the AI.",
+        "artifact_resolved": "Contain the object or finish studying it, but end its hold."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "the_second_voice",
+      "condition_flags": [
+        "artifact_still_aboard"
+      ],
+      "overlap_ok": false,
+      "weight": 1.1
+    },
+    {
+      "to": "the_second_voice",
+      "condition_flags": [
+        "core_compromised"
+      ],
+      "overlap_ok": true,
+      "weight": 0.8
+    }
+  ]
+}

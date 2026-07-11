@@ -1,0 +1,433 @@
+{
+  "id": "bloom",
+  "title": "Bloom",
+  "pressure_axis": "bio",
+  "intensity": 2,
+  "contexts": [
+    "planet_orbit",
+    "away_return"
+  ],
+  "trigger_status": "",
+  "tone_start": 0.35,
+  "expected_length": 280.0,
+  "weight": 1.0,
+  "min_leg": 2,
+  "once_per_run": true,
+  "win_flags": [
+    "bloom_contained"
+  ],
+  "leg_delta_success": {
+    "ai_core_integrity": 4.0,
+    "credits": 80.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -10.0
+  },
+  "solves": [
+    {
+      "desc": "Identify the plant's growth cycle and interrupt it",
+      "skill": "Botany",
+      "stat": "intellect",
+      "items_help": []
+    },
+    {
+      "desc": "Model the spread and cut off its nutrient path",
+      "skill": "Ecology",
+      "stat": "intellect",
+      "items_help": []
+    },
+    {
+      "desc": "Burn it back at the source",
+      "skill": "Explosives",
+      "stat": "intellect",
+      "items_help": [
+        "cutting_torch"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "bl_spore",
+      "title": "Green on the Hull Cam",
+      "description": "A cargo-bay camera shows a fuzz of growth spreading across a survey crate, doubling every time the AI blinks. It wasn't there an hour ago.",
+      "tone_min": 0.1,
+      "tone_max": 0.4,
+      "weight": 10.0,
+      "min_elapsed": 15.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "bloom_active"
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:lead",
+          "text": "That crate's furry. Since when is a crate furry?"
+        }
+      ]
+    },
+    {
+      "event_id": "bl_pollen",
+      "title": "Pollen Count",
+      "description": "Air filters clog a shift early. The particulate the AI scrubs out is unmistakably biological, and unmistakably not from anywhere on the ship's own manifest.",
+      "tone_min": 0.2,
+      "tone_max": 0.6,
+      "weight": 5.0,
+      "min_elapsed": 90.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "bloom_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "filters_fouling"
+        },
+        {
+          "type": "resource_delta",
+          "resource": "battery_charge",
+          "amount": -4.0
+        },
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.06,
+          "all_crew": true
+        }
+      ]
+    },
+    {
+      "event_id": "bl_creep",
+      "title": "It's in the Corridor",
+      "description": "Tendrils reach past the cargo seal into the corridor grating. Slow, patient, and heading toward the warm damp air of the life-support room.",
+      "tone_min": 0.3,
+      "tone_max": 0.7,
+      "weight": 4.0,
+      "min_elapsed": 150.0,
+      "cooldown": 120.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "filters_fouling"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "bloom_contained"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.1,
+          "all_crew": true
+        },
+        {
+          "type": "resource_delta",
+          "resource": "ai_core_integrity",
+          "amount": -2.0
+        }
+      ]
+    },
+    {
+      "event_id": "bl_airborne",
+      "title": "Airborne",
+      "description": "The growth fruits. A haze of spores enters the recycler intake, and life support becomes a distribution network for whatever this is.",
+      "tone_min": 0.5,
+      "tone_max": 0.9,
+      "weight": 2.0,
+      "min_elapsed": 210.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "filters_fouling"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "bloom_contained"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "spores_airborne"
+        }
+      ]
+    },
+    {
+      "event_id": "bl_sample",
+      "title": "Worth Money",
+      "description": "The scientist argues the bloom is a first-contact sample worth more than the whole cargo run. Every hour it lives is data \u2014 and risk.",
+      "tone_min": 0.1,
+      "tone_max": 0.5,
+      "weight": 3.0,
+      "min_elapsed": 120.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "bloom_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "sample_debate"
+        }
+      ]
+    },
+    {
+      "event_id": "bl_seal",
+      "title": "Cargo Sealed",
+      "description": "The affected bay is locked and its air isolated. The bloom keeps growing, but now it grows in a box the AI controls.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 3.0,
+      "min_elapsed": 70.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "bloom_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "bloom_boxed"
+        }
+      ]
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "best_skill:Botany"
+    },
+    "timers": [
+      {
+        "at": 100.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "It's growing while we talk. Move."
+          },
+          {
+            "type": "resource_delta",
+            "resource": "battery_charge",
+            "amount": -5.0
+          }
+        ],
+        "requires_flags": [
+          "bloom_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "spores_airborne"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "life_support_failure",
+            "source": "spore_load"
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.18,
+            "all_crew": true
+          },
+          {
+            "type": "crew_status_flag",
+            "target": "all",
+            "flag": "infected",
+            "value": true
+          }
+        ],
+        "once": true
+      },
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "bloom_contained"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.05
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Sealed and sampled. Might even be worth something."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_botany",
+        "interval": 26.0,
+        "crew": "best_skill:Botany",
+        "stat": "intellect",
+        "skill": "Botany",
+        "requires_flags": [
+          "bloom_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "It fruits on a light cycle. Kill the grow-lamps in cargo."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Botany",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "bloom_contained"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Cycle's broken. It's just dead salad now."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_1_ecology",
+        "interval": 32.0,
+        "crew": "best_skill:Ecology",
+        "stat": "intellect",
+        "skill": "Ecology",
+        "requires_flags": [
+          "bloom_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "It's eating the algae vats. Starve it and it folds."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Ecology",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "bloom_contained"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Starved out. The vats are ours again."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_2_explosives",
+        "interval": 38.0,
+        "crew": "best_skill:Explosives",
+        "stat": "intellect",
+        "skill": "Explosives",
+        "requires_flags": [
+          "bloom_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Give me a torch and thirty seconds. I'll cauterize it."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Explosives",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "bloom_contained"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Scorched to the deck plate. Nothing left to bloom."
+          }
+        ],
+        "item_tag": "door_bypass_bonus",
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      }
+    ],
+    "objective_text": {
+      "start": "The survey team tracked something green back through the airlock.",
+      "flags": {
+        "bloom_contained": "Purge the growth before it seeds the recyclers."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "spore_lung",
+      "condition_flags": [
+        "spores_airborne"
+      ],
+      "overlap_ok": false,
+      "weight": 1.2
+    }
+  ]
+}

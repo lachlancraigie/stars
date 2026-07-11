@@ -1,0 +1,374 @@
+{
+  "id": "close_quarters",
+  "title": "Close Quarters",
+  "pressure_axis": "social",
+  "intensity": 2,
+  "contexts": [
+    "any",
+    "transit"
+  ],
+  "trigger_status": "",
+  "tone_start": 0.25,
+  "expected_length": 360.0,
+  "weight": 1.0,
+  "min_leg": 2,
+  "once_per_run": true,
+  "win_flags": [
+    "crew_reconciled"
+  ],
+  "leg_delta_success": {
+    "ai_core_integrity": 5.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -8.0
+  },
+  "solves": [
+    {
+      "desc": "Defuse the resentment with the right private word",
+      "skill": "Psychology",
+      "stat": "sanity",
+      "items_help": []
+    },
+    {
+      "desc": "Hold the roster and the peace by command authority",
+      "skill": "Command",
+      "stat": "intellect",
+      "items_help": []
+    }
+  ],
+  "events": [
+    {
+      "event_id": "cq_reject",
+      "title": "The Ask, Refused",
+      "description": "Two crew members have a failed romantic beat in the mess, quiet and awful and witnessed by everyone. The AI logs it because the AI logs everything, and now the AI is holding it.",
+      "tone_min": 0.15,
+      "tone_max": 0.4,
+      "weight": 10.0,
+      "min_elapsed": 20.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "close_quarters_active"
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:spurned",
+          "text": "Forget I said anything. Forget the whole thing."
+        }
+      ]
+    },
+    {
+      "event_id": "cq_freeze",
+      "title": "The Freeze",
+      "description": "The rejected party routes their hurt through the duty roster, refusing every task that puts them near the other person. The AI is asked to reshuffle the ship around a broken heart.",
+      "tone_min": 0.15,
+      "tone_max": 0.45,
+      "weight": 5.0,
+      "min_elapsed": 90.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "close_quarters_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "reassignment_requested"
+        },
+        {
+          "type": "crew_stress",
+          "target": "cast:spurned",
+          "amount": 2
+        }
+      ]
+    },
+    {
+      "event_id": "cq_sides",
+      "title": "Taking Sides",
+      "description": "The rest of the crew form opinions, then camps. Someone asks the AI, point-blank, which of the two is being reasonable \u2014 a question with no honest answer that keeps everyone.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 4.0,
+      "min_elapsed": 150.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "reassignment_requested"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "sides_forming"
+        },
+        {
+          "type": "ai_trust_delta",
+          "amount": -0.03
+        }
+      ]
+    },
+    {
+      "event_id": "cq_private",
+      "title": "What Did They Say",
+      "description": "One party demands the AI disclose what the other said in private. Full truth is a betrayal, refusal is an insult, and a reframe is the AI spending trust it may want later.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 4.0,
+      "min_elapsed": 180.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "sides_forming"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "privacy_dilemma"
+        }
+      ]
+    },
+    {
+      "event_id": "cq_spiral",
+      "title": "A Vote in the Air",
+      "description": "With the crew split and trust thin, someone mutters about whether the AI has been fair \u2014 and on this ship, that mutter is one step from the decommission the AI can't survive.",
+      "tone_min": 0.25,
+      "tone_max": 0.55,
+      "weight": 2.0,
+      "min_elapsed": 240.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "ai_trust_below",
+          "value": 0.4
+        },
+        {
+          "type": "flag_set",
+          "flag": "sides_forming"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "mutiny_risk"
+        },
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.05,
+          "all_crew": true
+        }
+      ]
+    },
+    {
+      "event_id": "cq_window",
+      "title": "The Right Moment",
+      "description": "There is a moment \u2014 a shared shift, a small crisis survived together \u2014 when the AI can surface one honest thing at exactly the right time and let two people remember they're crew.",
+      "tone_min": 0.1,
+      "tone_max": 0.3,
+      "weight": 3.0,
+      "min_elapsed": 200.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "sides_forming"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "reconcile_window"
+        }
+      ]
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "role:captain",
+      "spurned": "random",
+      "object": "random"
+    },
+    "timers": [
+      {
+        "at": 130.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:spurned",
+            "text": "I'm not working the same shift as them. Don't ask me to."
+          },
+          {
+            "type": "ai_trust_delta",
+            "amount": -0.02
+          }
+        ],
+        "requires_flags": [
+          "close_quarters_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "ai_trust_below",
+            "value": 0.4
+          },
+          {
+            "type": "flag_set",
+            "flag": "sides_forming"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.06,
+            "all_crew": true
+          },
+          {
+            "type": "set_flag",
+            "flag": "mutiny_risk"
+          }
+        ],
+        "once": true
+      },
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "crew_reconciled"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.06
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Good crew. They just needed someone to not take a side."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_psychology",
+        "interval": 26.0,
+        "crew": "best_skill:Psychology",
+        "stat": "sanity",
+        "skill": "Psychology",
+        "requires_flags": [
+          "close_quarters_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "They just need to feel heard. I can pick the moment."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Psychology",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "crew_reconciled"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "They talked. Actually talked. It's not fixed, but it's mending."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_1_command",
+        "interval": 32.0,
+        "crew": "best_skill:Command",
+        "stat": "intellect",
+        "skill": "Command",
+        "requires_flags": [
+          "close_quarters_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "I'll reassign duties so nobody has to pretend. Firm and fair."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Command",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "crew_reconciled"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Duty stations settled. Nobody's forced together. Tension's off the boil."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      }
+    ],
+    "objective_text": {
+      "start": "A rejected advance is curdling into a feud, and every grievance routes through the AI.",
+      "flags": {
+        "sides_forming": "The crew are choosing camps. Keep it from hardening.",
+        "crew_reconciled": "Mend the rift, or let a healthy ship tear itself in half."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "mutiny_hour",
+      "condition_flags": [
+        "mutiny_risk"
+      ],
+      "overlap_ok": false,
+      "weight": 1.2
+    }
+  ]
+}

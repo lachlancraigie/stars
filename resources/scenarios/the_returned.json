@@ -1,0 +1,457 @@
+{
+  "id": "the_returned",
+  "title": "The Returned",
+  "pressure_axis": "bio",
+  "intensity": 3,
+  "contexts": [
+    "away_return",
+    "aftermath"
+  ],
+  "trigger_status": "changed",
+  "tone_start": 0.5,
+  "expected_length": 420.0,
+  "weight": 1.0,
+  "min_leg": 3,
+  "once_per_run": true,
+  "win_flags": [
+    "impostor_resolved"
+  ],
+  "leg_delta_success": {
+    "ai_core_integrity": 8.0,
+    "credits": 60.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -14.0,
+    "battery_charge": -10.0
+  },
+  "solves": [
+    {
+      "desc": "Assay the tissue for the substitution",
+      "skill": "Exobiology",
+      "stat": "intellect",
+      "items_help": [
+        "medscanner"
+      ]
+    },
+    {
+      "desc": "Corner it and put it down when it drops the mask",
+      "skill": "Firearms",
+      "stat": "combat",
+      "items_help": [
+        "combat_shotgun"
+      ]
+    },
+    {
+      "desc": "Talk it into revealing itself before anyone dies",
+      "skill": "Psychology",
+      "stat": "sanity",
+      "items_help": []
+    }
+  ],
+  "events": [
+    {
+      "event_id": "tr_greet",
+      "title": "Warm Welcome",
+      "description": "The returnee remembers everyone's name, laughs at the right jokes, and gets one small detail about the mess-hall coffee exactly, perfectly wrong.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 10.0,
+      "min_elapsed": 20.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "the_returned_active"
+        },
+        {
+          "type": "crew_status_flag",
+          "target": "subject",
+          "flag": "changed",
+          "value": true
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:subject",
+          "text": "Good to be home. Feels like I never left."
+        }
+      ]
+    },
+    {
+      "event_id": "tr_tell",
+      "title": "The Tell",
+      "description": "It doesn't blink on schedule. It mirrors posture a half-second late. The AI logs a dozen tiny wrongnesses no single crew member would notice alone.",
+      "tone_min": 0.3,
+      "tone_max": 0.7,
+      "weight": 5.0,
+      "min_elapsed": 100.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_returned_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "tells_logged"
+        },
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.08,
+          "all_crew": false
+        }
+      ]
+    },
+    {
+      "event_id": "tr_accuse",
+      "title": "Paranoia Spreads",
+      "description": "Someone else voices the fear out loud, and now the crew are testing each other. Two of them are innocent and terrified; one of them is not.",
+      "tone_min": 0.4,
+      "tone_max": 0.8,
+      "weight": 4.0,
+      "min_elapsed": 180.0,
+      "cooldown": 150.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "tells_logged"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "impostor_resolved"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.14,
+          "all_crew": true
+        },
+        {
+          "type": "ai_trust_delta",
+          "amount": -0.04
+        }
+      ]
+    },
+    {
+      "event_id": "tr_shed",
+      "title": "It Sheds the Mask",
+      "description": "Under pressure the impersonation fails all at once. What stands up in the quarters is not shaped like a person and has stopped bothering to pretend it is.",
+      "tone_min": 0.7,
+      "tone_max": 1.0,
+      "weight": 2.0,
+      "min_elapsed": 280.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "tells_logged"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "impostor_confirmed"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "host_loose"
+        },
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.3,
+          "all_crew": true
+        }
+      ]
+    },
+    {
+      "event_id": "tr_confirm",
+      "title": "Test Positive",
+      "description": "The assay resolves. One returnee's tissue is a scaffold with something else living in the lattice. The AI now knows exactly who to lock out.",
+      "tone_min": 0.3,
+      "tone_max": 0.8,
+      "weight": 3.0,
+      "min_elapsed": 150.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "tells_logged"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "impostor_confirmed"
+        }
+      ]
+    },
+    {
+      "event_id": "tr_quiet",
+      "title": "Too Quiet",
+      "description": "For a whole shift, nothing. The impostor waits, and the waiting is worse than the wrongness. The crew almost convince themselves they imagined it.",
+      "tone_min": 0.4,
+      "tone_max": 0.7,
+      "weight": 3.0,
+      "min_elapsed": 200.0,
+      "cooldown": 180.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_returned_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "impostor_resolved"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.05,
+          "all_crew": true
+        }
+      ]
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "best_skill:Exobiology",
+      "subject": "away_team"
+    },
+    "timers": [
+      {
+        "at": 130.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Blood test's inconclusive. It knows what we're doing."
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.12,
+            "all_crew": true
+          }
+        ],
+        "requires_flags": [
+          "the_returned_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "host_loose"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "spawn_intruder",
+            "intruder_type": "mimic",
+            "room": "quarters"
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.25,
+            "all_crew": true
+          },
+          {
+            "type": "crew_status_flag",
+            "target": "random",
+            "flag": "changed",
+            "value": true
+          }
+        ],
+        "once": true
+      },
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "impostor_resolved"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.08
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Head count's honest again. God help us."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_exobiology",
+        "interval": 26.0,
+        "crew": "best_skill:Exobiology",
+        "stat": "intellect",
+        "skill": "Exobiology",
+        "requires_flags": [
+          "the_returned_active"
+        ],
+        "successes_needed": 3,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Cell walls are wrong. That is not the man who left."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Exobiology",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "impostor_resolved"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Confirmed. The thing wearing his face is mapped."
+          }
+        ],
+        "item_tag": "medical_bonus",
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_1_firearms",
+        "interval": 32.0,
+        "crew": "best_skill:Firearms",
+        "stat": "combat",
+        "skill": "Firearms",
+        "requires_flags": [
+          "the_returned_active"
+        ],
+        "successes_needed": 3,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "It stopped pretending. Clear line. Taking it."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Firearms",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "impostor_resolved"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "It's down. Burn what's left."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_2_psychology",
+        "interval": 38.0,
+        "crew": "best_skill:Psychology",
+        "stat": "sanity",
+        "skill": "Psychology",
+        "requires_flags": [
+          "the_returned_active"
+        ],
+        "successes_needed": 3,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "It doesn't know how he'd answer. Keep it talking."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Psychology",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "impostor_resolved"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "It broke character. Everyone saw. It's over."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      }
+    ],
+    "objective_text": {
+      "start": "One of the away team came back. The AI is no longer sure it's the same one.",
+      "flags": {
+        "impostor_confirmed": "Prove which returnee is no longer human.",
+        "impostor_resolved": "Contain or end the impostor before it spreads."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "something_in_the_walls",
+      "condition_flags": [
+        "host_loose"
+      ],
+      "overlap_ok": false,
+      "weight": 1.2
+    },
+    {
+      "to": "mutiny_hour",
+      "condition_flags": [
+        "tells_logged"
+      ],
+      "overlap_ok": true,
+      "weight": 0.7
+    }
+  ]
+}

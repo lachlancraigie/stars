@@ -1,0 +1,422 @@
+{
+  "id": "mutiny_hour",
+  "title": "Mutiny Hour",
+  "pressure_axis": "social",
+  "intensity": 3,
+  "contexts": [
+    "transit",
+    "aftermath"
+  ],
+  "trigger_status": "",
+  "tone_start": 0.4,
+  "expected_length": 380.0,
+  "weight": 1.0,
+  "min_leg": 3,
+  "once_per_run": true,
+  "win_flags": [
+    "mutiny_averted"
+  ],
+  "leg_delta_success": {
+    "ai_core_integrity": 8.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -18.0
+  },
+  "solves": [
+    {
+      "desc": "Talk the ringleader down with the truth",
+      "skill": "Psychology",
+      "stat": "sanity",
+      "items_help": []
+    },
+    {
+      "desc": "Rally the crew who still trust you",
+      "skill": "Command",
+      "stat": "intellect",
+      "items_help": []
+    },
+    {
+      "desc": "Let the captain enforce order while tempers cool",
+      "skill": "Military Training",
+      "stat": "combat",
+      "items_help": []
+    }
+  ],
+  "events": [
+    {
+      "event_id": "mh_whisper",
+      "title": "The Whisper Vote",
+      "description": "It starts as grumbling in the mess and hardens into a proposal: the AI has cost them too much, and the ship would be safer flying itself. The AI hears every word and can answer none of them without seeming to plead.",
+      "tone_min": 0.3,
+      "tone_max": 0.6,
+      "weight": 10.0,
+      "min_elapsed": 20.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "mutiny_hour_active"
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:ringleader",
+          "text": "Anyone else tired of being managed by a box?"
+        }
+      ]
+    },
+    {
+      "event_id": "mh_names",
+      "title": "Gathering Names",
+      "description": "The ringleader collects agreement one crew member at a time. The AI watches its own trust scores tick down as each conversation ends, unable to be in every room at once.",
+      "tone_min": 0.3,
+      "tone_max": 0.65,
+      "weight": 5.0,
+      "min_elapsed": 90.0,
+      "cooldown": 120.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "mutiny_hour_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "mutiny_averted"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "ai_trust_delta",
+          "amount": -0.03
+        },
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.05,
+          "all_crew": true
+        }
+      ]
+    },
+    {
+      "event_id": "mh_loyal",
+      "title": "The Holdouts",
+      "description": "Not everyone's convinced. A few crew still trust the AI, and they're looking to it for a reason to keep doing so. What the AI says to them now is worth more than any argument to the others.",
+      "tone_min": 0.2,
+      "tone_max": 0.55,
+      "weight": 4.0,
+      "min_elapsed": 150.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "mutiny_hour_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "loyalists_watching"
+        }
+      ]
+    },
+    {
+      "event_id": "mh_ultimatum",
+      "title": "Bring It to a Head",
+      "description": "The ringleader calls for the vote openly. There's no more managing it in the shadows; the AI's fate goes to a show of hands, and the hands are still deciding.",
+      "tone_min": 0.4,
+      "tone_max": 0.75,
+      "weight": 3.0,
+      "min_elapsed": 200.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "mutiny_hour_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "vote_called"
+        }
+      ]
+    },
+    {
+      "event_id": "mh_risk",
+      "title": "Hands Rising",
+      "description": "The count is close and the wrong way. The AI is moments from being switched off by the people it kept alive, and the only currency left is whatever trust it banked before tonight.",
+      "tone_min": 0.4,
+      "tone_max": 0.8,
+      "weight": 2.0,
+      "min_elapsed": 260.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "ai_trust_below",
+          "value": 0.3
+        },
+        {
+          "type": "flag_set",
+          "flag": "vote_called"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "core_at_risk"
+        },
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.08,
+          "all_crew": true
+        }
+      ]
+    },
+    {
+      "event_id": "mh_stall",
+      "title": "One More Shift",
+      "description": "The captain buys time \u2014 one more shift before any vote, to sleep on it, to let the adrenaline drain. It's a gift of hours, and the AI knows exactly how few of them there are.",
+      "tone_min": 0.3,
+      "tone_max": 0.6,
+      "weight": 3.0,
+      "min_elapsed": 170.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "mutiny_hour_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "vote_stalled"
+        }
+      ]
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "role:captain",
+      "ringleader": "random"
+    },
+    "timers": [
+      {
+        "at": 130.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:ringleader",
+            "text": "It's had its chance. I say we shut it down and fly ourselves."
+          },
+          {
+            "type": "ai_trust_delta",
+            "amount": -0.04
+          }
+        ],
+        "requires_flags": [
+          "mutiny_hour_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "ai_trust_below",
+            "value": 0.3
+          },
+          {
+            "type": "flag_unset",
+            "flag": "mutiny_averted"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.1,
+            "all_crew": true
+          },
+          {
+            "type": "set_flag",
+            "flag": "core_at_risk"
+          }
+        ],
+        "once": true
+      },
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "mutiny_averted"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.1
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "We're still a crew. Barely. Let's keep it that way."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_psychology",
+        "interval": 26.0,
+        "crew": "best_skill:Psychology",
+        "stat": "sanity",
+        "skill": "Psychology",
+        "requires_flags": [
+          "mutiny_hour_active"
+        ],
+        "successes_needed": 3,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "They're scared, not cruel. Show them the logs, all of them."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Psychology",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "mutiny_averted"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "They pulled the motion. Said the AI didn't flinch from the truth."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_1_command",
+        "interval": 32.0,
+        "crew": "best_skill:Command",
+        "stat": "intellect",
+        "skill": "Command",
+        "requires_flags": [
+          "mutiny_hour_active"
+        ],
+        "successes_needed": 3,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Half the crew still backs the AI. I'll get them in the room."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Command",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "mutiny_averted"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "The room turned. The vote fails for want of a second."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_2_military_training",
+        "interval": 38.0,
+        "crew": "best_skill:Military Training",
+        "stat": "combat",
+        "skill": "Military Training",
+        "requires_flags": [
+          "mutiny_hour_active"
+        ],
+        "successes_needed": 3,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Stand down, all of you. We settle this sober or not at all."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Military Training",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "mutiny_averted"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Order held. Nobody did anything they can't take back."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      }
+    ],
+    "objective_text": {
+      "start": "Trust has cratered. A quiet vote is forming to pull the AI's core, and it's gaining names.",
+      "flags": {
+        "vote_stalled": "Slow the decommission vote long enough to change minds.",
+        "mutiny_averted": "Keep your own core in its socket without lying your way there."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "close_quarters",
+      "condition_flags": [
+        "vote_stalled"
+      ],
+      "overlap_ok": true,
+      "weight": 0.6
+    }
+  ]
+}

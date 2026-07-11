@@ -1,0 +1,399 @@
+{
+  "id": "friendly_fire",
+  "title": "Friendly Fire",
+  "pressure_axis": "combat",
+  "intensity": 1,
+  "contexts": [
+    "aftermath",
+    "any"
+  ],
+  "trigger_status": "shaken",
+  "tone_start": 0.35,
+  "expected_length": 230.0,
+  "weight": 1.0,
+  "min_leg": 1,
+  "once_per_run": false,
+  "win_flags": [
+    "stood_down"
+  ],
+  "leg_delta_success": {
+    "ai_core_integrity": 3.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -10.0
+  },
+  "solves": [
+    {
+      "desc": "Talk them back from the edge",
+      "skill": "Psychology",
+      "stat": "sanity",
+      "items_help": []
+    },
+    {
+      "desc": "Restore order with steady authority",
+      "skill": "Command",
+      "stat": "intellect",
+      "items_help": []
+    },
+    {
+      "desc": "Take the weapon by hand if it comes to it",
+      "skill": "Hand-to-Hand Combat",
+      "stat": "combat",
+      "items_help": []
+    }
+  ],
+  "events": [
+    {
+      "event_id": "ff_armed",
+      "title": "A Shaking Hand",
+      "description": "A crew member who came back from the last leg shaken has drawn a weapon in the mess, sure that something followed them home. The AI logs a rising heart rate and a room full of people between them and the door.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 10.0,
+      "min_elapsed": 15.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "friendly_fire_active"
+        },
+        {
+          "type": "crew_status_flag",
+          "target": "rattled",
+          "flag": "shaken",
+          "value": true
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:rattled",
+          "text": "It's here. On the ship. I can feel it watching."
+        }
+      ]
+    },
+    {
+      "event_id": "ff_escalate",
+      "title": "Wound Tight",
+      "description": "Every reassurance lands wrong. The crew's attempts to calm their shipmate read, to a panicking mind, as the thing wearing familiar faces. The barrel tracks whoever moves.",
+      "tone_min": 0.3,
+      "tone_max": 0.6,
+      "weight": 5.0,
+      "min_elapsed": 70.0,
+      "cooldown": 90.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "friendly_fire_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "stood_down"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.08,
+          "all_crew": true
+        },
+        {
+          "type": "crew_stress",
+          "target": "random",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "event_id": "ff_crowd",
+      "title": "Too Many People",
+      "description": "The mess is crowded and the crowd is the problem. The AI can clear the room by locking doors and rerouting traffic, giving the standoff the one thing it needs: space and quiet.",
+      "tone_min": 0.3,
+      "tone_max": 0.6,
+      "weight": 4.0,
+      "min_elapsed": 100.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "friendly_fire_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "room_clearing"
+        }
+      ]
+    },
+    {
+      "event_id": "ff_shot",
+      "title": "It Goes Off",
+      "description": "A dropped tray, a flinch, a spasm on the trigger. The shot is loud in the small room, and for one terrible second nobody knows who it hit or whether it hit anyone at all.",
+      "tone_min": 0.4,
+      "tone_max": 0.8,
+      "weight": 2.0,
+      "min_elapsed": 150.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "friendly_fire_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "stood_down"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "shot_fired"
+        }
+      ]
+    },
+    {
+      "event_id": "ff_name",
+      "title": "Use Their Name",
+      "description": "The AI can speak to the rattled crew member directly, in the calm voice it has never needed to be told to use. A name, a fact, a shared memory \u2014 anything to reach the person under the panic.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 3.0,
+      "min_elapsed": 90.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "friendly_fire_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "reaching_them"
+        }
+      ]
+    },
+    {
+      "event_id": "ff_calm",
+      "title": "The Shaking Slows",
+      "description": "Given room and a steady voice, the crew member's grip loosens by degrees. The AI watches the vital signs come down out of the red and does not, for once, say anything at all.",
+      "tone_min": 0.2,
+      "tone_max": 0.45,
+      "weight": 3.0,
+      "min_elapsed": 120.0,
+      "cooldown": 100.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "room_clearing"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "stood_down"
+        }
+      ],
+      "outcomes": []
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "role:captain",
+      "rattled": "status:shaken"
+    },
+    "timers": [
+      {
+        "at": 85.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:rattled",
+            "text": "Stay back. I mean it. I don't know what's real right now."
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.1,
+            "all_crew": true
+          }
+        ],
+        "requires_flags": [
+          "friendly_fire_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "shot_fired"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "crew_injury",
+            "target": "random",
+            "severity": "serious"
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.2,
+            "all_crew": true
+          }
+        ],
+        "once": true
+      },
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "stood_down"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.04
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Nobody got hurt. Get them to the medic and get that gun in a locker."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_psychology",
+        "interval": 26.0,
+        "crew": "best_skill:Psychology",
+        "stat": "sanity",
+        "skill": "Psychology",
+        "requires_flags": [
+          "friendly_fire_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Low and slow. Use their name. Get them to set it down themselves."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Psychology",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "stood_down"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "They put the gun on the deck. Then they put their hands over their face."
+          }
+        ]
+      },
+      {
+        "id": "solve_1_command",
+        "interval": 32.0,
+        "crew": "best_skill:Command",
+        "stat": "intellect",
+        "skill": "Command",
+        "requires_flags": [
+          "friendly_fire_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Everyone else out. Just me and them and a quiet room."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Command",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "stood_down"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Order held. Nobody flinched at the wrong second. Weapon's secured."
+          }
+        ]
+      },
+      {
+        "id": "solve_2_hand_to_hand_combat",
+        "interval": 38.0,
+        "crew": "best_skill:Hand-to-Hand Combat",
+        "stat": "combat",
+        "skill": "Hand-to-Hand Combat",
+        "requires_flags": [
+          "friendly_fire_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "If the barrel drifts, I take it. Fast, clean, no drama."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Hand-to-Hand Combat",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "stood_down"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Disarmed them before it went off. Bruises heal. Bullets don't."
+          }
+        ]
+      }
+    ],
+    "objective_text": {
+      "start": "A rattled crew member is armed, jumpy, and one loud noise away from shooting a shipmate.",
+      "flags": {
+        "stood_down": "Talk the gun down before it goes off in the wrong direction."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "blame",
+      "condition_flags": [
+        "shot_fired"
+      ],
+      "overlap_ok": true,
+      "weight": 0.8
+    }
+  ]
+}

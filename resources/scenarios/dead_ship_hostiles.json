@@ -1,0 +1,435 @@
+{
+  "id": "dead_ship_hostiles",
+  "title": "Dead Ship, Live Teeth",
+  "pressure_axis": "combat",
+  "intensity": 2,
+  "contexts": [
+    "derelict",
+    "docked"
+  ],
+  "trigger_status": "",
+  "tone_start": 0.5,
+  "expected_length": 360.0,
+  "weight": 1.0,
+  "min_leg": 2,
+  "once_per_run": true,
+  "win_flags": [
+    "derelict_survived"
+  ],
+  "leg_delta_success": {
+    "ai_core_integrity": 6.0,
+    "credits": 150.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -14.0
+  },
+  "solves": [
+    {
+      "desc": "Fight through the hostiles to the airlock",
+      "skill": "Firearms",
+      "stat": "combat",
+      "items_help": [
+        "combat_shotgun"
+      ]
+    },
+    {
+      "desc": "Cut a way out with a boarding axe",
+      "skill": "Hand-to-Hand Combat",
+      "stat": "combat",
+      "items_help": [
+        "boarding_axe"
+      ]
+    },
+    {
+      "desc": "Lead the fighting retreat by the book",
+      "skill": "Military Training",
+      "stat": "combat",
+      "items_help": []
+    }
+  ],
+  "events": [
+    {
+      "event_id": "ds_dock",
+      "title": "Nobody Home",
+      "description": "The boarding team crosses into a ship gone cold and quiet, running lights off, bodies where they fell. The AI, watching through suit cams, counts the dead and comes up short by several crew.",
+      "tone_min": 0.3,
+      "tone_max": 0.6,
+      "weight": 10.0,
+      "min_elapsed": 15.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "dead_ship_hostiles_active"
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:boarders",
+          "text": "Whole crew's dead. Except we're missing about four of them."
+        }
+      ]
+    },
+    {
+      "event_id": "ds_signs",
+      "title": "Signs of the Living",
+      "description": "Dragged bodies. Barricades built from the inside. Ammunition spent toward the interior, not the airlock. The derelict's crew fought something that was already aboard, and lost slowly.",
+      "tone_min": 0.4,
+      "tone_max": 0.75,
+      "weight": 5.0,
+      "min_elapsed": 90.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "dead_ship_hostiles_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "threat_mapped"
+        },
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.08,
+          "all_crew": true
+        }
+      ]
+    },
+    {
+      "event_id": "ds_contact",
+      "title": "First Contact",
+      "description": "It finds the boarding team the way it found the last crew \u2014 patient, from behind, out of the dark. The AI loses two suit cams to static and hears the gunfire start over the open channel.",
+      "tone_min": 0.5,
+      "tone_max": 0.9,
+      "weight": 4.0,
+      "min_elapsed": 150.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "dead_ship_hostiles_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "spawn_intruder",
+          "intruder_type": "stalker",
+          "room": "airlock"
+        },
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.14,
+          "all_crew": true
+        }
+      ]
+    },
+    {
+      "event_id": "ds_cutoff",
+      "title": "Cut Off From the Collar",
+      "description": "A collapse, a sealed hatch, a thing in the corridor \u2014 and the team's path back to the ship is gone. Now the AI is talking them through a derelict's guts toward any airlock at all.",
+      "tone_min": 0.6,
+      "tone_max": 1.0,
+      "weight": 2.0,
+      "min_elapsed": 220.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "dead_ship_hostiles_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "derelict_survived"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "cut_off"
+        }
+      ]
+    },
+    {
+      "event_id": "ds_salvage",
+      "title": "It's Still Worth Something",
+      "description": "The derelict's cargo and drives are worth a fortune, and the AI's standing orders say recover them. The team wants out. Every crate they grab is another minute in the dark with the thing.",
+      "tone_min": 0.4,
+      "tone_max": 0.75,
+      "weight": 3.0,
+      "min_elapsed": 170.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "dead_ship_hostiles_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "salvage_tempting"
+        }
+      ]
+    },
+    {
+      "event_id": "ds_recall",
+      "title": "Pull Them Out",
+      "description": "The AI can call the retreat at any moment. Early forfeits the salvage and the answers; late forfeits people. The collar is right there, and so, somewhere behind them, is it.",
+      "tone_min": 0.4,
+      "tone_max": 0.8,
+      "weight": 3.0,
+      "min_elapsed": 130.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "dead_ship_hostiles_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "recall_ready"
+        }
+      ]
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "best_skill:Firearms",
+      "boarders": "away_team"
+    },
+    "timers": [
+      {
+        "at": 110.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:boarders",
+            "text": "Something just moved three compartments back. Following our lights."
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.12,
+            "all_crew": true
+          }
+        ],
+        "requires_flags": [
+          "dead_ship_hostiles_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "cut_off"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "spawn_intruder",
+            "intruder_type": "stalker",
+            "room": "corridor"
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.22,
+            "all_crew": true
+          },
+          {
+            "type": "crew_injury",
+            "target": "cast:boarders",
+            "severity": "serious"
+          }
+        ],
+        "once": true
+      },
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "derelict_survived"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.06
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Hard seal's shut. Whatever that was, it's on its side of it."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_firearms",
+        "interval": 26.0,
+        "crew": "best_skill:Firearms",
+        "stat": "combat",
+        "skill": "Firearms",
+        "requires_flags": [
+          "dead_ship_hostiles_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Clear path to the collar if we move now and shoot straight."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Firearms",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "derelict_survived"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Team's through the collar. Undocking. Never coming back."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_1_hand_to_hand_combat",
+        "interval": 32.0,
+        "crew": "best_skill:Hand-to-Hand Combat",
+        "stat": "combat",
+        "skill": "Hand-to-Hand Combat",
+        "requires_flags": [
+          "dead_ship_hostiles_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Ammo's out. Axe work from here. Stay behind me."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Hand-to-Hand Combat",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "derelict_survived"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Hacked a path to the lock. Bloody, but they're aboard."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_2_military_training",
+        "interval": 38.0,
+        "crew": "best_skill:Military Training",
+        "stat": "combat",
+        "skill": "Military Training",
+        "requires_flags": [
+          "dead_ship_hostiles_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Bounding overwatch to the collar. Nobody stops moving."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Military Training",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "derelict_survived"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Textbook withdrawal. Everyone came home. Log it as a win."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      }
+    ],
+    "objective_text": {
+      "start": "The derelict answered no hails because everything that could answer is dead. Not everything is dead.",
+      "flags": {
+        "threat_mapped": "Learn what killed the derelict's crew before it learns you.",
+        "derelict_survived": "Get the boarding team back through the collar alive."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "the_nest",
+      "condition_flags": [
+        "cut_off"
+      ],
+      "overlap_ok": true,
+      "weight": 0.8
+    },
+    {
+      "to": "something_in_the_walls",
+      "condition_flags": [
+        "threat_mapped"
+      ],
+      "overlap_ok": true,
+      "weight": 0.6
+    }
+  ]
+}

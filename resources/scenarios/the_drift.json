@@ -1,0 +1,420 @@
+{
+  "id": "the_drift",
+  "title": "The Drift",
+  "pressure_axis": "systems",
+  "intensity": 2,
+  "contexts": [
+    "transit",
+    "aftermath"
+  ],
+  "trigger_status": "",
+  "tone_start": 0.35,
+  "expected_length": 300.0,
+  "weight": 1.0,
+  "min_leg": 2,
+  "once_per_run": true,
+  "win_flags": [
+    "attitude_recovered"
+  ],
+  "leg_delta_success": {
+    "ai_core_integrity": 5.0,
+    "hull_integrity": 3.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -10.0
+  },
+  "solves": [
+    {
+      "desc": "Fly the ship out of the tumble on thrusters",
+      "skill": "Piloting",
+      "stat": "speed",
+      "items_help": []
+    },
+    {
+      "desc": "Reboot the failed inertial reference",
+      "skill": "Computers",
+      "stat": "intellect",
+      "items_help": []
+    },
+    {
+      "desc": "Model the spin and time a corrective burn",
+      "skill": "Physics",
+      "stat": "intellect",
+      "items_help": []
+    }
+  ],
+  "events": [
+    {
+      "event_id": "dr_tumble",
+      "title": "We're Tumbling",
+      "description": "Attitude control drops offline and the ship begins to roll, gently at first. The AI reads the rates and knows that gentle rolls, unopposed, become sickening ones.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 10.0,
+      "min_elapsed": 15.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "the_drift_active"
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:lead",
+          "text": "Who's flying? Because nobody's flying."
+        }
+      ]
+    },
+    {
+      "event_id": "dr_sick",
+      "title": "Space Sick",
+      "description": "The rotation reaches the point where the crew's inner ears start lying to them. Work gets clumsy, tempers fray, and every task takes longer while the AI hunts the fault.",
+      "tone_min": 0.2,
+      "tone_max": 0.55,
+      "weight": 5.0,
+      "min_elapsed": 80.0,
+      "cooldown": 110.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_drift_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "attitude_recovered"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.06,
+          "all_crew": true
+        },
+        {
+          "type": "crew_stress",
+          "target": "random",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "event_id": "dr_load",
+      "title": "Structural Complaint",
+      "description": "The tumble puts loads on the frame the designers never meant it to carry spinning. Nothing's failed, but the AI logs stress readings creeping toward numbers it doesn't like.",
+      "tone_min": 0.3,
+      "tone_max": 0.65,
+      "weight": 4.0,
+      "min_elapsed": 140.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_drift_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "frame_stressed"
+        },
+        {
+          "type": "resource_delta",
+          "resource": "hull_integrity",
+          "amount": -2.0
+        }
+      ]
+    },
+    {
+      "event_id": "dr_lock",
+      "title": "It Becomes a Spin",
+      "description": "Left too long, the slow tumble couples into a fast flat spin that fights every correction. Now the fix needs more thrust, more nerve, and a hull that's already complaining.",
+      "tone_min": 0.5,
+      "tone_max": 0.9,
+      "weight": 2.0,
+      "min_elapsed": 210.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_drift_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "attitude_recovered"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "spin_locked"
+        }
+      ]
+    },
+    {
+      "event_id": "dr_diagnose",
+      "title": "Finding the Horizon",
+      "description": "An engineer and the AI compare the ship's several sensors of which-way-is-up and find the one that's lying. Naming the liar is the first half of stopping the spin.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 3.0,
+      "min_elapsed": 110.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_drift_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "tumble_understood"
+        }
+      ]
+    },
+    {
+      "event_id": "dr_fuel",
+      "title": "Watch the Thrusters",
+      "description": "Fighting the tumble burns attitude fuel the ship budgeted for the whole leg. The AI weighs a fast, thirsty correction against a slow, careful one it might not have propellant to finish.",
+      "tone_min": 0.3,
+      "tone_max": 0.6,
+      "weight": 3.0,
+      "min_elapsed": 130.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_drift_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "fuel_pressure"
+        }
+      ]
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "best_skill:Piloting"
+    },
+    "timers": [
+      {
+        "at": 100.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "The stars are wheeling past the port. That's us, not them."
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.1,
+            "all_crew": true
+          }
+        ],
+        "requires_flags": [
+          "the_drift_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "spin_locked"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "hull_damage",
+            "amount": 4.0
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.18,
+            "all_crew": true
+          }
+        ],
+        "once": true
+      },
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "attitude_recovered"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.05
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Steady as she goes. Anybody who got sick, don't tell me."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_piloting",
+        "interval": 26.0,
+        "crew": "best_skill:Piloting",
+        "stat": "speed",
+        "skill": "Piloting",
+        "requires_flags": [
+          "the_drift_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "I can null the roll on manual thrusters. Give me a clear board."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Piloting",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "attitude_recovered"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Rates are zero. She's flying straight and true."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_1_computers",
+        "interval": 32.0,
+        "crew": "best_skill:Computers",
+        "stat": "intellect",
+        "skill": "Computers",
+        "requires_flags": [
+          "the_drift_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "The nav computer lost its horizon. I'll re-cage the reference."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Computers",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "attitude_recovered"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Reference is caged. Autopilot's got the wheel again."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_2_physics",
+        "interval": 38.0,
+        "crew": "best_skill:Physics",
+        "stat": "intellect",
+        "skill": "Physics",
+        "requires_flags": [
+          "the_drift_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "One well-timed burn cancels the whole rotation. Timing it now."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Physics",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "attitude_recovered"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Burn's in. Rotation's dead. Clean math."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      }
+    ],
+    "objective_text": {
+      "start": "Attitude control is gone. The ship is tumbling, slowly, and the tumble is winning.",
+      "flags": {
+        "tumble_understood": "Diagnose the attitude-control failure.",
+        "attitude_recovered": "Kill the tumble before it becomes a spin nobody can stop."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "the_long_crack",
+      "condition_flags": [
+        "spin_locked"
+      ],
+      "overlap_ok": true,
+      "weight": 0.8
+    }
+  ]
+}

@@ -1,0 +1,369 @@
+{
+  "id": "old_debts",
+  "title": "Old Debts",
+  "pressure_axis": "social",
+  "intensity": 2,
+  "contexts": [
+    "station",
+    "docked"
+  ],
+  "trigger_status": "",
+  "tone_start": 0.35,
+  "expected_length": 300.0,
+  "weight": 1.0,
+  "min_leg": 2,
+  "once_per_run": true,
+  "win_flags": [
+    "debt_settled"
+  ],
+  "leg_delta_success": {
+    "ai_core_integrity": 4.0,
+    "credits": 30.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -10.0
+  },
+  "solves": [
+    {
+      "desc": "Mediate a settlement both can live with",
+      "skill": "Command",
+      "stat": "intellect",
+      "items_help": []
+    },
+    {
+      "desc": "Untangle the grudge to find what would actually satisfy it",
+      "skill": "Psychology",
+      "stat": "sanity",
+      "items_help": []
+    }
+  ],
+  "events": [
+    {
+      "event_id": "od_arrival",
+      "title": "A Face From Before",
+      "description": "At the station a name comes aboard that one crew member goes pale to hear. The AI checks the personnel histories and finds the two of them crossed paths years ago, badly.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 10.0,
+      "min_elapsed": 20.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "old_debts_active"
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:debtor",
+          "text": "Of all the ports, all the ships. Of course it's this one."
+        }
+      ]
+    },
+    {
+      "event_id": "od_tension",
+      "title": "Cold Air Between Them",
+      "description": "The two orbit each other through the ship's small spaces, and the crew feel the chill. The AI can route their duties apart, but a ship this size only has so many corners.",
+      "tone_min": 0.2,
+      "tone_max": 0.55,
+      "weight": 5.0,
+      "min_elapsed": 90.0,
+      "cooldown": 110.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "old_debts_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "debt_settled"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.05,
+          "all_crew": true
+        },
+        {
+          "type": "crew_stress",
+          "target": "cast:debtor",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "event_id": "od_story",
+      "title": "What Happened Back Then",
+      "description": "The AI pieces the history together from old records and older grudges. It's messier than either would admit \u2014 a debt, yes, but also a betrayal each remembers as the other's fault.",
+      "tone_min": 0.2,
+      "tone_max": 0.55,
+      "weight": 4.0,
+      "min_elapsed": 140.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "old_debts_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "history_known"
+        }
+      ]
+    },
+    {
+      "event_id": "od_violence",
+      "title": "It Turns Physical",
+      "description": "Left to fester, the old score gets settled the ugly way in a corridor. The AI moves too late to stop the first blow and just fast enough to stop the second.",
+      "tone_min": 0.4,
+      "tone_max": 0.8,
+      "weight": 2.0,
+      "min_elapsed": 210.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "old_debts_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "debt_settled"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "debt_violent"
+        }
+      ]
+    },
+    {
+      "event_id": "od_sides",
+      "title": "Crew Remember Too",
+      "description": "It turns out others knew the story, or a version of it. The crew start taking quiet sides, and the AI's neutrality becomes a thing each faction wants to claim as agreement.",
+      "tone_min": 0.2,
+      "tone_max": 0.55,
+      "weight": 3.0,
+      "min_elapsed": 160.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "history_known"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "crew_taking_sides"
+        }
+      ]
+    },
+    {
+      "event_id": "od_table",
+      "title": "Around a Table",
+      "description": "The AI can broker a sit-down: both parties, one mediator, the record open. It's a risk \u2014 old wounds don't always want air \u2014 but it's the only path that ends with the score truly gone.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 3.0,
+      "min_elapsed": 180.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "history_known"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "mediation_ready"
+        }
+      ]
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "role:captain",
+      "debtor": "random",
+      "creditor": "random"
+    },
+    "timers": [
+      {
+        "at": 100.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:creditor",
+            "text": "You remember what you did. Don't pretend you don't."
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.05,
+            "all_crew": true
+          }
+        ],
+        "requires_flags": [
+          "old_debts_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "debt_violent"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "crew_injury",
+            "target": "cast:debtor",
+            "severity": "light"
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.12,
+            "all_crew": true
+          }
+        ],
+        "once": true
+      },
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "debt_settled"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.05
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Old business, finally closed. The ship feels lighter."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_command",
+        "interval": 26.0,
+        "crew": "best_skill:Command",
+        "stat": "intellect",
+        "skill": "Command",
+        "requires_flags": [
+          "old_debts_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Get them in a room with me and a witness. We end this fair."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Command",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "debt_settled"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "They shook on it. Whatever it was, it's paid now."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_1_psychology",
+        "interval": 32.0,
+        "crew": "best_skill:Psychology",
+        "stat": "sanity",
+        "skill": "Psychology",
+        "requires_flags": [
+          "old_debts_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "One of them wants money. The other wants an apology. Different problems."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Psychology",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "debt_settled"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Turns out it was never about the credits. Now it's done."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      }
+    ],
+    "objective_text": {
+      "start": "Two crew share a history that just walked aboard at the station, and one of them owes the other.",
+      "flags": {
+        "history_known": "Learn what really passed between the two of them.",
+        "debt_settled": "Settle the old score before it settles itself."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "mutiny_hour",
+      "condition_flags": [
+        "crew_taking_sides"
+      ],
+      "overlap_ok": true,
+      "weight": 0.6
+    }
+  ]
+}

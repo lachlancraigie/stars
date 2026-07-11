@@ -1,0 +1,437 @@
+{
+  "id": "the_long_crack",
+  "title": "The Long Crack",
+  "pressure_axis": "systems",
+  "intensity": 2,
+  "contexts": [
+    "transit",
+    "aftermath"
+  ],
+  "trigger_status": "",
+  "tone_start": 0.4,
+  "expected_length": 340.0,
+  "weight": 1.0,
+  "min_leg": 2,
+  "once_per_run": true,
+  "win_flags": [
+    "crack_sealed"
+  ],
+  "leg_delta_success": {
+    "hull_integrity": 6.0,
+    "ai_core_integrity": 4.0
+  },
+  "leg_delta_crew_dead": {
+    "hull_integrity": -12.0,
+    "ai_core_integrity": -10.0
+  },
+  "solves": [
+    {
+      "desc": "Weld the fracture ahead of the spread",
+      "skill": "Mechanical Repair",
+      "stat": "strength",
+      "items_help": [
+        "engineers_toolkit"
+      ]
+    },
+    {
+      "desc": "Jury-rig a pressure patch from cargo materials",
+      "skill": "Jury-Rigging",
+      "stat": "intellect",
+      "items_help": [
+        "jury_rig_kit"
+      ]
+    },
+    {
+      "desc": "Reroute structural load off the failing frame",
+      "skill": "Engineering",
+      "stat": "intellect",
+      "items_help": []
+    }
+  ],
+  "events": [
+    {
+      "event_id": "lc_strike",
+      "title": "Debris Strike",
+      "description": "Something the size of a fist finds the ship at closing speed. The hull rings like a struck bell, and a hairline fracture opens along a cargo-bay seam where the AI can watch it grow.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 10.0,
+      "min_elapsed": 10.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "the_long_crack_active"
+        },
+        {
+          "type": "life_support_failure",
+          "source": "hull_breach"
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:lead",
+          "text": "We hit something. Or something hit us. Cargo's whistling."
+        }
+      ]
+    },
+    {
+      "event_id": "lc_spread",
+      "title": "It Walks",
+      "description": "The crack migrates along the stress lines, bay to bay, faster where the frame is old. Each meter it gains is a room's worth of air the AI has to decide whether to keep.",
+      "tone_min": 0.3,
+      "tone_max": 0.7,
+      "weight": 5.0,
+      "min_elapsed": 80.0,
+      "cooldown": 140.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_long_crack_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "crack_sealed"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.08,
+          "all_crew": true
+        },
+        {
+          "type": "resource_delta",
+          "resource": "hull_integrity",
+          "amount": -3.0
+        }
+      ]
+    },
+    {
+      "event_id": "lc_holdout",
+      "title": "The Holdout",
+      "description": "A crew member is in the breaching bay, hauling their own logged cargo toward the door and refusing the seal order. Ninety more seconds, they say. The medic says now.",
+      "tone_min": 0.4,
+      "tone_max": 0.75,
+      "weight": 4.0,
+      "min_elapsed": 150.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_long_crack_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "holdout_standoff"
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:holdout",
+          "text": "This is everything I own. Give me a minute, just a minute."
+        }
+      ]
+    },
+    {
+      "event_id": "lc_corridor",
+      "title": "It Reaches the Corridor",
+      "description": "Unsealed too long, the fracture crosses into the main corridor. Now it isn't one bay's air at risk \u2014 it's the spine of the ship, and everyone in it.",
+      "tone_min": 0.6,
+      "tone_max": 1.0,
+      "weight": 2.0,
+      "min_elapsed": 210.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_long_crack_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "crack_sealed"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "corridor_breached"
+        }
+      ]
+    },
+    {
+      "event_id": "lc_choice",
+      "title": "Seal or Wait",
+      "description": "The door between the holdout and the rest of the ship is under the AI's hand. Close it now and the bay is safe and someone is trapped; wait and the trap might be everyone.",
+      "tone_min": 0.4,
+      "tone_max": 0.8,
+      "weight": 3.0,
+      "min_elapsed": 170.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "holdout_standoff"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "seal_decision"
+        }
+      ]
+    },
+    {
+      "event_id": "lc_out",
+      "title": "They Made It",
+      "description": "The holdout drops the crate and runs. They clear the threshold a breath before the door could take them, and the AI seals a bay that's finally empty.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 3.0,
+      "min_elapsed": 190.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "holdout_standoff"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "holdout_clear"
+        }
+      ]
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "best_skill:Mechanical Repair",
+      "holdout": "role:general"
+    },
+    "timers": [
+      {
+        "at": 110.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "It jumped a bulkhead. It's in the next bay already."
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.1,
+            "all_crew": true
+          },
+          {
+            "type": "resource_delta",
+            "resource": "ai_core_integrity",
+            "amount": -2.0
+          }
+        ],
+        "requires_flags": [
+          "the_long_crack_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "corridor_breached"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "life_support_failure",
+            "source": "crack_spread"
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.25,
+            "all_crew": true
+          }
+        ],
+        "once": true
+      },
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "crack_sealed"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.05
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Sealed and holding. We keep our air."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_mechanical_repair",
+        "interval": 26.0,
+        "crew": "best_skill:Mechanical Repair",
+        "stat": "strength",
+        "skill": "Mechanical Repair",
+        "requires_flags": [
+          "the_long_crack_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "I can chase the crack and weld the leading edge. Hold the doors."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Mechanical Repair",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "crack_sealed"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Fracture's stopped cold. Weld'll hold to port."
+          }
+        ],
+        "item_tag": "repair_bonus",
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_1_jury_rigging",
+        "interval": 32.0,
+        "crew": "best_skill:Jury-Rigging",
+        "stat": "intellect",
+        "skill": "Jury-Rigging",
+        "requires_flags": [
+          "the_long_crack_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Foam and a hull plate. Ugly, but it'll take a bay."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Jury-Rigging",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "crack_sealed"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Patched. It's held pressure for a full cycle."
+          }
+        ],
+        "item_tag": "repair_bonus",
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_2_engineering",
+        "interval": 38.0,
+        "crew": "best_skill:Engineering",
+        "stat": "intellect",
+        "skill": "Engineering",
+        "requires_flags": [
+          "the_long_crack_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Take the stress off that frame and the crack's got nothing to run into."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Engineering",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "crack_sealed"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Load's rerouted. The frame's carrying nothing now."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      }
+    ],
+    "objective_text": {
+      "start": "A debris strike opened a fracture that's walking bay to bay. Seal ahead of it.",
+      "flags": {
+        "crack_sealed": "Seal the doors ahead of the crack and hold the air.",
+        "holdout_clear": "Get the crew out of the breaching bay before you seal it."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "dead_air",
+      "condition_flags": [
+        "corridor_breached"
+      ],
+      "overlap_ok": false,
+      "weight": 1.2
+    }
+  ]
+}

@@ -1,0 +1,351 @@
+{
+  "id": "cold_chain",
+  "title": "Cold Chain",
+  "pressure_axis": "bio",
+  "intensity": 1,
+  "contexts": [
+    "transit",
+    "station"
+  ],
+  "trigger_status": "",
+  "tone_start": 0.25,
+  "expected_length": 210.0,
+  "weight": 1.0,
+  "min_leg": 1,
+  "once_per_run": false,
+  "win_flags": [
+    "cargo_saved"
+  ],
+  "leg_delta_success": {
+    "credits": 150.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -10.0
+  },
+  "solves": [
+    {
+      "desc": "Repair the cargo freezer's compressor",
+      "skill": "Mechanical Repair",
+      "stat": "intellect",
+      "items_help": [
+        "engineers_toolkit"
+      ]
+    },
+    {
+      "desc": "Chemically stabilize the cargo at higher temperature",
+      "skill": "Pharmacology",
+      "stat": "intellect",
+      "items_help": [
+        "med_kit"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "cc_alarm",
+      "title": "Freezer Alarm",
+      "description": "A soft chime the crew learned to ignore turns insistent: the sealed medical container is losing its cold. The manifest calls it vaccine stock. The seal weight says it's heavier than that.",
+      "tone_min": 0.1,
+      "tone_max": 0.3,
+      "weight": 10.0,
+      "min_elapsed": 15.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "cold_chain_active"
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:lead",
+          "text": "Cargo freezer's crying. Since when is that our problem?"
+        }
+      ]
+    },
+    {
+      "event_id": "cc_climb",
+      "title": "Temperature Creep",
+      "description": "The hold warms a degree at a time. Whatever's inside was packed to stay frozen, and every degree is a step toward finding out why.",
+      "tone_min": 0.15,
+      "tone_max": 0.45,
+      "weight": 5.0,
+      "min_elapsed": 70.0,
+      "cooldown": 100.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "cold_chain_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "cargo_saved"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.04,
+          "all_crew": true
+        }
+      ]
+    },
+    {
+      "event_id": "cc_manifest",
+      "title": "The Manifest Lies",
+      "description": "The AI compares declared mass to measured mass and finds a discrepancy. Someone shipped more than vaccine, and priced it as if the ship would never look.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 3.0,
+      "min_elapsed": 120.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "cold_chain_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "manifest_wrong"
+        }
+      ]
+    },
+    {
+      "event_id": "cc_power",
+      "title": "Or Spend the Power",
+      "description": "The freezer can be held cold by diverting battery to it \u2014 a real draw on a transit budget, and a bet that the cargo's worth the amps.",
+      "tone_min": 0.1,
+      "tone_max": 0.4,
+      "weight": 3.0,
+      "min_elapsed": 100.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "cold_chain_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "power_option"
+        }
+      ]
+    },
+    {
+      "event_id": "cc_turn",
+      "title": "It Turns",
+      "description": "Past a threshold the cargo is no longer cargo. The container's internal chemistry shifts, and the hold now needs handling as a hazard, not a payload.",
+      "tone_min": 0.2,
+      "tone_max": 0.55,
+      "weight": 2.0,
+      "min_elapsed": 160.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "cold_chain_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "cargo_saved"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "cargo_turned"
+        }
+      ]
+    },
+    {
+      "event_id": "cc_fix",
+      "title": "Wrench on It",
+      "description": "An engineer pulls the compressor housing and gets frost forming on the coils again. The hold begins the slow crawl back toward safe.",
+      "tone_min": 0.1,
+      "tone_max": 0.3,
+      "weight": 3.0,
+      "min_elapsed": 60.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "cold_chain_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "repair_underway"
+        }
+      ]
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "best_skill:Mechanical Repair"
+    },
+    "timers": [
+      {
+        "at": 85.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Hold temp's up four degrees and climbing. That's the clock."
+          },
+          {
+            "type": "resource_delta",
+            "resource": "battery_charge",
+            "amount": -3.0
+          }
+        ],
+        "requires_flags": [
+          "cold_chain_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "cargo_saved"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.03
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Manifest's intact. We get paid."
+          }
+        ],
+        "once": true
+      },
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "cargo_turned"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.1,
+            "all_crew": true
+          },
+          {
+            "type": "set_flag",
+            "flag": "hazmat_now"
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_mechanical_repair",
+        "interval": 26.0,
+        "crew": "best_skill:Mechanical Repair",
+        "stat": "intellect",
+        "skill": "Mechanical Repair",
+        "requires_flags": [
+          "cold_chain_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Compressor's seized. I can free it if I move now."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Mechanical Repair",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "cargo_saved"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Cold's back on. Cargo held. Barely."
+          }
+        ],
+        "item_tag": "repair_bonus"
+      },
+      {
+        "id": "solve_1_pharmacology",
+        "interval": 32.0,
+        "crew": "best_skill:Pharmacology",
+        "stat": "intellect",
+        "skill": "Pharmacology",
+        "requires_flags": [
+          "cold_chain_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "I can buffer it to survive warmer. Buys us hours."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Pharmacology",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "cargo_saved"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Buffered and stable. It'll keep to port."
+          }
+        ],
+        "item_tag": "medical_bonus"
+      }
+    ],
+    "objective_text": {
+      "start": "The sealed medical cargo is thawing. Warm, it's either worthless or dangerous.",
+      "flags": {
+        "cargo_saved": "Restore the cold chain before the cargo turns."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "the_ward",
+      "condition_flags": [
+        "cargo_turned"
+      ],
+      "overlap_ok": true,
+      "weight": 0.7
+    }
+  ]
+}

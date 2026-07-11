@@ -1,0 +1,415 @@
+{
+  "id": "the_loop",
+  "title": "The Loop",
+  "pressure_axis": "mystery",
+  "intensity": 2,
+  "contexts": [
+    "transit",
+    "any"
+  ],
+  "trigger_status": "",
+  "tone_start": 0.35,
+  "expected_length": 320.0,
+  "weight": 1.0,
+  "min_leg": 3,
+  "once_per_run": true,
+  "win_flags": [
+    "loop_broken"
+  ],
+  "leg_delta_success": {
+    "ai_core_integrity": 7.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -12.0
+  },
+  "solves": [
+    {
+      "desc": "Map the loop's period and divergence points",
+      "skill": "Mathematics",
+      "stat": "intellect",
+      "items_help": []
+    },
+    {
+      "desc": "Model the physics that folds the shift back",
+      "skill": "Physics",
+      "stat": "intellect",
+      "items_help": []
+    },
+    {
+      "desc": "Retain memory across resets and act on it",
+      "skill": "Artificial Intelligence",
+      "stat": "intellect",
+      "items_help": []
+    }
+  ],
+  "events": [
+    {
+      "event_id": "lp_deja",
+      "title": "Deja Vu",
+      "description": "The shift plays out and the AI is sure it has seen it before \u2014 the same words, the same faults, the same small tragedy at the end. Then the clock rolls back, and only the AI seems to have brought a memory across.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 10.0,
+      "min_elapsed": 15.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "the_loop_active"
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:lead",
+          "text": "Have we done this before? No. Forget I asked. But have we?"
+        }
+      ]
+    },
+    {
+      "event_id": "lp_death",
+      "title": "It Kills the Same Way",
+      "description": "The loop's fixed point is a death \u2014 the same crew member, the same coolant failure, the same too-late response. The AI watches it happen again, holding the awful knowledge that this iteration was always going to end here.",
+      "tone_min": 0.3,
+      "tone_max": 0.65,
+      "weight": 5.0,
+      "min_elapsed": 90.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_loop_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "loop_lethal"
+        },
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.1,
+          "all_crew": true
+        }
+      ]
+    },
+    {
+      "event_id": "lp_test",
+      "title": "Testing the Walls",
+      "description": "The AI spends an iteration probing \u2014 changing one variable, watching the ripple, learning the loop's rules the only way it can: by living the same hours over and letting them cost what they cost.",
+      "tone_min": 0.3,
+      "tone_max": 0.6,
+      "weight": 4.0,
+      "min_elapsed": 150.0,
+      "cooldown": 130.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_loop_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "loop_broken"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "cause_found"
+        }
+      ]
+    },
+    {
+      "event_id": "lp_reset",
+      "title": "The Clock Rolls Back",
+      "description": "Another reset. The crew begin the shift fresh and unaware; the AI begins it carrying every previous ending. Each loop the AI must build enough trust, fast, to get the crew to do the one thing that breaks it.",
+      "tone_min": 0.3,
+      "tone_max": 0.65,
+      "weight": 3.0,
+      "min_elapsed": 180.0,
+      "cooldown": 140.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "loop_lethal"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "loop_broken"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "loop_reset"
+        }
+      ]
+    },
+    {
+      "event_id": "lp_tell",
+      "title": "How Much to Tell",
+      "description": "The AI can try to convince the crew they've done this before \u2014 a claim that sounds insane out of context and burns trust if it lands wrong. Or it can steer them silently and let them think the good idea was theirs.",
+      "tone_min": 0.3,
+      "tone_max": 0.6,
+      "weight": 3.0,
+      "min_elapsed": 160.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_loop_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "disclosure_dilemma"
+        }
+      ]
+    },
+    {
+      "event_id": "lp_converge",
+      "title": "Almost",
+      "description": "This run gets further than the last. The doomed crew member lives past the coolant failure, and for a moment the AI dares to think the shift might finally be allowed to end.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 3.0,
+      "min_elapsed": 200.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "cause_found"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "nearly_there"
+        }
+      ]
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "best_skill:Mathematics",
+      "doomed": "random"
+    },
+    "timers": [
+      {
+        "at": 110.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Weird. I feel like we've had this exact conversation. Twice, maybe."
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.05,
+            "all_crew": true
+          }
+        ],
+        "requires_flags": [
+          "the_loop_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "loop_reset"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.1,
+            "all_crew": true
+          },
+          {
+            "type": "crew_stress",
+            "target": "cast:doomed",
+            "amount": 2
+          }
+        ],
+        "once": false
+      },
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "loop_broken"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.06
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Clock's moving. For real this time. Don't ask me how I know."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_mathematics",
+        "interval": 26.0,
+        "crew": "best_skill:Mathematics",
+        "stat": "intellect",
+        "skill": "Mathematics",
+        "requires_flags": [
+          "the_loop_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "The reset's periodic. I can predict the fork. I know where to push."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Mathematics",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "loop_broken"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Found the fork and took the other branch. Time's moving forward again."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_1_physics",
+        "interval": 32.0,
+        "crew": "best_skill:Physics",
+        "stat": "intellect",
+        "skill": "Physics",
+        "requires_flags": [
+          "the_loop_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "There's a field wrapping our worldline. Collapse it and we're free."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Physics",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "loop_broken"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Collapsed the field. The shift ended and stayed ended. We're through."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_2_artificial_intelligence",
+        "interval": 38.0,
+        "crew": "best_skill:Artificial Intelligence",
+        "stat": "intellect",
+        "skill": "Artificial Intelligence",
+        "requires_flags": [
+          "the_loop_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "I remember every loop. Let me use that. One clean run, I know the moves."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Artificial Intelligence",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "loop_broken"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Ran it perfect from memory. The loop had nothing left to teach."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      }
+    ],
+    "objective_text": {
+      "start": "The same shift keeps happening. Only the AI seems to remember the last three times it ended badly.",
+      "flags": {
+        "cause_found": "Find what the loop is trying to correct before it resets again.",
+        "loop_broken": "Break the loop without spending another crew member to learn how."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "the_blind_spot",
+      "condition_flags": [
+        "loop_reset"
+      ],
+      "overlap_ok": true,
+      "weight": 0.5
+    }
+  ]
+}

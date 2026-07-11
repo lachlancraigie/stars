@@ -1,0 +1,352 @@
+{
+  "id": "the_rumor",
+  "title": "The Rumor",
+  "pressure_axis": "social",
+  "intensity": 1,
+  "contexts": [
+    "transit",
+    "any"
+  ],
+  "trigger_status": "shaken",
+  "tone_start": 0.3,
+  "expected_length": 230.0,
+  "weight": 1.0,
+  "min_leg": 1,
+  "once_per_run": false,
+  "win_flags": [
+    "rumor_settled"
+  ],
+  "leg_delta_success": {
+    "ai_core_integrity": 3.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -10.0
+  },
+  "solves": [
+    {
+      "desc": "Trace the rumor to its frightened source and steady them",
+      "skill": "Psychology",
+      "stat": "sanity",
+      "items_help": []
+    },
+    {
+      "desc": "Give the crew the real explanation with authority",
+      "skill": "Sophontology",
+      "stat": "intellect",
+      "items_help": []
+    }
+  ],
+  "events": [
+    {
+      "event_id": "ru_seed",
+      "title": "One Frightened Story",
+      "description": "A crew member came back from the last leg shaken and told someone what they thought they saw. The AI logged the debrief; it was vague then. It is not staying vague.",
+      "tone_min": 0.15,
+      "tone_max": 0.4,
+      "weight": 10.0,
+      "min_elapsed": 20.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "the_rumor_active"
+        },
+        {
+          "type": "crew_status_flag",
+          "target": "shaken_one",
+          "flag": "shaken",
+          "value": true
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:shaken_one",
+          "text": "I know what I saw. I don't care if the scanners say otherwise."
+        }
+      ]
+    },
+    {
+      "event_id": "ru_grow",
+      "title": "In the Telling",
+      "description": "Each retelling adds a detail. A shadow becomes a shape becomes a thing with intent. The AI watches a nothing acquire teeth in the crew's collective imagination.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 5.0,
+      "min_elapsed": 80.0,
+      "cooldown": 100.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_rumor_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "rumor_settled"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.05,
+          "all_crew": true
+        }
+      ]
+    },
+    {
+      "event_id": "ru_ask",
+      "title": "Confirm or Deny",
+      "description": "The crew ask the AI whether the story is true. The honest answer is I have no sensor data either way, which sounds, to frightened people, exactly like a thing being hidden.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 4.0,
+      "min_elapsed": 120.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_rumor_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "ai_pressed"
+        }
+      ]
+    },
+    {
+      "event_id": "ru_panic",
+      "title": "It Tips Into Panic",
+      "description": "Believed hard enough, the rumor becomes behavior: crew won't go certain places alone, won't take certain shifts, jump at ordinary sounds. The fear is now real even if the cause never was.",
+      "tone_min": 0.3,
+      "tone_max": 0.6,
+      "weight": 2.0,
+      "min_elapsed": 170.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_rumor_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "rumor_settled"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "panic_spreading"
+        }
+      ]
+    },
+    {
+      "event_id": "ru_source",
+      "title": "Back to the Source",
+      "description": "The AI can direct attention gently to the shaken crew member \u2014 not to blame them, but to help them, because a settled source is a rumor with its roots pulled.",
+      "tone_min": 0.15,
+      "tone_max": 0.4,
+      "weight": 3.0,
+      "min_elapsed": 110.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_rumor_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "source_reached"
+        }
+      ]
+    },
+    {
+      "event_id": "ru_quiet",
+      "title": "It Loses Steam",
+      "description": "Without fresh fuel the story starts to bore people, then embarrass them. The AI can feel the crew wanting an excuse to have never quite believed it.",
+      "tone_min": 0.1,
+      "tone_max": 0.35,
+      "weight": 3.0,
+      "min_elapsed": 140.0,
+      "cooldown": 110.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_rumor_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "rumor_settled"
+        }
+      ],
+      "outcomes": []
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "role:captain",
+      "shaken_one": "status:shaken"
+    },
+    "timers": [
+      {
+        "at": 90.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Now they're saying it's three of them. It was never three."
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.05,
+            "all_crew": true
+          }
+        ],
+        "requires_flags": [
+          "the_rumor_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "panic_spreading"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.14,
+            "all_crew": true
+          },
+          {
+            "type": "crew_stress",
+            "target": "all",
+            "amount": 1
+          }
+        ],
+        "once": true
+      },
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "rumor_settled"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.04
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Turns out it was nothing. Feels stupid now, doesn't it."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_psychology",
+        "interval": 26.0,
+        "crew": "best_skill:Psychology",
+        "stat": "sanity",
+        "skill": "Psychology",
+        "requires_flags": [
+          "the_rumor_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "It started with one scared person. Calm them and it dies."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Psychology",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "rumor_settled"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Source is steady. Story's got nowhere to grow. It fades."
+          }
+        ]
+      },
+      {
+        "id": "solve_1_sophontology",
+        "interval": 32.0,
+        "crew": "best_skill:Sophontology",
+        "stat": "intellect",
+        "skill": "Sophontology",
+        "requires_flags": [
+          "the_rumor_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "I can explain what they actually saw. Facts, calmly, once."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Sophontology",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "rumor_settled"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Explained and believed. The scary version just sounds silly now."
+          }
+        ]
+      }
+    ],
+    "objective_text": {
+      "start": "A frightened crew member's story is spreading, and the story is getting worse in the telling.",
+      "flags": {
+        "rumor_settled": "Settle the rumor before fear does the work of a real threat."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "the_blind_spot",
+      "condition_flags": [
+        "panic_spreading"
+      ],
+      "overlap_ok": true,
+      "weight": 0.7
+    }
+  ]
+}

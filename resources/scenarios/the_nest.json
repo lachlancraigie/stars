@@ -1,0 +1,441 @@
+{
+  "id": "the_nest",
+  "title": "The Nest",
+  "pressure_axis": "combat",
+  "intensity": 3,
+  "contexts": [
+    "derelict",
+    "docked"
+  ],
+  "trigger_status": "",
+  "tone_start": 0.55,
+  "expected_length": 420.0,
+  "weight": 1.0,
+  "min_leg": 3,
+  "once_per_run": true,
+  "win_flags": [
+    "nest_destroyed"
+  ],
+  "leg_delta_success": {
+    "ai_core_integrity": 8.0,
+    "credits": 80.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -18.0,
+    "battery_charge": -12.0
+  },
+  "solves": [
+    {
+      "desc": "Destroy the nest with a shaped demolition charge",
+      "skill": "Explosives",
+      "stat": "intellect",
+      "items_help": [
+        "cutting_torch"
+      ]
+    },
+    {
+      "desc": "Hold the line while the nest is cleared",
+      "skill": "Firearms",
+      "stat": "combat",
+      "items_help": [
+        "combat_shotgun"
+      ]
+    },
+    {
+      "desc": "Identify the nest's weak stage and time the strike",
+      "skill": "Exobiology",
+      "stat": "intellect",
+      "items_help": [
+        "medscanner"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "ne_found",
+      "title": "It Multiplied",
+      "description": "What was one predator is now a cluster \u2014 eggs, drones, a warm damp architecture growing in a bay the crew abandoned. The AI's air scan shows it breathing out spores to seed the next room.",
+      "tone_min": 0.4,
+      "tone_max": 0.7,
+      "weight": 10.0,
+      "min_elapsed": 15.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "the_nest_active"
+        },
+        {
+          "type": "spawn_intruder",
+          "intruder_type": "nest",
+          "room": "cargo"
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:lead",
+          "text": "That's not an animal anymore. That's a colony."
+        }
+      ]
+    },
+    {
+      "event_id": "ne_spread",
+      "title": "Room by Room",
+      "description": "The nest extends itself down the ship's warm, wet, dark places, following the same logic that keeps the crew alive: heat and air. Every room it takes is one the AI has to write off or fight for.",
+      "tone_min": 0.5,
+      "tone_max": 0.9,
+      "weight": 5.0,
+      "min_elapsed": 90.0,
+      "cooldown": 110.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_nest_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "nest_destroyed"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.12,
+          "all_crew": true
+        },
+        {
+          "type": "set_flag",
+          "flag": "nest_spread"
+        }
+      ]
+    },
+    {
+      "event_id": "ne_swarm",
+      "title": "The Swarm Answers",
+      "description": "Threaten the nest and it defends itself. Drones pour from the vents, and the hunting party's neat plan becomes a fighting retreat down corridors the AI is trying to seal behind them.",
+      "tone_min": 0.6,
+      "tone_max": 1.0,
+      "weight": 4.0,
+      "min_elapsed": 180.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_nest_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "spawn_intruder",
+          "intruder_type": "stalker",
+          "room": "corridor"
+        },
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.14,
+          "all_crew": true
+        },
+        {
+          "type": "crew_injury",
+          "target": "random",
+          "severity": "serious"
+        }
+      ]
+    },
+    {
+      "event_id": "ne_core",
+      "title": "The Heart of It",
+      "description": "The scanner finds the core cluster \u2014 the thing that must burn for the rest to die. It's deep in the infestation, behind everything, and reaching it means going through the worst of the nest.",
+      "tone_min": 0.5,
+      "tone_max": 0.9,
+      "weight": 3.0,
+      "min_elapsed": 150.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_nest_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "nest_located"
+        }
+      ]
+    },
+    {
+      "event_id": "ne_vent",
+      "title": "Vent It to the Black",
+      "description": "The AI can vent the infested bays to vacuum \u2014 brutally effective, if every crew member is clear and every door holds. Get the timing wrong and the ship loses air, or a person, or both.",
+      "tone_min": 0.5,
+      "tone_max": 0.9,
+      "weight": 3.0,
+      "min_elapsed": 200.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "nest_located"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "vent_option"
+        }
+      ]
+    },
+    {
+      "event_id": "ne_burn",
+      "title": "Fire in the Hold",
+      "description": "The demolition charge goes on the core. The AI clears the crew, counts the doors, and holds the detonator until the last of them is behind a bulkhead that can take it.",
+      "tone_min": 0.5,
+      "tone_max": 0.9,
+      "weight": 3.0,
+      "min_elapsed": 230.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "nest_located"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "charge_set"
+        }
+      ]
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "best_skill:Explosives",
+      "shooter": "best_skill:Firearms"
+    },
+    "timers": [
+      {
+        "at": 130.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "It's in three rooms now. It wasn't in three rooms an hour ago."
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.16,
+            "all_crew": true
+          }
+        ],
+        "requires_flags": [
+          "the_nest_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "nest_spread"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "life_support_failure",
+            "source": "nest_infestation"
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.28,
+            "all_crew": true
+          },
+          {
+            "type": "air_vent_room",
+            "room": "cargo",
+            "amount": 40.0
+          }
+        ],
+        "once": true
+      },
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "nest_destroyed"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.09
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "All of it. We got all of it. Sample the ash and burn the sample."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_explosives",
+        "interval": 26.0,
+        "crew": "best_skill:Explosives",
+        "stat": "intellect",
+        "skill": "Explosives",
+        "requires_flags": [
+          "the_nest_active"
+        ],
+        "successes_needed": 3,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "One good charge on the core cluster and it's ash."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Explosives",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "nest_destroyed"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Core's gone. The rest dies without it. It's over."
+          }
+        ],
+        "item_tag": "door_bypass_bonus",
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_1_firearms",
+        "interval": 32.0,
+        "crew": "best_skill:Firearms",
+        "stat": "combat",
+        "skill": "Firearms",
+        "requires_flags": [
+          "the_nest_active"
+        ],
+        "successes_needed": 3,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "They swarm when we hit the core. I'll keep them off you."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Firearms",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "nest_destroyed"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Held them off long enough. The nest is dead and we're not."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_2_exobiology",
+        "interval": 38.0,
+        "crew": "best_skill:Exobiology",
+        "stat": "intellect",
+        "skill": "Exobiology",
+        "requires_flags": [
+          "the_nest_active"
+        ],
+        "successes_needed": 3,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "It's vulnerable mid-molt. Six-minute window. Hit it then."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Exobiology",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "nest_destroyed"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Struck it mid-molt. It didn't even get to scream."
+          }
+        ],
+        "item_tag": "medical_bonus",
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      }
+    ],
+    "objective_text": {
+      "start": "It stopped being one thing and started being many. There's a nest now, and it's spreading air by air.",
+      "flags": {
+        "nest_located": "Find the nest's heart before the whole ship becomes it.",
+        "nest_destroyed": "Burn out the nest, all of it, or it just comes back."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "dead_air",
+      "condition_flags": [
+        "nest_spread"
+      ],
+      "overlap_ok": true,
+      "weight": 0.8
+    }
+  ]
+}

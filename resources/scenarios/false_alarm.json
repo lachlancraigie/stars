@@ -1,0 +1,348 @@
+{
+  "id": "false_alarm",
+  "title": "False Alarm",
+  "pressure_axis": "mystery",
+  "intensity": 1,
+  "contexts": [
+    "transit",
+    "arrival"
+  ],
+  "trigger_status": "",
+  "tone_start": 0.3,
+  "expected_length": 200.0,
+  "weight": 1.0,
+  "min_leg": 1,
+  "once_per_run": false,
+  "win_flags": [
+    "alarm_cleared"
+  ],
+  "leg_delta_success": {
+    "ai_core_integrity": 3.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -10.0
+  },
+  "solves": [
+    {
+      "desc": "Debug the sensor fault feeding the phantom",
+      "skill": "Computers",
+      "stat": "intellect",
+      "items_help": []
+    },
+    {
+      "desc": "Physically inspect and recalibrate the array",
+      "skill": "Mechanical Repair",
+      "stat": "intellect",
+      "items_help": [
+        "engineers_toolkit"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "fa_ping",
+      "title": "Contact, Bearing Unknown",
+      "description": "The threat board lights with a contact that shouldn't exist this deep in empty space. The AI's confidence is low, but low isn't zero, and the crew are already reaching for the alarm.",
+      "tone_min": 0.15,
+      "tone_max": 0.4,
+      "weight": 10.0,
+      "min_elapsed": 15.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "false_alarm_active"
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:lead",
+          "text": "We've got a contact. Or we've got a broken sensor. Which is it?"
+        }
+      ]
+    },
+    {
+      "event_id": "fa_flicker",
+      "title": "It Flickers",
+      "description": "The contact appears and vanishes on a rhythm that reads more like a fault than a ship. But faults and stealthed hulls can look alike on a bad day, and the AI won't stake the crew's nerves on probably.",
+      "tone_min": 0.2,
+      "tone_max": 0.45,
+      "weight": 5.0,
+      "min_elapsed": 70.0,
+      "cooldown": 90.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "false_alarm_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "alarm_cleared"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.04,
+          "all_crew": true
+        }
+      ]
+    },
+    {
+      "event_id": "fa_pressure",
+      "title": "General Quarters",
+      "description": "The crew want to go to alert stations, power up, prepare to run or fight. Every one of those costs real resources against a threat the AI increasingly believes is a rounding error.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 4.0,
+      "min_elapsed": 100.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "false_alarm_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "alert_pressure"
+        }
+      ]
+    },
+    {
+      "event_id": "fa_overreact",
+      "title": "They Jump the Gun",
+      "description": "Unwilling to wait, the crew spin up battle stations and burn battery running from a ghost. Nothing was there. The cost of the panic is real; the threat never was.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 2.0,
+      "min_elapsed": 150.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "false_alarm_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "alarm_cleared"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "crew_overreacted"
+        }
+      ]
+    },
+    {
+      "event_id": "fa_debug",
+      "title": "Chasing the Glitch",
+      "description": "An engineer and the AI walk the sensor fusion chain looking for the lie. It's tedious, unglamorous work, and it ends the way most ghost hunts end: with a loose wire and a sheepish silence.",
+      "tone_min": 0.15,
+      "tone_max": 0.4,
+      "weight": 3.0,
+      "min_elapsed": 90.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "false_alarm_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "debug_underway"
+        }
+      ]
+    },
+    {
+      "event_id": "fa_quiet",
+      "title": "The Board Clears",
+      "description": "The phantom fades and doesn't come back. The AI holds its judgment a moment longer than the crew do, because the mercy of a false alarm is only mercy once you're sure \u2014 and then it lets the ship breathe.",
+      "tone_min": 0.1,
+      "tone_max": 0.35,
+      "weight": 3.0,
+      "min_elapsed": 120.0,
+      "cooldown": 100.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "false_alarm_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "alarm_cleared"
+        }
+      ],
+      "outcomes": []
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "best_skill:Computers"
+    },
+    "timers": [
+      {
+        "at": 80.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "It's back. Same phantom contact, same bearing. Or is it a little closer?"
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.05,
+            "all_crew": true
+          }
+        ],
+        "requires_flags": [
+          "false_alarm_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "crew_overreacted"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "resource_delta",
+            "resource": "battery_charge",
+            "amount": -5.0
+          },
+          {
+            "type": "crew_stress",
+            "target": "random",
+            "amount": 1
+          }
+        ],
+        "once": true
+      },
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "alarm_cleared"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.03
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "False alarm. All of it. Stand down and feel a little silly."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_computers",
+        "interval": 26.0,
+        "crew": "best_skill:Computers",
+        "stat": "intellect",
+        "skill": "Computers",
+        "requires_flags": [
+          "false_alarm_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "It's a timing glitch in the sensor fusion. Classic. I'll clear it."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Computers",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "alarm_cleared"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Glitch squashed. The contact was a rounding error the whole time."
+          }
+        ]
+      },
+      {
+        "id": "solve_1_mechanical_repair",
+        "interval": 32.0,
+        "crew": "best_skill:Mechanical Repair",
+        "stat": "intellect",
+        "skill": "Mechanical Repair",
+        "requires_flags": [
+          "false_alarm_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Loose connector on the forward array. I'll reseat and recal."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Mechanical Repair",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "alarm_cleared"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Recalibrated. Clean board. Nothing out there but us."
+          }
+        ],
+        "item_tag": "repair_bonus"
+      }
+    ],
+    "objective_text": {
+      "start": "Sensors keep flagging a threat that isn't there. Probably. The AI has to decide how sure probably is.",
+      "flags": {
+        "alarm_cleared": "Prove the ghost contact is a glitch before the crew act on it."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "the_marauder",
+      "condition_flags": [
+        "crew_overreacted"
+      ],
+      "overlap_ok": true,
+      "weight": 0.5
+    }
+  ]
+}

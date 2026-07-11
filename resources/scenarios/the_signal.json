@@ -1,0 +1,382 @@
+{
+  "id": "the_signal",
+  "title": "The Signal",
+  "pressure_axis": "mystery",
+  "intensity": 1,
+  "contexts": [
+    "transit",
+    "any"
+  ],
+  "trigger_status": "",
+  "tone_start": 0.3,
+  "expected_length": 250.0,
+  "weight": 1.0,
+  "min_leg": 1,
+  "once_per_run": false,
+  "win_flags": [
+    "signal_understood"
+  ],
+  "leg_delta_success": {
+    "ai_core_integrity": 4.0,
+    "credits": 30.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -10.0
+  },
+  "solves": [
+    {
+      "desc": "Parse the signal's grammar",
+      "skill": "Linguistics",
+      "stat": "intellect",
+      "items_help": []
+    },
+    {
+      "desc": "Find the mathematical structure underneath it",
+      "skill": "Mathematics",
+      "stat": "intellect",
+      "items_help": []
+    },
+    {
+      "desc": "Assess whether the source is a mind at all",
+      "skill": "Sophontology",
+      "stat": "intellect",
+      "items_help": []
+    }
+  ],
+  "events": [
+    {
+      "event_id": "si_noise",
+      "title": "A Pattern in the Static",
+      "description": "In the background hiss of deep space, the AI's filters flag a structure that shouldn't be there \u2014 regular, layered, not quite random. Dismissed as instrument noise, it comes back on the next sweep, a little clearer.",
+      "tone_min": 0.15,
+      "tone_max": 0.4,
+      "weight": 10.0,
+      "min_elapsed": 15.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "the_signal_active"
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:lead",
+          "text": "There's a shape in the noise. I keep telling myself it's nothing."
+        }
+      ]
+    },
+    {
+      "event_id": "si_recur",
+      "title": "It Recurs",
+      "description": "The signal returns, and returns, each time carrying a touch more structure. It isn't a message being decoded so much as something, somewhere, learning how to be heard.",
+      "tone_min": 0.2,
+      "tone_max": 0.45,
+      "weight": 5.0,
+      "min_elapsed": 80.0,
+      "cooldown": 100.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_signal_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "signal_understood"
+        }
+      ],
+      "outcomes": []
+    },
+    {
+      "event_id": "si_dread",
+      "title": "Wonder or Threat",
+      "description": "The crew split on what it means. Some hear a first contact worth the whole voyage; others hear a predator's lure. The AI, with the patience and memory neither has, gets to shape which story wins.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 4.0,
+      "min_elapsed": 120.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_signal_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "crew_divided"
+        }
+      ]
+    },
+    {
+      "event_id": "si_obsess",
+      "title": "Someone Can't Let Go",
+      "description": "One crew member stops sleeping, filling notebooks with the signal's shape, hearing it in the ship's hum. The transmission is harmless; the human need to make it mean something is not always so.",
+      "tone_min": 0.25,
+      "tone_max": 0.55,
+      "weight": 2.0,
+      "min_elapsed": 170.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "crew_divided"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "signal_understood"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "crew_obsessed"
+        }
+      ]
+    },
+    {
+      "event_id": "si_reply",
+      "title": "Do We Answer",
+      "description": "The AI can compose a reply \u2014 a wave back into the dark \u2014 or keep the ship silent and listening. Neither is dangerous. Both are the kind of choice that defines what sort of ship this is.",
+      "tone_min": 0.15,
+      "tone_max": 0.45,
+      "weight": 3.0,
+      "min_elapsed": 100.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_signal_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "reply_considered"
+        }
+      ]
+    },
+    {
+      "event_id": "si_calm",
+      "title": "It Means Us No Harm",
+      "description": "The more the AI listens, the gentler the signal reads \u2014 no menace in it, only patience. Sometimes the merciful truth of deep space is that the thing in the dark just wanted to say hello.",
+      "tone_min": 0.1,
+      "tone_max": 0.4,
+      "weight": 3.0,
+      "min_elapsed": 140.0,
+      "cooldown": 110.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_signal_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "signal_understood"
+        }
+      ],
+      "outcomes": []
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "best_skill:Linguistics"
+    },
+    "timers": [
+      {
+        "at": 90.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "It changed. Same signal, slightly different. Like it heard us listening."
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.04,
+            "all_crew": true
+          }
+        ],
+        "requires_flags": [
+          "the_signal_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "crew_obsessed"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "crew_stress",
+            "target": "random",
+            "amount": 2
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.06,
+            "all_crew": true
+          }
+        ],
+        "once": true
+      },
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "signal_understood"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.05
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "It's benign. Log it, wave back, let it be. Not everything out here wants us dead."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_linguistics",
+        "interval": 26.0,
+        "crew": "best_skill:Linguistics",
+        "stat": "intellect",
+        "skill": "Linguistics",
+        "requires_flags": [
+          "the_signal_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "There's syntax in here. Recursion. This isn't a pulsar, this is a sentence."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Linguistics",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "signal_understood"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "It's a greeting. Just a greeting. Patient and harmless and old."
+          }
+        ]
+      },
+      {
+        "id": "solve_1_mathematics",
+        "interval": 32.0,
+        "crew": "best_skill:Mathematics",
+        "stat": "intellect",
+        "skill": "Mathematics",
+        "requires_flags": [
+          "the_signal_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "The intervals are prime, then not. It's counting, then it's asking."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Mathematics",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "signal_understood"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Decoded the pattern. It's a beacon saying hello to the dark. That's all."
+          }
+        ]
+      },
+      {
+        "id": "solve_2_sophontology",
+        "interval": 38.0,
+        "crew": "best_skill:Sophontology",
+        "stat": "intellect",
+        "skill": "Sophontology",
+        "requires_flags": [
+          "the_signal_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Whatever's sending this thinks slowly and means no harm. I'd stake the ship on it."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Sophontology",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "signal_understood"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "It's cognition, not a threat. Something learning to be heard. Beautiful, actually."
+          }
+        ]
+      }
+    ],
+    "objective_text": {
+      "start": "A structured transmission keeps recurring in the background noise. It might be nothing. It might be learning.",
+      "flags": {
+        "signal_understood": "Decide what the signal is before the crew decide for you."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "the_rumor",
+      "condition_flags": [
+        "crew_obsessed"
+      ],
+      "overlap_ok": true,
+      "weight": 0.6
+    }
+  ]
+}

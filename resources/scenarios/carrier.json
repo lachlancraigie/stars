@@ -1,0 +1,371 @@
+{
+  "id": "carrier",
+  "title": "Carrier",
+  "pressure_axis": "bio",
+  "intensity": 2,
+  "contexts": [
+    "away_return",
+    "station"
+  ],
+  "trigger_status": "infected",
+  "tone_start": 0.4,
+  "expected_length": 300.0,
+  "weight": 1.0,
+  "min_leg": 2,
+  "once_per_run": true,
+  "win_flags": [
+    "carrier_managed"
+  ],
+  "leg_delta_success": {
+    "ai_core_integrity": 5.0,
+    "credits": 40.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -10.0
+  },
+  "solves": [
+    {
+      "desc": "Trace the infection back to its silent source",
+      "skill": "Pathology",
+      "stat": "intellect",
+      "items_help": [
+        "medscanner"
+      ]
+    },
+    {
+      "desc": "Persuade the carrier to isolate without terrifying the crew",
+      "skill": "Psychology",
+      "stat": "sanity",
+      "items_help": []
+    }
+  ],
+  "events": [
+    {
+      "event_id": "ca_pattern",
+      "title": "A Pattern With No Center",
+      "description": "Two crew test positive for the same organism with no contact between them. The AI runs the graph and finds the vertex they share: a third person, perfectly well.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 10.0,
+      "min_elapsed": 20.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "carrier_active"
+        },
+        {
+          "type": "crew_status_flag",
+          "target": "carrier",
+          "flag": "infected",
+          "value": true
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:lead",
+          "text": "Two positives, zero overlap. That's not how germs work."
+        }
+      ]
+    },
+    {
+      "event_id": "ca_thirdcase",
+      "title": "The Third Case",
+      "description": "A new name joins the sick list, and it fits the AI's model exactly. The carrier is real, walking the ship, and utterly unaware they're the vector.",
+      "tone_min": 0.3,
+      "tone_max": 0.6,
+      "weight": 5.0,
+      "min_elapsed": 110.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "carrier_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "carrier_found"
+        },
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.08,
+          "all_crew": true
+        }
+      ]
+    },
+    {
+      "event_id": "ca_dilemma",
+      "title": "Name Them or Not",
+      "description": "The medic asks the AI point-blank who the source is. Naming them saves time and brands an innocent-feeling person a plague vector in front of the whole crew.",
+      "tone_min": 0.2,
+      "tone_max": 0.6,
+      "weight": 4.0,
+      "min_elapsed": 150.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "carrier_found"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "naming_decision"
+        }
+      ]
+    },
+    {
+      "event_id": "ca_station",
+      "title": "Port Ahead",
+      "description": "The ship is due at a crewed station in two shifts. Docking with an active carrier aboard risks a quarantine hold \u2014 or worse, an outbreak the AI can't contain off-ship.",
+      "tone_min": 0.3,
+      "tone_max": 0.65,
+      "weight": 3.0,
+      "min_elapsed": 180.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "carrier_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "dock_pressure"
+        }
+      ]
+    },
+    {
+      "event_id": "ca_cover",
+      "title": "Just Don't Tell Them",
+      "description": "The easy path: log it as three unrelated minor illnesses, treat quietly, dock on schedule. A clean lie, right up until someone reads the scan trail the AI kept.",
+      "tone_min": 0.2,
+      "tone_max": 0.6,
+      "weight": 3.0,
+      "min_elapsed": 140.0,
+      "cooldown": 160.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "carrier_found"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "carrier_managed"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "cover_tempting"
+        }
+      ]
+    },
+    {
+      "event_id": "ca_isolate",
+      "title": "Volunteered",
+      "description": "Told the truth plainly, the carrier walks themselves to the medbay before anyone has to order it. Frightened, but steady, and grateful the AI didn't make a spectacle.",
+      "tone_min": 0.1,
+      "tone_max": 0.4,
+      "weight": 3.0,
+      "min_elapsed": 120.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "carrier_found"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "carrier_cooperating"
+        }
+      ]
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "best_skill:Pathology",
+      "carrier": "status:infected"
+    },
+    "timers": [
+      {
+        "at": 100.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Second case. They never shared a shift. So how?"
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": true
+          }
+        ],
+        "requires_flags": [
+          "carrier_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "carrier_exposed_lie"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": -0.06
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.1,
+            "all_crew": true
+          }
+        ],
+        "once": true
+      },
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "carrier_managed"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.05
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Handled it clean. They trust me more for the honesty."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_pathology",
+        "interval": 26.0,
+        "crew": "best_skill:Pathology",
+        "stat": "intellect",
+        "skill": "Pathology",
+        "requires_flags": [
+          "carrier_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Same strain, three hosts, one common contact. Found them."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Pathology",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "carrier_managed"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Carrier's isolated and on antivirals. Chain's dead."
+          }
+        ],
+        "item_tag": "medical_bonus",
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_1_psychology",
+        "interval": 32.0,
+        "crew": "best_skill:Psychology",
+        "stat": "sanity",
+        "skill": "Psychology",
+        "requires_flags": [
+          "carrier_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "They'll go quietly if I frame it right. Let me talk to them."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Psychology",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "carrier_managed"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "They volunteered for the bay. No panic, no drama."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      }
+    ],
+    "objective_text": {
+      "start": "Someone aboard is contagious and shows no symptoms. The AI knows who. They don't.",
+      "flags": {
+        "carrier_found": "Identify the asymptomatic carrier from the scan trail.",
+        "carrier_managed": "Contain the carrier without a panic or a lie you can't keep."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "the_rumor",
+      "condition_flags": [
+        "cover_tempting"
+      ],
+      "overlap_ok": true,
+      "weight": 0.8
+    }
+  ]
+}

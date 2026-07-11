@@ -1,0 +1,328 @@
+{
+  "id": "brownout",
+  "title": "Brownout",
+  "pressure_axis": "systems",
+  "intensity": 1,
+  "contexts": [
+    "transit",
+    "arrival"
+  ],
+  "trigger_status": "",
+  "tone_start": 0.2,
+  "expected_length": 190.0,
+  "weight": 1.0,
+  "min_leg": 1,
+  "once_per_run": false,
+  "win_flags": [
+    "grid_stabilized"
+  ],
+  "leg_delta_success": {
+    "battery_charge": 10.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -10.0
+  },
+  "solves": [
+    {
+      "desc": "Trace and isolate the phantom load",
+      "skill": "Engineering",
+      "stat": "intellect",
+      "items_help": []
+    },
+    {
+      "desc": "Rebalance the load across the buses",
+      "skill": "Industrial Equipment",
+      "stat": "strength",
+      "items_help": [
+        "engineers_toolkit"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "bo_dip",
+      "title": "The Lights Dip",
+      "description": "The whole deck browns out for a heartbeat, then recovers. The AI's power model shows a draw that doesn't match any running system \u2014 small, rhythmic, and getting bolder.",
+      "tone_min": 0.1,
+      "tone_max": 0.3,
+      "weight": 10.0,
+      "min_elapsed": 15.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "brownout_active"
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:lead",
+          "text": "Did the lights just wink at you too?"
+        }
+      ]
+    },
+    {
+      "event_id": "bo_sag",
+      "title": "Voltage Sag",
+      "description": "Sensitive systems start complaining about dirty power. Nothing's failed, but the margins are thinner every hour, and thin margins are how transit legs go bad.",
+      "tone_min": 0.1,
+      "tone_max": 0.4,
+      "weight": 5.0,
+      "min_elapsed": 70.0,
+      "cooldown": 90.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "brownout_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "grid_stabilized"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "resource_delta",
+          "resource": "battery_charge",
+          "amount": -3.0
+        },
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.03,
+          "all_crew": true
+        }
+      ]
+    },
+    {
+      "event_id": "bo_guess",
+      "title": "Sabotage or Fault",
+      "description": "One crew member floats the word sabotage. The AI's own logs say fault, not malice \u2014 but the logs are the AI's, and a nervous crew doesn't always take the AI's word.",
+      "tone_min": 0.1,
+      "tone_max": 0.45,
+      "weight": 3.0,
+      "min_elapsed": 110.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "brownout_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "sabotage_whisper"
+        }
+      ]
+    },
+    {
+      "event_id": "bo_trace",
+      "title": "Chasing the Ghost",
+      "description": "An engineer walks the bus with a meter, and the phantom load leads them a merry chase through the conduit runs before it finally sits still long enough to name.",
+      "tone_min": 0.1,
+      "tone_max": 0.35,
+      "weight": 3.0,
+      "min_elapsed": 60.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "brownout_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "trace_underway"
+        }
+      ]
+    },
+    {
+      "event_id": "bo_arrival",
+      "title": "Bad Time for It",
+      "description": "The ship is closing on its destination, where it will want every amp for maneuvering. A grid that browns out during approach is a grid that embarrasses the AI in front of Command.",
+      "tone_min": 0.1,
+      "tone_max": 0.4,
+      "weight": 3.0,
+      "min_elapsed": 100.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "brownout_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "approach_pressure"
+        }
+      ]
+    },
+    {
+      "event_id": "bo_steady",
+      "title": "Holding Voltage",
+      "description": "For a stretch the grid behaves, and the crew stop watching the lights. The AI keeps watching; the draw is quieter, not gone.",
+      "tone_min": 0.1,
+      "tone_max": 0.3,
+      "weight": 2.0,
+      "min_elapsed": 90.0,
+      "cooldown": 80.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "brownout_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "grid_stabilized"
+        }
+      ],
+      "outcomes": []
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "best_skill:Engineering"
+    },
+    "timers": [
+      {
+        "at": 80.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Lights dipped again. That's the third time this shift."
+          },
+          {
+            "type": "resource_delta",
+            "resource": "battery_charge",
+            "amount": -4.0
+          }
+        ],
+        "requires_flags": [
+          "brownout_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "grid_stabilized"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.03
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Steady voltage. Whatever it was, it's off the bus."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_engineering",
+        "interval": 26.0,
+        "crew": "best_skill:Engineering",
+        "stat": "intellect",
+        "skill": "Engineering",
+        "requires_flags": [
+          "brownout_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "There's a ghost draw on bus three. Isolating it now."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Engineering",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "grid_stabilized"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Bus three's clean. Grid's steady again."
+          }
+        ]
+      },
+      {
+        "id": "solve_1_industrial_equipment",
+        "interval": 32.0,
+        "crew": "best_skill:Industrial Equipment",
+        "stat": "strength",
+        "skill": "Industrial Equipment",
+        "requires_flags": [
+          "brownout_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "I'll shift the heavy draws off the sagging bus by hand."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Industrial Equipment",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "grid_stabilized"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Loads balanced. Lights aren't flickering anymore."
+          }
+        ],
+        "item_tag": "repair_bonus"
+      }
+    ],
+    "objective_text": {
+      "start": "The grid keeps sagging. Something's drawing more than it should.",
+      "flags": {
+        "grid_stabilized": "Find the drain and stabilize the power grid."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "ghost_in_the_grid",
+      "condition_flags": [
+        "sabotage_whisper"
+      ],
+      "overlap_ok": true,
+      "weight": 0.9
+    }
+  ]
+}

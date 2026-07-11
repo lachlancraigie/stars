@@ -1,0 +1,384 @@
+{
+  "id": "the_rash",
+  "title": "The Rash",
+  "pressure_axis": "bio",
+  "intensity": 2,
+  "contexts": [
+    "aftermath",
+    "any"
+  ],
+  "trigger_status": "marked",
+  "tone_start": 0.4,
+  "expected_length": 290.0,
+  "weight": 1.0,
+  "min_leg": 2,
+  "once_per_run": true,
+  "win_flags": [
+    "contagion_stopped"
+  ],
+  "leg_delta_success": {
+    "ai_core_integrity": 5.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -10.0
+  },
+  "solves": [
+    {
+      "desc": "Culture the rash and find its transmission vector",
+      "skill": "Pathology",
+      "stat": "intellect",
+      "items_help": [
+        "medscanner"
+      ]
+    },
+    {
+      "desc": "Treat the marked skin before it sets",
+      "skill": "Field Medicine",
+      "stat": "intellect",
+      "items_help": [
+        "med_kit"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "ra_mark",
+      "title": "Silver on the Wrist",
+      "description": "A crew member shows the medic a metallic bloom under the skin of their wrist. It doesn't itch, doesn't hurt, and doesn't match anything in the database \u2014 but the AI has seen where they've been.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 10.0,
+      "min_elapsed": 20.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "the_rash_active"
+        },
+        {
+          "type": "crew_status_flag",
+          "target": "patient_zero",
+          "flag": "marked",
+          "value": true
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:patient_zero",
+          "text": "Look at this. It's kind of pretty, actually. That's the weird part."
+        }
+      ]
+    },
+    {
+      "event_id": "ra_second",
+      "title": "A Second Hand",
+      "description": "Someone who shared a handshake, a tool, a meal now has the same silver bloom. The pattern is contact, and the ship is a small place full of contact.",
+      "tone_min": 0.3,
+      "tone_max": 0.6,
+      "weight": 5.0,
+      "min_elapsed": 110.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "the_rash_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "vector_known"
+        },
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.08,
+          "all_crew": true
+        }
+      ]
+    },
+    {
+      "event_id": "ra_change",
+      "title": "Not Quite Themselves",
+      "description": "The first marked crew member has gone quiet and dreamy, staring at the bloom for long minutes. Nothing you could call sick. Just a person becoming slightly less like a person.",
+      "tone_min": 0.4,
+      "tone_max": 0.8,
+      "weight": 4.0,
+      "min_elapsed": 170.0,
+      "cooldown": 150.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "vector_known"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "contagion_stopped"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.1,
+          "all_crew": true
+        },
+        {
+          "type": "crew_stress",
+          "target": "cast:patient_zero",
+          "amount": 2
+        }
+      ]
+    },
+    {
+      "event_id": "ra_spread",
+      "title": "It Wants More Hands",
+      "description": "The marked seek each other out and, without meaning to, everyone else. The AI watches the contact graph fan out and knows it has to break someone's routine to stop it.",
+      "tone_min": 0.5,
+      "tone_max": 0.85,
+      "weight": 2.0,
+      "min_elapsed": 230.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "vector_known"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "contagion_stopped"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "marked_spreads"
+        }
+      ]
+    },
+    {
+      "event_id": "ra_barrier",
+      "title": "Gloves and Distance",
+      "description": "Barrier protocol goes up: no skin contact, shared tools logged and wiped. Awkward and cold on a small ship, and the only thing standing between the rash and everyone.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 3.0,
+      "min_elapsed": 130.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "vector_known"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "barrier_up"
+        }
+      ]
+    },
+    {
+      "event_id": "ra_quiet_hands",
+      "title": "Keeping Hands to Themselves",
+      "description": "For a stretch, no new marks. The crew move around each other like strangers, and the AI can't tell if it's working or if the rash is just biding its time.",
+      "tone_min": 0.3,
+      "tone_max": 0.6,
+      "weight": 3.0,
+      "min_elapsed": 190.0,
+      "cooldown": 160.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "barrier_up"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "contagion_stopped"
+        }
+      ],
+      "outcomes": []
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "best_skill:Pathology",
+      "patient_zero": "status:marked"
+    },
+    "timers": [
+      {
+        "at": 100.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "It's on two more hands now. It travels when we shake."
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.1,
+            "all_crew": true
+          }
+        ],
+        "requires_flags": [
+          "the_rash_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "marked_spreads"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "crew_status_flag",
+            "target": "random",
+            "flag": "marked",
+            "value": true
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.14,
+            "all_crew": true
+          }
+        ],
+        "once": true
+      },
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "contagion_stopped"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.05
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Chain's broken. Everyone's counting their own fingers."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_pathology",
+        "interval": 26.0,
+        "crew": "best_skill:Pathology",
+        "stat": "intellect",
+        "skill": "Pathology",
+        "requires_flags": [
+          "the_rash_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "It's contact only. No touch, no spread. Gloves on."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Pathology",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "contagion_stopped"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Vector's mapped. The chain stops with barrier protocol."
+          }
+        ],
+        "item_tag": "medical_bonus",
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_1_field_medicine",
+        "interval": 32.0,
+        "crew": "best_skill:Field Medicine",
+        "stat": "intellect",
+        "skill": "Field Medicine",
+        "requires_flags": [
+          "the_rash_active"
+        ],
+        "successes_needed": 2,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Caught early it sloughs off with a caustic scrub. Hurts."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Field Medicine",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "contagion_stopped"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Marks are healing. Nobody new since the protocol."
+          }
+        ],
+        "item_tag": "medical_bonus",
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      }
+    ],
+    "objective_text": {
+      "start": "A silver rash spreads by touch. Whoever it marks, it changes, slowly.",
+      "flags": {
+        "vector_known": "Work out how the rash chooses who's next.",
+        "contagion_stopped": "Break the chain of contact before it takes the crew."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "the_returned",
+      "condition_flags": [
+        "marked_spreads"
+      ],
+      "overlap_ok": true,
+      "weight": 0.8
+    }
+  ]
+}

@@ -1,0 +1,390 @@
+{
+  "id": "frozen_out",
+  "title": "Frozen Out",
+  "pressure_axis": "systems",
+  "intensity": 3,
+  "contexts": [
+    "transit",
+    "any"
+  ],
+  "trigger_status": "",
+  "tone_start": 0.45,
+  "expected_length": 370.0,
+  "weight": 1.0,
+  "min_leg": 3,
+  "once_per_run": true,
+  "win_flags": [
+    "heat_restored"
+  ],
+  "leg_delta_success": {
+    "ai_core_integrity": 7.0,
+    "battery_charge": 10.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -15.0
+  },
+  "solves": [
+    {
+      "desc": "Repair the failed heat-exchanger loop",
+      "skill": "Mechanical Repair",
+      "stat": "strength",
+      "items_help": [
+        "engineers_toolkit"
+      ]
+    },
+    {
+      "desc": "Restart the thermal plant by hand",
+      "skill": "Industrial Equipment",
+      "stat": "strength",
+      "items_help": []
+    }
+  ],
+  "events": [
+    {
+      "event_id": "fz_drop",
+      "title": "The Temperature Falls",
+      "description": "Thermal regulation fails without drama \u2014 just a number, sliding. The AI watches deck temperature start its long walk toward the outside, which is very far below zero.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 10.0,
+      "min_elapsed": 10.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "frozen_out_active"
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:lead",
+          "text": "Is it me, or did it just get cold in here?"
+        }
+      ]
+    },
+    {
+      "event_id": "fz_huddle",
+      "title": "Warm Rooms Only",
+      "description": "The AI can keep a few rooms heated by concentrating power there. The crew drift toward the warm rooms and away from their posts, and the work of saving the ship slows in the cold.",
+      "tone_min": 0.3,
+      "tone_max": 0.7,
+      "weight": 5.0,
+      "min_elapsed": 80.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "frozen_out_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "heat_triage"
+        },
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.08,
+          "all_crew": true
+        }
+      ]
+    },
+    {
+      "event_id": "fz_ice",
+      "title": "Frost Inside",
+      "description": "Condensation freezes on cold surfaces, including the ones the crew need bare hands to work. Tools stick, joints stiffen, and the repair gets harder exactly as it gets more urgent.",
+      "tone_min": 0.4,
+      "tone_max": 0.8,
+      "weight": 4.0,
+      "min_elapsed": 160.0,
+      "cooldown": 130.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "heat_triage"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "heat_restored"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.1,
+          "all_crew": true
+        },
+        {
+          "type": "crew_stress",
+          "target": "cast:lead",
+          "amount": 2
+        }
+      ]
+    },
+    {
+      "event_id": "fz_hypothermia",
+      "title": "The Cold Wins a Round",
+      "description": "A crew member working the cold too long stops shivering, which is the bad sign, not the good one. The AI flags hypothermia and reroutes heat it can't really spare.",
+      "tone_min": 0.6,
+      "tone_max": 1.0,
+      "weight": 2.0,
+      "min_elapsed": 240.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "heat_triage"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "heat_restored"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "crew_injury",
+          "target": "random",
+          "severity": "serious"
+        },
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.16,
+          "all_crew": true
+        }
+      ]
+    },
+    {
+      "event_id": "fz_diagnose",
+      "title": "Reading the Cold",
+      "description": "An engineer traces the failure to a frozen exchanger loop with the AI narrating temperatures. The fix is clear; the doing of it, in this cold, is the hard part.",
+      "tone_min": 0.3,
+      "tone_max": 0.6,
+      "weight": 3.0,
+      "min_elapsed": 110.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "frozen_out_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "heat_source"
+        }
+      ]
+    },
+    {
+      "event_id": "fz_core",
+      "title": "The AI Feels It Too",
+      "description": "Core temperature drifts below spec. The AI's own thinking gets a half-step slower, a reminder that in deep cold nothing aboard, not even the ship's mind, is exempt.",
+      "tone_min": 0.4,
+      "tone_max": 0.8,
+      "weight": 3.0,
+      "min_elapsed": 180.0,
+      "cooldown": 150.0,
+      "one_shot": false,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "frozen_out_active"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "heat_restored"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "resource_delta",
+          "resource": "ai_core_integrity",
+          "amount": -3.0
+        }
+      ]
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "best_skill:Mechanical Repair"
+    },
+    "timers": [
+      {
+        "at": 120.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Frost on the inside of the hull now. That's how bad it is."
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.12,
+            "all_crew": true
+          }
+        ],
+        "requires_flags": [
+          "frozen_out_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "resource_below",
+            "resource": "ai_core_integrity",
+            "value": 70.0
+          },
+          {
+            "type": "flag_unset",
+            "flag": "heat_restored"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.18,
+            "all_crew": true
+          },
+          {
+            "type": "set_flag",
+            "flag": "deep_cold"
+          }
+        ],
+        "once": true
+      },
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "heat_restored"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.07
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "It's warming up. Feeling comes back to my hands."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_mechanical_repair",
+        "interval": 26.0,
+        "crew": "best_skill:Mechanical Repair",
+        "stat": "strength",
+        "skill": "Mechanical Repair",
+        "requires_flags": [
+          "frozen_out_active"
+        ],
+        "successes_needed": 3,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Exchanger's frozen solid. I can thaw and reseal it."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Mechanical Repair",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "heat_restored"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Loop's flowing warm again. We stop losing heat."
+          }
+        ],
+        "item_tag": "repair_bonus",
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_1_industrial_equipment",
+        "interval": 32.0,
+        "crew": "best_skill:Industrial Equipment",
+        "stat": "strength",
+        "skill": "Industrial Equipment",
+        "requires_flags": [
+          "frozen_out_active"
+        ],
+        "successes_needed": 3,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Main heater's tripped. I'll hand-crank the restart cycle."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Industrial Equipment",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "heat_restored"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Heater's lit. Decks are climbing back toward livable."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      }
+    ],
+    "objective_text": {
+      "start": "Thermal regulation failed. The ship is shedding heat to the void, and the void has patience.",
+      "flags": {
+        "heat_source": "Find why the ship stopped holding its heat.",
+        "heat_restored": "Restore thermal regulation before the cold wins."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "dead_air",
+      "condition_flags": [
+        "deep_cold"
+      ],
+      "overlap_ok": true,
+      "weight": 0.7
+    }
+  ]
+}

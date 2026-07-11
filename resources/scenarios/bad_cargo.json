@@ -1,0 +1,445 @@
+{
+  "id": "bad_cargo",
+  "title": "Bad Cargo",
+  "pressure_axis": "combat",
+  "intensity": 3,
+  "contexts": [
+    "docked",
+    "station"
+  ],
+  "trigger_status": "",
+  "tone_start": 0.45,
+  "expected_length": 400.0,
+  "weight": 1.0,
+  "min_leg": 3,
+  "once_per_run": true,
+  "win_flags": [
+    "boarders_repelled"
+  ],
+  "leg_delta_success": {
+    "ai_core_integrity": 8.0,
+    "credits": 100.0
+  },
+  "leg_delta_crew_dead": {
+    "ai_core_integrity": -16.0,
+    "hull_integrity": -10.0
+  },
+  "solves": [
+    {
+      "desc": "Repel the boarders with armed crew",
+      "skill": "Firearms",
+      "stat": "combat",
+      "items_help": [
+        "revolver",
+        "combat_shotgun"
+      ]
+    },
+    {
+      "desc": "Talk the collection crew out of a fight they'll lose",
+      "skill": "Command",
+      "stat": "intellect",
+      "items_help": []
+    },
+    {
+      "desc": "Fight them off hand-to-hand in the airlock throat",
+      "skill": "Hand-to-Hand Combat",
+      "stat": "combat",
+      "items_help": [
+        "boarding_axe"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "bc_weight",
+      "title": "The Weight Is Wrong",
+      "description": "The AI reconciles declared mass against the hold sensors and finds the difference is breathing. The manifest says industrial parts. The parts have heartbeats, forty of them.",
+      "tone_min": 0.2,
+      "tone_max": 0.5,
+      "weight": 10.0,
+      "min_elapsed": 15.0,
+      "cooldown": 9999.0,
+      "one_shot": true,
+      "conditions": [],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "bad_cargo_active"
+        },
+        {
+          "type": "radio_line",
+          "speaker": "cast:lead",
+          "text": "There are people in my cargo hold. Nobody told me about people."
+        }
+      ]
+    },
+    {
+      "event_id": "bc_discover",
+      "title": "The Crew Find Out",
+      "description": "The stowaways are discovered \u2014 frightened passage-buyers who paid a smuggler for a one-way ride. The crew split instantly on what they owe strangers versus what they owe the job.",
+      "tone_min": 0.3,
+      "tone_max": 0.6,
+      "weight": 5.0,
+      "min_elapsed": 90.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "bad_cargo_active"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "stowaways_found"
+        },
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.08,
+          "all_crew": true
+        }
+      ]
+    },
+    {
+      "event_id": "bc_hail",
+      "title": "The Collection Crew",
+      "description": "A ship matches velocity and demands its cargo back. They are armed, unbothered, and used to ships that fold. The AI reads their approach vector and starts counting seconds to contact.",
+      "tone_min": 0.4,
+      "tone_max": 0.75,
+      "weight": 4.0,
+      "min_elapsed": 150.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "stowaways_found"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "collectors_inbound"
+        },
+        {
+          "type": "crew_fear_spike",
+          "amount": 0.06,
+          "all_crew": true
+        }
+      ]
+    },
+    {
+      "event_id": "bc_force",
+      "title": "Forcing the Lock",
+      "description": "Negotiation over, the collectors put a cutting charge on the outer door. The AI can arm the crew, seal and vent, or bluff \u2014 but the throat of the airlock is about to become a battlefield.",
+      "tone_min": 0.6,
+      "tone_max": 1.0,
+      "weight": 2.0,
+      "min_elapsed": 230.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "collectors_inbound"
+        },
+        {
+          "type": "flag_unset",
+          "flag": "boarders_repelled"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "forced_entry"
+        }
+      ]
+    },
+    {
+      "event_id": "bc_arm",
+      "title": "Break Out the Guns",
+      "description": "The AI can unlock the arms locker and put weapons in willing hands. It's the strongest defense and the fastest way to a body count, and once the guns are out they don't easily go back.",
+      "tone_min": 0.4,
+      "tone_max": 0.8,
+      "weight": 3.0,
+      "min_elapsed": 170.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "collectors_inbound"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "crew_armed"
+        },
+        {
+          "type": "grant_item",
+          "target": "cast:gunner",
+          "item_id": "revolver"
+        }
+      ]
+    },
+    {
+      "event_id": "bc_seal",
+      "title": "Seal the Collar",
+      "description": "The AI can lock every door between the collectors and the hold, turning the ship into a maze that buys time and costs the boarders their nerve \u2014 if the seals hold and the crew stay put.",
+      "tone_min": 0.3,
+      "tone_max": 0.7,
+      "weight": 3.0,
+      "min_elapsed": 190.0,
+      "cooldown": 300.0,
+      "one_shot": true,
+      "conditions": [
+        {
+          "type": "flag_set",
+          "flag": "collectors_inbound"
+        }
+      ],
+      "outcomes": [
+        {
+          "type": "set_flag",
+          "flag": "ship_sealed"
+        },
+        {
+          "type": "door_lock_room",
+          "room": "airlock"
+        }
+      ]
+    }
+  ],
+  "monitor": {
+    "cast": {
+      "lead": "role:captain",
+      "gunner": "best_skill:Firearms"
+    },
+    "timers": [
+      {
+        "at": 130.0,
+        "outcomes": [
+          {
+            "type": "radio_line",
+            "speaker": "contact",
+            "text": "That's our property in your hold. Open up and this stays civil."
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.12,
+            "all_crew": true
+          }
+        ],
+        "requires_flags": [
+          "bad_cargo_active"
+        ]
+      }
+    ],
+    "watches": [
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "forced_entry"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "spawn_intruder",
+            "intruder_type": "stalker",
+            "room": "airlock"
+          },
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.2,
+            "all_crew": true
+          },
+          {
+            "type": "crew_injury",
+            "target": "random",
+            "severity": "serious"
+          }
+        ],
+        "once": true
+      },
+      {
+        "conditions": [
+          {
+            "type": "flag_set",
+            "flag": "boarders_repelled"
+          }
+        ],
+        "outcomes": [
+          {
+            "type": "ai_trust_delta",
+            "amount": 0.08
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "They're gone. The people in the hold are ours to protect now."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "checks": [
+      {
+        "id": "solve_0_firearms",
+        "interval": 26.0,
+        "crew": "best_skill:Firearms",
+        "stat": "combat",
+        "skill": "Firearms",
+        "requires_flags": [
+          "bad_cargo_active"
+        ],
+        "successes_needed": 3,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "They're at the inner door. First one through eats a slug."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Firearms",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "boarders_repelled"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "They pulled back. Left two behind. We hold the lock."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_1_command",
+        "interval": 32.0,
+        "crew": "best_skill:Command",
+        "stat": "intellect",
+        "skill": "Command",
+        "requires_flags": [
+          "bad_cargo_active"
+        ],
+        "successes_needed": 3,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Tell them the cost of forcing us. Make the math ugly for them."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Command",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "boarders_repelled"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "They did the arithmetic and undocked. No shots fired."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      },
+      {
+        "id": "solve_2_hand_to_hand_combat",
+        "interval": 38.0,
+        "crew": "best_skill:Hand-to-Hand Combat",
+        "stat": "combat",
+        "skill": "Hand-to-Hand Combat",
+        "requires_flags": [
+          "bad_cargo_active"
+        ],
+        "successes_needed": 3,
+        "on_success": [
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Close quarters in the lock. No guns. Just us and them."
+          }
+        ],
+        "on_fail": [
+          {
+            "type": "crew_stress",
+            "target": "best_skill:Hand-to-Hand Combat",
+            "amount": 1
+          }
+        ],
+        "on_solved": [
+          {
+            "type": "set_flag",
+            "flag": "boarders_repelled"
+          },
+          {
+            "type": "radio_line",
+            "speaker": "cast:lead",
+            "text": "Beat them back through the collar and sealed it. Brutal, but ours."
+          }
+        ],
+        "on_crit_fail": [
+          {
+            "type": "crew_fear_spike",
+            "amount": 0.08,
+            "all_crew": false
+          }
+        ]
+      }
+    ],
+    "objective_text": {
+      "start": "The manifest lied. The hold is full of people, and their smugglers have come to collect.",
+      "flags": {
+        "stowaways_hidden": "Decide whether to reveal or protect the human cargo.",
+        "boarders_repelled": "Turn back the collection crew without a massacre."
+      }
+    }
+  },
+  "morph_edges": [
+    {
+      "to": "boarders",
+      "condition_flags": [
+        "forced_entry"
+      ],
+      "overlap_ok": false,
+      "weight": 1.2
+    },
+    {
+      "to": "the_holdout",
+      "condition_flags": [
+        "stowaways_found"
+      ],
+      "overlap_ok": true,
+      "weight": 0.5
+    }
+  ]
+}
