@@ -43,6 +43,7 @@ from __future__ import annotations
 
 import argparse
 import base64
+import colorsys
 import json
 import math
 import sys
@@ -400,6 +401,74 @@ def flood_fill_alpha(im: Image.Image, threshold: int = WHITE_THRESHOLD) -> Image
 # Per-character palette (built from the idle sheet, snapped onto all 4 sheets)
 # ---------------------------------------------------------------------------
 
+ACCENT_S_MIN = 0.35          # HSV saturation floor -- excludes grey/near-neutral chassis shading
+ACCENT_V_MIN = 0.12          # HSV value floor -- excludes near-black noise
+ACCENT_MIN_FRACTION = 0.003  # min share of opaque pixels for a hue cluster to count (not AA noise)
+ACCENT_MAX_EXTRA = 3
+ACCENT_HUE_BUCKETS = 24      # 15-degree hue buckets
+
+
+def _extract_accent_colors(rgba: Image.Image, existing: list[tuple[int, int, int]],
+                            max_extra: int = ACCENT_MAX_EXTRA) -> list[tuple[int, int, int]]:
+    """BUGFIX (discovered live on dockhand/pirate_raider/robot_security, 2026-07-12):
+    build_character_palette's per-band top-N-by-pixel-count extraction reliably
+    drops small but DEFINING saturated accent colors -- a hi-vis vest, a faction
+    stripe, a single optic lens -- whenever that color is a minority of its band
+    (i.e. almost always, since the band is dominated by suit/armor fabric). QA
+    never catches this: silhouette IoU and post-snap drift are both blind to
+    whether the painted color matches the PROMPT's described color, only to
+    internal cross-cell consistency. Net effect: three characters passed QA
+    while completely missing their one identifying hue.
+
+    First attempt (RGB-bucket quantization gated on absolute chroma) failed on
+    the red optic case: cel-shading spreads one hue across a wide brightness
+    range (dark shadow ~#200000 to bright highlight ~#c04040), and dark shades
+    of a saturated hue have low ABSOLUTE chroma (max-min) even though the hue
+    itself is unambiguous -- no single RGB bucket cleared both the chroma and
+    fraction floors simultaneously. Fix: cluster by HUE (HSV h, brightness-
+    invariant) instead of by RGB bucket, so shadow/mid/highlight of the same
+    accent color accumulate into one bucket. Verified live against saved raw
+    (pre-snap) sheets: robot_security's red optic clusters into two adjacent
+    hue buckets at 1.18%+0.84% of opaque pixels (was ~0% survival before);
+    dockhand's vest orange separates cleanly from skin tone into its own
+    17%/8% hue buckets."""
+    rgb = rgba.convert("RGB")
+    alpha = rgba.split()[3]
+    px = list(rgb.getdata())
+    al = list(alpha.getdata())
+    buckets: dict[int, list[int]] = {}  # hue bucket -> [sum_r, sum_g, sum_b, count]
+    total = 0
+    for i in range(len(px)):
+        if al[i] <= 10:
+            continue
+        total += 1
+        r, g, b = px[i]
+        h, s, v = colorsys.rgb_to_hsv(r / 255, g / 255, b / 255)
+        if s < ACCENT_S_MIN or v < ACCENT_V_MIN:
+            continue
+        hb = int(h * ACCENT_HUE_BUCKETS) % ACCENT_HUE_BUCKETS
+        e = buckets.setdefault(hb, [0, 0, 0, 0])
+        e[0] += r
+        e[1] += g
+        e[2] += b
+        e[3] += 1
+    if not total:
+        return []
+    floor = total * ACCENT_MIN_FRACTION
+    ranked = sorted(buckets.items(), key=lambda kv: -kv[1][3])
+    picked: list[tuple[int, int, int]] = []
+    for _hb, (sr, sg, sb, n) in ranked:
+        if n < floor:
+            break
+        color = (sr // n, sg // n, sb // n)
+        if any(math.dist(color, c) < 14 for c in existing) or any(math.dist(color, c) < 14 for c in picked):
+            continue
+        picked.append(color)
+        if len(picked) >= max_extra:
+            break
+    return picked
+
+
 def build_character_palette(idle_rgba: Image.Image, bands: int = 8, top_n: int = 3) -> list[tuple[int, int, int]]:
     bands_data = ps.extract_bands(idle_rgba, bands=bands, top_n=top_n)
     colors: list[tuple[int, int, int]] = []
@@ -410,6 +479,7 @@ def build_character_palette(idle_rgba: Image.Image, bands: int = 8, top_n: int =
             colors.append(color)
     if not colors:
         colors = [(0x14, 0x17, 0x1C), (0xE0, 0xB8, 0x98)]
+    colors.extend(_extract_accent_colors(idle_rgba, colors))
     return colors
 
 

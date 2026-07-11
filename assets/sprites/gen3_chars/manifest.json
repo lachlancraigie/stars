@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "total_spend": 16.114
+    "total_spend": 18.632
   },
   "characters": {
     "ch_fe_eng_cm": {
@@ -1541,6 +1541,162 @@
           "mean_iou": 0.838,
           "min_iou": 0.478,
           "drift": 6.8,
+          "white_dev": 0.0,
+          "pass": true
+        }
+      },
+      "model_used": {
+        "idle": "google/gemini-2.5-flash-image",
+        "walk": "google/gemini-2.5-flash-image",
+        "run": "google/gemini-3-pro-image",
+        "punch": "google/gemini-3-pro-image"
+      },
+      "spend": 0.394,
+      "needs_regeneration": [],
+      "status": "complete"
+    },
+    "robot_maintenance": {
+      "id": "robot_maintenance",
+      "kind": "robot",
+      "name": "Maintenance Automaton",
+      "tag": null,
+      "description": "a maintenance robot: matte chassis painted safety yellow with black hazard stripes, visible panel seams, a single small round utility optic, industrial joint plating, a blank smooth head unit with no human face",
+      "palette": [
+        "#181810",
+        "#e8b040",
+        "#080808"
+      ],
+      "qa": {
+        "idle": {
+          "mean_iou": 0.966,
+          "min_iou": 0.934,
+          "drift": 20.0,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "walk": {
+          "mean_iou": 0.712,
+          "min_iou": 0.467,
+          "drift": 18.3,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "run": {
+          "mean_iou": 0.922,
+          "min_iou": 0.87,
+          "drift": 6.9,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "punch": {
+          "mean_iou": 0.896,
+          "min_iou": 0.497,
+          "drift": 13.4,
+          "white_dev": 0.0,
+          "pass": true
+        }
+      },
+      "model_used": {
+        "idle": "google/gemini-2.5-flash-image",
+        "walk": "google/gemini-2.5-flash-image",
+        "run": "google/gemini-3-pro-image",
+        "punch": "google/gemini-3-pro-image"
+      },
+      "spend": 0.434,
+      "needs_regeneration": [],
+      "status": "complete"
+    },
+    "robot_cargo_loader": {
+      "id": "robot_cargo_loader",
+      "kind": "robot",
+      "name": "Cargo Loader Frame",
+      "tag": null,
+      "description": "a cargo loader robot: bulky industrial safety-orange plating, thick reinforced limb joints, a wide-stance heavy chassis, a blank utility head unit, black hazard markings",
+      "palette": [
+        "#484848",
+        "#f08030",
+        "#000000",
+        "#e06020",
+        "#e08020"
+      ],
+      "qa": {
+        "idle": {
+          "mean_iou": 0.681,
+          "min_iou": 0.464,
+          "drift": 13.4,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "walk": {
+          "mean_iou": 0.679,
+          "min_iou": 0.502,
+          "drift": 18.5,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "run": {
+          "mean_iou": 0.764,
+          "min_iou": 0.473,
+          "drift": 13.1,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "punch": {
+          "mean_iou": 0.891,
+          "min_iou": 0.486,
+          "drift": 8.3,
+          "white_dev": 0.0,
+          "pass": true
+        }
+      },
+      "model_used": {
+        "idle": "google/gemini-2.5-flash-image",
+        "walk": "google/gemini-2.5-flash-image",
+        "run": "google/gemini-3-pro-image",
+        "punch": "google/gemini-3-pro-image"
+      },
+      "spend": 0.137,
+      "needs_regeneration": [],
+      "status": "complete"
+    },
+    "robot_security": {
+      "id": "robot_security",
+      "kind": "robot",
+      "name": "Security Unit",
+      "tag": null,
+      "description": "a security robot: dark gunmetal-grey armored chassis, a single glowing red optic lens as the head, angular military-style plating, no human face",
+      "palette": [
+        "#404040",
+        "#000000",
+        "#303030",
+        "#b61f31"
+      ],
+      "qa": {
+        "idle": {
+          "mean_iou": 0.745,
+          "min_iou": 0.572,
+          "drift": 28.1,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "walk": {
+          "mean_iou": 0.689,
+          "min_iou": 0.453,
+          "drift": 6.5,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "run": {
+          "mean_iou": 0.917,
+          "min_iou": 0.851,
+          "drift": 5.7,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "punch": {
+          "mean_iou": 0.896,
+          "min_iou": 0.504,
+          "drift": 5.9,
           "white_dev": 0.0,
           "pass": true
         }
