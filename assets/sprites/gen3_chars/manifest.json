@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "total_spend": 0.731
+    "total_spend": 3.358
   },
   "characters": {
     "ch_fe_eng_cm": {
@@ -49,6 +49,202 @@
       "spend": 0.217,
       "needs_regeneration": [],
       "status": "complete"
+    },
+    "ch_fe_sci_cm": {
+      "id": "ch_fe_sci_cm",
+      "kind": "crew",
+      "name": "Marisol Feng",
+      "tag": "CH_FE_SCI_CM",
+      "description": "a woman, a messy short crop in dark brown hair, rich dark skin, wearing a pale off-white lab tunic over a dark fitted under-layer, clipped instrument pouches on the chest, soft-soled shoes, a warm coral-orange accent (piping, patches), no rank trim or insignia",
+      "palette": [
+        "#e0d8d0",
+        "#000000",
+        "#e8e0e0",
+        "#909090"
+      ],
+      "qa": {
+        "idle": {
+          "mean_iou": 0.831,
+          "min_iou": 0.542,
+          "drift": 38.5,
+          "pass": false
+        },
+        "walk": {
+          "mean_iou": 0.782,
+          "min_iou": 0.593,
+          "drift": 33.5,
+          "pass": true
+        },
+        "run": {
+          "mean_iou": 0.866,
+          "min_iou": 0.809,
+          "drift": 36.1,
+          "pass": false
+        },
+        "punch": {
+          "mean_iou": 0.672,
+          "min_iou": 0.39,
+          "drift": 23.7,
+          "pass": false
+        }
+      },
+      "model_used": {
+        "idle": "google/gemini-2.5-flash-image",
+        "walk": "google/gemini-3-pro-image",
+        "run": "google/gemini-3-pro-image",
+        "punch": "google/gemini-3-pro-image"
+      },
+      "spend": 0.731,
+      "needs_regeneration": [
+        "run",
+        "punch",
+        "idle"
+      ],
+      "status": "partial"
+    },
+    "ch_ml_and_cm": {
+      "id": "ch_ml_and_cm",
+      "kind": "crew",
+      "name": "Milo Chen",
+      "tag": "CH_ML_AND_CM",
+      "description": "a man, loose shoulder-length waves in chestnut brown hair, pale synthetic skin with a faint grey undertone, wearing a graphite-grey synthetic bodysuit with visible seam-panel lines and smooth matte plating at the shoulders and forearms, pale synthetic skin with a faint grey undertone, a warm marigold-yellow accent (piping, patches), no rank trim or insignia",
+      "palette": [
+        "#707878",
+        "#000000",
+        "#404848"
+      ],
+      "qa": {
+        "idle": {
+          "mean_iou": 0.94,
+          "min_iou": 0.914,
+          "drift": 9.4,
+          "pass": true
+        },
+        "walk": {
+          "mean_iou": 0.79,
+          "min_iou": 0.619,
+          "drift": 11.7,
+          "pass": true
+        },
+        "run": {
+          "mean_iou": 0.896,
+          "min_iou": 0.848,
+          "drift": 10.5,
+          "pass": true
+        },
+        "punch": {
+          "mean_iou": 0.669,
+          "min_iou": 0.406,
+          "drift": 8.1,
+          "pass": true
+        }
+      },
+      "model_used": {
+        "idle": "google/gemini-3-pro-image",
+        "walk": "google/gemini-3-pro-image",
+        "run": "google/gemini-3-pro-image",
+        "punch": "google/gemini-3-pro-image"
+      },
+      "spend": 0.868,
+      "needs_regeneration": [],
+      "status": "complete"
+    },
+    "ch_ml_eng_of": {
+      "id": "ch_ml_eng_of",
+      "kind": "crew",
+      "name": "Marcus Feldheim",
+      "tag": "CH_ML_ENG_OF",
+      "description": "a man, a tight undercut in auburn red hair, medium brown skin, wearing olive-drab and rust-orange coveralls with rolled sleeves, a canvas tool rig/belt hung with visible tools, heavy grey work boots, a warm coral-orange accent (piping, patches), silver shoulder trim / rank bars",
+      "palette": [
+        "#707050",
+        "#000000"
+      ],
+      "qa": {
+        "idle": {
+          "mean_iou": 0.741,
+          "min_iou": 0.504,
+          "drift": 5.0,
+          "pass": true
+        },
+        "walk": {
+          "mean_iou": 0.668,
+          "min_iou": 0.446,
+          "drift": 8.0,
+          "pass": true
+        },
+        "run": {
+          "mean_iou": 0.913,
+          "min_iou": 0.861,
+          "drift": 6.5,
+          "pass": true
+        },
+        "punch": {
+          "mean_iou": 0.437,
+          "min_iou": 0.206,
+          "drift": 9.6,
+          "pass": false
+        }
+      },
+      "model_used": {
+        "idle": "google/gemini-2.5-flash-image",
+        "walk": "google/gemini-2.5-flash-image",
+        "run": "google/gemini-3-pro-image",
+        "punch": "google/gemini-3-pro-image"
+      },
+      "spend": 0.514,
+      "needs_regeneration": [
+        "punch"
+      ],
+      "status": "partial"
+    },
+    "ch_ml_mar_cm": {
+      "id": "ch_ml_mar_cm",
+      "kind": "crew",
+      "name": "Deshawn Ortega",
+      "tag": "CH_ML_MAR_CM",
+      "description": "a man, a cropped pixie cut in sandy blonde hair, golden-tan skin, wearing an armored tactical vest over combat fatigues, knee and elbow padding, load-bearing webbing gear, heavy combat boots, a warm marigold-yellow accent (piping, patches), no rank trim or insignia",
+      "palette": [
+        "#000000",
+        "#383818",
+        "#282828"
+      ],
+      "qa": {
+        "idle": {
+          "mean_iou": 0.956,
+          "min_iou": 0.786,
+          "drift": 2.5,
+          "pass": true
+        },
+        "walk": {
+          "mean_iou": 0.75,
+          "min_iou": 0.512,
+          "drift": 6.9,
+          "pass": true
+        },
+        "run": {
+          "mean_iou": 0.918,
+          "min_iou": 0.866,
+          "drift": 4.9,
+          "pass": true
+        },
+        "punch": {
+          "mean_iou": 0.545,
+          "min_iou": 0.321,
+          "drift": 2.6,
+          "pass": false
+        }
+      },
+      "model_used": {
+        "idle": "google/gemini-2.5-flash-image",
+        "walk": "google/gemini-2.5-flash-image",
+        "run": "google/gemini-3-pro-image",
+        "punch": "google/gemini-3-pro-image"
+      },
+      "spend": 0.514,
+      "needs_regeneration": [
+        "punch"
+      ],
+      "status": "partial"
     }
   }
 }

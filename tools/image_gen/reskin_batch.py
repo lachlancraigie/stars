@@ -62,6 +62,11 @@ import palette_snap as ps     # noqa: E402  (extract_bands / snap_image mechanic
 
 SCRATCH = REPO_ROOT / "assets" / "scratch"
 TEST_DIR = SCRATCH / "_reskin_test"
+# Per-sheet checkpoints (raw pre-snap RGBA + QA sidecar) live in scratch, NOT
+# in gen3_chars: they are paid intermediates that must survive a crash or shell
+# timeout mid-character, but must never be committed. assets/scratch/ stays
+# untracked by design.
+CKPT_ROOT = SCRATCH / "_reskin_checkpoints"
 OUT_ROOT = REPO_ROOT / "assets" / "sprites" / "gen3_chars"
 MANIFEST_PATH = OUT_ROOT / "manifest.json"
 ARCHETYPES_DIR = REPO_ROOT / "resources" / "dialogue" / "archetypes"
@@ -73,12 +78,17 @@ GRID = {"idle": (8, 8), "walk": (12, 8), "run": (6, 8), "punch": (4, 8)}   # (co
 # NOTE: "punch" is a 4x8 grid (width:height = 1:2), but OpenRouter's Gemini
 # image-edit provider only accepts a fixed aspect_ratio enum (1:1, 2:3, 3:2,
 # 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9) -- discovered live (HTTP 400) during
-# the first pilot run, since the "proven" test calls this was inherited from
-# only ever exercised idle/walk. "9:16" (0.5625) is the closest accepted value
-# to 1:2 (0.5); slicing divides by actual pixel dimensions/grid regardless, so
-# the minor aspect mismatch just means slightly non-square source cells before
-# they're resized to the fixed 64/128px square output -- harmless.
+# the first pilot run. idle (8x8=1:1), walk (12x8=3:2) and run (6x8=3:4) all
+# have EXACT enum matches and QA fine; punch does not, and requesting 9:16
+# against a 1:2 reference made the model re-compose the layout (punch IoU
+# 0.33-0.67 across the first five characters, failing even on pro while the
+# other three sheets passed). Fix: PAD the punch reference with a white right
+# margin to exactly 9:16 before the call, then crop the output back to the
+# original 1:2 region -- the canvas then matches the requested ratio and the
+# edit-in-place behavior returns. See _padded_reference()/PAD_CROP.
 ASPECT = {"idle": "1:1", "walk": "3:2", "run": "3:4", "punch": "9:16"}
+# sheets needing reference padding: sheet -> (target_w/target_h as a fraction)
+PAD_TO_RATIO = {"punch": 9 / 16}
 SHEETS = ["idle", "walk", "run", "punch"]
 
 MODEL_FLASH = "google/gemini-2.5-flash-image"
@@ -264,6 +274,28 @@ PROMPT_TEMPLATE_EMPHASIZED = (
     "Flat cel-shaded sprite style, clean dark outlines, max 3 shading tones per surface, "
     "pure white background, no grid lines, no text."
 )
+
+
+def _padded_reference(sheet: str) -> tuple[Path, float]:
+    """For sheets whose grid ratio has no exact aspect_ratio enum entry, build
+    (once, cached in scratch) a white-right-padded copy of the mannequin sheet
+    at the requested ratio. Returns (reference_path, crop_fraction) where
+    crop_fraction is the width fraction of the output that contains the real
+    grid (1.0 = no padding)."""
+    src = SCRATCH / f"isometric_character_{sheet}_4k.png"
+    ratio = PAD_TO_RATIO.get(sheet)
+    if ratio is None:
+        return src, 1.0
+    padded_path = SCRATCH / f"_padded_{sheet}_4k.png"
+    im = Image.open(src).convert("RGB")
+    w, h = im.size
+    target_w = round(h * ratio)
+    if target_w <= w:
+        return src, 1.0
+    canvas = Image.new("RGB", (target_w, h), (255, 255, 255))
+    canvas.paste(im, (0, 0))
+    canvas.save(padded_path)
+    return padded_path, w / target_w
 
 
 def call_openrouter_images(model: str, prompt: str, aspect_ratio: str, ref_png: Path, key: str) -> bytes:
@@ -481,11 +513,39 @@ def write_preview_gif(rgba: Image.Image, sheet: str, row: int, out_path: Path, f
 # ---------------------------------------------------------------------------
 
 def generate_one_sheet(character_id: str, description: str, sheet: str, key: str,
-                        spend: dict) -> tuple[Image.Image | None, dict, str, float]:
+                        palette: list[tuple[int, int, int]] | None = None,
+                        ) -> tuple[Image.Image | None, dict, str, float]:
     """Generate + QA one sheet, with the flash->flash(emphasized)->pro escalation
-    ladder. Returns (rgba_image_or_None, qa_dict, model_used, cost)."""
+    ladder. Returns (RAW rgba_image_or_None (pre-snap), qa_dict, model_used, cost).
+
+    Gate placement per spec: IoU is structural (snap never touches alpha) but
+    the drift gate applies AFTER palette snap -- so we QA a snap PREVIEW here,
+    using the character's real palette (idle-derived) when available, else a
+    palette extracted from the candidate itself. Gating raw drift pre-snap
+    (the first pilot's behavior) escalated to pro for drift failures that the
+    snap fixes for free."""
     cols, rows = GRID[sheet]
     src = SCRATCH / f"isometric_character_{sheet}_4k.png"
+    ref, crop_frac = _padded_reference(sheet)
+
+    def _qa_candidate(rgba: Image.Image) -> dict:
+        gate_palette = palette or build_character_palette(rgba)
+        preview = ps.snap_image(rgba, palette=gate_palette)
+        return qa_sheet(src, preview, sheet)
+
+    def _receive(png: bytes) -> Image.Image:
+        img = Image.open(__import__("io").BytesIO(png))
+        if crop_frac < 1.0:
+            w, h = img.size
+            img = img.crop((0, 0, round(w * crop_frac), h))
+        return flood_fill_alpha(img)
+
+    margin_clause = (
+        " The blank white strip on the right edge of the canvas is intentional "
+        "margin: leave it completely blank white, paint nothing there."
+        if crop_frac < 1.0 else ""
+    )
+
     attempts = [
         (MODEL_FLASH, PROMPT_TEMPLATE),
         (MODEL_FLASH, PROMPT_TEMPLATE_EMPHASIZED),
@@ -497,18 +557,17 @@ def generate_one_sheet(character_id: str, description: str, sheet: str, key: str
         if remaining < STOP_THRESHOLD:
             print(f"    [budget] remaining ${remaining:.2f} < ${STOP_THRESHOLD} -- stopping before {model}")
             return None, {"pass": False, "reason": "budget"}, model, total_cost
-        prompt = template.format(rows=rows, cols=cols, character=description)
-        print(f"    [{sheet}] attempt {i+1}: {model} (credits remaining ${remaining:.2f})")
+        prompt = template.format(rows=rows, cols=cols, character=description) + margin_clause
+        print(f"    [{sheet}] attempt {i+1}: {model} (credits remaining ${remaining:.2f})", flush=True)
         try:
-            png = call_openrouter_images(model, prompt, ASPECT[sheet], src, key)
+            png = call_openrouter_images(model, prompt, ASPECT[sheet], ref, key)
         except RuntimeError as e:
             print(f"    [{sheet}] generation FAILED: {e}")
             continue
         total_cost += EST_COST[model]
-        img = Image.open(__import__("io").BytesIO(png))
-        rgba = flood_fill_alpha(img)
-        qa = qa_sheet(src, rgba, sheet)
-        print(f"    [{sheet}] {model}: mean_iou={qa['mean_iou']} min_iou={qa['min_iou']} drift={qa['drift']} pass={qa['pass']}")
+        rgba = _receive(png)
+        qa = _qa_candidate(rgba)
+        print(f"    [{sheet}] {model}: mean_iou={qa['mean_iou']} min_iou={qa['min_iou']} drift(post-snap)={qa['drift']} pass={qa['pass']}", flush=True)
         last_qa, last_img, last_model = qa, rgba, model
         if qa["pass"]:
             return rgba, qa, model, total_cost
@@ -516,15 +575,14 @@ def generate_one_sheet(character_id: str, description: str, sheet: str, key: str
     # escalate to pro if we still have headroom
     remaining = get_remaining_credits(key)
     if remaining > PRO_ESCALATION_THRESHOLD:
-        print(f"    [{sheet}] escalating to {MODEL_PRO} (credits remaining ${remaining:.2f})")
-        prompt = PROMPT_TEMPLATE_EMPHASIZED.format(rows=rows, cols=cols, character=description)
+        print(f"    [{sheet}] escalating to {MODEL_PRO} (credits remaining ${remaining:.2f})", flush=True)
+        prompt = PROMPT_TEMPLATE_EMPHASIZED.format(rows=rows, cols=cols, character=description) + margin_clause
         try:
-            png = call_openrouter_images(MODEL_PRO, prompt, ASPECT[sheet], src, key)
+            png = call_openrouter_images(MODEL_PRO, prompt, ASPECT[sheet], ref, key)
             total_cost += EST_COST[MODEL_PRO]
-            img = Image.open(__import__("io").BytesIO(png))
-            rgba = flood_fill_alpha(img)
-            qa = qa_sheet(src, rgba, sheet)
-            print(f"    [{sheet}] {MODEL_PRO}: mean_iou={qa['mean_iou']} min_iou={qa['min_iou']} drift={qa['drift']} pass={qa['pass']}")
+            rgba = _receive(png)
+            qa = _qa_candidate(rgba)
+            print(f"    [{sheet}] {MODEL_PRO}: mean_iou={qa['mean_iou']} min_iou={qa['min_iou']} drift(post-snap)={qa['drift']} pass={qa['pass']}", flush=True)
             return rgba, qa, MODEL_PRO, total_cost
         except RuntimeError as e:
             print(f"    [{sheet}] pro generation FAILED: {e}")
@@ -548,25 +606,54 @@ def run_character(entry: dict, key: str, existing: dict | None = None) -> dict:
     total_cost = 0.0
     needs_regen = []
 
+    ckpt_dir = CKPT_ROOT / model_id
+    ckpt_dir.mkdir(parents=True, exist_ok=True)
+    ckpt_path = ckpt_dir / "checkpoint.json"
+    ckpt = json.loads(ckpt_path.read_text(encoding="utf-8")) if ckpt_path.exists() else {}
+
+    # The character palette comes from the idle sheet (generated first) and is
+    # both the QA-gate palette for the remaining sheets and the final snap target.
+    palette: list[tuple[int, int, int]] | None = None
+
     for sheet in SHEETS:
+        # Reuse order: (1) finalized manifest entry + snapped sheet on disk,
+        # (2) crash/timeout checkpoint (raw pre-snap sheet in scratch). Both
+        # avoid re-spending on a sheet that already passed QA.
         existing_qa = (existing or {}).get("qa", {}).get(sheet, {})
         existing_path = out_dir / f"sheet_{sheet}.png"
+        ckpt_entry = ckpt.get(sheet, {})
+        ckpt_raw = ckpt_dir / f"raw_{sheet}.png"
         if existing_qa.get("pass") and existing_path.exists():
-            print(f"    [{sheet}] reusing passing sheet from previous run (skip regen)")
+            print(f"    [{sheet}] reusing passing sheet from manifest (skip regen)")
             raw_sheets[sheet] = Image.open(existing_path).convert("RGBA")
             qa_by_sheet[sheet] = existing_qa
             models_used[sheet] = (existing or {}).get("model_used", {}).get(sheet, "reused")
-            continue
-        rgba, qa, model, cost = generate_one_sheet(model_id, entry["description"], sheet, key, {})
-        total_cost += cost
-        qa_by_sheet[sheet] = qa
-        models_used[sheet] = model
-        if rgba is None:
-            needs_regen.append(sheet)
-            continue
-        raw_sheets[sheet] = rgba
-        if not qa.get("pass"):
-            needs_regen.append(sheet)
+        elif ckpt_entry.get("qa", {}).get("pass") and ckpt_raw.exists():
+            print(f"    [{sheet}] reusing passing sheet from checkpoint (skip regen)")
+            raw_sheets[sheet] = Image.open(ckpt_raw).convert("RGBA")
+            qa_by_sheet[sheet] = ckpt_entry["qa"]
+            models_used[sheet] = ckpt_entry.get("model", "checkpoint")
+        else:
+            rgba, qa, model, cost = generate_one_sheet(model_id, entry["description"], sheet, key,
+                                                        palette=palette)
+            total_cost += cost
+            qa_by_sheet[sheet] = qa
+            models_used[sheet] = model
+            if rgba is None:
+                needs_regen.append(sheet)
+                continue
+            raw_sheets[sheet] = rgba
+            if not qa.get("pass"):
+                needs_regen.append(sheet)
+            else:
+                # Checkpoint immediately: a later crash/timeout must not lose
+                # this paid, passing sheet.
+                rgba.save(ckpt_raw)
+                ckpt[sheet] = {"qa": qa, "model": model, "cost": cost}
+                ckpt_path.write_text(json.dumps(ckpt, indent=2), encoding="utf-8")
+
+        if sheet == "idle" and palette is None and "idle" in raw_sheets:
+            palette = build_character_palette(raw_sheets["idle"])
 
     if not raw_sheets:
         return {
@@ -575,15 +662,17 @@ def run_character(entry: dict, key: str, existing: dict | None = None) -> dict:
             "spend": round(total_cost, 4), "needs_regeneration": SHEETS, "status": "failed",
         }
 
-    # Per-character palette extracted from idle (fall back to any available sheet)
-    palette_source = raw_sheets.get("idle") or next(iter(raw_sheets.values()))
-    palette = build_character_palette(palette_source)
+    # Character palette: idle-derived (set during the sheet loop); fall back to
+    # any available sheet if idle never passed.
+    if palette is None:
+        palette = build_character_palette(next(iter(raw_sheets.values())))
     palette_hex = [f"#{r:02x}{gc:02x}{b:02x}" for r, gc, b in palette]
 
     for sheet, rgba in raw_sheets.items():
         snapped = ps.snap_image(rgba, palette=palette)
         raw_sheets[sheet] = snapped
-        # re-QA after snap since drift gate is measured post-snap
+        # Authoritative manifest QA is post-snap (matches the gate's snap preview
+        # for freshly generated sheets; re-verifies reused ones).
         qa_by_sheet[sheet] = qa_sheet(SCRATCH / f"isometric_character_{sheet}_4k.png", snapped, sheet)
         if not qa_by_sheet[sheet]["pass"] and sheet not in needs_regen:
             needs_regen.append(sheet)
@@ -594,6 +683,23 @@ def run_character(entry: dict, key: str, existing: dict | None = None) -> dict:
         write_preview_gif(raw_sheets["walk"], "walk", row=3, out_path=out_dir / "preview_walk.gif")
 
     status = "complete" if not needs_regen else "partial"
+
+    # Checkpoint hygiene: finished sheets are now persisted under gen3_chars,
+    # so drop their scratch copies; sheets that ended in needs_regen (e.g. a
+    # post-snap drift fail) must NOT keep a "passing" checkpoint or a rerun
+    # would reuse the bad sheet forever instead of regenerating it.
+    if status == "complete":
+        for p in ckpt_dir.glob("*"):
+            p.unlink()
+        try:
+            ckpt_dir.rmdir()
+        except OSError:
+            pass
+    else:
+        for sheet in needs_regen:
+            ckpt.pop(sheet, None)
+            (ckpt_dir / f"raw_{sheet}.png").unlink(missing_ok=True)
+        ckpt_path.write_text(json.dumps(ckpt, indent=2), encoding="utf-8")
     return {
         "id": model_id, "kind": entry["kind"], "name": entry.get("name"), "tag": entry.get("tag"),
         "description": entry["description"], "palette": palette_hex, "qa": qa_by_sheet,
@@ -697,6 +803,11 @@ def cmd_run_all(start: int, limit: int | None, kind: str | None) -> None:
     manifest = load_manifest()
     done = 0
     for entry in roster:
+        prev = manifest["characters"].get(entry["id"])
+        if prev and prev.get("status") == "complete":
+            print(f"\n>>> {entry['id']}: already complete, skipping")
+            done += 1
+            continue
         remaining = get_remaining_credits(key)
         print(f"\n>>> credits remaining: ${remaining:.2f}")
         if remaining < STOP_THRESHOLD:
