@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "total_spend": 18.632
+    "total_spend": 19.42
   },
   "characters": {
     "ch_fe_eng_cm": {
@@ -1258,35 +1258,39 @@
       "tag": null,
       "description": "a man, short practical brown hair, sun-weathered tan skin, wearing a hi-vis orange/yellow vest over dark coveralls with faint mechanical exo-frame struts visible along the arms and legs, scuffed heavy boots",
       "palette": [
-        "#405068",
-        "#000000"
+        "#505050",
+        "#000000",
+        "#282828",
+        "#383838",
+        "#aa6d3d",
+        "#54342c"
       ],
       "qa": {
         "idle": {
-          "mean_iou": 0.871,
-          "min_iou": 0.763,
-          "drift": 3.5,
+          "mean_iou": 0.66,
+          "min_iou": 0.446,
+          "drift": 8.6,
           "white_dev": 0.0,
           "pass": true
         },
         "walk": {
-          "mean_iou": 0.674,
-          "min_iou": 0.458,
-          "drift": 7.0,
+          "mean_iou": 0.651,
+          "min_iou": 0.481,
+          "drift": 31.9,
           "white_dev": 0.0,
           "pass": true
         },
         "run": {
-          "mean_iou": 0.918,
-          "min_iou": 0.863,
-          "drift": 7.3,
+          "mean_iou": 0.919,
+          "min_iou": 0.866,
+          "drift": 9.0,
           "white_dev": 0.0,
           "pass": true
         },
         "punch": {
-          "mean_iou": 0.896,
-          "min_iou": 0.501,
-          "drift": 7.9,
+          "mean_iou": 0.893,
+          "min_iou": 0.492,
+          "drift": 5.5,
           "white_dev": 0.0,
           "pass": true
         }
@@ -1409,36 +1413,38 @@
       "tag": null,
       "description": "a woman, shaved-sides undercut in dark red hair, pale scarred skin, wearing dark matte armor plating with aggressive red accent stripes and a stenciled Sixfold Line insignia, tactical rig, menacing bearing",
       "palette": [
-        "#404048",
-        "#303038",
-        "#000000"
+        "#404040",
+        "#202020",
+        "#303030",
+        "#5c332f",
+        "#511d25"
       ],
       "qa": {
         "idle": {
-          "mean_iou": 0.739,
-          "min_iou": 0.5,
-          "drift": 4.4,
+          "mean_iou": 0.651,
+          "min_iou": 0.56,
+          "drift": 3.0,
           "white_dev": 0.0,
           "pass": true
         },
         "walk": {
-          "mean_iou": 0.742,
-          "min_iou": 0.497,
-          "drift": 9.7,
+          "mean_iou": 0.739,
+          "min_iou": 0.473,
+          "drift": 5.0,
           "white_dev": 0.0,
           "pass": true
         },
         "run": {
-          "mean_iou": 0.918,
-          "min_iou": 0.868,
-          "drift": 5.2,
+          "mean_iou": 0.893,
+          "min_iou": 0.838,
+          "drift": 4.9,
           "white_dev": 0.0,
           "pass": true
         },
         "punch": {
-          "mean_iou": 0.875,
-          "min_iou": 0.493,
-          "drift": 5.0,
+          "mean_iou": 0.855,
+          "min_iou": 0.461,
+          "drift": 4.1,
           "white_dev": 0.0,
           "pass": true
         }
