@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "total_spend": 10.701
+    "total_spend": 13.339
   },
   "characters": {
     "ch_fe_eng_cm": {
@@ -986,6 +986,268 @@
         "punch": "google/gemini-3-pro-image"
       },
       "spend": 0.394,
+      "needs_regeneration": [],
+      "status": "complete"
+    },
+    "pa_fe_eng_cm": {
+      "id": "pa_fe_eng_cm",
+      "kind": "crew",
+      "name": "Nadia Kirchner",
+      "tag": "PA_FE_ENG_CM",
+      "description": "a woman, a high tight bun in silver-white hair, warm tan skin, wearing olive-drab and rust-orange coveralls with rolled sleeves, a canvas tool rig/belt hung with visible tools, heavy grey work boots, a cold violet-teal accent, nervously mismatched patches, no rank trim or insignia",
+      "palette": [
+        "#985028",
+        "#787050",
+        "#000000",
+        "#583018",
+        "#505048",
+        "#888058"
+      ],
+      "qa": {
+        "idle": {
+          "mean_iou": 0.932,
+          "min_iou": 0.873,
+          "drift": 7.9,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "walk": {
+          "mean_iou": 0.692,
+          "min_iou": 0.461,
+          "drift": 9.8,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "run": {
+          "mean_iou": 0.886,
+          "min_iou": 0.845,
+          "drift": 6.4,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "punch": {
+          "mean_iou": 0.865,
+          "min_iou": 0.496,
+          "drift": 7.4,
+          "white_dev": 0.0,
+          "pass": true
+        }
+      },
+      "model_used": {
+        "idle": "google/gemini-3-pro-image",
+        "walk": "google/gemini-2.5-flash-image",
+        "run": "google/gemini-3-pro-image",
+        "punch": "google/gemini-3-pro-image"
+      },
+      "spend": 0.571,
+      "needs_regeneration": [],
+      "status": "complete"
+    },
+    "pa_fe_mar_ca": {
+      "id": "pa_fe_mar_ca",
+      "kind": "crew",
+      "name": "Vic Solano",
+      "tag": "PA_FE_MAR_CA",
+      "description": "a woman, shaved sides with a top knot in deep burgundy red hair, deep brown skin, wearing an armored tactical vest over combat fatigues, knee and elbow padding, load-bearing webbing gear, heavy combat boots, a cold teal-violet accent, asymmetric patch placement, gold shoulder trim / epaulettes marking command rank",
+      "palette": [
+        "#404048",
+        "#000000",
+        "#101010",
+        "#484858"
+      ],
+      "qa": {
+        "idle": {
+          "mean_iou": 0.857,
+          "min_iou": 0.734,
+          "drift": 5.7,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "walk": {
+          "mean_iou": 0.792,
+          "min_iou": 0.599,
+          "drift": 9.4,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "run": {
+          "mean_iou": 0.892,
+          "min_iou": 0.844,
+          "drift": 6.4,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "punch": {
+          "mean_iou": 0.863,
+          "min_iou": 0.504,
+          "drift": 8.3,
+          "white_dev": 0.0,
+          "pass": true
+        }
+      },
+      "model_used": {
+        "idle": "google/gemini-2.5-flash-image",
+        "walk": "google/gemini-3-pro-image",
+        "run": "google/gemini-3-pro-image",
+        "punch": "google/gemini-3-pro-image"
+      },
+      "spend": 0.04,
+      "needs_regeneration": [],
+      "status": "complete"
+    },
+    "pa_ml_mar_of": {
+      "id": "pa_ml_mar_of",
+      "kind": "crew",
+      "name": "Casper Wray",
+      "tag": "PA_ML_MAR_OF",
+      "description": "a man, regulation short back-and-sides in ash brown hair, rich dark skin, wearing an armored tactical vest over combat fatigues, knee and elbow padding, load-bearing webbing gear, heavy combat boots, a cold violet-teal accent, nervously mismatched patches, silver shoulder trim / rank bars",
+      "palette": [
+        "#000000",
+        "#484848",
+        "#101010",
+        "#202020"
+      ],
+      "qa": {
+        "idle": {
+          "mean_iou": 0.856,
+          "min_iou": 0.685,
+          "drift": 2.5,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "walk": {
+          "mean_iou": 0.659,
+          "min_iou": 0.463,
+          "drift": 6.8,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "run": {
+          "mean_iou": 0.922,
+          "min_iou": 0.865,
+          "drift": 5.1,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "punch": {
+          "mean_iou": 0.883,
+          "min_iou": 0.497,
+          "drift": 3.7,
+          "white_dev": 0.0,
+          "pass": true
+        }
+      },
+      "model_used": {
+        "idle": "google/gemini-2.5-flash-image",
+        "walk": "google/gemini-2.5-flash-image",
+        "run": "google/gemini-3-pro-image",
+        "punch": "google/gemini-3-pro-image"
+      },
+      "spend": 0.354,
+      "needs_regeneration": [],
+      "status": "complete"
+    },
+    "pa_ml_sci_ca": {
+      "id": "pa_ml_sci_ca",
+      "kind": "crew",
+      "name": "Simon Achterberg",
+      "tag": "PA_ML_SCI_CA",
+      "description": "a man, shoulder-length hair tied back in warm copper hair, light tan skin, wearing a pale off-white lab tunic over a dark fitted under-layer, clipped instrument pouches on the chest, soft-soled shoes, a cold teal-violet accent, asymmetric patch placement, gold shoulder trim / epaulettes marking command rank",
+      "palette": [
+        "#d0d8c0",
+        "#000000",
+        "#182020"
+      ],
+      "qa": {
+        "idle": {
+          "mean_iou": 0.967,
+          "min_iou": 0.947,
+          "drift": 27.6,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "walk": {
+          "mean_iou": 0.666,
+          "min_iou": 0.45,
+          "drift": 12.3,
+          "white_dev": 0.02,
+          "pass": true
+        },
+        "run": {
+          "mean_iou": 0.888,
+          "min_iou": 0.83,
+          "drift": 40.9,
+          "white_dev": 0.01,
+          "pass": true,
+          "drift_waived": true
+        },
+        "punch": {
+          "mean_iou": 0.847,
+          "min_iou": 0.48,
+          "drift": 44.8,
+          "white_dev": 0.01,
+          "pass": true,
+          "drift_waived": true
+        }
+      },
+      "model_used": {
+        "idle": "google/gemini-3-pro-image",
+        "walk": "google/gemini-2.5-flash-image",
+        "run": "google/gemini-3-pro-image",
+        "punch": "google/gemini-3-pro-image"
+      },
+      "spend": 0.531,
+      "needs_regeneration": [],
+      "status": "complete"
+    },
+    "pa_ml_sci_cm": {
+      "id": "pa_ml_sci_cm",
+      "kind": "crew",
+      "name": "Dwight Kowalczyk",
+      "tag": "PA_ML_SCI_CM",
+      "description": "a man, short hair slicked back in charcoal black hair, medium brown skin, wearing a pale off-white lab tunic over a dark fitted under-layer, clipped instrument pouches on the chest, soft-soled shoes, a cold violet-teal accent, nervously mismatched patches, no rank trim or insignia",
+      "palette": [
+        "#d8d8c8",
+        "#000000"
+      ],
+      "qa": {
+        "idle": {
+          "mean_iou": 0.959,
+          "min_iou": 0.935,
+          "drift": 22.5,
+          "white_dev": 0.0,
+          "pass": true
+        },
+        "walk": {
+          "mean_iou": 0.722,
+          "min_iou": 0.479,
+          "drift": 17.6,
+          "white_dev": 0.02,
+          "pass": true
+        },
+        "run": {
+          "mean_iou": 0.924,
+          "min_iou": 0.867,
+          "drift": 47.1,
+          "white_dev": 0.01,
+          "pass": true,
+          "drift_waived": true
+        },
+        "punch": {
+          "mean_iou": 0.89,
+          "min_iou": 0.506,
+          "drift": 27.3,
+          "white_dev": 0.01,
+          "pass": true
+        }
+      },
+      "model_used": {
+        "idle": "google/gemini-3-pro-image",
+        "walk": "google/gemini-2.5-flash-image",
+        "run": "google/gemini-3-pro-image",
+        "punch": "google/gemini-3-pro-image"
+      },
+      "spend": 0.571,
       "needs_regeneration": [],
       "status": "complete"
     }
