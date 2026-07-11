@@ -1,0 +1,157 @@
+{
+  "id": "the_hollow",
+  "title": "The Hollow",
+  "mission_type": "science",
+  "giver": "Meridian Combine",
+  "briefing": "MERIDIAN COMBINE science tasking 96: The ice moon has an ocean under the crust and something warm keeping it liquid. Orbit, drill a team through, and put a probe in the dark water. Whatever's down there has never seen a light before. Introduce it gently.",
+  "flavor": "The heat source has a shape. Shapes that regular don't happen by accident.",
+  "destination": {
+    "kind": "planet",
+    "name": "Cocytus",
+    "descriptor": "cracked ice moon",
+    "art": "planet_ice"
+  },
+  "phases": {
+    "transit_out": 210,
+    "arrival": 300,
+    "on_station": 300,
+    "transit_back": 210
+  },
+  "objectives": [
+    {
+      "id": "reach",
+      "text": "Make orbit over Cocytus",
+      "kind": "reach_destination"
+    },
+    {
+      "id": "drill",
+      "text": "Drill a team through the ice to the ocean",
+      "kind": "away_team",
+      "params": {
+        "site": "surface",
+        "min_crew": 2,
+        "suggested_skills": [
+          "Exobiology",
+          "Ecology",
+          "Zero-G"
+        ]
+      }
+    },
+    {
+      "id": "probe",
+      "text": "Put a probe in the subsurface ocean",
+      "kind": "scenario_flag",
+      "params": {
+        "flag": "probe_deployed"
+      },
+      "optional": true
+    },
+    {
+      "id": "home",
+      "text": "Return to the lane with all hands",
+      "kind": "return_home"
+    }
+  ],
+  "away_risk": {
+    "tier": "high",
+    "skill_mitigators": [
+      "Exobiology",
+      "Ecology",
+      "Field Medicine"
+    ],
+    "item_mitigators": [
+      "hazard_suit",
+      "medscanner"
+    ],
+    "outcome_bias": {
+      "crew_infected": 1.5,
+      "contact": 1.4,
+      "exposure": 1.4,
+      "lost": 1.2
+    }
+  },
+  "eligibility": {
+    "min_leg": 3,
+    "requires_flags_all": [],
+    "requires_flags_any": [],
+    "excludes_flags": [],
+    "min_hull": 0,
+    "max_hull": 100
+  },
+  "weight": 1.0,
+  "priority": 0,
+  "repeatable": false,
+  "scenario_hooks": {
+    "on_station": {
+      "chance": 0.8,
+      "context": "planet_orbit",
+      "tag_bias": {
+        "bio": 1.5,
+        "mystery": 1.4
+      }
+    },
+    "away_return": {
+      "chance": 0.75,
+      "context": "away_return",
+      "tag_bias": {
+        "bio": 1.5
+      }
+    },
+    "transit_back": {
+      "chance": 0.6,
+      "context": "aftermath",
+      "tag_bias": {
+        "bio": 1.4
+      }
+    }
+  },
+  "rewards": {
+    "credits": 900,
+    "items": [
+      "medscanner"
+    ],
+    "metrics": {}
+  },
+  "extra_outcome_flags": {
+    "ocean_data_recovered": "drill",
+    "probe_data_aboard": "probe"
+  },
+  "follow_ons": [
+    {
+      "when": [
+        "crew_infected_aboard"
+      ],
+      "next": [
+        "hard_quarantine",
+        "tag:bio_aftermath"
+      ],
+      "weight": 3.5
+    },
+    {
+      "when": [
+        "crew_stranded_surface"
+      ],
+      "next": [
+        "the_stranded"
+      ],
+      "weight": 3.0
+    },
+    {
+      "when": [
+        "crew_changed_aboard"
+      ],
+      "next": [
+        "tag:mystery"
+      ],
+      "weight": 2.0
+    }
+  ],
+  "tags": [
+    "planet",
+    "science",
+    "bio",
+    "mystery",
+    "away",
+    "high_stakes"
+  ]
+}

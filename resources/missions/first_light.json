@@ -1,0 +1,127 @@
+{
+  "id": "first_light",
+  "title": "First Light",
+  "mission_type": "planet_survey",
+  "giver": "Meridian Combine",
+  "briefing": "MERIDIAN COMBINE survey order 3391: There's a dead moon on the charts with a number instead of a name. Put us in orbit, run the standard passes, and — if the ground looks calm — set a boot or two on it. Nobody expects treasure. We expect a filed report.",
+  "flavor": "Every world gets its first survey. Most of them are exactly this boring.",
+  "destination": {
+    "kind": "planet",
+    "name": "MC-9 Barren",
+    "descriptor": "airless grey moon",
+    "art": "moon_barren"
+  },
+  "phases": {
+    "transit_out": 180,
+    "arrival": 300,
+    "on_station": 240,
+    "transit_back": 180
+  },
+  "objectives": [
+    {
+      "id": "reach",
+      "text": "Make orbit over MC-9",
+      "kind": "reach_destination"
+    },
+    {
+      "id": "scan",
+      "text": "Run the standard orbital survey passes",
+      "kind": "survive_until",
+      "params": {
+        "phase": "on_station"
+      }
+    },
+    {
+      "id": "boots",
+      "text": "Put a light team on the surface",
+      "kind": "away_team",
+      "params": {
+        "site": "surface",
+        "min_crew": 1,
+        "suggested_skills": [
+          "Geology",
+          "Zero-G"
+        ]
+      },
+      "optional": true
+    },
+    {
+      "id": "home",
+      "text": "Return to the lane with all hands",
+      "kind": "return_home"
+    }
+  ],
+  "away_risk": {
+    "tier": "low",
+    "skill_mitigators": [
+      "Geology",
+      "Zero-G"
+    ],
+    "item_mitigators": [
+      "vaccsuit"
+    ],
+    "outcome_bias": {
+      "find": 1.2,
+      "nothing": 1.3
+    }
+  },
+  "eligibility": {
+    "min_leg": 1,
+    "requires_flags_all": [],
+    "requires_flags_any": [],
+    "excludes_flags": [],
+    "min_hull": 0,
+    "max_hull": 100
+  },
+  "weight": 2.5,
+  "priority": 0,
+  "repeatable": true,
+  "scenario_hooks": {
+    "transit_out": {
+      "chance": 0.2,
+      "context": "transit"
+    },
+    "on_station": {
+      "chance": 0.3,
+      "context": "planet_orbit",
+      "tag_bias": {
+        "mystery": 1.4
+      }
+    }
+  },
+  "rewards": {
+    "credits": 250,
+    "items": [],
+    "metrics": {}
+  },
+  "extra_outcome_flags": {
+    "survey_data_recovered": "scan"
+  },
+  "follow_ons": [
+    {
+      "when": [
+        "mission_success"
+      ],
+      "next": [
+        "tag:planet",
+        "the_quarry"
+      ],
+      "weight": 2.0
+    },
+    {
+      "when": [
+        "crew_stranded_surface"
+      ],
+      "next": [
+        "the_stranded"
+      ],
+      "weight": 3.0
+    }
+  ],
+  "tags": [
+    "opener",
+    "planet",
+    "science",
+    "low_stakes"
+  ]
+}

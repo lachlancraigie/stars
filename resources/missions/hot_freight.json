@@ -1,0 +1,106 @@
+{
+  "id": "hot_freight",
+  "title": "Hot Freight",
+  "mission_type": "delivery",
+  "giver": "Coreward Relief Authority",
+  "briefing": "COREWARD RELIEF AUTHORITY urgent 04: A colony downlane is out of the one drug that keeps its miners breathing, and you're the nearest hull carrying a pallet of it. Run it hot, make the drop, don't let the cold chain break. People are counting the hours you're counting the fuel.",
+  "destination": {
+    "kind": "station",
+    "name": "Deepcut Colony",
+    "descriptor": "choking mine colony",
+    "art": "station_outpost"
+  },
+  "phases": {
+    "transit_out": 210,
+    "arrival": 150,
+    "on_station": 180,
+    "transit_back": 180
+  },
+  "objectives": [
+    {
+      "id": "reach",
+      "text": "Reach Deepcut Colony",
+      "kind": "reach_destination"
+    },
+    {
+      "id": "deliver",
+      "text": "Deliver the medical pallet, cold chain intact",
+      "kind": "deliver_cargo",
+      "params": {
+        "cargo_flag": "med_cargo_intact"
+      }
+    },
+    {
+      "id": "home",
+      "text": "Return to the lane",
+      "kind": "return_home"
+    }
+  ],
+  "eligibility": {
+    "min_leg": 1,
+    "requires_flags_all": [],
+    "requires_flags_any": [],
+    "excludes_flags": [],
+    "min_hull": 0,
+    "max_hull": 100
+  },
+  "weight": 1.4,
+  "priority": 0,
+  "repeatable": true,
+  "scenario_hooks": {
+    "transit_out": {
+      "chance": 0.4,
+      "context": "transit",
+      "tag_bias": {
+        "systems": 1.3
+      }
+    },
+    "on_station": {
+      "chance": 0.45,
+      "context": "docked",
+      "tag_bias": {
+        "bio": 1.3,
+        "social": 1.2
+      }
+    }
+  },
+  "rewards": {
+    "credits": 450,
+    "items": [
+      "med_kit"
+    ],
+    "metrics": {}
+  },
+  "extra_outcome_flags": {
+    "colony_supplied": "deliver"
+  },
+  "follow_ons": [
+    {
+      "when": [
+        "mission_success"
+      ],
+      "next": [
+        "tag:trade",
+        "cold_harbor"
+      ],
+      "weight": 1.5
+    },
+    {
+      "when": [
+        "mission_partial",
+        "mission_failed"
+      ],
+      "next": [
+        "tag:distress",
+        "lifeboat"
+      ],
+      "weight": 1.5
+    }
+  ],
+  "tags": [
+    "delivery",
+    "trade",
+    "bio",
+    "low_stakes"
+  ]
+}

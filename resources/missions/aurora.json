@@ -1,0 +1,111 @@
+{
+  "id": "aurora",
+  "title": "Aurora",
+  "mission_type": "science",
+  "giver": "Meridian Combine",
+  "briefing": "MERIDIAN COMBINE science tasking 91: The gas giant's pole is throwing an aurora that isn't following the physics. Hold orbit off the beam, run the instruments, and log everything. No boots required — just patience and clean sensors.",
+  "flavor": "The aurora pulses on a period. Periods mean something is keeping time.",
+  "destination": {
+    "kind": "planet",
+    "name": "Halcyon Prime",
+    "descriptor": "banded gas giant",
+    "art": "gas_giant"
+  },
+  "phases": {
+    "transit_out": 210,
+    "arrival": 300,
+    "on_station": 300,
+    "transit_back": 180
+  },
+  "objectives": [
+    {
+      "id": "reach",
+      "text": "Take up orbit off the aurora beam",
+      "kind": "reach_destination"
+    },
+    {
+      "id": "run",
+      "text": "Run the full instrument suite",
+      "kind": "survive_until",
+      "params": {
+        "phase": "on_station"
+      }
+    },
+    {
+      "id": "decode",
+      "text": "Resolve a pattern in the aurora's pulse",
+      "kind": "scenario_flag",
+      "params": {
+        "flag": "aurora_decoded"
+      },
+      "optional": true
+    },
+    {
+      "id": "home",
+      "text": "Break orbit and return to the lane",
+      "kind": "return_home"
+    }
+  ],
+  "eligibility": {
+    "min_leg": 2,
+    "requires_flags_all": [],
+    "requires_flags_any": [],
+    "excludes_flags": [],
+    "min_hull": 0,
+    "max_hull": 100
+  },
+  "weight": 1.1,
+  "priority": 0,
+  "repeatable": false,
+  "scenario_hooks": {
+    "on_station": {
+      "chance": 0.7,
+      "context": "planet_orbit",
+      "tag_bias": {
+        "mystery": 1.7
+      }
+    },
+    "transit_back": {
+      "chance": 0.5,
+      "context": "aftermath",
+      "tag_bias": {
+        "mystery": 1.5
+      }
+    }
+  },
+  "rewards": {
+    "credits": 650,
+    "items": [],
+    "metrics": {}
+  },
+  "extra_outcome_flags": {
+    "aurora_data_recovered": "run",
+    "signal_logged": "decode"
+  },
+  "follow_ons": [
+    {
+      "when": [
+        "mission_success"
+      ],
+      "next": [
+        "tag:mystery",
+        "tombworld"
+      ],
+      "weight": 1.6
+    },
+    {
+      "when": [
+        "crew_shaken_aboard"
+      ],
+      "next": [
+        "shore_leave"
+      ],
+      "weight": 2.0
+    }
+  ],
+  "tags": [
+    "planet",
+    "science",
+    "mystery"
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "id": "fuel_line",
+  "title": "Fuel Line",
+  "mission_type": "rendezvous",
+  "giver": "Halcyon Freightways",
+  "briefing": "HALCYON FREIGHTWAYS dispatch 640: The tanker Slow Marey will top your reserves at the marker. Dock, hold steady through the transfer, settle the tab. Simple — unless someone's been skimming the tanker's logs, which is not your problem today.",
+  "destination": {
+    "kind": "ship",
+    "name": "HFV Slow Marey",
+    "descriptor": "swollen bunker tanker",
+    "art": "ship_tanker"
+  },
+  "phases": {
+    "transit_out": 150,
+    "arrival": 120,
+    "on_station": 180,
+    "transit_back": 120
+  },
+  "objectives": [
+    {
+      "id": "dock",
+      "text": "Dock with the Slow Marey",
+      "kind": "dock_with_ship"
+    },
+    {
+      "id": "transfer",
+      "text": "Hold steady through the fuel transfer",
+      "kind": "survive_until",
+      "params": {
+        "phase": "on_station"
+      }
+    },
+    {
+      "id": "home",
+      "text": "Undock and return to the lane",
+      "kind": "return_home"
+    }
+  ],
+  "eligibility": {
+    "min_leg": 1,
+    "requires_flags_all": [],
+    "requires_flags_any": [],
+    "excludes_flags": [],
+    "min_hull": 0,
+    "max_hull": 100
+  },
+  "weight": 1.3,
+  "priority": 0,
+  "repeatable": true,
+  "scenario_hooks": {
+    "on_station": {
+      "chance": 0.4,
+      "context": "docked",
+      "tag_bias": {
+        "systems": 1.4
+      }
+    },
+    "transit_back": {
+      "chance": 0.3,
+      "context": "aftermath",
+      "tag_bias": {
+        "systems": 1.2
+      }
+    }
+  },
+  "rewards": {
+    "credits": 150,
+    "items": [],
+    "metrics": {
+      "battery_charge": 20.0
+    }
+  },
+  "extra_outcome_flags": {
+    "tanks_topped": "transfer"
+  },
+  "follow_ons": [
+    {
+      "when": [
+        "mission_success"
+      ],
+      "next": [
+        "tag:planet",
+        "tag:trade"
+      ],
+      "weight": 1.5
+    },
+    {
+      "when": [
+        "mission_partial",
+        "mission_failed"
+      ],
+      "next": [
+        "tag:repair"
+      ],
+      "weight": 1.5
+    }
+  ],
+  "tags": [
+    "rendezvous",
+    "docking",
+    "systems",
+    "low_stakes"
+  ]
+}

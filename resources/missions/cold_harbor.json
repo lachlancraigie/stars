@@ -1,0 +1,118 @@
+{
+  "id": "cold_harbor",
+  "title": "Cold Harbor",
+  "mission_type": "homecoming",
+  "giver": "Cold Harbor Control",
+  "briefing": "COLD HARBOR CONTROL berth assignment 12: Voyage leg closed — bring her home. Dock the Harbor, offload, settle accounts, and let the crew stand on something that isn't your deck plating for a shift. The books get balanced here. So does everyone's nerve.",
+  "destination": {
+    "kind": "home",
+    "name": "Cold Harbor",
+    "descriptor": "home transfer hub",
+    "art": "station_hub"
+  },
+  "phases": {
+    "transit_out": 210,
+    "arrival": 150,
+    "on_station": 240,
+    "transit_back": 120
+  },
+  "objectives": [
+    {
+      "id": "reach",
+      "text": "Bring the ship home to Cold Harbor",
+      "kind": "reach_destination"
+    },
+    {
+      "id": "dock",
+      "text": "Dock at the Harbor",
+      "kind": "dock_with_ship"
+    },
+    {
+      "id": "keep",
+      "text": "Bring the crew home alive",
+      "kind": "keep_alive",
+      "params": {
+        "role": "all"
+      }
+    },
+    {
+      "id": "home",
+      "text": "Settle accounts and stand the crew down",
+      "kind": "return_home"
+    }
+  ],
+  "eligibility": {
+    "min_leg": 1,
+    "requires_flags_all": [],
+    "requires_flags_any": [],
+    "excludes_flags": [],
+    "min_hull": 0,
+    "max_hull": 100
+  },
+  "weight": 1.3,
+  "priority": 0,
+  "repeatable": true,
+  "scenario_hooks": {
+    "transit_out": {
+      "chance": 0.35,
+      "context": "transit",
+      "tag_bias": {
+        "social": 1.3
+      }
+    },
+    "on_station": {
+      "chance": 0.4,
+      "context": "station",
+      "tag_bias": {
+        "social": 1.4
+      }
+    }
+  },
+  "rewards": {
+    "credits": 300,
+    "items": [],
+    "metrics": {
+      "battery_charge": 25.0,
+      "ai_core_integrity": 5.0
+    }
+  },
+  "extra_outcome_flags": {
+    "voyage_banked": "keep"
+  },
+  "follow_ons": [
+    {
+      "when": [
+        "mission_success"
+      ],
+      "next": [
+        "tag:opener",
+        "tag:planet"
+      ],
+      "weight": 1.5
+    },
+    {
+      "when": [
+        "crew_shaken_aboard"
+      ],
+      "next": [
+        "shore_leave"
+      ],
+      "weight": 2.0
+    },
+    {
+      "when": [
+        "crew_infected_aboard"
+      ],
+      "next": [
+        "hard_quarantine"
+      ],
+      "weight": 2.5
+    }
+  ],
+  "tags": [
+    "homecoming",
+    "hub",
+    "social",
+    "low_stakes"
+  ]
+}

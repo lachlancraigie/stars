@@ -1,0 +1,112 @@
+{
+  "id": "meridian_audit",
+  "title": "The Audit",
+  "mission_type": "rendezvous",
+  "giver": "Bureau of Trade Standards",
+  "briefing": "BUREAU OF TRADE STANDARDS notice 19-C: An inspector will board to review your ship's compliance across the current voyage. Dock the cutter, admit the inspector, and answer what's asked. You keep the logs. You decide what 'complete' means when you hand them over.",
+  "flavor": "The inspector has read your files. All of them. In order.",
+  "destination": {
+    "kind": "ship",
+    "name": "BTS Plumb Line",
+    "descriptor": "livery-grey inspection cutter",
+    "art": "ship_cutter"
+  },
+  "phases": {
+    "transit_out": 150,
+    "arrival": 120,
+    "on_station": 240,
+    "transit_back": 150
+  },
+  "objectives": [
+    {
+      "id": "dock",
+      "text": "Dock with the inspection cutter",
+      "kind": "dock_with_ship"
+    },
+    {
+      "id": "admit",
+      "text": "Admit the inspector and open the voyage logs",
+      "kind": "survive_until",
+      "params": {
+        "phase": "on_station"
+      }
+    },
+    {
+      "id": "pass",
+      "text": "Satisfy the compliance review",
+      "kind": "scenario_flag",
+      "params": {
+        "flag": "audit_passed"
+      }
+    },
+    {
+      "id": "home",
+      "text": "See the inspector off and resume the lane",
+      "kind": "return_home"
+    }
+  ],
+  "eligibility": {
+    "min_leg": 3,
+    "requires_flags_all": [],
+    "requires_flags_any": [],
+    "excludes_flags": [],
+    "min_hull": 0,
+    "max_hull": 100
+  },
+  "weight": 0.9,
+  "priority": 0,
+  "repeatable": false,
+  "scenario_hooks": {
+    "on_station": {
+      "chance": 0.6,
+      "context": "docked",
+      "tag_bias": {
+        "social": 1.6
+      }
+    },
+    "transit_back": {
+      "chance": 0.4,
+      "context": "aftermath",
+      "tag_bias": {
+        "social": 1.3
+      }
+    }
+  },
+  "rewards": {
+    "credits": 400,
+    "items": [],
+    "metrics": {}
+  },
+  "extra_outcome_flags": {
+    "audit_cleared": "pass"
+  },
+  "follow_ons": [
+    {
+      "when": [
+        "mission_success"
+      ],
+      "next": [
+        "tag:trade",
+        "cold_harbor"
+      ],
+      "weight": 1.5
+    },
+    {
+      "when": [
+        "meridian_grudge",
+        "mission_failed"
+      ],
+      "next": [
+        "tag:patrol",
+        "bad_manifest"
+      ],
+      "weight": 2.0
+    }
+  ],
+  "tags": [
+    "rendezvous",
+    "docking",
+    "social",
+    "faction_meridian"
+  ]
+}

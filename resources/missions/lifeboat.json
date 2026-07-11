@@ -1,0 +1,151 @@
+{
+  "id": "lifeboat",
+  "title": "Lifeboat",
+  "mission_type": "evacuation",
+  "giver": "Coreward Relief Authority",
+  "briefing": "COREWARD RELIEF AUTHORITY evac order 06: A surface outpost is failing — power, air, and morale, in that order — and its people need to be somewhere else before the reactor decides for them. Orbit, run the shuttle, and lift them off in the order that keeps the most of them alive.",
+  "destination": {
+    "kind": "planet",
+    "name": "Outpost Kettle",
+    "descriptor": "failing surface outpost",
+    "art": "planet_barren"
+  },
+  "phases": {
+    "transit_out": 210,
+    "arrival": 240,
+    "on_station": 300,
+    "transit_back": 180
+  },
+  "objectives": [
+    {
+      "id": "reach",
+      "text": "Make orbit over Outpost Kettle",
+      "kind": "reach_destination"
+    },
+    {
+      "id": "lift",
+      "text": "Run the shuttle to lift off the outpost crew",
+      "kind": "away_team",
+      "params": {
+        "site": "surface",
+        "min_crew": 2,
+        "suggested_skills": [
+          "Piloting",
+          "Field Medicine",
+          "Command"
+        ]
+      }
+    },
+    {
+      "id": "keep",
+      "text": "Get the evacuees aboard alive",
+      "kind": "keep_alive",
+      "params": {
+        "role": "all"
+      }
+    },
+    {
+      "id": "home",
+      "text": "Return to the lane with the evacuees",
+      "kind": "return_home"
+    }
+  ],
+  "away_risk": {
+    "tier": "high",
+    "skill_mitigators": [
+      "Piloting",
+      "Field Medicine",
+      "Command"
+    ],
+    "item_mitigators": [
+      "hazard_suit",
+      "medscanner",
+      "stimpak"
+    ],
+    "outcome_bias": {
+      "survivor": 1.6,
+      "hazard": 1.4,
+      "shuttle_strain": 1.4,
+      "lost": 1.2
+    }
+  },
+  "eligibility": {
+    "min_leg": 2,
+    "requires_flags_all": [],
+    "requires_flags_any": [],
+    "excludes_flags": [],
+    "min_hull": 0,
+    "max_hull": 100
+  },
+  "weight": 1.1,
+  "priority": 0,
+  "repeatable": false,
+  "scenario_hooks": {
+    "on_station": {
+      "chance": 0.65,
+      "context": "planet_orbit",
+      "tag_bias": {
+        "systems": 1.4,
+        "social": 1.2
+      }
+    },
+    "away_return": {
+      "chance": 0.6,
+      "context": "away_return",
+      "tag_bias": {
+        "social": 1.3
+      }
+    },
+    "transit_back": {
+      "chance": 0.5,
+      "context": "aftermath",
+      "tag_bias": {
+        "social": 1.3
+      }
+    }
+  },
+  "rewards": {
+    "credits": 650,
+    "items": [],
+    "metrics": {}
+  },
+  "extra_outcome_flags": {
+    "outpost_evacuated": "lift"
+  },
+  "follow_ons": [
+    {
+      "when": [
+        "crew_stranded_surface"
+      ],
+      "next": [
+        "the_stranded"
+      ],
+      "weight": 3.0
+    },
+    {
+      "when": [
+        "mission_success"
+      ],
+      "next": [
+        "tag:homecoming",
+        "cold_harbor"
+      ],
+      "weight": 1.6
+    },
+    {
+      "when": [
+        "hull_mauled"
+      ],
+      "next": [
+        "tag:repair"
+      ],
+      "weight": 2.0
+    }
+  ],
+  "tags": [
+    "distress",
+    "evacuation",
+    "rescue",
+    "away"
+  ]
+}

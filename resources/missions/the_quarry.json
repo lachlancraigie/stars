@@ -1,0 +1,142 @@
+{
+  "id": "the_quarry",
+  "title": "The Quarry",
+  "mission_type": "mining",
+  "giver": "Cassard Reclamation",
+  "briefing": "CASSARD RECLAMATION work order 214: The belt at the marker assays rich. Anchor, cut, and haul what your team can rig before the window closes. Every tonne is money; every shortcut is a wound report. You do the math.",
+  "destination": {
+    "kind": "point",
+    "name": "The Quarry",
+    "descriptor": "dense mineral belt",
+    "art": "asteroid_belt"
+  },
+  "phases": {
+    "transit_out": 180,
+    "arrival": 180,
+    "on_station": 300,
+    "transit_back": 180
+  },
+  "objectives": [
+    {
+      "id": "reach",
+      "text": "Reach the mineral belt and anchor",
+      "kind": "reach_destination"
+    },
+    {
+      "id": "cut",
+      "text": "Work a cutting team on the richest rock",
+      "kind": "away_team",
+      "params": {
+        "site": "other_ship",
+        "min_crew": 2,
+        "suggested_skills": [
+          "Asteroid Mining",
+          "Zero-G",
+          "Industrial Equipment"
+        ]
+      }
+    },
+    {
+      "id": "haul",
+      "text": "Haul the cut ore into the hold",
+      "kind": "deliver_cargo",
+      "params": {
+        "cargo_flag": "ore_aboard"
+      }
+    },
+    {
+      "id": "home",
+      "text": "Return to the lane with the load",
+      "kind": "return_home"
+    }
+  ],
+  "away_risk": {
+    "tier": "moderate",
+    "skill_mitigators": [
+      "Asteroid Mining",
+      "Zero-G",
+      "Industrial Equipment"
+    ],
+    "item_mitigators": [
+      "vaccsuit",
+      "engineers_toolkit"
+    ],
+    "outcome_bias": {
+      "find": 1.4,
+      "hazard": 1.2,
+      "shuttle_strain": 1.3
+    }
+  },
+  "eligibility": {
+    "min_leg": 2,
+    "requires_flags_all": [],
+    "requires_flags_any": [],
+    "excludes_flags": [],
+    "min_hull": 0,
+    "max_hull": 100
+  },
+  "weight": 1.3,
+  "priority": 0,
+  "repeatable": true,
+  "scenario_hooks": {
+    "on_station": {
+      "chance": 0.55,
+      "context": "planet_orbit",
+      "tag_bias": {
+        "systems": 1.5
+      }
+    },
+    "away_return": {
+      "chance": 0.5,
+      "context": "away_return",
+      "tag_bias": {
+        "systems": 1.3
+      }
+    }
+  },
+  "rewards": {
+    "credits": 700,
+    "items": [],
+    "metrics": {}
+  },
+  "extra_outcome_flags": {
+    "ore_banked": "haul"
+  },
+  "follow_ons": [
+    {
+      "when": [
+        "mission_success"
+      ],
+      "next": [
+        "tag:trade",
+        "cold_harbor"
+      ],
+      "weight": 1.5
+    },
+    {
+      "when": [
+        "hull_mauled"
+      ],
+      "next": [
+        "tag:repair"
+      ],
+      "weight": 2.5
+    },
+    {
+      "when": [
+        "mission_success"
+      ],
+      "next": [
+        "deep_core",
+        "tag:salvage"
+      ],
+      "weight": 1.2
+    }
+  ],
+  "tags": [
+    "planet",
+    "mining",
+    "systems",
+    "away"
+  ]
+}

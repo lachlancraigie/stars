@@ -1,0 +1,150 @@
+{
+  "id": "black_box",
+  "title": "Black Box",
+  "mission_type": "salvage",
+  "giver": "Bureau of Trade Standards",
+  "briefing": "BUREAU OF TRADE STANDARDS recovery order 31: A hull went silent in the lane six weeks ago and left a wreck and a question. Board it, pull the flight recorder, and leave the rest for the insurers. What killed the ship is on that recorder. So is whether it's still aboard.",
+  "destination": {
+    "kind": "ship",
+    "name": "Wreck of the Verity",
+    "descriptor": "silent drifting wreck",
+    "art": "ship_hauler"
+  },
+  "phases": {
+    "transit_out": 210,
+    "arrival": 150,
+    "on_station": 300,
+    "transit_back": 180
+  },
+  "objectives": [
+    {
+      "id": "dock",
+      "text": "Dock with the wreck",
+      "kind": "dock_with_ship"
+    },
+    {
+      "id": "board",
+      "text": "Send a boarding party through the airlock",
+      "kind": "away_team",
+      "params": {
+        "site": "derelict",
+        "min_crew": 2,
+        "suggested_skills": [
+          "Computers",
+          "Hacking",
+          "Zero-G"
+        ]
+      }
+    },
+    {
+      "id": "recorder",
+      "text": "Recover the flight recorder",
+      "kind": "scenario_flag",
+      "params": {
+        "flag": "recorder_recovered"
+      }
+    },
+    {
+      "id": "home",
+      "text": "Recover the party and return to the lane",
+      "kind": "return_home"
+    }
+  ],
+  "away_risk": {
+    "tier": "high",
+    "skill_mitigators": [
+      "Computers",
+      "Hacking",
+      "Zero-G"
+    ],
+    "item_mitigators": [
+      "vaccsuit",
+      "cutting_torch"
+    ],
+    "outcome_bias": {
+      "find": 1.4,
+      "hazard": 1.3,
+      "contact": 1.3,
+      "lost": 1.1
+    }
+  },
+  "eligibility": {
+    "min_leg": 2,
+    "requires_flags_all": [],
+    "requires_flags_any": [],
+    "excludes_flags": [],
+    "min_hull": 0,
+    "max_hull": 100
+  },
+  "weight": 1.1,
+  "priority": 0,
+  "repeatable": false,
+  "scenario_hooks": {
+    "on_station": {
+      "chance": 0.75,
+      "context": "derelict",
+      "tag_bias": {
+        "mystery": 1.4,
+        "combat": 1.2
+      }
+    },
+    "away_return": {
+      "chance": 0.65,
+      "context": "away_return",
+      "tag_bias": {
+        "mystery": 1.3
+      }
+    },
+    "transit_back": {
+      "chance": 0.5,
+      "context": "aftermath",
+      "tag_bias": {
+        "mystery": 1.3
+      }
+    }
+  },
+  "rewards": {
+    "credits": 700,
+    "items": [],
+    "metrics": {}
+  },
+  "extra_outcome_flags": {
+    "recorder_aboard": "recorder"
+  },
+  "follow_ons": [
+    {
+      "when": [
+        "crew_stranded_derelict"
+      ],
+      "next": [
+        "the_stranded"
+      ],
+      "weight": 3.0
+    },
+    {
+      "when": [
+        "mission_success"
+      ],
+      "next": [
+        "tag:salvage",
+        "cold_iron"
+      ],
+      "weight": 1.4
+    },
+    {
+      "when": [
+        "crew_changed_aboard"
+      ],
+      "next": [
+        "tag:mystery"
+      ],
+      "weight": 2.0
+    }
+  ],
+  "tags": [
+    "salvage",
+    "derelict",
+    "mystery",
+    "away"
+  ]
+}

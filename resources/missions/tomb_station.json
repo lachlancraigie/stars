@@ -1,0 +1,154 @@
+{
+  "id": "tomb_station",
+  "title": "Tomb Station",
+  "mission_type": "salvage",
+  "giver": "Cassard Reclamation",
+  "briefing": "CASSARD RECLAMATION salvage claim 417: The station ahead died with its bays sealed and its ring still turning. Dock, board, and recover what the manifest promised. Stations don't seal their own bays from the inside for no reason. Find the reason on the way out, not the way in.",
+  "destination": {
+    "kind": "station",
+    "name": "Ossuary Station",
+    "descriptor": "sealed tomb station",
+    "art": "station_tomb"
+  },
+  "phases": {
+    "transit_out": 210,
+    "arrival": 180,
+    "on_station": 300,
+    "transit_back": 210
+  },
+  "objectives": [
+    {
+      "id": "dock",
+      "text": "Dock with Ossuary Station",
+      "kind": "dock_with_ship"
+    },
+    {
+      "id": "board",
+      "text": "Send a boarding party into the sealed ring",
+      "kind": "away_team",
+      "params": {
+        "site": "station",
+        "min_crew": 2,
+        "suggested_skills": [
+          "Hacking",
+          "Xenoesotericism",
+          "Firearms"
+        ]
+      }
+    },
+    {
+      "id": "recover",
+      "text": "Recover the manifested cargo",
+      "kind": "deliver_cargo",
+      "params": {
+        "cargo_flag": "station_cargo_aboard"
+      },
+      "optional": true
+    },
+    {
+      "id": "home",
+      "text": "Recover the party and return to the lane",
+      "kind": "return_home"
+    }
+  ],
+  "away_risk": {
+    "tier": "extreme",
+    "skill_mitigators": [
+      "Hacking",
+      "Xenoesotericism",
+      "Firearms"
+    ],
+    "item_mitigators": [
+      "combat_shotgun",
+      "standard_battle_dress",
+      "vaccsuit"
+    ],
+    "outcome_bias": {
+      "contact": 1.5,
+      "hazard": 1.5,
+      "crew_infected": 1.0,
+      "lost": 1.3
+    }
+  },
+  "eligibility": {
+    "min_leg": 3,
+    "requires_flags_all": [],
+    "requires_flags_any": [],
+    "excludes_flags": [],
+    "min_hull": 0,
+    "max_hull": 100
+  },
+  "weight": 0.9,
+  "priority": 0,
+  "repeatable": false,
+  "scenario_hooks": {
+    "on_station": {
+      "chance": 0.85,
+      "context": "station",
+      "tag_bias": {
+        "mystery": 1.5,
+        "combat": 1.3
+      }
+    },
+    "away_return": {
+      "chance": 0.75,
+      "context": "away_return",
+      "tag_bias": {
+        "mystery": 1.4
+      }
+    },
+    "transit_back": {
+      "chance": 0.6,
+      "context": "aftermath",
+      "tag_bias": {
+        "mystery": 1.4
+      }
+    }
+  },
+  "rewards": {
+    "credits": 1100,
+    "items": [],
+    "metrics": {}
+  },
+  "extra_outcome_flags": {
+    "station_salvage_banked": "recover"
+  },
+  "follow_ons": [
+    {
+      "when": [
+        "crew_marked_aboard",
+        "crew_changed_aboard"
+      ],
+      "next": [
+        "tag:mystery",
+        "tombworld"
+      ],
+      "weight": 3.0
+    },
+    {
+      "when": [
+        "crew_stranded_station"
+      ],
+      "next": [
+        "the_stranded"
+      ],
+      "weight": 3.0
+    },
+    {
+      "when": [
+        "hull_mauled"
+      ],
+      "next": [
+        "tag:repair"
+      ],
+      "weight": 2.0
+    }
+  ],
+  "tags": [
+    "salvage",
+    "derelict",
+    "mystery",
+    "away",
+    "high_stakes"
+  ]
+}

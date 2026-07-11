@@ -1,0 +1,104 @@
+{
+  "id": "the_handshake",
+  "title": "The Handshake",
+  "mission_type": "rendezvous",
+  "giver": "Halcyon Freightways",
+  "briefing": "HALCYON FREIGHTWAYS work order 512: Our sister hauler Ambit is dead in the water for want of a coupling you happen to carry a spare of. Match velocity, dock, hand it across, and don't let the two of you drift into each other doing it.",
+  "destination": {
+    "kind": "ship",
+    "name": "HFV Ambit",
+    "descriptor": "stalled box hauler",
+    "art": "ship_hauler"
+  },
+  "phases": {
+    "transit_out": 150,
+    "arrival": 120,
+    "on_station": 150,
+    "transit_back": 150
+  },
+  "objectives": [
+    {
+      "id": "dock",
+      "text": "Dock with the Ambit",
+      "kind": "dock_with_ship"
+    },
+    {
+      "id": "transfer",
+      "text": "Hand across the spare coupling",
+      "kind": "deliver_cargo",
+      "params": {
+        "cargo_flag": "coupling_intact"
+      }
+    },
+    {
+      "id": "home",
+      "text": "Undock cleanly and return to the lane",
+      "kind": "return_home"
+    }
+  ],
+  "eligibility": {
+    "min_leg": 1,
+    "requires_flags_all": [],
+    "requires_flags_any": [],
+    "excludes_flags": [],
+    "min_hull": 0,
+    "max_hull": 100
+  },
+  "weight": 1.4,
+  "priority": 0,
+  "repeatable": true,
+  "scenario_hooks": {
+    "arrival": {
+      "chance": 0.3,
+      "context": "arrival",
+      "tag_bias": {
+        "systems": 1.3
+      }
+    },
+    "on_station": {
+      "chance": 0.4,
+      "context": "docked",
+      "tag_bias": {
+        "systems": 1.3
+      }
+    }
+  },
+  "rewards": {
+    "credits": 250,
+    "items": [
+      "jury_rig_kit"
+    ],
+    "metrics": {}
+  },
+  "extra_outcome_flags": {
+    "coupling_delivered": "transfer"
+  },
+  "follow_ons": [
+    {
+      "when": [
+        "mission_success"
+      ],
+      "next": [
+        "tag:delivery",
+        "fuel_line"
+      ],
+      "weight": 1.8
+    },
+    {
+      "when": [
+        "mission_partial",
+        "mission_failed"
+      ],
+      "next": [
+        "tag:repair"
+      ],
+      "weight": 1.5
+    }
+  ],
+  "tags": [
+    "rendezvous",
+    "docking",
+    "delivery",
+    "low_stakes"
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "id": "the_line",
+  "title": "The Line",
+  "mission_type": "patrol",
+  "giver": "Cassard Reclamation",
+  "briefing": "CASSARD RECLAMATION security note: The SIXFOLD LINE has a long memory and a longer reach, and word is they're minding the lane you're about to run. Hold the picket, watch the sensors, and don't let them get alongside you before you've seen them coming. They remember you. Remember them back.",
+  "flavor": "Somewhere out past sensor range, the Bad Penny is running dark and patient.",
+  "destination": {
+    "kind": "point",
+    "name": "The Picket",
+    "descriptor": "contested transit lane",
+    "art": "buoy_relay"
+  },
+  "phases": {
+    "transit_out": 240,
+    "arrival": 180,
+    "on_station": 300,
+    "transit_back": 180
+  },
+  "objectives": [
+    {
+      "id": "hold",
+      "text": "Hold the picket and watch the sensors",
+      "kind": "survive_until",
+      "params": {
+        "phase": "on_station"
+      }
+    },
+    {
+      "id": "spot",
+      "text": "Spot the Sixfold before they get alongside",
+      "kind": "scenario_flag",
+      "params": {
+        "flag": "sixfold_spotted"
+      },
+      "optional": true
+    },
+    {
+      "id": "keep",
+      "text": "Keep the crew alive through the patrol",
+      "kind": "keep_alive",
+      "params": {
+        "role": "all"
+      }
+    },
+    {
+      "id": "home",
+      "text": "Clear the lane and return home",
+      "kind": "return_home"
+    }
+  ],
+  "eligibility": {
+    "min_leg": 3,
+    "requires_flags_all": [],
+    "requires_flags_any": [
+      "sixfold_grudge"
+    ],
+    "excludes_flags": [],
+    "min_hull": 0,
+    "max_hull": 100
+  },
+  "weight": 1.1,
+  "priority": 2,
+  "repeatable": true,
+  "scenario_hooks": {
+    "on_station": {
+      "chance": 0.7,
+      "context": "transit",
+      "tag_bias": {
+        "combat": 1.6
+      }
+    },
+    "transit_back": {
+      "chance": 0.55,
+      "context": "aftermath",
+      "tag_bias": {
+        "combat": 1.4
+      }
+    }
+  },
+  "rewards": {
+    "credits": 650,
+    "items": [],
+    "metrics": {}
+  },
+  "extra_outcome_flags": {
+    "picket_held": "hold"
+  },
+  "follow_ons": [
+    {
+      "when": [
+        "hull_mauled"
+      ],
+      "next": [
+        "limp_home",
+        "tag:repair"
+      ],
+      "weight": 3.0
+    },
+    {
+      "when": [
+        "mission_success"
+      ],
+      "next": [
+        "parley",
+        "tag:salvage"
+      ],
+      "weight": 1.5
+    },
+    {
+      "when": [
+        "mission_failed"
+      ],
+      "next": [
+        "patch_job"
+      ],
+      "weight": 2.0
+    }
+  ],
+  "tags": [
+    "patrol",
+    "combat",
+    "faction_sixfold"
+  ]
+}

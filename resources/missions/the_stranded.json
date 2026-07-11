@@ -1,0 +1,157 @@
+{
+  "id": "the_stranded",
+  "title": "The Stranded",
+  "mission_type": "evacuation",
+  "giver": "Coreward Relief Authority",
+  "briefing": "COREWARD RELIEF AUTHORITY priority rescue: You left people behind. They're still transmitting, and the window to reach them is closing with the orbit. Turn the ship around, make the site, and bring them up. This one isn't a contract. It's a debt.",
+  "flavor": "The stranded call sign is one you logged yourself, a leg ago, and closed.",
+  "destination": {
+    "kind": "planet",
+    "name": "The Site",
+    "descriptor": "where you left them",
+    "art": "planet_barren"
+  },
+  "phases": {
+    "transit_out": 180,
+    "arrival": 240,
+    "on_station": 240,
+    "transit_back": 180
+  },
+  "objectives": [
+    {
+      "id": "reach",
+      "text": "Make the site where the crew were stranded",
+      "kind": "reach_destination"
+    },
+    {
+      "id": "recover",
+      "text": "Send a shuttle to bring the stranded up",
+      "kind": "away_team",
+      "params": {
+        "site": "surface",
+        "min_crew": 2,
+        "suggested_skills": [
+          "Piloting",
+          "Field Medicine",
+          "Wilderness Survival"
+        ]
+      }
+    },
+    {
+      "id": "keep",
+      "text": "Get the recovered crew aboard alive",
+      "kind": "keep_alive",
+      "params": {
+        "role": "all"
+      }
+    },
+    {
+      "id": "home",
+      "text": "Return to the lane with everyone",
+      "kind": "return_home"
+    }
+  ],
+  "away_risk": {
+    "tier": "moderate",
+    "skill_mitigators": [
+      "Piloting",
+      "Field Medicine",
+      "Wilderness Survival"
+    ],
+    "item_mitigators": [
+      "hazard_suit",
+      "medscanner",
+      "stimpak"
+    ],
+    "outcome_bias": {
+      "survivor": 1.8,
+      "hazard": 1.2,
+      "shuttle_strain": 1.2
+    }
+  },
+  "eligibility": {
+    "min_leg": 2,
+    "requires_flags_all": [],
+    "requires_flags_any": [
+      "crew_stranded_surface",
+      "crew_stranded_derelict",
+      "crew_stranded_station"
+    ],
+    "excludes_flags": [],
+    "min_hull": 0,
+    "max_hull": 100
+  },
+  "weight": 1.2,
+  "priority": 4,
+  "repeatable": true,
+  "scenario_hooks": {
+    "arrival": {
+      "chance": 0.5,
+      "context": "arrival",
+      "tag_bias": {
+        "systems": 1.3
+      }
+    },
+    "away_return": {
+      "chance": 0.6,
+      "context": "away_return",
+      "tag_bias": {
+        "social": 1.3,
+        "bio": 1.2
+      }
+    },
+    "transit_back": {
+      "chance": 0.5,
+      "context": "aftermath",
+      "tag_bias": {
+        "social": 1.3
+      }
+    }
+  },
+  "rewards": {
+    "credits": 700,
+    "items": [
+      "stimpak"
+    ],
+    "metrics": {}
+  },
+  "extra_outcome_flags": {
+    "stranded_recovered": "recover"
+  },
+  "follow_ons": [
+    {
+      "when": [
+        "mission_success"
+      ],
+      "next": [
+        "tag:homecoming",
+        "cold_harbor"
+      ],
+      "weight": 2.0
+    },
+    {
+      "when": [
+        "crew_infected_aboard"
+      ],
+      "next": [
+        "hard_quarantine"
+      ],
+      "weight": 2.5
+    },
+    {
+      "when": [
+        "mission_failed"
+      ],
+      "next": [
+        "shore_leave"
+      ],
+      "weight": 1.5
+    }
+  ],
+  "tags": [
+    "distress",
+    "evacuation",
+    "rescue",
+    "away"
+  ]
+}

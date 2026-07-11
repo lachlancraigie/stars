@@ -1,0 +1,116 @@
+{
+  "id": "limp_home",
+  "title": "Limp Home",
+  "mission_type": "repair_yard",
+  "giver": "Longwatch Yards",
+  "briefing": "LONGWATCH YARDS berth priority: Your hull is chewed past what the Combine calls seaworthy, and the nearest cradle that can close the wounds is ours. Bring what's left of the ship in slow, dock the yard, and let the arms do their work. Try to arrive as one piece.",
+  "flavor": "The yard quotes the repair before it quotes the survival odds. Longwatch is like that.",
+  "destination": {
+    "kind": "station",
+    "name": "Longwatch Yards",
+    "descriptor": "cradle-armed repair yard",
+    "art": "station_yard"
+  },
+  "phases": {
+    "transit_out": 300,
+    "arrival": 180,
+    "on_station": 300,
+    "transit_back": 150
+  },
+  "objectives": [
+    {
+      "id": "survive",
+      "text": "Keep the wounded ship together to the yard",
+      "kind": "survive_until",
+      "params": {
+        "phase": "arrival"
+      }
+    },
+    {
+      "id": "dock",
+      "text": "Dock the repair cradle",
+      "kind": "dock_with_ship"
+    },
+    {
+      "id": "repair",
+      "text": "Bring hull integrity back up",
+      "kind": "repair_to",
+      "params": {
+        "value": 60
+      }
+    },
+    {
+      "id": "home",
+      "text": "Leave the yard and resume the lane",
+      "kind": "return_home"
+    }
+  ],
+  "eligibility": {
+    "min_leg": 1,
+    "requires_flags_all": [],
+    "requires_flags_any": [
+      "hull_mauled"
+    ],
+    "excludes_flags": [],
+    "min_hull": 0,
+    "max_hull": 50
+  },
+  "weight": 1.0,
+  "priority": 5,
+  "repeatable": true,
+  "scenario_hooks": {
+    "transit_out": {
+      "chance": 0.55,
+      "context": "transit",
+      "tag_bias": {
+        "systems": 1.5
+      }
+    },
+    "on_station": {
+      "chance": 0.45,
+      "context": "docked",
+      "tag_bias": {
+        "systems": 1.3,
+        "social": 1.2
+      }
+    }
+  },
+  "rewards": {
+    "credits": 0,
+    "items": [],
+    "metrics": {
+      "hull_integrity": 40.0
+    }
+  },
+  "extra_outcome_flags": {
+    "hull_restored": "repair"
+  },
+  "follow_ons": [
+    {
+      "when": [
+        "mission_success"
+      ],
+      "next": [
+        "tag:trade",
+        "cold_harbor"
+      ],
+      "weight": 2.0
+    },
+    {
+      "when": [
+        "mission_partial",
+        "mission_failed"
+      ],
+      "next": [
+        "patch_job"
+      ],
+      "weight": 2.0
+    }
+  ],
+  "tags": [
+    "repair",
+    "repair_yard",
+    "homecoming",
+    "systems"
+  ]
+}

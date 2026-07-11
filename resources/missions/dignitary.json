@@ -1,0 +1,109 @@
+{
+  "id": "dignitary",
+  "title": "Dignitary",
+  "mission_type": "passenger",
+  "giver": "Bureau of Trade Standards",
+  "briefing": "BUREAU OF TRADE STANDARDS notice 22-A: You'll carry a ranking inspector to the hub, and how the voyage goes is how your file reads afterward. Berth them well, brief them honestly — or don't, and hope the logs agree with whatever you decide honest means.",
+  "destination": {
+    "kind": "station",
+    "name": "Cold Harbor",
+    "descriptor": "cluttered transfer hub",
+    "art": "station_hub"
+  },
+  "phases": {
+    "transit_out": 240,
+    "arrival": 150,
+    "on_station": 150,
+    "transit_back": 150
+  },
+  "objectives": [
+    {
+      "id": "keep",
+      "text": "Keep the inspector alive and comfortable",
+      "kind": "keep_alive",
+      "params": {
+        "role": "all"
+      }
+    },
+    {
+      "id": "reach",
+      "text": "Reach Cold Harbor",
+      "kind": "reach_destination"
+    },
+    {
+      "id": "brief",
+      "text": "Satisfy the inspector's voyage review",
+      "kind": "scenario_flag",
+      "params": {
+        "flag": "inspector_satisfied"
+      }
+    },
+    {
+      "id": "home",
+      "text": "Deliver the inspector and return to the lane",
+      "kind": "return_home"
+    }
+  ],
+  "eligibility": {
+    "min_leg": 3,
+    "requires_flags_all": [],
+    "requires_flags_any": [],
+    "excludes_flags": [],
+    "min_hull": 0,
+    "max_hull": 100
+  },
+  "weight": 0.9,
+  "priority": 0,
+  "repeatable": false,
+  "scenario_hooks": {
+    "transit_out": {
+      "chance": 0.45,
+      "context": "transit",
+      "tag_bias": {
+        "social": 1.5
+      }
+    },
+    "on_station": {
+      "chance": 0.4,
+      "context": "station",
+      "tag_bias": {
+        "social": 1.4
+      }
+    }
+  },
+  "rewards": {
+    "credits": 600,
+    "items": [],
+    "metrics": {}
+  },
+  "extra_outcome_flags": {
+    "inspector_delivered": "brief"
+  },
+  "follow_ons": [
+    {
+      "when": [
+        "mission_success"
+      ],
+      "next": [
+        "tag:trade",
+        "cold_harbor"
+      ],
+      "weight": 1.4
+    },
+    {
+      "when": [
+        "meridian_grudge",
+        "mission_failed"
+      ],
+      "next": [
+        "meridian_audit"
+      ],
+      "weight": 2.0
+    }
+  ],
+  "tags": [
+    "passenger",
+    "social",
+    "faction_meridian"
+  ]
+}

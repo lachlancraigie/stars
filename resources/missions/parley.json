@@ -1,0 +1,114 @@
+{
+  "id": "parley",
+  "title": "Parley",
+  "mission_type": "rendezvous",
+  "giver": "Sixfold Line",
+  "briefing": "Incoming hail, SIXFOLD LINE salvage tender: they say the debris ahead is theirs by first-claim, and they'd like to talk it over before anyone does anything hasty. Dock, hear them out, and decide how much of the field you're willing to call theirs.",
+  "flavor": "The Sixfold smile with a lot of teeth for people who came to talk.",
+  "destination": {
+    "kind": "ship",
+    "name": "SLV Bad Penny",
+    "descriptor": "patched rival tender",
+    "art": "ship_rival"
+  },
+  "phases": {
+    "transit_out": 150,
+    "arrival": 120,
+    "on_station": 180,
+    "transit_back": 150
+  },
+  "objectives": [
+    {
+      "id": "dock",
+      "text": "Dock with the Sixfold tender",
+      "kind": "dock_with_ship"
+    },
+    {
+      "id": "hear",
+      "text": "Hear out the Sixfold's claim",
+      "kind": "survive_until",
+      "params": {
+        "phase": "on_station"
+      }
+    },
+    {
+      "id": "refuse",
+      "text": "Send the Sixfold away empty-handed",
+      "kind": "scenario_flag",
+      "params": {
+        "flag": "sixfold_refused"
+      },
+      "optional": true
+    },
+    {
+      "id": "home",
+      "text": "Undock and return to the lane",
+      "kind": "return_home"
+    }
+  ],
+  "eligibility": {
+    "min_leg": 2,
+    "requires_flags_all": [],
+    "requires_flags_any": [],
+    "excludes_flags": [],
+    "min_hull": 0,
+    "max_hull": 100
+  },
+  "weight": 1.1,
+  "priority": 0,
+  "repeatable": false,
+  "scenario_hooks": {
+    "on_station": {
+      "chance": 0.55,
+      "context": "docked",
+      "tag_bias": {
+        "social": 1.4,
+        "combat": 1.2
+      }
+    },
+    "transit_back": {
+      "chance": 0.4,
+      "context": "aftermath",
+      "tag_bias": {
+        "combat": 1.3
+      }
+    }
+  },
+  "rewards": {
+    "credits": 350,
+    "items": [],
+    "metrics": {}
+  },
+  "extra_outcome_flags": {
+    "sixfold_deal_struck": "hear",
+    "sixfold_grudge": "refuse"
+  },
+  "follow_ons": [
+    {
+      "when": [
+        "sixfold_grudge"
+      ],
+      "next": [
+        "the_line",
+        "scrapright"
+      ],
+      "weight": 3.0
+    },
+    {
+      "when": [
+        "mission_success"
+      ],
+      "next": [
+        "tag:salvage",
+        "scrapright"
+      ],
+      "weight": 1.5
+    }
+  ],
+  "tags": [
+    "rendezvous",
+    "docking",
+    "social",
+    "faction_sixfold"
+  ]
+}

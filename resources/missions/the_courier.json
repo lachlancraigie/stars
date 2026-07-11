@@ -1,0 +1,111 @@
+{
+  "id": "the_courier",
+  "title": "The Courier",
+  "mission_type": "rendezvous",
+  "giver": "Meridian Combine",
+  "briefing": "MERIDIAN COMBINE priority flag: A fast courier is inbound with orders too sensitive for the open channel and a passenger too impatient for the scenic route. Match, dock, receive both. Read the room before you read the orders.",
+  "destination": {
+    "kind": "ship",
+    "name": "MCV Quickstep",
+    "descriptor": "needle-nosed courier",
+    "art": "ship_courier"
+  },
+  "phases": {
+    "transit_out": 120,
+    "arrival": 90,
+    "on_station": 150,
+    "transit_back": 150
+  },
+  "objectives": [
+    {
+      "id": "dock",
+      "text": "Match and dock with the Quickstep",
+      "kind": "dock_with_ship"
+    },
+    {
+      "id": "receive",
+      "text": "Receive the sealed orders and the passenger",
+      "kind": "survive_until",
+      "params": {
+        "phase": "on_station"
+      }
+    },
+    {
+      "id": "keep",
+      "text": "Deliver the passenger to the next leg alive",
+      "kind": "keep_alive",
+      "params": {
+        "role": "all"
+      }
+    },
+    {
+      "id": "home",
+      "text": "Break dock and resume the lane",
+      "kind": "return_home"
+    }
+  ],
+  "eligibility": {
+    "min_leg": 1,
+    "requires_flags_all": [],
+    "requires_flags_any": [],
+    "excludes_flags": [],
+    "min_hull": 0,
+    "max_hull": 100
+  },
+  "weight": 1.2,
+  "priority": 0,
+  "repeatable": false,
+  "scenario_hooks": {
+    "on_station": {
+      "chance": 0.4,
+      "context": "docked",
+      "tag_bias": {
+        "social": 1.3,
+        "mystery": 1.2
+      }
+    },
+    "transit_back": {
+      "chance": 0.45,
+      "context": "aftermath",
+      "tag_bias": {
+        "mystery": 1.3
+      }
+    }
+  },
+  "rewards": {
+    "credits": 300,
+    "items": [],
+    "metrics": {}
+  },
+  "extra_outcome_flags": {
+    "orders_received": "receive"
+  },
+  "follow_ons": [
+    {
+      "when": [
+        "mission_success"
+      ],
+      "next": [
+        "the_passenger",
+        "tag:passenger"
+      ],
+      "weight": 2.0
+    },
+    {
+      "when": [
+        "mission_success"
+      ],
+      "next": [
+        "tag:distress",
+        "mayday"
+      ],
+      "weight": 1.2
+    }
+  ],
+  "tags": [
+    "rendezvous",
+    "docking",
+    "passenger",
+    "social"
+  ]
+}

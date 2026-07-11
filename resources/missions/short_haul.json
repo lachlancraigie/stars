@@ -1,0 +1,100 @@
+{
+  "id": "short_haul",
+  "title": "Short Haul",
+  "mission_type": "delivery",
+  "giver": "Meridian Combine",
+  "briefing": "MERIDIAN COMBINE dispatch 2210: A crew platform two hours downlane is a coolant loop short of comfortable. You're carrying the loop. Make the drop, get the countersign, come home. Low stakes, clean paperwork.",
+  "destination": {
+    "kind": "station",
+    "name": "Platform Osprey",
+    "descriptor": "tin-roof crew platform",
+    "art": "station_outpost"
+  },
+  "phases": {
+    "transit_out": 180,
+    "arrival": 120,
+    "on_station": 180,
+    "transit_back": 150
+  },
+  "objectives": [
+    {
+      "id": "reach",
+      "text": "Reach Platform Osprey",
+      "kind": "reach_destination"
+    },
+    {
+      "id": "deliver",
+      "text": "Hand over the coolant loop, intact",
+      "kind": "deliver_cargo",
+      "params": {
+        "cargo_flag": "coolant_intact"
+      }
+    },
+    {
+      "id": "home",
+      "text": "Return to the lane with all hands",
+      "kind": "return_home"
+    }
+  ],
+  "eligibility": {
+    "min_leg": 1,
+    "requires_flags_all": [],
+    "requires_flags_any": [],
+    "excludes_flags": [],
+    "min_hull": 0,
+    "max_hull": 100
+  },
+  "weight": 3.0,
+  "priority": 0,
+  "repeatable": true,
+  "scenario_hooks": {
+    "transit_out": {
+      "chance": 0.2,
+      "context": "transit"
+    },
+    "on_station": {
+      "chance": 0.3,
+      "context": "docked",
+      "tag_bias": {
+        "systems": 1.3
+      }
+    }
+  },
+  "rewards": {
+    "credits": 200,
+    "items": [],
+    "metrics": {
+      "battery_charge": 6.0
+    }
+  },
+  "extra_outcome_flags": {
+    "coolant_delivered": "deliver"
+  },
+  "follow_ons": [
+    {
+      "when": [
+        "mission_success"
+      ],
+      "next": [
+        "tag:trade",
+        "cold_harbor"
+      ],
+      "weight": 2.0
+    },
+    {
+      "when": [
+        "mission_partial"
+      ],
+      "next": [
+        "tag:repair"
+      ],
+      "weight": 1.5
+    }
+  ],
+  "tags": [
+    "opener",
+    "delivery",
+    "trade",
+    "low_stakes"
+  ]
+}

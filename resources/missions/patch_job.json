@@ -1,0 +1,115 @@
+{
+  "id": "patch_job",
+  "title": "Patch Job",
+  "mission_type": "repair_yard",
+  "giver": "Halcyon Freightways",
+  "briefing": "HALCYON FREIGHTWAYS field-repair note: You won't make a proper yard on the hull you've got. There's a way-station with a torch and a grudging welder at the marker. Dock, buy the patch, and get enough plating back to keep breathing to the next port.",
+  "destination": {
+    "kind": "station",
+    "name": "Marker Station Gib",
+    "descriptor": "backwater weld shack",
+    "art": "station_outpost"
+  },
+  "phases": {
+    "transit_out": 210,
+    "arrival": 150,
+    "on_station": 240,
+    "transit_back": 150
+  },
+  "objectives": [
+    {
+      "id": "survive",
+      "text": "Keep the ship together to the way-station",
+      "kind": "survive_until",
+      "params": {
+        "phase": "arrival"
+      }
+    },
+    {
+      "id": "dock",
+      "text": "Dock the way-station",
+      "kind": "dock_with_ship"
+    },
+    {
+      "id": "repair",
+      "text": "Weld enough plating back on",
+      "kind": "repair_to",
+      "params": {
+        "value": 45
+      }
+    },
+    {
+      "id": "home",
+      "text": "Leave the station and resume the lane",
+      "kind": "return_home"
+    }
+  ],
+  "eligibility": {
+    "min_leg": 1,
+    "requires_flags_all": [],
+    "requires_flags_any": [
+      "hull_mauled"
+    ],
+    "excludes_flags": [],
+    "min_hull": 0,
+    "max_hull": 50
+  },
+  "weight": 1.0,
+  "priority": 4,
+  "repeatable": true,
+  "scenario_hooks": {
+    "transit_out": {
+      "chance": 0.5,
+      "context": "transit",
+      "tag_bias": {
+        "systems": 1.4
+      }
+    },
+    "on_station": {
+      "chance": 0.45,
+      "context": "docked",
+      "tag_bias": {
+        "systems": 1.3
+      }
+    }
+  },
+  "rewards": {
+    "credits": 0,
+    "items": [
+      "jury_rig_kit"
+    ],
+    "metrics": {
+      "hull_integrity": 25.0
+    }
+  },
+  "extra_outcome_flags": {
+    "hull_patched": "repair"
+  },
+  "follow_ons": [
+    {
+      "when": [
+        "mission_success"
+      ],
+      "next": [
+        "tag:trade",
+        "limp_home"
+      ],
+      "weight": 1.5
+    },
+    {
+      "when": [
+        "mission_partial",
+        "mission_failed"
+      ],
+      "next": [
+        "limp_home"
+      ],
+      "weight": 2.5
+    }
+  ],
+  "tags": [
+    "repair",
+    "repair_yard",
+    "systems"
+  ]
+}

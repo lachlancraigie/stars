@@ -1,0 +1,118 @@
+{
+  "id": "wet_nurse",
+  "title": "Wet Nurse",
+  "mission_type": "escort",
+  "giver": "Halcyon Freightways",
+  "briefing": "HALCYON FREIGHTWAYS work order 588: The tanker Slow Marey is fat, slow, and worth more than your bond. Ride her flank through the rough lane, keep the lane clear, and hand her off at the marker with her hull intact and her cargo aboard.",
+  "destination": {
+    "kind": "ship",
+    "name": "HFV Slow Marey",
+    "descriptor": "swollen bunker tanker",
+    "art": "ship_tanker"
+  },
+  "phases": {
+    "transit_out": 240,
+    "arrival": 150,
+    "on_station": 180,
+    "transit_back": 180
+  },
+  "objectives": [
+    {
+      "id": "reach",
+      "text": "Take station off the tanker's flank",
+      "kind": "reach_destination"
+    },
+    {
+      "id": "escort",
+      "text": "See the tanker through the rough lane",
+      "kind": "survive_until",
+      "params": {
+        "phase": "on_station"
+      }
+    },
+    {
+      "id": "keep",
+      "text": "Keep the crew alive through the run",
+      "kind": "keep_alive",
+      "params": {
+        "role": "all"
+      }
+    },
+    {
+      "id": "home",
+      "text": "Hand off the tanker and return to the lane",
+      "kind": "return_home"
+    }
+  ],
+  "eligibility": {
+    "min_leg": 2,
+    "requires_flags_all": [],
+    "requires_flags_any": [],
+    "excludes_flags": [],
+    "min_hull": 0,
+    "max_hull": 100
+  },
+  "weight": 1.1,
+  "priority": 0,
+  "repeatable": true,
+  "scenario_hooks": {
+    "transit_out": {
+      "chance": 0.45,
+      "context": "transit",
+      "tag_bias": {
+        "combat": 1.3,
+        "systems": 1.2
+      }
+    },
+    "on_station": {
+      "chance": 0.4,
+      "context": "docked",
+      "tag_bias": {
+        "combat": 1.2
+      }
+    }
+  },
+  "rewards": {
+    "credits": 500,
+    "items": [],
+    "metrics": {}
+  },
+  "extra_outcome_flags": {
+    "tanker_delivered": "escort"
+  },
+  "follow_ons": [
+    {
+      "when": [
+        "mission_success"
+      ],
+      "next": [
+        "tag:trade",
+        "fuel_line"
+      ],
+      "weight": 1.5
+    },
+    {
+      "when": [
+        "hull_mauled"
+      ],
+      "next": [
+        "tag:repair"
+      ],
+      "weight": 2.5
+    },
+    {
+      "when": [
+        "sixfold_grudge"
+      ],
+      "next": [
+        "the_line"
+      ],
+      "weight": 2.0
+    }
+  ],
+  "tags": [
+    "escort",
+    "combat",
+    "trade"
+  ]
+}

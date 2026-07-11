@@ -1,0 +1,122 @@
+{
+  "id": "dead_drop",
+  "title": "Dead Drop",
+  "mission_type": "rendezvous",
+  "giver": "The Ferryman's Guild",
+  "briefing": "FERRYMAN'S GUILD note, unsigned: A container is waiting at the coordinate below. Take it aboard, ask it no questions, and deliver the countersign we gave you. The Guild pays for discretion; it does not pay for curiosity.",
+  "flavor": "The coordinate is a long way from anywhere anyone files flight plans.",
+  "destination": {
+    "kind": "point",
+    "name": "The Hollow Marker",
+    "descriptor": "unlit rendezvous point",
+    "art": "buoy_relay"
+  },
+  "phases": {
+    "transit_out": 210,
+    "arrival": 120,
+    "on_station": 150,
+    "transit_back": 180
+  },
+  "objectives": [
+    {
+      "id": "reach",
+      "text": "Reach the unlit marker",
+      "kind": "reach_destination"
+    },
+    {
+      "id": "take",
+      "text": "Take the sealed container aboard",
+      "kind": "survive_until",
+      "params": {
+        "phase": "on_station"
+      }
+    },
+    {
+      "id": "peek",
+      "text": "Scan the container against Guild orders",
+      "kind": "scenario_flag",
+      "params": {
+        "flag": "container_scanned"
+      },
+      "optional": true
+    },
+    {
+      "id": "home",
+      "text": "Carry it back to the lane, sealed",
+      "kind": "return_home"
+    }
+  ],
+  "eligibility": {
+    "min_leg": 2,
+    "requires_flags_all": [],
+    "requires_flags_any": [],
+    "excludes_flags": [],
+    "min_hull": 0,
+    "max_hull": 100
+  },
+  "weight": 1.0,
+  "priority": 0,
+  "repeatable": false,
+  "scenario_hooks": {
+    "on_station": {
+      "chance": 0.5,
+      "context": "docked",
+      "tag_bias": {
+        "mystery": 1.4
+      }
+    },
+    "transit_back": {
+      "chance": 0.6,
+      "context": "aftermath",
+      "tag_bias": {
+        "mystery": 1.3,
+        "bio": 1.2
+      }
+    }
+  },
+  "rewards": {
+    "credits": 500,
+    "items": [],
+    "metrics": {}
+  },
+  "extra_outcome_flags": {
+    "guild_favor": "take",
+    "contraband_known": "peek"
+  },
+  "follow_ons": [
+    {
+      "when": [
+        "mission_success"
+      ],
+      "next": [
+        "tag:smuggle",
+        "dead_drop"
+      ],
+      "weight": 1.5
+    },
+    {
+      "when": [
+        "crew_infected_aboard"
+      ],
+      "next": [
+        "tag:bio_aftermath"
+      ],
+      "weight": 3.0
+    },
+    {
+      "when": [
+        "crew_marked_aboard"
+      ],
+      "next": [
+        "tag:mystery"
+      ],
+      "weight": 2.0
+    }
+  ],
+  "tags": [
+    "rendezvous",
+    "docking",
+    "smuggle",
+    "mystery"
+  ]
+}

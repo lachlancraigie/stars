@@ -1,0 +1,132 @@
+{
+  "id": "saltflats",
+  "title": "Saltflats",
+  "mission_type": "planet_survey",
+  "giver": "Meridian Combine",
+  "briefing": "MERIDIAN COMBINE survey order 3418: A world of dry brine and standing salt, no weather to speak of. Orbit, land a sample team, walk the flats. It looks like the safest ground you'll ever survey — which is exactly what the last three teams reported.",
+  "destination": {
+    "kind": "planet",
+    "name": "Lot's Reach",
+    "descriptor": "white salt-flat world",
+    "art": "planet_briny"
+  },
+  "phases": {
+    "transit_out": 180,
+    "arrival": 300,
+    "on_station": 300,
+    "transit_back": 180
+  },
+  "objectives": [
+    {
+      "id": "reach",
+      "text": "Make orbit over Lot's Reach",
+      "kind": "reach_destination"
+    },
+    {
+      "id": "walk",
+      "text": "Land a sample team on the flats",
+      "kind": "away_team",
+      "params": {
+        "site": "surface",
+        "min_crew": 2,
+        "suggested_skills": [
+          "Chemistry",
+          "Geology",
+          "Wilderness Survival"
+        ]
+      }
+    },
+    {
+      "id": "core",
+      "text": "Pull a deep brine core",
+      "kind": "scenario_flag",
+      "params": {
+        "flag": "brine_core_taken"
+      },
+      "optional": true
+    },
+    {
+      "id": "home",
+      "text": "Return to the lane with all hands",
+      "kind": "return_home"
+    }
+  ],
+  "away_risk": {
+    "tier": "high",
+    "skill_mitigators": [
+      "Chemistry",
+      "Geology",
+      "Wilderness Survival"
+    ],
+    "item_mitigators": [
+      "hazard_suit",
+      "vaccsuit"
+    ],
+    "outcome_bias": {
+      "exposure": 1.4,
+      "lost": 1.5,
+      "hazard": 1.3
+    }
+  },
+  "eligibility": {
+    "min_leg": 2,
+    "requires_flags_all": [],
+    "requires_flags_any": [],
+    "excludes_flags": [],
+    "min_hull": 0,
+    "max_hull": 100
+  },
+  "weight": 1.1,
+  "priority": 0,
+  "repeatable": false,
+  "scenario_hooks": {
+    "on_station": {
+      "chance": 0.6,
+      "context": "planet_orbit",
+      "tag_bias": {
+        "mystery": 1.3
+      }
+    },
+    "away_return": {
+      "chance": 0.65,
+      "context": "away_return",
+      "tag_bias": {
+        "mystery": 1.2
+      }
+    }
+  },
+  "rewards": {
+    "credits": 550,
+    "items": [],
+    "metrics": {}
+  },
+  "extra_outcome_flags": {
+    "survey_data_recovered": "walk"
+  },
+  "follow_ons": [
+    {
+      "when": [
+        "crew_stranded_surface"
+      ],
+      "next": [
+        "the_stranded"
+      ],
+      "weight": 3.5
+    },
+    {
+      "when": [
+        "mission_success"
+      ],
+      "next": [
+        "tag:planet",
+        "stillwater"
+      ],
+      "weight": 1.3
+    }
+  ],
+  "tags": [
+    "planet",
+    "science",
+    "away"
+  ]
+}

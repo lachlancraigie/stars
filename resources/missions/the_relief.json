@@ -1,0 +1,113 @@
+{
+  "id": "the_relief",
+  "title": "The Relief",
+  "mission_type": "crew_transfer",
+  "giver": "Cold Harbor Control",
+  "briefing": "COLD HARBOR CONTROL berth assignment 77: You're down hands after the last leg, and the Harbor has bodies looking for a berth. Dock, take on the replacements Command signs for, and get their papers into your core. Papers are papers. People are the variable.",
+  "flavor": "Two files come aboard. One of them reads clean the way clean is written, not lived.",
+  "destination": {
+    "kind": "station",
+    "name": "Cold Harbor",
+    "descriptor": "cluttered transfer hub",
+    "art": "station_hub"
+  },
+  "phases": {
+    "transit_out": 150,
+    "arrival": 150,
+    "on_station": 210,
+    "transit_back": 150
+  },
+  "objectives": [
+    {
+      "id": "dock",
+      "text": "Dock at Cold Harbor",
+      "kind": "dock_with_ship"
+    },
+    {
+      "id": "board",
+      "text": "Take on the replacement crew",
+      "kind": "survive_until",
+      "params": {
+        "phase": "on_station"
+      }
+    },
+    {
+      "id": "vet",
+      "text": "Run unrequested background checks on the new hires",
+      "kind": "scenario_flag",
+      "params": {
+        "flag": "hires_vetted"
+      },
+      "optional": true
+    },
+    {
+      "id": "home",
+      "text": "Depart the Harbor with a full roster",
+      "kind": "return_home"
+    }
+  ],
+  "eligibility": {
+    "min_leg": 2,
+    "requires_flags_all": [],
+    "requires_flags_any": [],
+    "excludes_flags": [],
+    "min_hull": 0,
+    "max_hull": 100
+  },
+  "weight": 1.2,
+  "priority": 0,
+  "repeatable": true,
+  "scenario_hooks": {
+    "on_station": {
+      "chance": 0.45,
+      "context": "station",
+      "tag_bias": {
+        "social": 1.5
+      }
+    },
+    "transit_back": {
+      "chance": 0.5,
+      "context": "aftermath",
+      "tag_bias": {
+        "social": 1.4,
+        "mystery": 1.2
+      }
+    }
+  },
+  "rewards": {
+    "credits": 200,
+    "items": [],
+    "metrics": {}
+  },
+  "extra_outcome_flags": {
+    "roster_filled": "board",
+    "suspect_hire_flagged": "vet"
+  },
+  "follow_ons": [
+    {
+      "when": [
+        "mission_success"
+      ],
+      "next": [
+        "tag:trade",
+        "the_passenger"
+      ],
+      "weight": 1.5
+    },
+    {
+      "when": [
+        "crew_changed_aboard"
+      ],
+      "next": [
+        "tag:mystery"
+      ],
+      "weight": 2.5
+    }
+  ],
+  "tags": [
+    "rendezvous",
+    "docking",
+    "crew_transfer",
+    "social"
+  ]
+}

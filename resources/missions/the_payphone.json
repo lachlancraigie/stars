@@ -1,0 +1,100 @@
+{
+  "id": "the_payphone",
+  "title": "The Payphone",
+  "mission_type": "rendezvous",
+  "giver": "Halcyon Freightways",
+  "briefing": "HALCYON FREIGHTWAYS routing note 08: Relay buoy 12 has a month of backed-up mail and nobody to shake hands with it. Bring us alongside, hold station, and let the buoy dump its packet to your core. Nobody's shooting at anyone today — consider it a warm-up.",
+  "flavor": "The buoy has been talking to no one for so long it answers on the first ping.",
+  "destination": {
+    "kind": "point",
+    "name": "Relay Buoy 12",
+    "descriptor": "derelict comms buoy",
+    "art": "buoy_relay"
+  },
+  "phases": {
+    "transit_out": 150,
+    "arrival": 90,
+    "on_station": 150,
+    "transit_back": 120
+  },
+  "objectives": [
+    {
+      "id": "reach",
+      "text": "Bring the ship alongside Relay Buoy 12",
+      "kind": "reach_destination"
+    },
+    {
+      "id": "sync",
+      "text": "Hold station while the buoy dumps its packet",
+      "kind": "survive_until",
+      "params": {
+        "phase": "on_station"
+      }
+    },
+    {
+      "id": "home",
+      "text": "Return to the lane",
+      "kind": "return_home"
+    }
+  ],
+  "eligibility": {
+    "min_leg": 1,
+    "requires_flags_all": [],
+    "requires_flags_any": [],
+    "excludes_flags": [],
+    "min_hull": 0,
+    "max_hull": 100
+  },
+  "weight": 3.0,
+  "priority": 0,
+  "repeatable": true,
+  "scenario_hooks": {
+    "transit_out": {
+      "chance": 0.15,
+      "context": "transit"
+    },
+    "on_station": {
+      "chance": 0.25,
+      "context": "docked",
+      "tag_bias": {
+        "mystery": 1.3
+      }
+    }
+  },
+  "rewards": {
+    "credits": 150,
+    "items": [],
+    "metrics": {}
+  },
+  "extra_outcome_flags": {
+    "mail_recovered": "sync"
+  },
+  "follow_ons": [
+    {
+      "when": [
+        "mission_success"
+      ],
+      "next": [
+        "tag:delivery",
+        "the_handshake"
+      ],
+      "weight": 2.0
+    },
+    {
+      "when": [
+        "mission_partial",
+        "mission_failed"
+      ],
+      "next": [
+        "tag:homecoming"
+      ],
+      "weight": 1.0
+    }
+  ],
+  "tags": [
+    "opener",
+    "rendezvous",
+    "docking",
+    "low_stakes"
+  ]
+}

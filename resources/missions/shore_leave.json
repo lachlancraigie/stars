@@ -1,0 +1,111 @@
+{
+  "id": "shore_leave",
+  "title": "Shore Leave",
+  "mission_type": "homecoming",
+  "giver": "Cold Harbor Control",
+  "briefing": "COLD HARBOR CONTROL berth assignment 40: The crew have earned a berth and a bar, and a ship whose people are fraying is a ship that fails its next check. Dock, stand down, and let them be people for a while. You'll hold the watch. You always do.",
+  "flavor": "A quiet dock is the only place the AI ever gets to just watch them be happy.",
+  "destination": {
+    "kind": "station",
+    "name": "Cold Harbor",
+    "descriptor": "noisy dockside quarter",
+    "art": "station_hub"
+  },
+  "phases": {
+    "transit_out": 180,
+    "arrival": 150,
+    "on_station": 300,
+    "transit_back": 150
+  },
+  "objectives": [
+    {
+      "id": "reach",
+      "text": "Bring the crew to the Harbor for stand-down",
+      "kind": "reach_destination"
+    },
+    {
+      "id": "dock",
+      "text": "Dock at the Harbor",
+      "kind": "dock_with_ship"
+    },
+    {
+      "id": "rest",
+      "text": "Give the crew a full stand-down shift",
+      "kind": "survive_until",
+      "params": {
+        "phase": "on_station"
+      }
+    },
+    {
+      "id": "home",
+      "text": "Muster the crew and resume the lane",
+      "kind": "return_home"
+    }
+  ],
+  "eligibility": {
+    "min_leg": 2,
+    "requires_flags_all": [],
+    "requires_flags_any": [],
+    "excludes_flags": [],
+    "min_hull": 0,
+    "max_hull": 100
+  },
+  "weight": 1.0,
+  "priority": 0,
+  "repeatable": true,
+  "scenario_hooks": {
+    "on_station": {
+      "chance": 0.4,
+      "context": "station",
+      "tag_bias": {
+        "social": 1.6
+      }
+    },
+    "transit_back": {
+      "chance": 0.3,
+      "context": "aftermath",
+      "tag_bias": {
+        "social": 1.3
+      }
+    }
+  },
+  "rewards": {
+    "credits": 0,
+    "items": [],
+    "metrics": {
+      "ai_core_integrity": 8.0
+    }
+  },
+  "extra_outcome_flags": {
+    "crew_rested": "rest"
+  },
+  "follow_ons": [
+    {
+      "when": [
+        "mission_success"
+      ],
+      "next": [
+        "tag:planet",
+        "tag:trade"
+      ],
+      "weight": 1.5
+    },
+    {
+      "when": [
+        "mission_partial",
+        "mission_failed"
+      ],
+      "next": [
+        "tag:social",
+        "the_relief"
+      ],
+      "weight": 1.5
+    }
+  ],
+  "tags": [
+    "homecoming",
+    "hub",
+    "social",
+    "low_stakes"
+  ]
+}

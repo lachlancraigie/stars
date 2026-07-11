@@ -1,0 +1,134 @@
+{
+  "id": "shepherd",
+  "title": "Shepherd",
+  "mission_type": "escort",
+  "giver": "Coreward Relief Authority",
+  "briefing": "COREWARD RELIEF AUTHORITY task 09: A crippled hauler is limping to port on half a drive and can't make it alone. Take station off her wounded side, match her crawl, and walk her in. She'll slow you down. That's the job.",
+  "destination": {
+    "kind": "ship",
+    "name": "HFV Tin Lizzie",
+    "descriptor": "limping half-drive hauler",
+    "art": "ship_hauler"
+  },
+  "phases": {
+    "transit_out": 240,
+    "arrival": 180,
+    "on_station": 180,
+    "transit_back": 180
+  },
+  "objectives": [
+    {
+      "id": "reach",
+      "text": "Take station off the crippled hauler",
+      "kind": "reach_destination"
+    },
+    {
+      "id": "shepherd",
+      "text": "Walk the hauler to port at her crawl",
+      "kind": "survive_until",
+      "params": {
+        "phase": "on_station"
+      }
+    },
+    {
+      "id": "board",
+      "text": "Send an engineering party across to steady her drive",
+      "kind": "away_team",
+      "params": {
+        "site": "other_ship",
+        "min_crew": 1,
+        "suggested_skills": [
+          "Mechanical Repair",
+          "Engineering",
+          "Zero-G"
+        ]
+      },
+      "optional": true
+    },
+    {
+      "id": "home",
+      "text": "Hand off the hauler and return to the lane",
+      "kind": "return_home"
+    }
+  ],
+  "away_risk": {
+    "tier": "moderate",
+    "skill_mitigators": [
+      "Mechanical Repair",
+      "Engineering",
+      "Jury-Rigging"
+    ],
+    "item_mitigators": [
+      "engineers_toolkit",
+      "vaccsuit"
+    ],
+    "outcome_bias": {
+      "shuttle_strain": 1.3,
+      "hazard": 1.2,
+      "find": 1.1
+    }
+  },
+  "eligibility": {
+    "min_leg": 2,
+    "requires_flags_all": [],
+    "requires_flags_any": [],
+    "excludes_flags": [],
+    "min_hull": 0,
+    "max_hull": 100
+  },
+  "weight": 1.1,
+  "priority": 0,
+  "repeatable": true,
+  "scenario_hooks": {
+    "transit_out": {
+      "chance": 0.45,
+      "context": "transit",
+      "tag_bias": {
+        "systems": 1.3
+      }
+    },
+    "on_station": {
+      "chance": 0.45,
+      "context": "docked",
+      "tag_bias": {
+        "systems": 1.3
+      }
+    }
+  },
+  "rewards": {
+    "credits": 500,
+    "items": [
+      "jury_rig_kit"
+    ],
+    "metrics": {}
+  },
+  "extra_outcome_flags": {
+    "hauler_delivered": "shepherd"
+  },
+  "follow_ons": [
+    {
+      "when": [
+        "mission_success"
+      ],
+      "next": [
+        "tag:trade",
+        "cold_harbor"
+      ],
+      "weight": 1.5
+    },
+    {
+      "when": [
+        "hull_mauled"
+      ],
+      "next": [
+        "tag:repair"
+      ],
+      "weight": 2.0
+    }
+  ],
+  "tags": [
+    "escort",
+    "systems",
+    "trade"
+  ]
+}

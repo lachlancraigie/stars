@@ -1,0 +1,112 @@
+{
+  "id": "the_long_haul",
+  "title": "The Long Haul",
+  "mission_type": "delivery",
+  "giver": "Halcyon Freightways",
+  "briefing": "HALCYON FREIGHTWAYS bulk order 301: Fifty tonnes of sealed freight, one long empty leg, one delivery marker. No one will hail you. Nothing is due to happen. A long, quiet haul is either a rest or a warning, depending on how the ship's been treating you lately.",
+  "flavor": "The quiet legs are when the crew have time to notice each other.",
+  "destination": {
+    "kind": "station",
+    "name": "Marker Delta",
+    "descriptor": "lonely transfer buoy",
+    "art": "station_outpost"
+  },
+  "phases": {
+    "transit_out": 300,
+    "arrival": 150,
+    "on_station": 150,
+    "transit_back": 240
+  },
+  "objectives": [
+    {
+      "id": "haul",
+      "text": "Carry the sealed freight through the long leg",
+      "kind": "survive_until",
+      "params": {
+        "phase": "transit_back"
+      }
+    },
+    {
+      "id": "reach",
+      "text": "Reach Marker Delta",
+      "kind": "reach_destination"
+    },
+    {
+      "id": "deliver",
+      "text": "Deliver the bulk freight intact",
+      "kind": "deliver_cargo",
+      "params": {
+        "cargo_flag": "bulk_freight_intact"
+      }
+    },
+    {
+      "id": "home",
+      "text": "Return to the lane",
+      "kind": "return_home"
+    }
+  ],
+  "eligibility": {
+    "min_leg": 2,
+    "requires_flags_all": [],
+    "requires_flags_any": [],
+    "excludes_flags": [],
+    "min_hull": 0,
+    "max_hull": 100
+  },
+  "weight": 1.2,
+  "priority": 0,
+  "repeatable": true,
+  "scenario_hooks": {
+    "transit_out": {
+      "chance": 0.55,
+      "context": "transit",
+      "tag_bias": {
+        "social": 1.4,
+        "mystery": 1.2
+      }
+    },
+    "transit_back": {
+      "chance": 0.45,
+      "context": "aftermath",
+      "tag_bias": {
+        "social": 1.3
+      }
+    }
+  },
+  "rewards": {
+    "credits": 550,
+    "items": [],
+    "metrics": {
+      "credits": 0.0
+    }
+  },
+  "extra_outcome_flags": {
+    "freight_delivered": "deliver"
+  },
+  "follow_ons": [
+    {
+      "when": [
+        "mission_success"
+      ],
+      "next": [
+        "tag:trade",
+        "cold_harbor"
+      ],
+      "weight": 1.5
+    },
+    {
+      "when": [
+        "crew_shaken_aboard"
+      ],
+      "next": [
+        "shore_leave"
+      ],
+      "weight": 2.0
+    }
+  ],
+  "tags": [
+    "delivery",
+    "trade",
+    "social"
+  ]
+}
