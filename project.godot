@@ -26,6 +26,7 @@ CrewSystem="*res://scripts/crew/crew_system.gd"
 AISystem="*res://scripts/ai/ai_system.gd"
 ScenarioDirector="*res://scripts/scenarios/scenario_director.gd"
 ScenarioRunner="*res://scripts/scenarios/scenario_runner.gd"
+MissionManager="*res://scripts/missions/mission_manager.gd"
 DialogueSystem="*res://scripts/crew/dialogue_system.gd"
 
 [display]

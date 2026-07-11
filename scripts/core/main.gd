@@ -37,12 +37,19 @@ var _camera: DeckCamera
 # narrow passage's medbay patient) can happen at setup time.
 var _scenario_key: String = "quarantine"
 
+# Mission mode (docs/mission-system-spec.md §12) is the default boot path. Setting
+# SHIPAI_SCENARIO still boots the legacy scenario-only path unchanged — every
+# existing AUTODEMO/acceptance run stays green — so this flag is decided once in
+# _choose_scenario() and gates which path _ready() takes at the bottom of setup.
+var _legacy_scenario_boot: bool = false
+
 
 func _ready() -> void:
 	RenderingServer.set_default_clear_color(CLEAR_COLOR)
 	_choose_ship_seed()
 	_choose_scenario()
 	_setup_starfield()
+	_setup_approach_visual()
 	_setup_deck()
 	_setup_ship()
 	_setup_camera()
@@ -56,10 +63,13 @@ func _ready() -> void:
 	_add_hud()
 	_add_directive_ui()
 	_connect_debug_output()
-	_start_scenario()
-	_setup_autoshot()
-	_setup_force_flags()
-	_setup_force_kill()
+	if _legacy_scenario_boot:
+		_start_scenario()
+		_setup_autoshot()
+		_setup_force_flags()
+		_setup_force_kill()
+	else:
+		_start_mission_mode()
 
 
 # --- Setup ---
@@ -81,6 +91,7 @@ func _choose_scenario() -> void:
 	var env: String = OS.get_environment("SHIPAI_SCENARIO").to_lower().strip_edges()
 	if env == "":
 		return
+	_legacy_scenario_boot = true
 	if env in ["quarantine", "narrow_passage"]:
 		_scenario_key = env
 	else:
@@ -105,6 +116,24 @@ func _setup_starfield() -> void:
 	field.name = "Starfield"
 	field.set_seed_value(GameState.ship_seed)
 	layer.add_child(field)
+
+
+# Mission destination art (docs/mission-system-spec.md §8) — same fixed-to-viewport
+# CanvasLayer trick as _setup_starfield above (see its comment for why), layered
+# between the starfield (-10) and the ship deck's implicit layer 0 so destination
+# art reads as background behind rooms/hull but in front of the stars. Added
+# unconditionally (harmless/idle in legacy scenario mode — it only reacts to
+# mission_phase_changed/destination_sighted, neither of which fire outside mission
+# mode) so nothing else in setup needs to branch on _legacy_scenario_boot.
+func _setup_approach_visual() -> void:
+	var layer := CanvasLayer.new()
+	layer.name = "ApproachVisualLayer"
+	layer.layer = -5
+	add_child(layer)
+
+	var visual := ApproachVisual.new()
+	visual.name = "ApproachVisual"
+	layer.add_child(visual)
 
 
 func _setup_deck() -> void:
@@ -241,6 +270,22 @@ func _start_scenario() -> void:
 		GameState.reactor_online, GameState.battery_charge, GameState.life_support_online,
 		GameState.ai_core_integrity, GameState.ai_core_status])
 	print("[MAIN] SPACE=pause  D=directive  I=isolate  F=fear  R=status")
+
+
+# --- Mission mode boot (docs/mission-system-spec.md §12) ---
+# The default path whenever SHIPAI_SCENARIO isn't set: MissionManager owns picking
+# and running missions from here on (scripts/missions/mission_manager.gd). Reuses
+# the same ship seed the layout/crew were generated from (GameState.ship_seed,
+# already resolved from SHIPAI_SEED-or-random in _choose_ship_seed) so one seed
+# governs the whole boot deterministically. SHIPAI_MISSION=<id> (read inside
+# MissionManager.begin_campaign) forces the opener.
+func _start_mission_mode() -> void:
+	MissionManager.begin_campaign(GameState.ship_seed)
+	print("[MAIN] Mission mode — crew: %s" % ", ".join(GameState.crew.keys()))
+	print("[MAIN] Reactor online=%s  battery=%.0f%%  life_support=%s  ai_core=%.0f (%s)" % [
+		GameState.reactor_online, GameState.battery_charge, GameState.life_support_online,
+		GameState.ai_core_integrity, GameState.ai_core_status])
+	print("[MAIN] SPACE=pause  D=directive  R=status")
 
 
 # --- Debug signals → Output panel ---

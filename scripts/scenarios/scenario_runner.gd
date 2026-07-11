@@ -414,7 +414,14 @@ func _end_scenario_instance(instance_id: String, outcome: String, reason: String
 	EventBus.scenario_instance_ended.emit(instance_id, outcome)
 	push_warning("ScenarioRunner: scenario instance ended — id=%s outcome=%s reason=%s" % [instance_id, outcome, reason])
 	if active_scenarios.is_empty():
-		_advance_leg()   # every active scenario concluded on its own terms — a real leg boundary, not a death
+		# Leg-boundary ownership (docs/mission-system-spec.md §10): when MissionManager
+		# is running the campaign, ITS resolution phase calls advance_leg()/checkpoint/
+		# leg_boundary_reached (a mission = a leg; scenarios are the covert layer
+		# interwoven inside it, not the leg boundary themselves). This scenario-drain
+		# path stays exactly as it was — the sole leg-boundary owner — whenever mission
+		# mode is off, so every existing SHIPAI_SCENARIO/legacy run is untouched.
+		if not MissionManager.mission_mode:
+			_advance_leg()   # every active scenario concluded on its own terms — a real leg boundary, not a death
 		EventBus.scenario_ended.emit(outcome)
 		# TODO(campaign): hand off to CampaignManager for next scenario/leg load
 	# else: a differently-paced concurrent scenario is still running — the run isn't over.

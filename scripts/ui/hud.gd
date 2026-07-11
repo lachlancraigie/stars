@@ -18,6 +18,15 @@ const ACCENT: Color = Color(0.20, 0.80, 0.95)
 const FEED_COLOUR: Color = Color(0.65, 0.72, 0.80)
 const DIM_TEXT: Color = Color(0.55, 0.60, 0.68)
 
+# --- Mission panel (docs/mission-system-spec.md §11/§12) ---
+const MISSION_PANEL_GAP: float = 14.0        # vertical gap below the power panel
+const MISSION_ROW_FONT: int = 13
+const MISSION_BRIEFING_FONT: int = 12
+const BRIEFING_DISPLAY_SECONDS: float = 14.0  # "first N seconds" collapsible window
+const ACTIVE_OBJECTIVE_COLOUR: Color = Color(0.85, 0.87, 0.92)
+const MISSION_BRIEFING_EST_HEIGHT: float = 58.0   # rough wrapped-briefing height budget
+const MISSION_OBJECTIVE_ROW_HEIGHT: float = 17.0
+
 # Player-readable text for scenario event ids (fallback: prettified id).
 # "scenario_started" is handled dynamically in _on_scenario_event (multi-scenario).
 const EVENT_TEXT: Dictionary = {
@@ -64,11 +73,25 @@ var _room_rows: Dictionary = {}   # room_id -> {power_btn: Button, ls_btn: Butto
 var _blackout_layer: CanvasLayer = null
 var _blackout_time_label: Label
 
+# --- Mission panel state ---
+var _mission_panel: Panel
+var _mission_title_label: Label
+var _mission_giver_label: Label
+var _mission_phase_label: Label
+var _mission_briefing_label: Label
+var _mission_objectives_box: VBoxContainer
+var _mission_objective_rows: Dictionary = {}   # objective_id -> Label
+
 
 func _ready() -> void:
 	_build_power_panel()
+	_build_mission_panel()
 	_build_objective_label()
 	_build_feed()
+	EventBus.mission_started.connect(_on_mission_started)
+	EventBus.mission_phase_changed.connect(_on_mission_phase_changed)
+	EventBus.mission_objective_updated.connect(_on_mission_objective_updated)
+	EventBus.mission_completed.connect(_on_mission_completed)
 	EventBus.objective_changed.connect(_on_objective_changed)
 	EventBus.scenario_event_triggered.connect(_on_scenario_event)
 	EventBus.directive_accepted.connect(
@@ -246,6 +269,128 @@ func _tier_colour(fraction: float) -> Color:
 
 func _room_display_name(room_id: String) -> String:
 	return room_id.capitalize().replace("_", " ")
+
+
+# --- Mission panel (docs/mission-system-spec.md §11/§12) ---
+# Compact top-left panel stacked directly below the power/life-support panel — pure
+# render layer, same shape as the rest of this file: every field here is populated
+# from EventBus signals MissionManager already emits (mission_started/
+# mission_phase_changed/mission_objective_updated/mission_completed); nothing here
+# mutates game state (Rule 3/5). Hidden until the first mission_started (so it's a
+# no-op, invisible panel during legacy SHIPAI_SCENARIO boots).
+
+func _build_mission_panel() -> void:
+	_mission_panel = Panel.new()
+	_mission_panel.position = Vector2(10, _panel.size.y + MISSION_PANEL_GAP)
+	_mission_panel.visible = false
+	add_child(_mission_panel)
+
+	var vbox := VBoxContainer.new()
+	vbox.position = Vector2(PANEL_PADDING, PANEL_PADDING)
+	vbox.add_theme_constant_override("separation", 3)
+	_mission_panel.add_child(vbox)
+
+	_mission_title_label = _make_status_label()
+	_mission_title_label.add_theme_color_override("font_color", ACCENT)
+	_mission_giver_label = _make_status_label()
+	_mission_phase_label = _make_status_label()
+	vbox.add_child(_mission_title_label)
+	vbox.add_child(_mission_giver_label)
+	vbox.add_child(_mission_phase_label)
+
+	_mission_briefing_label = Label.new()
+	_mission_briefing_label.custom_minimum_size = Vector2(PANEL_WIDTH - PANEL_PADDING * 2, 0)
+	_mission_briefing_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_mission_briefing_label.add_theme_font_size_override("font_size", MISSION_BRIEFING_FONT)
+	_mission_briefing_label.add_theme_color_override("font_color", FEED_COLOUR)
+	vbox.add_child(_mission_briefing_label)
+
+	vbox.add_child(HSeparator.new())
+
+	_mission_objectives_box = VBoxContainer.new()
+	_mission_objectives_box.add_theme_constant_override("separation", 2)
+	vbox.add_child(_mission_objectives_box)
+
+
+func _on_mission_started(_mission_id: String) -> void:
+	var mission: MissionDef = MissionManager.current_mission
+	if mission == null:
+		return
+	_mission_panel.visible = true
+	_mission_title_label.text = mission.title
+	_mission_giver_label.text = "Giver: %s" % mission.giver
+	_mission_phase_label.text = "Phase: Transit out"
+	_mission_briefing_label.text = mission.briefing
+	_mission_briefing_label.visible = true
+
+	_mission_objective_rows.clear()
+	for child in _mission_objectives_box.get_children():
+		child.queue_free()
+	for obj: Dictionary in mission.objectives:
+		var row := Label.new()
+		row.add_theme_font_size_override("font_size", MISSION_ROW_FONT)
+		row.add_theme_color_override("font_color", ACTIVE_OBJECTIVE_COLOUR)
+		row.text = _objective_line(obj, "active")
+		row.custom_minimum_size = Vector2(PANEL_WIDTH - PANEL_PADDING * 2, 0)
+		row.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		_mission_objectives_box.add_child(row)
+		_mission_objective_rows[String(obj.get("id", ""))] = row
+	_resize_mission_panel()
+
+	get_tree().create_timer(BRIEFING_DISPLAY_SECONDS).timeout.connect(func():
+		if is_instance_valid(_mission_briefing_label):
+			_mission_briefing_label.visible = false
+			_resize_mission_panel())
+
+
+func _resize_mission_panel() -> void:
+	var briefing_h: float = MISSION_BRIEFING_EST_HEIGHT if _mission_briefing_label.visible else 0.0
+	var obj_h: float = _mission_objectives_box.get_child_count() * MISSION_OBJECTIVE_ROW_HEIGHT
+	var height: float = PANEL_PADDING * 2 + 3 * (ROW_HEIGHT - 4) + 3 * 3 + briefing_h + 10.0 + obj_h + 10.0
+	_mission_panel.size = Vector2(PANEL_WIDTH, height)
+
+
+func _on_mission_phase_changed(mission_id: String, phase: String) -> void:
+	if MissionManager.current_mission == null or MissionManager.current_mission.id != mission_id:
+		return
+	_mission_phase_label.text = "Phase: %s" % phase.capitalize().replace("_", " ")
+
+
+func _on_mission_objective_updated(_mission_id: String, objective_id: String, state: String) -> void:
+	if not _mission_objective_rows.has(objective_id):
+		return
+	var mission: MissionDef = MissionManager.current_mission
+	var obj_dict: Dictionary = {}
+	if mission != null:
+		for o: Dictionary in mission.objectives:
+			if String(o.get("id", "")) == objective_id:
+				obj_dict = o
+				break
+	var row: Label = _mission_objective_rows[objective_id]
+	row.text = _objective_line(obj_dict, state)
+	row.add_theme_color_override("font_color", _objective_state_colour(state))
+
+
+func _on_mission_completed(_mission_id: String, outcome: String) -> void:
+	_mission_phase_label.text = "Phase: Resolution (%s)" % outcome.replace("mission_", "").capitalize()
+
+
+func _objective_line(obj: Dictionary, state: String) -> String:
+	var glyph: String = "•"
+	if state == "complete":
+		glyph = "✓"
+	elif state == "failed":
+		glyph = "✗"
+	var text: String = String(obj.get("text", obj.get("id", "")))
+	var opt_tag: String = " (opt)" if bool(obj.get("optional", false)) else ""
+	return "%s %s%s" % [glyph, text, opt_tag]
+
+
+func _objective_state_colour(state: String) -> Color:
+	match state:
+		"complete": return NORMAL_COLOUR
+		"failed": return CRITICAL_COLOUR
+		_: return ACTIVE_OBJECTIVE_COLOUR
 
 
 # --- Objective / feed ---
