@@ -281,7 +281,11 @@ EventPool `_check_condition` extends likewise. **Closed set — validator-enforc
 | `air_vent_room` | `room`, `amount` | drop room air quality |
 
 **Target selector grammar** (`target`): `random` (living) · `role:<role>` ·
-`cast:<name>` · `away_team` (most recent op's members) · `status:<flag>` · `all`.
+`cast:<name>` · a bare cast name (any key of the scenario's `monitor.cast`) ·
+`best_skill:<Skill>` (highest-bonus living crew in that canonical skill — same
+resolution as monitor-check crew selection; the natural "whoever attempted the
+solve" target for on_fail outcomes) · `away_team` (most recent op's members) ·
+`status:<flag>` · `all` · `contact` (radio_line only: the off-ship voice).
 
 **Existing conditions (keep):** `resource_below/above`, `flag_set/unset`,
 `crew_state_count`, `ai_trust_below`, `ai_suspicion_above`.

@@ -41,6 +41,16 @@ INTRUDER_TYPES = {"stalker", "nest", "mimic"}
 DEST_KINDS = {"planet", "ship", "station", "point", "home"}
 STATS_AND_SAVES = {"strength", "speed", "intellect", "combat", "sanity", "fear", "body"}
 CREW_SELECTOR = re.compile(r"^(random|all|away_team|contact|role:\w+|cast:\w+|status:\w+)$")
+BEST_SKILL_SELECTOR = re.compile(r"^best_skill:([A-Za-z][A-Za-z\- ]*)$")
+
+
+def selector_ok(sel: str, skills: set[str], cast_keys: set[str]) -> bool:
+    """Spec §5 target grammar: base grammar, best_skill:<Skill>, or a bare cast name."""
+    s = str(sel)
+    if CREW_SELECTOR.match(s) or s in cast_keys:
+        return True
+    m = BEST_SKILL_SELECTOR.match(s)
+    return bool(m and m.group(1) in skills)
 
 CONDITION_TYPES = {
     "resource_below", "resource_above", "flag_set", "flag_unset",
@@ -111,7 +121,8 @@ def load_catalog(folder: Path) -> dict[str, dict]:
     return out
 
 
-def check_outcomes(path: Path, outcomes, skills, item_ids, where: str) -> None:
+def check_outcomes(path: Path, outcomes, skills, item_ids, where: str,
+                   cast_keys: set[str] = frozenset()) -> None:
     if not isinstance(outcomes, list):
         err(path, f"{where}: outcomes must be a list")
         return
@@ -121,7 +132,7 @@ def check_outcomes(path: Path, outcomes, skills, item_ids, where: str) -> None:
             err(path, f"{where}: unknown outcome type '{t}'")
             continue
         tgt = o.get("target", "")
-        if tgt and not CREW_SELECTOR.match(str(tgt)):
+        if tgt and not selector_ok(str(tgt), skills, cast_keys):
             err(path, f"{where}: bad target selector '{tgt}'")
         if t in {"grant_item", "remove_item"} and o.get("item_id") not in item_ids:
             err(path, f"{where}: unknown item_id '{o.get('item_id')}'")
@@ -135,6 +146,9 @@ def check_outcomes(path: Path, outcomes, skills, item_ids, where: str) -> None:
                 err(path, f"{where}: radio_line with no text")
             elif len(txt) > 120:
                 warn(path, f"{where}: radio_line >120 chars ('{txt[:40]}…')")
+            spk = o.get("speaker", "")
+            if spk and not selector_ok(str(spk), skills, cast_keys):
+                err(path, f"{where}: bad radio_line speaker '{spk}'")
 
 
 def check_conditions(path: Path, conditions, skills, item_ids, where: str) -> None:
@@ -228,6 +242,8 @@ def validate_scenario(path: Path, s: dict, all_ids: set[str],
         err(path, f"trigger_status '{ts}' not in {sorted(STATUS_FLAGS)}")
 
     settable: set[str] = set()
+    mon = s.get("monitor", {})
+    cast_keys = set(mon.get("cast", {}).keys())
 
     def harvest_flags(outcomes) -> None:
         for o in outcomes or []:
@@ -241,24 +257,21 @@ def validate_scenario(path: Path, s: dict, all_ids: set[str],
             err(path, f"duplicate event_id '{eid}'")
         ev_ids.add(eid)
         check_conditions(path, e.get("conditions", []), skills, item_ids, f"event {eid}")
-        check_outcomes(path, e.get("outcomes", []), skills, item_ids, f"event {eid}")
+        check_outcomes(path, e.get("outcomes", []), skills, item_ids, f"event {eid}", cast_keys)
         harvest_flags(e.get("outcomes"))
 
-    mon = s.get("monitor", {})
     for t in mon.get("timers", []):
-        check_outcomes(path, t.get("outcomes", []), skills, item_ids, "monitor timer")
+        check_outcomes(path, t.get("outcomes", []), skills, item_ids, "monitor timer", cast_keys)
         harvest_flags(t.get("outcomes"))
     for w in mon.get("watches", []):
         check_conditions(path, w.get("conditions", []), skills, item_ids, "monitor watch")
-        check_outcomes(path, w.get("outcomes", []), skills, item_ids, "monitor watch")
+        check_outcomes(path, w.get("outcomes", []), skills, item_ids, "monitor watch", cast_keys)
         harvest_flags(w.get("outcomes"))
     for c in mon.get("checks", []):
         cid = c.get("id", "?")
         sel = str(c.get("crew", ""))
-        if not (CREW_SELECTOR.match(sel) or sel.startswith("best_skill:")):
+        if not selector_ok(sel, skills, cast_keys):
             err(path, f"check '{cid}': bad crew selector '{sel}'")
-        if sel.startswith("best_skill:") and sel[11:] not in skills:
-            err(path, f"check '{cid}': unknown skill in selector '{sel}'")
         if c.get("stat") not in STATS_AND_SAVES:
             err(path, f"check '{cid}': unknown stat '{c.get('stat')}'")
         if c.get("skill") and c["skill"] not in skills:
@@ -266,7 +279,7 @@ def validate_scenario(path: Path, s: dict, all_ids: set[str],
         if c.get("item_tag") and c["item_tag"] not in item_tags:
             err(path, f"check '{cid}': unknown item_tag '{c.get('item_tag')}'")
         for key in ("on_success", "on_fail", "on_crit_success", "on_crit_fail", "on_solved"):
-            check_outcomes(path, c.get(key, []), skills, item_ids, f"check '{cid}'.{key}")
+            check_outcomes(path, c.get(key, []), skills, item_ids, f"check '{cid}'.{key}", cast_keys)
             harvest_flags(c.get(key))
 
     for wf in s.get("win_flags", []):
