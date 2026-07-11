@@ -32,6 +32,17 @@ const DOCKING_SECONDS: float = 20.0
 const INTERMISSION_SECONDS: float = 10.0
 const PHASE_ORDER: Array[String] = ["transit_out", "arrival", "on_station", "transit_back"]
 
+# Task E (docs/mission-system-spec.md §10): the phase-order PLUS the away_return
+# pseudo-phase, in the fixed evaluation order used to resolve which hook a delayed
+# trigger_status payoff force-attaches at ("the first hook of that mission whose
+# context matches" — see _resolve_payoff_hook_key).
+const HOOK_ORDER: Array[String] = ["transit_out", "arrival", "on_station", "away_return", "transit_back"]
+
+# Inter-scenario pacing gap (spec §10: "a 120s base inter-scenario gap"), stretched
+# by ScenarioDirector.modifiers.cooldown_mult exactly like every other cooldown
+# consumer (EventPool, etc.) — never a scattered special case (spec §4).
+const SCENARIO_START_GAP_SECONDS: float = 120.0
+
 var campaign_flags: Dictionary = {}
 var current_mission: MissionDef = null
 var mission_phase: String = ""     # "" | transit_out | arrival | on_station | transit_back | resolution
@@ -50,6 +61,17 @@ var shuttle_system: ShuttleSystem = null
 var _objective_states: Dictionary = {}        # objective_id -> "active" | "complete" | "failed"
 var _scenario_flags_seen: Dictionary = {}      # flag -> last value seen via EventBus.scenario_flag_set (this mission's lifetime)
 var _once_per_run_scenario_ids: Array[String] = []   # once_per_run scenario ids already used this campaign
+
+# Task E (spec §10 "Delayed payoffs" — THE interweave mechanic). One entry per
+# scheduled trigger_status payoff: {crew_id, flag, scenario_id, due_leg, hook_key,
+# fired}. hook_key is "" until a mission is running whose leg has reached due_leg
+# (resolved once per mission by _resolve_pending_payoffs_for_mission, reset to ""
+# whenever a mission resolves without firing it — see _resolve_mission — so the
+# NEXT mission's hooks get a fresh chance to match). Persists for the campaign's
+# lifetime (cleared in begin_campaign), same durability as campaign_flags.
+var _pending_payoffs: Array[Dictionary] = []
+var _payoff_scheduled_keys: Dictionary = {}    # "<crew_id>|<flag>" -> true — one payoff per (crew, flag), no stacking
+var _last_scenario_start_elapsed: float = -999999.0   # TimeManager.elapsed of the last successful attach (any path)
 
 var _phase_elapsed: float = 0.0
 var _aborted: bool = false
@@ -75,6 +97,7 @@ func _ready() -> void:
 	EventBus.docking_completed.connect(_on_docking_completed)
 	EventBus.undocked.connect(_on_undocked)
 	EventBus.scenario_flag_set.connect(_on_scenario_flag_set)
+	EventBus.crew_status_flag_changed.connect(_on_crew_status_flag_changed)
 
 	shuttle_system = ShuttleSystem.new()
 	shuttle_system.name = "ShuttleSystem"
@@ -89,6 +112,9 @@ func begin_campaign(seed_value: int = -1) -> void:
 	_once_per_run_scenario_ids = []
 	_prev_outcome_flags = {}
 	_prev_follow_ons = []
+	_pending_payoffs = []
+	_payoff_scheduled_keys = {}
+	_last_scenario_start_elapsed = -999999.0
 
 	var seed_env: String = OS.get_environment("SHIPAI_SEED")
 	var use_seed: int = seed_value
@@ -155,6 +181,8 @@ func _start_mission(mission: MissionDef) -> void:
 
 	for obj: Dictionary in mission.objectives:
 		_set_objective_state(String(obj.get("id", "")), "active")
+
+	_resolve_pending_payoffs_for_mission()
 
 	print("[MISSION] started '%s' (%s) giver=%s leg=%d" % [
 		mission.id, mission.title, mission.giver, ScenarioDirector.current_leg])
@@ -506,6 +534,15 @@ func _resolve_mission() -> void:
 	deck.mark_completed(mission.id)
 	mission_history.append({"id": mission.id, "outcome": outcome, "leg": ScenarioDirector.current_leg})
 
+	# Delayed payoffs (task E): any entry resolved to a hook_key THIS mission that
+	# never actually fired (blocked the whole mission by cap-2, or its hook simply
+	# never got a matching context) gets its hook_key cleared so the NEXT mission's
+	# _resolve_pending_payoffs_for_mission gives it a fresh resolution rather than
+	# silently dying pinned to a hook that will never be entered again.
+	for entry: Dictionary in _pending_payoffs:
+		if not bool(entry.get("fired", false)):
+			entry["hook_key"] = ""
+
 	print("[MISSION] resolved '%s' -> %s (aborted=%s ship_alive=%s)" % [
 		mission.id, outcome, _aborted, ship_alive])
 	EventBus.objective_changed.emit("%s — %s" % [mission.title, _outcome_label(outcome)])
@@ -607,11 +644,16 @@ func _weighted_pick(weights: Array[float]) -> int:
 	return weights.size() - 1
 
 
-# --- Scenario hooks (spec §3/§10 — MINIMAL version; task E does Overseer refinement) ---
-# Deliberately factored into this one method so a later pass can swap the selection
-# internals (heat-scaled chance, cooldowns, delayed trigger_status payoffs) without
-# touching any call site — every phase entry and the away_return pseudo-phase both
-# just call this with their hook key.
+# --- Scenario hooks (spec §3/§10, task E's Overseer refinement over task B's minimal
+# flat-chance version) — deliberately kept as this one method so every phase entry and
+# the away_return pseudo-phase can just call it with their hook key regardless of what
+# selects/gates underneath. Three layers, checked in order:
+#   1. A due delayed trigger_status payoff resolved to THIS hook — force-attaches,
+#      bypassing the chance roll AND the inter-scenario gap entirely (still gated by
+#      cap-2 + once_per_run — spec §10).
+#   2. The inter-scenario gap: skip the roll outright if anything started within the
+#      last 120s (modifiers.cooldown_mult-stretched).
+#   3. The heat-scaled chance roll -> ScenarioCatalog.pick's full selection rules.
 
 func _try_attach_scenario(hook_key: String) -> void:
 	if current_mission == null:
@@ -619,34 +661,209 @@ func _try_attach_scenario(hook_key: String) -> void:
 	var hook: Dictionary = current_mission.get_hook(hook_key)
 	if hook.is_empty():
 		return
+
+	var due_payoff: Dictionary = _find_due_payoff_for_hook(hook_key)
+	if not due_payoff.is_empty():
+		_force_attach_payoff(due_payoff)
+		return
+
 	var chance: float = float(hook.get("chance", 0.0))
 	if chance <= 0.0:
 		return
-	var roll: float = rng.randf() if rng != null else randf()
-	if roll > chance:
+
+	var gap: float = SCENARIO_START_GAP_SECONDS * float(ScenarioDirector.modifiers.get("cooldown_mult", 1.0))
+	var since_last: float = TimeManager.elapsed - _last_scenario_start_elapsed
+	if since_last < gap:
+		if _debug:
+			print("[MISSION] scenario hook '%s' skipped — inter-scenario gap (%.1fs < %.1fs)" % [
+				hook_key, since_last, gap])
 		return
-	if ScenarioRunner.active_scenarios.size() >= 2:
+
+	var effective_chance: float = chance * lerp(0.6, 1.4, ScenarioDirector.effective_heat())
+	var roll: float = rng.randf() if rng != null else randf()
+	if roll > effective_chance:
+		if _debug:
+			print("[MISSION] scenario hook '%s' rolled no attach (roll=%.2f > effective_chance=%.2f, base=%.2f heat=%.2f)" % [
+				hook_key, roll, effective_chance, chance, ScenarioDirector.effective_heat()])
+		return
+	if ScenarioRunner.active_scenarios.size() >= ScenarioRunner.OVERLAP_CAP:
 		return
 
 	var context: String = String(hook.get("context", ""))
 	var tag_bias: Dictionary = hook.get("tag_bias", {})
 	var recent: Array = _once_per_run_scenario_ids.duplicate()
 	var picked_id: String = ScenarioCatalog.pick(context, tag_bias, ScenarioDirector.current_leg,
-		_active_scenario_axes(), recent, ScenarioDirector.effective_heat(), rng)
+		_active_scenario_axes(), recent, ScenarioDirector.effective_heat(), rng,
+		ScenarioDirector.current_weak_axes())
 	if picked_id == "":
 		return
-	var config: Dictionary = ScenarioCatalog.build_config(picked_id)
-	if config.is_empty():
+	var instance_id: String = _attach_scenario_now(picked_id)
+	if instance_id == "":
 		return
 
-	var instance_id: String = ScenarioRunner.start_scenario(config)
-	ScenarioRunner._spawn_monitor(picked_id, config)
-	if bool(ScenarioCatalog.defs(picked_id).get("once_per_run", false)):
-		_once_per_run_scenario_ids.append(picked_id)
-
 	if _debug:
-		print("[MISSION] scenario hook '%s' fired -> %s (instance=%s roll=%.2f<=%.2f)" % [
-			hook_key, picked_id, instance_id, roll, chance])
+		print("[MISSION] scenario hook '%s' fired -> %s (instance=%s roll=%.2f<=%.2f effective_chance=%.2f base=%.2f heat=%.2f)" % [
+			hook_key, picked_id, instance_id, roll, effective_chance, effective_chance, chance, ScenarioDirector.effective_heat()])
+
+
+# Shared tail for every attach path (normal roll + forced payoff): builds the config,
+# starts the ScenarioRunner instance + its monitor, records once_per_run/gap bookkeeping.
+# Returns "" (and does nothing else) on a bad/missing config — never partially attaches.
+func _attach_scenario_now(scenario_id: String) -> String:
+	var config: Dictionary = ScenarioCatalog.build_config(scenario_id)
+	if config.is_empty():
+		return ""
+	var instance_id: String = ScenarioRunner.start_scenario(config)
+	ScenarioRunner._spawn_monitor(scenario_id, config)
+	if bool(ScenarioCatalog.defs(scenario_id).get("once_per_run", false)):
+		_once_per_run_scenario_ids.append(scenario_id)
+	_last_scenario_start_elapsed = TimeManager.elapsed
+	return instance_id
+
+
+# --- Delayed trigger_status payoffs (spec §10 "THE interweave mechanic") ---
+# Flow: a hidden crew_status_flag lands (typically an AwayResolver exposure beat,
+# but any crew_status_flag outcome qualifies) -> schedule a force-attach 1-2 legs
+# later for the first matching scenario -> once a mission is running at/past that
+# leg, resolve WHICH of its hooks the payoff will fire at -> the ordinary
+# _try_attach_scenario call for that hook fires it instead of rolling.
+
+func _on_crew_status_flag_changed(crew_id: String, flag: String, value: bool) -> void:
+	if not value or not mission_mode:
+		return
+	var key: String = "%s|%s" % [crew_id, flag]
+	if _payoff_scheduled_keys.has(key):
+		return   # one scheduled payoff per (crew, flag) — no stacking duplicates
+	var scenario_id: String = _pick_trigger_status_scenario(flag)
+	if scenario_id == "":
+		return
+	_payoff_scheduled_keys[key] = true
+	var delay: int = rng.randi_range(1, 2) if rng != null else (randi() % 2 + 1)
+	var due_leg: int = ScenarioDirector.current_leg + delay
+	_pending_payoffs.append({
+		"crew_id": crew_id, "flag": flag, "scenario_id": scenario_id,
+		"due_leg": due_leg, "hook_key": "", "fired": false,
+	})
+	if _debug:
+		print("[MISSION] delayed payoff scheduled: %s <- '%s' -> scenario '%s' due leg %d (current leg %d, +%d)" % [
+			crew_id, flag, scenario_id, due_leg, ScenarioDirector.current_leg, delay])
+
+
+# Weighted pick among every catalog scenario whose trigger_status matches (rare for
+# more than one to collide, but the catalog doesn't guarantee 1:1); once_per_run
+# scenarios already consumed this campaign are excluded outright — scheduling a
+# payoff that can never legally attach would just dead-end silently later.
+func _pick_trigger_status_scenario(flag: String) -> String:
+	var candidates: Array[String] = []
+	var weights: Array[float] = []
+	for id: String in ScenarioCatalog.all_ids():
+		var def: Dictionary = ScenarioCatalog.defs(id)
+		if def.is_empty():
+			continue   # bespoke builtins carry no trigger_status metadata (ScenarioCatalog class doc)
+		if String(def.get("trigger_status", "")) != flag:
+			continue
+		if bool(def.get("once_per_run", false)) and id in _once_per_run_scenario_ids:
+			continue
+		candidates.append(id)
+		weights.append(maxf(float(def.get("weight", 1.0)), 0.01))
+	if candidates.is_empty():
+		return ""
+	return candidates[_weighted_pick(weights)]
+
+
+# Resolves hook_key for every due-but-unresolved payoff against the mission that just
+# started (called from _start_mission). "Due" = due_leg has been reached; a payoff
+# scheduled for a future leg is left alone until a mission actually reaches it.
+func _resolve_pending_payoffs_for_mission() -> void:
+	if current_mission == null:
+		return
+	for entry: Dictionary in _pending_payoffs:
+		if bool(entry.get("fired", false)):
+			continue
+		if int(entry.get("due_leg", 0)) > ScenarioDirector.current_leg:
+			continue
+		if String(entry.get("hook_key", "")) != "":
+			continue
+		entry["hook_key"] = _resolve_payoff_hook_key(String(entry.get("scenario_id", "")))
+
+
+# "The first hook of that mission whose context matches, or ANY hook if none match"
+# (spec §10), evaluated in a fixed phase order (HOOK_ORDER) so the result is
+# deterministic for a given mission/scenario pair.
+func _resolve_payoff_hook_key(scenario_id: String) -> String:
+	if current_mission == null:
+		return ""
+	var contexts: Array = ScenarioCatalog.defs(scenario_id).get("contexts", [])
+	for hook_key: String in HOOK_ORDER:
+		var hook: Dictionary = current_mission.get_hook(hook_key)
+		if hook.is_empty():
+			continue
+		var hook_context: String = String(hook.get("context", ""))
+		if hook_context in contexts or "any" in contexts:
+			return hook_key
+	for hook_key: String in HOOK_ORDER:   # fallback: ANY hook this mission actually has
+		if not current_mission.get_hook(hook_key).is_empty():
+			return hook_key
+	return ""
+
+
+func _find_due_payoff_for_hook(hook_key: String) -> Dictionary:
+	for entry: Dictionary in _pending_payoffs:
+		if not bool(entry.get("fired", false)) and String(entry.get("hook_key", "")) == hook_key:
+			return entry
+	return {}
+
+
+# Bypasses the chance roll/gap entirely (spec §10) but still respects cap-2
+# concurrent and once_per_run — exactly the two constraints the task brief calls
+# out. A cap-2 block just defers (hook_key stays put, retried on the next call for
+# the same hook — e.g. a second away_return within one mission); a once_per_run
+# scenario already consumed elsewhere or a bad/missing config drops the payoff for
+# good rather than retrying forever.
+func _force_attach_payoff(payoff: Dictionary) -> void:
+	var scenario_id: String = String(payoff.get("scenario_id", ""))
+	var hook_key: String = String(payoff.get("hook_key", ""))
+	var def: Dictionary = ScenarioCatalog.defs(scenario_id)
+	if bool(def.get("once_per_run", false)) and scenario_id in _once_per_run_scenario_ids:
+		payoff["fired"] = true
+		if _debug:
+			print("[MISSION] delayed payoff '%s' dropped — once_per_run already consumed elsewhere" % scenario_id)
+		return
+	if ScenarioRunner.active_scenarios.size() >= ScenarioRunner.OVERLAP_CAP:
+		if _debug:
+			print("[MISSION] delayed payoff '%s' deferred at hook '%s' — cap-2 concurrent full" % [scenario_id, hook_key])
+		return
+	var instance_id: String = _attach_scenario_now(scenario_id)
+	if instance_id == "":
+		payoff["fired"] = true   # bad/missing config — drop rather than retry forever
+		return
+	payoff["fired"] = true
+	print("[MISSION] delayed payoff FIRED: %s (crew=%s flag=%s) at hook '%s' (bypassed roll, instance=%s)" % [
+		scenario_id, payoff.get("crew_id", ""), payoff.get("flag", ""), hook_key, instance_id])
+
+
+# --- Away-beat injection support (away_resolver.gd _apply_away_return_injection,
+# task E deliverable 4) — small read-only surface AwayResolver queries so the
+# "already active or scheduled" check lives in ONE place rather than AwayResolver
+# reaching into ScenarioRunner/ScenarioCatalog/_pending_payoffs directly. ---
+
+# First scenario id (already running, or scheduled as a not-yet-fired delayed
+# payoff) whose contexts include "away_return" — the candidate whose away_injection
+# data (or generic exposure-beat fallback) may flavor one beat of an in-flight away
+# op. "" if nothing qualifies (the common case — AwayResolver degrades to its
+# normal random beat table).
+func find_away_injection_scenario_id() -> String:
+	for instance_id: String in ScenarioRunner.active_scenarios:
+		var sid: String = String(ScenarioRunner.active_scenarios[instance_id].get("scenario_id", ""))
+		if "away_return" in ScenarioCatalog.defs(sid).get("contexts", []):
+			return sid
+	for entry: Dictionary in _pending_payoffs:
+		if bool(entry.get("fired", false)):
+			continue
+		var sid: String = String(entry.get("scenario_id", ""))
+		if "away_return" in ScenarioCatalog.defs(sid).get("contexts", []):
+			return sid
+	return ""
 
 
 func _active_scenario_axes() -> Array[String]:

@@ -178,11 +178,18 @@ static func _build_events(events_in: Array) -> Array[ScenarioEvent]:
 #     alongside anything").
 #   - intensity gate: intensity 3 requires effective_heat >= 0.6 OR leg >= 4.
 #   - mercy weighting: below heat 0.35, intensity-1 candidates get a 3x weight boost.
-#   - weight = def.weight * tag_bias[axis] (tag_bias is the mission hook's own
-#     `tag_bias` dict, keyed by pressure_axis names, e.g. {"bio": 1.5}).
+#   - weight = def.weight * tag_bias[axis] * weakness-fit (tag_bias is the mission
+#     hook's own `tag_bias` dict, keyed by pressure_axis names, e.g. {"bio": 1.5}).
+#   - weakness-fit (task E, spec §10): weight *= 1.5 when the candidate's axis is in
+#     `weak_axes` — the caller's own computed list of currently-vulnerable axes
+#     (ScenarioDirector.current_weak_axes(), which reads live GameState/crew so this
+#     function itself stays free of that dependency — same spirit as active_axes/
+#     tag_bias/recent_ids above, all caller-supplied rather than read in here).
+#     "mystery" never appears in weak_axes by construction — spec: "mystery: flat".
 # Returns "" if no candidate survives the filters.
 static func pick(context: String, tag_bias: Dictionary, leg: int, active_axes: Array,
-		recent_ids: Array, effective_heat: float, rng: RandomNumberGenerator = null) -> String:
+		recent_ids: Array, effective_heat: float, rng: RandomNumberGenerator = null,
+		weak_axes: Array = []) -> String:
 	_ensure_loaded()
 	var candidates: Array[String] = []
 	var weights: Array[float] = []
@@ -204,6 +211,8 @@ static func pick(context: String, tag_bias: Dictionary, leg: int, active_axes: A
 			continue
 
 		var weight: float = float(def.get("weight", 1.0)) * float(tag_bias.get(axis, 1.0))
+		if axis in weak_axes:
+			weight *= 1.5
 		if effective_heat < 0.35 and intensity == 1:
 			weight *= 3.0
 

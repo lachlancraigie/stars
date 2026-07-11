@@ -36,6 +36,12 @@ CONTEXTS = {
 }
 AXES = {"bio", "systems", "social", "combat", "mystery"}
 RISK_TIERS = {"low", "moderate", "high", "extreme"}
+# AwayResolver.BEAT_KINDS (scripts/missions/away_resolver.gd) — the closed set an
+# optional scenario "away_injection" block's beat_kind must be one of (task E,
+# docs/mission-system-spec.md §6 step 2 / §10).
+AWAY_BEAT_KINDS = {
+    "nothing", "find", "hazard", "exposure", "shuttle_strain", "contact", "survivor",
+}
 STATUS_FLAGS = {"infected", "changed", "shaken", "marked"}
 INTRUDER_TYPES = {"stalker", "nest", "mimic"}
 DEST_KINDS = {"planet", "ship", "station", "point", "home"}
@@ -249,6 +255,22 @@ def validate_scenario(path: Path, s: dict, all_ids: set[str],
         for o in outcomes or []:
             if o.get("type") == "set_flag":
                 settable.add(o.get("flag", ""))
+
+    # Optional away_injection block (task E, spec §6 step 2 / §10): a scenario may
+    # flavor one beat of an in-flight away op. Entirely optional — missing key is the
+    # documented fallback, not an error — but when present its shape is validated
+    # like any other content: beat_kind in the resolver's closed set, outcomes[]
+    # validated exactly like any other outcome list (harvested for win_flags too).
+    away_inj = s.get("away_injection")
+    if away_inj is not None:
+        if not isinstance(away_inj, dict):
+            err(path, "away_injection must be an object")
+        else:
+            bk = away_inj.get("beat_kind", "")
+            if bk not in AWAY_BEAT_KINDS:
+                err(path, f"away_injection: unknown beat_kind '{bk}' (expected one of {sorted(AWAY_BEAT_KINDS)})")
+            check_outcomes(path, away_inj.get("outcomes", []), skills, item_ids, "away_injection", cast_keys)
+            harvest_flags(away_inj.get("outcomes"))
 
     ev_ids = set()
     for e in s.get("events", []):

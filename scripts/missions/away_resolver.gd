@@ -82,6 +82,20 @@ var beat_index: int = 0
 var _complete: bool = false
 var _lost: bool = false
 
+# --- Task E: away-beat scenario injection (spec §6 step 2 / §10) ---
+# Resolved lazily (once) via MissionManager.find_away_injection_scenario_id() rather
+# than at _init — the injecting scenario may attach or get scheduled AFTER this
+# resolver already exists (e.g. its own away_return hook, which only fires once
+# THIS op's shuttle_returned lands). Only the FINAL beat is eligible for the
+# override — the beat closest to return reads as "something happened right before
+# they got back", the natural away_return beat (spec §3: away_return "fires at the
+# moment a shuttle/boarding party returns").
+var _injection_resolved: bool = false
+var _injection_scenario_id: String = ""
+var _injection_applied: bool = false
+var _pending_injection_outcomes: Array = []
+var _forced_exposure_flag: String = ""
+
 var pre_stress: Dictionary = {}   # crew_id -> int, snapshot at op start
 var pre_wounds: Dictionary = {}   # crew_id -> int, snapshot at op start
 
@@ -150,11 +164,60 @@ func _build_weight_table() -> Dictionary:
 
 
 # --- Task E injection point (spec §6 step 2: "a scenario may REPLACE the table for one
-# beat"). Currently a no-op passthrough — task E (away_return-context scenarios) wires
-# ScenarioDirector/OutcomeApplier state into this to override specific beat indices. Keep
-# this method's name/signature stable; it's the documented hand-off point. ---
-func _apply_away_return_injection(_beat_index: int, base_weights: Dictionary) -> Dictionary:
-	return base_weights
+# beat"). Keeps its documented name/signature stable (Dictionary in, Dictionary out —
+# the hand-off point every other beat-resolution code already calls through
+# _resolve_beat) but is no longer a passthrough:
+#
+# Once per op, on the FINAL beat only, checks whether a scenario with context
+# "away_return" is either already active or scheduled as an unfired delayed payoff
+# (MissionManager.find_away_injection_scenario_id() — spec: "already active (or
+# scheduled as a payoff for this op's site)"). If one exists, its optional JSON
+# "away_injection": {beat_kind, outcomes[]} block forces that beat_kind (by zeroing
+# every other kind's weight so _weighted_pick_kind is deterministic) and queues
+# `outcomes` to run through OutcomeApplier once the beat resolves (_resolve_beat,
+# below). Missing/invalid away_injection data on the scenario (the common case today
+# — no catalog scenario carries the key yet) falls back to forcing a plain
+# `exposure` beat biased toward the scenario's own trigger_status flag, never a
+# crash, never a hard dependency on content authoring the new key.
+func _apply_away_return_injection(beat_index: int, base_weights: Dictionary) -> Dictionary:
+	if _injection_applied:
+		return base_weights
+	if not _injection_resolved:
+		_injection_resolved = true
+		_injection_scenario_id = MissionManager.find_away_injection_scenario_id()
+		# Unconditional lookup log (debug-gated) — the "no candidate" case below is the
+		# documented common path (no catalog scenario is both away_return-context and
+		# active/pending for this op's timing) and previously left zero trace; a soak
+		# run needs to be able to confirm this ran at all, not just confirm the rarer
+		# hit case.
+		if OS.get_environment("SHIPAI_MISSION_DEBUG") == "1":
+			if _injection_scenario_id != "":
+				print("[AWAY-DEBUG] away_return injection lookup: candidate='%s'" % _injection_scenario_id)
+			else:
+				print("[AWAY-DEBUG] away_return injection lookup: no candidate — normal beat table")
+	if _injection_scenario_id == "" or beat_index != beat_times.size() - 1:
+		return base_weights
+
+	var def: Dictionary = ScenarioCatalog.defs(_injection_scenario_id)
+	var injection: Dictionary = def.get("away_injection", {})
+	var beat_kind: String = String(injection.get("beat_kind", ""))
+	if beat_kind == "" or beat_kind not in BEAT_KINDS:
+		beat_kind = "exposure"
+		_forced_exposure_flag = String(def.get("trigger_status", ""))
+		_pending_injection_outcomes = []
+	else:
+		_pending_injection_outcomes = (injection.get("outcomes", []) as Array).duplicate(true)
+
+	_injection_applied = true
+	if OS.get_environment("SHIPAI_MISSION_DEBUG") == "1":
+		print("[AWAY-DEBUG] away_return injection: scenario='%s' forces beat #%d -> kind='%s' (%d outcomes queued)" % [
+			_injection_scenario_id, beat_index, beat_kind, _pending_injection_outcomes.size()])
+
+	var forced: Dictionary = {}
+	for k: String in BEAT_KINDS:
+		forced[k] = 0.0
+	forced[beat_kind] = 1.0
+	return forced
 
 
 # --- Tick loop (driven by ShuttleSystem's own EventBus.time_ticked handler) ---
@@ -197,6 +260,15 @@ func _resolve_beat(index: int) -> void:
 			_do_contact()
 		"survivor":
 			_do_survivor()
+
+	# Scenario-authored flavor on top of the beat's own mechanical resolution above
+	# (task E deliverable 4) — routed through OutcomeApplier with an away ctx so
+	# `target: away_team` (the natural selector for off-ship crew — see
+	# outcome_applier.gd's target grammar doc) resolves to exactly this op's team.
+	if not _pending_injection_outcomes.is_empty():
+		var outcomes: Array = _pending_injection_outcomes
+		_pending_injection_outcomes = []
+		OutcomeApplier.apply(outcomes, {"away_team": team_ids})
 
 
 func _weighted_pick_kind(weights: Dictionary) -> String:
@@ -349,6 +421,14 @@ func _do_exposure() -> void:
 
 
 func _pick_exposure_flag() -> String:
+	# Away-injection fallback (task E deliverable 4): a forced exposure beat with no
+	# authored away_injection.outcomes steers toward the injecting scenario's own
+	# trigger_status flag instead of the normal weighted table — one-shot, consumed
+	# immediately so a later organic exposure beat still uses the real weights.
+	if _forced_exposure_flag != "" and _forced_exposure_flag in EXPOSURE_FLAGS:
+		var forced_flag: String = _forced_exposure_flag
+		_forced_exposure_flag = ""
+		return forced_flag
 	var weights: Dictionary = {"infected": 1.0, "changed": 1.0, "shaken": 1.0, "marked": 1.0}
 	for bias_key: String in EXPOSURE_BIAS_KEYS:
 		if outcome_bias.has(bias_key):

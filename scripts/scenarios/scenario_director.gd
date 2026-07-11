@@ -442,6 +442,52 @@ func _any_room_air_low() -> bool:
 	return false
 
 
+# ---------------------------------------------------------------------------
+# Mission-system task E (docs/mission-system-spec.md §10): generalized weakness-fit
+# for ScenarioCatalog.pick's axis weighting. Lives here (not duplicated in
+# ScenarioCatalog, which stays deliberately stateless/GameState-free per its own
+# class doc) so every ship-state read funnels through the Overseer's existing
+# helpers (_average_trust reused verbatim) rather than a second implementation
+# drifting out of sync. "mystery" never appears — spec: "mystery: flat", i.e. it
+# never gets the weakness weight boost.
+# ---------------------------------------------------------------------------
+
+func current_weak_axes() -> Array[String]:
+	var axes: Array[String] = []
+	if _no_living_medical_skill() or _medbay_unpowered():
+		axes.append("bio")
+	if GameState.get_metric("battery_percent") < 50.0:
+		axes.append("systems")
+	if _average_trust() < 0.45:
+		axes.append("social")
+	if _no_living_marine():
+		axes.append("combat")
+	return axes
+
+
+func _no_living_medical_skill() -> bool:
+	for crew_id: String in GameState.crew:
+		var crew: CrewMember = GameState.crew[crew_id] as CrewMember
+		if crew != null and crew.is_alive and crew.best_skill_bonus(CrewGen.ROLE_SKILL_POOL["medic"]) > 0:
+			return false
+	return true
+
+
+func _medbay_unpowered() -> bool:
+	var room_id: String = GameState.get_room_of_type("medbay")
+	if room_id == "":
+		return true   # no medbay at all reads as "unpowered" for weakness purposes
+	return not GameState.get_room_powered(room_id)
+
+
+func _no_living_marine() -> bool:
+	for crew_id: String in GameState.crew:
+		var crew: CrewMember = GameState.crew[crew_id] as CrewMember
+		if crew != null and crew.is_alive and crew.mship_class == "Marine":
+			return false
+	return true
+
+
 func _print_debug(elapsed: float, delta: float) -> void:
 	_debug_accum += delta
 	if _debug_accum < DEBUG_PRINT_INTERVAL:
