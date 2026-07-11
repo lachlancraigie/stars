@@ -67,6 +67,7 @@ func _ready() -> void:
 		_start_scenario()
 		_setup_autoshot()
 		_setup_force_flags()
+		_setup_force_events()
 		_setup_force_kill()
 	else:
 		_start_mission_mode()
@@ -87,13 +88,19 @@ func _choose_ship_seed() -> void:
 
 
 # SHIPAI_SCENARIO env override selects the scripted scenario; quarantine stays the
-# default. Unknown values fall back to quarantine with a warning rather than failing.
+# default. "quarantine"/"narrow_passage" keep their historical short names (mapped onto
+# ScenarioCatalog's bespoke builtin ids below); any other value is looked up directly
+# against ScenarioCatalog (engine task D — every resources/scenarios/*.json id is
+# force-bootable this way, e.g. SHIPAI_SCENARIO=brownout or SHIPAI_SCENARIO=the_nest).
+# Unknown values fall back to quarantine with a warning rather than failing.
 func _choose_scenario() -> void:
 	var env: String = OS.get_environment("SHIPAI_SCENARIO").to_lower().strip_edges()
 	if env == "":
 		return
 	_legacy_scenario_boot = true
 	if env in ["quarantine", "narrow_passage"]:
+		_scenario_key = env
+	elif ScenarioCatalog.has(env):
 		_scenario_key = env
 	else:
 		push_warning("Unknown SHIPAI_SCENARIO '%s' — falling back to quarantine" % env)
@@ -253,24 +260,31 @@ func _add_directive_ui() -> void:
 		add_child(env_scene.instantiate())
 
 
+# Routes uniformly through ScenarioCatalog (engine task D) — the two historical short
+# names map onto their bespoke builtin ids; any other _scenario_key IS already a real
+# ScenarioCatalog id (see _choose_scenario()'s env lookup) and gets a GenericScenarioMonitor
+# via ScenarioRunner._spawn_monitor exactly like an Overseer-picked JSON scenario would.
 func _start_scenario() -> void:
-	var config: Dictionary
-	match _scenario_key:
-		"narrow_passage":
-			config = NarrowPassageScenario.build()
-			var monitor := NarrowPassageMonitor.new()
-			monitor.setup(config)   # builder data + monitor logic share one dictionary
-			add_child(monitor)
-		_:
-			config = QuarantineScenario.build()
-			add_child(QuarantineMonitor.new())
+	var catalog_id: String = _catalog_id_for_key(_scenario_key)
+	var config: Dictionary = ScenarioCatalog.build_config(catalog_id)
+	if config.is_empty():
+		catalog_id = "the_quarantine"
+		config = ScenarioCatalog.build_config(catalog_id)
 	ScenarioRunner.start_scenario(config)
+	ScenarioRunner._spawn_monitor(catalog_id, config)
 	print("[MAIN] ══════ %s ══════" % String(config.get("title", "SCENARIO")).to_upper())
 	print("[MAIN] Crew: %s" % ", ".join(GameState.crew.keys()))
 	print("[MAIN] Reactor online=%s  battery=%.0f%%  life_support=%s  ai_core=%.0f (%s)" % [
 		GameState.reactor_online, GameState.battery_charge, GameState.life_support_online,
 		GameState.ai_core_integrity, GameState.ai_core_status])
 	print("[MAIN] SPACE=pause  D=directive  I=isolate  F=fear  R=status")
+
+
+func _catalog_id_for_key(key: String) -> String:
+	match key:
+		"narrow_passage": return "the_narrow_passage"
+		"quarantine": return "the_quarantine"
+		_: return key
 
 
 # --- Mission mode boot (docs/mission-system-spec.md §12) ---
@@ -409,6 +423,34 @@ func _setup_force_flags() -> void:
 				continue
 			print("[FORCE-FLAG] setting '%s'" % f)
 			ScenarioDirector.set_flag(f))
+
+
+# --- Dev-only: SHIPAI_FORCE_EVENT=<event_id>[,<event_id>...] fires named scenario
+# events a few seconds after boot through ScenarioDirector's normal fire_event funnel
+# (so every outcome routes through OutcomeApplier exactly like an organic EventPool
+# draw). Same shape/purpose as SHIPAI_FORCE_FLAG directly above: deterministic soak
+# testing of event-outcome paths (spawn_intruder, crew_injury, ...) that are otherwise
+# gated behind the director's probabilistic draw + tone windows. Events fire in the
+# listed order, 1.5s apart, so a later event can depend on flags an earlier one set.
+# Never read outside this hook; no effect at all unless the env var is set.
+
+const FORCE_EVENT_DELAY: float = 4.0
+const FORCE_EVENT_STAGGER: float = 1.5
+
+func _setup_force_events() -> void:
+	var raw: String = OS.get_environment("SHIPAI_FORCE_EVENT")
+	if raw == "":
+		return
+	var ids: PackedStringArray = raw.split(",", false)
+	var at: float = FORCE_EVENT_DELAY
+	for event_id: String in ids:
+		var eid: String = event_id.strip_edges()
+		if eid == "":
+			continue
+		get_tree().create_timer(at).timeout.connect(func():
+			print("[FORCE-EVENT] firing '%s'" % eid)
+			ScenarioDirector.trigger_spawned_event(eid))
+		at += FORCE_EVENT_STAGGER
 
 
 # --- Dev-only: SHIPAI_FORCE_KILL=<role> kills that role's crew member 2s after boot

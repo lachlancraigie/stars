@@ -124,6 +124,14 @@ func _ready() -> void:
 	EventBus.ai_core_status_changed.connect(_on_ai_core_status_changed)
 	EventBus.repair_success.connect(func(target_id, _cid): _push_feed("✔ Repair complete: %s" % target_id.capitalize().replace("_", " ")))
 
+	# Intruder sensor markers (docs/mission-system-spec.md §9 — minimal room-overlay
+	# marker, extending this panel's existing per-room row pattern rather than a new
+	# deck-space overlay). Any of the three signals can change what a room row should
+	# show, so all three just re-run the same full refresh.
+	EventBus.intruder_spawned.connect(func(_id, _room, _visible): _refresh_intruder_overlay())
+	EventBus.intruder_moved.connect(func(_id, _from, _to): _refresh_intruder_overlay())
+	EventBus.intruder_killed.connect(func(_id, _room): _refresh_intruder_overlay())
+
 	_refresh_power_panel()
 
 
@@ -192,13 +200,22 @@ func _build_power_panel() -> void:
 		air_label.add_theme_font_size_override("font_size", 12)
 		air_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 
+		# Intruder sensor blip (docs/mission-system-spec.md §9) — "red blip + type label
+		# when visible", hidden otherwise (mimic dormant, or an AI-core sensor-gapped room).
+		var intruder_label := Label.new()
+		intruder_label.custom_minimum_size = Vector2(70, 0)
+		intruder_label.add_theme_font_size_override("font_size", 12)
+		intruder_label.add_theme_color_override("font_color", CRITICAL_COLOUR)
+		intruder_label.text = ""
+
 		row.add_child(label)
 		row.add_child(power_btn)
 		row.add_child(ls_btn)
 		row.add_child(air_label)
+		row.add_child(intruder_label)
 		vbox.add_child(row)
 
-		_room_rows[room_id] = {"power_btn": power_btn, "ls_btn": ls_btn, "air_label": air_label}
+		_room_rows[room_id] = {"power_btn": power_btn, "ls_btn": ls_btn, "air_label": air_label, "intruder_label": intruder_label}
 
 	# 4 header rows now: reactor/battery/life-support labels + the shutdown button.
 	_panel.size = Vector2(PANEL_WIDTH, vbox.position.y * 2 + (4 + _room_rows.size()) * (ROW_HEIGHT + 3) + 10)
@@ -269,6 +286,24 @@ func _refresh_power_panel() -> void:
 
 func _tier_colour(fraction: float) -> Color:
 	return NORMAL_COLOUR if fraction > 0.5 else (WARNING_COLOUR if fraction > 0.2 else CRITICAL_COLOUR)
+
+
+# --- Intruder sensor overlay (docs/mission-system-spec.md §9) ---
+# IntruderSystem is the source of truth (active_intruders()/intruder_in_room()); this
+# just re-reads it into the existing per-room labels whenever a spawn/move/kill signal
+# fires. Cheap even on a full re-scan — room counts here are small (a handful of rooms).
+
+func _refresh_intruder_overlay() -> void:
+	for room_id: String in _room_rows:
+		var row: Dictionary = _room_rows[room_id]
+		var label: Label = row.get("intruder_label")
+		if label == null:
+			continue
+		var iid: String = IntruderSystem.intruder_in_room(room_id)
+		if iid == "":
+			label.text = ""
+		else:
+			label.text = "● %s" % IntruderSystem.type_of(iid).capitalize()
 
 
 func _room_display_name(room_id: String) -> String:

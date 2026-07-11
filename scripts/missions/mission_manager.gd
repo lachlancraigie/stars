@@ -729,6 +729,26 @@ func _briefing_ack_intent(mission: MissionDef) -> String:
 	return "briefing_ack_routine"
 
 
+# --- Objective force-complete/fail (spec §5 — OutcomeApplier's objective_complete/
+# objective_fail outcomes; small addition, engine task D). No-ops safely if there's no
+# current mission, the phase has already moved to resolution, or the objective id
+# doesn't exist / isn't currently "active" — same "never hard-fail on bad content"
+# posture as _set_objective_state's own callers.
+
+func force_complete_objective(objective_id: String) -> void:
+	if current_mission == null or mission_phase == "" or mission_phase == "resolution":
+		return
+	if _objective_states.get(objective_id, "") == "active":
+		_set_objective_state(objective_id, "complete")
+
+
+func force_fail_objective(objective_id: String) -> void:
+	if current_mission == null or mission_phase == "" or mission_phase == "resolution":
+		return
+	if _objective_states.get(objective_id, "") == "active":
+		_set_objective_state(objective_id, "failed")
+
+
 # --- Abort (spec §5 — OutcomeApplier lands in task D; this is the hook it'll call) ---
 
 func mission_abort(reason: String) -> void:

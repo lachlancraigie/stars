@@ -90,26 +90,56 @@ func _conditions_met(event: ScenarioEvent, flags: Dictionary) -> bool:
 
 
 func _check_condition(condition: Dictionary, flags: Dictionary) -> bool:
-	match condition.get("type", ""):
+	return check_condition(condition, flags)
+
+
+# Shared condition-checker (docs/mission-system-spec.md §5 — "New conditions" table).
+# Static so GenericScenarioMonitor's watches (engine task D) read the EXACT same
+# vocabulary this pool's own eligibility filter does, without needing a live EventPool
+# instance. Every new type is guarded to degrade to `false` rather than error if the
+# autoload it reads (MissionManager/IntruderSystem) hasn't finished booting yet —
+# both are always-registered autoloads today, so this is defensive, not load-bearing.
+static func check_condition(condition: Dictionary, flags: Dictionary) -> bool:
+	match String(condition.get("type", "")):
 		"resource_below":
-			return GameState.get_metric(condition.resource) < condition.value
+			return GameState.get_metric(condition.resource) < float(condition.value)
 		"resource_above":
-			return GameState.get_metric(condition.resource) > condition.value
+			return GameState.get_metric(condition.resource) > float(condition.value)
 		"flag_set":
 			return flags.get(condition.flag, false)
 		"flag_unset":
 			return not flags.get(condition.flag, false)
 		"crew_state_count":
-			return _count_crew_in_state(condition.state) >= condition.min_count
+			return _count_crew_in_state(condition.state) >= int(condition.min_count)
 		"ai_trust_below":
-			return _any_trust_below(condition.value)
+			return _any_trust_below(float(condition.value))
 		"ai_suspicion_above":
-			return 1.0 - GameState.ai_obedience_score > condition.value
+			return 1.0 - GameState.ai_obedience_score > float(condition.value)
+		"crew_has_skill":
+			return _any_crew_has_skill(String(condition.get("skill", "")), String(condition.get("tier", "")))
+		"item_aboard":
+			return _item_aboard(String(condition.get("item_id", "")))
+		"mission_phase":
+			return is_instance_valid(MissionManager) and MissionManager.mission_phase == String(condition.get("phase", ""))
+		"away_team_out":
+			return _away_team_out()
+		"crew_status_any":
+			return GameState.any_crew_status(String(condition.get("flag", "")))
+		"intruder_present":
+			return is_instance_valid(IntruderSystem) and not IntruderSystem.active_intruders().is_empty()
+		"docked":
+			return is_instance_valid(MissionManager) and MissionManager.is_docked()
+		"leg_at_least":
+			return ScenarioDirector.current_leg >= int(condition.get("leg", 0))
+		"crew_count_below":
+			return _living_crew_count() < int(condition.get("value", 0))
+		"hull_below":
+			return GameState.hull_integrity < float(condition.get("value", 0.0))
 		_:
 			return true
 
 
-func _count_crew_in_state(state: String) -> int:
+static func _count_crew_in_state(state: String) -> int:
 	var count: int = 0
 	for crew_id in GameState.crew:
 		var crew: CrewMember = GameState.crew[crew_id] as CrewMember
@@ -118,8 +148,54 @@ func _count_crew_in_state(state: String) -> int:
 	return count
 
 
-func _any_trust_below(threshold: float) -> bool:
+static func _any_trust_below(threshold: float) -> bool:
 	for crew_id in GameState.crew:
 		if GameState.get_ai_trust(crew_id) < threshold:
 			return true
 	return false
+
+
+const SKILL_TIER_RANK: Dictionary = {"": 0, "Trained": 1, "Expert": 2, "Master": 3}
+
+
+static func _any_crew_has_skill(skill: String, tier: String) -> bool:
+	if skill == "":
+		return false
+	var min_rank: int = int(SKILL_TIER_RANK.get(tier, 0))
+	for crew_id: String in GameState.crew:
+		var crew: CrewMember = GameState.crew[crew_id] as CrewMember
+		if crew == null or not crew.is_alive:
+			continue
+		var have_tier: String = String(crew.skills.get(skill, ""))
+		if have_tier == "":
+			continue
+		if int(SKILL_TIER_RANK.get(have_tier, 0)) >= min_rank:
+			return true
+	return false
+
+
+static func _item_aboard(item_id: String) -> bool:
+	if item_id == "":
+		return false
+	for crew_id: String in GameState.crew:
+		var crew: CrewMember = GameState.crew[crew_id] as CrewMember
+		if crew != null and crew.is_alive and not crew.off_ship and item_id in crew.inventory:
+			return true
+	return false
+
+
+static func _away_team_out() -> bool:
+	for crew_id: String in GameState.crew:
+		var crew: CrewMember = GameState.crew[crew_id] as CrewMember
+		if crew != null and crew.is_alive and crew.off_ship:
+			return true
+	return false
+
+
+static func _living_crew_count() -> int:
+	var count: int = 0
+	for crew_id: String in GameState.crew:
+		var crew: CrewMember = GameState.crew[crew_id] as CrewMember
+		if crew != null and crew.is_alive:
+			count += 1
+	return count

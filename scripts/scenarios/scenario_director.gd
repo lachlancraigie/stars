@@ -250,42 +250,24 @@ func _on_event_fired(_event_id: String) -> void:
 	pass  # Director receives its own fired events — hook for future chaining logic
 
 
+# Delegates the whole §5 outcome vocabulary to OutcomeApplier (engine task D) — every
+# match body that used to live here moved verbatim into OutcomeApplier.apply()/its
+# helpers, so behaviour for every pre-existing outcome type is byte-identical; this
+# call site just supplies an empty ctx (ad-hoc ScenarioEvent draws have no monitor
+# cast/away_team binding — every new selector still degrades sensibly, see
+# OutcomeApplier's class doc).
 func _apply_outcomes(event: ScenarioEvent) -> void:
-	for outcome in event.outcomes:
-		match outcome.get("type", ""):
-			"resource_delta":
-				GameState.adjust_metric(outcome.resource, outcome.amount)
-			"crew_fear_spike":
-				_spike_crew_fear(outcome.amount, outcome.get("all_crew", true))
-			"set_flag":
-				set_flag(outcome.flag, outcome.get("value", true))
-			"spawn_event":
-				var spawned: ScenarioEvent = _find_event(outcome.event_id)
-				if spawned != null:
-					fire_event(spawned)
-			"ai_trust_delta":
-				TrustModel.modify_all(outcome.amount)
-			"scenario_end":
-				EventBus.scenario_ended.emit(outcome.get("outcome", "unknown"))
-			# --- Stub hooks for scenario-authored ship/AI damage (Mothership rewrite) ---
-			"reactor_failure":
-				GameState.damage_reactor(outcome.get("source", "scenario"))
-			"life_support_failure":
-				GameState.damage_life_support(outcome.get("source", "scenario"))
-			"ai_core_damage":
-				GameState.damage_ai_core(outcome.get("amount", 10.0), outcome.get("source", "scenario"))
-			"ai_core_repair":
-				GameState.repair_ai_core(outcome.get("amount", 10.0))
-			"ship_destroyed":
-				GameState.destroy_ship(outcome.get("reason", "scenario"))
+	OutcomeApplier.apply(event.outcomes, {})
 
 
-func _spike_crew_fear(amount: float, all_crew: bool) -> void:
-	for crew_id: String in GameState.crew:
-		var crew: CrewMember = GameState.crew[crew_id] as CrewMember
-		if crew != null and crew.is_alive and (all_crew or crew.role == "general"):
-			crew.fear = minf(1.0, crew.fear + amount)
-			EventBus.crew_need_changed.emit(crew_id, "fear", crew.fear)
+# Public wrapper for OutcomeApplier's "spawn_event" outcome — _pool stays private
+# (only this file owns the running event pool); this is the one entry point external
+# callers need to fire an already-loaded event by id, same net effect as the inline
+# _find_event()+fire_event() this replaces.
+func trigger_spawned_event(event_id: String) -> void:
+	var spawned: ScenarioEvent = _find_event(event_id)
+	if spawned != null:
+		fire_event(spawned)
 
 
 func _find_event(event_id: String) -> ScenarioEvent:

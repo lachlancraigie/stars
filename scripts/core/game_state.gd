@@ -420,6 +420,23 @@ func get_metric(name: String) -> float:
 	return 0.0
 
 
+# Single-room resolver for scenario-authored outcomes that name a room by TYPE, a
+# literal id, or "random" (docs/mission-system-spec.md §5 — spawn_intruder/air_vent_room
+# both take a "room" param in this exact shape). Prefers a type match (the common case —
+# content authors write "cargo", not a generated id like "cargo_2"); falls back to a
+# literal room_id; "" if nothing matches.
+func resolve_room_selector(selector: String) -> String:
+	if selector == "" or selector == "random":
+		var keys: Array = rooms.keys()
+		return String(keys[randi() % keys.size()]) if not keys.is_empty() else ""
+	var of_type: Array[String] = get_rooms_of_type(selector)
+	if not of_type.is_empty():
+		return of_type[randi() % of_type.size()]
+	if rooms.has(selector):
+		return selector
+	return ""
+
+
 func adjust_metric(name: String, amount: float) -> void:
 	if name == "battery_charge":
 		set_battery_charge(battery_charge + amount)

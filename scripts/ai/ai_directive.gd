@@ -49,6 +49,13 @@ enum TargetType {
 @export var away_op_site: String = ""
 @export var away_op_request_id: String = ""
 
+# Hunt directive (docs/mission-system-spec.md §9 — IntruderSystem AI counterplay).
+# Empty = not a hunt directive. Executed by DirectiveActionHandler only on acceptance,
+# same move_to_room-on-accept pattern as every other directive-driven movement here —
+# the destination room is resolved fresh at accept time (IntruderSystem.room_of) since
+# a mobile intruder may have moved between when this directive was issued and accepted.
+@export var hunt_intruder_id: String = ""
+
 # Internal fields — crew cannot observe these directly.
 var actual_intent: String = ""   # what the AI is really trying to achieve
 var is_deceptive: bool = false   # AI is misrepresenting its intent

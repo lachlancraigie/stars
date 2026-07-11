@@ -372,9 +372,9 @@ func _build_scenario_config(scenario_id: String) -> Dictionary:
 # win-flag-setting logic lives there, not in the builder). Parented to this
 # autoload rather than the main scene's deck — monitors only ever talk to
 # GameState/EventBus/ScenarioDirector, never their own position in the tree.
-# Bespoke ids keep their hand-written monitor classes; JSON-catalog ids don't have
-# one yet (GenericScenarioMonitor is engine task D) — warn and spawn nothing rather
-# than silently attaching the wrong monitor. A truly unknown id mirrors
+# Bespoke ids keep their hand-written monitor classes; every JSON-catalog id gets a
+# GenericScenarioMonitor (engine task D) built straight from its own config["monitor"]
+# program — no per-scenario GDScript needed. A truly unknown id mirrors
 # _build_scenario_config's quarantine fallback so config and monitor never disagree.
 func _spawn_monitor(scenario_id: String, config: Dictionary) -> void:
 	match scenario_id:
@@ -386,7 +386,9 @@ func _spawn_monitor(scenario_id: String, config: Dictionary) -> void:
 			add_child(QuarantineMonitor.new())
 		_:
 			if ScenarioCatalog.has(scenario_id):
-				push_warning("ScenarioRunner: GenericScenarioMonitor pending (engine task D) — no monitor spawned for '%s'" % scenario_id)
+				var generic := GenericScenarioMonitor.new()
+				generic.setup(config)
+				add_child(generic)
 			else:
 				add_child(QuarantineMonitor.new())
 

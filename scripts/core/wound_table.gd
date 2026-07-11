@@ -101,9 +101,13 @@ static var TABLE: Array = [
 
 
 # Rolls a Wound and applies its full mechanical effect to `crew`. Returns the
-# resolved cell (for logging/dialogue) with `row` added.
-static func roll_and_apply(crew: CrewMember, wound_type: String) -> Dictionary:
-	var row: int = randi_range(0, 9)
+# resolved cell (for logging/dialogue) with `row` added. `row_min`/`row_max` (default
+# 0-9, the full table) let a caller constrain the roll to a severity band — e.g.
+# OutcomeApplier's `crew_injury` outcome (docs/mission-system-spec.md §5) maps its own
+# light|serious|grave vocabulary onto low/mid/high row ranges rather than inventing a
+# second severity model; every pre-existing call site keeps rolling the full 0-9 table.
+static func roll_and_apply(crew: CrewMember, wound_type: String, row_min: int = 0, row_max: int = 9) -> Dictionary:
+	var row: int = randi_range(clampi(row_min, 0, 9), clampi(row_max, 0, 9))
 	var cell: Dictionary = (TABLE[row].get(wound_type, TABLE[row][BLUNT]) as Dictionary).duplicate()
 	cell["row"] = row
 
