@@ -50,8 +50,15 @@ const SCENARIO_STUB_FALLBACK: Dictionary = {
 const OVERLAP_THRESHOLD: float = 0.75
 const OVERLAP_CAP: int = 2
 const RECENT_HISTORY_LEGS: int = 2   # "no repeats within 2 legs" — a soft de-prioritisation, not a hard ban (see _pick_overlap_candidate)
-const ALL_SCENARIO_IDS: Array[String] = ["the_quarantine", "the_narrow_passage"]
-const SCENARIO_AXIS: Dictionary = {"the_quarantine": "bio", "the_narrow_passage": "systems"}
+
+# The two hand-authored bespoke scenarios (ScenarioCatalog's builder overrides —
+# see its class doc) plus whatever ScenarioCatalog has loaded from
+# resources/scenarios/*.json. Kept as a small const + helper functions rather than
+# a single const array/dict (the old shape) because the JSON-loaded ids aren't
+# known until ScenarioCatalog lazily reads the filesystem at runtime — see
+# _all_scenario_ids()/_scenario_axis() below, both read by _pick_overlap_candidate.
+const BESPOKE_SCENARIO_IDS: Array[String] = ["the_quarantine", "the_narrow_passage"]
+const BESPOKE_SCENARIO_AXIS: Dictionary = {"the_quarantine": "bio", "the_narrow_passage": "systems"}
 
 # instance_id -> {id, scenario_id, config, started_at, morphed}. config is the same
 # dictionary builders (QuarantineScenario.build(), etc) return — events/win_flags/
@@ -211,16 +218,16 @@ func _pick_overlap_candidate() -> String:
 		var instance: Dictionary = active_scenarios[instance_id]
 		var sid: String = instance.get("scenario_id", "")
 		active_ids.append(sid)
-		var axis: String = SCENARIO_AXIS.get(sid, "")
+		var axis: String = _scenario_axis(sid)
 		if axis != "social" and axis != "":
 			active_axes.append(axis)
 
 	var candidates: Array[String] = []
 	var weights: Array[float] = []
-	for sid: String in ALL_SCENARIO_IDS:
+	for sid: String in _all_scenario_ids():
 		if sid in active_ids:
 			continue
-		var axis: String = SCENARIO_AXIS.get(sid, "")
+		var axis: String = _scenario_axis(sid)
 		if axis != "social" and axis in active_axes:
 			continue
 		var w: float = 1.0
@@ -233,6 +240,24 @@ func _pick_overlap_candidate() -> String:
 	if candidates.is_empty():
 		return ""
 	return _weighted_pick_id(candidates, weights)
+
+
+# Full candidate roster for overlap scheduling: the two bespoke ids plus
+# everything ScenarioCatalog has loaded from resources/scenarios/*.json
+# (derived, not hardcoded, so new JSON scenarios join the overlap pool for free
+# the moment content lands — no engine change needed).
+func _all_scenario_ids() -> Array[String]:
+	var ids: Array[String] = BESPOKE_SCENARIO_IDS.duplicate()
+	for id: String in ScenarioCatalog.all_ids():
+		if id not in ids:
+			ids.append(id)
+	return ids
+
+
+func _scenario_axis(scenario_id: String) -> String:
+	if BESPOKE_SCENARIO_AXIS.has(scenario_id):
+		return BESPOKE_SCENARIO_AXIS[scenario_id]
+	return String(ScenarioCatalog.defs(scenario_id).get("pressure_axis", ""))
 
 
 # Minimal today — only two Tier-1 scenarios exist, so there's only one weakness
@@ -308,8 +333,13 @@ func _trigger_morph(instance_id: String, edge: Dictionary) -> void:
 		return
 	instance["morphed"] = true   # guard: this instance's edges never re-fire
 	var target_id: String = String(edge.get("to", ""))
-	var resolved_id: String = SCENARIO_STUB_FALLBACK.get(target_id, target_id)
-	if resolved_id != target_id:
+	# The stub redirect only applies while the real target doesn't exist yet in
+	# the catalog (docs/mission-system-spec.md task-A note: "the_long_crack"/
+	# "close_quarters" will exist as JSON soon) — once content lands, ScenarioCatalog.
+	# has() flips true and this stops firing on its own, no engine change needed.
+	var resolved_id: String = target_id
+	if not ScenarioCatalog.has(target_id) and SCENARIO_STUB_FALLBACK.has(target_id):
+		resolved_id = SCENARIO_STUB_FALLBACK[target_id]
 		push_warning("ScenarioRunner: morph target '%s' not implemented yet — TODO(director), redirecting to '%s'" % [target_id, resolved_id])
 
 	# Note: with today's sequential-only handoff, this scenario was the only active
@@ -326,30 +356,39 @@ func _trigger_morph(instance_id: String, edge: Dictionary) -> void:
 	print("[OVERSEER] morph fired: %s -> %s (edge to=%s) new_instance=%s" % [instance_id, resolved_id, target_id, new_id])
 
 
-# Same builder pairing main.gd's boot path uses (scenario id -> Scenario.build()),
-# needed here too since a morph-started scenario has no other code path that would
-# ever call it. Unrecognized ids fall back to the_quarantine, matching main.gd's own
-# "unknown SHIPAI_SCENARIO falls back to quarantine" convention.
+# Config lookup for any scenario id, needed wherever a morph/overlap start has no
+# other code path that would supply one. Bespoke ids resolve through
+# ScenarioCatalog's builder overrides; JSON ids resolve through its loaded catalog
+# configs; a truly unknown id (not in the catalog at all) falls back to
+# the_quarantine, matching main.gd's own "unknown SHIPAI_SCENARIO falls back to
+# quarantine" convention.
 func _build_scenario_config(scenario_id: String) -> Dictionary:
-	match scenario_id:
-		"the_narrow_passage":
-			return NarrowPassageScenario.build()
-		_:
-			return QuarantineScenario.build()
+	if ScenarioCatalog.has(scenario_id):
+		return ScenarioCatalog.build_config(scenario_id)
+	return QuarantineScenario.build()
 
 
 # Every scenario needs its companion Monitor node to actually be playable (the
 # win-flag-setting logic lives there, not in the builder). Parented to this
 # autoload rather than the main scene's deck — monitors only ever talk to
 # GameState/EventBus/ScenarioDirector, never their own position in the tree.
+# Bespoke ids keep their hand-written monitor classes; JSON-catalog ids don't have
+# one yet (GenericScenarioMonitor is engine task D) — warn and spawn nothing rather
+# than silently attaching the wrong monitor. A truly unknown id mirrors
+# _build_scenario_config's quarantine fallback so config and monitor never disagree.
 func _spawn_monitor(scenario_id: String, config: Dictionary) -> void:
 	match scenario_id:
 		"the_narrow_passage":
 			var monitor := NarrowPassageMonitor.new()
 			monitor.setup(config)
 			add_child(monitor)
-		_:
+		"the_quarantine":
 			add_child(QuarantineMonitor.new())
+		_:
+			if ScenarioCatalog.has(scenario_id):
+				push_warning("ScenarioRunner: GenericScenarioMonitor pending (engine task D) — no monitor spawned for '%s'" % scenario_id)
+			else:
+				add_child(QuarantineMonitor.new())
 
 
 func _on_decommission_attempted(_initiator: String) -> void:

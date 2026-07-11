@@ -96,6 +96,24 @@ signal scenario_ended(outcome: String)  # "crew_dead" | "ship_destroyed" | "ai_d
 signal scenario_instance_ended(instance_id: String, outcome: String)  # per-scenario end, overlap-aware (docs/director-spec.md §5/§8 step 3) — fires for EVERY scenario instance that ends, including ones scenario_ended doesn't cover because other scenarios are still running
 
 
+# Mission system (docs/mission-system-spec.md §11)
+signal mission_started(mission_id: String)
+signal mission_phase_changed(mission_id: String, phase: String)
+signal mission_objective_updated(mission_id: String, objective_id: String, state: String)  # active|complete|failed
+signal mission_completed(mission_id: String, outcome: String)   # mission_success|mission_partial|mission_failed
+signal shuttle_departed(crew_ids: Array, site: String)
+signal shuttle_returned(report: Dictionary)
+signal boarding_started(crew_ids: Array, target_name: String)
+signal docking_started(contact_name: String)
+signal docking_completed(contact_name: String)
+signal undocked(contact_name: String)
+signal destination_sighted(kind: String, name: String)
+signal intruder_spawned(intruder_id: String, room_id: String, visible: bool)
+signal intruder_moved(intruder_id: String, from_room: String, to_room: String)
+signal intruder_killed(intruder_id: String, room_id: String)
+signal crew_status_flag_changed(crew_id: String, flag: String, value: bool)  # internal — HUD must NOT surface hidden flags
+
+
 # Mothership rewrite (2026-07-09): several signals above forward into `recent_event` — a
 # single generic channel the dialogue selector (scripts/crew/, owned by a parallel agent)
 # can subscribe to once instead of to every specific signal, to satisfy

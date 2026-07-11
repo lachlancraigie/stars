@@ -120,6 +120,25 @@ var stat_penalties: Dictionary = {}
 # a single sticky door doesn't spam trust hits, only *repeated* ones do.
 var door_lockout_counts: Dictionary = {}   # door_id -> int
 
+# --- Status flags (docs/mission-system-spec.md §5/§6) ---
+# Hidden narrative state a scenario can plant on a crew member (infected/changed/
+# shaken/marked) that pays off legs later — deliberately NOT surfaced by any HUD
+# element; only scenario/monitor logic and MissionManager's delayed-payoff scheduler
+# (spec §10) read this. flag -> bool.
+@export_group("Status")
+@export var status_flags: Dictionary = {}
+
+
+func set_status_flag(flag: String, value: bool) -> void:
+	if bool(status_flags.get(flag, false)) == value:
+		return
+	status_flags[flag] = value
+	EventBus.crew_status_flag_changed.emit(crew_id, flag, value)
+
+
+func has_status_flag(flag: String) -> bool:
+	return bool(status_flags.get(flag, false))
+
 
 # --- Stat/Save/Skill accessors (used by Checks — the one roll-resolution utility) ---
 

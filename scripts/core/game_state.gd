@@ -49,6 +49,14 @@ var repair_jobs: Dictionary = {}
 # "ship destroyed" lose condition per CLAUDE.md's permadeath design decision) ---
 var ship_destroyed: bool = false
 
+# --- Hull & economy (docs/mission-system-spec.md §5) ---
+# hull_integrity follows the same shape as ai_core_integrity below: 0-100, clamped,
+# with a damage/repair pair rather than a raw setter so "reached 0" always routes
+# through one place. credits is a simple economy accumulator (mission rewards) —
+# no upper clamp, floored at 0.
+var hull_integrity: float = 100.0
+var credits: float = 0.0
+
 # Crew
 var crew: Dictionary = {}  # crew_id -> CrewMember resource
 
@@ -276,6 +284,22 @@ func destroy_ship(reason: String) -> void:
 	push_warning("GameState: ship destroyed — %s" % reason)
 
 
+# --- Hull ---
+
+func damage_hull(amount: float, source: String = "damage") -> void:
+	if amount <= 0.0:
+		return
+	hull_integrity = clampf(hull_integrity - amount, 0.0, 100.0)
+	if hull_integrity <= 0.0:
+		destroy_ship("hull_failure")
+
+
+func repair_hull(amount: float) -> void:
+	if amount <= 0.0:
+		return
+	hull_integrity = clampf(hull_integrity + amount, 0.0, 100.0)
+
+
 func set_ai_trust(crew_id: String, value: float) -> void:
 	var prev: float = ai_trust_scores.get(crew_id, 0.5)
 	var next: float = clampf(value, 0.0, 1.0)
@@ -364,6 +388,17 @@ func get_crew_of_role(role: String) -> String:
 	return fallback
 
 
+# True if any LIVING crew member currently carries the given hidden status flag
+# (docs/mission-system-spec.md §5/§6 — infected/changed/shaken/marked). Living-only
+# by design: a dead carrier's flag shouldn't keep a delayed-payoff scenario armed.
+func any_crew_status(flag: String) -> bool:
+	for crew_id: String in crew:
+		var member: CrewMember = crew[crew_id] as CrewMember
+		if member != null and member.is_alive and member.has_status_flag(flag):
+			return true
+	return false
+
+
 # --- Generic situational metrics ---
 # Small named-lookup surface for scenario-authored conditions/outcomes (EventPool,
 # ScenarioDirector) so scenario .tres/build() data can reference the new Mothership
@@ -376,6 +411,10 @@ func get_metric(name: String) -> float:
 		return 0.0 if battery_capacity <= 0.0 else (battery_charge / battery_capacity) * 100.0
 	if name == "ai_core_integrity":
 		return ai_core_integrity
+	if name == "hull_integrity":
+		return hull_integrity
+	if name == "credits":
+		return credits
 	if name.begins_with("air:"):
 		return get_room_air(name.substr(4))
 	return 0.0
@@ -389,3 +428,10 @@ func adjust_metric(name: String, amount: float) -> void:
 			repair_ai_core(amount)
 		else:
 			damage_ai_core(-amount, "scenario")
+	elif name == "hull_integrity":
+		if amount >= 0.0:
+			repair_hull(amount)
+		else:
+			damage_hull(-amount, "scenario")
+	elif name == "credits":
+		credits = maxf(0.0, credits + amount)
