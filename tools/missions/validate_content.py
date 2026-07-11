@@ -28,6 +28,8 @@ OBJECTIVE_KINDS = {
     "survive_until", "return_home", "repair_to", "keep_alive", "scenario_flag",
 }
 PHASES = {"transit_out", "arrival", "on_station", "transit_back"}
+# Hook keys = phases + the away-return pseudo-phase (fires on shuttle_returned).
+HOOK_KEYS = PHASES | {"away_return"}
 CONTEXTS = {
     "transit", "arrival", "planet_orbit", "away_return", "docked",
     "derelict", "station", "aftermath", "any",
@@ -190,7 +192,7 @@ def validate_mission(path: Path, m: dict, all_ids: set[str], all_tags: set[str],
                 err(path, f"away_risk: unknown item '{it}'")
 
     for phase, hook in m.get("scenario_hooks", {}).items():
-        if phase not in PHASES:
+        if phase not in HOOK_KEYS:
             err(path, f"scenario_hooks: unknown phase '{phase}'")
         if hook.get("context") not in CONTEXTS:
             err(path, f"scenario_hooks[{phase}]: unknown context '{hook.get('context')}'")

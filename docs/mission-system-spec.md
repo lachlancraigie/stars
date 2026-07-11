@@ -117,8 +117,12 @@ existing autoloads; both depend on EventBus/GameState/TimeManager).
   "scenario_hooks": {                     // per-phase: chance a scenario attaches + context offered
     "transit_out":  {"chance": 0.35, "context": "transit"},
     "on_station":   {"chance": 0.85, "context": "planet_orbit", "tag_bias": {"bio": 1.5}},
+    "away_return":  {"chance": 0.6,  "context": "away_return"},
     "transit_back": {"chance": 0.5,  "context": "aftermath"}
   },
+  // hook keys: the four phases PLUS the pseudo-phase "away_return", which fires at
+  // the moment a shuttle/boarding party returns (EventBus.shuttle_returned) — the
+  // "did someone come back wrong?" beat.
   "rewards": {"credits": 400, "items": ["med_kit"], "metrics": {"battery_charge": 10.0}},
   "extra_outcome_flags": {                // engine always sets mission_success/partial/failed;
     "survey_data_recovered": "survey"     // extras: campaign_flag -> objective id that must be complete
@@ -186,7 +190,9 @@ ScenarioCatalog as overrides; everything new is JSON + GenericScenarioMonitor.
   "leg_delta_crew_dead": {"ai_core_integrity": -10.0},
   "solves": [                             // the skill/equipment paths that crack it — informational
     {"desc": "Identify the organism before it molts",   // header + drives monitor checks below
-     "skill": "Xenobiology", "stat": "intellect", "items_help": ["medscanner"]}
+     "skill": "Exobiology", "stat": "intellect", "items_help": ["medscanner"]}
+     // NB: skill names must be the CANONICAL rules.md/crew_gen.gd strings —
+     // it's "Exobiology", not "Xenobiology".
   ],
   "events": [ /* ScenarioEvent dicts — §4.2 */ ],
   "monitor": { /* GenericScenarioMonitor program — §4.3 */ },
@@ -224,8 +230,8 @@ Same fields as `ScenarioEvent` (`scripts/scenarios/scenario_event.gd`): `event_i
   "checks":  [{                            // periodic dice — the solve-path engine
     "id": "identify_organism",
     "interval": 30.0,
-    "crew": "best_skill:Xenobiology",      // role:<r> | best_skill:<s> | cast:<name> | random | away_team
-    "stat": "intellect", "skill": "Xenobiology", "item_tag": "medical_bonus",
+    "crew": "best_skill:Exobiology",       // role:<r> | best_skill:<s> | cast:<name> | random | away_team
+    "stat": "intellect", "skill": "Exobiology", "item_tag": "medical_bonus",
     "requires_flags": ["specimen_contained"],
     "successes_needed": 2,                 // cumulative successes then fires on_solved
     "on_success": [...], "on_fail": [...],
