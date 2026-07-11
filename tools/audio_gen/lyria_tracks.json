@@ -1,0 +1,79 @@
+{
+  "_comment": "Lyria 3 soundtrack manifest (docs/music-direction.md 'Cold Circuit' pack). counts x ~2.94min/track => ~3.8h total. Variants cycle per index; batch tool appends variation jitter.",
+  "style_anchor": "minimal analog synth, detuned vintage polysynth pads, slow tape-saturated drone, soft tape hiss, restrained filtered arpeggio motif, low dynamic range, sparse, loop-friendly, instrumental, no vocals, ambient sci-fi score",
+  "exclude_styles": "no EDM, no drum and bass, no cinematic orchestral swells, no vocals, no big drums, no cymbal crashes",
+  "moods": {
+    "calm_routine": {
+      "count": 16,
+      "variants": [
+        {"style": "extremely slow arpeggio, gentle sine sub-bass, spacious reverb", "prompt": "Quiet nightwatch on a starship bridge, a barely-moving synth pad under a distant engine hum, nothing urgent, weightless calm, end on a long sustained pad with no cold stop for seamless looping."},
+        {"style": "warmer Rhodes-adjacent polysynth tone, slower arpeggio (half speed), minimal reverb tail", "prompt": "A slow patrol through empty corridors, machinery humming steadily somewhere below, safe and monotonous, static ambient bed with almost no movement, fade to a held drone for looping."},
+        {"style": "twin detuned pads a fifth apart, single soft arpeggio note every few seconds, no percussion at all", "prompt": "The ship at rest between crises, breathing slowly, sparse and spacious, background music that never demands attention, loop-ready sustained ending."}
+      ]
+    },
+    "low_tension_unease": {
+      "count": 14,
+      "variants": [
+        {"style": "slightly dissonant second pad layer, arpeggio filter narrowing, faint irregular tick", "prompt": "A quiet alarm you can't quite place, the same calm pad now half a step out of tune, patient unease, no release of tension, ends on a held dissonant chord for clean looping."},
+        {"style": "low sub-bass pulse (very sparse), single detuned high pad, occasional metallic resonance", "prompt": "Something drifting off-baseline on the sensors, restrained dread, mostly stillness with rare cold metallic accents, sustain into a static loop point."},
+        {"style": "slow-rising filter sweep over the drone, arpeggio gains one extra note", "prompt": "The first flicker of wrongness in an otherwise calm system, tension held rather than released, minimal and creeping, tail off into a steady drone for looping."}
+      ]
+    },
+    "tense_crisis": {
+      "count": 10,
+      "variants": [
+        {"style": "driving sequenced sub-bass pulse, sparse metallic percussion tick (single hit per bar), arpeggio doubled in speed and narrowed", "prompt": "Multiple systems failing at once, a steady mechanical pulse instead of a beat, pressure without spectacle, no big drums, keep it sparse and claustrophobic, resolve into a sustained low pad for looping."},
+        {"style": "alarm-adjacent detuned stab (used sparingly, not rhythmic), pulsing analog bass sequence, tight filter", "prompt": "Crew scrambling to contain a cascading failure, cold analog urgency, restrained and mechanical rather than orchestral, loop-friendly sustained ending, no cymbal crash finish."},
+        {"style": "two interlocking arpeggios slightly out of phase, sub-bass throb, minimal reverb (dry and close)", "prompt": "The moment a crisis stops being theoretical, dry and immediate, machine urgency rather than human panic, ends on a held bass note for seamless looping."}
+      ]
+    },
+    "combat_danger": {
+      "count": 7,
+      "variants": [
+        {"style": "propulsive sequenced arpeggio (fast, tight), sparse mechanical percussion (single low tom-like hit, no kit), driving sub-bass ostinato", "prompt": "A boarding craft matching velocity, cold mechanical threat, propulsive but minimal - a synth sequence under pressure, not a drum battle, no build-and-drop, sustain to a loopable ending."},
+        {"style": "detuned stab accents on the downbeat only, relentless low arpeggio, tight claustrophobic filter", "prompt": "Hostile contact closing in corridor by corridor, restrained aggression, repetitive and mechanical rather than triumphant, avoid cinematic swells, end on a sustained low tone for looping."},
+        {"style": "faster arpeggio doubling every 8 bars, single sparse metallic percussion hit per bar, no cymbals", "prompt": "Danger inside the hull itself, tense and driving but still a synth bed under gameplay - never a foreground action score, loop-ready fade on a held chord."}
+      ]
+    },
+    "aftermath_somber": {
+      "count": 6,
+      "variants": [
+        {"style": "single slow detuned pad (no arpeggio at all), long silences between phrases, faint tape warble", "prompt": "The quiet after a death nobody could have stopped, sparse and elegiac, mostly silence with a single held synth tone, restrained grief without melody, end on near-silence for a natural loop."},
+        {"style": "very slow two-note arpeggio (widely spaced), soft sub-bass drone, gentle tape hiss swelling and fading", "prompt": "A ship observing a moment of mourning it has no ritual for, cold comfort, patient and hollow, tail into a sustained low pad for looping."},
+        {"style": "detuned pad with slow pitch drift downward, no rhythmic element, distant faint hum", "prompt": "Processing loss the way a machine processes anything - completely, slowly, without catharsis, ends on a held low drone for seamless looping."}
+      ]
+    },
+    "eerie_derelict": {
+      "count": 10,
+      "variants": [
+        {"style": "irregular arpeggio with random dropped notes (simulating a gap in sensor coverage), distant detuned high pad, occasional cold metallic resonance", "prompt": "Something the sensors can't confirm or deny, patient dread built from absence and silence rather than stings, ambiguous and unresolved, end on an unstable held chord for looping."},
+        {"style": "very sparse arpeggio (single notes every several seconds), sub-bass drone with slow breathing-like swell, faint tape wow", "prompt": "A room that was dark to every camera for four minutes, cold uncertainty rather than horror, minimal and spacious, sustain into a loop-friendly drone."},
+        {"style": "detuned pad clusters slowly rubbing against each other, no clear tonal center, distant faint mechanical groan", "prompt": "The dread of a found object that shouldn't still be aboard, quiet wrongness, no resolution offered, fade to a static loop point."}
+      ]
+    },
+    "overseer_ai_motif": {
+      "count": 6,
+      "variants": [
+        {"style": "crystalline glass-like polysynth tone, precisely repeating arpeggio pattern, subtle gradual detune over the loop, no percussion", "prompt": "A machine mind thinking in perfect repeating cycles, cold and exact but not unfeeling, glassy and clean under the tape hiss, end on the repeating motif held for a seamless loop."},
+        {"style": "same crystalline motif but audibly degrading - flatter tuning, small dropouts, tape wobble increasing", "prompt": "The same machine thought process now damaged, the pattern still trying to repeat correctly and failing slightly each cycle, unsettling precision breaking down, end on a slightly corrupted held tone for looping."},
+        {"style": "clockwork arpeggio locked to a steady sub-bass pulse, minimal reverb, very dry and close", "prompt": "The Overseer quietly calculating in the background of everything, exact, patient, non-human rhythm, loop-ready ending on the held pulse."}
+      ]
+    },
+    "main_menu_title": {
+      "count": 3,
+      "variants": [
+        {"style": "slow-building detuned lead motif over a deep drone, distant radio-crackle texture, gentle arpeggio entering halfway through", "prompt": "A lonely detuned synth theme opening over deep space, cold and majestic rather than triumphant, patient build with no percussion, end on a sustained final chord that can loop under a menu."},
+        {"style": "twin slow pads a fourth apart, single recurring three-note motif (the arpeggio, slowed to a theme), tape hiss floor", "prompt": "The ship AI's own theme, restrained and dignified, minimal analog synth rather than an orchestral fanfare, understated, end on a held drone for menu looping."},
+        {"style": "very slow arpeggio building in layers over two minutes, warm sub-bass entering late, no climax or drop", "prompt": "A title theme that never resolves into triumph, quiet dread under quiet beauty, patient and cold, fade to a sustained loop-friendly tail."}
+      ]
+    },
+    "victory_arrival": {
+      "count": 6,
+      "variants": [
+        {"style": "arpeggio resolves to a consonant pattern (still slow), warm pad swell, brief major-adjacent lift without becoming triumphant", "prompt": "Exhaling after a held breath, quiet relief rather than triumph, brief rising figure settling back to a calm pad, natural resolved ending suitable for a short stinger."},
+        {"style": "single warm detuned pad rising gently, arpeggio slowing to a stop, soft tape hiss fading up then down", "prompt": "The ship clearing danger and settling back into routine, restrained warmth, no fanfare, ends softly on a sustained pad for a clean loop back into calm."},
+        {"style": "sparse ascending three-note figure, gentle sub-bass swell, minimal reverb", "prompt": "A leg completed, a port in sight, tired competence rather than celebration, brief and understated, end on a held consonant chord."}
+      ]
+    }
+  }
+}

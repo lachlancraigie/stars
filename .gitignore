@@ -39,3 +39,6 @@ skills/fishaudio.md
 
 # Generated audio v2 (Fish Audio revoice; large, regenerate via tools/audio_gen)
 assets/audio/dialogue_v2/
+
+# Generated soundtrack (Lyria 3 via tools/audio_gen/lyria_batch.py; ~340MB, regenerate from manifest)
+assets/music/
