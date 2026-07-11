@@ -197,6 +197,12 @@ func _baseline_mood() -> String:
 	var intruders_present: bool = not IntruderSystem.active_intruders().is_empty()
 	if h >= HEAT_COMBAT_MIN or concurrent >= COMBAT_CONCURRENT_SCENARIOS_MIN or intruders_present:
 		return MOOD_COMBAT
+	# docs/music-direction.md §2: calm_routine is the "no active scenario, all
+	# systems green" cruising state — NOT purely a heat band. The Overseer's
+	# NEUTRAL heat is 0.5 (mid tense_crisis band by threshold alone), so without
+	# this clause a fresh boot starts audibly tense before anything has happened.
+	if concurrent == 0 and GameState.reactor_online and GameState.life_support_online:
+		return MOOD_CALM
 	if h >= HEAT_TENSE_MIN:
 		return MOOD_TENSE
 	if h >= HEAT_LOW_TENSION_MIN:
