@@ -6709,7 +6709,7 @@
   {
     "id": 356,
     "key": "GR_ML_ENG_CM#00356",
-    "text": "[terrified, voice shaking] where's Roz. don't tell me later, tell me now — where is she",
+    "text": "[terrified, voice shaking] where's Roz. don't tell me later, tell me now \u2014 where is she",
     "type": "reply",
     "intent": "fear_vent",
     "conditions": {
@@ -6749,7 +6749,7 @@
   {
     "id": 358,
     "key": "GR_ML_ENG_CM#00358",
-    "text": "[low voice, gruff] we're square, kid. machines break, tempers break. both get fixed the same way — patience",
+    "text": "[low voice, gruff] we're square, kid. machines break, tempers break. both get fixed the same way \u2014 patience",
     "type": "reply",
     "intent": "acknowledgment",
     "conditions": {
@@ -6863,6 +6863,570 @@
       "status_report",
       "acknowledgment"
     ],
+    "weight": 1.0
+  },
+  {
+    "id": 364,
+    "key": "GR_ML_ENG_CM#00364",
+    "text": "[low voice, gruff] shuttle's fueled, seals are good. don't touch anything down there that's still moving",
+    "type": "declaration",
+    "intent": "away_depart_surface",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "mood": [
+        "ok",
+        "low"
+      ],
+      "location": [
+        "shuttlebay"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 365,
+    "key": "GR_ML_ENG_CM#00365",
+    "text": "another dead hull to crawl through. [dry tone] my favorite",
+    "type": "declaration",
+    "intent": "away_depart_derelict",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "mood": [
+        "ok",
+        "low"
+      ],
+      "location": [
+        "airlock"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 366,
+    "key": "GR_ML_ENG_CM#00366",
+    "text": "docking collar's solid. going in through their airlock, not ours -- try not to break their door too",
+    "type": "declaration",
+    "intent": "away_depart_station",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "mood": [
+        "ok",
+        "low"
+      ],
+      "location": [
+        "airlock"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 367,
+    "key": "GR_ML_ENG_CM#00367",
+    "text": "[low voice, gruff] their hull reads sound enough. i'll believe it when i'm standing on it",
+    "type": "declaration",
+    "intent": "away_depart_other_ship",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "mood": [
+        "ok",
+        "low"
+      ],
+      "location": [
+        "airlock"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 368,
+    "key": "GR_ML_ENG_CM#00368",
+    "text": "[calm, measured] nothing's screaming yet. give me a minute with this panel",
+    "type": "declaration",
+    "intent": "away_radio_calm",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 369,
+    "key": "GR_ML_ENG_CM#00369",
+    "text": "quiet in here. too quiet for my taste but i ain't paid to enjoy it",
+    "type": "declaration",
+    "intent": "away_radio_calm",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 370,
+    "key": "GR_ML_ENG_CM#00370",
+    "text": "[low voice, gruff] got a reading i don't like. hold what you're doing",
+    "type": "declaration",
+    "intent": "away_radio_tense",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 371,
+    "key": "GR_ML_ENG_CM#00371",
+    "text": "[tense] something's wrong with this air scrubber and it ain't the kind of wrong i can fix standing here",
+    "type": "declaration",
+    "intent": "away_radio_tense",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 11,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 372,
+    "key": "GR_ML_ENG_CM#00372",
+    "text": "[panting] [urgent, fast pace] i need eyes on me, now, this thing just about took my hand off",
+    "type": "declaration",
+    "intent": "away_radio_bad",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 373,
+    "key": "GR_ML_ENG_CM#00373",
+    "text": "[pained, voice tight] i'm hit -- not bad, don't fuss -- but i'm hit",
+    "type": "declaration",
+    "intent": "away_radio_bad",
+    "conditions": {
+      "stress_min": 9,
+      "stress_max": 15,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 374,
+    "key": "GR_ML_ENG_CM#00374",
+    "text": "back in one piece. counted my fingers twice just to be sure",
+    "type": "declaration",
+    "intent": "away_return_fine",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "mood": [
+        "ok"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 375,
+    "key": "GR_ML_ENG_CM#00375",
+    "text": "[exhausted, breathing laboured] nothing broke, nothing bit me. call that a good day",
+    "type": "declaration",
+    "intent": "away_return_fine",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 7,
+      "mood": [
+        "ok"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 376,
+    "key": "GR_ML_ENG_CM#00376",
+    "text": "[voice tight] don't ask me what i saw down there. i'm still deciding if i saw it",
+    "type": "declaration",
+    "intent": "away_return_shaken",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 12,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 377,
+    "key": "GR_ML_ENG_CM#00377",
+    "text": "give me a minute before you talk to me. just -- a minute",
+    "type": "declaration",
+    "intent": "away_return_shaken",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 12,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 378,
+    "key": "GR_ML_ENG_CM#00378",
+    "text": "[pained, voice tight] it's nothing. it is absolutely nothing. get the kit anyway",
+    "type": "declaration",
+    "intent": "away_return_injured",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 13,
+      "wounded": true,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 379,
+    "key": "GR_ML_ENG_CM#00379",
+    "text": "[groan] tell medbay i'm coming and i'm not in the mood to hear about it",
+    "type": "declaration",
+    "intent": "away_return_injured",
+    "conditions": {
+      "stress_min": 6,
+      "stress_max": 13,
+      "wounded": true,
+      "target": [
+        "open_air"
+      ],
+      "recent_events": [
+        "injury"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 380,
+    "key": "GR_ML_ENG_CM#00380",
+    "text": "another job. same ship, same hands, same complaints. let's get on with it",
+    "type": "declaration",
+    "intent": "briefing_ack_routine",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 381,
+    "key": "GR_ML_ENG_CM#00381",
+    "text": "[low voice, muttering] risk tier on this one's higher than i like. somebody's gonna owe me a drink after",
+    "type": "declaration",
+    "intent": "briefing_ack_risky",
+    "conditions": {
+      "stress_min": 4,
+      "stress_max": 9,
+      "mood": [
+        "ok",
+        "low"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 382,
+    "key": "GR_ML_ENG_CM#00382",
+    "text": "[grim, heavy] i've read worse orders. not many. get everybody's kit checked twice",
+    "type": "declaration",
+    "intent": "briefing_ack_grim",
+    "conditions": {
+      "stress_min": 7,
+      "stress_max": 13,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 383,
+    "key": "GR_ML_ENG_CM#00383",
+    "text": "[low voice, gruff] something's coming up on the scope. hope it's friendly, brace like it ain't",
+    "type": "declaration",
+    "intent": "docking_approach",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 384,
+    "key": "GR_ML_ENG_CM#00384",
+    "text": "clamps are locked. hull's holding. that's more than i expected",
+    "type": "declaration",
+    "intent": "docking_clamped",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 385,
+    "key": "GR_ML_ENG_CM#00385",
+    "text": "[sigh] and we're loose again. try not to need me for a while",
+    "type": "declaration",
+    "intent": "docking_undock",
+    "conditions": {
+      "stress_min": 2,
+      "stress_max": 6,
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 386,
+    "key": "GR_ML_ENG_CM#00386",
+    "text": "[low voice, muttering] checking the shuttle seals myself. i don't trust the readout, never have",
+    "type": "declaration",
+    "intent": "shuttle_ops_prep",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 7,
+      "location": [
+        "shuttlebay"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 387,
+    "key": "GR_ML_ENG_CM#00387",
+    "text": "she's away clean. watch the burn on that engine, i patched it twice already",
+    "type": "declaration",
+    "intent": "shuttle_ops_launch",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 7,
+      "location": [
+        "shuttlebay"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 388,
+    "key": "GR_ML_ENG_CM#00388",
+    "text": "[exhausted, breathing laboured] shuttle's down, gear's hot, somebody give it ten minutes before they climb back in",
+    "type": "declaration",
+    "intent": "shuttle_ops_land",
+    "conditions": {
+      "stress_min": 3,
+      "stress_max": 8,
+      "location": [
+        "shuttlebay"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 389,
+    "key": "GR_ML_ENG_CM#00389",
+    "text": "[low voice, muttering] something in this ship's making my skin crawl and it ain't the reactor",
+    "type": "declaration",
+    "intent": "scenario_axis_bio",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 11,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 390,
+    "key": "GR_ML_ENG_CM#00390",
+    "text": "[low voice, gruff] every system on this boat's talking to me wrong today. i don't like coincidences",
+    "type": "declaration",
+    "intent": "scenario_axis_systems",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 11,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 391,
+    "key": "GR_ML_ENG_CM#00391",
+    "text": "crew's quiet in a way i don't trust. quiet like a bearing right before it seizes",
+    "type": "declaration",
+    "intent": "scenario_axis_social",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 11,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 392,
+    "key": "GR_ML_ENG_CM#00392",
+    "text": "[tense] keep something heavy in reach. i mean it",
+    "type": "declaration",
+    "intent": "scenario_axis_combat",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 11,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
+    "weight": 1.0
+  },
+  {
+    "id": 393,
+    "key": "GR_ML_ENG_CM#00393",
+    "text": "[low voice, muttering] i've fixed a thousand things that made more sense than whatever this is",
+    "type": "declaration",
+    "intent": "scenario_axis_mystery",
+    "conditions": {
+      "stress_min": 5,
+      "stress_max": 11,
+      "mood": [
+        "low",
+        "grim"
+      ],
+      "target": [
+        "open_air"
+      ]
+    },
+    "reply_to_intents": [],
     "weight": 1.0
   }
 ]

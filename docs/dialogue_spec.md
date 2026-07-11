@@ -191,14 +191,23 @@ Field rules:
 - `intent` (closed set): `greeting` `farewell` `smalltalk` `status_report` `complaint` `fear_vent`
   `reassurance` `banter` `insult` `apology` `romance_hint` `romance_advance` `romance_accept`
   `romance_reject` `work_talk` `acknowledgment` `grief` `gallows_humor` `suspicion_ai` `praise_ai`
-  `pain` `warning` `request_help` `offer_help` `boast` `memory` `doubt`.
+  `pain` `warning` `request_help` `offer_help` `boast` `memory` `doubt`. **Mission-system
+  additions** (2026-07-11, additive — see "Mission-system line categories" below for firing
+  triggers and writing guidance): `away_depart_surface` `away_depart_derelict`
+  `away_depart_station` `away_depart_other_ship` `away_radio_calm` `away_radio_tense`
+  `away_radio_bad` `away_return_fine` `away_return_shaken` `away_return_injured`
+  `briefing_ack_routine` `briefing_ack_risky` `briefing_ack_grim` `docking_approach`
+  `docking_clamped` `docking_undock` `shuttle_ops_prep` `shuttle_ops_launch` `shuttle_ops_land`
+  `scenario_axis_bio` `scenario_axis_systems` `scenario_axis_social` `scenario_axis_combat`
+  `scenario_axis_mystery`.
 - `conditions` — every field optional; omitted = no constraint:
   - `stress_min`/`stress_max`: Mothership Stress value range (min 2, practical high ~15+)
   - `panic`: true = only while panicked, false = only while calm, omit = either
   - `mood`: any of `high` `ok` `low` `grim` (derived from morale)
   - `wounded`: true = only while carrying a wound
   - `location`: room types (`engine_room` `bridge` `medbay` `mess` `quarters` `cargo` `corridor`
-    `life_support` `ai_core` `airlock`) or `any`
+    `life_support` `ai_core` `airlock` `shuttlebay`) or `any` — `shuttlebay` added 2026-07-11
+    for the mission system (`mission-system-spec.md` §7)
   - `target`: who they're addressing — archetype tags, career codes (`SCI` `AND` `ENG` `MAR`),
     rank codes (`CA` `OF` `CM`), `any`, or `open_air` for declarations
   - `recent_events` (closed set): `disease_outbreak` `crew_death` `reactor_failure` `power_low`
@@ -260,3 +269,136 @@ start when two crew share a room and both are free.
 CSV, header `id,text`. `id` = `GR_ML_ENG_CM_00042` (filename-safe key). `text` = the line WITH
 emotive tags (the TTS pass maps them to ElevenLabs v3 audio tags / prompt guidance). One row per
 line, text double-quoted. `voices.md` holds the voice-design prompt per archetype.
+
+---
+
+## Mission-system line categories (2026-07-11)
+
+> Extension for the mission/scenario overhaul (`docs/mission-system-spec.md`, STAGE 1 of the
+> dialogue-corpus expansion). These are ADDITIVE `intent` values, fired by the engine at specific
+> narrative beats rather than picked by the ambient idle-declaration timer. Coverage across the 24
+> archetypes is OPTIONAL and incremental — the corpus stays valid with zero, partial, or full
+> coverage of these keys; only 3 exemplar archetypes are complete as of this date (see
+> `docs/dialogue-expansion-handoff.md` for the bulk-fill brief). Every other field on these lines
+> follows the normal Line schema above (`type`, `conditions`, `weight`, etc.) — only `intent` is
+> new vocabulary.
+
+### Engine-triggered selection (new runtime mode)
+
+Unlike ambient declarations (selected purely by the weighted scoring net against whatever
+conditions happen to hold at the time), these categories are requested by NAME at a specific
+moment: the engine already knows *what kind* of line it needs (a crew member is stepping through
+the airlock, a mission briefing just landed, a scenario just went active) and asks the dialogue
+selector for a line matching `archetype_tag` + a **hard filter on `intent`**. Once that hard
+filter narrows the pool, the existing scoring net (stress band, mood, location, repetition
+penalty) picks among the surviving candidates exactly as before.
+
+**Format rule enforced by the validator**: every line whose `intent` is one of the mission-system
+values below MUST have `type: "declaration"`, `target` (under `conditions`) containing
+`"open_air"`, and empty `reply_to_intents` — they are barks, not conversation turns.
+
+### New location: `shuttlebay`
+
+Added to the `location` closed set (see Line schema above). The Shuttlebay is the new room type
+from `mission-system-spec.md` §7 — surface-bound away teams stage there; boarding ops
+(derelict/station/other-ship) still stage at `airlock`.
+
+### Categories
+
+#### `away_depart_{surface|derelict|station|other_ship}`
+
+Fires once, the moment an away team departs — `shuttle_departed` (surface) or
+`boarding_started` (derelict/station/other_ship), per `mission-system-spec.md` §6 step 1. One
+line per site kind minimum; spoken by an archetype who is actually on the departing team.
+Suggested band: `stress_min 3, stress_max 8`, `mood: ["ok","low"]`. Location: `shuttlebay` for
+surface, `airlock` for the other three.
+
+Writing guidance: this is a THRESHOLD line — the last thing said with both feet still on home
+ground. Understatement, checklist-mutters, gallows humor, or (for jumpy archetypes) visible
+reluctance all read well. Avoid describing what's on the other side — nobody knows yet.
+
+#### `away_radio_{calm|tense|bad}`
+
+Fires per AwayResolver beat (§6 step 2) while the team is out — `nothing`/`find` beats draw from
+`calm`, `hazard`/`contact` from `tense`, `injury`/`exposure` from `bad`. An op runs 2-4 beats, so
+write AT LEAST 2 lines per sub-key or the repetition penalty forces reuse within a single op.
+Suggested bands: calm `2-6`, tense `6-11`, bad `9-15`. These are the corpus's generic fallback
+pool for a beat with no scenario-specific `radio_line` text attached (`mission-system-spec.md`
+§14) — keep them site-agnostic (no planet/ship names) so they work for any op.
+
+Writing guidance: `calm` is procedural, almost bored. `tense` is a held breath — first sign
+something's off, not yet a crisis. `bad` is the crisis itself: injury, panic, or a request for
+help, in the archetype's own register (a marine barks orders, a scientist spirals into diagnosis,
+an android reports damage like a status log).
+
+#### `away_return_{fine|shaken|injured}`
+
+Fires once per team member on `shuttle_returned` (§6 step 3), keyed off THAT crew member's own
+observable outcome (their wound state / stress delta from the op — not the mission's overall
+outcome). Suggested bands: fine `2-7` (`mood: ["ok"]`), shaken `6-12` (`mood: ["low","grim"]`),
+injured `6-13` (`wounded: true`). Write at least 2 per sub-key — this fires on every single away
+op, high traffic.
+
+Writing guidance: `fine` is relief, checklist-closure, dry humor. `shaken` is someone who won't
+say what they saw yet — trail off, deflect, ask for space. `injured` downplays the injury in the
+same breath as reporting it (Mothership house tone: nobody's a hero about a wound, they're
+annoyed by it).
+
+#### `briefing_ack_{routine|risky|grim}`
+
+Fires once when `mission_started` lands, before the ship gets underway. Tier comes from the new
+mission's `away_risk.tier` when the mission has one (`low`/`moderate` → `routine`, `high` →
+`risky`, `extreme` → `grim`); missions with no away component infer tier from type/tags
+(`distress`/`evacuation`/`quarantine_run` or a `high_stakes` tag → `risky`;
+`opener`/`homecoming`/a `low_stakes` tag → `routine`; `grim` is reserved for explicit
+extreme-risk missions). Suggested bands: routine `2-6`, risky `4-9` (`mood: ["ok","low"]`), grim
+`7-13` (`mood: ["low","grim"]`).
+
+Writing guidance: this is the crew's FIRST reaction to new orders, before anything has happened —
+professional resignation for routine, a flicker of real concern for risky, open dread (still
+followed by getting on with it — Mothership crews don't get to refuse work) for grim.
+
+#### `docking_{approach|clamped|undock}`
+
+Fires on the matching EventBus signal (`docking_started` → `approach`, `docking_completed` →
+`clamped`, `undocked` → `undock`). Ship-wide chatter, no location constraint (comms-audible
+anywhere). Suggested band: `approach` runs slightly hotter (`3-8`); `clamped`/`undock` are
+procedural (`2-6`).
+
+Writing guidance: operational, matter-of-fact register — this is a crew narrating a mechanical
+process, not an emotional beat. Personality still shows in HOW they narrate routine mechanics
+(a distrustful engineer double-checks the readout; a chipper android enjoys the numbers matching).
+
+#### `shuttle_ops_{prep|launch|land}`
+
+Shuttlebay-floor chatter around the shuttle itself (as opposed to `away_depart_*`, which is the
+departing crew's own threshold line) — pre-flight checks, the launch itself, touchdown back in
+the bay. Location: `shuttlebay`. Suggested band: `3-7` (`prep`/`launch`), `3-8` (`land`).
+
+Writing guidance: distinct from `away_depart` in FOCUS — this is about the shuttle as equipment
+(fuel, seals, burn, touchdown), not the crew's state of mind. Reads well from an engineer/teamster
+archetype even when they're not the one going out on the op.
+
+#### `scenario_axis_{bio|systems|social|combat|mystery}`
+
+Ambient dread declarations while a scenario of that `pressure_axis` is active
+(`mission-system-spec.md` §4/§10) — fired like a normal idle declaration but filtered to the
+active scenario's axis. The corpus has no direct hook into scenario `tone`/`intensity` floats, so
+use the EXISTING mechanism (`stress_min`/`stress_max`, `mood`) as the tone-band proxy — write
+these in the upper-middle stress band where dread is legible but the scenario hasn't necessarily
+resolved. Suggested band: `5-11`, `mood: ["low","grim"]`. One line per axis is the floor;
+archetypes central to a given axis's solve path (a scientist for `bio`, an engineer for
+`systems`) can carry more without breaking the ~30-line/archetype budget.
+
+Writing guidance: never name the specific scenario or monster — these are pooled across EVERY
+scenario on that axis, so keep it to the axis's *flavor of wrongness*: `bio` = the body/organism
+is lying to you, `systems` = the ship is lying to you, `social` = the crew is lying to you (or to
+itself), `combat` = something wants you dead and is patient about it, `mystery` = the universe
+doesn't add up and nobody can say why.
+
+### Per-archetype budget
+
+~25-35 new lines total per archetype (an ADDITION to the existing ~100-line average, not a
+rewrite). Reference split used by the 3 exemplar archetypes (30 lines): 4 `away_depart` + 6
+`away_radio` (2/sub-key) + 6 `away_return` (2/sub-key) + 3 `briefing_ack` + 3 `docking` + 3
+`shuttle_ops` + 5 `scenario_axis` (1/axis) = 30.
