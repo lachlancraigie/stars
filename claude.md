@@ -21,6 +21,12 @@ A spaceship AI simulator. The player is the ship's computer. See `GDD.md` for fu
 
 ---
 
+## SESSION HANDOFF (2026-07-12, roguelite-loop sprint — branch `claude/roguelite-gameplay-loop-beuqmp`)
+
+**Context**: Lachlan flagged the missing FTL-style roguelite loop (chase/choice/upgrade/stronger) and asked for direction plans that aren't FTL reskinned. **`docs/loop-direction.md`** is the deliverable: gap analysis, three directions (Ledger / Ship of Theseus / Wake), the recommended "Overreach Loop" synthesis (AI subroutines + suspicion-fed decommission chase — deferred pending playtest), and the **A-lite slice that SHIPPED this sprint**: ① **dispatch offers** — `MissionDeck.draw_offers()`, captain trust-roll mediation w/ voiced override reason, 45s window auto-resolves (soak-safe), offer-card UI (`scripts/ui/dispatch_panel.gd`) ② **voyage charter + ending** — target legs (default 8, `SHIPAI_VOYAGE_LEGS` override), finale mission (`resources/missions/final_approach.json`, tag `finale`), `voyage_completed` epilogue screen w/ survivors+memorial (`scripts/ui/ending_screen.gd`) ③ **port screen v1** — homecoming/repair_yard resolutions dock at port; flat fee+wages debit (`wages_frozen` flag + trust hit if broke); hull/shuttle repair, chandlery, **hire crew** (recruitment unpinned via `OutcomeApplier.board_new_crew()`); `scripts/ui/port_screen.gd`; 60s auto-depart. New EventBus signals §6.5, new `port` context (validator). Verified: gdparse on all changed scripts + `validate_content.py` 0 errors (46 missions) — **no Godot binary in this cloud env, needs a local headless run + playthrough before merge**.
+
+---
+
 ## SESSION HANDOFF (2026-07-11, mission-system sprint COMPLETE)
 
 **Shipped** (all committed + Godot-verified on `feature/mission-system`): **the mission system** — spec `docs/mission-system-spec.md` · 45 missions (`resources/missions/`) + 42 scenarios (`resources/scenarios/`), validator `tools/missions/validate_content.py` 0 errors · Engine A–E: data loaders/ScenarioCatalog (`f982386`), MissionManager spine + mission HUD + ApproachVisual planet grow-in (`1e21949`), away ops: shuttlebay/shuttle/AwayResolver/hidden status flags/radio barks (`b1a8ff5`), OutcomeApplier + GenericScenarioMonitor + IntruderSystem (`25c941a4`), Overseer refinement: heat-scaled hooks, trigger_status delayed payoffs, away-beat injection (`5516c776`) · dialogue +750 mission-system lines all voiced (Fish v2, 3,232 MP3s total) · Lyria 3 soundtrack pipeline (`tools/audio_gen/lyria_batch.py`, 19/78 tracks generated) · gen3 crew sprite roster 24/24.
@@ -55,7 +61,9 @@ A spaceship AI simulator. The player is the ship's computer. See `GDD.md` for fu
 2. Visual hookup for room power/air state (signals emit; no RoomBase dimming yet)
 3. ~~Combat resolver~~ ✅ IntruderSystem is now WoundTable's caller (intruder combat rounds, 2026-07-11)
 4. Bubble editor pass (fixed 260px width looks oversized on short lines)
-5. ~~CampaignManager~~ ✅ superseded — MissionManager owns campaign flow (deck, follow-ons, legs); between-RUN meta-structure still open
+5. ~~CampaignManager~~ ✅ superseded — MissionManager owns campaign flow (deck, follow-ons, legs); ✅ run-level loop v1 (2026-07-12: dispatch offers, voyage charter+ending, port screen — `docs/loop-direction.md` §6); between-RUN meta-structure still open (loop-direction §5 Overreach meta is the candidate design)
+5b. Run restart-in-place after voyage_completed/defeat (needs autoload state reset across GameState/MissionManager/ScenarioDirector/ScenarioRunner — ending screen is terminal until then)
+5c. Overreach loop go/no-go after Lachlan plays the A-lite slice (subroutines + suspicion ladder — design ready in loop-direction §3/§5)
 6. Crew portraits in bubbles (info-card portrait shipped; bubbles still plain)
 7. Intruder sprites (sensor blips ship today; stalker/nest/mimic art in `docs/asset-backlog.md`)
 8. Real planet/ship art for ApproachVisual (procedural placeholders live; hooks named per mission `destination.art`)

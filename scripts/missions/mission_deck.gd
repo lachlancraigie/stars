@@ -121,6 +121,41 @@ func draw(campaign_flags: Dictionary, leg: int, hull: float,
 	return pool[_weighted_index(weights, rng)]
 
 
+# Dispatch offers (docs/loop-direction.md §6.1): n weighted draws WITHOUT replacement
+# over the same eligibility-filtered, follow-on-weighted pool draw() samples from. The
+# caller (MissionManager) owns priority preemption and finale-tag filtering — this stays
+# a pure sampling primitive, stateless like draw(). Returns fewer than n offers when the
+# pool runs thin (possibly []).
+func draw_offers(n: int, campaign_flags: Dictionary, leg: int, hull: float,
+		prev_outcome_flags: Dictionary = {}, prev_follow_ons: Array = [],
+		rng: RandomNumberGenerator = null, exclude_tags: Array = []) -> Array[MissionDef]:
+	var pool: Array[MissionDef] = eligible(campaign_flags, leg, hull)
+	if not exclude_tags.is_empty():
+		var filtered: Array[MissionDef] = []
+		for mission: MissionDef in pool:
+			var excluded: bool = false
+			for tag in exclude_tags:
+				if String(tag) in mission.tags:
+					excluded = true
+					break
+			if not excluded:
+				filtered.append(mission)
+		pool = filtered
+
+	var combined_flags: Dictionary = campaign_flags.duplicate()
+	combined_flags.merge(prev_outcome_flags, true)
+
+	var offers: Array[MissionDef] = []
+	while offers.size() < n and not pool.is_empty():
+		var weights: Array[float] = []
+		for mission: MissionDef in pool:
+			weights.append(_weighted_weight(mission, combined_flags, prev_follow_ons))
+		var idx: int = _weighted_index(weights, rng)
+		offers.append(pool[idx])
+		pool.remove_at(idx)
+	return offers
+
+
 func _weighted_weight(mission: MissionDef, combined_flags: Dictionary, follow_ons: Array) -> float:
 	var weight: float = mission.weight
 	for fo_v in follow_ons:

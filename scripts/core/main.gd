@@ -19,6 +19,9 @@ const CREW_SCENE: String = "res://scenes/crew/CrewMember.tscn"
 const DIRECTIVE_MENU_SCENE: String = "res://scenes/ui/DirectiveMenu.tscn"
 const ROSTER_PANEL_SCENE: String = "res://scenes/ui/RosterPanel.tscn"
 const ENVIRONMENT_MENU_SCENE: String = "res://scenes/ui/EnvironmentMenu.tscn"
+const DISPATCH_PANEL_SCENE: String = "res://scenes/ui/DispatchPanel.tscn"
+const PORT_SCREEN_SCENE: String = "res://scenes/ui/PortScreen.tscn"
+const ENDING_SCREEN_SCENE: String = "res://scenes/ui/EndingScreen.tscn"
 const CLEAR_COLOR: Color = Color(0.055, 0.07, 0.10)
 
 # Rect (screen px) the deck is auto-fitted into at the default zoom — kept
@@ -258,6 +261,12 @@ func _add_directive_ui() -> void:
 	var env_scene: PackedScene = load(ENVIRONMENT_MENU_SCENE)
 	if env_scene:
 		add_child(env_scene.instantiate())
+	# Run-level loop screens (docs/loop-direction.md §6) — all EventBus-driven and
+	# invisible until their signals fire, so they're no-ops on legacy scenario boots.
+	for scene_path: String in [DISPATCH_PANEL_SCENE, PORT_SCREEN_SCENE, ENDING_SCREEN_SCENE]:
+		var loop_scene: PackedScene = load(scene_path)
+		if loop_scene:
+			add_child(loop_scene.instantiate())
 
 
 # Routes uniformly through ScenarioCatalog (engine task D) — the two historical short

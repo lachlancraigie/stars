@@ -147,14 +147,21 @@ static func _do_crew_injury(outcome: Dictionary, ctx: Dictionary) -> void:
 		WoundTable.roll_and_apply(crew, this_wound_type, int(rows[0]), int(rows[1]))
 
 
-static func _do_crew_join(outcome: Dictionary) -> void:
-	# archetype (spec: optional) — CrewGen's archetype selection is role/rank-driven,
-	# not a literal lookup by tag, so this mirrors AwayResolver._do_survivor()'s
-	# "rescued stranger" pattern rather than threading a specific archetype through.
+static func _do_crew_join(_outcome: Dictionary) -> void:
+	board_new_crew()
+
+
+# Public boarding path (docs/loop-direction.md §6.3): shared by the crew_join outcome
+# above and MissionManager.port_hire_crew(). Returns the boarded CrewMember (so a
+# caller can show who signed on) or null on generation failure.
+# archetype selection note — CrewGen's archetype selection is role/rank-driven,
+# not a literal lookup by tag, so this mirrors AwayResolver._do_survivor()'s
+# "rescued stranger" pattern rather than threading a specific archetype through.
+static func board_new_crew() -> CrewMember:
 	var gen_seed: int = randi()
 	var roster: Array[CrewMember] = CrewGen.generate_roster(gen_seed, 1, [])
 	if roster.is_empty():
-		return
+		return null
 	var new_crew: CrewMember = roster[0]
 	new_crew.crew_id = "joined_%d" % gen_seed
 	new_crew.rank = "crew_mate"
@@ -171,17 +178,20 @@ static func _do_crew_join(outcome: Dictionary) -> void:
 		if room:
 			room.occupants.append(new_crew.crew_id)
 
+	# From here the boarding is already real (crew is in GameState) — a missing visual
+	# node (headless run, scene load failure) still returns the boarded member.
 	var crew_scene: PackedScene = load(CREW_SCENE)
 	if crew_scene == null:
-		return
+		return new_crew
 	var node: CrewMemberNode = crew_scene.instantiate()
 	node.crew_data = new_crew
 	var tree: SceneTree = Engine.get_main_loop() as SceneTree
 	if tree == null or tree.current_scene == null:
-		return
+		return new_crew
 	var deck: Node = tree.current_scene.get_node_or_null("ShipDeck")
 	if deck != null:
 		deck.add_child(node)
+	return new_crew
 
 
 static func _do_crew_leave(crew: CrewMember, reason: String) -> void:

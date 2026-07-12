@@ -33,6 +33,10 @@ HOOK_KEYS = PHASES | {"away_return"}
 CONTEXTS = {
     "transit", "arrival", "planet_orbit", "away_return", "docked",
     "derelict", "station", "aftermath", "any",
+    # docs/loop-direction.md §6.3 — offered while the ship is berthed at a port stop
+    # (homecoming/repair_yard resolution). No hook emits it yet; reserved for
+    # port-docked scenario content (inspections, stowaways, dockside drama).
+    "port",
 }
 AXES = {"bio", "systems", "social", "combat", "mystery"}
 RISK_TIERS = {"low", "moderate", "high", "extreme"}

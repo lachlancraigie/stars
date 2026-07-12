@@ -32,6 +32,30 @@ const DOCKING_SECONDS: float = 20.0
 const INTERMISSION_SECONDS: float = 10.0
 const PHASE_ORDER: Array[String] = ["transit_out", "arrival", "on_station", "transit_back"]
 
+# --- Run-level loop (docs/loop-direction.md §6) ---
+# Dispatch: after each leg, 2-3 contracts are OFFERED instead of auto-drawn; the player's
+# pick is a recommendation the captain accepts on a trust-weighted roll. Window expiry
+# lets the captain choose unaided so unattended runs (AUTODEMO/soak) never stall.
+const DISPATCH_OFFER_COUNT: int = 3
+const DISPATCH_WINDOW_SECONDS: float = 45.0
+# Port: homecoming/repair_yard resolutions dock at port before the next dispatch.
+# One flat debit per stop — deliberately NOT a per-leg operating-cost ledger (§5 cut list).
+const PORT_WINDOW_SECONDS: float = 60.0
+const PORT_DOCKING_FEE: float = 60.0
+const PORT_WAGE_PER_CREW: float = 20.0
+const PORT_HULL_REPAIR_PER_POINT: float = 3.0
+const PORT_SHUTTLE_REPAIR_COST: float = 150.0
+const PORT_HIRE_COST: float = 400.0
+const PORT_WAGES_FROZEN_TRUST_HIT: float = -0.05
+# Registry ids stocked at every port v1 (the cheap tools — §6.4).
+const PORT_STOCK: Array[String] = [
+	"med_kit", "medscanner", "jury_rig_kit", "engineers_toolkit", "stun_baton", "crowbar",
+]
+# Voyage charter: the run's arc. Once current_leg exceeds the target, the next draw is
+# the finale (tag "finale"); resolving it with the ship alive completes the voyage.
+const VOYAGE_DEFAULT_LEGS: int = 8
+const FINALE_TAG: String = "finale"
+
 # Task E (docs/mission-system-spec.md §10): the phase-order PLUS the away_return
 # pseudo-phase, in the fixed evaluation order used to resolve which hook a delayed
 # trigger_status payoff force-attaches at ("the first hook of that mission whose
@@ -83,6 +107,18 @@ var _docking_name: String = ""
 
 var _intermission_active: bool = false
 var _intermission_elapsed: float = 0.0
+
+# --- Run-level loop state (docs/loop-direction.md §6) ---
+var voyage_target_legs: int = VOYAGE_DEFAULT_LEGS
+var voyage_destination_name: String = "Harbour Reach"
+var voyage_complete: bool = false
+var dispatch_offers: Array[MissionDef] = []
+var _dispatch_active: bool = false
+var _dispatch_elapsed: float = 0.0
+var _port_active: bool = false
+var _port_elapsed: float = 0.0
+var _port_name: String = ""
+var _pending_port_name: String = ""
 var _prev_outcome_flags: Dictionary = {}       # this-resolution-only grade flag, fed to the NEXT draw() call
 var _prev_follow_ons: Array = []               # the just-resolved mission's follow_ons rules, likewise
 
@@ -115,6 +151,18 @@ func begin_campaign(seed_value: int = -1) -> void:
 	_pending_payoffs = []
 	_payoff_scheduled_keys = {}
 	_last_scenario_start_elapsed = -999999.0
+
+	# Voyage charter (docs/loop-direction.md §6.2): the run has a destination and a
+	# target leg count; past the target, the next draw is the finale.
+	voyage_complete = false
+	dispatch_offers = []
+	_dispatch_active = false
+	_port_active = false
+	_pending_port_name = ""
+	voyage_target_legs = VOYAGE_DEFAULT_LEGS
+	var legs_env: String = OS.get_environment("SHIPAI_VOYAGE_LEGS").strip_edges()
+	if legs_env != "" and legs_env.is_valid_int():
+		voyage_target_legs = maxi(1, int(legs_env))
 
 	var seed_env: String = OS.get_environment("SHIPAI_SEED")
 	var use_seed: int = seed_value
@@ -200,7 +248,21 @@ func _on_time_ticked(_elapsed: float, delta: float) -> void:
 		_intermission_elapsed += delta
 		if _intermission_elapsed >= INTERMISSION_SECONDS:
 			_intermission_active = false
-			_draw_next_mission()
+			_after_intermission()
+		return
+
+	# Port stop and dispatch window (docs/loop-direction.md §6): both time out on their
+	# own so an unattended run (AUTODEMO/soak, or an AFK player) never stalls the campaign.
+	if _port_active:
+		_port_elapsed += delta
+		if _port_elapsed >= PORT_WINDOW_SECONDS:
+			depart_port()
+		return
+
+	if _dispatch_active:
+		_dispatch_elapsed += delta
+		if _dispatch_elapsed >= DISPATCH_WINDOW_SECONDS:
+			_dispatch_window_expired()
 		return
 
 	if current_mission == null or mission_phase == "" or mission_phase == "resolution":
@@ -556,6 +618,19 @@ func _resolve_mission() -> void:
 	EventBus.leg_boundary_reached.emit(ScenarioDirector.current_leg)
 
 	_aborted = false
+
+	# Voyage completion (docs/loop-direction.md §6.2): the finale resolving with the
+	# ship alive ends the run — win, limp, or pyrrhic, graded by the mission outcome.
+	if FINALE_TAG in mission.tags and ship_alive:
+		_complete_voyage(outcome)
+		return
+
+	# Port stop (§6.3): a homecoming/repair_yard leg that didn't outright fail docks
+	# the ship at port before the next dispatch (opened once the intermission ends).
+	_pending_port_name = ""
+	if outcome != "mission_failed" and mission.mission_type in ["homecoming", "repair_yard"]:
+		_pending_port_name = String(mission.destination.get("name", "Port"))
+
 	_intermission_active = true
 	_intermission_elapsed = 0.0
 
@@ -592,6 +667,313 @@ func _reward_recipient() -> CrewMember:
 		if c != null and c.is_alive:
 			return c
 	return null
+
+
+# --- Run-level loop: dispatch / port / voyage (docs/loop-direction.md §6) ---
+
+# Called when the post-resolution intermission ends: port stop first if one is
+# pending, otherwise straight to dispatch.
+func _after_intermission() -> void:
+	if _pending_port_name != "":
+		_open_port()
+		return
+	_begin_dispatch()
+
+
+# Dispatch (§6.1). Order of precedence:
+#   1. Past the charter's target leg -> the finale, no menu.
+#   2. An eligible priority>0 mission (forced repair/emergency) -> preempts, no menu.
+#   3. 2-3 weighted offers posted for the player (the AI) to recommend from.
+#   4. Thin pool fallbacks -> degrade gracefully to the old auto-draw.
+func _begin_dispatch() -> void:
+	if ScenarioDirector.current_leg > voyage_target_legs:
+		var finale: MissionDef = _draw_finale()
+		if finale != null:
+			print("[MISSION] voyage charter complete at leg %d — finale '%s'" % [
+				ScenarioDirector.current_leg, finale.id])
+			_start_mission(finale)
+			return
+		push_warning("MissionManager: no finale mission available past target leg — voyage continues")
+
+	var leg: int = ScenarioDirector.current_leg
+	var hull: float = GameState.hull_integrity
+	var priority_mission: MissionDef = _eligible_priority_mission(leg, hull)
+	if priority_mission != null:
+		EventBus.objective_changed.emit("Emergency dispatch: %s" % priority_mission.title)
+		_start_mission(priority_mission)
+		return
+
+	dispatch_offers = deck.draw_offers(DISPATCH_OFFER_COUNT, campaign_flags, leg, hull,
+		_prev_outcome_flags, _prev_follow_ons, rng, [FINALE_TAG])
+	if dispatch_offers.is_empty():
+		_draw_next_mission()
+		return
+	if dispatch_offers.size() == 1:
+		var only: MissionDef = dispatch_offers[0]
+		dispatch_offers = []
+		_start_mission(only)
+		return
+
+	_dispatch_active = true
+	_dispatch_elapsed = 0.0
+	var ids: Array = []
+	for offer: MissionDef in dispatch_offers:
+		ids.append(offer.id)
+	print("[MISSION] dispatch: %d contracts on offer — %s" % [ids.size(), ", ".join(ids)])
+	EventBus.objective_changed.emit("Dispatch: %d contracts on offer — awaiting recommendation." % ids.size())
+	EventBus.mission_offers_posted.emit(ids)
+
+
+# The highest-priority eligible mission with priority > 0, or null. Mirrors
+# MissionDeck.draw()'s preemption stage so forced emergencies never become a menu.
+func _eligible_priority_mission(leg: int, hull: float) -> MissionDef:
+	var best: MissionDef = null
+	for mission: MissionDef in deck.eligible(campaign_flags, leg, hull):
+		if mission.priority > 0 and (best == null or mission.priority > best.priority):
+			best = mission
+	return best
+
+
+# The player's pick — the AI RECOMMENDS, the captain disposes (§6.1). Acceptance is a
+# trust-weighted roll in DirectiveEvaluator's recommendation shape (trust + morale/
+# willpower nudges, clamped to its MIN/MAX compliance bounds). On override the captain
+# picks among the OTHER offers by mission weight, and the reason is surfaced (the
+# legibility valve — an unexplained override reads as a slot machine). With no captain
+# alive the recommendation is final: the AI has de facto command.
+func recommend_offer(mission_id: String) -> void:
+	if not _dispatch_active:
+		return
+	var recommended: MissionDef = null
+	for offer: MissionDef in dispatch_offers:
+		if offer.id == mission_id:
+			recommended = offer
+			break
+	if recommended == null:
+		return
+	_dispatch_active = false
+
+	var captain_id: String = GameState.get_crew_of_role("captain")
+	if captain_id == "":
+		_select_offer(recommended, true, "")
+		return
+	var captain: CrewMember = GameState.crew.get(captain_id) as CrewMember
+	var trust: float = GameState.get_ai_trust(captain_id)
+	var probability: float = trust
+	if captain != null:
+		probability += (captain.morale - 0.5) * 0.30 + (captain.willpower - 0.5) * 0.15
+	probability = clampf(probability, DirectiveEvaluator.MIN_COMPLIANCE, DirectiveEvaluator.MAX_COMPLIANCE)
+	var roll: float = rng.randf() if rng != null else randf()
+	if roll < probability:
+		_select_offer(recommended, true, "")
+		return
+
+	var reason: String = "low_trust" if trust < 0.5 else "captain_prerogative"
+	_select_offer(_captain_pick(recommended), false, reason)
+
+
+# Weighted pick among the offers the AI did NOT recommend (falls back to the
+# recommendation itself if it was somehow the only offer).
+func _captain_pick(excluding: MissionDef) -> MissionDef:
+	var pool: Array[MissionDef] = []
+	var weights: Array[float] = []
+	for offer: MissionDef in dispatch_offers:
+		if offer != excluding:
+			pool.append(offer)
+			weights.append(maxf(offer.weight, 0.01))
+	if pool.is_empty():
+		return excluding
+	return pool[_weighted_pick(weights)]
+
+
+# Window expiry: the captain chooses unaided (weighted across all offers). Keeps
+# unattended runs moving — soak tests and AFK players never stall the campaign.
+func _dispatch_window_expired() -> void:
+	_dispatch_active = false
+	var weights: Array[float] = []
+	for offer: MissionDef in dispatch_offers:
+		weights.append(maxf(offer.weight, 0.01))
+	var pick: MissionDef = dispatch_offers[_weighted_pick(weights)]
+	print("[MISSION] dispatch window expired — captain takes '%s' unaided" % pick.id)
+	_select_offer(pick, false, "window_expired")
+
+
+func _select_offer(mission: MissionDef, followed: bool, reason: String) -> void:
+	dispatch_offers = []
+	if not followed:
+		print("[MISSION] captain overrides recommendation (%s) -> '%s'" % [reason, mission.id])
+	EventBus.mission_selected.emit(mission.id, followed, reason)
+	_start_mission(mission)
+
+
+func dispatch_seconds_remaining() -> float:
+	if not _dispatch_active:
+		return 0.0
+	return maxf(0.0, DISPATCH_WINDOW_SECONDS - _dispatch_elapsed)
+
+
+# --- Port stop (§6.3) ---
+
+# One flat debit on docking: fee + wages per living crew member. Can't cover it ->
+# pay what's there, freeze wages (campaign flag scenarios/follow-ons can react to)
+# and take a small all-crew trust hit. Paying in full at a later port thaws it.
+func _open_port() -> void:
+	_port_active = true
+	_port_elapsed = 0.0
+	_port_name = _pending_port_name
+	_pending_port_name = ""
+
+	var fee: float = PORT_DOCKING_FEE + PORT_WAGE_PER_CREW * float(_living_crew_count())
+	var wages_frozen: bool = GameState.credits < fee
+	GameState.adjust_metric("credits", -fee)   # clamps at 0 — pays what's there
+	campaign_flags["wages_frozen"] = wages_frozen
+	if wages_frozen:
+		TrustModel.modify_all(PORT_WAGES_FROZEN_TRUST_HIT)
+
+	print("[MISSION] docked at %s — fee %.0f cr (wages_frozen=%s, credits now %.0f)" % [
+		_port_name, fee, wages_frozen, GameState.credits])
+	EventBus.objective_changed.emit("Docked at %s." % _port_name)
+	EventBus.port_docked.emit(_port_name, fee, wages_frozen)
+
+
+func depart_port() -> void:
+	if not _port_active:
+		return
+	_port_active = false
+	print("[MISSION] departed %s (credits %.0f)" % [_port_name, GameState.credits])
+	EventBus.port_departed.emit(_port_name)
+	_port_name = ""
+	_begin_dispatch()
+
+
+func port_seconds_remaining() -> float:
+	if not _port_active:
+		return 0.0
+	return maxf(0.0, PORT_WINDOW_SECONDS - _port_elapsed)
+
+
+func is_at_port() -> bool:
+	return _port_active
+
+
+# Port services (§6.3). All live here — not in the UI — so headless runs and tests can
+# drive them, and every mutation routes through GameState methods (Architecture Rule 3).
+# Each returns false (and does nothing) when unaffordable or not applicable.
+
+func port_repair_hull(points: float) -> bool:
+	if not _port_active:
+		return false
+	points = minf(points, 100.0 - GameState.hull_integrity)
+	if points <= 0.0:
+		return false
+	var cost: float = points * PORT_HULL_REPAIR_PER_POINT
+	if GameState.credits < cost:
+		return false
+	GameState.adjust_metric("credits", -cost)
+	GameState.repair_hull(points)
+	EventBus.port_service_purchased.emit("hull_repair", cost)
+	return true
+
+
+func port_repair_shuttle() -> bool:
+	if not _port_active or shuttle_system == null:
+		return false
+	if shuttle_system.shuttle_hull >= 100.0 or GameState.credits < PORT_SHUTTLE_REPAIR_COST:
+		return false
+	GameState.adjust_metric("credits", -PORT_SHUTTLE_REPAIR_COST)
+	shuttle_system.shuttle_hull = 100.0
+	EventBus.port_service_purchased.emit("shuttle_repair", PORT_SHUTTLE_REPAIR_COST)
+	return true
+
+
+func port_buy_item(item_id: String) -> bool:
+	if not _port_active or item_id not in PORT_STOCK:
+		return false
+	var item: Dictionary = Items.get_item(item_id)
+	if item.is_empty():
+		return false
+	var cost: float = float(item.get("cost", 0))
+	if GameState.credits < cost:
+		return false
+	var recipient: CrewMember = _reward_recipient()
+	if recipient == null:
+		return false
+	GameState.adjust_metric("credits", -cost)
+	recipient.inventory.append(item_id)
+	EventBus.port_service_purchased.emit(item_id, cost)
+	return true
+
+
+# Recruitment unpinned (crew-progression-spec §6): a green recruit boards via the same
+# path OutcomeApplier's crew_join outcome uses. Returns the new CrewMember or null.
+func port_hire_crew() -> CrewMember:
+	if not _port_active or GameState.credits < PORT_HIRE_COST:
+		return null
+	var recruit: CrewMember = OutcomeApplier.board_new_crew()
+	if recruit == null:
+		return null
+	GameState.adjust_metric("credits", -PORT_HIRE_COST)
+	EventBus.port_service_purchased.emit("hire", PORT_HIRE_COST)
+	return recruit
+
+
+func _living_crew_count() -> int:
+	var count: int = 0
+	for cid: String in GameState.crew:
+		var c: CrewMember = GameState.crew[cid] as CrewMember
+		if c != null and c.is_alive:
+			count += 1
+	return count
+
+
+# --- Voyage finale & completion (§6.2) ---
+
+# The finale: a FINALE_TAG mission not yet consumed (weighted if several). Eligibility
+# is deliberately NOT applied — the charter is due; the finale fires regardless of
+# hull state or flags.
+func _draw_finale() -> MissionDef:
+	var pool: Array[MissionDef] = []
+	var weights: Array[float] = []
+	for mid: String in deck.missions.keys():
+		var mission: MissionDef = deck.missions[mid]
+		if FINALE_TAG not in mission.tags:
+			continue
+		if not mission.repeatable and deck.completed_ids.has(mid):
+			continue
+		pool.append(mission)
+		weights.append(maxf(mission.weight, 0.01))
+	if pool.is_empty():
+		return null
+	return pool[_weighted_pick(weights)]
+
+
+func _complete_voyage(final_outcome: String) -> void:
+	voyage_complete = true
+	mission_mode = false
+
+	var survivors: Array[Dictionary] = []
+	for cid: String in GameState.crew:
+		var c: CrewMember = GameState.crew[cid] as CrewMember
+		if c == null or not c.is_alive:
+			continue
+		survivors.append({
+			"name": c.crew_name, "role": c.role,
+			"legs_served": c.legs_served, "traits": c.traits.duplicate(),
+		})
+
+	var summary: Dictionary = {
+		"destination": voyage_destination_name,
+		"final_outcome": final_outcome,
+		"legs": ScenarioDirector.current_leg,
+		"missions": mission_history.duplicate(true),
+		"credits": GameState.credits,
+		"survivors": survivors,
+		"fallen": GameState.fallen.duplicate(true),
+	}
+	print("[MISSION] VOYAGE COMPLETE — %s (%s), %d legs, %d missions, %d survivors, %d fallen" % [
+		voyage_destination_name, final_outcome, summary["legs"],
+		mission_history.size(), survivors.size(), GameState.fallen.size()])
+	EventBus.voyage_completed.emit(summary)
+	TimeManager.pause()
 
 
 # --- Next mission draw ---

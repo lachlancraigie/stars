@@ -111,6 +111,18 @@ func _ready() -> void:
 	# off-ship, so this feed line IS the bubble for them (see event_bus.gd's radio_bark doc).
 	EventBus.radio_bark.connect(
 		func(text, _tone): _push_feed("📻 %s" % text))
+	# Run-level loop feed lines (docs/loop-direction.md §6) — the dispatch verdict and
+	# port events land in the feed so they survive the panels closing over them.
+	EventBus.mission_selected.connect(
+		func(_mid, followed, reason): _push_feed(
+			"Captain accepts the AI's recommendation." if followed
+			else "⚠ Captain overrides the AI's recommendation (%s)." % reason.replace("_", " ")))
+	EventBus.port_docked.connect(
+		func(port_name, fee, frozen): _push_feed(
+			("⚠ Docked at %s — could not cover wages (%d cr short-paid)." if frozen
+			else "Docked at %s — fees and wages paid (%d cr).") % [port_name, int(fee)]))
+	EventBus.port_departed.connect(
+		func(port_name): _push_feed("Departed %s." % port_name))
 	EventBus.scenario_ended.connect(_on_scenario_ended)
 
 	EventBus.power_mode_changed.connect(func(_online): _refresh_power_panel())
