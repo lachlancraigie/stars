@@ -209,6 +209,14 @@ static func pick(context: String, tag_bias: Dictionary, leg: int, active_axes: A
 		var intensity: int = int(def.get("intensity", 1))
 		if intensity >= 3 and effective_heat < 0.6 and leg < 4:
 			continue
+		# trigger_status scenarios are the DELAYED PAYOFF for a hidden crew status
+		# flag (spec §10) — their cast bindings (e.g. status:shaken) resolve to
+		# nobody on a ship where no one carries the flag, leaving the scenario
+		# hollow. Keep them out of ordinary hook draws until the status actually
+		# exists aboard; the force-attach payoff path doesn't route through pick().
+		var trigger: String = String(def.get("trigger_status", ""))
+		if trigger != "" and not GameState.any_crew_status(trigger):
+			continue
 
 		var weight: float = float(def.get("weight", 1.0)) * float(tag_bias.get(axis, 1.0))
 		if axis in weak_axes:
