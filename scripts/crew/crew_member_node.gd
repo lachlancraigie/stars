@@ -2,13 +2,16 @@ class_name CrewMemberNode
 extends Node2D
 
 # Visual representation of a CrewMember resource.
-# Registers crew_data into GameState on _ready; renders a per-state/facing/frame gen2
-# crew sprite (assets/sprites/gen2/crew/, manifest-driven — see _apply_gen2_sprite),
-# falling back to the legacy Kenney astronaut kit whenever the gen2 manifest or a
-# specific texture is missing (_apply_legacy_sprite, unchanged from before this sprite
-# swap was added). Walks multi-hop routes along the ship graph, and z-sorts against deck
-# props by y. Lives inside the ShipDeck node so its position shares the rooms' deck
-# coordinate space.
+# Registers crew_data into GameState on _ready; renders a per-archetype gen3 character
+# model (assets/sprites/gen3_chars/, CrewModelRegistry — see _apply_gen3_sprite) for the
+# anims gen3 actually has (idle/walk/run/punch), falling back to the per-state/facing/
+# frame gen2 crew sprite (assets/sprites/gen2/crew/, manifest-driven — see
+# _apply_gen2_sprite) for every other state, and falling back further to the legacy
+# Kenney astronaut kit whenever gen2's own manifest or a specific texture is missing
+# (_apply_legacy_sprite, unchanged from before either sprite swap was added). Three
+# systems, each a mandatory fallback of the previous — see _apply_sprite(). Walks
+# multi-hop routes along the ship graph, and z-sorts against deck props by y. Lives
+# inside the ShipDeck node so its position shares the rooms' deck coordinate space.
 #
 # Collision (crew count is capped ~12, so O(N²)/frame is cheap): soft
 # pairwise separation nudges `position` apart when crew get within
@@ -55,6 +58,27 @@ const FALLBACK_ROLE: String = "general"
 # _apply_legacy_sprite() below — see _apply_sprite().
 const GEN2_CREW_DIR: String = "res://assets/sprites/gen2/crew/"
 const GEN2_MANIFEST_PATH: String = GEN2_CREW_DIR + "manifest.json"
+
+# Gen3 character models (tools/image_gen/reskin_batch.py, assets/sprites/gen3_chars/,
+# CrewModelRegistry). Covers 4 anims only (idle/walk/run/punch) — every other current_state
+# (sleeping/incapacitated/frozen/wounded) has no gen3 art and always falls through to gen2/
+# kit exactly as before gen3 existed; see _gen3_anim_state(). "punch" and "run" are new
+# visual states that neither gen2 nor the kit ever distinguished (panic was a colour tint on
+# the normal walk/idle art; combat had no sprite reaction at all — see _gen3_is_fighting) —
+# additive only, no existing state's rendering changes.
+#
+# Anchor offset: gen2/legacy share one 512x512-canvas floor-diamond convention
+# (IsoKit.ANCHOR_OFFSET). Gen3 frames are a completely different pipeline — tightly-cropped
+# 64x64 cutouts with no floor-diamond registration baked in (verified: figure bounding boxes
+# fill the cell edge-to-edge, feet consistently ~2px from the bottom edge across every model/
+# anim/facing sampled). GEN3_ANCHOR_OFFSET is derived from that measured feet position
+# instead, so gen3 characters still plant on their standing point rather than floating.
+const GEN3_ANCHOR_OFFSET: Vector2 = Vector2(0, -30)
+
+# Frame-advance cadence per anim (frames/sec) — gen3 has no per-state fps field the way the
+# gen2 manifest does, so these are picked to give each anim's frame count (8/12/6/4 columns
+# respectively) a natural-feeling loop length, same spirit as gen2's per-state fps table.
+const GEN3_FPS: Dictionary = {"idle": 4.0, "walk": 12.0, "run": 14.0, "punch": 10.0}
 
 # 8-way facing -> its left/right mirror. A gen2 state's manifest doesn't always cover all
 # 8 facings (e.g. "sleeping" is a fixed side-view bunk pose, facing "e" only) — mirroring
@@ -177,6 +201,11 @@ var _gen2_frame_t: float = 0.0     # accumulates every tick; drives cycle-mode a
 var _gen2_state_key: String = ""   # last resolved gen2 sprite state name, to reset _gen2_frame_t on change
 var _gen2_dead_variant: int = -1   # picked once per crew (crew_id hash) — dead poses are variants, not a loop
 
+var _gen3_frame_t: float = 0.0     # accumulates every tick; drives gen3 frame-cycle index (see GEN3_FPS)
+var _gen3_state_key: String = ""   # last resolved gen3 anim name, to reset _gen3_frame_t on change
+var _gen3_debug_logged_anims: Dictionary = {}  # anim -> true; SHIPAI_MODEL_DEBUG prints once per anim, not per frame
+var _model_debug: bool = false     # SHIPAI_MODEL_DEBUG=1, cached in _ready (see main.gd's env-flag idiom)
+
 var _bubble_anchor: Node2D
 var _bubble_panel: Panel
 var _bubble_label: RichTextLabel
@@ -185,9 +214,11 @@ var _bubble_tween: Tween
 var _bubble_gen: int = 0  # invalidates a stale hide-callback if a newer line pre-empts it
 
 # Voice line playback (tools/audio_gen pipeline): line key "TAG#00042" maps to
-# assets/audio/dialogue/TAG_00042.mp3. The directory is gitignored (generated audio),
-# so streams are built from raw bytes at runtime rather than relying on Godot imports.
-const VOICE_DIR: String = "res://assets/audio/dialogue/"
+# assets/audio/dialogue_v2/TAG_00042.mp3 (Fish Audio v2 corpus, 3,232 MP3s — supersedes the
+# 1,376-line ElevenLabs v1 corpus at assets/audio/dialogue/, retired). The directory is
+# gitignored (generated audio), so streams are built from raw bytes at runtime rather than
+# relying on Godot imports.
+const VOICE_DIR: String = "res://assets/audio/dialogue_v2/"
 var _voice_player: AudioStreamPlayer2D
 
 # Locked-door bypass in progress (see Door.attempt_crew_bypass): while non-empty, this
@@ -203,6 +234,7 @@ func _ready() -> void:
 		return
 	GameState.crew[crew_data.crew_id] = crew_data
 	nodes[crew_data.crew_id] = self
+	_model_debug = OS.get_environment("SHIPAI_MODEL_DEBUG") == "1"
 
 	name_label.text = crew_data.crew_name
 	var tint: Color = ROLE_TINT.get(crew_data.role, Color.WHITE)
@@ -244,10 +276,12 @@ func _exit_tree() -> void:
 func _process(delta: float) -> void:
 	if TimeManager.is_paused():
 		return
-	# Drives gen2 cycle-mode animation frame indices (_apply_gen2_sprite) — accumulated
-	# unconditionally so states that animate while stationary (sleeping/injured_idle) keep
-	# advancing even though _moving's branch below returns early for everything else.
+	# Drives gen2/gen3 cycle-mode animation frame indices (_apply_gen2_sprite/
+	# _apply_gen3_sprite) — accumulated unconditionally so states that animate while
+	# stationary (sleeping/injured_idle/gen3 idle) keep advancing even though _moving's
+	# branch below returns early for everything else.
 	_gen2_frame_t += delta
+	_gen3_frame_t += delta
 	if crew_data.current_state in [CrewStateMachine.INCAPACITATED, CrewStateMachine.FROZEN]:
 		_moving = false
 		_route.clear()
@@ -569,10 +603,13 @@ func _update_facing(to_target: Vector2) -> void:
 	_facing = ["E", "SE", "S", "SW", "W", "NW", "N", "NE"][bucket]
 
 
-# Picks the gen2 sprite when the manifest/texture resolve, otherwise falls back to the
-# legacy Kenney kit exactly as before this sprite-swap system existed (mandatory per the
-# animation workstream brief — see the GEN2_CREW_DIR const comment above).
+# Picks the gen3 model when the crew's live state/anim/facing/texture all resolve; else the
+# gen2 sprite when its manifest/texture resolve; else the legacy Kenney kit. Each stage is a
+# mandatory fallback of the previous (mandatory per the animation workstream brief — see the
+# GEN2_CREW_DIR/GEN3_ANCHOR_OFFSET const comments above) so something always renders.
 func _apply_sprite() -> void:
+	if _apply_gen3_sprite():
+		return
 	_ensure_gen2_manifest()
 	if _gen2_available and _apply_gen2_sprite():
 		return
@@ -650,6 +687,7 @@ func _apply_gen2_sprite() -> bool:
 		if texture == null:
 			return false
 		sprite.texture = texture
+		sprite.offset = IsoKit.ANCHOR_OFFSET  # restore in case the previous frame was gen3 (different canvas convention)
 		sprite.flip_h = resolved.get("flip_h", false)
 		_current_texture_key = key
 
@@ -664,6 +702,87 @@ func _apply_gen2_sprite() -> bool:
 	return true
 
 
+# Maps the crew's live simulation fields onto a gen3 anim name. "" means "gen3 doesn't
+# cover this — defer to gen2/kit", same contract as _gen2_sprite_state() returning a state
+# with no manifest entry. Only idle/walk/run/punch exist in gen3 (see GEN3_ANCHOR_OFFSET
+# const comment); every other current_state (sleeping/incapacitated/frozen/wounded) is
+# deliberately excluded here so it keeps rendering exactly the way it did before gen3 —
+# per-state fallback straight through to _apply_gen2_sprite()/_apply_legacy_sprite().
+func _gen3_anim_state() -> String:
+	if crew_data.current_state in [CrewStateMachine.INCAPACITATED, CrewStateMachine.FROZEN, CrewStateMachine.SLEEPING]:
+		return ""
+	if crew_data.wounds > 0:
+		return ""
+	if crew_data.current_state == CrewStateMachine.PANICKING:
+		return "run"   # hurried/flee — the state machine does distinguish this (unlike gen2, which
+	                    # only ever applied a red colour tint over the normal walk/idle art)
+	if _gen3_is_fighting():
+		return "punch"
+	return "walk" if _moving else "idle"
+
+
+# CrewStateMachine has no dedicated "fighting" state to key off — IntruderSystem resolves
+# combat as an instantaneous per-tick dice exchange (see intruder_system.gd
+# _resolve_combat_round), not a sustained state, and this predates gen3 entirely (gen2 never
+# had a live trigger for its fight_melee/fight_ranged art either). This is therefore a
+# read-only view-layer proxy, not a new gameplay system: "would this crew member actually
+# fight back" mirrors IntruderSystem's own fighter/civilian split (Marine class or a real
+# weapon equipped) against "is there any intruder — visible or not, matching what actually
+# drives a combat round — sharing this room right now".
+func _gen3_is_fighting() -> bool:
+	if crew_data.mship_class != "Marine" and (crew_data.equipped_weapon == "" or crew_data.equipped_weapon == "unarmed"):
+		return false
+	for intruder_id: String in IntruderSystem.active_intruders():
+		if IntruderSystem.room_of(intruder_id) == crew_data.location:
+			return true
+	return false
+
+
+# Returns true if a gen3 frame was actually applied. False means "gen3 doesn't cover this
+# state, or the model/frame didn't resolve" and the caller (_apply_sprite) falls back to
+# gen2/legacy — same contract as _apply_gen2_sprite().
+func _apply_gen3_sprite() -> bool:
+	var anim: String = _gen3_anim_state()
+	if anim == "":
+		return false
+	var model_id: String = CrewModelRegistry.model_for_archetype(crew_data.archetype_tag)
+	if model_id == "":
+		return false  # no gen3 models generated at all (manifest missing) — CrewModelRegistry already warned once
+	var frames: Array[Texture2D] = CrewModelRegistry.get_frames(model_id, anim, _facing)
+	if frames.is_empty():
+		return false  # CrewModelRegistry already warned once per model — nothing more to log here
+
+	if anim != _gen3_state_key:
+		_gen3_state_key = anim
+		_gen3_frame_t = 0.0
+
+	var fps: float = float(GEN3_FPS.get(anim, 8.0))
+	var frame_index: int = (int(_gen3_frame_t * fps) % frames.size()) if fps > 0.0 else 0
+	var texture: Texture2D = frames[frame_index]
+	if texture == null:
+		return false
+
+	var key: String = "gen3:%s:%s:%s:%d" % [model_id, anim, _facing, frame_index]
+	if key != _current_texture_key:
+		sprite.texture = texture
+		sprite.offset = GEN3_ANCHOR_OFFSET
+		sprite.flip_h = false  # gen3 paints all 8 real facings — no mirroring needed (unlike gen2's partial coverage)
+		_current_texture_key = key
+
+	sprite.rotation_degrees = 0.0
+	var tint: Color = Color.WHITE  # gen3 art is fully painted per-archetype already; no role-tint layer (unlike kit/gen2)
+	if crew_data.current_state == CrewStateMachine.PANICKING:
+		tint = tint * Color(1.0, 0.62, 0.58)
+	sprite.self_modulate = tint
+
+	if _model_debug and not _gen3_debug_logged_anims.has(anim):
+		_gen3_debug_logged_anims[anim] = true
+		print("[MODEL] crew=%s model=%s anim=%s facing=%s frames=%d" % [
+			crew_data.crew_id, model_id, anim, _facing, frames.size()])
+
+	return true
+
+
 func _apply_legacy_sprite() -> void:
 	var role: String = crew_data.role if ROLE_VARIANT.has(crew_data.role) else FALLBACK_ROLE
 	var key: String = "%s_%s" % [ROLE_VARIANT[role], _facing]
@@ -675,6 +794,7 @@ func _apply_legacy_sprite() -> void:
 			push_warning("CrewMemberNode '%s': missing kit sprite '%s'" % [crew_data.crew_id, key])
 			return
 		sprite.texture = texture
+		sprite.offset = IsoKit.ANCHOR_OFFSET  # restore in case the previous frame was gen3 (different canvas convention)
 		sprite.flip_h = false
 		_current_texture_key = key
 
@@ -766,8 +886,11 @@ func _play_voice_line(line_key: String) -> void:
 	if _voice_player == null or line_key == "":
 		return
 	var path: String = VOICE_DIR + line_key.replace("#", "_") + ".mp3"
-	if not FileAccess.file_exists(path):
-		return
+	var found: bool = FileAccess.file_exists(path)
+	if _model_debug:
+		print("[VOICE] crew=%s line=%s path=%s found=%s" % [crew_data.crew_id, line_key, path, found])
+	if not found:
+		return  # graceful silent-skip — some line ids may lack audio (unchanged behaviour)
 	var bytes: PackedByteArray = FileAccess.get_file_as_bytes(path)
 	if bytes.is_empty():
 		return
