@@ -1,7 +1,7 @@
 # Mission Catalog — Ship AI
 
 > Human-readable index for `resources/missions/*.json`. Generated to match the
-> mission JSON schema in `docs/mission-system-spec.md` §3. 45 missions.
+> mission JSON schema in `docs/mission-system-spec.md` §3. 46 missions.
 
 > The overt layer of the mission/scenario overhaul: the ship is *ordered* to do these;
 > the Overseer decides which covert scenario (see `docs/scenario-catalog.md`) infects each leg.
@@ -18,6 +18,7 @@
 | repair / homecoming / hub | 4 | cold_harbor, limp_home, patch_job, shore_leave |
 | distress / evacuation | 5 | dead_air, last_call, lifeboat, mayday, the_stranded |
 | patrol / quarantine / smuggle | 4 | bad_manifest, chain_of_custody, hard_quarantine, the_line |
+| finale (tag; drawn by the voyage charter, never offered — docs/loop-direction.md §6.2) | 1 | final_approach |
 
 ## Index
 
@@ -35,6 +36,7 @@
 | `dead_drop` | Dead Drop | rendezvous | The Hollow Marker (unlit rendezvous point) | on_station:docked(0.5)<br>transit_back:aftermath(0.6) | [mission_success] -> tag:smuggle, dead_drop<br>[crew_infected_aboard] -> tag:bio_aftermath<br>[crew_marked_aboard] -> tag:mystery |
 | `deep_core` | Deep Core | mining | Cinder-9 (molten iron asteroid) | on_station:planet_orbit(0.7)<br>away_return:away_return(0.6)<br>transit_back:aftermath(0.5) | [hull_mauled] -> limp_home, tag:repair<br>[mission_success] -> tag:trade, cold_harbor<br>[crew_changed_aboard] -> tag:mystery |
 | `dignitary` | Dignitary | passenger | Cold Harbor (cluttered transfer hub) | transit_out:transit(0.45)<br>on_station:station(0.4) | [mission_success] -> tag:trade, cold_harbor<br>[meridian_grudge / mission_failed] -> meridian_audit |
+| `final_approach` | Final Approach | homecoming | Harbour Reach (charter terminus station) | transit_out:transit(0.5)<br>arrival:arrival(0.35)<br>on_station:station(0.3) | none — the charter ends here (voyage_completed) |
 | `first_light` | First Light | planet_survey | MC-9 Barren (airless grey moon) | transit_out:transit(0.2)<br>on_station:planet_orbit(0.3) | [mission_success] -> tag:planet, the_quarry<br>[crew_stranded_surface] -> the_stranded |
 | `fuel_line` | Fuel Line | rendezvous | HFV Slow Marey (swollen bunker tanker) | on_station:docked(0.4)<br>transit_back:aftermath(0.3) | [mission_success] -> tag:planet, tag:trade<br>[mission_partial / mission_failed] -> tag:repair |
 | `greenhouse` | Greenhouse | planet_survey | Kepler-Verde (jungle world) | on_station:planet_orbit(0.85)<br>away_return:away_return(0.7)<br>transit_back:aftermath(0.5) | [crew_infected_aboard] -> hard_quarantine, tag:bio_aftermath<br>[crew_stranded_surface] -> the_stranded<br>[mission_success] -> tag:trade, cold_harbor |

@@ -113,6 +113,14 @@ signal intruder_moved(intruder_id: String, from_room: String, to_room: String)
 signal intruder_killed(intruder_id: String, room_id: String)
 signal crew_status_flag_changed(crew_id: String, flag: String, value: bool)  # internal — HUD must NOT surface hidden flags
 
+# Run-level loop: dispatch / port / voyage (docs/loop-direction.md §6)
+signal mission_offers_posted(offer_ids: Array)   # dispatch window opened; MissionManager.dispatch_offers holds the MissionDefs
+signal mission_selected(mission_id: String, followed_recommendation: bool, reason: String)  # reason "" when followed
+signal port_docked(port_name: String, fee_charged: float, wages_frozen: bool)
+signal port_departed(port_name: String)
+signal port_service_purchased(service: String, cost: float)  # "hull_repair" | "shuttle_repair" | "hire" | item id
+signal voyage_completed(summary: Dictionary)     # the charter is done — run over with the ship alive
+
 # Away-op radio chatter (docs/mission-system-spec.md §6 step 2 / dialogue_spec.md
 # "away_radio_{calm|tense|bad}"): the away team is off-ship, so there's no CrewMemberNode
 # to hang a speech bubble on — this is the "live window" text surfaced straight to the HUD
